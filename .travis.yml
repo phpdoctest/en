@@ -1,10 +1,22 @@
 language: php
+
 php:
-  - 5.4
+  - 7.1
+
 before_script:
-  - mv `pwd` ../en
   - cd ..
-  - git clone --depth=1 git://github.com/salathe/phpdoc-base.git doc-base
+  - git clone --depth=1 https://github.com/phpdoctest/doc-base.git doc-base
+  - git clone --depth=1 https://github.com/php/phd.git phd
+  - mkdir build
+
 script:
   - php doc-base/configure.php --enable-xml-details --disable-libxml-check --redirect-stderr-to-stdout --with-lang=en
+  - php -d memory_limit=512M phd/render.php --docbook doc-base/.manual.xml --output ./build
 
+deploy:
+  provider: pages
+  skip_cleanup: true
+  github_token: $GITHUB_TOKEN
+  local_dir: build/chunked-xhtml/
+  on:
+    branch: master
