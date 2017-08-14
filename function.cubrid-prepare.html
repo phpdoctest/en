@@ -1,0 +1,251 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Prepare a SQL statement for execution</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.cubrid.html">CUBRID</a></li>
+  <li class="header up"><a href="ref.cubrid.html">CUBRID Functions</a></li>
+  <li><a href="function.cubrid-bind.html">cubrid_bind</a></li>
+  <li><a href="function.cubrid-close-prepare.html">cubrid_close_prepare</a></li>
+  <li><a href="function.cubrid-close-request.html">cubrid_close_request</a></li>
+  <li><a href="function.cubrid-col-get.html">cubrid_col_get</a></li>
+  <li><a href="function.cubrid-col-size.html">cubrid_col_size</a></li>
+  <li><a href="function.cubrid-column-names.html">cubrid_column_names</a></li>
+  <li><a href="function.cubrid-column-types.html">cubrid_column_types</a></li>
+  <li><a href="function.cubrid-commit.html">cubrid_commit</a></li>
+  <li><a href="function.cubrid-connect-with-url.html">cubrid_connect_with_url</a></li>
+  <li><a href="function.cubrid-connect.html">cubrid_connect</a></li>
+  <li><a href="function.cubrid-current-oid.html">cubrid_current_oid</a></li>
+  <li><a href="function.cubrid-disconnect.html">cubrid_disconnect</a></li>
+  <li><a href="function.cubrid-drop.html">cubrid_drop</a></li>
+  <li><a href="function.cubrid-error-code-facility.html">cubrid_error_code_facility</a></li>
+  <li><a href="function.cubrid-error-code.html">cubrid_error_code</a></li>
+  <li><a href="function.cubrid-error-msg.html">cubrid_error_msg</a></li>
+  <li><a href="function.cubrid-execute.html">cubrid_execute</a></li>
+  <li><a href="function.cubrid-fetch.html">cubrid_fetch</a></li>
+  <li><a href="function.cubrid-free-result.html">cubrid_free_result</a></li>
+  <li><a href="function.cubrid-get-autocommit.html">cubrid_get_autocommit</a></li>
+  <li><a href="function.cubrid-get-charset.html">cubrid_get_charset</a></li>
+  <li><a href="function.cubrid-get-class-name.html">cubrid_get_class_name</a></li>
+  <li><a href="function.cubrid-get-client-info.html">cubrid_get_client_info</a></li>
+  <li><a href="function.cubrid-get-db-parameter.html">cubrid_get_db_parameter</a></li>
+  <li><a href="function.cubrid-get-query-timeout.html">cubrid_get_query_timeout</a></li>
+  <li><a href="function.cubrid-get-server-info.html">cubrid_get_server_info</a></li>
+  <li><a href="function.cubrid-get.html">cubrid_get</a></li>
+  <li><a href="function.cubrid-insert-id.html">cubrid_insert_id</a></li>
+  <li><a href="function.cubrid-is-instance.html">cubrid_is_instance</a></li>
+  <li><a href="function.cubrid-lob-close.html">cubrid_lob_close</a></li>
+  <li><a href="function.cubrid-lob-export.html">cubrid_lob_export</a></li>
+  <li><a href="function.cubrid-lob-get.html">cubrid_lob_get</a></li>
+  <li><a href="function.cubrid-lob-send.html">cubrid_lob_send</a></li>
+  <li><a href="function.cubrid-lob-size.html">cubrid_lob_size</a></li>
+  <li><a href="function.cubrid-lob2-bind.html">cubrid_lob2_bind</a></li>
+  <li><a href="function.cubrid-lob2-close.html">cubrid_lob2_close</a></li>
+  <li><a href="function.cubrid-lob2-export.html">cubrid_lob2_export</a></li>
+  <li><a href="function.cubrid-lob2-import.html">cubrid_lob2_import</a></li>
+  <li><a href="function.cubrid-lob2-new.html">cubrid_lob2_new</a></li>
+  <li><a href="function.cubrid-lob2-read.html">cubrid_lob2_read</a></li>
+  <li><a href="function.cubrid-lob2-seek64.html">cubrid_lob2_seek64</a></li>
+  <li><a href="function.cubrid-lob2-seek.html">cubrid_lob2_seek</a></li>
+  <li><a href="function.cubrid-lob2-size64.html">cubrid_lob2_size64</a></li>
+  <li><a href="function.cubrid-lob2-size.html">cubrid_lob2_size</a></li>
+  <li><a href="function.cubrid-lob2-tell64.html">cubrid_lob2_tell64</a></li>
+  <li><a href="function.cubrid-lob2-tell.html">cubrid_lob2_tell</a></li>
+  <li><a href="function.cubrid-lob2-write.html">cubrid_lob2_write</a></li>
+  <li><a href="function.cubrid-lock-read.html">cubrid_lock_read</a></li>
+  <li><a href="function.cubrid-lock-write.html">cubrid_lock_write</a></li>
+  <li><a href="function.cubrid-move-cursor.html">cubrid_move_cursor</a></li>
+  <li><a href="function.cubrid-next-result.html">cubrid_next_result</a></li>
+  <li><a href="function.cubrid-num-cols.html">cubrid_num_cols</a></li>
+  <li><a href="function.cubrid-num-rows.html">cubrid_num_rows</a></li>
+  <li><a href="function.cubrid-pconnect-with-url.html">cubrid_pconnect_with_url</a></li>
+  <li><a href="function.cubrid-pconnect.html">cubrid_pconnect</a></li>
+  <li class="active"><a href="function.cubrid-prepare.html">cubrid_prepare</a></li>
+  <li><a href="function.cubrid-put.html">cubrid_put</a></li>
+  <li><a href="function.cubrid-rollback.html">cubrid_rollback</a></li>
+  <li><a href="function.cubrid-schema.html">cubrid_schema</a></li>
+  <li><a href="function.cubrid-seq-drop.html">cubrid_seq_drop</a></li>
+  <li><a href="function.cubrid-seq-insert.html">cubrid_seq_insert</a></li>
+  <li><a href="function.cubrid-seq-put.html">cubrid_seq_put</a></li>
+  <li><a href="function.cubrid-set-add.html">cubrid_set_add</a></li>
+  <li><a href="function.cubrid-set-autocommit.html">cubrid_set_autocommit</a></li>
+  <li><a href="function.cubrid-set-db-parameter.html">cubrid_set_db_parameter</a></li>
+  <li><a href="function.cubrid-set-drop.html">cubrid_set_drop</a></li>
+  <li><a href="function.cubrid-set-query-timeout.html">cubrid_set_query_timeout</a></li>
+  <li><a href="function.cubrid-version.html">cubrid_version</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.cubrid-pconnect.html">cubrid_pconnect</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.cubrid-put.html">cubrid_put</a></div>
+                <div class="up"><a href="ref.cubrid.html">CUBRID Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.cubrid-prepare" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">cubrid_prepare</h1>
+  <p class="refpurpose">Prepare a SQL statement for execution</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.cubrid-prepare-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname">cubrid_prepare</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$conn_identifier</code></span>  
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$prepare_stmt</code></span>  
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$option</code><span class="initializer"> = 0</span></span>  
+  ] )</div>
+
+  <p class="para rdfs-comment">
+      The <span class="function">cubrid_prepare</span> function is a sort of API which represents SQL statements 
+      compiled previously to a given connection handle. This pre-compiled SQL statement will be included 
+      in the <span class="function">cubrid_prepare</span>. 
+  </p>
+  <p class="para">
+      Accordingly, you can use this statement effectively to execute several times repeatedly or to 
+      process long data. Only a single statement can be used and a parameter may put a question mark (?) 
+      to appropriate area in the SQL statement. Add a parameter when you bind a value in the VALUES 
+      clause of INSERT statement or in the WHERE clause. Note that it is allowed to bind a value to a 
+      MARK(?) by using the <span class="function">cubrid_bind</span> function only. 
+  </p>
+ </div>
+
+
+<div class="refsect1 parameters" id="refsect1-function.cubrid-prepare-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+  <dl>
+
+    
+  <dt>
+<code class="parameter">conn_identifier</code></dt>
+
+  <dd>
+<p class="para">Connection identifier.</p></dd>
+
+   
+   
+  <dt>
+<code class="parameter">prepare_stmt</code></dt>
+
+  <dd>
+<p class="para">Prepare query.</p></dd>
+
+   
+   
+  <dt>
+<code class="parameter">option</code></dt>
+
+  <dd>
+<p class="para">OID return option CUBRID_INCLUDE_OID.</p></dd>
+
+   
+  </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.cubrid-prepare-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+    Request identifier, if process is successful; 
+  </p>
+  <p class="para">
+    <strong><code>FALSE</code></strong>, if process is unsuccessful.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.cubrid-prepare-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-1141">
+   <p><strong>Example #1 <span class="function">cubrid_prepare</span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">33000</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"demodb"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$sql&nbsp;</span><span style="color: #007700">=&nbsp;&lt;&lt;&lt;EOD<br /></span><span style="color: #DD0000">SELECT&nbsp;g.event_code,&nbsp;e.name&nbsp;<br />FROM&nbsp;game&nbsp;g&nbsp;<br />JOIN&nbsp;event&nbsp;e&nbsp;ON&nbsp;g.event_code=e.code&nbsp;<br />WHERE&nbsp;host_year&nbsp;=&nbsp;?&nbsp;AND&nbsp;event_code&nbsp;NOT&nbsp;IN&nbsp;(SELECT&nbsp;event_code&nbsp;FROM&nbsp;game&nbsp;WHERE&nbsp;host_year=?)&nbsp;GROUP&nbsp;BY&nbsp;event_code;<br /></span><span style="color: #007700">EOD;<br /><br /></span><span style="color: #0000BB">$req&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_prepare</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$sql</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">cubrid_bind</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2004</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">cubrid_bind</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2000</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$row_num&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_num_rows</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"There&nbsp;are&nbsp;%d&nbsp;event&nbsp;that&nbsp;exits&nbsp;in&nbsp;2004&nbsp;olympic&nbsp;but&nbsp;not&nbsp;in&nbsp;2000.&nbsp;For&nbsp;example:\n\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$row_num</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%-15s&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Event_code"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Event_name"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"----------------------------\n"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_fetch_assoc</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%-15d&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">"event_code"</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">"name"</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_fetch_assoc</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%-15d&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">"event_code"</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">"name"</span><span style="color: #007700">]);<br /><br /></span><span style="color: #0000BB">cubrid_disconnect</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+There are 27 event that exits in 2004 olympic but not in 2000. For example:
+
+Event_code      Event_name
+----------------------------
+20063           +91kg
+20070           64kg
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+  <div class="refsect1 seealso" id="refsect1-function.cubrid-prepare-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">  
+    <li class="member"><span class="function">cubrid_execute</span></li>  
+    <li class="member"><span class="function">cubrid_bind</span></li>  
+   </ul>
+  </p>
+  </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

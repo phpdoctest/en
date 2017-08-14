@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Returns the last error found</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.oci8.html">OCI8</a></li>
+  <li class="header up"><a href="ref.oci8.html">OCI8 Functions</a></li>
+  <li><a href="function.oci-bind-array-by-name.html">oci_bind_array_by_name</a></li>
+  <li><a href="function.oci-bind-by-name.html">oci_bind_by_name</a></li>
+  <li><a href="function.oci-cancel.html">oci_cancel</a></li>
+  <li><a href="function.oci-client-version.html">oci_client_version</a></li>
+  <li><a href="function.oci-close.html">oci_close</a></li>
+  <li><a href="function.oci-commit.html">oci_commit</a></li>
+  <li><a href="function.oci-connect.html">oci_connect</a></li>
+  <li><a href="function.oci-define-by-name.html">oci_define_by_name</a></li>
+  <li class="active"><a href="function.oci-error.html">oci_error</a></li>
+  <li><a href="function.oci-execute.html">oci_execute</a></li>
+  <li><a href="function.oci-fetch-all.html">oci_fetch_all</a></li>
+  <li><a href="function.oci-fetch-array.html">oci_fetch_array</a></li>
+  <li><a href="function.oci-fetch-assoc.html">oci_fetch_assoc</a></li>
+  <li><a href="function.oci-fetch-object.html">oci_fetch_object</a></li>
+  <li><a href="function.oci-fetch-row.html">oci_fetch_row</a></li>
+  <li><a href="function.oci-fetch.html">oci_fetch</a></li>
+  <li><a href="function.oci-field-is-null.html">oci_field_is_null</a></li>
+  <li><a href="function.oci-field-name.html">oci_field_name</a></li>
+  <li><a href="function.oci-field-precision.html">oci_field_precision</a></li>
+  <li><a href="function.oci-field-scale.html">oci_field_scale</a></li>
+  <li><a href="function.oci-field-size.html">oci_field_size</a></li>
+  <li><a href="function.oci-field-type-raw.html">oci_field_type_raw</a></li>
+  <li><a href="function.oci-field-type.html">oci_field_type</a></li>
+  <li><a href="function.oci-free-descriptor.html">oci_free_descriptor</a></li>
+  <li><a href="function.oci-free-statement.html">oci_free_statement</a></li>
+  <li><a href="function.oci-get-implicit-resultset.html">oci_get_implicit_resultset</a></li>
+  <li><a href="function.oci-internal-debug.html">oci_internal_debug</a></li>
+  <li><a href="function.oci-lob-copy.html">oci_lob_copy</a></li>
+  <li><a href="function.oci-lob-is-equal.html">oci_lob_is_equal</a></li>
+  <li><a href="function.oci-new-collection.html">oci_new_collection</a></li>
+  <li><a href="function.oci-new-connect.html">oci_new_connect</a></li>
+  <li><a href="function.oci-new-cursor.html">oci_new_cursor</a></li>
+  <li><a href="function.oci-new-descriptor.html">oci_new_descriptor</a></li>
+  <li><a href="function.oci-num-fields.html">oci_num_fields</a></li>
+  <li><a href="function.oci-num-rows.html">oci_num_rows</a></li>
+  <li><a href="function.oci-parse.html">oci_parse</a></li>
+  <li><a href="function.oci-password-change.html">oci_password_change</a></li>
+  <li><a href="function.oci-pconnect.html">oci_pconnect</a></li>
+  <li><a href="function.oci-result.html">oci_result</a></li>
+  <li><a href="function.oci-rollback.html">oci_rollback</a></li>
+  <li><a href="function.oci-server-version.html">oci_server_version</a></li>
+  <li><a href="function.oci-set-action.html">oci_set_action</a></li>
+  <li><a href="function.oci-set-client-identifier.html">oci_set_client_identifier</a></li>
+  <li><a href="function.oci-set-client-info.html">oci_set_client_info</a></li>
+  <li><a href="function.oci-set-edition.html">oci_set_edition</a></li>
+  <li><a href="function.oci-set-module-name.html">oci_set_module_name</a></li>
+  <li><a href="function.oci-set-prefetch.html">oci_set_prefetch</a></li>
+  <li><a href="function.oci-statement-type.html">oci_statement_type</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.oci-define-by-name.html">oci_define_by_name</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.oci-execute.html">oci_execute</a></div>
+                <div class="up"><a href="ref.oci8.html">OCI8 Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.oci-error" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">oci_error</h1>
+  <p class="refpurpose">Returns the last error found</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.oci-error-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname">oci_error</span>
+    ([ <span class="methodparam"><span class="type">resource</span> <code class="parameter">$resource</code></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Returns the last error found.
+  </p>
+  <p class="para">
+   The function should be called immediately after an error occurs.
+   Errors are cleared by a successful statement.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.oci-error-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">resource</code></dt>
+
+     <dd>
+
+      <p class="para">
+       For most errors, <code class="parameter">resource</code> is the
+       resource handle that was passed to the failing function call.
+       For connection errors with <span class="function">oci_connect</span>,
+       <span class="function">oci_new_connect</span> or 
+       <span class="function">oci_pconnect</span> do not pass <code class="parameter">resource</code>.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.oci-error-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   If no error is found, <span class="function">oci_error</span> returns
+   <strong><code>FALSE</code></strong>. Otherwise, <span class="function">oci_error</span> returns the
+   error information as an associative array.
+  </p>
+  <p class="para">
+   <table class="doctable table">
+   <caption><strong><span class="function">oci_error</span> Array Description</strong></caption>
+
+    
+     <thead>
+      <tr>
+       <th>Array key</th>
+       <th>Type</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td><em>code</em></td>
+       <td><span class="type">integer</span></td>
+       <td>
+         The Oracle error number.
+       </td>
+      </tr>
+
+      <tr>
+       <td><em>message</em></td>
+       <td><span class="type">string</span></td>
+       <td>
+         The Oracle error text.
+       </td>
+      </tr>
+
+      <tr>
+       <td><em>offset</em></td>
+       <td><span class="type">integer</span></td>
+       <td>
+         The byte position of an error in the SQL statement.  If there
+         was no statement, this is <em>0</em>
+       </td>
+      </tr>
+
+      <tr>
+       <td><em>sqltext</em></td>
+       <td><span class="type">string</span></td>
+       <td>
+         The SQL statement text.  If there was no statement, this is
+         an empty string.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.oci-error-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-2216">
+    <p><strong>Example #1 Displaying the Oracle error message after a connection error</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"hr"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"welcome"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"localhost/XE"</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$conn</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$e&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_error</span><span style="color: #007700">();&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;For&nbsp;oci_connect&nbsp;errors&nbsp;do&nbsp;not&nbsp;pass&nbsp;a&nbsp;handle<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">trigger_error</span><span style="color: #007700">(</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">[</span><span style="color: #DD0000">'message'</span><span style="color: #007700">]),&nbsp;</span><span style="color: #0000BB">E_USER_ERROR</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+   <p class="para">
+   <div class="example" id="example-2217">
+    <p><strong>Example #2 Displaying the Oracle error message after a parsing error</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$stid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"select&nbsp;'&nbsp;from&nbsp;dual"</span><span style="color: #007700">);&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;note&nbsp;mismatched&nbsp;quote<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">$stid</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$e&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_error</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;For&nbsp;oci_parse&nbsp;errors&nbsp;pass&nbsp;the&nbsp;connection&nbsp;handle<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">trigger_error</span><span style="color: #007700">(</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">[</span><span style="color: #DD0000">'message'</span><span style="color: #007700">]),&nbsp;</span><span style="color: #0000BB">E_USER_ERROR</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-2218">
+    <p><strong>Example #3 Displaying the Oracle error message, the problematic statement,
+     and the position of the problem of an execution error</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$stid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"select&nbsp;does_not_exist&nbsp;from&nbsp;dual"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$r&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$r</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$e&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_error</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;For&nbsp;oci_execute&nbsp;errors&nbsp;pass&nbsp;the&nbsp;statement&nbsp;handle<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">print&nbsp;</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">[</span><span style="color: #DD0000">'message'</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #DD0000">"\n&lt;pre&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">[</span><span style="color: #DD0000">'sqltext'</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"\n%"</span><span style="color: #007700">.(</span><span style="color: #0000BB">$e</span><span style="color: #007700">[</span><span style="color: #DD0000">'offset'</span><span style="color: #007700">]+</span><span style="color: #0000BB">1</span><span style="color: #007700">).</span><span style="color: #DD0000">"s"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"^"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;&nbsp;</span><span style="color: #DD0000">"\n&lt;/pre&gt;\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

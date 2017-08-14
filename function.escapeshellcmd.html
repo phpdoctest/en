@@ -1,0 +1,226 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Escape shell metacharacters</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.fileprocess.process.html">Process Control Extensions</a></li>
+  <li class="header up"><a href="book.exec.html">Program execution</a></li>
+  <li class="header up"><a href="ref.exec.html">Program execution Functions</a></li>
+  <li><a href="function.escapeshellarg.html">escapeshellarg</a></li>
+  <li class="active"><a href="function.escapeshellcmd.html">escapeshellcmd</a></li>
+  <li><a href="function.exec.html">exec</a></li>
+  <li><a href="function.passthru.html">passthru</a></li>
+  <li><a href="function.proc-close.html">proc_close</a></li>
+  <li><a href="function.proc-get-status.html">proc_get_status</a></li>
+  <li><a href="function.proc-nice.html">proc_nice</a></li>
+  <li><a href="function.proc-open.html">proc_open</a></li>
+  <li><a href="function.proc-terminate.html">proc_terminate</a></li>
+  <li><a href="function.shell-exec.html">shell_exec</a></li>
+  <li><a href="function.system.html">system</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.escapeshellarg.html">escapeshellarg</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.exec.html">exec</a></div>
+                <div class="up"><a href="ref.exec.html">Program execution Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.escapeshellcmd" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">escapeshellcmd</h1>
+  <p class="refpurpose">Escape shell metacharacters</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.escapeshellcmd-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname">escapeshellcmd</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$command</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function">escapeshellcmd</span> escapes any characters in a
+   string that might be used to trick a shell command into executing
+   arbitrary commands.  This function should be used to make sure
+   that any data coming from user input is escaped before this data
+   is passed to the <span class="function">exec</span> or
+   <span class="function">system</span> functions, or to the <a href="language.operators.execution.html" class="link">backtick
+   operator</a>.
+  </p>
+  <p class="para">
+   Following characters are preceded by a backslash:
+   <em>&amp;#;`|*?~&lt;&gt;^()[]{}$\</em>, <em>\x0A</em>
+   and <em>\xFF</em>. <em>&#039;</em> and <em>&quot;</em>
+   are escaped only if they are not paired. In Windows, all these characters
+   plus <em>%</em> and <em>!</em> are replaced by a space instead.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.escapeshellcmd-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">command</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The command that will be escaped.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.escapeshellcmd-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   The escaped string.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.escapeshellcmd-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4223">
+    <p><strong>Example #1 <span class="function">escapeshellcmd</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;We&nbsp;allow&nbsp;arbitrary&nbsp;number&nbsp;of&nbsp;arguments&nbsp;intentionally&nbsp;here.<br /></span><span style="color: #0000BB">$command&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'./configure&nbsp;'</span><span style="color: #007700">.</span><span style="color: #0000BB">$_POST</span><span style="color: #007700">[</span><span style="color: #DD0000">'configure_options'</span><span style="color: #007700">];<br /><br /></span><span style="color: #0000BB">$escaped_command&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">escapeshellcmd</span><span style="color: #007700">(</span><span style="color: #0000BB">$command</span><span style="color: #007700">);<br />&nbsp;<br /></span><span style="color: #0000BB">system</span><span style="color: #007700">(</span><span style="color: #0000BB">$escaped_command</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.escapeshellcmd-notes">
+   <div class="warning"><strong class="warning">Warning</strong>
+    <p class="para">
+     <span class="function">escapeshellcmd</span> should be used on the whole
+     command string, and it still allows the attacker to pass
+     arbitrary number of arguments. For escaping a single argument 
+     <span class="function">escapeshellarg</span> should be used instead.
+    </p>
+   </div>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.escapeshellcmd-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      
+ <tr>
+  <td>5.6.0</td>
+  <td>
+   The default value for the <code class="parameter">encoding</code> parameter was
+   changed to be the value of the
+   <a href="ini.core.html#ini.default-charset" class="link">default_charset</a> configuration
+   option.
+  </td>
+ </tr>
+
+
+      <tr>
+       <td>5.4.43, 5.5.27, 5.6.11</td>
+       <td>
+        Exclamation marks are replaced by spaces.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.escapeshellcmd-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">escapeshellarg</span></li>
+    <li class="member"><span class="function">exec</span></li>
+    <li class="member"><span class="function">popen</span></li>
+    <li class="member"><span class="function">system</span></li>
+    <li class="member"><a href="language.operators.execution.html" class="link">backtick operator</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

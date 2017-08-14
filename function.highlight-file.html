@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Syntax highlighting of a file</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.misc.html">Misc.</a></li>
+  <li class="header up"><a href="ref.misc.html">Misc. Functions</a></li>
+  <li><a href="function.connection-aborted.html">connection_aborted</a></li>
+  <li><a href="function.connection-status.html">connection_status</a></li>
+  <li><a href="function.constant.html">constant</a></li>
+  <li><a href="function.define.html">define</a></li>
+  <li><a href="function.defined.html">defined</a></li>
+  <li><a href="function.die.html">die</a></li>
+  <li><a href="function.eval.html">eval</a></li>
+  <li><a href="function.exit.html">exit</a></li>
+  <li><a href="function.get-browser.html">get_browser</a></li>
+  <li><a href="function.halt-compiler.html">__halt_compiler</a></li>
+  <li class="active"><a href="function.highlight-file.html">highlight_file</a></li>
+  <li><a href="function.highlight-string.html">highlight_string</a></li>
+  <li><a href="function.ignore-user-abort.html">ignore_user_abort</a></li>
+  <li><a href="function.pack.html">pack</a></li>
+  <li><a href="function.php-check-syntax.html">php_check_syntax</a></li>
+  <li><a href="function.php-strip-whitespace.html">php_strip_whitespace</a></li>
+  <li><a href="function.show-source.html">show_source</a></li>
+  <li><a href="function.sleep.html">sleep</a></li>
+  <li><a href="function.sys-getloadavg.html">sys_getloadavg</a></li>
+  <li><a href="function.time-nanosleep.html">time_nanosleep</a></li>
+  <li><a href="function.time-sleep-until.html">time_sleep_until</a></li>
+  <li><a href="function.uniqid.html">uniqid</a></li>
+  <li><a href="function.unpack.html">unpack</a></li>
+  <li><a href="function.usleep.html">usleep</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.halt-compiler.html">__halt_compiler</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.highlight-string.html">highlight_string</a></div>
+                <div class="up"><a href="ref.misc.html">Misc. Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.highlight-file" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">highlight_file</h1>
+  <p class="refpurpose">Syntax highlighting of a file</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.highlight-file-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname">highlight_file</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$return</code><span class="initializer"> = false</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Prints out or returns a syntax highlighted version of the code contained
+   in <code class="parameter">filename</code> using the colors defined in the
+   built-in syntax highlighter for PHP.
+  </p>
+  <p class="para">
+   Many servers are configured to automatically highlight files
+   with a <em class="emphasis">phps</em> extension. For example,
+   <var class="filename">example.phps</var> when viewed will show the
+   syntax highlighted source of the file. To enable this, add this
+   line to the <var class="filename">httpd.conf</var>:
+  </p>
+  <div class="example-contents screen">
+<div class="descriptioncode"><pre class="descriptioncode">AddType application/x-httpd-php-source .phps</pre>
+</div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.highlight-file-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">filename</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Path to the PHP file to be highlighted.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">return</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Set this parameter to <strong><code>TRUE</code></strong> to make this function return the
+       highlighted code.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.highlight-file-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   If <code class="parameter">return</code> is set to <strong><code>TRUE</code></strong>, returns the highlighted
+   code as a string instead of printing it out. Otherwise, it will return
+   <strong><code>TRUE</code></strong> on success, <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.highlight-file-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>4.2.1</td>
+       <td>
+        This function is now also affected by <a href="ini.sect.safe-mode.html#ini.safe-mode" class="link">safe_mode</a> and <a href="ini.core.html#ini.open-basedir" class="link">open_basedir</a>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.highlight-file-notes">
+  <h3 class="title">Notes</h3>
+  <div class="caution"><strong class="caution">Caution</strong>
+   <p class="para">
+    Care should be taken when using the <span class="function">highlight_file</span>
+    function to make sure that you do not inadvertently reveal sensitive
+    information such as passwords or any other type of information that might
+    create a potential security risk.
+   </p>
+  </div>
+  <blockquote class="note"><p><strong class="note">Note</strong>: <p class="para">When the <code class="parameter">return</code> parameter
+is used, this function uses internal output buffering so it cannot be used inside an
+<span class="function">ob_start</span> callback function.</p></p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.highlight-file-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">highlight_string</span></li>
+    <li class="member"><a href="misc.configuration.html#ini.syntax-highlighting" class="link">Highlighting INI directives</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

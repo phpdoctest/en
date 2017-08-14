@@ -1,0 +1,129 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Final Keyword</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="langref.html">Language Reference</a></li>
+  <li class="header up"><a href="language.oop5.html">Classes and Objects</a></li>
+  <li><a href="oop5.intro.html">Introduction</a></li>
+  <li><a href="language.oop5.basic.html">The Basics</a></li>
+  <li><a href="language.oop5.properties.html">Properties</a></li>
+  <li><a href="language.oop5.constants.html">Class Constants</a></li>
+  <li><a href="language.oop5.autoload.html">Autoloading Classes</a></li>
+  <li><a href="language.oop5.decon.html">Constructors and Destructors</a></li>
+  <li><a href="language.oop5.visibility.html">Visibility</a></li>
+  <li><a href="language.oop5.inheritance.html">Object Inheritance</a></li>
+  <li><a href="language.oop5.paamayim-nekudotayim.html">Scope Resolution Operator (::)</a></li>
+  <li><a href="language.oop5.static.html">Static Keyword</a></li>
+  <li><a href="language.oop5.abstract.html">Class Abstraction</a></li>
+  <li><a href="language.oop5.interfaces.html">Object Interfaces</a></li>
+  <li><a href="language.oop5.traits.html">Traits</a></li>
+  <li><a href="language.oop5.anonymous.html">Anonymous classes</a></li>
+  <li><a href="language.oop5.overloading.html">Overloading</a></li>
+  <li><a href="language.oop5.iterations.html">Object Iteration</a></li>
+  <li><a href="language.oop5.magic.html">Magic Methods</a></li>
+  <li class="active"><a href="language.oop5.final.html">Final Keyword</a></li>
+  <li><a href="language.oop5.cloning.html">Object Cloning</a></li>
+  <li><a href="language.oop5.object-comparison.html">Comparing Objects</a></li>
+  <li><a href="language.oop5.typehinting.html">Type Hinting</a></li>
+  <li><a href="language.oop5.late-static-bindings.html">Late Static Bindings</a></li>
+  <li><a href="language.oop5.references.html">Objects and references</a></li>
+  <li><a href="language.oop5.serialization.html">Object Serialization</a></li>
+  <li><a href="language.oop5.changelog.html">OOP Changelog</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="language.oop5.magic.html">Magic Methods</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="language.oop5.cloning.html">Object Cloning</a></div>
+                <div class="up"><a href="language.oop5.html">Classes and Objects</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="language.oop5.final" class="sect1">
+  <h2 class="title">Final Keyword</h2>
+  <p class="para">
+   PHP 5 introduces the final keyword, which prevents child classes from
+   overriding a method by prefixing the definition with <em class="emphasis">final</em>. If the class
+   itself is being defined final then it cannot be extended.
+  </p>
+  <p class="para">
+   <div class="example" id="language.oop5.traits.abstract.ex1">
+    <p><strong>Example #1 Final methods example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">BaseClass&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">test</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"BaseClass::test()&nbsp;called\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;final&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">moreTesting</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"BaseClass::moreTesting()&nbsp;called\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;}<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">ChildClass&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">BaseClass&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">moreTesting</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"ChildClass::moreTesting()&nbsp;called\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #FF8000">//&nbsp;Results&nbsp;in&nbsp;Fatal&nbsp;error:&nbsp;Cannot&nbsp;override&nbsp;final&nbsp;method&nbsp;BaseClass::moreTesting()<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+  </p>
+  <p class="para">
+   <div class="example" id="language.oop5.traits.static.ex1">
+    <p><strong>Example #2 Final class example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">final&nbsp;class&nbsp;</span><span style="color: #0000BB">BaseClass&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">test</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"BaseClass::test()&nbsp;called\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Here&nbsp;it&nbsp;doesn't&nbsp;matter&nbsp;if&nbsp;you&nbsp;specify&nbsp;the&nbsp;function&nbsp;as&nbsp;final&nbsp;or&nbsp;not<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">final&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">moreTesting</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"BaseClass::moreTesting()&nbsp;called\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;}<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">ChildClass&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">BaseClass&nbsp;</span><span style="color: #007700">{<br />}<br /></span><span style="color: #FF8000">//&nbsp;Results&nbsp;in&nbsp;Fatal&nbsp;error:&nbsp;Class&nbsp;ChildClass&nbsp;may&nbsp;not&nbsp;inherit&nbsp;from&nbsp;final&nbsp;class&nbsp;(BaseClass)<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <span class="simpara">
+    Properties cannot be declared final, only classes and methods 
+    may be declared as final.
+   </span>
+  </p></blockquote>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

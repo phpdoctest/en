@@ -1,0 +1,726 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Tidy</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li><a href="book.geoip.html">GeoIP</a></li>
+  <li><a href="book.fann.html">FANN</a></li>
+  <li><a href="book.json.html">JSON</a></li>
+  <li><a href="book.judy.html">Judy</a></li>
+  <li><a href="book.lua.html">Lua</a></li>
+  <li><a href="book.misc.html">Misc.</a></li>
+  <li><a href="book.parsekit.html">Parsekit</a></li>
+  <li><a href="book.spl.html">SPL</a></li>
+  <li><a href="book.spl-types.html">SPL Types</a></li>
+  <li><a href="book.stream.html">Streams</a></li>
+  <li class="active"><a href="book.tidy.html">Tidy</a></li>
+  <li><a href="book.tokenizer.html">Tokenizer</a></li>
+  <li><a href="book.url.html">URLs</a></li>
+  <li><a href="book.v8js.html">V8js</a></li>
+  <li><a href="book.yaml.html">Yaml</a></li>
+  <li><a href="book.yaf.html">Yaf</a></li>
+  <li><a href="book.taint.html">Taint</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.stream-wrapper-unregister.html">stream_wrapper_unregister</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="intro.tidy.html">Introduction</a></div>
+                <div class="up"><a href="refs.basic.other.html">Other Basic Extensions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="book.tidy" class="book">
+ 
+ <h1>Tidy</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="intro.tidy.html">Introduction</a></li>
+<li><a href="tidy.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_title">
+<li><a href="tidy.requirements.html">Requirements</a></li>
+<li><a href="tidy.installation.html">Installation</a></li>
+<li><a href="tidy.configuration.html">Runtime Configuration</a></li>
+<li><a href="tidy.resources.html">Resource Types</a></li>
+</ul>
+</li>
+<li><a href="tidy.constants.html">Predefined Constants</a></li>
+<li><a href="tidy.examples.html">Examples</a><ul class="chunklist chunklist_title">
+<li><a href="tidy.examples.basic.html">Tidy example</a></li>
+</ul>
+</li>
+<li><a href="class.tidy.html">tidy</a> — The tidy class<ul class="chunklist chunklist_title">
+<li><a href="tidy.body.html">tidy::body</a> — Returns a tidyNode object starting from the &lt;body&gt; tag of the tidy parse tree</li>
+<li><a href="tidy.cleanrepair.html">tidy::cleanRepair</a> — Execute configured cleanup and repair operations on parsed markup</li>
+<li><a href="tidy.construct.html">tidy::__construct</a> — Constructs a new tidy object</li>
+<li><a href="tidy.diagnose.html">tidy::diagnose</a> — Run configured diagnostics on parsed and repaired markup</li>
+<li><a href="tidy.props.errorbuffer.html">tidy::$errorBuffer</a> — Return warnings and errors which occurred parsing the specified document</li>
+<li><a href="tidy.getconfig.html">tidy::getConfig</a> — Get current Tidy configuration</li>
+<li><a href="tidy.gethtmlver.html">tidy::getHtmlVer</a> — Get the Detected HTML version for the specified document</li>
+<li><a href="tidy.getopt.html">tidy::getOpt</a> — Returns the value of the specified configuration option for the tidy document</li>
+<li><a href="tidy.getoptdoc.html">tidy::getOptDoc</a> — Returns the documentation for the given option name</li>
+<li><a href="tidy.getrelease.html">tidy::getRelease</a> — Get release date (version) for Tidy library</li>
+<li><a href="tidy.getstatus.html">tidy::getStatus</a> — Get status of specified document</li>
+<li><a href="tidy.head.html">tidy::head</a> — Returns a tidyNode object starting from the &lt;head&gt; tag of the tidy parse tree</li>
+<li><a href="tidy.html.html">tidy::html</a> — Returns a tidyNode object starting from the &lt;html&gt; tag of the tidy parse tree</li>
+<li><a href="tidy.isxhtml.html">tidy::isXhtml</a> — Indicates if the document is a XHTML document</li>
+<li><a href="tidy.isxml.html">tidy::isXml</a> — Indicates if the document is a generic (non HTML/XHTML) XML document</li>
+<li><a href="tidy.parsefile.html">tidy::parseFile</a> — Parse markup in file or URI</li>
+<li><a href="tidy.parsestring.html">tidy::parseString</a> — Parse a document stored in a string</li>
+<li><a href="tidy.repairfile.html">tidy::repairFile</a> — Repair a file and return it as a string</li>
+<li><a href="tidy.repairstring.html">tidy::repairString</a> — Repair a string using an optionally provided configuration file</li>
+<li><a href="tidy.root.html">tidy::root</a> — Returns a tidyNode object representing the root of the tidy parse tree</li>
+</ul>
+</li>
+<li><a href="class.tidynode.html">tidyNode</a> — The tidyNode class<ul class="chunklist chunklist_title">
+<li><a href="tidynode.getparent.html">tidyNode::getParent</a> — Returns the parent node of the current node</li>
+<li><a href="tidynode.haschildren.html">tidyNode::hasChildren</a> — Checks if a node has children</li>
+<li><a href="tidynode.hassiblings.html">tidyNode::hasSiblings</a> — Checks if a node has siblings</li>
+<li><a href="tidynode.isasp.html">tidyNode::isAsp</a> — Checks if this node is ASP</li>
+<li><a href="tidynode.iscomment.html">tidyNode::isComment</a> — Checks if a node represents a comment</li>
+<li><a href="tidynode.ishtml.html">tidyNode::isHtml</a> — Checks if a node is part of a HTML document</li>
+<li><a href="tidynode.isjste.html">tidyNode::isJste</a> — Checks if this node is JSTE</li>
+<li><a href="tidynode.isphp.html">tidyNode::isPhp</a> — Checks if a node is PHP</li>
+<li><a href="tidynode.istext.html">tidyNode::isText</a> — Checks if a node represents text (no markup)</li>
+</ul>
+</li>
+<li><a href="ref.tidy.html">Tidy Functions</a><ul class="chunklist chunklist_title">
+<li><a href="function.ob-tidyhandler.html">ob_tidyhandler</a> — ob_start callback function to repair the buffer</li>
+<li><a href="function.tidy-access-count.html">tidy_access_count</a> — Returns the Number of Tidy accessibility warnings encountered for specified document</li>
+<li><a href="function.tidy-config-count.html">tidy_config_count</a> — Returns the Number of Tidy configuration errors encountered for specified document</li>
+<li><a href="function.tidy-error-count.html">tidy_error_count</a> — Returns the Number of Tidy errors encountered for specified document</li>
+<li><a href="function.tidy-get-output.html">tidy_get_output</a> — Return a string representing the parsed tidy markup</li>
+<li><a href="function.tidy-load-config.html">tidy_load_config</a> — Load an ASCII Tidy configuration file with the specified encoding</li>
+<li><a href="function.tidy-reset-config.html">tidy_reset_config</a> — Restore Tidy configuration to default values</li>
+<li><a href="function.tidy-save-config.html">tidy_save_config</a> — Save current settings to named file</li>
+<li><a href="function.tidy-set-encoding.html">tidy_set_encoding</a> — Set the input/output character encoding for parsing markup</li>
+<li><a href="function.tidy-setopt.html">tidy_setopt</a> — Updates the configuration settings for the specified tidy document</li>
+<li><a href="function.tidy-warning-count.html">tidy_warning_count</a> — Returns the Number of Tidy warnings encountered for specified document</li>
+</ul>
+</li>
+</ul>
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+ <h1 class="title">The <span class="classname">tidy</span> class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="tidy.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    An HTML node in an HTML file, as detected by tidy.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="tidy.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">tidy</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">tidy</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis"><span class="type">string</span><var class="varname">$tidy-&gt;errorBuffer</var>;</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="type">tidyNode</span> <span class="methodname">body</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">cleanRepair</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+    <span class="methodname">__construct</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$config</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$encoding</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$use_include_path</code></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">diagnose</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname">getConfig</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname">getHtmlVer</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname">getOpt</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$option</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname">getOptDoc</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$optname</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname">getRelease</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname">getStatus</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">tidyNode</span> <span class="methodname">head</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">tidyNode</span> <span class="methodname">html</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">isXhtml</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">isXml</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">parseFile</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$config</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$encoding</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$use_include_path</code><span class="initializer"> = false</span></span>
+  ]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">parseString</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$input</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$config</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$encoding</code></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname">repairFile</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$config</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$encoding</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$use_include_path</code><span class="initializer"> = false</span></span>
+  ]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname">repairString</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$config</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$encoding</code></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">tidyNode</span> <span class="methodname">root</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+    
+   }</div>
+
+
+  </div>
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+ <h1 class="title">The <span class="classname">tidyNode</span> class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="tidynode.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    An HTML node in an HTML file, as detected by tidy.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="tidynode.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">tidyNode</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">tidyNode</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis"><span class="type">string</span><var class="varname">$value</var>;</div>
+
+    <div class="fieldsynopsis"><span class="type">string</span><var class="varname">$name</var>;</div>
+
+    <div class="fieldsynopsis"><span class="type">int</span><var class="varname">$type</var>;</div>
+
+    <div class="fieldsynopsis"><span class="type">int</span><var class="varname">$line</var>;</div>
+
+    <div class="fieldsynopsis"><span class="type">int</span><var class="varname">$column</var>;</div>
+
+    <div class="fieldsynopsis"><span class="type">bool</span><var class="varname">$proprietary</var>;</div>
+
+    <div class="fieldsynopsis"><span class="type">int</span><var class="varname">$id</var>;</div>
+
+    <div class="fieldsynopsis"><span class="type">array</span><var class="varname">$attribute</var>;</div>
+
+    <div class="fieldsynopsis"><span class="type">array</span><var class="varname">$child</var>;</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="type">tidyNode</span> <span class="methodname">getParent</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">hasChildren</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">hasSiblings</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">isAsp</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">isComment</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">isHtml</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">isJste</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">isPhp</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">isText</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+    
+   }</div>
+
+
+  </div>
+
+
+  <div class="section" id="tidynode.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="tidynode.props.value"><var class="varname">value</var></dt>
+
+     <dd>
+
+      <p class="para">The HTML representation of the node, including the surrounding tags.</p>
+     </dd>
+
+    
+    
+     <dt id="tidynode.props.name"><var class="varname">name</var></dt>
+
+     <dd>
+
+      <p class="para">The name of the HTML node</p>
+     </dd>
+
+    
+    
+     <dt id="tidynode.props.type"><var class="varname">type</var></dt>
+
+     <dd>
+
+      <p class="para">The type of the tag (one of the constants above, e.g. <strong><code>TIDY_NODETYPE_PHP</code></strong>)</p>
+     </dd>
+
+    
+    
+     <dt id="tidynode.props.line"><var class="varname">line</var></dt>
+
+     <dd>
+
+      <p class="para">The line number at which the tags is located in the file</p>
+     </dd>
+
+    
+    
+     <dt id="tidynode.props.column"><var class="varname">column</var></dt>
+
+     <dd>
+
+      <p class="para">The column number at which the tags is located in the file</p>
+     </dd>
+
+    
+    
+     <dt id="tidynode.props.proprietary"><var class="varname">proprietary</var></dt>
+
+     <dd>
+
+      <p class="para">Indicates if the node is a proprietary tag</p>
+     </dd>
+
+    
+    
+     <dt id="tidynode.props.id"><var class="varname">id</var></dt>
+
+     <dd>
+
+      <p class="para">The ID of the tag (one of the constants above, e.g. <strong><code>TIDY_TAG_FRAME</code></strong>)</p>
+     </dd>
+
+    
+    
+     <dt id="tidynode.props.attribute"><var class="varname">attribute</var></dt>
+
+     <dd>
+
+      <p class="para">
+       An array of string, representing
+       the attributes names (as keys) of the current node.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="tidynode.props.child"><var class="varname">child</var></dt>
+
+     <dd>
+
+      <p class="para">
+       An array of <span class="classname">tidyNode</span>, representing
+       the children of the current node.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.1.0</td>
+       <td><var class="varname">line</var>, <var class="varname">column</var>
+       and <var class="varname">proprietary</var> were added</td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+
+ </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+ 
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

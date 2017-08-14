@@ -1,0 +1,255 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Get the type of a variable</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.vartype.html">Variable and Type Related Extensions</a></li>
+  <li class="header up"><a href="book.var.html">Variable handling</a></li>
+  <li class="header up"><a href="ref.var.html">Variable handling Functions</a></li>
+  <li><a href="function.boolval.html">boolval</a></li>
+  <li><a href="function.debug-zval-dump.html">debug_zval_dump</a></li>
+  <li><a href="function.doubleval.html">doubleval</a></li>
+  <li><a href="function.empty.html">empty</a></li>
+  <li><a href="function.floatval.html">floatval</a></li>
+  <li><a href="function.get-defined-vars.html">get_defined_vars</a></li>
+  <li><a href="function.get-resource-type.html">get_resource_type</a></li>
+  <li class="active"><a href="function.gettype.html">gettype</a></li>
+  <li><a href="function.import-request-variables.html">import_request_variables</a></li>
+  <li><a href="function.intval.html">intval</a></li>
+  <li><a href="function.is-array.html">is_array</a></li>
+  <li><a href="function.is-bool.html">is_bool</a></li>
+  <li><a href="function.is-callable.html">is_callable</a></li>
+  <li><a href="function.is-double.html">is_double</a></li>
+  <li><a href="function.is-float.html">is_float</a></li>
+  <li><a href="function.is-int.html">is_int</a></li>
+  <li><a href="function.is-integer.html">is_integer</a></li>
+  <li><a href="function.is-iterable.html">is_iterable</a></li>
+  <li><a href="function.is-long.html">is_long</a></li>
+  <li><a href="function.is-null.html">is_null</a></li>
+  <li><a href="function.is-numeric.html">is_numeric</a></li>
+  <li><a href="function.is-object.html">is_object</a></li>
+  <li><a href="function.is-real.html">is_real</a></li>
+  <li><a href="function.is-resource.html">is_resource</a></li>
+  <li><a href="function.is-scalar.html">is_scalar</a></li>
+  <li><a href="function.is-string.html">is_string</a></li>
+  <li><a href="function.isset.html">isset</a></li>
+  <li><a href="function.print-r.html">print_r</a></li>
+  <li><a href="function.serialize.html">serialize</a></li>
+  <li><a href="function.settype.html">settype</a></li>
+  <li><a href="function.strval.html">strval</a></li>
+  <li><a href="function.unserialize.html">unserialize</a></li>
+  <li><a href="function.unset.html">unset</a></li>
+  <li><a href="function.var-dump.html">var_dump</a></li>
+  <li><a href="function.var-export.html">var_export</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.get-resource-type.html">get_resource_type</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.import-request-variables.html">import_request_variables</a></div>
+                <div class="up"><a href="ref.var.html">Variable handling Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.gettype" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">gettype</h1>
+  <p class="refpurpose">Get the type of a variable</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.gettype-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname">gettype</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$var</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Returns the type of the PHP variable <code class="parameter">var</code>. For
+   type checking, use <em>is_*</em> functions.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.gettype-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">var</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The variable being type checked.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.gettype-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Possible values for the returned string are:
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      &quot;<span class="type">boolean</span>&quot;
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      &quot;<span class="type">integer</span>&quot;
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      &quot;<span class="type">double</span>&quot; (for historical reasons &quot;double&quot; is
+      returned in case of a <span class="type">float</span>, and not simply
+      &quot;float&quot;)
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      &quot;<span class="type">string</span>&quot;
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      &quot;<span class="type">array</span>&quot;
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      &quot;<span class="type">object</span>&quot;
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      &quot;<span class="type">resource</span>&quot;
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      &quot;<span class="type">NULL</span>&quot;
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      &quot;unknown type&quot;
+     </span>
+    </li>
+   </ul>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.gettype-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-6130">
+    <p><strong>Example #1 <span class="function">gettype</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$data&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1.</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">,&nbsp;new&nbsp;</span><span style="color: #0000BB">stdClass</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">);<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">gettype</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+integer
+double
+NULL
+object
+string
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.gettype-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">settype</span></li>
+    <li class="member"><span class="function">get_class</span></li>
+    <li class="member"><span class="function">is_array</span></li>
+    <li class="member"><span class="function">is_bool</span></li>
+    <li class="member"><span class="function">is_callable</span></li>
+    <li class="member"><span class="function">is_float</span></li>
+    <li class="member"><span class="function">is_int</span></li>
+    <li class="member"><span class="function">is_null</span></li>
+    <li class="member"><span class="function">is_numeric</span></li>
+    <li class="member"><span class="function">is_object</span></li>
+    <li class="member"><span class="function">is_resource</span></li>
+    <li class="member"><span class="function">is_scalar</span></li>
+    <li class="member"><span class="function">is_string</span></li>
+    <li class="member"><span class="function">function_exists</span></li>
+    <li class="member"><span class="function">method_exists</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

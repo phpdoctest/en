@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Returns the request authenticator</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.auth.html">Authentication Services</a></li>
+  <li class="header up"><a href="book.radius.html">Radius</a></li>
+  <li class="header up"><a href="ref.radius.html">Radius Functions</a></li>
+  <li><a href="function.radius-acct-open.html">radius_acct_open</a></li>
+  <li><a href="function.radius-add-server.html">radius_add_server</a></li>
+  <li><a href="function.radius-auth-open.html">radius_auth_open</a></li>
+  <li><a href="function.radius-close.html">radius_close</a></li>
+  <li><a href="function.radius-config.html">radius_config</a></li>
+  <li><a href="function.radius-create-request.html">radius_create_request</a></li>
+  <li><a href="function.radius-cvt-addr.html">radius_cvt_addr</a></li>
+  <li><a href="function.radius-cvt-int.html">radius_cvt_int</a></li>
+  <li><a href="function.radius-cvt-string.html">radius_cvt_string</a></li>
+  <li><a href="function.radius-demangle-mppe-key.html">radius_demangle_mppe_key</a></li>
+  <li><a href="function.radius-demangle.html">radius_demangle</a></li>
+  <li><a href="function.radius-get-attr.html">radius_get_attr</a></li>
+  <li><a href="function.radius-get-tagged-attr-data.html">radius_get_tagged_attr_data</a></li>
+  <li><a href="function.radius-get-tagged-attr-tag.html">radius_get_tagged_attr_tag</a></li>
+  <li><a href="function.radius-get-vendor-attr.html">radius_get_vendor_attr</a></li>
+  <li><a href="function.radius-put-addr.html">radius_put_addr</a></li>
+  <li><a href="function.radius-put-attr.html">radius_put_attr</a></li>
+  <li><a href="function.radius-put-int.html">radius_put_int</a></li>
+  <li><a href="function.radius-put-string.html">radius_put_string</a></li>
+  <li><a href="function.radius-put-vendor-addr.html">radius_put_vendor_addr</a></li>
+  <li><a href="function.radius-put-vendor-attr.html">radius_put_vendor_attr</a></li>
+  <li><a href="function.radius-put-vendor-int.html">radius_put_vendor_int</a></li>
+  <li><a href="function.radius-put-vendor-string.html">radius_put_vendor_string</a></li>
+  <li class="active"><a href="function.radius-request-authenticator.html">radius_request_authenticator</a></li>
+  <li><a href="function.radius-salt-encrypt-attr.html">radius_salt_encrypt_attr</a></li>
+  <li><a href="function.radius-send-request.html">radius_send_request</a></li>
+  <li><a href="function.radius-server-secret.html">radius_server_secret</a></li>
+  <li><a href="function.radius-strerror.html">radius_strerror</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.radius-put-vendor-string.html">radius_put_vendor_string</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.radius-salt-encrypt-attr.html">radius_salt_encrypt_attr</a></div>
+                <div class="up"><a href="ref.radius.html">Radius Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.radius-request-authenticator" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">radius_request_authenticator</h1>
+  <p class="refpurpose">Returns the request authenticator</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.radius-request-authenticator-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname">radius_request_authenticator</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$radius_handle</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   The request authenticator is needed for demangling mangled data like
+   passwords and encryption-keys.
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.radius-request-authenticator-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the request authenticator as string, or <strong><code>FALSE</code></strong> on error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.radius-request-authenticator-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">radius_demangle</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

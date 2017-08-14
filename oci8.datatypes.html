@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Supported Datatypes</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.oci8.html">OCI8</a></li>
+  <li><a href="intro.oci8.html">Introduction</a></li>
+  <li><a href="oci8.setup.html">Installing/Configuring</a></li>
+  <li><a href="oci8.constants.html">Predefined Constants</a></li>
+  <li><a href="oci8.examples.html">Examples</a></li>
+  <li><a href="oci8.connection.html">OCI8 Connection Handling and Connection Pooling</a></li>
+  <li><a href="oci8.fan.html">OCI8 Fast Application Notification (FAN) Support</a></li>
+  <li><a href="oci8.dtrace.html">OCI8 and DTrace Dynamic Tracing</a></li>
+  <li class="active"><a href="oci8.datatypes.html">Supported Datatypes</a></li>
+  <li><a href="ref.oci8.html">OCI8 Functions</a></li>
+  <li><a href="class.OCI-Collection.html">OCI-Collection</a></li>
+  <li><a href="class.OCI-Lob.html">OCI-Lob</a></li>
+  <li><a href="oldaliases.oci8.html">OCI8 Obsolete Aliases and Functions</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="oci8.dtrace.html">OCI8 and DTrace Dynamic Tracing</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="ref.oci8.html">OCI8 Functions</a></div>
+                <div class="up"><a href="book.oci8.html">OCI8</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="oci8.datatypes" class="chapter">
+ <h1>Supported Datatypes</h1>
+ <table class="doctable table">
+  <caption><strong>The driver supports the following types when binding parameters using the
+   <span class="function">oci_bind_by_name</span> function:</strong></caption>
+  
+   <thead>
+    <tr>
+     <th>Type</th>
+     <th>Mapping</th>
+    </tr>
+
+   </thead>
+
+   <tbody class="tbody">
+    <tr>
+     <td><strong><code>SQLT_NTY</code></strong></td>
+     <td>Maps a native collection type from a PHP collection object,
+      such as those created by <span class="function">oci_new_collection</span>.</td>
+    </tr>
+
+    <tr>
+     <td><strong><code>SQLT_BFILEE</code></strong></td>
+     <td>Maps a native descriptor, such as those created by
+      <span class="function">oci_new_descriptor</span>.</td>
+    </tr>
+
+    <tr>
+     <td><strong><code>SQLT_CFILEE</code></strong></td>
+     <td>Maps a native descriptor, such as those created by
+      <span class="function">oci_new_descriptor</span>.</td>
+    </tr>
+
+    <tr>
+     <td><strong><code>SQLT_CLOB</code></strong></td>
+     <td>Maps a native descriptor, such as those created by
+      <span class="function">oci_new_descriptor</span>.</td>
+    </tr>
+
+    <tr>
+     <td><strong><code>SQLT_BLOB</code></strong></td>
+     <td>Maps a native descriptor, such as those created by
+      <span class="function">oci_new_descriptor</span>.</td>
+    </tr>
+
+    <tr>
+     <td><strong><code>SQLT_RDD</code></strong></td>
+     <td>Maps a native descriptor, such as those created by
+      <span class="function">oci_new_descriptor</span>.</td>
+    </tr>
+
+    <tr>
+     <td><strong><code>SQLT_NUM</code></strong></td>
+     <td>Converts the PHP parameter to a &#039;C&#039; long type, and binds to
+      that value.</td>
+    </tr>
+
+    <tr>
+     <td><strong><code>SQLT_RSET</code></strong></td>
+     <td>Maps a native statement handle, such as those created by
+      <span class="function">oci_parse</span> or those retrieved from other OCI queries.</td>
+    </tr>
+
+    <tr>
+     <td><strong><code>SQLT_BOL</code></strong></td>
+     <td>Bind the PHP parameter to a PL/SQL BOOLEAN</td>
+    </tr>
+
+    <tr>
+     <td><strong><code>SQLT_CHR</code></strong> and any other type</td>
+     <td>Converts the PHP parameter to a string type and binds as a
+      string.</td>
+    </tr>
+
+   </tbody>
+  
+ </table>
+
+
+ <table class="doctable table">
+  <caption><strong>The following types are supported when retrieving columns from a result set:</strong></caption>
+  
+   <thead>
+    <tr>
+     <th>Type</th>
+     <th>Mapping</th>
+    </tr>
+
+   </thead>
+
+   <tbody class="tbody">
+    <tr>
+     <td><strong><code>SQLT_RSET</code></strong></td>
+     <td>Creates an oci statement resource to represent the cursor.</td>
+    </tr>
+
+    <tr>
+     <td><strong><code>SQLT_RDD</code></strong></td>
+     <td>Creates a ROWID object.</td>
+    </tr>
+
+    <tr>
+     <td><strong><code>SQLT_BLOB</code></strong></td>
+     <td>Creates a LOB object.</td>
+    </tr>
+
+    <tr>
+     <td><strong><code>SQLT_CLOB</code></strong></td>
+     <td>Creates a LOB object.</td>
+    </tr>
+
+    <tr>
+     <td><strong><code>SQLT_BFILE</code></strong></td>
+     <td>Creates a LOB object.</td>
+    </tr>
+
+    <tr>
+     <td><strong><code>SQLT_LNG</code></strong></td>
+     <td>Bound as SQLT_CHR, returned as a string</td>
+    </tr>
+
+    <tr>
+     <td><strong><code>SQLT_LBI</code></strong></td>
+     <td>Bound as <strong><code>SQLT_BIN</code></strong>, returned as a string</td>
+    </tr>
+
+    <tr>
+     <td>Any other type</td>
+     <td>Bound as <strong><code>SQLT_CHR</code></strong>, returned as a string</td>
+    </tr>
+
+   </tbody>
+  
+ </table>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Checks if a variable exists in the user cache</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.php.html">Affecting PHP's Behaviour</a></li>
+  <li class="header up"><a href="book.wincache.html">WinCache</a></li>
+  <li class="header up"><a href="ref.wincache.html">WinCache Functions</a></li>
+  <li><a href="function.wincache-fcache-fileinfo.html">wincache_fcache_fileinfo</a></li>
+  <li><a href="function.wincache-fcache-meminfo.html">wincache_fcache_meminfo</a></li>
+  <li><a href="function.wincache-lock.html">wincache_lock</a></li>
+  <li><a href="function.wincache-ocache-fileinfo.html">wincache_ocache_fileinfo</a></li>
+  <li><a href="function.wincache-ocache-meminfo.html">wincache_ocache_meminfo</a></li>
+  <li><a href="function.wincache-refresh-if-changed.html">wincache_refresh_if_changed</a></li>
+  <li><a href="function.wincache-rplist-fileinfo.html">wincache_rplist_fileinfo</a></li>
+  <li><a href="function.wincache-rplist-meminfo.html">wincache_rplist_meminfo</a></li>
+  <li><a href="function.wincache-scache-info.html">wincache_scache_info</a></li>
+  <li><a href="function.wincache-scache-meminfo.html">wincache_scache_meminfo</a></li>
+  <li><a href="function.wincache-ucache-add.html">wincache_ucache_add</a></li>
+  <li><a href="function.wincache-ucache-cas.html">wincache_ucache_cas</a></li>
+  <li><a href="function.wincache-ucache-clear.html">wincache_ucache_clear</a></li>
+  <li><a href="function.wincache-ucache-dec.html">wincache_ucache_dec</a></li>
+  <li><a href="function.wincache-ucache-delete.html">wincache_ucache_delete</a></li>
+  <li class="active"><a href="function.wincache-ucache-exists.html">wincache_ucache_exists</a></li>
+  <li><a href="function.wincache-ucache-get.html">wincache_ucache_get</a></li>
+  <li><a href="function.wincache-ucache-inc.html">wincache_ucache_inc</a></li>
+  <li><a href="function.wincache-ucache-info.html">wincache_ucache_info</a></li>
+  <li><a href="function.wincache-ucache-meminfo.html">wincache_ucache_meminfo</a></li>
+  <li><a href="function.wincache-ucache-set.html">wincache_ucache_set</a></li>
+  <li><a href="function.wincache-unlock.html">wincache_unlock</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.wincache-ucache-delete.html">wincache_ucache_delete</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.wincache-ucache-get.html">wincache_ucache_get</a></div>
+                <div class="up"><a href="ref.wincache.html">WinCache Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.wincache-ucache-exists" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">wincache_ucache_exists</h1>
+  <p class="refpurpose">
+   Checks if a variable exists in the user cache
+  </p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.wincache-ucache-exists-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">wincache_ucache_exists</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$key</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Checks if a variable with the <code class="parameter">key</code> exists in the user cache or not.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.wincache-ucache-exists-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">key</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The <code class="parameter">key</code> that was used to store the variable in the cache. 
+       <code class="parameter">key</code> is case sensitive.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.wincache-ucache-exists-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> if variable with the <code class="parameter">key</code> exitsts, 
+   otherwise returns <strong><code>FALSE</code></strong>.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.wincache-ucache-exists-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-640">
+    <p><strong>Example #1 Using <span class="function">wincache_ucache_exists</span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">wincache_ucache_exists</span><span style="color: #007700">(</span><span style="color: #DD0000">'green'</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">wincache_ucache_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'green'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">wincache_ucache_exists</span><span style="color: #007700">(</span><span style="color: #DD0000">'green'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+bool(true)
+</pre></div>
+    </div>    
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.wincache-ucache-exists-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">wincache_ucache_set</span></li>
+    <li class="member"><span class="function">wincache_ucache_add</span></li>
+    <li class="member"><span class="function">wincache_ucache_get</span></li>
+    <li class="member"><span class="function">wincache_ucache_clear</span></li>
+    <li class="member"><span class="function">wincache_ucache_delete</span></li>
+    <li class="member"><span class="function">wincache_ucache_meminfo</span></li>
+    <li class="member"><span class="function">wincache_ucache_info</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

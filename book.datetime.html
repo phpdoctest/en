@@ -1,0 +1,2013 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Date and Time</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.calendar.html">Date and Time Related Extensions</a></li>
+  <li><a href="book.calendar.html">Calendar</a></li>
+  <li class="active"><a href="book.datetime.html">Date/Time</a></li>
+  <li><a href="book.hrtime.html">HRTime</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.unixtojd.html">unixtojd</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="intro.datetime.html">Introduction</a></div>
+                <div class="up"><a href="refs.calendar.html">Date and Time Related Extensions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="book.datetime" class="book">
+ 
+ <h1>Date and Time</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="intro.datetime.html">Introduction</a></li>
+<li><a href="datetime.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_title">
+<li><a href="datetime.requirements.html">Requirements</a></li>
+<li><a href="datetime.installation.html">Installation</a></li>
+<li><a href="datetime.configuration.html">Runtime Configuration</a></li>
+<li><a href="datetime.resources.html">Resource Types</a></li>
+</ul>
+</li>
+<li><a href="datetime.constants.html">Predefined Constants</a></li>
+<li><a href="datetime.examples.html">Examples</a><ul class="chunklist chunklist_title">
+<li><a href="datetime.examples-arithmetic.html">DateTime Arithmetic</a></li>
+</ul>
+</li>
+<li><a href="class.datetime.html">DateTime</a> — The DateTime class<ul class="chunklist chunklist_title">
+<li><a href="datetime.add.html">DateTime::add</a> — Adds an amount of days, months, years, hours, minutes and seconds to a
+   DateTime object</li>
+<li><a href="datetime.construct.html">DateTime::__construct</a> — Returns new DateTime object</li>
+<li><a href="datetime.createfromformat.html">DateTime::createFromFormat</a> — Parses a time string according to a specified format</li>
+<li><a href="datetime.getlasterrors.html">DateTime::getLastErrors</a> — Returns the warnings and errors</li>
+<li><a href="datetime.modify.html">DateTime::modify</a> — Alters the timestamp</li>
+<li><a href="datetime.set-state.html">DateTime::__set_state</a> — The __set_state handler</li>
+<li><a href="datetime.setdate.html">DateTime::setDate</a> — Sets the date</li>
+<li><a href="datetime.setisodate.html">DateTime::setISODate</a> — Sets the ISO date</li>
+<li><a href="datetime.settime.html">DateTime::setTime</a> — Sets the time</li>
+<li><a href="datetime.settimestamp.html">DateTime::setTimestamp</a> — Sets the date and time based on an Unix timestamp</li>
+<li><a href="datetime.settimezone.html">DateTime::setTimezone</a> — Sets the time zone for the DateTime object</li>
+<li><a href="datetime.sub.html">DateTime::sub</a> — Subtracts an amount of days, months, years, hours, minutes and seconds from
+   a DateTime object</li>
+</ul>
+</li>
+<li><a href="class.datetimeimmutable.html">DateTimeImmutable</a> — The DateTimeImmutable class<ul class="chunklist chunklist_title">
+<li><a href="datetimeimmutable.add.html">DateTimeImmutable::add</a> — Adds an amount of days, months, years, hours, minutes and seconds</li>
+<li><a href="datetimeimmutable.construct.html">DateTimeImmutable::__construct</a> — Returns new DateTimeImmutable object</li>
+<li><a href="datetimeimmutable.createfromformat.html">DateTimeImmutable::createFromFormat</a> — Parses a time string according to a specified format</li>
+<li><a href="datetimeimmutable.createfrommutable.html">DateTimeImmutable::createFromMutable</a> — Returns new DateTimeImmutable object encapsulating the given DateTime object</li>
+<li><a href="datetimeimmutable.getlasterrors.html">DateTimeImmutable::getLastErrors</a> — Returns the warnings and errors</li>
+<li><a href="datetimeimmutable.modify.html">DateTimeImmutable::modify</a> — Creates a new object with modified timestamp</li>
+<li><a href="datetimeimmutable.set-state.html">DateTimeImmutable::__set_state</a> — The __set_state handler</li>
+<li><a href="datetimeimmutable.setdate.html">DateTimeImmutable::setDate</a> — Sets the date</li>
+<li><a href="datetimeimmutable.setisodate.html">DateTimeImmutable::setISODate</a> — Sets the ISO date</li>
+<li><a href="datetimeimmutable.settime.html">DateTimeImmutable::setTime</a> — Sets the time</li>
+<li><a href="datetimeimmutable.settimestamp.html">DateTimeImmutable::setTimestamp</a> — Sets the date and time based on an Unix timestamp</li>
+<li><a href="datetimeimmutable.settimezone.html">DateTimeImmutable::setTimezone</a> — Sets the time zone</li>
+<li><a href="datetimeimmutable.sub.html">DateTimeImmutable::sub</a> — Subtracts an amount of days, months, years, hours, minutes and seconds</li>
+</ul>
+</li>
+<li><a href="class.datetimeinterface.html">DateTimeInterface</a> — The DateTimeInterface interface<ul class="chunklist chunklist_title">
+<li><a href="datetime.diff.html">DateTime::diff</a> — Returns the difference between two DateTime objects</li>
+<li><a href="datetime.format.html">DateTime::format</a> — Returns date formatted according to given format</li>
+<li><a href="datetime.getoffset.html">DateTime::getOffset</a> — Returns the timezone offset</li>
+<li><a href="datetime.gettimestamp.html">DateTime::getTimestamp</a> — Gets the Unix timestamp</li>
+<li><a href="datetime.gettimezone.html">DateTime::getTimezone</a> — Return time zone relative to given DateTime</li>
+<li><a href="datetime.wakeup.html">DateTime::__wakeup</a> — The __wakeup handler</li>
+</ul>
+</li>
+<li><a href="class.datetimezone.html">DateTimeZone</a> — The DateTimeZone class<ul class="chunklist chunklist_title">
+<li><a href="datetimezone.construct.html">DateTimeZone::__construct</a> — Creates new DateTimeZone object</li>
+<li><a href="datetimezone.getlocation.html">DateTimeZone::getLocation</a> — Returns location information for a timezone</li>
+<li><a href="datetimezone.getname.html">DateTimeZone::getName</a> — Returns the name of the timezone</li>
+<li><a href="datetimezone.getoffset.html">DateTimeZone::getOffset</a> — Returns the timezone offset from GMT</li>
+<li><a href="datetimezone.gettransitions.html">DateTimeZone::getTransitions</a> — Returns all transitions for the timezone</li>
+<li><a href="datetimezone.listabbreviations.html">DateTimeZone::listAbbreviations</a> — Returns associative array containing dst, offset and the timezone name</li>
+<li><a href="datetimezone.listidentifiers.html">DateTimeZone::listIdentifiers</a> — Returns a numerically indexed array containing all defined timezone identifiers</li>
+</ul>
+</li>
+<li><a href="class.dateinterval.html">DateInterval</a> — The DateInterval class<ul class="chunklist chunklist_title">
+<li><a href="dateinterval.construct.html">DateInterval::__construct</a> — Creates a new DateInterval object</li>
+<li><a href="dateinterval.createfromdatestring.html">DateInterval::createFromDateString</a> — Sets up a DateInterval from the relative parts of the string</li>
+<li><a href="dateinterval.format.html">DateInterval::format</a> — Formats the interval</li>
+</ul>
+</li>
+<li><a href="class.dateperiod.html">DatePeriod</a> — The DatePeriod class<ul class="chunklist chunklist_title">
+<li><a href="dateperiod.construct.html">DatePeriod::__construct</a> — Creates a new DatePeriod object</li>
+<li><a href="dateperiod.getdateinterval.html">DatePeriod::getDateInterval</a> — Gets the interval</li>
+<li><a href="dateperiod.getenddate.html">DatePeriod::getEndDate</a> — Gets the end date</li>
+<li><a href="dateperiod.getstartdate.html">DatePeriod::getStartDate</a> — Gets the start date</li>
+</ul>
+</li>
+<li><a href="ref.datetime.html">Date/Time Functions</a><ul class="chunklist chunklist_title">
+<li><a href="function.checkdate.html">checkdate</a> — Validate a Gregorian date</li>
+<li><a href="function.date-add.html">date_add</a> — Alias of DateTime::add</li>
+<li><a href="function.date-create-from-format.html">date_create_from_format</a> — Alias of DateTime::createFromFormat</li>
+<li><a href="function.date-create-immutable-from-format.html">date_create_immutable_from_format</a> — Alias of DateTimeImmutable::createFromFormat</li>
+<li><a href="function.date-create-immutable.html">date_create_immutable</a> — Alias of DateTimeImmutable::__construct</li>
+<li><a href="function.date-create.html">date_create</a> — Alias of DateTime::__construct</li>
+<li><a href="function.date-date-set.html">date_date_set</a> — Alias of DateTime::setDate</li>
+<li><a href="function.date-default-timezone-get.html">date_default_timezone_get</a> — Gets the default timezone used by all date/time functions in a script</li>
+<li><a href="function.date-default-timezone-set.html">date_default_timezone_set</a> — Sets the default timezone used by all date/time functions in a script</li>
+<li><a href="function.date-diff.html">date_diff</a> — Alias of DateTime::diff</li>
+<li><a href="function.date-format.html">date_format</a> — Alias of DateTime::format</li>
+<li><a href="function.date-get-last-errors.html">date_get_last_errors</a> — Alias of DateTime::getLastErrors</li>
+<li><a href="function.date-interval-create-from-date-string.html">date_interval_create_from_date_string</a> — Alias of DateInterval::createFromDateString</li>
+<li><a href="function.date-interval-format.html">date_interval_format</a> — Alias of DateInterval::format</li>
+<li><a href="function.date-isodate-set.html">date_isodate_set</a> — Alias of DateTime::setISODate</li>
+<li><a href="function.date-modify.html">date_modify</a> — Alias of DateTime::modify</li>
+<li><a href="function.date-offset-get.html">date_offset_get</a> — Alias of DateTime::getOffset</li>
+<li><a href="function.date-parse-from-format.html">date_parse_from_format</a> — Get info about given date formatted according to the specified format</li>
+<li><a href="function.date-parse.html">date_parse</a> — Returns associative array with detailed info about given date</li>
+<li><a href="function.date-sub.html">date_sub</a> — Alias of DateTime::sub</li>
+<li><a href="function.date-sun-info.html">date_sun_info</a> — Returns an array with information about sunset/sunrise and twilight begin/end</li>
+<li><a href="function.date-sunrise.html">date_sunrise</a> — Returns time of sunrise for a given day and location</li>
+<li><a href="function.date-sunset.html">date_sunset</a> — Returns time of sunset for a given day and location</li>
+<li><a href="function.date-time-set.html">date_time_set</a> — Alias of DateTime::setTime</li>
+<li><a href="function.date-timestamp-get.html">date_timestamp_get</a> — Alias of DateTime::getTimestamp</li>
+<li><a href="function.date-timestamp-set.html">date_timestamp_set</a> — Alias of DateTime::setTimestamp</li>
+<li><a href="function.date-timezone-get.html">date_timezone_get</a> — Alias of DateTime::getTimezone</li>
+<li><a href="function.date-timezone-set.html">date_timezone_set</a> — Alias of DateTime::setTimezone</li>
+<li><a href="function.date.html">date</a> — Format a local time/date</li>
+<li><a href="function.getdate.html">getdate</a> — Get date/time information</li>
+<li><a href="function.gettimeofday.html">gettimeofday</a> — Get current time</li>
+<li><a href="function.gmdate.html">gmdate</a> — Format a GMT/UTC date/time</li>
+<li><a href="function.gmmktime.html">gmmktime</a> — Get Unix timestamp for a GMT date</li>
+<li><a href="function.gmstrftime.html">gmstrftime</a> — Format a GMT/UTC time/date according to locale settings</li>
+<li><a href="function.idate.html">idate</a> — Format a local time/date as integer</li>
+<li><a href="function.localtime.html">localtime</a> — Get the local time</li>
+<li><a href="function.microtime.html">microtime</a> — Return current Unix timestamp with microseconds</li>
+<li><a href="function.mktime.html">mktime</a> — Get Unix timestamp for a date</li>
+<li><a href="function.strftime.html">strftime</a> — Format a local time/date according to locale settings</li>
+<li><a href="function.strptime.html">strptime</a> — Parse a time/date generated with strftime</li>
+<li><a href="function.strtotime.html">strtotime</a> — Parse about any English textual datetime description into a Unix timestamp</li>
+<li><a href="function.time.html">time</a> — Return current Unix timestamp</li>
+<li><a href="function.timezone-abbreviations-list.html">timezone_abbreviations_list</a> — Alias of DateTimeZone::listAbbreviations</li>
+<li><a href="function.timezone-identifiers-list.html">timezone_identifiers_list</a> — Alias of DateTimeZone::listIdentifiers</li>
+<li><a href="function.timezone-location-get.html">timezone_location_get</a> — Alias of DateTimeZone::getLocation</li>
+<li><a href="function.timezone-name-from-abbr.html">timezone_name_from_abbr</a> — Returns the timezone name from abbreviation</li>
+<li><a href="function.timezone-name-get.html">timezone_name_get</a> — Alias of DateTimeZone::getName</li>
+<li><a href="function.timezone-offset-get.html">timezone_offset_get</a> — Alias of DateTimeZone::getOffset</li>
+<li><a href="function.timezone-open.html">timezone_open</a> — Alias of DateTimeZone::__construct</li>
+<li><a href="function.timezone-transitions-get.html">timezone_transitions_get</a> — Alias of DateTimeZone::getTransitions</li>
+<li><a href="function.timezone-version-get.html">timezone_version_get</a> — Gets the version of the timezonedb</li>
+</ul>
+</li>
+<li><a href="datetime.formats.html">Supported Date and Time Formats</a><ul class="chunklist chunklist_title">
+<li><a href="datetime.formats.time.html">Time Formats</a></li>
+<li><a href="datetime.formats.date.html">Date Formats</a></li>
+<li><a href="datetime.formats.compound.html">Compound Formats</a></li>
+<li><a href="datetime.formats.relative.html">Relative Formats</a></li>
+</ul>
+</li>
+<li><a href="timezones.html">List of Supported Timezones</a><ul class="chunklist chunklist_title">
+<li><a href="timezones.africa.html">Africa</a></li>
+<li><a href="timezones.america.html">America</a></li>
+<li><a href="timezones.antarctica.html">Antarctica</a></li>
+<li><a href="timezones.arctic.html">Arctic</a></li>
+<li><a href="timezones.asia.html">Asia</a></li>
+<li><a href="timezones.atlantic.html">Atlantic</a></li>
+<li><a href="timezones.australia.html">Australia</a></li>
+<li><a href="timezones.europe.html">Europe</a></li>
+<li><a href="timezones.indian.html">Indian</a></li>
+<li><a href="timezones.pacific.html">Pacific</a></li>
+<li><a href="timezones.others.html">Others</a></li>
+</ul>
+</li>
+</ul>
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+ <h1 class="title">The DateTime class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="datetime.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Representation of date and time.
+   </p>
+  </div>
+
+
+  <div class="section" id="datetime.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">DateTime</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">DateTime</strong>
+     </span>
+     <span class="oointerface">implements 
+      <span class="interfacename">DateTimeInterface</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+     <var class="fieldsynopsis_varname">DateTime::ATOM</var>
+     <span class="initializer"> = &quot;Y-m-d\TH:i:sP&quot;</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+     <var class="fieldsynopsis_varname">DateTime::COOKIE</var>
+     <span class="initializer"> = &quot;l, d-M-Y H:i:s T&quot;</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+     <var class="fieldsynopsis_varname">DateTime::ISO8601</var>
+     <span class="initializer"> = &quot;Y-m-d\TH:i:sO&quot;</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+     <var class="fieldsynopsis_varname">DateTime::RFC822</var>
+     <span class="initializer"> = &quot;D, d M y H:i:s O&quot;</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+     <var class="fieldsynopsis_varname">DateTime::RFC850</var>
+     <span class="initializer"> = &quot;l, d-M-y H:i:s T&quot;</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+     <var class="fieldsynopsis_varname">DateTime::RFC1036</var>
+     <span class="initializer"> = &quot;D, d M y H:i:s O&quot;</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+     <var class="fieldsynopsis_varname">DateTime::RFC1123</var>
+     <span class="initializer"> = &quot;D, d M Y H:i:s O&quot;</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+     <var class="fieldsynopsis_varname">DateTime::RFC2822</var>
+     <span class="initializer"> = &quot;D, d M Y H:i:s O&quot;</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+     <var class="fieldsynopsis_varname">DateTime::RFC3339</var>
+     <span class="initializer"> = &quot;Y-m-d\TH:i:sP&quot;</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+     <var class="fieldsynopsis_varname">DateTime::RSS</var>
+     <span class="initializer"> = &quot;D, d M Y H:i:s O&quot;</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+     <var class="fieldsynopsis_varname">DateTime::W3C</var>
+     <span class="initializer"> = &quot;Y-m-d\TH:i:sP&quot;</span>
+    ;</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$time</code><span class="initializer"> = &quot;now&quot;</span></span>
+   [, <span class="methodparam"><span class="type">DateTimeZone</span> <code class="parameter">$timezone</code><span class="initializer"> = <strong><code>NULL</code></strong></span></span>
+  ]] )</div>
+
+    
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DateTime</span> <span class="methodname">add</span>
+    ( <span class="methodparam"><span class="type">DateInterval</span> <code class="parameter">$interval</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">DateTime</span> <span class="methodname">createFromFormat</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$format</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$time</code></span>
+   [, <span class="methodparam"><span class="type">DateTimeZone</span> <code class="parameter">$timezone</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">array</span> <span class="methodname">getLastErrors</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DateTime</span> <span class="methodname">modify</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$modify</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">DateTime</span> <span class="methodname">__set_state</span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$array</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DateTime</span> <span class="methodname">setDate</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$year</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$month</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$day</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DateTime</span> <span class="methodname">setISODate</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$year</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$week</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$day</code><span class="initializer"> = 1</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DateTime</span> <span class="methodname">setTime</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$hour</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$minute</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$second</code><span class="initializer"> = 0</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DateTime</span> <span class="methodname">setTimestamp</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$unixtimestamp</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DateTime</span> <span class="methodname">setTimezone</span>
+    ( <span class="methodparam"><span class="type">DateTimeZone</span> <code class="parameter">$timezone</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DateTime</span> <span class="methodname">sub</span>
+    ( <span class="methodparam"><span class="type">DateInterval</span> <code class="parameter">$interval</code></span>
+   )</div>
+
+    
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DateInterval</span> <span class="methodname">diff</span>
+    ( <span class="methodparam"><span class="type">DateTimeInterface</span> <code class="parameter">$datetime2</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$absolute</code><span class="initializer"> = false</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">format</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$format</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getOffset</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getTimestamp</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DateTimeZone</span> <span class="methodname">getTimezone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__wakeup</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+   }</div>
+
+
+  </div>
+  
+
+  <div class="section" id="datetime.constants.types">
+   <h2 class="title">Predefined Constants</h2>
+   <dl>
+
+    
+     <dt id="datetime.constants.atom"><strong><code>DateTime::ATOM</code></strong></dt>
+
+     <dt>
+<strong><code>DATE_ATOM</code></strong></dt>
+
+     <dd>
+
+      <span class="simpara">
+       Atom (example: 2005-08-15T15:52:01+00:00)
+      </span>
+     </dd>
+
+    
+
+    
+     <dt id="datetime.constants.cookie"><strong><code>DateTime::COOKIE</code></strong></dt>
+
+     <dt>
+<strong><code>DATE_COOKIE</code></strong></dt>
+
+     <dd>
+
+      <span class="simpara">
+       HTTP Cookies (example: Monday, 15-Aug-2005 15:52:01 UTC)
+      </span>
+     </dd>
+
+    
+
+    
+     <dt id="datetime.constants.iso8601"><strong><code>DateTime::ISO8601</code></strong></dt>
+
+     <dt>
+<strong><code>DATE_ISO8601</code></strong></dt>
+
+     <dd>
+
+      <span class="simpara">
+       ISO-8601 (example: 2005-08-15T15:52:01+0000)
+      </span>
+      <blockquote class="note"><p><strong class="note">Note</strong>: 
+       <span class="simpara">
+        This format is not compatible with ISO-8601, but is left this way for
+        backward compatibility reasons. Use <strong><code>DateTime::ATOM</code></strong>
+        or <strong><code>DATE_ATOM</code></strong> for compatibility with ISO-8601
+        instead.
+       </span>
+      </p></blockquote>
+     </dd>
+
+    
+
+    
+     <dt id="datetime.constants.rfc822"><strong><code>DateTime::RFC822</code></strong></dt>
+
+     <dt>
+<strong><code>DATE_RFC822</code></strong></dt>
+
+     <dd>
+
+      <span class="simpara">
+       RFC 822 (example: Mon, 15 Aug 05 15:52:01 +0000)
+      </span>
+     </dd>
+
+    
+
+    
+     <dt id="datetime.constants.rfc850"><strong><code>DateTime::RFC850</code></strong></dt>
+
+     <dt>
+<strong><code>DATE_RFC850</code></strong></dt>
+
+     <dd>
+
+      <span class="simpara">
+       RFC 850 (example: Monday, 15-Aug-05 15:52:01 UTC)
+      </span>
+     </dd>
+
+    
+
+    
+     <dt id="datetime.constants.rfc1036"><strong><code>DateTime::RFC1036</code></strong></dt>
+
+     <dt>
+<strong><code>DATE_RFC1036</code></strong></dt>
+
+     <dd>
+
+      <span class="simpara">
+       RFC 1036 (example: Mon, 15 Aug 05 15:52:01 +0000)
+      </span>
+     </dd>
+
+    
+
+    
+     <dt id="datetime.constants.rfc1123"><strong><code>DateTime::RFC1123</code></strong></dt>
+
+     <dt>
+<strong><code>DATE_RFC1123</code></strong></dt>
+
+     <dd>
+
+      <span class="simpara">
+       RFC 1123 (example: Mon, 15 Aug 2005 15:52:01 +0000)
+      </span>
+     </dd>
+
+    
+
+    
+     <dt id="datetime.constants.rfc2822"><strong><code>DateTime::RFC2822</code></strong></dt>
+
+     <dt>
+<strong><code>DATE_RFC2822</code></strong></dt>
+
+     <dd>
+
+      <span class="simpara">
+       RFC 2822 (example: Mon, 15 Aug 2005 15:52:01 +0000)
+      </span>
+     </dd>
+
+    
+
+    
+     <dt id="datetime.constants.rfc3339"><strong><code>DateTime::RFC3339</code></strong></dt>
+
+     <dt>
+<strong><code>DATE_RFC3339</code></strong></dt>
+
+     <dd>
+
+      <span class="simpara">
+       Same as <strong><code>DATE_ATOM</code></strong> (since PHP 5.1.3)
+      </span>
+     </dd>
+
+    
+
+    
+     <dt id="datetime.constants.rss"><strong><code>DateTime::RSS</code></strong></dt>
+
+     <dt>
+<strong><code>DATE_RSS</code></strong></dt>
+
+     <dd>
+
+      <span class="simpara">
+       RSS (example: Mon, 15 Aug 2005 15:52:01 +0000)
+      </span>
+     </dd>
+
+    
+
+    
+     <dt id="datetime.constants.w3c"><strong><code>DateTime::W3C</code></strong></dt>
+
+     <dt>
+<strong><code>DATE_W3C</code></strong></dt>
+
+     <dd>
+
+      <span class="simpara">
+       World Wide Web Consortium (example: 2005-08-15T15:52:01+00:00)
+      </span>
+     </dd>
+
+    
+
+   </dl>
+
+  </div>
+
+
+
+ <div class="section" id="datetime.changelog">
+  <h2 class="title">Changelog</h2>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.5.0</td>
+       <td>
+        The class now implements <span class="classname">DateTimeInterface</span>.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.4.24</td>
+       <td>
+        The COOKIE constant was changed to reflect RFC 1036 using a four digit 
+        year rather than a two digit year (RFC 850) as prior versions.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.2.2</td>
+       <td>
+        DateTime object comparison with the
+        <a href="language.operators.comparison.html" class="link">comparison operators</a>
+        changed to work as expected. Previously, all DateTime objects were
+        considered equal (using <em>==</em>).
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The DateTimeImmutable class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="datetimeimmutable.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    This class behaves the same as <span class="classname">DateTime</span> except it
+    never modifies itself but returns a new object instead.
+   </p>
+  </div>
+
+
+  <div class="section" id="datetimeimmutable.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">DateTimeImmutable</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">DateTimeImmutable</strong>
+     </span>
+     
+     <span class="oointerface">implements 
+      <span class="interfacename">DateTimeInterface</span>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$time</code><span class="initializer"> = &quot;now&quot;</span></span>
+   [, <span class="methodparam"><span class="type">DateTimeZone</span> <code class="parameter">$timezone</code><span class="initializer"> = <strong><code>NULL</code></strong></span></span>
+  ]] )</div>
+
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DateTimeImmutable</span> <span class="methodname">add</span>
+    ( <span class="methodparam"><span class="type">DateInterval</span> <code class="parameter">$interval</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">DateTimeImmutable</span> <span class="methodname">createFromFormat</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$format</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$time</code></span>
+   [, <span class="methodparam"><span class="type">DateTimeZone</span> <code class="parameter">$timezone</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">DateTimeImmutable</span> <span class="methodname">createFromMutable</span>
+    ( <span class="methodparam"><span class="type">DateTime</span> <code class="parameter">$datetime</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">array</span> <span class="methodname">getLastErrors</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DateTimeImmutable</span> <span class="methodname">modify</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$modify</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">DateTimeImmutable</span> <span class="methodname">__set_state</span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$array</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DateTimeImmutable</span> <span class="methodname">setDate</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$year</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$month</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$day</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DateTimeImmutable</span> <span class="methodname">setISODate</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$year</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$week</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$day</code><span class="initializer"> = 1</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DateTimeImmutable</span> <span class="methodname">setTime</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$hour</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$minute</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$second</code><span class="initializer"> = 0</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DateTimeImmutable</span> <span class="methodname">setTimestamp</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$unixtimestamp</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DateTimeImmutable</span> <span class="methodname">setTimezone</span>
+    ( <span class="methodparam"><span class="type">DateTimeZone</span> <code class="parameter">$timezone</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DateTimeImmutable</span> <span class="methodname">sub</span>
+    ( <span class="methodparam"><span class="type">DateInterval</span> <code class="parameter">$interval</code></span>
+   )</div>
+
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DateInterval</span> <span class="methodname">diff</span>
+    ( <span class="methodparam"><span class="type">DateTimeInterface</span> <code class="parameter">$datetime2</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$absolute</code><span class="initializer"> = false</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">format</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$format</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getOffset</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getTimestamp</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DateTimeZone</span> <span class="methodname">getTimezone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__wakeup</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The DateTimeInterface interface</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="datetimeinterface.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    DateTimeInterface is meant so that both DateTime and DateTimeImmutable can
+    be type hinted for. It is not possible to implement this interface with
+    userland classes.
+   </p>
+  </div>
+
+
+  <div class="section" id="datetimeinterface.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">DateTimeInterface</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">DateTimeInterface</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DateInterval</span> <span class="methodname">diff</span>
+    ( <span class="methodparam"><span class="type">DateTimeInterface</span> <code class="parameter">$datetime2</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$absolute</code><span class="initializer"> = false</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">format</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$format</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getOffset</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getTimestamp</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DateTimeZone</span> <span class="methodname">getTimezone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__wakeup</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+ <div class="section" id="datetimeinterface.changelog">
+  <h2 class="title">Changelog</h2>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.5.8</td>
+       <td>
+        Trying to implement <span class="classname">DateTimeInterface</span> raises a
+        fatal error now. Formerly implementing the interface didn&#039;t raise an
+        error, but the behavior was erroneous.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The DateTimeZone class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="datetimezone.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Representation of time zone.
+   </p>
+  </div>
+
+
+  <div class="section" id="datetimezone.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">DateTimeZone</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">DateTimeZone</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">DateTimeZone::AFRICA</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">DateTimeZone::AMERICA</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">DateTimeZone::ANTARCTICA</var>
+     <span class="initializer"> = 4</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">DateTimeZone::ARCTIC</var>
+     <span class="initializer"> = 8</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">DateTimeZone::ASIA</var>
+     <span class="initializer"> = 16</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">DateTimeZone::ATLANTIC</var>
+     <span class="initializer"> = 32</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">DateTimeZone::AUSTRALIA</var>
+     <span class="initializer"> = 64</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">DateTimeZone::EUROPE</var>
+     <span class="initializer"> = 128</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">DateTimeZone::INDIAN</var>
+     <span class="initializer"> = 256</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">DateTimeZone::PACIFIC</var>
+     <span class="initializer"> = 512</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">DateTimeZone::UTC</var>
+     <span class="initializer"> = 1024</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">DateTimeZone::ALL</var>
+     <span class="initializer"> = 2047</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">DateTimeZone::ALL_WITH_BC</var>
+     <span class="initializer"> = 4095</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">DateTimeZone::PER_COUNTRY</var>
+     <span class="initializer"> = 4096</span>
+    ;</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$timezone</code></span>
+   )</div>
+
+    
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getLocation</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getOffset</span>
+    ( <span class="methodparam"><span class="type">DateTime</span> <code class="parameter">$datetime</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getTransitions</span>
+    ([ <span class="methodparam"><span class="type">int</span> <code class="parameter">$timestamp_begin</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$timestamp_end</code></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">array</span> <span class="methodname">listAbbreviations</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">array</span> <span class="methodname">listIdentifiers</span>
+    ([ <span class="methodparam"><span class="type">int</span> <code class="parameter">$what</code><span class="initializer"> = DateTimeZone::ALL</span></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$country</code><span class="initializer"> = <strong><code>NULL</code></strong></span></span>
+  ]] )</div>
+
+
+   }</div>
+
+
+  </div>
+  
+
+  <div class="section" id="datetimezone.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <dl>
+
+    
+     <dt id="datetimezone.constants.africa"><strong><code>DateTimeZone::AFRICA</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Africa time zones.</p>
+     </dd>
+
+    
+
+    
+     <dt id="datetimezone.constants.america"><strong><code>DateTimeZone::AMERICA</code></strong></dt>
+
+     <dd>
+
+      <p class="para">America time zones.</p>
+     </dd>
+
+    
+
+    
+     <dt id="datetimezone.constants.antarctica"><strong><code>DateTimeZone::ANTARCTICA</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Antarctica time zones.</p>
+     </dd>
+
+    
+
+    
+     <dt id="datetimezone.constants.arctic"><strong><code>DateTimeZone::ARCTIC</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Arctic time zones.</p>
+     </dd>
+
+    
+
+    
+     <dt id="datetimezone.constants.asia"><strong><code>DateTimeZone::ASIA</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Asia time zones.</p>
+     </dd>
+
+    
+
+    
+     <dt id="datetimezone.constants.atlantic"><strong><code>DateTimeZone::ATLANTIC</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Atlantic time zones.</p>
+     </dd>
+
+    
+
+    
+     <dt id="datetimezone.constants.australia"><strong><code>DateTimeZone::AUSTRALIA</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Australia time zones.</p>
+     </dd>
+
+    
+
+    
+     <dt id="datetimezone.constants.europe"><strong><code>DateTimeZone::EUROPE</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Europe time zones.</p>
+     </dd>
+
+    
+
+    
+     <dt id="datetimezone.constants.indian"><strong><code>DateTimeZone::INDIAN</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Indian time zones.</p>
+     </dd>
+
+    
+
+    
+     <dt id="datetimezone.constants.pacific"><strong><code>DateTimeZone::PACIFIC</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Pacific time zones.</p>
+     </dd>
+
+    
+
+    
+     <dt id="datetimezone.constants.utc"><strong><code>DateTimeZone::UTC</code></strong></dt>
+
+     <dd>
+
+      <p class="para">UTC time zones.</p>
+     </dd>
+
+    
+
+    
+     <dt id="datetimezone.constants.all"><strong><code>DateTimeZone::ALL</code></strong></dt>
+
+     <dd>
+
+      <p class="para">All time zones.</p>
+     </dd>
+
+    
+
+    
+     <dt id="datetimezone.constants.all-with-bc"><strong><code>DateTimeZone::ALL_WITH_BC</code></strong></dt>
+
+     <dd>
+
+      <p class="para">All time zones including backwards compatible.</p>
+     </dd>
+
+    
+
+    
+     <dt id="datetimezone.constants.per-country"><strong><code>DateTimeZone::PER_COUNTRY</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Time zones per country.</p>
+     </dd>
+
+    
+
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The DateInterval class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="dateinterval.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Represents a date interval.
+   </p>
+   <p class="para">
+    A date interval stores either a fixed amount of time (in years, months,
+    days, hours etc) or a relative time string in the format that
+    <span class="classname">DateTime</span>&#039;s constructor supports.
+   </p>
+  </div>
+
+
+  <div class="section" id="dateinterval.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">DateInterval</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">DateInterval</strong>
+     </span>
+     {</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">integer</span>
+     <var class="varname">$y</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">integer</span>
+     <var class="varname">$m</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">integer</span>
+     <var class="varname">$d</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">integer</span>
+     <var class="varname">$h</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">integer</span>
+     <var class="varname">$i</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">integer</span>
+     <var class="varname">$s</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">float</span>
+     <var class="varname">$f</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">integer</span>
+     <var class="varname">$invert</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">mixed</span>
+     <var class="varname">$days</var>
+    ;</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$interval_spec</code></span>
+   )</div>
+
+    
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">DateInterval</span> <span class="methodname">createFromDateString</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$time</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">format</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$format</code></span>
+   )</div>
+
+
+   }</div>
+
+
+  </div>
+  
+  <div class="section" id="dateinterval.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="dateinterval.props.y"><var class="varname">y</var></dt>
+
+     <dd>
+
+      <p class="para">
+       Number of years.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="dateinterval.props.m"><var class="varname">m</var></dt>
+
+     <dd>
+
+      <p class="para">
+       Number of months.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="dateinterval.props.d"><var class="varname">d</var></dt>
+
+     <dd>
+
+      <p class="para">
+       Number of days.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="dateinterval.props.h"><var class="varname">h</var></dt>
+
+     <dd>
+
+      <p class="para">
+       Number of hours.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="dateinterval.props.i"><var class="varname">i</var></dt>
+
+     <dd>
+
+      <p class="para">
+       Number of minutes.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="dateinterval.props.s"><var class="varname">s</var></dt>
+
+     <dd>
+
+      <p class="para">
+       Number of seconds.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="dateinterval.props.f"><var class="varname">f</var></dt>
+
+     <dd>
+
+      <p class="para">
+       Number of microseconds, as a fraction of a second.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="dateinterval.props.invert"><var class="varname">invert</var></dt>
+
+     <dd>
+
+      <p class="para">
+       Is <em>1</em> if the interval
+       represents a negative time period and
+       <em>0</em> otherwise.
+       See  <span class="methodname">DateInterval::format</span>.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="dateinterval.props.days"><var class="varname">days</var></dt>
+
+     <dd>
+
+      <p class="para">
+       If the DateInterval object was created by
+       <span class="function">DateTime::diff</span>, then this is the total number of
+       days between the start and end dates. Otherwise,
+       <var class="varname">days</var> will be <strong><code>FALSE</code></strong>.
+      </p>
+      <p class="para">
+       Before PHP 5.4.20/5.5.4 instead of <strong><code>FALSE</code></strong> you will receive -99999 upon
+       accessing the property.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+  <div class="section" id="dateinterval.changelog">
+   <h2 class="title">Changelog</h2>
+   <p class="para">
+    <table class="doctable informaltable">
+     
+      <thead>
+       <tr>
+        <th>Version</th>
+        <th>Description</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td>7.1.0</td>
+        <td>The <var class="varname">f</var> property was added.</td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The DatePeriod class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="dateperiod.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Represents a date period.
+   </p>
+   <p class="para">
+    A date period allows iteration over a set of dates and times, recurring at
+    regular intervals, over a given period.
+   </p>
+  </div>
+
+
+  <div class="section" id="dateperiod.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">DatePeriod</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">DatePeriod</strong>
+     </span>
+     
+     <span class="oointerface">implements 
+      <span class="interfacename">Traversable</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">DatePeriod::EXCLUDE_START_DATE</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">DateTimeInterface</span> <code class="parameter">$start</code></span>
+   , <span class="methodparam"><span class="type">DateInterval</span> <code class="parameter">$interval</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$recurrences</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code></span>
+  ] )</div>
+<div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">DateTimeInterface</span> <code class="parameter">$start</code></span>
+   , <span class="methodparam"><span class="type">DateInterval</span> <code class="parameter">$interval</code></span>
+   , <span class="methodparam"><span class="type">DateTimeInterface</span> <code class="parameter">$end</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code></span>
+  ] )</div>
+<div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$isostr</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code></span>
+  ] )</div>
+
+    
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DateInterval</span> <span class="methodname">getDateInterval</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DateTimeInterface</span> <span class="methodname">getEndDate</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DateTimeInterface</span> <span class="methodname">getStartDate</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+   }</div>
+
+
+  </div>
+  
+
+  <div class="section" id="dateperiod.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <dl>
+
+    
+     <dt id="dateperiod.constants.exclude-start-date"><strong><code>DatePeriod::EXCLUDE_START_DATE</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Exclude start date, used in <span class="function">DatePeriod::__construct</span>.</p>
+     </dd>
+
+    
+
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

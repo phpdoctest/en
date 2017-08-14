@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: route a request</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.yaf.html">Yaf</a></li>
+  <li class="header up"><a href="class.yaf-route-interface.html">Yaf_Route_Interface</a></li>
+  <li><a href="yaf-route-interface.assemble.html">Yaf_Route_Interface::assemble</a></li>
+  <li class="active"><a href="yaf-route-interface.route.html">Yaf_Route_Interface::route</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="yaf-route-interface.assemble.html">Yaf_Route_Interface::assemble</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="class.yaf-route-map.html">Yaf_Route_Map</a></div>
+                <div class="up"><a href="class.yaf-route-interface.html">Yaf_Route_Interface</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="yaf-route-interface.route" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Yaf_Route_Interface::route</h1>
+  <p class="refpurpose">route a request</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-yaf-route-interface.route-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">Yaf_Route_Interface::route</span>
+    ( <span class="methodparam"><span class="type">Yaf_Request_Abstract</span> <code class="parameter">$request</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+     <span class="methodname">Yaf_Route_Interface::route</span> is the only method
+    that a custom route should implement.
+    <blockquote class="note"><p><strong class="note">Note</strong>: 
+     <p class="para">
+      since of 2.3.0, there is another method should also be implemented,
+      see  <span class="methodname">Yaf_Route_Interface::assemble</span>.
+     </p>
+    </p></blockquote>
+  </p>
+  <p class="para">
+    if this method return <strong><code>TRUE</code></strong>, then the route process will be end. otherwise,
+    <span class="classname">Yaf_Router</span> will call next route in the route stack
+    to route request.
+  </p>
+
+  <p class="para">
+    This method would set the route result to the parameter request, by
+    calling  <span class="methodname">Yaf_Request_Abstract::setControllerName</span>,
+     <span class="methodname">Yaf_Request_Abstract::setActionName</span> and
+     <span class="methodname">Yaf_Request_Abstract::setModuleName</span>.
+   </p>
+
+   <p class="para">
+    This method should also call
+     <span class="methodname">Yaf_Request_Abstract::setRouted</span> to make the
+    request routed at last.
+   </p>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-yaf-route-interface.route-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">request</code></dt>
+
+    <dd>
+
+     <p class="para">
+       A <span class="classname">Yaf_Request_Abstract</span> instance.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-yaf-route-interface.route-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+
+  </p>
+ </div>
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

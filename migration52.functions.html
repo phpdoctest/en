@@ -1,0 +1,356 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: New Functions</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="appendices.html">Appendices</a></li>
+  <li class="header up"><a href="migration52.html">Migrating from PHP 5.1.x to PHP 5.2.x</a></li>
+  <li><a href="migration52.changes.html">What has changed in PHP 5.2.x</a></li>
+  <li><a href="migration52.incompatible.html">Backward Incompatible Changes</a></li>
+  <li><a href="migration52.error-messages.html">New Error Messages</a></li>
+  <li><a href="migration52.datetime.html">Changes in PHP datetime
+   support</a></li>
+  <li><a href="migration52.parameters.html">New Parameters</a></li>
+  <li class="active"><a href="migration52.functions.html">New Functions</a></li>
+  <li><a href="migration52.methods.html">New Methods</a></li>
+  <li><a href="migration52.removed-extensions.html">Removed Extensions</a></li>
+  <li><a href="migration52.new-extensions.html">New Extensions</a></li>
+  <li><a href="migration52.classes.html">New Classes</a></li>
+  <li><a href="migration52.global-constants.html">New Global Constants</a></li>
+  <li><a href="migration52.class-constants.html">New Class Constants</a></li>
+  <li><a href="migration52.newconf.html">New INI Configuration Directives</a></li>
+  <li><a href="migration52.errorrep.html">Error Reporting</a></li>
+  <li><a href="migration52.other.html">Other Enhancements</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="migration52.parameters.html">New Parameters</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="migration52.methods.html">New Methods</a></div>
+                <div class="up"><a href="migration52.html">Migrating from PHP 5.1.x to PHP 5.2.x</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="migration52.functions" class="section">
+  <h2 class="title">New Functions</h2>
+  <p class="para">
+   PHP 5.2.x introduced some new functions:
+  </p>
+
+  <p class="para">PHP Core:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">array_fill_keys</span>
+     - Create an array using the elements of the first parameter as keys,
+     each initialized to <em>val</em>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">error_get_last</span>
+     - Get the last occurred error as associative array. Returns <strong><code>NULL</code></strong>
+     if there hasn&#039;t been an error yet
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">image_type_to_extension</span>
+     - Get file extension for image-type returned by
+     <span class="function">getimagesize</span>, <span class="function">exif_read_data</span>,
+     <span class="function">exif_thumbnail</span>, <span class="function">exif_imagetype</span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">memory_get_peak_usage</span>
+     - Returns the peak allocated by PHP memory
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">sys_get_temp_dir</span>
+     - Returns directory path used for temporary files. (Added in 5.2.1)
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">timezone_abbreviations_list</span>
+     - Returns associative array containing DST, offset and the timezone name
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">timezone_identifiers_list</span>
+     - Returns numerically indexed array with all timezone identifiers
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">timezone_name_from_abbr</span>
+     - Returns the timezone name from abbreviation
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">stream_socket_shutdown</span>
+     - Causes all or part of a full-duplex connection on the socket
+     associated with stream to be shut down. As of PHP 5.2.1.
+    </span>
+   </li>
+  </ul>
+
+  <p class="para"><a href="ref.image.html" class="link">Image</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">imagegrabscreen</span>
+     - Grabs a screenshot of the whole screen. As of PHP 5.2.2.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">imagegrabwindow</span>
+     - Captures a window. As of PHP 5.2.2.
+    </span>
+   </li>
+  </ul>
+
+  <p class="para"><a href="book.libxml.html" class="link">libXML</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">libxml_disable_entity_loader</span>
+     - Disable the ability to load external entities. As of PHP 5.2.11.
+    </span>
+   </li>
+  </ul>
+
+  <p class="para"><a href="ref.mbstring.html" class="link">mbstring</a>:</p>
+  <ul class="itemizedlist">
+   
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">mb_stripos</span>
+     - Finds position of first occurrence of a string within another,
+     case insensitive
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">mb_stristr</span>
+     - Finds first occurrence of a string within another, case insensitive
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">mb_strrchr</span>
+     - Finds the last occurrence of a character in a string within another
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">mb_strrichr</span>
+     - Finds the last occurrence of a character in a string within another,
+     case insensitive
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">mb_strripos</span>
+     - Finds position of last occurrence of a string within another,
+     case insensitive
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">mb_strstr</span>
+     - Finds first occurrence of a string within another
+    </span>
+   </li>
+  </ul>
+
+  <p class="para"><a href="ref.ming.html" class="link">ming</a> (As of PHP 5.2.1):</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     void ming_setSWFCompression(int num)
+     - Sets output compression
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     void swfmovie::namedanchor(string name)
+     - Creates anchor
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     void swfmovie::protect([string password])
+     - Protects
+    </span>
+   </li>
+  </ul>
+
+  <p class="para"><a href="ref.openssl.html" class="link">openssl</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">openssl_csr_get_public_key</span>
+     - Extracts public key from a CERT and prepares it for use
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">openssl_csr_get_subject</span>
+     - Returns the subject of a CERT
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">openssl_pkey_get_details</span>
+     - Returns an array with the key details (bits, pkey, type)
+    </span>
+   </li>
+  </ul>
+
+  <p class="para"><a href="ref.spl.html" class="link">spl</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">spl_object_hash</span>
+     - Return hash id for given object
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     int iterator_apply(Traversable it, mixed function [, mixed params])
+     - Calls a function for every element in an iterator
+    </span>
+   </li>
+  </ul>
+
+  <p class="para"><a href="ref.pcre.html" class="link">pcre</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">preg_last_error</span>
+     - Returns the error code of the last regex execution
+    </span>
+   </li>
+  </ul>
+
+  <p class="para"><a href="ref.pgsql.html" class="link">pgsql</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">pg_field_table</span>
+     - Returns the name of the table field belongs to, or table&#039;s oid
+     if <em>oid_only</em> is <strong><code>TRUE</code></strong>
+    </span>
+   </li>
+  </ul>
+
+  <p class="para"><a href="ref.posix.html" class="link">posix</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">posix_initgroups</span>
+     - Calculate the group access list for the user specified in name
+    </span>
+   </li>
+  </ul>
+
+  <p class="para"><a href="ref.gmp.html" class="link">gmp</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">gmp_nextprime</span>
+     - Finds next prime number
+    </span>
+   </li>
+  </ul>
+
+  <p class="para"><a href="ref.xmlwriter.html" class="link">xmlwriter</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">xmlwriter_full_end_element</span>
+     - End current element - returns <strong><code>FALSE</code></strong> on error
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">xmlwriter_write_raw</span>
+     - Write text - returns <strong><code>FALSE</code></strong> on error
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">xmlwriter_start_dtd_entity</span>
+     - Create start DTD Entity - returns <strong><code>FALSE</code></strong> on error
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">xmlwriter_end_dtd_entity</span>
+     - End current DTD Entity - returns <strong><code>FALSE</code></strong> on error
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">xmlwriter_write_dtd_entity</span>
+     - Write full DTD Entity tag - returns <strong><code>FALSE</code></strong> on error
+    </span>
+   </li>
+  </ul>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

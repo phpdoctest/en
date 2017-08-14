@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Create a collator</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.international.html">Human Language and Character Encoding Support</a></li>
+  <li class="header up"><a href="book.intl.html">intl</a></li>
+  <li class="header up"><a href="class.collator.html">Collator</a></li>
+  <li><a href="collator.asort.html">Collator::asort</a></li>
+  <li><a href="collator.compare.html">Collator::compare</a></li>
+  <li class="active"><a href="collator.construct.html">Collator::__construct</a></li>
+  <li><a href="collator.create.html">Collator::create</a></li>
+  <li><a href="collator.getattribute.html">Collator::getAttribute</a></li>
+  <li><a href="collator.geterrorcode.html">Collator::getErrorCode</a></li>
+  <li><a href="collator.geterrormessage.html">Collator::getErrorMessage</a></li>
+  <li><a href="collator.getlocale.html">Collator::getLocale</a></li>
+  <li><a href="collator.getsortkey.html">Collator::getSortKey</a></li>
+  <li><a href="collator.getstrength.html">Collator::getStrength</a></li>
+  <li><a href="collator.setattribute.html">Collator::setAttribute</a></li>
+  <li><a href="collator.setstrength.html">Collator::setStrength</a></li>
+  <li><a href="collator.sortwithsortkeys.html">Collator::sortWithSortKeys</a></li>
+  <li><a href="collator.sort.html">Collator::sort</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="collator.compare.html">Collator::compare</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="collator.create.html">Collator::create</a></div>
+                <div class="up"><a href="class.collator.html">Collator</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="collator.construct" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Collator::__construct</h1>
+  <p class="refpurpose">Create a collator</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-collator.construct-description">
+  <h3 class="title">Description</h3>
+  <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">Collator::__construct</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$locale</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Creates a new instance of Collator.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-collator.construct-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">locale</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The locale whose collation rules should be used. Special values for
+       locales can be passed in - if null is passed for the locale, the
+       default locale&#039;s collation rules will be used. If &quot;root&quot; is passed, 
+       UCA rules will be used.
+      </p>
+      <p class="para">
+       The Locale attribute is typically the most important attribute for
+       correct sorting and matching, according to the user expectations in
+       different countries and regions. The default
+       <a href="http://www.unicode.org/reports/tr10/" class="link external">&raquo;&nbsp;UCA</a>
+       ordering will only sort a few languages such as Dutch and Portuguese
+       correctly (&quot;correctly&quot; meaning according to the normal expectations for
+       users of the languages). Otherwise, you need to supply the locale to
+       UCA in order to properly collate text for a given language. Thus a
+       locale needs to be supplied so as to choose a collator that is
+       correctly tailored for that locale. The choice of a locale will
+       automatically preset the values for all of the attributes to something
+       that is reasonable for that locale. Thus most of the time the other
+       attributes do not need to be explicitly set. In some cases, the choice
+       of locale will make a difference in string comparison performance
+       and/or sort key length.
+       
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-collator.construct-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns Collator instance.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-collator.construct-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   Returns an &quot;empty&quot; object on error. You can use
+   <span class="function">intl_get_error_code</span>
+   and/or
+   <span class="function">intl_get_error_message</span>
+   to know what happened.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-collator.construct-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-2747">
+    <p><strong>Example #1 <span class="function">Collator::__construct</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$coll&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Collator</span><span style="color: #007700">(&nbsp;</span><span style="color: #DD0000">'en_CA'&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-collator.construct-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">Collator::create</span></li>
+    <li class="member"><span class="function">collator_create</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

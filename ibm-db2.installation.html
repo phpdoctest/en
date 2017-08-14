@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Installation</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.ibm-db2.html">IBM DB2</a></li>
+  <li class="header up"><a href="ibm-db2.setup.html">Installing/Configuring</a></li>
+  <li><a href="ibm-db2.requirements.html">Requirements</a></li>
+  <li class="active"><a href="ibm-db2.installation.html">Installation</a></li>
+  <li><a href="ibm-db2.configuration.html">Runtime Configuration</a></li>
+  <li><a href="ibm-db2.resources.html">Resource Types</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="ibm-db2.requirements.html">Requirements</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="ibm-db2.configuration.html">Runtime Configuration</a></div>
+                <div class="up"><a href="ibm-db2.setup.html">Installing/Configuring</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="ibm-db2.installation" class="section">
+ <h2 class="title">Installation</h2>
+ <p class="para">
+  To build the ibm_db2 extension, the DB2 application development header
+  files and libraries must be installed on your system. DB2 does not install
+  these by default, so you may have to return to your DB2 installer and add
+  this option. The header files are included with the DB2 Application
+  Development Client freely available for download from the IBM DB2 Universal
+  Database <a href="http://www-306.ibm.com/software/data/db2/udb/support/downloadv8.html" class="link external">&raquo;&nbsp;support site</a>.
+ </p>
+ <p class="para">
+  If you add the DB2 application development header files and libraries to
+  a Linux or Unix operating system on which DB2 was already installed, you
+  must issue the command <strong class="command">db2iupdt -e</strong> to update the symbolic
+  links to the header files and libraries in your DB2 instances.
+ </p>
+ <p class="para">
+  ibm_db2 is a  <a href="http://pecl.php.net/" class="link external">&raquo;&nbsp;PECL</a> extension, so follow the
+  instructions in <a href="install.pecl.html" class="xref">Installation of PECL extensions</a> to install the ibm_db2
+  extension for PHP. Issue the <strong class="command">configure</strong> command to point
+  to the location of your DB2 header files and libraries as follows:
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+bash$ ./configure --with-IBM_DB2=/path/to/DB2
+</pre></div>
+  </div>
+  The <strong class="command">configure</strong> command defaults to
+  <var class="filename">/opt/IBM/db2/V8.1</var>.
+ </p>
+ <p class="para">
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <strong>Note for IIS users</strong><br />
+   <p class="para">
+    If you are using the ibm_db2 driver with Microsoft Internet Information Server (IIS) 
+    you may have to do the following:
+   </p>
+   <p class="para">
+    <ul class="simplelist">
+     <li class="member">
+      Install DB2 with extended operating system security.
+     </li>
+     <li class="member">
+      Add the PHP binary path to the <var class="envar">PATH</var> system environment variable (default C:\php\).
+     </li>
+     <li class="member">
+      Create another system environment variable equal to the path where the PHP.INI file is located (eg: PHPRC = C:\php\).
+     </li>
+     <li class="member">
+      Add the IUSR_COMPUTERNAME to the DB2USERS group.
+     </li>
+    </ul>
+   </p>
+  </p></blockquote>
+ </p>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

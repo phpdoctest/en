@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: MQSeries MQGET</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li class="header up"><a href="book.mqseries.html">mqseries</a></li>
+  <li class="header up"><a href="ref.mqseries.html">mqseries Functions</a></li>
+  <li><a href="function.mqseries-back.html">mqseries_back</a></li>
+  <li><a href="function.mqseries-begin.html">mqseries_begin</a></li>
+  <li><a href="function.mqseries-close.html">mqseries_close</a></li>
+  <li><a href="function.mqseries-cmit.html">mqseries_cmit</a></li>
+  <li><a href="function.mqseries-conn.html">mqseries_conn</a></li>
+  <li><a href="function.mqseries-connx.html">mqseries_connx</a></li>
+  <li><a href="function.mqseries-disc.html">mqseries_disc</a></li>
+  <li class="active"><a href="function.mqseries-get.html">mqseries_get</a></li>
+  <li><a href="function.mqseries-inq.html">mqseries_inq</a></li>
+  <li><a href="function.mqseries-open.html">mqseries_open</a></li>
+  <li><a href="function.mqseries-put1.html">mqseries_put1</a></li>
+  <li><a href="function.mqseries-put.html">mqseries_put</a></li>
+  <li><a href="function.mqseries-set.html">mqseries_set</a></li>
+  <li><a href="function.mqseries-strerror.html">mqseries_strerror</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.mqseries-disc.html">mqseries_disc</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.mqseries-inq.html">mqseries_inq</a></div>
+                <div class="up"><a href="ref.mqseries.html">mqseries Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.mqseries-get" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mqseries_get</h1>
+  <p class="refpurpose">MQSeries MQGET</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.mqseries-get-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname">mqseries_get</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$hConn</code></span>
+   , <span class="methodparam"><span class="type">resource</span> <code class="parameter">$hObj</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter reference">&$md</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter reference">&$gmo</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter reference">&$bufferLength</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter reference">&$msg</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter reference">&$data_length</code></span>
+   , <span class="methodparam"><span class="type">resource</span> <code class="parameter reference">&$compCode</code></span>
+   , <span class="methodparam"><span class="type">resource</span> <code class="parameter reference">&$reason</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   The
+   <span class="function">mqseries_get</span>
+   (MQGET) call retrieves a message from a local queue that has been opened
+   using the
+   <span class="function">mqseries_open</span>
+   (MQOPEN) call
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.mqseries-get-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+
+      <code class="parameter">hConn</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">Connection handle.</p>
+      <p class="para">This handle represents the connection to the queue manager.</p>
+     </dd>
+
+    
+    
+     <dt>
+
+      <code class="parameter">hObj</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">Object handle.</p>
+      <p class="para">This handle represents the object to be used.</p>
+     </dd>
+
+    
+    
+     <dt>
+
+      <code class="parameter">md</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">Message descriptor (MQMD).</p>
+     </dd>
+
+    
+    
+     <dt>
+
+      <code class="parameter">gmo</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">Get message options (MQGMO).</p>
+     </dd>
+
+    
+    
+     <dt>
+
+      <code class="parameter">bufferLength</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">Expected length of the result buffer</p>
+     </dd>
+
+    
+    
+     <dt>
+
+      <code class="parameter">msg</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Buffer holding the message that was retrieved from the object.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+
+      <code class="parameter">data_length</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">Actual buffer length</p>
+     </dd>
+
+    
+    
+     <dt>
+
+      <code class="parameter">compCode</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">Completion code.</p>
+     </dd>
+
+    
+    
+     <dt>
+
+      <code class="parameter">reason</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">Reason code qualifying the compCode.</p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.mqseries-get-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">No value is returned.</p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.mqseries-get-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-5019">
+    <p><strong>Example #1 
+     <span class="function">mqseries_get</span>
+     example
+    </strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;open&nbsp;connection&nbsp;to&nbsp;the&nbsp;queue&nbsp;manager<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mqseries_conn</span><span style="color: #007700">(</span><span style="color: #DD0000">'WMQ1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$comp_code</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$reason</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;$conn&nbsp;now&nbsp;hold&nbsp;the&nbsp;reference&nbsp;to&nbsp;the&nbsp;connection&nbsp;to&nbsp;the&nbsp;queue&nbsp;manager.<br /><br />//&nbsp;open&nbsp;the&nbsp;connection&nbsp;to&nbsp;the&nbsp;testq&nbsp;queue<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mqseries_open</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(</span><span style="color: #DD0000">'ObjectName'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'TESTQ'</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">MQSERIES_MQOO_INPUT_AS_Q_DEF&nbsp;</span><span style="color: #007700">|&nbsp;</span><span style="color: #0000BB">MQSERIES_MQOO_FAIL_IF_QUIESCING&nbsp;</span><span style="color: #007700">|&nbsp;</span><span style="color: #0000BB">MQSERIES_MQOO_OUTPUT</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$comp_code</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$reason</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;$obj&nbsp;now&nbsp;holds&nbsp;the&nbsp;reference&nbsp;to&nbsp;the&nbsp;object&nbsp;(TESTQ)<br /><br />//&nbsp;setup&nbsp;empty&nbsp;message&nbsp;descriptor.<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$mdg&nbsp;</span><span style="color: #007700">=&nbsp;array();<br /></span><span style="color: #FF8000">//&nbsp;setup&nbsp;get&nbsp;message&nbsp;options&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$gmo&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'Options'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">MQSERIES_MQGMO_FAIL_IF_QUIESCING&nbsp;</span><span style="color: #007700">|&nbsp;</span><span style="color: #0000BB">MQSERIES_MQGMO_WAIT</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'WaitInterval'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">3000</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;get&nbsp;the&nbsp;message&nbsp;from&nbsp;the&nbsp;queueu&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mqseries_get</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$mdg</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$gmo</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$msg</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$data_length</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$comp_code</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$reason</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$comp_code&nbsp;</span><span style="color: #007700">!==&nbsp;</span><span style="color: #0000BB">MQSERIES_MQCC_OK</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"GET&nbsp;CompCode:%d&nbsp;Reason:%d&nbsp;Text:%s&lt;br&gt;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$comp_code</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$reason</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mqseries_strerror</span><span style="color: #007700">(</span><span style="color: #0000BB">$reason</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;<br /></span><span style="color: #FF8000">//&nbsp;close&nbsp;the&nbsp;object&nbsp;reference&nbsp;$obj&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mqseries_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">MQSERIES_MQCO_NONE</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$comp_code</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$reason</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;disconnect&nbsp;from&nbsp;the&nbsp;queue&nbsp;manager.&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">mqseries_disc</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$comp_code</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$reason</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.mqseries-get-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">mqseries_conn</span></li>
+    <li class="member"><span class="function">mqseries_connx</span></li>
+    <li class="member"><span class="function">mqseries_open</span></li>
+    <li class="member"><span class="function">mqseries_put</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

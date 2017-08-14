@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Get a binary dump of the given files and user variables</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.php.html">Affecting PHP's Behaviour</a></li>
+  <li class="header up"><a href="book.apc.html">APC</a></li>
+  <li class="header up"><a href="ref.apc.html">APC Functions</a></li>
+  <li><a href="function.apc-add.html">apc_add</a></li>
+  <li class="active"><a href="function.apc-bin-dump.html">apc_bin_dump</a></li>
+  <li><a href="function.apc-bin-dumpfile.html">apc_bin_dumpfile</a></li>
+  <li><a href="function.apc-bin-load.html">apc_bin_load</a></li>
+  <li><a href="function.apc-bin-loadfile.html">apc_bin_loadfile</a></li>
+  <li><a href="function.apc-cache-info.html">apc_cache_info</a></li>
+  <li><a href="function.apc-cas.html">apc_cas</a></li>
+  <li><a href="function.apc-clear-cache.html">apc_clear_cache</a></li>
+  <li><a href="function.apc-compile-file.html">apc_compile_file</a></li>
+  <li><a href="function.apc-dec.html">apc_dec</a></li>
+  <li><a href="function.apc-define-constants.html">apc_define_constants</a></li>
+  <li><a href="function.apc-delete-file.html">apc_delete_file</a></li>
+  <li><a href="function.apc-delete.html">apc_delete</a></li>
+  <li><a href="function.apc-exists.html">apc_exists</a></li>
+  <li><a href="function.apc-fetch.html">apc_fetch</a></li>
+  <li><a href="function.apc-inc.html">apc_inc</a></li>
+  <li><a href="function.apc-load-constants.html">apc_load_constants</a></li>
+  <li><a href="function.apc-sma-info.html">apc_sma_info</a></li>
+  <li><a href="function.apc-store.html">apc_store</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.apc-add.html">apc_add</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.apc-bin-dumpfile.html">apc_bin_dumpfile</a></div>
+                <div class="up"><a href="ref.apc.html">APC Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.apc-bin-dump" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">apc_bin_dump</h1>
+  <p class="refpurpose">Get a binary dump of the given files and user variables</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.apc-bin-dump-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname">apc_bin_dump</span>
+    ([ <span class="methodparam"><span class="type">array</span> <code class="parameter">$files</code><span class="initializer"> = NULL</span></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$user_vars</code><span class="initializer"> = NULL</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Returns a binary dump of the given files and user variables from the APC cache.
+   A <strong><code>NULL</code></strong> for files or user_vars signals a dump of every entry, whereas array() will dump
+   nothing.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.apc-bin-dump-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">files</code></dt>
+
+    <dd>
+
+     <p class="para">
+      The files. Passing in <strong><code>NULL</code></strong> signals a dump of every entry, while
+      passing in <span class="function">array</span> will dump nothing.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">user_vars</code></dt>
+
+    <dd>
+
+     <p class="para">
+      The user vars. Passing in <strong><code>NULL</code></strong> signals a dump of every entry, while
+      passing in <span class="function">array</span> will dump nothing.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.apc-bin-dump-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns a binary dump of the given files and user variables from the APC cache,
+   <strong><code>FALSE</code></strong> if APC is not enabled, or <strong><code>NULL</code></strong> if an unknown error is encountered.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.apc-bin-dump-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li class="member"><span class="function">apc_bin_dumpfile</span></li>
+   <li class="member"><span class="function">apc_bin_load</span></li>
+  </ul>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

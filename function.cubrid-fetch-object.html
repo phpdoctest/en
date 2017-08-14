@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Fetch the next row and return it as an object</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.cubrid.html">CUBRID</a></li>
+  <li class="header up"><a href="cubridmysql.cubrid.html">CUBRID MySQL Compatibility Functions</a></li>
+  <li><a href="function.cubrid-affected-rows.html">cubrid_affected_rows</a></li>
+  <li><a href="function.cubrid-client-encoding.html">cubrid_client_encoding</a></li>
+  <li><a href="function.cubrid-close.html">cubrid_close</a></li>
+  <li><a href="function.cubrid-data-seek.html">cubrid_data_seek</a></li>
+  <li><a href="function.cubrid-db-name.html">cubrid_db_name</a></li>
+  <li><a href="function.cubrid-errno.html">cubrid_errno</a></li>
+  <li><a href="function.cubrid-error.html">cubrid_error</a></li>
+  <li><a href="function.cubrid-fetch-array.html">cubrid_fetch_array</a></li>
+  <li><a href="function.cubrid-fetch-assoc.html">cubrid_fetch_assoc</a></li>
+  <li><a href="function.cubrid-fetch-field.html">cubrid_fetch_field</a></li>
+  <li><a href="function.cubrid-fetch-lengths.html">cubrid_fetch_lengths</a></li>
+  <li class="active"><a href="function.cubrid-fetch-object.html">cubrid_fetch_object</a></li>
+  <li><a href="function.cubrid-fetch-row.html">cubrid_fetch_row</a></li>
+  <li><a href="function.cubrid-field-flags.html">cubrid_field_flags</a></li>
+  <li><a href="function.cubrid-field-len.html">cubrid_field_len</a></li>
+  <li><a href="function.cubrid-field-name.html">cubrid_field_name</a></li>
+  <li><a href="function.cubrid-field-seek.html">cubrid_field_seek</a></li>
+  <li><a href="function.cubrid-field-table.html">cubrid_field_table</a></li>
+  <li><a href="function.cubrid-field-type.html">cubrid_field_type</a></li>
+  <li><a href="function.cubrid-list-dbs.html">cubrid_list_dbs</a></li>
+  <li><a href="function.cubrid-num-fields.html">cubrid_num_fields</a></li>
+  <li><a href="function.cubrid-ping.html">cubrid_ping</a></li>
+  <li><a href="function.cubrid-query.html">cubrid_query</a></li>
+  <li><a href="function.cubrid-real-escape-string.html">cubrid_real_escape_string</a></li>
+  <li><a href="function.cubrid-result.html">cubrid_result</a></li>
+  <li><a href="function.cubrid-unbuffered-query.html">cubrid_unbuffered_query</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.cubrid-fetch-lengths.html">cubrid_fetch_lengths</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.cubrid-fetch-row.html">cubrid_fetch_row</a></div>
+                <div class="up"><a href="cubridmysql.cubrid.html">CUBRID MySQL Compatibility Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.cubrid-fetch-object" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">cubrid_fetch_object</h1>
+  <p class="refpurpose">Fetch the next row and return it as an object</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.cubrid-fetch-object-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">object</span> <span class="methodname">cubrid_fetch_object</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$result</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$class_name</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$params</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$type</code></span>
+  ]]] )</div>
+
+  <p class="para rdfs-comment">
+    This function returns an object with the column names of the result set as
+    properties. The values of these properties are extracted from the current
+    row of the result. 
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.cubrid-fetch-object-parameters">
+ <h3 class="title">Parameters</h3>
+ <p class="para">
+  <dl>
+
+  
+   <dt>
+<code class="parameter">result</code></dt>
+
+   <dd>
+<p class="para"><code class="parameter">result</code> comes from a call to <span class="function">cubrid_execute</span></p></dd>
+
+  
+  
+    <dt>
+<code class="parameter">class_name</code></dt>
+
+      <dd>
+
+       <p class="para">
+        The name of the class to instantiate. If not specified, a
+        <span class="classname">stdClass</span> (stdClass is PHP&#039;s generic empty class
+        that&#039;s used when casting other types to objects) object is returned.
+       </p>
+     </dd>
+
+   
+    
+     <dt>
+<code class="parameter">params</code></dt>
+
+      <dd>
+
+       <p class="para">
+        An optional <span class="type">array</span> of parameters to pass to the constructor
+        for <code class="parameter">class_name</code> objects.
+       </p>
+     </dd>
+
+   
+    
+     <dt>
+<code class="parameter">type</code></dt>
+
+      <dd>
+
+       <p class="para">
+        Type can only be CUBRID_LOB, this parameter will be used only when you
+        need to operate the lob object.
+       </p>
+     </dd>
+
+   
+  </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.cubrid-fetch-object-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+    An object, when process is successful.
+  </p>
+   <p class="para">
+    <strong><code>FALSE</code></strong>, when there are no more rows; NULL, when process is unsuccessful.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.cubrid-fetch-object-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-1163">
+   <p><strong>Example #1 <span class="function">cubrid_fetch_object</span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">33000</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"demodb"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;*&nbsp;FROM&nbsp;code"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">cubrid_fetch_object</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;if&nbsp;you&nbsp;want&nbsp;to&nbsp;operate&nbsp;LOB&nbsp;object,&nbsp;you&nbsp;can&nbsp;use&nbsp;cubrid_fetch_object($res,&nbsp;CUBRID_LOB)<br /><br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">demodb_code&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$s_name&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$f_name&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">toString</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">cubrid_fetch_object</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"demodb_code"</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;if&nbsp;you&nbsp;want&nbsp;to&nbsp;operate&nbsp;LOB&nbsp;object,&nbsp;you&nbsp;can&nbsp;use&nbsp;cubrid_fetch_object($res,&nbsp;"demodb_code",&nbsp;CUBRID_LOB)<br /><br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">demodb_code_construct&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">demodb_code&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">$s</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$f</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">s_name&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$s</span><span style="color: #007700">;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">f_name&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$f</span><span style="color: #007700">;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;&nbsp;&nbsp;<br />}<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">cubrid_fetch_object</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'demodb_code_construct'</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">'s_name'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'f_name'</span><span style="color: #007700">)));<br /><br /></span><span style="color: #FF8000">//&nbsp;if&nbsp;you&nbsp;want&nbsp;to&nbsp;operate&nbsp;LOB&nbsp;object,&nbsp;you&nbsp;can&nbsp;use&nbsp;cubrid_fetch_object($res,&nbsp;'demodb_code_construct',&nbsp;array('s_name',&nbsp;'f_name'),&nbsp;CUBRID_LOB)<br /><br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">cubrid_fetch_object</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">cubrid_close_request</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">cubrid_disconnect</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+object(stdClass)#1 (2) {
+  [&quot;s_name&quot;]=&gt;
+  string(1) &quot;X&quot;
+  [&quot;f_name&quot;]=&gt;
+  string(5) &quot;Mixed&quot;
+}
+object(demodb_code)#1 (2) {
+  [&quot;s_name&quot;]=&gt;
+  string(1) &quot;W&quot;
+  [&quot;f_name&quot;]=&gt;
+  string(5) &quot;Woman&quot;
+}
+object(demodb_code_construct)#1 (2) {
+  [&quot;s_name&quot;]=&gt;
+  string(6) &quot;s_name&quot;
+  [&quot;f_name&quot;]=&gt;
+  string(6) &quot;f_name&quot;
+}
+object(stdClass)#1 (2) {
+  [&quot;s_name&quot;]=&gt;
+  string(1) &quot;B&quot;
+  [&quot;f_name&quot;]=&gt;
+  string(6) &quot;Bronze&quot;
+}
+</pre></div>
+    </div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.cubrid-fetch-object-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+   <li class="member"><span class="function">cubrid_execute</span></li>
+   <li class="member"><span class="function">cubrid_fetch</span></li>
+   <li class="member"><span class="function">cubrid_fetch_array</span></li>
+   <li class="member"><span class="function">cubrid_fetch_assoc</span></li>
+   <li class="member"><span class="function">cubrid_fetch_row</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

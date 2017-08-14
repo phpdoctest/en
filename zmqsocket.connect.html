@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Connect the socket</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li class="header up"><a href="book.zmq.html">0MQ messaging</a></li>
+  <li class="header up"><a href="class.zmqsocket.html">ZMQSocket</a></li>
+  <li><a href="zmqsocket.bind.html">ZMQSocket::bind</a></li>
+  <li class="active"><a href="zmqsocket.connect.html">ZMQSocket::connect</a></li>
+  <li><a href="zmqsocket.construct.html">ZMQSocket::__construct</a></li>
+  <li><a href="zmqsocket.disconnect.html">ZMQSocket::disconnect</a></li>
+  <li><a href="zmqsocket.getendpoints.html">ZMQSocket::getEndpoints</a></li>
+  <li><a href="zmqsocket.getpersistentid.html">ZMQSocket::getPersistentId</a></li>
+  <li><a href="zmqsocket.getsockettype.html">ZMQSocket::getSocketType</a></li>
+  <li><a href="zmqsocket.getsockopt.html">ZMQSocket::getSockOpt</a></li>
+  <li><a href="zmqsocket.ispersistent.html">ZMQSocket::isPersistent</a></li>
+  <li><a href="zmqsocket.recv.html">ZMQSocket::recv</a></li>
+  <li><a href="zmqsocket.recvmulti.html">ZMQSocket::recvMulti</a></li>
+  <li><a href="zmqsocket.send.html">ZMQSocket::send</a></li>
+  <li><a href="zmqsocket.sendmulti.html">ZMQSocket::sendmulti</a></li>
+  <li><a href="zmqsocket.setsockopt.html">ZMQSocket::setSockOpt</a></li>
+  <li><a href="zmqsocket.unbind.html">ZMQSocket::unbind</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="zmqsocket.bind.html">ZMQSocket::bind</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="zmqsocket.construct.html">ZMQSocket::__construct</a></div>
+                <div class="up"><a href="class.zmqsocket.html">ZMQSocket</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="zmqsocket.connect" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ZMQSocket::connect</h1>
+  <p class="refpurpose">Connect the socket</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-zmqsocket.connect-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ZMQSocket</span> <span class="methodname">ZMQSocket::connect</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$dsn</code></span>
+   [, <span class="methodparam"><span class="type">boolean</span> <code class="parameter">$force</code><span class="initializer"> = false</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Connect the socket to a remote endpoint. The endpoint is defined in format <em>transport://address</em> where 
+   transport is one of the following: inproc, ipc, tcp, pgm or epgm.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-zmqsocket.connect-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">dsn</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The connect dsn, for example <em>transport://address</em>.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">force</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Tries to connect even if the socket has already been connected to given endpoint.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-zmqsocket.connect-examples">
+ <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-5252">
+    <p><strong>Example #1 A <span class="function">ZMQContext</span> example</strong></p>
+    <div class="example-contents"><p>
+     Construct a new context and allocate request socket from it
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;Server&nbsp;hostname&nbsp;*/<br /></span><span style="color: #0000BB">$dsn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"tcp://127.0.0.1:5555"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">/*&nbsp;Create&nbsp;a&nbsp;socket&nbsp;*/<br /></span><span style="color: #0000BB">$socket&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">ZMQSocket</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">ZMQContext</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">ZMQ</span><span style="color: #007700">::</span><span style="color: #0000BB">SOCKET_REQ</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'my&nbsp;socket'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;Get&nbsp;list&nbsp;of&nbsp;connected&nbsp;endpoints&nbsp;*/<br /></span><span style="color: #0000BB">$endpoints&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$socket</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getEndpoints</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">/*&nbsp;Check&nbsp;if&nbsp;the&nbsp;socket&nbsp;is&nbsp;connected&nbsp;*/<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">in_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$dsn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$endpoints</span><span style="color: #007700">[</span><span style="color: #DD0000">'connect'</span><span style="color: #007700">]))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&lt;p&gt;Connecting&nbsp;to&nbsp;</span><span style="color: #0000BB">$dsn</span><span style="color: #DD0000">&lt;/p&gt;"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$socket</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$dsn</span><span style="color: #007700">);<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&lt;p&gt;Already&nbsp;connected&nbsp;to&nbsp;</span><span style="color: #0000BB">$dsn</span><span style="color: #DD0000">&lt;/p&gt;"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">/*&nbsp;Send&nbsp;and&nbsp;receive&nbsp;*/<br /></span><span style="color: #0000BB">$socket</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">send</span><span style="color: #007700">(</span><span style="color: #DD0000">"Hello!"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$message&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$socket</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">recv</span><span style="color: #007700">();<br /><br />echo&nbsp;</span><span style="color: #DD0000">"&lt;p&gt;Server&nbsp;said:&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$message</span><span style="color: #007700">}</span><span style="color: #DD0000">&lt;/p&gt;"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-zmqsocket.connect-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the current object. Throws ZMQSocketException on error.
+  </p>
+ </div>
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

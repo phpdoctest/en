@@ -1,0 +1,258 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Opens an Secure SSL-FTP connection</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li class="header up"><a href="book.ftp.html">FTP</a></li>
+  <li class="header up"><a href="ref.ftp.html">FTP Functions</a></li>
+  <li><a href="function.ftp-alloc.html">ftp_alloc</a></li>
+  <li><a href="function.ftp-cdup.html">ftp_cdup</a></li>
+  <li><a href="function.ftp-chdir.html">ftp_chdir</a></li>
+  <li><a href="function.ftp-chmod.html">ftp_chmod</a></li>
+  <li><a href="function.ftp-close.html">ftp_close</a></li>
+  <li><a href="function.ftp-connect.html">ftp_connect</a></li>
+  <li><a href="function.ftp-delete.html">ftp_delete</a></li>
+  <li><a href="function.ftp-exec.html">ftp_exec</a></li>
+  <li><a href="function.ftp-fget.html">ftp_fget</a></li>
+  <li><a href="function.ftp-fput.html">ftp_fput</a></li>
+  <li><a href="function.ftp-get-option.html">ftp_get_option</a></li>
+  <li><a href="function.ftp-get.html">ftp_get</a></li>
+  <li><a href="function.ftp-login.html">ftp_login</a></li>
+  <li><a href="function.ftp-mdtm.html">ftp_mdtm</a></li>
+  <li><a href="function.ftp-mkdir.html">ftp_mkdir</a></li>
+  <li><a href="function.ftp-nb-continue.html">ftp_nb_continue</a></li>
+  <li><a href="function.ftp-nb-fget.html">ftp_nb_fget</a></li>
+  <li><a href="function.ftp-nb-fput.html">ftp_nb_fput</a></li>
+  <li><a href="function.ftp-nb-get.html">ftp_nb_get</a></li>
+  <li><a href="function.ftp-nb-put.html">ftp_nb_put</a></li>
+  <li><a href="function.ftp-nlist.html">ftp_nlist</a></li>
+  <li><a href="function.ftp-pasv.html">ftp_pasv</a></li>
+  <li><a href="function.ftp-put.html">ftp_put</a></li>
+  <li><a href="function.ftp-pwd.html">ftp_pwd</a></li>
+  <li><a href="function.ftp-quit.html">ftp_quit</a></li>
+  <li><a href="function.ftp-raw.html">ftp_raw</a></li>
+  <li><a href="function.ftp-rawlist.html">ftp_rawlist</a></li>
+  <li><a href="function.ftp-rename.html">ftp_rename</a></li>
+  <li><a href="function.ftp-rmdir.html">ftp_rmdir</a></li>
+  <li><a href="function.ftp-set-option.html">ftp_set_option</a></li>
+  <li><a href="function.ftp-site.html">ftp_site</a></li>
+  <li><a href="function.ftp-size.html">ftp_size</a></li>
+  <li class="active"><a href="function.ftp-ssl-connect.html">ftp_ssl_connect</a></li>
+  <li><a href="function.ftp-systype.html">ftp_systype</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.ftp-size.html">ftp_size</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.ftp-systype.html">ftp_systype</a></div>
+                <div class="up"><a href="ref.ftp.html">FTP Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.ftp-ssl-connect" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ftp_ssl_connect</h1>
+  <p class="refpurpose">Opens an Secure SSL-FTP connection</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.ftp-ssl-connect-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname">ftp_ssl_connect</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$host</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$port</code><span class="initializer"> = 21</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$timeout</code><span class="initializer"> = 90</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function">ftp_ssl_connect</span> opens an <em class="emphasis">explicit</em> SSL-FTP connection to the
+   specified <code class="parameter">host</code>. That implies that
+   <span class="function">ftp_ssl_connect</span> will succeed even if the server is not
+   configured for SSL-FTP, or its certificate is invalid. Only when
+   <span class="function">ftp_login</span> is called, the client will send the
+   appropriate AUTH FTP command, so <span class="function">ftp_login</span> will fail in
+   the mentioned cases.
+  </p>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <strong>Why this function may not exist</strong><br />
+   <p class="para">
+    <span class="function">ftp_ssl_connect</span> is only available if both
+    the ftp module and the <a href="ref.openssl.html" class="link">OpenSSL</a>
+    support is built statically into php, this means that on Windows this
+    function will be undefined in the official PHP builds. To make this
+    function available on Windows you must compile your own PHP binaries.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    <span class="function">ftp_ssl_connect</span> is not intended for use with sFTP.
+    To use sFTP with PHP, please see <span class="function">ssh2_sftp</span>.
+   </p>
+  </p></blockquote>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.ftp-ssl-connect-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">host</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The FTP server address. This parameter shouldn&#039;t have any trailing 
+       slashes and shouldn&#039;t be prefixed with <em>ftp://</em>.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">port</code></dt>
+
+     <dd>
+
+      <p class="para">
+       This parameter specifies an alternate port to connect to. If it is
+       omitted or set to zero, then the default FTP port, 21, will be used.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">timeout</code></dt>
+
+     <dd>
+
+      <p class="para">
+       This parameter specifies the timeout for all subsequent network operations.
+       If omitted, the default value is 90 seconds. The timeout can be changed and
+       queried at any time with <span class="function">ftp_set_option</span> and
+       <span class="function">ftp_get_option</span>.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.ftp-ssl-connect-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns a SSL-FTP stream on success or <strong><code>FALSE</code></strong> on error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.ftp-ssl-connect-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.2.2</td>
+       <td>
+        The function was changed to return <strong><code>FALSE</code></strong> when it can&#039;t use an SSL
+        connection, instead of fallbacking to a non-SSL one as previously.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.ftp-ssl-connect-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4892">
+    <p><strong>Example #1 <span class="function">ftp_ssl_connect</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;set&nbsp;up&nbsp;basic&nbsp;ssl&nbsp;connection<br /></span><span style="color: #0000BB">$conn_id&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ftp_ssl_connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$ftp_server</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;login&nbsp;with&nbsp;username&nbsp;and&nbsp;password<br /></span><span style="color: #0000BB">$login_result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ftp_login</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$ftp_user_name</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$ftp_user_pass</span><span style="color: #007700">);<br /><br />if&nbsp;(!</span><span style="color: #0000BB">$login_result</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;PHP&nbsp;will&nbsp;already&nbsp;have&nbsp;raised&nbsp;an&nbsp;E_WARNING&nbsp;level&nbsp;message&nbsp;in&nbsp;this&nbsp;case<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">die(</span><span style="color: #DD0000">"can't&nbsp;login"</span><span style="color: #007700">);<br />}<br /><br />echo&nbsp;</span><span style="color: #0000BB">ftp_pwd</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;/<br /><br />//&nbsp;close&nbsp;the&nbsp;ssl&nbsp;connection<br /></span><span style="color: #0000BB">ftp_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn_id</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.ftp-ssl-connect-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">ftp_connect</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,134 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Stops xhprof sample profiler</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.php.html">Affecting PHP's Behaviour</a></li>
+  <li class="header up"><a href="book.xhprof.html">Xhprof</a></li>
+  <li class="header up"><a href="ref.xhprof.html">Xhprof Functions</a></li>
+  <li><a href="function.xhprof-disable.html">xhprof_disable</a></li>
+  <li><a href="function.xhprof-enable.html">xhprof_enable</a></li>
+  <li class="active"><a href="function.xhprof-sample-disable.html">xhprof_sample_disable</a></li>
+  <li><a href="function.xhprof-sample-enable.html">xhprof_sample_enable</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.xhprof-enable.html">xhprof_enable</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.xhprof-sample-enable.html">xhprof_sample_enable</a></div>
+                <div class="up"><a href="ref.xhprof.html">Xhprof Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.xhprof-sample-disable" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">xhprof_sample_disable</h1>
+  <p class="refpurpose">Stops xhprof sample profiler</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.xhprof-sample-disable-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname">xhprof_sample_disable</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Stops the sample mode xhprof profiler, and 
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.xhprof-sample-disable-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">This function has no parameters.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.xhprof-sample-disable-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   An <span class="type">array</span> of xhprof sample data, from the run.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.xhprof-sample-disable-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-652">
+   <p><strong>Example #1 <span class="function">xhprof_sample_disable</span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />xhprof_sample_enable</span><span style="color: #007700">();<br /><br />for&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;=&nbsp;</span><span style="color: #0000BB">10000</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$i</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">rand</span><span style="color: #007700">();<br />}<br /><br /></span><span style="color: #0000BB">$xhprof_data&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">xhprof_sample_disable</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$xhprof_data</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [1272935300.800000] =&gt; main()
+    [1272935300.900000] =&gt; main()
+)
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Patch a string with an unified diff</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.fileprocess.file.html">File System Related Extensions</a></li>
+  <li class="header up"><a href="book.xdiff.html">xdiff</a></li>
+  <li class="header up"><a href="ref.xdiff.html">xdiff Functions</a></li>
+  <li><a href="function.xdiff-file-bdiff-size.html">xdiff_file_bdiff_size</a></li>
+  <li><a href="function.xdiff-file-bdiff.html">xdiff_file_bdiff</a></li>
+  <li><a href="function.xdiff-file-bpatch.html">xdiff_file_bpatch</a></li>
+  <li><a href="function.xdiff-file-diff-binary.html">xdiff_file_diff_binary</a></li>
+  <li><a href="function.xdiff-file-diff.html">xdiff_file_diff</a></li>
+  <li><a href="function.xdiff-file-merge3.html">xdiff_file_merge3</a></li>
+  <li><a href="function.xdiff-file-patch-binary.html">xdiff_file_patch_binary</a></li>
+  <li><a href="function.xdiff-file-patch.html">xdiff_file_patch</a></li>
+  <li><a href="function.xdiff-file-rabdiff.html">xdiff_file_rabdiff</a></li>
+  <li><a href="function.xdiff-string-bdiff-size.html">xdiff_string_bdiff_size</a></li>
+  <li><a href="function.xdiff-string-bdiff.html">xdiff_string_bdiff</a></li>
+  <li><a href="function.xdiff-string-bpatch.html">xdiff_string_bpatch</a></li>
+  <li><a href="function.xdiff-string-diff-binary.html">xdiff_string_diff_binary</a></li>
+  <li><a href="function.xdiff-string-diff.html">xdiff_string_diff</a></li>
+  <li><a href="function.xdiff-string-merge3.html">xdiff_string_merge3</a></li>
+  <li><a href="function.xdiff-string-patch-binary.html">xdiff_string_patch_binary</a></li>
+  <li class="active"><a href="function.xdiff-string-patch.html">xdiff_string_patch</a></li>
+  <li><a href="function.xdiff-string-rabdiff.html">xdiff_string_rabdiff</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.xdiff-string-patch-binary.html">xdiff_string_patch_binary</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.xdiff-string-rabdiff.html">xdiff_string_rabdiff</a></div>
+                <div class="up"><a href="ref.xdiff.html">xdiff Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.xdiff-string-patch" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">xdiff_string_patch</h1>
+  <p class="refpurpose">Patch a string with an unified diff</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.xdiff-string-patch-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname">xdiff_string_patch</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$str</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$patch</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter reference">&$error</code></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Patches a <code class="parameter">str</code> string with an unified patch in <code class="parameter">patch</code> parameter 
+   and returns the result. <code class="parameter">patch</code> has to be an unified diff created by 
+   <span class="function">xdiff_file_diff</span>/<span class="function">xdiff_string_diff</span> function. 
+   An optional <code class="parameter">flags</code> parameter specifies mode of operation. Any
+   rejected parts of the patch will be stored inside <code class="parameter">error</code> variable if 
+   it is provided.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.xdiff-string-patch-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">str</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The original string.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">patch</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The unified patch string. It has to be created using <span class="function">xdiff_string_diff</span>, 
+       <span class="function">xdiff_file_diff</span> functions or compatible tools.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">flags</code></dt>
+
+     <dd>
+
+      <p class="para">
+       <code class="parameter">flags</code> can be either
+       <strong><code>XDIFF_PATCH_NORMAL</code></strong> (default mode, normal patch)
+       or <strong><code>XDIFF_PATCH_REVERSE</code></strong> (reversed patch).
+      </p>
+      <p class="para">
+       Starting from version 1.5.0, you can also use binary OR to enable
+       <strong><code>XDIFF_PATCH_IGNORESPACE</code></strong> flag.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">error</code></dt>
+
+     <dd>
+
+      <p class="para">
+       If provided then rejected parts are stored inside this variable.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.xdiff-string-patch-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the patched string, or <strong><code>FALSE</code></strong> on error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.xdiff-string-patch-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-2717">
+    <p><strong>Example #1 <span class="function">xdiff_string_patch</span> example</strong></p>
+    <div class="example-contents"><p>
+     The following code applies changes to some article.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$old_article&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'./old_article.txt'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$diff&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">'patch'</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">/*&nbsp;Let's&nbsp;say&nbsp;that&nbsp;someone&nbsp;pasted&nbsp;a&nbsp;patch&nbsp;to&nbsp;html&nbsp;form&nbsp;*/<br /><br /></span><span style="color: #0000BB">$errors&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">''</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$new_article&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">xdiff_string_patch</span><span style="color: #007700">(</span><span style="color: #0000BB">$old_article</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$diff</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">XDIFF_PATCH_NORMAL</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$errors</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">is_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$new_article</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"New&nbsp;article:\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$new_article</span><span style="color: #007700">;<br />}<br /><br />if&nbsp;(</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$errors</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Rejects:&nbsp;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$errors</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.xdiff-string-patch-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">xdiff_string_diff</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

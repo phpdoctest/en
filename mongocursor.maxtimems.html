@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Sets a server-side timeout for this query</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.mongo.html">Mongo</a></li>
+  <li class="header up"><a href="mongo.core.html">Core Classes</a></li>
+  <li class="header up"><a href="class.mongocursor.html">MongoCursor</a></li>
+  <li><a href="mongocursor.addoption.html">MongoCursor::addOption</a></li>
+  <li><a href="mongocursor.awaitdata.html">MongoCursor::awaitData</a></li>
+  <li><a href="mongocursor.batchsize.html">MongoCursor::batchSize</a></li>
+  <li><a href="mongocursor.construct.html">MongoCursor::__construct</a></li>
+  <li><a href="mongocursor.count.html">MongoCursor::count</a></li>
+  <li><a href="mongocursor.current.html">MongoCursor::current</a></li>
+  <li><a href="mongocursor.dead.html">MongoCursor::dead</a></li>
+  <li><a href="mongocursor.doquery.html">MongoCursor::doQuery</a></li>
+  <li><a href="mongocursor.explain.html">MongoCursor::explain</a></li>
+  <li><a href="mongocursor.fields.html">MongoCursor::fields</a></li>
+  <li><a href="mongocursor.getnext.html">MongoCursor::getNext</a></li>
+  <li><a href="mongocursor.getreadpreference.html">MongoCursor::getReadPreference</a></li>
+  <li><a href="mongocursor.hasnext.html">MongoCursor::hasNext</a></li>
+  <li><a href="mongocursor.hint.html">MongoCursor::hint</a></li>
+  <li><a href="mongocursor.immortal.html">MongoCursor::immortal</a></li>
+  <li><a href="mongocursor.info.html">MongoCursor::info</a></li>
+  <li><a href="mongocursor.key.html">MongoCursor::key</a></li>
+  <li><a href="mongocursor.limit.html">MongoCursor::limit</a></li>
+  <li class="active"><a href="mongocursor.maxtimems.html">MongoCursor::maxTimeMS</a></li>
+  <li><a href="mongocursor.next.html">MongoCursor::next</a></li>
+  <li><a href="mongocursor.partial.html">MongoCursor::partial</a></li>
+  <li><a href="mongocursor.reset.html">MongoCursor::reset</a></li>
+  <li><a href="mongocursor.rewind.html">MongoCursor::rewind</a></li>
+  <li><a href="mongocursor.setflag.html">MongoCursor::setFlag</a></li>
+  <li><a href="mongocursor.setreadpreference.html">MongoCursor::setReadPreference</a></li>
+  <li><a href="mongocursor.skip.html">MongoCursor::skip</a></li>
+  <li><a href="mongocursor.slaveokay.html">MongoCursor::slaveOkay</a></li>
+  <li><a href="mongocursor.snapshot.html">MongoCursor::snapshot</a></li>
+  <li><a href="mongocursor.sort.html">MongoCursor::sort</a></li>
+  <li><a href="mongocursor.tailable.html">MongoCursor::tailable</a></li>
+  <li><a href="mongocursor.timeout.html">MongoCursor::timeout</a></li>
+  <li><a href="mongocursor.valid.html">MongoCursor::valid</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mongocursor.limit.html">MongoCursor::limit</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mongocursor.next.html">MongoCursor::next</a></div>
+                <div class="up"><a href="class.mongocursor.html">MongoCursor</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mongocursor.maxtimems" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">MongoCursor::maxTimeMS</h1>
+  <p class="refpurpose">Sets a server-side timeout for this query</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mongocursor.maxtimems-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">MongoCursor</span> <span class="methodname">MongoCursor::maxTimeMS</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$ms</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Specifies a cumulative time limit in milliseconds to be allowed by the server
+   for processing operations on the cursor.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mongocursor.maxtimems-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+
+     <code class="parameter">ms</code>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Specifies a cumulative time limit in milliseconds to be allowed by the
+      server for processing operations on the cursor.
+     </p>
+    </dd>
+
+      
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-mongocursor.maxtimems-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   This cursor.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-mongocursor.maxtimems-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   Throws <span class="classname">MongoCursorException</span> if this cursor has started
+   iterating.
+  </p>
+  <p class="para">
+   Causes methods that fetch results to throw a
+   <span class="classname">MongoExecutionTimeoutException</span> if the query takes
+   longer than the specified number of milliseconds in processing time.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-mongocursor.maxtimems-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-1591">
+   <p><strong>Example #1  <span class="methodname">MongoCursor::maxTimeMS</span> example</strong></p>
+   <div class="example-contents"><p>
+    In the following example, the server will abort the query if the cursor
+    requires more than two seconds in processing time to return its results.
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$cursor&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$collection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">find</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$cursor</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">maxTimeMS</span><span style="color: #007700">(</span><span style="color: #0000BB">2000</span><span style="color: #007700">);<br /><br />try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$results&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">iterator_to_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$cursor</span><span style="color: #007700">);<br />}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">MongoExecutionTimeoutException&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"query&nbsp;took&nbsp;too&nbsp;long!"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-mongocursor.maxtimems-notes">
+  <h3 class="title">Notes</h3>
+  <div class="warning"><strong class="warning">Warning</strong>
+   <p class="para">
+     Unlike  <span class="methodname">MongoCursor::timeout</span>, which specifies a
+     client-side timeout,  <span class="methodname">MongoCursor::maxTimeMS</span> can be
+     used to cause the MongoDB server to abort long-running queries. This
+     timeout is cumulative for the lifetime of the cursor (i.e. each batch will
+     contribute to this time limit). The timeout only considers processing time;
+     idle time is not considered.
+   </p>
+  </div>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Sorting Arrays</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.vartype.html">Variable and Type Related Extensions</a></li>
+  <li class="header up"><a href="book.array.html">Arrays</a></li>
+  <li><a href="intro.array.html">Introduction</a></li>
+  <li><a href="array.setup.html">Installing/Configuring</a></li>
+  <li><a href="array.constants.html">Predefined Constants</a></li>
+  <li class="active"><a href="array.sorting.html">Sorting Arrays</a></li>
+  <li><a href="ref.array.html">Array Functions</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="array.constants.html">Predefined Constants</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="ref.array.html">Array Functions</a></div>
+                <div class="up"><a href="book.array.html">Arrays</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="array.sorting" class="chapter">
+ <h1>Sorting Arrays</h1>
+ <p class="para">
+  PHP has several functions that deal with sorting arrays, and this
+  document exists to help sort it all out.
+ </p>
+ <p class="para">
+  The main differences are:
+ </p>
+ <p class="para">
+  <ul class="simplelist">
+   <li class="member">
+    Some sort based on the <span class="type">array</span> keys, whereas others by
+    the values: <em>$array[&#039;key&#039;] = &#039;value&#039;;</em>
+   </li>
+   <li class="member">
+    Whether or not the correlation between the keys and values are
+    maintained after the sort, which may mean the keys are reset
+    numerically (0,1,2 ...)
+   </li>
+   <li class="member">
+    The order of the sort: alphabetical, low to high (ascending),
+    high to low (descending), numerical, natural, random, or user defined
+   </li>
+   <li class="member">
+    Note: All of these sort functions act directly on the array
+    variable itself, as opposed to returning a new sorted array
+   </li>
+   <li class="member">
+    If any of these sort functions evaluates two members as equal then the
+    order is undefined (the sorting is not stable).
+   </li>
+  </ul>
+ </p>
+ <p class="para">
+  <table class="doctable table">
+   <caption><strong>Sorting function attributes</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>Function name</th>
+      <th>Sorts by</th>
+      <th>Maintains key association</th>
+      <th>Order of sort</th>
+      <th>Related functions</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td><span class="function">array_multisort</span></td>
+      <td>value</td>
+      <td>associative yes, numeric no</td>
+      <td>first array or sort options</td>
+      <td><span class="function">array_walk</span></td>
+     </tr>
+
+     <tr>
+      <td><span class="function">asort</span></td>
+      <td>value</td>
+      <td>yes</td>
+      <td>low to high</td>
+      <td><span class="function">arsort</span></td>
+     </tr>
+
+     <tr>
+      <td><span class="function">arsort</span></td>
+      <td>value</td>
+      <td>yes</td>
+      <td>high to low</td>
+      <td><span class="function">asort</span></td>
+     </tr>
+
+     <tr>
+      <td><span class="function">krsort</span></td>
+      <td>key</td>
+      <td>yes</td>
+      <td>high to low</td>
+      <td><span class="function">ksort</span></td>
+     </tr>
+
+     <tr>
+      <td><span class="function">ksort</span></td>
+      <td>key</td>
+      <td>yes</td>
+      <td>low to high</td>
+      <td><span class="function">asort</span></td>
+     </tr>
+
+     <tr>
+      <td><span class="function">natcasesort</span></td>
+      <td>value</td>
+      <td>yes</td>
+      <td>natural, case insensitive</td>
+      <td><span class="function">natsort</span></td>
+     </tr>
+
+     <tr>
+      <td><span class="function">natsort</span></td>
+      <td>value</td>
+      <td>yes</td>
+      <td>natural</td>
+      <td><span class="function">natcasesort</span></td>
+     </tr>
+
+     <tr>
+      <td><span class="function">rsort</span></td>
+      <td>value</td>
+      <td>no</td>
+      <td>high to low</td>
+      <td><span class="function">sort</span></td>
+     </tr>
+
+     <tr>
+      <td><span class="function">shuffle</span></td>
+      <td>value</td>
+      <td>no</td>
+      <td>random</td>
+      <td><span class="function">array_rand</span></td>
+     </tr>
+
+     <tr>
+      <td><span class="function">sort</span></td>
+      <td>value</td>
+      <td>no</td>
+      <td>low to high</td>
+      <td><span class="function">rsort</span></td>
+     </tr>
+
+     <tr>
+      <td><span class="function">uasort</span></td>
+      <td>value</td>
+      <td>yes</td>
+      <td>user defined</td>
+      <td><span class="function">uksort</span></td>
+     </tr>
+
+     <tr>
+      <td><span class="function">uksort</span></td>
+      <td>key</td>
+      <td>yes</td>
+      <td>user defined</td>
+      <td><span class="function">uasort</span></td>
+     </tr>
+
+     <tr>
+      <td><span class="function">usort</span></td>
+      <td>value</td>
+      <td>no</td>
+      <td>user defined</td>
+      <td><span class="function">uasort</span></td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </p>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,972 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: OAuth</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.webservice.html">Web Services</a></li>
+  <li class="active"><a href="book.oauth.html">OAuth</a></li>
+  <li><a href="book.sca.html">SCA</a></li>
+  <li><a href="book.soap.html">SOAP</a></li>
+  <li><a href="book.yar.html">Yar</a></li>
+  <li><a href="book.xmlrpc.html">XML-RPC</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="refs.webservice.html">Web Services</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="intro.oauth.html">Introduction</a></div>
+                <div class="up"><a href="refs.webservice.html">Web Services</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="book.oauth" class="book">
+ <h1>OAuth</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="intro.oauth.html">Introduction</a></li>
+<li><a href="oauth.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_title">
+<li><a href="oauth.requirements.html">Requirements</a></li>
+<li><a href="oauth.installation.html">Installation</a></li>
+<li><a href="oauth.configuration.html">Runtime Configuration</a></li>
+<li><a href="oauth.resources.html">Resource Types</a></li>
+</ul>
+</li>
+<li><a href="oauth.constants.html">Predefined Constants</a></li>
+<li><a href="oauth.examples.html">Examples</a><ul class="chunklist chunklist_title">
+<li><a href="oauth.examples.fireeagle.html">FireEagle</a></li>
+</ul>
+</li>
+<li><a href="ref.oauth.html">OAuth Functions</a><ul class="chunklist chunklist_title">
+<li><a href="function.oauth-get-sbs.html">oauth_get_sbs</a> — Generate a Signature Base String</li>
+<li><a href="function.oauth-urlencode.html">oauth_urlencode</a> — Encode a URI to RFC 3986</li>
+</ul>
+</li>
+<li><a href="class.oauth.html">OAuth</a> — The OAuth class<ul class="chunklist chunklist_title">
+<li><a href="oauth.construct.html">OAuth::__construct</a> — Create a new OAuth object</li>
+<li><a href="oauth.destruct.html">OAuth::__destruct</a> — The destructor</li>
+<li><a href="oauth.disabledebug.html">OAuth::disableDebug</a> — Turn off verbose debugging</li>
+<li><a href="oauth.disableredirects.html">OAuth::disableRedirects</a> — Turn off redirects</li>
+<li><a href="oauth.disablesslchecks.html">OAuth::disableSSLChecks</a> — Turn off SSL checks</li>
+<li><a href="oauth.enabledebug.html">OAuth::enableDebug</a> — Turn on verbose debugging</li>
+<li><a href="oauth.enableredirects.html">OAuth::enableRedirects</a> — Turn on redirects</li>
+<li><a href="oauth.enablesslchecks.html">OAuth::enableSSLChecks</a> — Turn on SSL checks</li>
+<li><a href="oauth.fetch.html">OAuth::fetch</a> — Fetch an OAuth protected resource</li>
+<li><a href="oauth.generatesignature.html">OAuth::generateSignature</a> — Generate a signature</li>
+<li><a href="oauth.getaccesstoken.html">OAuth::getAccessToken</a> — Fetch an access token</li>
+<li><a href="oauth.getcapath.html">OAuth::getCAPath</a> — Gets CA information</li>
+<li><a href="oauth.getlastresponse.html">OAuth::getLastResponse</a> — Get the last response</li>
+<li><a href="oauth.getlastresponseheaders.html">OAuth::getLastResponseHeaders</a> — Get headers for last response</li>
+<li><a href="oauth.getlastresponseinfo.html">OAuth::getLastResponseInfo</a> — Get HTTP information about the last response</li>
+<li><a href="oauth.getrequestheader.html">OAuth::getRequestHeader</a> — Generate OAuth header string signature</li>
+<li><a href="oauth.getrequesttoken.html">OAuth::getRequestToken</a> — Fetch a request token</li>
+<li><a href="oauth.setauthtype.html">OAuth::setAuthType</a> — Set authorization type</li>
+<li><a href="oauth.setcapath.html">OAuth::setCAPath</a> — Set CA path and info</li>
+<li><a href="oauth.setnonce.html">OAuth::setNonce</a> — Set the nonce for subsequent requests</li>
+<li><a href="oauth.setrequestengine.html">OAuth::setRequestEngine</a> — The setRequestEngine purpose</li>
+<li><a href="oauth.setrsacertificate.html">OAuth::setRSACertificate</a> — Set the RSA certificate</li>
+<li><a href="oauth.setsslchecks.html">OAuth::setSSLChecks</a> — Tweak specific SSL checks for requests.</li>
+<li><a href="oauth.settimestamp.html">OAuth::setTimestamp</a> — Set the timestamp</li>
+<li><a href="oauth.settoken.html">OAuth::setToken</a> — Sets the token and secret</li>
+<li><a href="oauth.setversion.html">OAuth::setVersion</a> — Set the OAuth version</li>
+</ul>
+</li>
+<li><a href="class.oauthprovider.html">OAuthProvider</a> — The OAuthProvider class<ul class="chunklist chunklist_title">
+<li><a href="oauthprovider.addrequiredparameter.html">OAuthProvider::addRequiredParameter</a> — Add required parameters</li>
+<li><a href="oauthprovider.callconsumerhandler.html">OAuthProvider::callconsumerHandler</a> — Calls the consumerNonceHandler callback</li>
+<li><a href="oauthprovider.calltimestampnoncehandler.html">OAuthProvider::callTimestampNonceHandler</a> — Calls the timestampNonceHandler callback</li>
+<li><a href="oauthprovider.calltokenhandler.html">OAuthProvider::calltokenHandler</a> — Calls the tokenNonceHandler callback</li>
+<li><a href="oauthprovider.checkoauthrequest.html">OAuthProvider::checkOAuthRequest</a> — Check an oauth request</li>
+<li><a href="oauthprovider.construct.html">OAuthProvider::__construct</a> — Constructs a new OAuthProvider object</li>
+<li><a href="oauthprovider.consumerhandler.html">OAuthProvider::consumerHandler</a> — Set the consumerHandler handler callback</li>
+<li><a href="oauthprovider.generatetoken.html">OAuthProvider::generateToken</a> — Generate a random token</li>
+<li><a href="oauthprovider.is2leggedendpoint.html">OAuthProvider::is2LeggedEndpoint</a> — is2LeggedEndpoint</li>
+<li><a href="oauthprovider.isrequesttokenendpoint.html">OAuthProvider::isRequestTokenEndpoint</a> — Sets isRequestTokenEndpoint</li>
+<li><a href="oauthprovider.removerequiredparameter.html">OAuthProvider::removeRequiredParameter</a> — Remove a required parameter</li>
+<li><a href="oauthprovider.reportproblem.html">OAuthProvider::reportProblem</a> — Report a problem</li>
+<li><a href="oauthprovider.setparam.html">OAuthProvider::setParam</a> — Set a parameter</li>
+<li><a href="oauthprovider.setrequesttokenpath.html">OAuthProvider::setRequestTokenPath</a> — Set request token path</li>
+<li><a href="oauthprovider.timestampnoncehandler.html">OAuthProvider::timestampNonceHandler</a> — Set the timestampNonceHandler handler callback</li>
+<li><a href="oauthprovider.tokenhandler.html">OAuthProvider::tokenHandler</a> — Set the tokenHandler handler callback</li>
+</ul>
+</li>
+<li><a href="class.oauthexception.html">OAuthException</a> — OAuthException class</li>
+</ul>
+
+
+ 
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ <h1 class="title">The OAuth class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="oauth.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The OAuth extension provides a simple interface to interact with
+    data providers using the OAuth HTTP specification to protect
+    private resources.
+   </p>
+  </div>
+
+
+  <div class="section" id="oauth.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">OAuth</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">OAuth</strong>
+     </span>
+     {</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$debug</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$sslChecks</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$debugInfo</var>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$consumer_key</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$consumer_secret</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$signature_method</code><span class="initializer"> = <strong><code>OAUTH_SIG_METHOD_HMACSHA1</code></strong></span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$auth_type</code><span class="initializer"> = 0</span></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">__destruct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">disableDebug</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">disableRedirects</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">disableSSLChecks</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">enableDebug</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">enableRedirects</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">enableSSLChecks</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">fetch</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$protected_resource_url</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$extra_parameters</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$http_method</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$http_headers</code></span>
+  ]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">generateSignature</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$http_method</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$url</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$extra_parameters</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getAccessToken</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$access_token_url</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$auth_session_handle</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$verifier_token</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$http_method</code></span>
+  ]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getCAPath</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getLastResponse</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getLastResponseHeaders</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getLastResponseInfo</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getRequestHeader</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$http_method</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$url</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$extra_parameters</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getRequestToken</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$request_token_url</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$callback_url</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$http_method</code></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">setAuthType</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$auth_type</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">setCAPath</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$ca_path</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$ca_info</code></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">setNonce</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$nonce</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">setRequestEngine</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$reqengine</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">setRSACertificate</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$cert</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setSSLChecks</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$sslcheck</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">setTimestamp</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$timestamp</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setToken</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$token</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$token_secret</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setVersion</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$version</code></span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+  <div class="section" id="oauth.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="oauth.props.debug"><var class="varname">debug</var></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+    
+     <dt id="oauth.props.sslchecks"><var class="varname">sslChecks</var></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+    
+     <dt id="oauth.props.debuginfo"><var class="varname">debugInfo</var></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+
+ <h1 class="title">The OAuthProvider class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="oauthprovider.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Manages an OAuth provider class.
+   </p>
+   <p class="para">
+    See also an external in-depth tutorial titled
+    <a href="http://toys.lerdorf.com/archives/55-Writing-an-OAuth-Provider-Service.html" class="link external">&raquo;&nbsp;Writing an OAuth Provider Service</a>,
+    which takes a hands-on approach to providing this service. There are also 
+    <a href="http://svn.php.net/viewvc/pecl/oauth/trunk/examples" class="link external">&raquo;&nbsp;OAuth provider examples</a> within the OAuth
+    extensions sources.
+   </p>
+  </div>
+
+
+  <div class="section" id="oauthprovider.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">OAuthProvider</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">OAuthProvider</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">addRequiredParameter</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$req_params</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">callconsumerHandler</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">callTimestampNonceHandler</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">calltokenHandler</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">checkOAuthRequest</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$uri</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$method</code></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ([ <span class="methodparam"><span class="type">array</span> <code class="parameter">$params_array</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">consumerHandler</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback_function</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">string</span> <span class="methodname">generateToken</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$size</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$strong</code><span class="initializer"> = false</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">is2LeggedEndpoint</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$params_array</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">isRequestTokenEndpoint</span>
+    ( <span class="methodparam"><span class="type">bool</span> <code class="parameter">$will_issue_request_token</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">removeRequiredParameter</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$req_params</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">string</span> <span class="methodname">reportProblem</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$oauthexception</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$send_headers</code><span class="initializer"> = true</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setParam</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$param_key</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$param_val</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setRequestTokenPath</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$path</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">timestampNonceHandler</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback_function</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">tokenHandler</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback_function</code></span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">OAuthException class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="oauthexception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    This exception is thrown when exceptional errors occur while using the OAuth extension and contains useful debugging information.
+   </p>
+  </div>
+
+
+  <div class="section" id="oauthexception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">OAuthException</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">OAuthException</strong>
+     </span>
+     
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> Exception</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$lastResponse</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$debugInfo</var>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$message</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$code</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$file</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$line</var>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">Throwable</span> <span class="methodname">Exception::getPrevious</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">Exception::getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getFile</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">Exception::getLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">Exception::getTrace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getTraceAsString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span>  <span class="methodname">Exception::__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">Exception::__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+   }</div>
+
+
+  </div>
+
+  
+
+  <div class="section" id="oauthexception.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="oauthexception.props.lastresponse"><var class="varname">lastResponse</var></dt>
+
+     <dd>
+
+      <p class="para">The response of the exception which occurred, if any</p>
+     </dd>
+
+    
+    
+     <dt id="oauthexception.props.debuginfo"><var class="varname">debugInfo</var></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+ </div>
+
+
+
+
+ 
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

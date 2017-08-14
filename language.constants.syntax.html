@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Syntax</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="langref.html">Language Reference</a></li>
+  <li class="header up"><a href="language.constants.html">Constants</a></li>
+  <li class="active"><a href="language.constants.syntax.html">Syntax</a></li>
+  <li><a href="language.constants.predefined.html">Magic constants</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="language.constants.html">Constants</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="language.constants.predefined.html">Magic constants</a></div>
+                <div class="up"><a href="language.constants.html">Constants</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="language.constants.syntax" class="sect1">
+   <h2 class="title">Syntax</h2>
+   <p class="simpara">
+    You can define a constant by using the 
+    <span class="function">define</span>-function or by using the 
+    <em>const</em> keyword outside a class definition as 
+    of PHP 5.3.0. While <span class="function">define</span> allows a constant to be
+    defined to an arbitrary expression, the <em>const</em> keyword has
+    restrictions as outlined in the next paragraph.
+    Once a constant is defined, it can never be
+    changed or undefined.
+   </p>
+   <p class="simpara">
+    When using the <em>const</em> keyword,
+    only scalar data (<span class="type">boolean</span>, <span class="type">integer</span>,
+    <span class="type">float</span> and <span class="type">string</span>) can be contained 
+    in constants prior to PHP 5.6. From PHP 5.6 onwards, it is possible to 
+    define a constant as a scalar expression, and it is also possible
+    to define an <span class="type">array</span> constant. It is possible to define
+    constants as a <span class="type">resource</span>, but it should be avoided, as it can
+    cause unexpected results.
+   </p>
+   <p class="simpara">
+    You can get the value of a constant by simply specifying its name.
+    Unlike with variables, you should <em class="emphasis">not</em> prepend
+    a constant with a <em>$</em>.
+    You can also use the function <span class="function">constant</span> to
+    read a constant&#039;s value if you wish to obtain the constant&#039;s name
+    dynamically. 
+    Use <span class="function">get_defined_constants</span> to get a list of 
+    all defined constants.
+   </p>
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <span class="simpara">
+     Constants and (global) variables are in a different namespace. 
+     This implies that for example <strong><code>TRUE</code></strong> and 
+     <var class="varname">$TRUE</var> are generally different.
+    </span>
+   </p></blockquote>
+   <p class="simpara">
+    If you use an undefined constant, PHP assumes that you mean
+    the name of the constant itself, just as if you called it as
+    a <span class="type">string</span> (CONSTANT vs &quot;CONSTANT&quot;).  An error of level
+    <a href="ref.errorfunc.html" class="link">E_NOTICE</a> will be issued
+    when this happens.  See also the manual entry on why 
+    <a href="language.types.array.html#language.types.array.foo-bar" class="link">$foo[bar]</a> is
+    wrong (unless you first <span class="function">define</span>
+    <em>bar</em> as a constant). This does not apply to <a href="language.namespaces.rules.html" class="link">(fully) qualified constants</a>,
+    which will raise a fatal error if undefined. If you simply want to check if a
+    constant is set, use the <span class="function">defined</span> function.
+   </p>
+   <p class="para">
+    These are the differences between constants and variables:
+    <ul class="itemizedlist">
+     <li class="listitem">
+      <span class="simpara">
+       Constants do not have a dollar sign (<em>$</em>)
+       before them;
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       Prior to PHP 5.3, Constants may only be defined using the
+       <span class="function">define</span> function, not by simple assignment;
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       Constants may be defined and accessed anywhere without regard
+       to variable scoping rules;
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       Constants may not be redefined or undefined once they have been
+       set; and
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       Constants may only evaluate to scalar values. As of PHP 5.6 it is possible
+       to define array constant using <em>const</em> keywords and as of
+       PHP 7 array constants can also be defined using <span class="function">define</span>
+       You may use arrays in constant scalar expressions
+       (for example, <em>const FOO = array(1,2,3)[0];</em>),
+       but the end result must be a value of allowed type.
+       </span>
+     </li>
+    </ul>
+   </p>
+
+   <p class="para">
+    <div class="example" id="example-92">
+     <p><strong>Example #1 Defining Constants</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />define</span><span style="color: #007700">(</span><span style="color: #DD0000">"CONSTANT"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;world."</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">CONSTANT</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;outputs&nbsp;"Hello&nbsp;world."<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">Constant</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;outputs&nbsp;"Constant"&nbsp;and&nbsp;issues&nbsp;a&nbsp;notice.<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+
+   <p class="para">
+    <div class="example" id="example-93">
+     <p><strong>Example #2 Defining Constants using the <em>const</em> keyword</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Works&nbsp;as&nbsp;of&nbsp;PHP&nbsp;5.3.0<br /></span><span style="color: #007700">const&nbsp;</span><span style="color: #0000BB">CONSTANT&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Hello&nbsp;World'</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #0000BB">CONSTANT</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Works&nbsp;as&nbsp;of&nbsp;PHP&nbsp;5.6.0<br /></span><span style="color: #007700">const&nbsp;</span><span style="color: #0000BB">ANOTHER_CONST&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">CONSTANT</span><span style="color: #007700">.</span><span style="color: #DD0000">';&nbsp;Goodbye&nbsp;World'</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">ANOTHER_CONST</span><span style="color: #007700">;<br /><br />const&nbsp;</span><span style="color: #0000BB">ANIMALS&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'dog'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'cat'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'bird'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">ANIMALS</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;outputs&nbsp;"cat"<br /><br />//&nbsp;Works&nbsp;as&nbsp;of&nbsp;PHP&nbsp;7<br /></span><span style="color: #0000BB">define</span><span style="color: #007700">(</span><span style="color: #DD0000">'ANIMALS'</span><span style="color: #007700">,&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'dog'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'cat'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'bird'<br /></span><span style="color: #007700">));<br />echo&nbsp;</span><span style="color: #0000BB">ANIMALS</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;outputs&nbsp;"cat"<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <p class="para">
+     As opposed to defining constants using <span class="function">define</span>,
+     constants defined using the <em>const</em> keyword must be
+     declared at the top-level scope because they are defined at compile-time.
+     This means that they cannot be declared inside functions, loops,
+     <em>if</em> statements or <em>try</em>/
+     <em>catch</em> blocks.
+    </p>
+   </p></blockquote>
+
+   <p class="simpara">
+    See also <a href="language.oop5.constants.html" class="link">Class Constants</a>.
+   </p>
+  </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

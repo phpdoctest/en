@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Generate a new signed public key and challenge</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.crypto.html">Cryptography Extensions</a></li>
+  <li class="header up"><a href="book.openssl.html">OpenSSL</a></li>
+  <li class="header up"><a href="ref.openssl.html">OpenSSL Functions</a></li>
+  <li><a href="function.openssl-cipher-iv-length.html">openssl_cipher_iv_length</a></li>
+  <li><a href="function.openssl-csr-export-to-file.html">openssl_csr_export_to_file</a></li>
+  <li><a href="function.openssl-csr-export.html">openssl_csr_export</a></li>
+  <li><a href="function.openssl-csr-get-public-key.html">openssl_csr_get_public_key</a></li>
+  <li><a href="function.openssl-csr-get-subject.html">openssl_csr_get_subject</a></li>
+  <li><a href="function.openssl-csr-new.html">openssl_csr_new</a></li>
+  <li><a href="function.openssl-csr-sign.html">openssl_csr_sign</a></li>
+  <li><a href="function.openssl-decrypt.html">openssl_decrypt</a></li>
+  <li><a href="function.openssl-dh-compute-key.html">openssl_dh_compute_key</a></li>
+  <li><a href="function.openssl-digest.html">openssl_digest</a></li>
+  <li><a href="function.openssl-encrypt.html">openssl_encrypt</a></li>
+  <li><a href="function.openssl-error-string.html">openssl_error_string</a></li>
+  <li><a href="function.openssl-free-key.html">openssl_free_key</a></li>
+  <li><a href="function.openssl-get-cert-locations.html">openssl_get_cert_locations</a></li>
+  <li><a href="function.openssl-get-cipher-methods.html">openssl_get_cipher_methods</a></li>
+  <li><a href="function.openssl-get-md-methods.html">openssl_get_md_methods</a></li>
+  <li><a href="function.openssl-get-privatekey.html">openssl_get_privatekey</a></li>
+  <li><a href="function.openssl-get-publickey.html">openssl_get_publickey</a></li>
+  <li><a href="function.openssl-open.html">openssl_open</a></li>
+  <li><a href="function.openssl-pbkdf2.html">openssl_pbkdf2</a></li>
+  <li><a href="function.openssl-pkcs12-export-to-file.html">openssl_pkcs12_export_to_file</a></li>
+  <li><a href="function.openssl-pkcs12-export.html">openssl_pkcs12_export</a></li>
+  <li><a href="function.openssl-pkcs12-read.html">openssl_pkcs12_read</a></li>
+  <li><a href="function.openssl-pkcs7-decrypt.html">openssl_pkcs7_decrypt</a></li>
+  <li><a href="function.openssl-pkcs7-encrypt.html">openssl_pkcs7_encrypt</a></li>
+  <li><a href="function.openssl-pkcs7-sign.html">openssl_pkcs7_sign</a></li>
+  <li><a href="function.openssl-pkcs7-verify.html">openssl_pkcs7_verify</a></li>
+  <li><a href="function.openssl-pkey-export-to-file.html">openssl_pkey_export_to_file</a></li>
+  <li><a href="function.openssl-pkey-export.html">openssl_pkey_export</a></li>
+  <li><a href="function.openssl-pkey-free.html">openssl_pkey_free</a></li>
+  <li><a href="function.openssl-pkey-get-details.html">openssl_pkey_get_details</a></li>
+  <li><a href="function.openssl-pkey-get-private.html">openssl_pkey_get_private</a></li>
+  <li><a href="function.openssl-pkey-get-public.html">openssl_pkey_get_public</a></li>
+  <li><a href="function.openssl-pkey-new.html">openssl_pkey_new</a></li>
+  <li><a href="function.openssl-private-decrypt.html">openssl_private_decrypt</a></li>
+  <li><a href="function.openssl-private-encrypt.html">openssl_private_encrypt</a></li>
+  <li><a href="function.openssl-public-decrypt.html">openssl_public_decrypt</a></li>
+  <li><a href="function.openssl-public-encrypt.html">openssl_public_encrypt</a></li>
+  <li><a href="function.openssl-random-pseudo-bytes.html">openssl_random_pseudo_bytes</a></li>
+  <li><a href="function.openssl-seal.html">openssl_seal</a></li>
+  <li><a href="function.openssl-sign.html">openssl_sign</a></li>
+  <li><a href="function.openssl-spki-export-challenge.html">openssl_spki_export_challenge</a></li>
+  <li><a href="function.openssl-spki-export.html">openssl_spki_export</a></li>
+  <li class="active"><a href="function.openssl-spki-new.html">openssl_spki_new</a></li>
+  <li><a href="function.openssl-spki-verify.html">openssl_spki_verify</a></li>
+  <li><a href="function.openssl-verify.html">openssl_verify</a></li>
+  <li><a href="function.openssl-x509-check-private-key.html">openssl_x509_check_private_key</a></li>
+  <li><a href="function.openssl-x509-checkpurpose.html">openssl_x509_checkpurpose</a></li>
+  <li><a href="function.openssl-x509-export-to-file.html">openssl_x509_export_to_file</a></li>
+  <li><a href="function.openssl-x509-export.html">openssl_x509_export</a></li>
+  <li><a href="function.openssl-x509-fingerprint.html">openssl_x509_fingerprint</a></li>
+  <li><a href="function.openssl-x509-free.html">openssl_x509_free</a></li>
+  <li><a href="function.openssl-x509-parse.html">openssl_x509_parse</a></li>
+  <li><a href="function.openssl-x509-read.html">openssl_x509_read</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.openssl-spki-export.html">openssl_spki_export</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.openssl-spki-verify.html">openssl_spki_verify</a></div>
+                <div class="up"><a href="ref.openssl.html">OpenSSL Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.openssl-spki-new" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">openssl_spki_new</h1>
+  <p class="refpurpose">Generate a new signed public key and challenge</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.openssl-spki-new-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname">openssl_spki_new</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter reference">&$privkey</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter reference">&$challenge</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$algorithm</code><span class="initializer"> = 0</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Generates a signed public key and challenge using specified hashing algorithm
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.openssl-spki-new-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+     <dt>
+<code class="parameter">privkey</code></dt>
+
+     <dd>
+
+      <p class="para">
+       <code class="parameter">privkey</code> should be set to a private key that was
+       previously generated by <span class="function">openssl_pkey_new</span> (or
+       otherwise obtained from the other openssl_pkey family of functions).
+       The corresponding public portion of the key will be used to sign the
+       CSR.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">challenge</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The challenge associated to associate with the SPKAC
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">algorithm</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The digest algorithm. See openssl_get_md_method().
+      </p>
+     </dd>
+
+    
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.openssl-spki-new-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns a signed public key and challenge string or NULL on failure.
+  </p>
+ </div>
+
+
+  <div class="refsect1 errors" id="refsect1-function.openssl-spki-new-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   Emits an <strong><code>E_WARNING</code></strong> level error if an unknown signature algorithm
+   is passed via the <code class="parameter">algorithm</code> parameter.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.openssl-spki-new-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-953">
+   <p><strong>Example #1 <span class="function">openssl_spki_new</span> example</strong></p>
+   <div class="example-contents"><p>
+     Generate a new SPKAC with the default digest (MD5)
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$pkey&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">openssl_pkey_new</span><span style="color: #007700">(</span><span style="color: #DD0000">'secret&nbsp;password'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$spkac&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">openssl_spki_new</span><span style="color: #007700">(</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'testing'</span><span style="color: #007700">);<br /><br />if&nbsp;(</span><span style="color: #0000BB">$spkac&nbsp;</span><span style="color: #007700">!==&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$spkac</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"SPKAC&nbsp;generation&nbsp;failed"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+MIICRzCCAS8wggEiMA0GCSqGSIb3DQEBAQUAA4IBDwAwggEKAoIBAQDM3V3sS4o4
+mB9dczziRnjGAmSp+JwPrHoYMAFGvDNmZGyiWfU586X4BKs++BAj7e/FsAfno0Hd
+hN9FwpCNFSox30L03nQvLYJE7f/WqigwBeMRT7Op/xvFks4sT70xP2HRYv4KqP9a
+WRcKU6cFH8VxhFhqM2txEIxZKdFLaL28yT7bEDmcglf4JLDdgNMb9rET1dkgtKE6
+dOaJHPGjf1uvnOH4YwkQr7n4sLUR3Kdbh0ZJAFuQVDZulo+LLzxBBkqJJcB6FhF+
+oXCdHTKZnqAhpWDz+NXYytAmevab6IYm5TWPWsJUv1YKJA5lg2mXbbloIZlN9Mgc
+i9fi03bdw+crAgMBAAEWB3Rlc3RpbmcwDQYJKoZIhvcNAQEEBQADggEBALyUvP/o
+pPSoWBlorFyZ2RnGwKf9qMpE0q2IJP7G3oDR4LyK/m933DUiZ+YnqThrH/CWb4Ek
+y5I3OCyl3S4wCuU1ibZZwDVwYShr5ELp0J9PEf7qMQZOhNsizoC7k+Czb2xB6hYW
+sKfsfTKm3cXBtH3fdgc/Z1Z7VSWnAzYo38snqm72NTf5yFRnrQdphNNXi+kn1zHA
+lxXRyFDXHOcYsOnwAWfyXFA4QDHQ0ezz0UoCY8gJXovcZb4GRYqOLUAsF2HcNboy
+29WN8VqE29sL9QxVZFlwMcqyoLcNnyw38GvNvAGqSvzzbnEFP2MAQXJVe0H0hdp/
+MML5G2iNVgNozAo=
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.openssl-spki-new-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">openssl_spki_new</span></li>
+    <li class="member"><span class="function">openssl_spki_export_challenge</span></li>
+    <li class="member"><span class="function">openssl_spki_export</span></li>
+    <li class="member"><span class="function">openssl_csr_new</span></li>
+    <li class="member"><span class="function">openssl_csr_sign</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

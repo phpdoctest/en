@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: SNMP Functions</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li class="header up"><a href="book.snmp.html">SNMP</a></li>
+  <li><a href="intro.snmp.html">Introduction</a></li>
+  <li><a href="snmp.setup.html">Installing/Configuring</a></li>
+  <li><a href="snmp.constants.html">Predefined Constants</a></li>
+  <li class="active"><a href="ref.snmp.html">SNMP Functions</a></li>
+  <li><a href="class.snmp.html">SNMP</a></li>
+  <li><a href="class.snmpexception.html">SNMPException</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="snmp.constants.html">Predefined Constants</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.snmp-get-quick-print.html">snmp_get_quick_print</a></div>
+                <div class="up"><a href="book.snmp.html">SNMP</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="ref.snmp" class="reference">
+ <h1 class="title">SNMP Functions</h1>
+  
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<strong>Table of Contents</strong><ul class="chunklist chunklist_reference">
+<li><a href="function.snmp-get-quick-print.html">snmp_get_quick_print</a> — Fetches the current value of the UCD library's quick_print setting</li>
+<li><a href="function.snmp-get-valueretrieval.html">snmp_get_valueretrieval</a> — Return the method how the SNMP values will be returned</li>
+<li><a href="function.snmp-read-mib.html">snmp_read_mib</a> — Reads and parses a MIB file into the active MIB tree</li>
+<li><a href="function.snmp-set-enum-print.html">snmp_set_enum_print</a> — Return all values that are enums with their enum value instead of the raw integer</li>
+<li><a href="function.snmp-set-oid-numeric-print.html">snmp_set_oid_numeric_print</a> — Set the OID output format</li>
+<li><a href="function.snmp-set-oid-output-format.html">snmp_set_oid_output_format</a> — Set the OID output format</li>
+<li><a href="function.snmp-set-quick-print.html">snmp_set_quick_print</a> — Set the value of quick_print within the UCD SNMP library</li>
+<li><a href="function.snmp-set-valueretrieval.html">snmp_set_valueretrieval</a> — Specify the method how the SNMP values will be returned</li>
+<li><a href="function.snmp2-get.html">snmp2_get</a> — Fetch an SNMP object</li>
+<li><a href="function.snmp2-getnext.html">snmp2_getnext</a> — Fetch the SNMP object which follows the given object id</li>
+<li><a href="function.snmp2-real-walk.html">snmp2_real_walk</a> — Return all objects including their respective object ID within the specified one</li>
+<li><a href="function.snmp2-set.html">snmp2_set</a> — Set the value of an SNMP object</li>
+<li><a href="function.snmp2-walk.html">snmp2_walk</a> — Fetch all the SNMP objects from an agent</li>
+<li><a href="function.snmp3-get.html">snmp3_get</a> — Fetch an SNMP object</li>
+<li><a href="function.snmp3-getnext.html">snmp3_getnext</a> — Fetch the SNMP object which follows the given object id</li>
+<li><a href="function.snmp3-real-walk.html">snmp3_real_walk</a> — Return all objects including their respective object ID within the specified one</li>
+<li><a href="function.snmp3-set.html">snmp3_set</a> — Set the value of an SNMP object</li>
+<li><a href="function.snmp3-walk.html">snmp3_walk</a> — Fetch all the SNMP objects from an agent</li>
+<li><a href="function.snmpget.html">snmpget</a> — Fetch an SNMP object</li>
+<li><a href="function.snmpgetnext.html">snmpgetnext</a> — Fetch the SNMP object which follows the given object id</li>
+<li><a href="function.snmprealwalk.html">snmprealwalk</a> — Return all objects including their respective object ID within the specified one</li>
+<li><a href="function.snmpset.html">snmpset</a> — Set the value of an SNMP object</li>
+<li><a href="function.snmpwalk.html">snmpwalk</a> — Fetch all the SNMP objects from an agent</li>
+<li><a href="function.snmpwalkoid.html">snmpwalkoid</a> — Query for a tree of information about a network entity</li>
+</ul>
+</ol>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

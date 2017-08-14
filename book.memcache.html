@@ -1,0 +1,438 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Memcache</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li><a href="book.chdb.html">chdb</a></li>
+  <li><a href="book.curl.html">cURL</a></li>
+  <li><a href="book.event.html">Event</a></li>
+  <li><a href="book.fam.html">FAM</a></li>
+  <li><a href="book.ftp.html">FTP</a></li>
+  <li><a href="book.gearman.html">Gearman</a></li>
+  <li><a href="book.net-gopher.html">Gopher</a></li>
+  <li><a href="book.gupnp.html">Gupnp</a></li>
+  <li><a href="book.hwapi.html">Hyperwave API</a></li>
+  <li><a href="book.ldap.html">LDAP</a></li>
+  <li class="active"><a href="book.memcache.html">Memcache</a></li>
+  <li><a href="book.memcached.html">Memcached</a></li>
+  <li><a href="book.mqseries.html">mqseries</a></li>
+  <li><a href="book.network.html">Network</a></li>
+  <li><a href="book.rrd.html">RRD</a></li>
+  <li><a href="book.sam.html">SAM</a></li>
+  <li><a href="book.snmp.html">SNMP</a></li>
+  <li><a href="book.sockets.html">Sockets</a></li>
+  <li><a href="book.ssh2.html">SSH2</a></li>
+  <li><a href="book.stomp.html">Stomp</a></li>
+  <li><a href="book.svm.html">SVM</a></li>
+  <li><a href="book.svn.html">SVN</a></li>
+  <li><a href="book.tcpwrap.html">TCP</a></li>
+  <li><a href="book.varnish.html">Varnish</a></li>
+  <li><a href="book.yaz.html">YAZ</a></li>
+  <li><a href="book.nis.html">YP/NIS</a></li>
+  <li><a href="book.zmq.html">0MQ messaging</a></li>
+  <li><a href="book.zookeeper.html">ZooKeeper</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.ldap-unbind.html">ldap_unbind</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="intro.memcache.html">Introduction</a></div>
+                <div class="up"><a href="refs.remote.other.html">Other Services</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="book.memcache" class="book">
+ <h1>Memcache</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="intro.memcache.html">Introduction</a></li>
+<li><a href="memcache.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_title">
+<li><a href="memcache.requirements.html">Requirements</a></li>
+<li><a href="memcache.installation.html">Installation</a></li>
+<li><a href="memcache.ini.html">Runtime Configuration</a></li>
+<li><a href="memcache.resources.html">Resource Types</a></li>
+</ul>
+</li>
+<li><a href="memcache.constants.html">Predefined Constants</a></li>
+<li><a href="memcache.examples.html">Examples</a><ul class="chunklist chunklist_title">
+<li><a href="memcache.examples-overview.html">Basic usage</a></li>
+</ul>
+</li>
+<li><a href="class.memcache.html">Memcache</a> — The Memcache class<ul class="chunklist chunklist_title">
+<li><a href="memcache.add.html">Memcache::add</a> — Add an item to the server</li>
+<li><a href="memcache.addserver.html">Memcache::addServer</a> — Add a memcached server to connection pool</li>
+<li><a href="memcache.close.html">Memcache::close</a> — Close memcached server connection</li>
+<li><a href="memcache.connect.html">Memcache::connect</a> — Open memcached server connection</li>
+<li><a href="memcache.decrement.html">Memcache::decrement</a> — Decrement item's value</li>
+<li><a href="memcache.delete.html">Memcache::delete</a> — Delete item from the server</li>
+<li><a href="memcache.flush.html">Memcache::flush</a> — Flush all existing items at the server</li>
+<li><a href="memcache.get.html">Memcache::get</a> — Retrieve item from the server</li>
+<li><a href="memcache.getextendedstats.html">Memcache::getExtendedStats</a> — Get statistics from all servers in pool</li>
+<li><a href="memcache.getserverstatus.html">Memcache::getServerStatus</a> — Returns server status</li>
+<li><a href="memcache.getstats.html">Memcache::getStats</a> — Get statistics of the server</li>
+<li><a href="memcache.getversion.html">Memcache::getVersion</a> — Return version of the server</li>
+<li><a href="memcache.increment.html">Memcache::increment</a> — Increment item's value</li>
+<li><a href="memcache.pconnect.html">Memcache::pconnect</a> — Open memcached server persistent connection</li>
+<li><a href="memcache.replace.html">Memcache::replace</a> — Replace value of the existing item</li>
+<li><a href="memcache.set.html">Memcache::set</a> — Store data at the server</li>
+<li><a href="memcache.setcompressthreshold.html">Memcache::setCompressThreshold</a> — Enable automatic compression of large values</li>
+<li><a href="memcache.setserverparams.html">Memcache::setServerParams</a> — Changes server parameters and status at runtime</li>
+</ul>
+</li>
+<li><a href="ref.memcache.html">Memcache Functions</a><ul class="chunklist chunklist_title">
+<li><a href="function.memcache-debug.html">memcache_debug</a> — Turn debug output on/off</li>
+</ul>
+</li>
+</ul>
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The Memcache class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="memcache.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Represents a connection to a set of memcache servers.
+   </p>
+  </div>
+
+
+  <div class="section" id="memcache.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">Memcache</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">Memcache</strong>
+     </span>
+     {</div>
+
+    
+    <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">add</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$key</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$var</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flag</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$expire</code></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">addServer</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$host</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$port</code><span class="initializer"> = 11211</span></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$persistent</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$weight</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$timeout</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$retry_interval</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$status</code></span>
+   [, <span class="methodparam"><span class="type">callable</span> <code class="parameter">$failure_callback</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$timeoutms</code></span>
+  ]]]]]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">close</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">connect</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$host</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$port</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$timeout</code></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname">decrement</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$key</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$value</code><span class="initializer"> = 1</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">delete</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$key</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$timeout</code><span class="initializer"> = 0</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">flush</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname">get</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$key</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter reference">&$flags</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname">getExtendedStats</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$type</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$slabid</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$limit</code><span class="initializer"> = 100</span></span>
+  ]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname">getServerStatus</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$host</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$port</code><span class="initializer"> = 11211</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname">getStats</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$type</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$slabid</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$limit</code><span class="initializer"> = 100</span></span>
+  ]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname">getVersion</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname">increment</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$key</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$value</code><span class="initializer"> = 1</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname">pconnect</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$host</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$port</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$timeout</code></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">replace</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$key</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$var</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flag</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$expire</code></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">set</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$key</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$var</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flag</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$expire</code></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">setCompressThreshold</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$threshold</code></span>
+   [, <span class="methodparam"><span class="type">float</span> <code class="parameter">$min_savings</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">setServerParams</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$host</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$port</code><span class="initializer"> = 11211</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$timeout</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$retry_interval</code><span class="initializer"> = false</span></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$status</code></span>
+   [, <span class="methodparam"><span class="type">callable</span> <code class="parameter">$failure_callback</code></span>
+  ]]]]] )</div>
+
+   }</div>
+
+
+  </div>
+  
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

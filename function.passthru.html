@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Execute an external program and display raw output</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.fileprocess.process.html">Process Control Extensions</a></li>
+  <li class="header up"><a href="book.exec.html">Program execution</a></li>
+  <li class="header up"><a href="ref.exec.html">Program execution Functions</a></li>
+  <li><a href="function.escapeshellarg.html">escapeshellarg</a></li>
+  <li><a href="function.escapeshellcmd.html">escapeshellcmd</a></li>
+  <li><a href="function.exec.html">exec</a></li>
+  <li class="active"><a href="function.passthru.html">passthru</a></li>
+  <li><a href="function.proc-close.html">proc_close</a></li>
+  <li><a href="function.proc-get-status.html">proc_get_status</a></li>
+  <li><a href="function.proc-nice.html">proc_nice</a></li>
+  <li><a href="function.proc-open.html">proc_open</a></li>
+  <li><a href="function.proc-terminate.html">proc_terminate</a></li>
+  <li><a href="function.shell-exec.html">shell_exec</a></li>
+  <li><a href="function.system.html">system</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.exec.html">exec</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.proc-close.html">proc_close</a></div>
+                <div class="up"><a href="ref.exec.html">Program execution Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.passthru" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">passthru</h1>
+  <p class="refpurpose">Execute an external program and display raw output</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.passthru-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname">passthru</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$command</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter reference">&$return_var</code></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   The <span class="function">passthru</span> function is similar to the
+   <span class="function">exec</span> function in that it executes a
+   <code class="parameter">command</code>. This function
+   should be used in place of <span class="function">exec</span> or
+   <span class="function">system</span> when the output from the Unix command
+   is binary data which needs to be passed directly back to the
+   browser.  A common use for this is to execute something like the
+   pbmplus utilities that can output an image stream directly.  By
+   setting the Content-type to <em>image/gif</em> and
+   then calling a pbmplus program to output a gif, you can create
+   PHP scripts that output images directly.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.passthru-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">command</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The command that will be executed.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">return_var</code></dt>
+
+     <dd>
+
+      <p class="para">
+       If the <code class="parameter">return_var</code> argument is present, the 
+       return status of the Unix command will be placed here.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.passthru-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   No value is returned.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.passthru-notes">
+  <h3 class="title">Notes</h3>
+  <div class="warning"><strong class="warning">Warning</strong><p class="para">When allowing user-supplied data to be
+passed to this function, use
+<span class="function">escapeshellarg</span> or <span class="function">escapeshellcmd</span>
+to ensure that users cannot trick the system into executing arbitrary
+commands.</p></div>
+  <blockquote class="note"><p><strong class="note">Note</strong>: <p class="para">If a program is started with this function,
+in order for it to continue running in the background, the output of the
+program must be redirected to a file or another output stream. Failing to do so
+will cause PHP to hang until the execution of the program ends.</p></p></blockquote>
+  <blockquote class="note"><p><strong class="note">Note</strong>: <span class="simpara">When
+<a href="features.safe-mode.html" class="link">safe mode</a> is enabled, you can only
+execute files within the <a href="ini.sect.safe-mode.html#ini.safe-mode-exec-dir" class="link">safe_mode_exec_dir</a>.
+For practical reasons, it is currently not allowed to have <em>..</em>
+components in the path to the executable.</span></p></blockquote>
+  <div class="warning"><strong class="warning">Warning</strong><p class="simpara">With <a href="features.safe-mode.html" class="link">safe mode</a> enabled,
+the command string is escaped with <span class="function">escapeshellcmd</span>. Thus,
+<em>echo y | echo x</em> becomes <em>echo y \| echo x</em>.</p></div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.passthru-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">exec</span></li>
+    <li class="member"><span class="function">system</span></li>
+    <li class="member"><span class="function">popen</span></li>
+    <li class="member"><span class="function">escapeshellcmd</span></li>
+    <li class="member"><a href="language.operators.execution.html" class="link">backtick operator</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

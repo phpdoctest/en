@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Register Javascript extensions for V8Js</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.v8js.html">V8js</a></li>
+  <li class="header up"><a href="class.v8js.html">V8Js</a></li>
+  <li><a href="v8js.construct.html">V8Js::__construct</a></li>
+  <li><a href="v8js.executestring.html">V8Js::executeString</a></li>
+  <li><a href="v8js.getextensions.html">V8Js::getExtensions</a></li>
+  <li><a href="v8js.getpendingexception.html">V8Js::getPendingException</a></li>
+  <li class="active"><a href="v8js.registerextension.html">V8Js::registerExtension</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="v8js.getpendingexception.html">V8Js::getPendingException</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="class.v8jsexception.html">V8JsException</a></div>
+                <div class="up"><a href="class.v8js.html">V8Js</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="v8js.registerextension" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">V8Js::registerExtension</h1>
+  <p class="refpurpose">Register Javascript extensions for V8Js</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-v8js.registerextension-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">bool</span> <span class="methodname">V8Js::registerExtension</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$extension_name</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$script</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$dependencies</code><span class="initializer"> = array()</span></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$auto_enable</code><span class="initializer"> = <strong><code>FALSE</code></strong></span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Registers passed Javascript <code class="parameter">script</code> as extension to
+   be used in <span class="classname">V8Js</span> contexts.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-v8js.registerextension-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">extension_name</code></dt>
+
+    <dd>
+
+     <p class="para">
+      Name of the extension to be registered.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">script</code></dt>
+
+    <dd>
+
+     <p class="para">
+      The Javascript code to be registered.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">dependencies</code></dt>
+
+    <dd>
+
+     <p class="para">
+      Array of extension names the extension to be registered depends on. Any such extension is
+      enabled automatically when this extension is loaded.
+      <blockquote class="note"><p><strong class="note">Note</strong>: 
+       <p class="para">
+        All extensions, including the dependencies, must be registered before any <span class="classname">V8Js</span>
+        are created which use them.
+       </p>
+      </p></blockquote>
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">auto_enable</code></dt>
+
+    <dd>
+
+     <p class="para">
+      If set to <strong><code>TRUE</code></strong>, the extension will be enabled automatically in all <span class="classname">V8Js</span> contexts.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-v8js.registerextension-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> if extension was registered successfully, <strong><code>FALSE</code></strong> otherwise.
+  </p>
+ </div>
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

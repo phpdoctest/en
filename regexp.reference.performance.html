@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Performance</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.text.html">Text Processing</a></li>
+  <li class="header up"><a href="book.pcre.html">PCRE</a></li>
+  <li class="header up"><a href="pcre.pattern.html">PCRE Patterns</a></li>
+  <li class="header up"><a href="reference.pcre.pattern.syntax.html">PCRE regex syntax</a></li>
+  <li><a href="regexp.introduction.html">Introduction</a></li>
+  <li><a href="regexp.reference.delimiters.html">Delimiters</a></li>
+  <li><a href="regexp.reference.meta.html">Meta-characters</a></li>
+  <li><a href="regexp.reference.escape.html">Escape sequences</a></li>
+  <li><a href="regexp.reference.unicode.html">Unicode character properties</a></li>
+  <li><a href="regexp.reference.anchors.html">Anchors</a></li>
+  <li><a href="regexp.reference.dot.html">Dot</a></li>
+  <li><a href="regexp.reference.character-classes.html">Character classes</a></li>
+  <li><a href="regexp.reference.alternation.html">Alternation</a></li>
+  <li><a href="regexp.reference.internal-options.html">Internal option setting</a></li>
+  <li><a href="regexp.reference.subpatterns.html">Subpatterns</a></li>
+  <li><a href="regexp.reference.repetition.html">Repetition</a></li>
+  <li><a href="regexp.reference.back-references.html">Back references</a></li>
+  <li><a href="regexp.reference.assertions.html">Assertions</a></li>
+  <li><a href="regexp.reference.onlyonce.html">Once-only subpatterns</a></li>
+  <li><a href="regexp.reference.conditional.html">Conditional subpatterns</a></li>
+  <li><a href="regexp.reference.comments.html">Comments</a></li>
+  <li><a href="regexp.reference.recursive.html">Recursive patterns</a></li>
+  <li class="active"><a href="regexp.reference.performance.html">Performance</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="regexp.reference.recursive.html">Recursive patterns</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="reference.pcre.pattern.modifiers.html">Possible modifiers in regex patterns</a></div>
+                <div class="up"><a href="reference.pcre.pattern.syntax.html">PCRE regex syntax</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="regexp.reference.performance" class="section">
+  <h2 class="title">Performance</h2>
+  <p class="para">
+   Certain items that may appear in patterns are more efficient
+   than  others.  It is more efficient to use a character class
+   like [aeiou] than a set of alternatives such as (a|e|i|o|u).
+   In  general,  the  simplest  construction  that provides the
+   required behaviour is usually the  most  efficient.  Jeffrey
+   Friedl&#039;s  book contains a lot of discussion about optimizing
+   regular expressions for efficient performance.
+  </p>
+  <p class="para">
+   When a pattern begins with .* and the <a href="reference.pcre.pattern.modifiers.html" class="link">PCRE_DOTALL</a>  option  is
+   set,  the  pattern  is implicitly anchored by PCRE, since it
+   can match only at the start of a subject string. However, if
+   <a href="reference.pcre.pattern.modifiers.html" class="link">PCRE_DOTALL</a>
+   is not set, PCRE cannot make this optimization,
+   because the . metacharacter does not then match  a  newline,
+   and if the subject string contains newlines, the pattern may
+   match from the character immediately following one  of  them
+   instead of from the very start. For example, the pattern
+
+   <em>(.*) second</em>
+
+   matches the subject &quot;first\nand second&quot; (where \n stands for
+   a newline character) with the first captured substring being
+   &quot;and&quot;. In order to do this, PCRE  has  to  retry  the  match
+   starting after every newline in the subject.
+  </p>
+  <p class="para">
+   If you are using such a pattern with subject strings that do
+   not  contain  newlines,  the best performance is obtained by
+   setting <a href="reference.pcre.pattern.modifiers.html" class="link">PCRE_DOTALL</a>,
+   or starting the  pattern  with  ^.*  to
+   indicate  explicit anchoring. That saves PCRE from having to
+   scan along the subject looking for a newline to restart at.
+  </p>
+  <p class="para">
+   Beware of patterns that contain nested  indefinite  repeats.
+   These  can  take a long time to run when applied to a string
+   that does not match. Consider the pattern fragment
+
+   <em>(a+)*</em>
+  </p>
+  <p class="para">
+   This can match &quot;aaaa&quot; in 33 different ways, and this  number
+   increases  very  rapidly  as  the string gets longer. (The *
+   repeat can match 0, 1, 2, 3, or 4 times,  and  for  each  of
+   those  cases other than 0, the + repeats can match different
+   numbers of times.) When the remainder of the pattern is such
+   that  the entire match is going to fail, PCRE has in principle
+   to try every possible variation, and this  can  take  an
+   extremely long time.
+  </p>
+  <p class="para">
+   An optimization catches some of the more simple  cases  such
+   as
+
+   <em>(a+)*b</em>
+
+   where a literal character follows. Before embarking  on  the
+   standard matching procedure, PCRE checks that there is a &quot;b&quot;
+   later in the subject string, and if there is not,  it  fails
+   the  match  immediately. However, when there is no following
+   literal this optimization cannot be used. You  can  see  the
+   difference by comparing the behaviour of
+
+   <em>(a+)*\d</em>
+
+   with the pattern above. The former gives  a  failure  almost
+   instantly  when  applied  to a whole line of &quot;a&quot; characters,
+   whereas the latter takes an appreciable  time  with  strings
+   longer than about 20 characters.
+  </p>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Watcher callbacks</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.fileprocess.process.html">Process Control Extensions</a></li>
+  <li class="header up"><a href="book.ev.html">Ev</a></li>
+  <li><a href="intro.ev.html">Introduction</a></li>
+  <li><a href="ev.setup.html">Installing/Configuring</a></li>
+  <li><a href="ev.global.constants.html">Predefined Constants</a></li>
+  <li><a href="ev.examples.html">Examples</a></li>
+  <li><a href="ev.watchers.html">Watchers</a></li>
+  <li class="active"><a href="ev.watcher-callbacks.html">Watcher callbacks</a></li>
+  <li><a href="ev.periodic-modes.html">Periodic watcher operation modes</a></li>
+  <li><a href="class.ev.html">Ev</a></li>
+  <li><a href="class.evcheck.html">EvCheck</a></li>
+  <li><a href="class.evchild.html">EvChild</a></li>
+  <li><a href="class.evembed.html">EvEmbed</a></li>
+  <li><a href="class.evfork.html">EvFork</a></li>
+  <li><a href="class.evidle.html">EvIdle</a></li>
+  <li><a href="class.evio.html">EvIo</a></li>
+  <li><a href="class.evloop.html">EvLoop</a></li>
+  <li><a href="class.evperiodic.html">EvPeriodic</a></li>
+  <li><a href="class.evprepare.html">EvPrepare</a></li>
+  <li><a href="class.evsignal.html">EvSignal</a></li>
+  <li><a href="class.evstat.html">EvStat</a></li>
+  <li><a href="class.evtimer.html">EvTimer</a></li>
+  <li><a href="class.evwatcher.html">EvWatcher</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="ev.watchers.html">Watchers</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="ev.periodic-modes.html">Periodic watcher operation modes</a></div>
+                <div class="up"><a href="book.ev.html">Ev</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="ev.watcher-callbacks" class="chapter">
+ <h1>Watcher callbacks</h1>
+ <p class="para">
+  All watchers can be active(waiting for events) or inactive(paused). Only
+  active watchers will have their callbacks invoked. All callbacks will be
+  called with at least two arguments:
+  <code class="parameter">watcher</code>
+  - the watcher, and
+  <code class="parameter">revents</code>
+  a bitmask of received events.
+ </p>
+ <p class="para">
+  Watcher callbacks are passed to the watcher contructors(the classes derived
+  from
+  <span class="classname">EvWatcher</span>
+  -
+   <span class="methodname">EvCheck::__construct</span>
+  ,
+   <span class="methodname">EvChild::__construct</span>
+  etc.). A watcher callback should match the following prototype:
+ </p>
+ <div class="methodsynopsis dc-description">
+  <span class="type">void</span>
+   <span class="methodname">callback</span>
+   ([ <span class="methodparam">
+   <span class="type">object</span>
+    <code class="parameter">$watcher</code>
+   <span class="initializer"> = NULL</span>
+  </span>
+  [, <span class="methodparam">
+   <span class="type">int</span>
+    <code class="parameter">$revents</code>
+   <span class="initializer"> = NULL</span>
+  </span>
+ ]] )</div>
+
+ <p class="para">
+  <dl>
+
+   
+    <dt>
+
+     <code class="parameter">watcher</code>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      The watcher instance(of a class extending
+      <span class="classname">EvWatcher</span>
+      ).
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+
+     <code class="parameter">revents</code>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      <a href="class.ev.html#ev.constants.watcher-revents" class="link">Watcher received events</a>
+      .
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </p>
+ <p class="para">
+  Each watcher type has its associated bit in
+  <code class="parameter">revents</code>
+  , so one can use the same callback for multiple watchers. The event mask is
+  named after the type, i.e.
+  <span class="classname">EvChild</span>
+  (or
+   <span class="methodname">EvLoop::child</span>
+  ) sets
+  <strong><code>EV::CHILD</code></strong>
+  ,
+  <span class="classname">EvPrepare</span>
+  (or
+   <span class="methodname">EvLoop::prepare</span>
+  ) sets
+  <strong><code>Ev::PREPARE</code></strong>
+  ,
+  <span class="classname">EvPeriodic</span>
+  (or
+   <span class="methodname">EvLoop::periodic</span>
+  ) sets
+  <strong><code>Ev::PERIODIC</code></strong>
+  and so on, with the exception of I/O events (which can set both
+  <strong><code>Ev::READ</code></strong>
+  and
+  <strong><code>Ev::WRITE</code></strong>
+  bits).
+ </p>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

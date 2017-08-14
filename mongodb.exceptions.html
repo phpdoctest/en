@@ -1,0 +1,1477 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Exception classes</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="set.mongodb.html">MongoDB</a></li>
+  <li><a href="mongodb.setup.html">Installing/Configuring</a></li>
+  <li><a href="mongodb.tutorial.html">Tutorials</a></li>
+  <li><a href="mongodb.architecture.html">Driver Architecture and Internals</a></li>
+  <li><a href="mongodb.security.html">Security</a></li>
+  <li><a href="book.mongodb.html">MongoDB\Driver</a></li>
+  <li><a href="book.bson.html">MongoDB\BSON</a></li>
+  <li class="active"><a href="mongodb.exceptions.html">MongoDB\Driver\Exception</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mongodb-bson-unserializable.bsonunserialize.html">MongoDB\BSON\Unserializable::bsonUnserialize</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="class.mongodb-driver-exception-authenticationexception.html">MongoDB\Driver\Exception\AuthenticationException</a></div>
+                <div class="up"><a href="set.mongodb.html">MongoDB</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mongodb.exceptions" class="book">
+  
+  <h1>Exception classes</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="class.mongodb-driver-exception-authenticationexception.html">MongoDB\Driver\Exception\AuthenticationException</a> — The MongoDB\Driver\Exception\AuthenticationException class</li>
+<li><a href="class.mongodb-driver-exception-bulkwriteexception.html">MongoDB\Driver\Exception\BulkWriteException</a> — The MongoDB\Driver\Exception\BulkWriteException class</li>
+<li><a href="class.mongodb-driver-exception-connectionexception.html">MongoDB\Driver\Exception\ConnectionException</a> — The MongoDB\Driver\Exception\ConnectionException class</li>
+<li><a href="class.mongodb-driver-exception-connectiontimeoutexception.html">MongoDB\Driver\Exception\ConnectionTimeoutException</a> — The MongoDB\Driver\Exception\ConnectionTimeoutException class</li>
+<li><a href="class.mongodb-driver-exception-exception.html">MongoDB\Driver\Exception\Exception</a> — The MongoDB\Driver\Exception\Exception interface</li>
+<li><a href="class.mongodb-driver-exception-executiontimeoutexception.html">MongoDB\Driver\Exception\ExecutionTimeoutException</a> — The MongoDB\Driver\Exception\ExecutionTimeoutException class</li>
+<li><a href="class.mongodb-driver-exception-invalidargumentexception.html">MongoDB\Driver\Exception\InvalidArgumentException</a> — The MongoDB\Driver\Exception\InvalidArgumentException class</li>
+<li><a href="class.mongodb-driver-exception-logicexception.html">MongoDB\Driver\Exception\LogicException</a> — The MongoDB\Driver\Exception\LogicException class</li>
+<li><a href="class.mongodb-driver-exception-runtimeexception.html">MongoDB\Driver\Exception\RuntimeException</a> — The MongoDB\Driver\Exception\RuntimeException class</li>
+<li><a href="class.mongodb-driver-exception-sslconnectionexception.html">MongoDB\Driver\Exception\SSLConnectionException</a> — The MongoDB\Driver\Exception\SSLConnectionException class</li>
+<li><a href="class.mongodb-driver-exception-unexpectedvalueexception.html">MongoDB\Driver\Exception\UnexpectedValueException</a> — The MongoDB\Driver\Exception\UnexpectedValueException class</li>
+<li><a href="class.mongodb-driver-exception-writeexception.html">MongoDB\Driver\Exception\WriteException</a> — The MongoDB\Driver\Exception\WriteException class<ul class="chunklist chunklist_title">
+<li><a href="mongodb-driver-writeexception.getwriteresult.html">MongoDB\Driver\Exception\WriteException::getWriteResult</a> — Returns the WriteResult for the failed write operation</li>
+</ul>
+</li>
+</ul>
+
+
+  
+ 
+
+
+
+ <h1 class="title">The MongoDB\Driver\Exception\AuthenticationException class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongodb-driver-exception-authenticationexception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Thrown when the driver fails to authenticate with the server.
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-driver-exception-authenticationexception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoDB\Driver\Exception\AuthenticationException</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">MongoDB\Driver\Exception\AuthenticationException</strong>
+     </span>
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> MongoDB\Driver\Exception\ConnectionException</strong>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename">MongoDB\Driver\Exception\Exception</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$message</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$code</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$file</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$line</var>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">Throwable</span> <span class="methodname">Exception::getPrevious</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">Exception::getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getFile</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">Exception::getLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">Exception::getTrace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getTraceAsString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span>  <span class="methodname">Exception::__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">Exception::__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+
+
+
+
+  
+ 
+
+
+
+ <h1 class="title">The MongoDB\Driver\Exception\BulkWriteException class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongodb-driver-exception-bulkwriteexception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Thrown when a bulk write operation fails.
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-driver-exception-bulkwriteexception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoDB\Driver\Exception\BulkWriteException</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">MongoDB\Driver\Exception\BulkWriteException</strong>
+     </span>
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> MongoDB\Driver\Exception\WriteException</strong>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename">MongoDB\Driver\Exception\Exception</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">MongoDB\Driver\WriteResult</span>
+     <var class="varname">$writeResult</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$message</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$code</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$file</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$line</var>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">MongoDB\Driver\WriteResult</span> <span class="methodname">MongoDB\Driver\Exception\WriteException::getWriteResult</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">Throwable</span> <span class="methodname">Exception::getPrevious</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">Exception::getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getFile</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">Exception::getLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">Exception::getTrace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getTraceAsString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span>  <span class="methodname">Exception::__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">Exception::__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+
+
+
+
+  
+ 
+
+
+
+ <h1 class="title">The MongoDB\Driver\Exception\ConnectionException class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongodb-driver-exception-connectionexception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Base class for exceptions thrown when the driver fails to establish a
+    database connection.
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-driver-exception-connectionexception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoDB\Driver\Exception\ConnectionException</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">MongoDB\Driver\Exception\ConnectionException</strong>
+     </span>
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> MongoDB\Driver\Exception\RuntimeException</strong>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename">MongoDB\Driver\Exception\Exception</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$message</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$code</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$file</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$line</var>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">Throwable</span> <span class="methodname">Exception::getPrevious</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">Exception::getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getFile</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">Exception::getLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">Exception::getTrace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getTraceAsString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span>  <span class="methodname">Exception::__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">Exception::__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+
+
+
+
+  
+ 
+
+
+
+ <h1 class="title">The MongoDB\Driver\Exception\ConnectionTimeoutException class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongodb-driver-exception-connectiontimeoutexception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Thrown when the driver fails to establish a database connection within a
+    specified time limit (e.g.
+    <a href="https://docs.mongodb.com/manual/reference/connection-string/#uri.connectTimeoutMS" class="link external">&raquo;&nbsp;connectTimeoutMS</a>).
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-driver-exception-connectiontimeoutexception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoDB\Driver\Exception\ConnectionTimeoutException</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">MongoDB\Driver\Exception\ConnectionTimeoutException</strong>
+     </span>
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> MongoDB\Driver\Exception\ConnectionException</strong>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename">MongoDB\Driver\Exception\Exception</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$message</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$code</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$file</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$line</var>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">Throwable</span> <span class="methodname">Exception::getPrevious</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">Exception::getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getFile</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">Exception::getLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">Exception::getTrace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getTraceAsString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span>  <span class="methodname">Exception::__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">Exception::__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+
+
+
+
+  
+ 
+
+
+
+ <h1 class="title">The MongoDB\Driver\Exception\Exception interface</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongodb-driver-exception-exception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Common interface for all driver exceptions. This may be used to catch only
+    exceptions originating from the driver itself.
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-driver-exception-exception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoDB\Driver\Exception\Exception</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">MongoDB\Driver\Exception\Exception</strong>
+     </span>
+     {</div>
+
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+
+
+
+
+  
+ 
+
+
+
+ <h1 class="title">The MongoDB\Driver\Exception\ExecutionTimeoutException class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongodb-driver-exception-executiontimeoutexception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Thrown when a query or command fails to complete within a specified time
+    limit (e.g.
+    <a href="https://docs.mongodb.com/manual/tutorial/terminate-running-operations/#maxtimems" class="link external">&raquo;&nbsp;maxTimeMS</a>).
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-driver-exception-executiontimeoutexception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoDB\Driver\Exception\ExecutionTimeoutException</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">MongoDB\Driver\Exception\ExecutionTimeoutException</strong>
+     </span>
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> MongoDB\Driver\Exception\RuntimeException</strong>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename">MongoDB\Driver\Exception\Exception</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$message</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$code</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$file</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$line</var>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">Throwable</span> <span class="methodname">Exception::getPrevious</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">Exception::getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getFile</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">Exception::getLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">Exception::getTrace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getTraceAsString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span>  <span class="methodname">Exception::__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">Exception::__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+
+
+
+
+  
+ 
+
+
+
+ <h1 class="title">The MongoDB\Driver\Exception\InvalidArgumentException class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongodb-driver-exception-invalidargumentexception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Thrown when a driver method is given invalid arguments (e.g. invalid option
+    types).
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-driver-exception-invalidargumentexception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoDB\Driver\Exception\InvalidArgumentException</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">MongoDB\Driver\Exception\InvalidArgumentException</strong>
+     </span>
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> InvalidArgumentException</strong>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename">MongoDB\Driver\Exception\Exception</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$message</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$code</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$file</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$line</var>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">Throwable</span> <span class="methodname">Exception::getPrevious</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">Exception::getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getFile</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">Exception::getLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">Exception::getTrace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getTraceAsString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span>  <span class="methodname">Exception::__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">Exception::__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+
+
+
+
+  
+ 
+
+
+
+ <h1 class="title">The MongoDB\Driver\Exception\LogicException class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongodb-driver-exception-logicexception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Thrown when the driver is incorrectly used (e.g. rewinding a cursor).
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-driver-exception-logicexception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoDB\Driver\Exception\LogicException</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">MongoDB\Driver\Exception\LogicException</strong>
+     </span>
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> LogicException</strong>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename">MongoDB\Driver\Exception\Exception</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$message</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$code</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$file</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$line</var>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">Throwable</span> <span class="methodname">Exception::getPrevious</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">Exception::getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getFile</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">Exception::getLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">Exception::getTrace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getTraceAsString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span>  <span class="methodname">Exception::__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">Exception::__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+
+
+
+
+  
+ 
+
+
+
+ <h1 class="title">The MongoDB\Driver\Exception\RuntimeException class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongodb-driver-exception-runtimeexception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Thrown when the driver encounters a runtime error (e.g. internal error from
+    <a href="https://github.com/mongodb/mongo-c-driver" class="link external">&raquo;&nbsp;libmongoc</a>).
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-driver-exception-runtimeexception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoDB\Driver\Exception\RuntimeException</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">MongoDB\Driver\Exception\RuntimeException</strong>
+     </span>
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> RuntimeException</strong>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename">MongoDB\Driver\Exception\Exception</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$message</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$code</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$file</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$line</var>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">Throwable</span> <span class="methodname">Exception::getPrevious</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">Exception::getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getFile</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">Exception::getLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">Exception::getTrace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getTraceAsString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span>  <span class="methodname">Exception::__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">Exception::__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+
+
+
+
+  
+ 
+
+
+
+ <h1 class="title">The MongoDB\Driver\Exception\SSLConnectionException class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongodb-driver-exception-sslconnectionexception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Thrown when the driver fails to establish an SSL connection with the server.
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-driver-exception-sslconnectionexception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoDB\Driver\Exception\SSLConnectionException</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">MongoDB\Driver\Exception\SSLConnectionException</strong>
+     </span>
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> MongoDB\Driver\Exception\ConnectionException</strong>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename">MongoDB\Driver\Exception\Exception</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$message</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$code</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$file</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$line</var>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">Throwable</span> <span class="methodname">Exception::getPrevious</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">Exception::getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getFile</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">Exception::getLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">Exception::getTrace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getTraceAsString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span>  <span class="methodname">Exception::__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">Exception::__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+
+
+
+
+  
+ 
+
+
+
+ <h1 class="title">The MongoDB\Driver\Exception\UnexpectedValueException class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongodb-driver-exception-unexpectedvalueexception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Thrown when the driver encounters an unexpected value (e.g. during BSON
+    serialization or deserialization).
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-driver-exception-unexpectedvalueexception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoDB\Driver\Exception\UnexpectedValueException</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">MongoDB\Driver\Exception\UnexpectedValueException</strong>
+     </span>
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> UnexpectedValueException</strong>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename">MongoDB\Driver\Exception\Exception</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$message</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$code</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$file</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$line</var>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">Throwable</span> <span class="methodname">Exception::getPrevious</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">Exception::getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getFile</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">Exception::getLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">Exception::getTrace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getTraceAsString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span>  <span class="methodname">Exception::__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">Exception::__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+
+
+
+
+  
+ 
+
+
+
+ <h1 class="title">The MongoDB\Driver\Exception\WriteException class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongodb-driver-exception-writeexception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Base class for exceptions thrown by a failed write operation. The exception
+    encapsulates a <span class="classname">MongoDB\Driver\WriteResult</span> object.
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-driver-exception-writeexception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoDB\Driver\Exception\WriteException</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">abstract</span>
+       class <strong class="classname">MongoDB\Driver\Exception\WriteException</strong>
+     </span>
+     
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> MongoDB\Driver\Exception\RuntimeException</strong>
+     </span>
+     
+     <span class="oointerface">implements 
+      <span class="interfacename">MongoDB\Driver\Exception\Exception</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">MongoDB\Driver\WriteResult</span>
+     <var class="varname">$writeResult</var>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$message</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$code</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$file</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$line</var>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">MongoDB\Driver\WriteResult</span> <span class="methodname">getWriteResult</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">Throwable</span> <span class="methodname">Exception::getPrevious</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">Exception::getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getFile</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">Exception::getLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">Exception::getTrace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getTraceAsString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span>  <span class="methodname">Exception::__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">Exception::__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+   }</div>
+
+
+  </div>
+
+  
+
+  <div class="section" id="mongodb-driver-exception-writeexception.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="mongodb-driver-exception-writeexception.props.writeresult"><var class="varname">writeResult</var></dt>
+
+     <dd>
+
+      <p class="para">
+       The <span class="classname">MongoDB\Driver\WriteResult</span> associated with
+       the failed write operation.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

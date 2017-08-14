@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Differences from POSIX regex</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.text.html">Text Processing</a></li>
+  <li class="header up"><a href="book.pcre.html">PCRE</a></li>
+  <li class="header up"><a href="pcre.pattern.html">PCRE Patterns</a></li>
+  <li><a href="reference.pcre.pattern.syntax.html">PCRE regex syntax</a></li>
+  <li><a href="reference.pcre.pattern.modifiers.html">Possible modifiers in regex patterns</a></li>
+  <li><a href="reference.pcre.pattern.differences.html">Differences From Perl</a></li>
+  <li class="active"><a href="reference.pcre.pattern.posix.html">Differences from POSIX regex</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="reference.pcre.pattern.differences.html">Differences From Perl</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="ref.pcre.html">PCRE Functions</a></div>
+                <div class="up"><a href="pcre.pattern.html">PCRE Patterns</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="reference.pcre.pattern.posix" class="article">
+ <h1>Differences from POSIX regex</h1>
+
+ <p class="para">
+  As of PHP 5.3.0, the <a href="book.regex.html" class="link">POSIX Regex</a> extension
+  is deprecated. There are a number of differences between POSIX regex and
+  PCRE regex. This page lists the most notable ones that are necessary to
+  know when converting to PCRE.
+ </p>
+
+ <p class="para">
+  <ol type="1">
+   <li class="listitem">
+    <span class="simpara">
+     The PCRE functions require that the pattern is enclosed by <a href="regexp.reference.delimiters.html" class="link">delimiters</a>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Unlike POSIX, the PCRE extension does not have dedicated functions for
+     case-insensitive matching. Instead, this is supported using the 
+     <em class="emphasis">i</em> (<em>PCRE_CASELESS</em>) <a href="reference.pcre.pattern.modifiers.html" class="link">pattern modifier</a>. Other
+     pattern modifiers are also available for changing the matching strategy.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The POSIX functions find the longest of the leftmost match, but PCRE
+     stops on the first valid match. If the string doesn&#039;t match at all it
+     makes no difference, but if it matches it may have dramatic effects on
+     both the resulting match and the matching speed.
+    </span>
+    <span class="simpara">
+     To illustrate this difference, consider the following example from
+     &quot;Mastering Regular Expressions&quot; by Jeffrey Friedl. Using the pattern
+     <em>one(self)?(selfsufficient)?</em> on the string
+     <em>oneselfsufficient</em> with PCRE will result in matching
+     <em>oneself</em>, but using POSIX the result will be the full
+     string <em>oneselfsufficient</em>. Both (sub)strings match the
+     original string, but POSIX requires that the longest be the result.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The POSIX definition of a &quot;character class&quot; differs from that of PCRE.
+     Simple bracket expressions to match a set of explicit characters are
+     supported in the form of PCRE
+     <a href="regexp.reference.character-classes.html" class="link">character classes</a>
+     but POSIX collating elements, character classes and character equivalents
+     are not supported.
+    </span>
+    <span class="simpara">
+     Supplying an expression with a character class that both starts and ends
+     with <em>:</em>, <em>.</em> or <em>=</em>
+     characters to PCRE is interpreted as an attempt to use one of these
+     unsupported features and causes a compilation error.
+    </span>
+   </li>
+  </ol>
+ </p>
+
+ <p class="para">
+  <table class="doctable table">
+   <caption><strong>Function replacements</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>POSIX</th>
+      <th>PCRE</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td><span class="function">ereg_replace</span></td>
+      <td><span class="function">preg_replace</span></td>
+     </tr>
+
+     <tr>
+      <td><span class="function">ereg</span></td>
+      <td><span class="function">preg_match</span></td>
+     </tr>
+
+     <tr>
+      <td><span class="function">eregi_replace</span></td>
+      <td><span class="function">preg_replace</span></td>
+     </tr>
+
+     <tr>
+      <td><span class="function">eregi</span></td>
+      <td><span class="function">preg_match</span></td>
+     </tr>
+
+     <tr>
+      <td><span class="function">split</span></td>
+      <td><span class="function">preg_split</span></td>
+     </tr>
+
+     <tr>
+      <td><span class="function">spliti</span></td>
+      <td><span class="function">preg_split</span></td>
+     </tr>
+
+     <tr>
+      <td><span class="function">sql_regcase</span></td>
+      <td><em class="emphasis">No equivalent</em></td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </p>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Installation</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.crypto.html">Cryptography Extensions</a></li>
+  <li class="header up"><a href="book.openssl.html">OpenSSL</a></li>
+  <li class="header up"><a href="openssl.setup.html">Installing/Configuring</a></li>
+  <li><a href="openssl.requirements.html">Requirements</a></li>
+  <li class="active"><a href="openssl.installation.html">Installation</a></li>
+  <li><a href="openssl.configuration.html">Runtime Configuration</a></li>
+  <li><a href="openssl.resources.html">Resource Types</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="openssl.requirements.html">Requirements</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="openssl.configuration.html">Runtime Configuration</a></div>
+                <div class="up"><a href="openssl.setup.html">Installing/Configuring</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="openssl.installation" class="section">
+ <h2 class="title">Installation</h2>
+ <p class="para">
+  To use PHP&#039;s OpenSSL support you must also compile PHP <strong class="option configure">--with-openssl[=DIR]</strong>
+.
+ </p>
+ <p class="para">
+  The OpenSSL library also has additional requirements for normal operation at
+  run-time. Most notably, OpenSSL requires access to a random or pseudo-random
+  number generator; on most Unix and Unix-like platforms (including Linux),
+  this means that it must have access to a <em>/dev/urandom</em> or
+  <em>/dev/random</em> device.
+ </p>
+ <blockquote class="note"><p><strong class="note">Note</strong>: 
+  <strong>Note to Win32 Users</strong><br />
+  <p class="para">
+   In order for this extension to work, there are
+<acronym class="acronym">DLL</acronym> files that must be available to the Windows
+system <var class="envar">PATH</var>. For information on how to do this, see the
+<acronym class="acronym">FAQ</acronym> entitled &quot;<a href="faq.installation.html#faq.installation.addtopath" class="link">How do I add my PHP directory to the PATH
+on Windows</a>&quot;. Although copying DLL
+files from the PHP folder into the Windows system directory also works
+(because the system directory is by default in the system&#039;s
+<var class="envar">PATH</var>), this is not recommended.
+<em class="emphasis">This extension requires the following files to be in the
+<var class="envar">PATH</var>:</em> 
+   <var class="filename">libeay32.dll</var>
+  </p>
+  <p class="para">
+   Additionally, if you are planning to use the key generation and certificate
+   signing functions, you will need to install a valid
+   <var class="filename">openssl.cnf</var> file on your system.
+   We include a sample configuration file
+   in our win32 binary distributions, in the
+   <var class="filename">extras/openssl</var> directory.
+  </p>
+  <p class="para">
+   PHP will search for the <var class="filename">openssl.cnf</var> using the
+   following logic:
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">the <em>OPENSSL_CONF</em> environmental variable, if
+      set, will be used as the path (including filename) of the configuration
+      file.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">the <em>SSLEAY_CONF</em> environmental variable, if
+      set, will be used as the path (including filename) of the configuration
+      file.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">The file <var class="filename">openssl.cnf</var> will be assumed to be
+      found in the default certificate area, as configured at the time that
+      the openssl DLL was compiled.  This is usually means that the default
+      filename is <var class="filename">c:\usr\local\ssl\openssl.cnf</var>.
+     </span>
+    </li>
+   </ul>
+  </p>
+  <span class="simpara">
+   In your installation, you need to decide whether to install the
+   configuration file at <var class="filename">c:\usr\local\ssl\openssl.cnf</var> or
+   whether to install it someplace else and use environmental variables
+   (possibly on a per-virtual-host basis) to locate the configuration file.
+   Note that it is possible to override the default path from the script using
+   the <code class="parameter">configargs</code> of the functions that require a
+   configuration file.
+  </span>
+ </p></blockquote>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

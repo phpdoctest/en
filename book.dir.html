@@ -1,0 +1,264 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Directories</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.fileprocess.file.html">File System Related Extensions</a></li>
+  <li><a href="book.dio.html">Direct IO</a></li>
+  <li class="active"><a href="book.dir.html">Directories</a></li>
+  <li><a href="book.fileinfo.html">Fileinfo</a></li>
+  <li><a href="book.filesystem.html">Filesystem</a></li>
+  <li><a href="book.inotify.html">Inotify</a></li>
+  <li><a href="book.mime-magic.html">Mimetype</a></li>
+  <li><a href="book.proctitle.html">Proctitle</a></li>
+  <li><a href="book.xattr.html">xattr</a></li>
+  <li><a href="book.xdiff.html">xdiff</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.dio-write.html">dio_write</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="dir.setup.html">Installing/Configuring</a></div>
+                <div class="up"><a href="refs.fileprocess.file.html">File System Related Extensions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="book.dir" class="book">
+ 
+ <h1>Directories</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="dir.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_title">
+<li><a href="dir.requirements.html">Requirements</a></li>
+<li><a href="dir.installation.html">Installation</a></li>
+<li><a href="dir.configuration.html">Runtime Configuration</a></li>
+<li><a href="dir.resources.html">Resource Types</a></li>
+</ul>
+</li>
+<li><a href="dir.constants.html">Predefined Constants</a></li>
+<li><a href="class.directory.html">Directory</a> — The Directory class<ul class="chunklist chunklist_title">
+<li><a href="directory.close.html">Directory::close</a> — Close directory handle</li>
+<li><a href="directory.read.html">Directory::read</a> — Read entry from directory handle</li>
+<li><a href="directory.rewind.html">Directory::rewind</a> — Rewind directory handle</li>
+</ul>
+</li>
+<li><a href="ref.dir.html">Directory Functions</a><ul class="chunklist chunklist_title">
+<li><a href="function.chdir.html">chdir</a> — Change directory</li>
+<li><a href="function.chroot.html">chroot</a> — Change the root directory</li>
+<li><a href="function.closedir.html">closedir</a> — Close directory handle</li>
+<li><a href="function.dir.html">dir</a> — Return an instance of the Directory class</li>
+<li><a href="function.getcwd.html">getcwd</a> — Gets the current working directory</li>
+<li><a href="function.opendir.html">opendir</a> — Open directory handle</li>
+<li><a href="function.readdir.html">readdir</a> — Read entry from directory handle</li>
+<li><a href="function.rewinddir.html">rewinddir</a> — Rewind directory handle</li>
+<li><a href="function.scandir.html">scandir</a> — List files and directories inside the specified path</li>
+</ul>
+</li>
+</ul>
+
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The Directory class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="directory.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Instances of <span class="classname">Directory</span> are created by calling the
+    <span class="function">dir</span> function, not by the <a href="language.oop5.basic.html#language.oop5.basic.new" class="link">new</a> operator.
+   </p>
+  </div>
+
+
+  <div class="section" id="directory.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">Directory</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">Directory</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$path</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">resource</span>
+     <var class="varname">$handle</var>
+    ;</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">close</span>
+    ([ <span class="methodparam"><span class="type">resource</span> <code class="parameter">$dir_handle</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">read</span>
+    ([ <span class="methodparam"><span class="type">resource</span> <code class="parameter">$dir_handle</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">rewind</span>
+    ([ <span class="methodparam"><span class="type">resource</span> <code class="parameter">$dir_handle</code></span>
+  ] )</div>
+
+   }</div>
+
+
+  </div>
+
+
+  <div class="section" id="directory.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="directory.props.path"><var class="varname">path</var></dt>
+
+     <dd>
+
+      <p class="para">
+       The directory that was opened.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="directory.props.handle"><var class="varname">handle</var></dt>
+
+     <dd>
+
+      <p class="para">
+       Can be used with other directory functions such as
+       <span class="function">readdir</span>, <span class="function">rewinddir</span> and
+       <span class="function">closedir</span>.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

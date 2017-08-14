@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Check whether the RAR archive is solid</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.compression.html">Compression and Archive Extensions</a></li>
+  <li class="header up"><a href="book.rar.html">Rar</a></li>
+  <li class="header up"><a href="class.rararchive.html">RarArchive</a></li>
+  <li><a href="rararchive.close.html">RarArchive::close</a></li>
+  <li><a href="rararchive.getcomment.html">RarArchive::getComment</a></li>
+  <li><a href="rararchive.getentries.html">RarArchive::getEntries</a></li>
+  <li><a href="rararchive.getentry.html">RarArchive::getEntry</a></li>
+  <li><a href="rararchive.isbroken.html">RarArchive::isBroken</a></li>
+  <li class="active"><a href="rararchive.issolid.html">RarArchive::isSolid</a></li>
+  <li><a href="rararchive.open.html">RarArchive::open</a></li>
+  <li><a href="rararchive.setallowbroken.html">RarArchive::setAllowBroken</a></li>
+  <li><a href="rararchive.tostring.html">RarArchive::__toString</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="rararchive.isbroken.html">RarArchive::isBroken</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="rararchive.open.html">RarArchive::open</a></div>
+                <div class="up"><a href="class.rararchive.html">RarArchive</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="rararchive.issolid" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">RarArchive::isSolid</h1>
+  <h1 class="refname">rar_solid_is</h1>
+  <p class="refpurpose">Check whether the RAR archive is solid</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-rararchive.issolid-description">
+  <h3 class="title">Description</h3>
+  <p class="para">Object oriented style (method):</p>
+   <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">RarArchive::isSolid</span>
+    ( <span class="methodparam">void</span>
+    )</div>
+
+  <p class="para rdfs-comment">Procedural style:</p>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">rar_solid_is</span>
+    ( <span class="methodparam"><span class="type">RarArchive</span> <code class="parameter">$rarfile</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Check whether the RAR archive is solid. Individual file extraction is slower on solid
+   archives.
+  </p> 
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-rararchive.issolid-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">rarfile</code></dt>
+
+     <dd>
+
+      <p class="para">
+       A <span class="type">RarArchive</span> object, opened with <span class="function">rar_open</span>.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-rararchive.issolid-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> if the archive is solid, <strong><code>FALSE</code></strong> otherwise.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-rararchive.issolid-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-818">
+    <p><strong>Example #1 Object oriented style</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$arch1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">RarArchive</span><span style="color: #007700">::</span><span style="color: #0000BB">open</span><span style="color: #007700">(</span><span style="color: #DD0000">"store_method.rar"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$arch2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">RarArchive</span><span style="color: #007700">::</span><span style="color: #0000BB">open</span><span style="color: #007700">(</span><span style="color: #DD0000">"solid.rar"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$arch1</span><span style="color: #DD0000">:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;(</span><span style="color: #0000BB">$arch1</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isSolid</span><span style="color: #007700">()?</span><span style="color: #DD0000">'yes'</span><span style="color: #007700">:</span><span style="color: #DD0000">'no'</span><span style="color: #007700">)&nbsp;.</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$arch2</span><span style="color: #DD0000">:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;(</span><span style="color: #0000BB">$arch2</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isSolid</span><span style="color: #007700">()?</span><span style="color: #DD0000">'yes'</span><span style="color: #007700">:</span><span style="color: #DD0000">'no'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+     <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+     <div class="example-contents screen">
+<div class="cdata"><pre>
+RAR Archive &quot;C:\php_rar\trunk\tests\store_method.rar&quot;: no
+RAR Archive &quot;C:\php_rar\trunk\tests\solid.rar&quot;: yes
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-819">
+    <p><strong>Example #2 Procedural style</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$arch1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">rar_open</span><span style="color: #007700">(</span><span style="color: #DD0000">"store_method.rar"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$arch2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">rar_open</span><span style="color: #007700">(</span><span style="color: #DD0000">"solid.rar"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$arch1</span><span style="color: #DD0000">:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;(</span><span style="color: #0000BB">rar_solid_is</span><span style="color: #007700">(</span><span style="color: #0000BB">$arch1</span><span style="color: #007700">)?</span><span style="color: #DD0000">'yes'</span><span style="color: #007700">:</span><span style="color: #DD0000">'no'</span><span style="color: #007700">)&nbsp;.</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$arch2</span><span style="color: #DD0000">:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;(</span><span style="color: #0000BB">rar_solid_is</span><span style="color: #007700">(</span><span style="color: #0000BB">$arch2</span><span style="color: #007700">)?</span><span style="color: #DD0000">'yes'</span><span style="color: #007700">:</span><span style="color: #DD0000">'no'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+   </div>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

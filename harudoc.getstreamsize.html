@@ -1,0 +1,165 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Get the size of the temporary stream</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.utilspec.nontext.html">Non-Text MIME Output</a></li>
+  <li class="header up"><a href="book.haru.html">haru</a></li>
+  <li class="header up"><a href="class.harudoc.html">HaruDoc</a></li>
+  <li><a href="harudoc.addpage.html">HaruDoc::addPage</a></li>
+  <li><a href="harudoc.addpagelabel.html">HaruDoc::addPageLabel</a></li>
+  <li><a href="harudoc.construct.html">HaruDoc::__construct</a></li>
+  <li><a href="harudoc.createoutline.html">HaruDoc::createOutline</a></li>
+  <li><a href="harudoc.getcurrentencoder.html">HaruDoc::getCurrentEncoder</a></li>
+  <li><a href="harudoc.getcurrentpage.html">HaruDoc::getCurrentPage</a></li>
+  <li><a href="harudoc.getencoder.html">HaruDoc::getEncoder</a></li>
+  <li><a href="harudoc.getfont.html">HaruDoc::getFont</a></li>
+  <li><a href="harudoc.getinfoattr.html">HaruDoc::getInfoAttr</a></li>
+  <li><a href="harudoc.getpagelayout.html">HaruDoc::getPageLayout</a></li>
+  <li><a href="harudoc.getpagemode.html">HaruDoc::getPageMode</a></li>
+  <li class="active"><a href="harudoc.getstreamsize.html">HaruDoc::getStreamSize</a></li>
+  <li><a href="harudoc.insertpage.html">HaruDoc::insertPage</a></li>
+  <li><a href="harudoc.loadjpeg.html">HaruDoc::loadJPEG</a></li>
+  <li><a href="harudoc.loadpng.html">HaruDoc::loadPNG</a></li>
+  <li><a href="harudoc.loadraw.html">HaruDoc::loadRaw</a></li>
+  <li><a href="harudoc.loadttc.html">HaruDoc::loadTTC</a></li>
+  <li><a href="harudoc.loadttf.html">HaruDoc::loadTTF</a></li>
+  <li><a href="harudoc.loadtype1.html">HaruDoc::loadType1</a></li>
+  <li><a href="harudoc.output.html">HaruDoc::output</a></li>
+  <li><a href="harudoc.readfromstream.html">HaruDoc::readFromStream</a></li>
+  <li><a href="harudoc.reseterror.html">HaruDoc::resetError</a></li>
+  <li><a href="harudoc.resetstream.html">HaruDoc::resetStream</a></li>
+  <li><a href="harudoc.save.html">HaruDoc::save</a></li>
+  <li><a href="harudoc.savetostream.html">HaruDoc::saveToStream</a></li>
+  <li><a href="harudoc.setcompressionmode.html">HaruDoc::setCompressionMode</a></li>
+  <li><a href="harudoc.setcurrentencoder.html">HaruDoc::setCurrentEncoder</a></li>
+  <li><a href="harudoc.setencryptionmode.html">HaruDoc::setEncryptionMode</a></li>
+  <li><a href="harudoc.setinfoattr.html">HaruDoc::setInfoAttr</a></li>
+  <li><a href="harudoc.setinfodateattr.html">HaruDoc::setInfoDateAttr</a></li>
+  <li><a href="harudoc.setopenaction.html">HaruDoc::setOpenAction</a></li>
+  <li><a href="harudoc.setpagelayout.html">HaruDoc::setPageLayout</a></li>
+  <li><a href="harudoc.setpagemode.html">HaruDoc::setPageMode</a></li>
+  <li><a href="harudoc.setpagesconfiguration.html">HaruDoc::setPagesConfiguration</a></li>
+  <li><a href="harudoc.setpassword.html">HaruDoc::setPassword</a></li>
+  <li><a href="harudoc.setpermission.html">HaruDoc::setPermission</a></li>
+  <li><a href="harudoc.usecnsencodings.html">HaruDoc::useCNSEncodings</a></li>
+  <li><a href="harudoc.usecnsfonts.html">HaruDoc::useCNSFonts</a></li>
+  <li><a href="harudoc.usecntencodings.html">HaruDoc::useCNTEncodings</a></li>
+  <li><a href="harudoc.usecntfonts.html">HaruDoc::useCNTFonts</a></li>
+  <li><a href="harudoc.usejpencodings.html">HaruDoc::useJPEncodings</a></li>
+  <li><a href="harudoc.usejpfonts.html">HaruDoc::useJPFonts</a></li>
+  <li><a href="harudoc.usekrencodings.html">HaruDoc::useKREncodings</a></li>
+  <li><a href="harudoc.usekrfonts.html">HaruDoc::useKRFonts</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="harudoc.getpagemode.html">HaruDoc::getPageMode</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="harudoc.insertpage.html">HaruDoc::insertPage</a></div>
+                <div class="up"><a href="class.harudoc.html">HaruDoc</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="harudoc.getstreamsize" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">HaruDoc::getStreamSize</h1>
+  <p class="refpurpose">Get the size of the temporary stream</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-harudoc.getstreamsize-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname">HaruDoc::getStreamSize</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Get the size of the temporary stream.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-harudoc.getstreamsize-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">This function has no parameters.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-harudoc.getstreamsize-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the size of the data in the temporary stream of the document.
+   The size is zero if the document was not saved to the temporary stream.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-harudoc.getstreamsize-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">Throws a <span class="classname">HaruException</span> on error.</p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-harudoc.getstreamsize-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"> <span class="methodname">HaruDoc::saveToStream</span></li>
+    <li class="member"> <span class="methodname">HaruDoc::resetStream</span></li>
+    <li class="member"> <span class="methodname">HaruDoc::readFromStream</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

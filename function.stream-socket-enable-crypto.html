@@ -1,0 +1,307 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Turns encryption on/off on an already connected socket</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.stream.html">Streams</a></li>
+  <li class="header up"><a href="ref.stream.html">Stream Functions</a></li>
+  <li><a href="function.set-socket-blocking.html">set_socket_blocking</a></li>
+  <li><a href="function.stream-bucket-append.html">stream_bucket_append</a></li>
+  <li><a href="function.stream-bucket-make-writeable.html">stream_bucket_make_writeable</a></li>
+  <li><a href="function.stream-bucket-new.html">stream_bucket_new</a></li>
+  <li><a href="function.stream-bucket-prepend.html">stream_bucket_prepend</a></li>
+  <li><a href="function.stream-context-create.html">stream_context_create</a></li>
+  <li><a href="function.stream-context-get-default.html">stream_context_get_default</a></li>
+  <li><a href="function.stream-context-get-options.html">stream_context_get_options</a></li>
+  <li><a href="function.stream-context-get-params.html">stream_context_get_params</a></li>
+  <li><a href="function.stream-context-set-default.html">stream_context_set_default</a></li>
+  <li><a href="function.stream-context-set-option.html">stream_context_set_option</a></li>
+  <li><a href="function.stream-context-set-params.html">stream_context_set_params</a></li>
+  <li><a href="function.stream-copy-to-stream.html">stream_copy_to_stream</a></li>
+  <li><a href="function.stream-encoding.html">stream_encoding</a></li>
+  <li><a href="function.stream-filter-append.html">stream_filter_append</a></li>
+  <li><a href="function.stream-filter-prepend.html">stream_filter_prepend</a></li>
+  <li><a href="function.stream-filter-register.html">stream_filter_register</a></li>
+  <li><a href="function.stream-filter-remove.html">stream_filter_remove</a></li>
+  <li><a href="function.stream-get-contents.html">stream_get_contents</a></li>
+  <li><a href="function.stream-get-filters.html">stream_get_filters</a></li>
+  <li><a href="function.stream-get-line.html">stream_get_line</a></li>
+  <li><a href="function.stream-get-meta-data.html">stream_get_meta_data</a></li>
+  <li><a href="function.stream-get-transports.html">stream_get_transports</a></li>
+  <li><a href="function.stream-get-wrappers.html">stream_get_wrappers</a></li>
+  <li><a href="function.stream-is-local.html">stream_is_local</a></li>
+  <li><a href="function.stream-notification-callback.html">stream_notification_callback</a></li>
+  <li><a href="function.stream-register-wrapper.html">stream_register_wrapper</a></li>
+  <li><a href="function.stream-resolve-include-path.html">stream_resolve_include_path</a></li>
+  <li><a href="function.stream-select.html">stream_select</a></li>
+  <li><a href="function.stream-set-blocking.html">stream_set_blocking</a></li>
+  <li><a href="function.stream-set-chunk-size.html">stream_set_chunk_size</a></li>
+  <li><a href="function.stream-set-read-buffer.html">stream_set_read_buffer</a></li>
+  <li><a href="function.stream-set-timeout.html">stream_set_timeout</a></li>
+  <li><a href="function.stream-set-write-buffer.html">stream_set_write_buffer</a></li>
+  <li><a href="function.stream-socket-accept.html">stream_socket_accept</a></li>
+  <li><a href="function.stream-socket-client.html">stream_socket_client</a></li>
+  <li class="active"><a href="function.stream-socket-enable-crypto.html">stream_socket_enable_crypto</a></li>
+  <li><a href="function.stream-socket-get-name.html">stream_socket_get_name</a></li>
+  <li><a href="function.stream-socket-pair.html">stream_socket_pair</a></li>
+  <li><a href="function.stream-socket-recvfrom.html">stream_socket_recvfrom</a></li>
+  <li><a href="function.stream-socket-sendto.html">stream_socket_sendto</a></li>
+  <li><a href="function.stream-socket-server.html">stream_socket_server</a></li>
+  <li><a href="function.stream-socket-shutdown.html">stream_socket_shutdown</a></li>
+  <li><a href="function.stream-supports-lock.html">stream_supports_lock</a></li>
+  <li><a href="function.stream-wrapper-register.html">stream_wrapper_register</a></li>
+  <li><a href="function.stream-wrapper-restore.html">stream_wrapper_restore</a></li>
+  <li><a href="function.stream-wrapper-unregister.html">stream_wrapper_unregister</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.stream-socket-client.html">stream_socket_client</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.stream-socket-get-name.html">stream_socket_get_name</a></div>
+                <div class="up"><a href="ref.stream.html">Stream Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.stream-socket-enable-crypto" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">stream_socket_enable_crypto</h1>
+  <p class="refpurpose">Turns encryption on/off on an already connected socket</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.stream-socket-enable-crypto-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname">stream_socket_enable_crypto</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$stream</code></span>
+   , <span class="methodparam"><span class="type">bool</span> <code class="parameter">$enable</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$crypto_type</code></span>
+   [, <span class="methodparam"><span class="type">resource</span> <code class="parameter">$session_stream</code></span>
+  ]] )</div>
+
+
+  <p class="simpara">
+   Enable or disable encryption on the stream.
+  </p>
+
+  <p class="simpara">
+   Once the crypto settings are established, cryptography can be turned
+   on and off dynamically by passing <strong><code>TRUE</code></strong> or <strong><code>FALSE</code></strong> in the
+   <code class="parameter">enable</code> parameter.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.stream-socket-enable-crypto-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">stream</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The stream resource.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">enable</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Enable/disable cryptography on the stream.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">crypto_type</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Setup encryption on the stream.
+       Valid methods are
+       <ul class="itemizedlist">
+        <li class="listitem"><span class="simpara"><strong><code>STREAM_CRYPTO_METHOD_SSLv2_CLIENT</code></strong></span></li>
+        <li class="listitem"><span class="simpara"><strong><code>STREAM_CRYPTO_METHOD_SSLv3_CLIENT</code></strong></span></li>
+        <li class="listitem"><span class="simpara"><strong><code>STREAM_CRYPTO_METHOD_SSLv23_CLIENT</code></strong></span></li>
+        <li class="listitem"><span class="simpara"><strong><code>STREAM_CRYPTO_METHOD_ANY_CLIENT</code></strong></span></li>
+        <li class="listitem"><span class="simpara"><strong><code>STREAM_CRYPTO_METHOD_TLS_CLIENT</code></strong></span></li>
+        <li class="listitem"><span class="simpara"><strong><code>STREAM_CRYPTO_METHOD_TLSv1_0_CLIENT</code></strong></span></li>
+        <li class="listitem"><span class="simpara"><strong><code>STREAM_CRYPTO_METHOD_TLSv1_1_CLIENT</code></strong></span></li>
+        <li class="listitem"><span class="simpara"><strong><code>STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT</code></strong></span></li>
+        <li class="listitem"><span class="simpara"><strong><code>STREAM_CRYPTO_METHOD_SSLv2_SERVER</code></strong></span></li>
+        <li class="listitem"><span class="simpara"><strong><code>STREAM_CRYPTO_METHOD_SSLv3_SERVER</code></strong></span></li>
+        <li class="listitem"><span class="simpara"><strong><code>STREAM_CRYPTO_METHOD_SSLv23_SERVER</code></strong></span></li>
+        <li class="listitem"><span class="simpara"><strong><code>STREAM_CRYPTO_METHOD_ANY_SERVER</code></strong></span></li>
+        <li class="listitem"><span class="simpara"><strong><code>STREAM_CRYPTO_METHOD_TLS_SERVER</code></strong></span></li>
+        <li class="listitem"><span class="simpara"><strong><code>STREAM_CRYPTO_METHOD_TLSv1_0_SERVER</code></strong></span></li>
+        <li class="listitem"><span class="simpara"><strong><code>STREAM_CRYPTO_METHOD_TLSv1_1_SERVER</code></strong></span></li>
+        <li class="listitem"><span class="simpara"><strong><code>STREAM_CRYPTO_METHOD_TLSv1_2_SERVER</code></strong></span></li>
+       </ul>
+      </p>
+      <p class="para">
+       If omitted, the <code class="parameter">crypto_type</code> context option on
+       the stream&#039;s SSL context will be used instead.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">session_stream</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Seed the stream with settings from <code class="parameter">session_stream</code>.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.stream-socket-enable-crypto-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> on success, <strong><code>FALSE</code></strong> if negotiation has failed or
+   <em>0</em> if there isn&#039;t enough data and you should try again
+   (only for non-blocking sockets).
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.stream-socket-enable-crypto-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.6.0</td>
+       <td>
+        Introduce <strong><code>STREAM_CRYPTO_METHOD_ANY_CLIENT</code></strong>, <strong><code>STREAM_CRYPTO_METHOD_TLSv1_0_CLIENT</code></strong>, <strong><code>STREAM_CRYPTO_METHOD_TLSv1_1_CLIENT</code></strong>, <strong><code>STREAM_CRYPTO_METHOD_TLSv1_2_CLIENT</code></strong>, <strong><code>STREAM_CRYPTO_METHOD_ANY_SERVER</code></strong>, <strong><code>STREAM_CRYPTO_METHOD_TLSv1_0_SERVER</code></strong>, <strong><code>STREAM_CRYPTO_METHOD_TLSv1_1_SERVER</code></strong>, <strong><code>STREAM_CRYPTO_METHOD_TLSv1_2_SERVER</code></strong>.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.6.0</td>
+       <td>
+        The <code class="parameter">crypto_type</code> is now optional.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.stream-socket-enable-crypto-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4625">
+    <p><strong>Example #1 <span class="function">stream_socket_enable_crypto</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">stream_socket_client</span><span style="color: #007700">(</span><span style="color: #DD0000">"tcp://myproto.example.com:31337"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$errno</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$errstr</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">30</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$fp</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #DD0000">"Unable&nbsp;to&nbsp;connect:&nbsp;</span><span style="color: #0000BB">$errstr</span><span style="color: #DD0000">&nbsp;(</span><span style="color: #0000BB">$errno</span><span style="color: #DD0000">)"</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">/*&nbsp;Turn&nbsp;on&nbsp;encryption&nbsp;for&nbsp;login&nbsp;phase&nbsp;*/<br /></span><span style="color: #0000BB">stream_socket_enable_crypto</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">STREAM_CRYPTO_METHOD_SSLv23_CLIENT</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"USER&nbsp;god\r\n"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"PASS&nbsp;secret\r\n"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;Turn&nbsp;off&nbsp;encryption&nbsp;for&nbsp;the&nbsp;rest&nbsp;*/<br /></span><span style="color: #0000BB">stream_socket_enable_crypto</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">);<br /><br />while&nbsp;(</span><span style="color: #0000BB">$motd&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fgets</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$motd</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.stream-socket-enable-crypto-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="ref.openssl.html" class="xref">OpenSSL Functions</a></li>
+    <li class="member"><a href="transports.html" class="xref">List of Supported Socket Transports</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

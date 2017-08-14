@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Gets constants</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.vartype.html">Variable and Type Related Extensions</a></li>
+  <li class="header up"><a href="book.reflection.html">Reflection</a></li>
+  <li class="header up"><a href="class.reflectionextension.html">ReflectionExtension</a></li>
+  <li><a href="reflectionextension.clone.html">ReflectionExtension::__clone</a></li>
+  <li><a href="reflectionextension.construct.html">ReflectionExtension::__construct</a></li>
+  <li><a href="reflectionextension.export.html">ReflectionExtension::export</a></li>
+  <li><a href="reflectionextension.getclasses.html">ReflectionExtension::getClasses</a></li>
+  <li><a href="reflectionextension.getclassnames.html">ReflectionExtension::getClassNames</a></li>
+  <li class="active"><a href="reflectionextension.getconstants.html">ReflectionExtension::getConstants</a></li>
+  <li><a href="reflectionextension.getdependencies.html">ReflectionExtension::getDependencies</a></li>
+  <li><a href="reflectionextension.getfunctions.html">ReflectionExtension::getFunctions</a></li>
+  <li><a href="reflectionextension.getinientries.html">ReflectionExtension::getINIEntries</a></li>
+  <li><a href="reflectionextension.getname.html">ReflectionExtension::getName</a></li>
+  <li><a href="reflectionextension.getversion.html">ReflectionExtension::getVersion</a></li>
+  <li><a href="reflectionextension.info.html">ReflectionExtension::info</a></li>
+  <li><a href="reflectionextension.ispersistent.html">ReflectionExtension::isPersistent</a></li>
+  <li><a href="reflectionextension.istemporary.html">ReflectionExtension::isTemporary</a></li>
+  <li><a href="reflectionextension.tostring.html">ReflectionExtension::__toString</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="reflectionextension.getclassnames.html">ReflectionExtension::getClassNames</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="reflectionextension.getdependencies.html">ReflectionExtension::getDependencies</a></div>
+                <div class="up"><a href="class.reflectionextension.html">ReflectionExtension</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="reflectionextension.getconstants" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ReflectionExtension::getConstants</h1>
+  <p class="refpurpose">Gets constants</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-reflectionextension.getconstants-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">ReflectionExtension::getConstants</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Get defined constants from an extension.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-reflectionextension.getconstants-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">This function has no parameters.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-reflectionextension.getconstants-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   An associative array with constant names as keys.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-reflectionextension.getconstants-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-6073">
+    <p><strong>Example #1  <span class="methodname">ReflectionExtension::getConstants</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$ext&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">ReflectionExtension</span><span style="color: #007700">(</span><span style="color: #DD0000">'DOM'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$ext</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getConstants</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [XML_ELEMENT_NODE] =&gt; 1
+    [XML_ATTRIBUTE_NODE] =&gt; 2
+    [XML_TEXT_NODE] =&gt; 3
+    [XML_CDATA_SECTION_NODE] =&gt; 4
+    [XML_ENTITY_REF_NODE] =&gt; 5
+    [XML_ENTITY_NODE] =&gt; 6
+    [XML_PI_NODE] =&gt; 7
+    [XML_COMMENT_NODE] =&gt; 8
+    [XML_DOCUMENT_NODE] =&gt; 9
+    [XML_DOCUMENT_TYPE_NODE] =&gt; 10
+    [XML_DOCUMENT_FRAG_NODE] =&gt; 11
+    [XML_NOTATION_NODE] =&gt; 12
+    [XML_HTML_DOCUMENT_NODE] =&gt; 13
+    [XML_DTD_NODE] =&gt; 14
+    [XML_ELEMENT_DECL_NODE] =&gt; 15
+    [XML_ATTRIBUTE_DECL_NODE] =&gt; 16
+    [XML_ENTITY_DECL_NODE] =&gt; 17
+    [XML_NAMESPACE_DECL_NODE] =&gt; 18
+    [XML_LOCAL_NAMESPACE] =&gt; 18
+    [XML_ATTRIBUTE_CDATA] =&gt; 1
+    [XML_ATTRIBUTE_ID] =&gt; 2
+    [XML_ATTRIBUTE_IDREF] =&gt; 3
+    [XML_ATTRIBUTE_IDREFS] =&gt; 4
+    [XML_ATTRIBUTE_ENTITY] =&gt; 6
+    [XML_ATTRIBUTE_NMTOKEN] =&gt; 7
+    [XML_ATTRIBUTE_NMTOKENS] =&gt; 8
+    [XML_ATTRIBUTE_ENUMERATION] =&gt; 9
+    [XML_ATTRIBUTE_NOTATION] =&gt; 10
+    [DOM_PHP_ERR] =&gt; 0
+    [DOM_INDEX_SIZE_ERR] =&gt; 1
+    [DOMSTRING_SIZE_ERR] =&gt; 2
+    [DOM_HIERARCHY_REQUEST_ERR] =&gt; 3
+    [DOM_WRONG_DOCUMENT_ERR] =&gt; 4
+    [DOM_INVALID_CHARACTER_ERR] =&gt; 5
+    [DOM_NO_DATA_ALLOWED_ERR] =&gt; 6
+    [DOM_NO_MODIFICATION_ALLOWED_ERR] =&gt; 7
+    [DOM_NOT_FOUND_ERR] =&gt; 8
+    [DOM_NOT_SUPPORTED_ERR] =&gt; 9
+    [DOM_INUSE_ATTRIBUTE_ERR] =&gt; 10
+    [DOM_INVALID_STATE_ERR] =&gt; 11
+    [DOM_SYNTAX_ERR] =&gt; 12
+    [DOM_INVALID_MODIFICATION_ERR] =&gt; 13
+    [DOM_NAMESPACE_ERR] =&gt; 14
+    [DOM_INVALID_ACCESS_ERR] =&gt; 15
+    [DOM_VALIDATION_ERR] =&gt; 16
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-reflectionextension.getconstants-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"> <span class="methodname">ReflectionExtension::getINIEntries</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

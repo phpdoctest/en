@@ -1,0 +1,316 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Determine if a variable is set and is not NULL</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.vartype.html">Variable and Type Related Extensions</a></li>
+  <li class="header up"><a href="book.var.html">Variable handling</a></li>
+  <li class="header up"><a href="ref.var.html">Variable handling Functions</a></li>
+  <li><a href="function.boolval.html">boolval</a></li>
+  <li><a href="function.debug-zval-dump.html">debug_zval_dump</a></li>
+  <li><a href="function.doubleval.html">doubleval</a></li>
+  <li><a href="function.empty.html">empty</a></li>
+  <li><a href="function.floatval.html">floatval</a></li>
+  <li><a href="function.get-defined-vars.html">get_defined_vars</a></li>
+  <li><a href="function.get-resource-type.html">get_resource_type</a></li>
+  <li><a href="function.gettype.html">gettype</a></li>
+  <li><a href="function.import-request-variables.html">import_request_variables</a></li>
+  <li><a href="function.intval.html">intval</a></li>
+  <li><a href="function.is-array.html">is_array</a></li>
+  <li><a href="function.is-bool.html">is_bool</a></li>
+  <li><a href="function.is-callable.html">is_callable</a></li>
+  <li><a href="function.is-double.html">is_double</a></li>
+  <li><a href="function.is-float.html">is_float</a></li>
+  <li><a href="function.is-int.html">is_int</a></li>
+  <li><a href="function.is-integer.html">is_integer</a></li>
+  <li><a href="function.is-iterable.html">is_iterable</a></li>
+  <li><a href="function.is-long.html">is_long</a></li>
+  <li><a href="function.is-null.html">is_null</a></li>
+  <li><a href="function.is-numeric.html">is_numeric</a></li>
+  <li><a href="function.is-object.html">is_object</a></li>
+  <li><a href="function.is-real.html">is_real</a></li>
+  <li><a href="function.is-resource.html">is_resource</a></li>
+  <li><a href="function.is-scalar.html">is_scalar</a></li>
+  <li><a href="function.is-string.html">is_string</a></li>
+  <li class="active"><a href="function.isset.html">isset</a></li>
+  <li><a href="function.print-r.html">print_r</a></li>
+  <li><a href="function.serialize.html">serialize</a></li>
+  <li><a href="function.settype.html">settype</a></li>
+  <li><a href="function.strval.html">strval</a></li>
+  <li><a href="function.unserialize.html">unserialize</a></li>
+  <li><a href="function.unset.html">unset</a></li>
+  <li><a href="function.var-dump.html">var_dump</a></li>
+  <li><a href="function.var-export.html">var_export</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.is-string.html">is_string</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.print-r.html">print_r</a></div>
+                <div class="up"><a href="ref.var.html">Variable handling Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.isset" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">isset</h1>
+  <p class="refpurpose">Determine if a variable is set and is not <strong><code>NULL</code></strong></p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.isset-description">
+ <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">isset</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$var</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$...</code></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Determine if a variable is set and is not <strong><code>NULL</code></strong>.
+  </p>
+  <p class="para">
+   If a variable has been unset with <span class="function">unset</span>, it will no
+   longer be set. <span class="function">isset</span> will return <strong><code>FALSE</code></strong> if testing a
+   variable that has been set to <strong><code>NULL</code></strong>. Also note that a null character
+   (<em>&quot;\0&quot;</em>) is not equivalent to the PHP <strong><code>NULL</code></strong> constant.
+  </p>
+  <p class="para">
+   If multiple parameters are supplied then <span class="function">isset</span> will
+   return <strong><code>TRUE</code></strong> only if all of the parameters are set. Evaluation goes from
+   left to right and stops as soon as an unset variable is encountered.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.isset-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">var</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The variable to be checked.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">...</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Another variable ...
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.isset-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> if <code class="parameter">var</code> exists and has value other
+   than <strong><code>NULL</code></strong>. <strong><code>FALSE</code></strong> otherwise.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.isset-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.4.0</td>
+       <td>
+        <p class="para">
+         Checking non-numeric offsets of strings now returns <strong><code>FALSE</code></strong>.
+        </p>
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.isset-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-6146">
+    <p><strong>Example #1 <span class="function">isset</span> Examples</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$var&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">''</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;This&nbsp;will&nbsp;evaluate&nbsp;to&nbsp;TRUE&nbsp;so&nbsp;the&nbsp;text&nbsp;will&nbsp;be&nbsp;printed.<br /></span><span style="color: #007700">if&nbsp;(isset(</span><span style="color: #0000BB">$var</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"This&nbsp;var&nbsp;is&nbsp;set&nbsp;so&nbsp;I&nbsp;will&nbsp;print."</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;In&nbsp;the&nbsp;next&nbsp;examples&nbsp;we'll&nbsp;use&nbsp;var_dump&nbsp;to&nbsp;output<br />//&nbsp;the&nbsp;return&nbsp;value&nbsp;of&nbsp;isset().<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"test"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"anothertest"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$a</span><span style="color: #007700">));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;TRUE<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;TRUE<br /><br /></span><span style="color: #007700">unset&nbsp;(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$a</span><span style="color: #007700">));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;FALSE<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;FALSE<br /><br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$foo</span><span style="color: #007700">));&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;FALSE<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   This also work for elements in arrays:
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$a&nbsp;</span><span style="color: #007700">=&nbsp;array&nbsp;(</span><span style="color: #DD0000">'test'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'hello'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'pie'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(</span><span style="color: #DD0000">'a'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'apple'</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">'test'</span><span style="color: #007700">]));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;TRUE<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">]));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;FALSE<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">'hello'</span><span style="color: #007700">]));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;FALSE<br /><br />//&nbsp;The&nbsp;key&nbsp;'hello'&nbsp;equals&nbsp;NULL&nbsp;so&nbsp;is&nbsp;considered&nbsp;unset<br />//&nbsp;If&nbsp;you&nbsp;want&nbsp;to&nbsp;check&nbsp;for&nbsp;NULL&nbsp;key&nbsp;values&nbsp;then&nbsp;try:&nbsp;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">array_key_exists</span><span style="color: #007700">(</span><span style="color: #DD0000">'hello'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;TRUE<br /><br />//&nbsp;Checking&nbsp;deeper&nbsp;array&nbsp;values<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">'pie'</span><span style="color: #007700">][</span><span style="color: #DD0000">'a'</span><span style="color: #007700">]));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;TRUE<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">'pie'</span><span style="color: #007700">][</span><span style="color: #DD0000">'b'</span><span style="color: #007700">]));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;FALSE<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">'cake'</span><span style="color: #007700">][</span><span style="color: #DD0000">'a'</span><span style="color: #007700">][</span><span style="color: #DD0000">'b'</span><span style="color: #007700">]));&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;FALSE<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <div class="example" id="example-6147">
+   <p><strong>Example #2 <span class="function">isset</span> on String Offsets</strong></p>
+   <div class="example-contents"><p>
+    PHP 5.4 changes how <span class="function">isset</span> behaves
+    when passed string offsets.
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$expected_array_got_string&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'somestring'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$expected_array_got_string</span><span style="color: #007700">[</span><span style="color: #DD0000">'some_key'</span><span style="color: #007700">]));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$expected_array_got_string</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$expected_array_got_string</span><span style="color: #007700">[</span><span style="color: #DD0000">'0'</span><span style="color: #007700">]));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$expected_array_got_string</span><span style="color: #007700">[</span><span style="color: #0000BB">0.5</span><span style="color: #007700">]));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$expected_array_got_string</span><span style="color: #007700">[</span><span style="color: #DD0000">'0.5'</span><span style="color: #007700">]));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$expected_array_got_string</span><span style="color: #007700">[</span><span style="color: #DD0000">'0&nbsp;Mostel'</span><span style="color: #007700">]));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>Output of the above example in PHP 5.3:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+bool(true)
+bool(true)
+bool(true)
+bool(true)
+bool(true)
+bool(true)
+</pre></div>
+   </div>
+   <div class="example-contents"><p>Output of the above example in PHP 5.4:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+bool(false)
+bool(true)
+bool(true)
+bool(true)
+bool(false)
+bool(false)
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.isset-notes">
+  <h3 class="title">Notes</h3>
+  <div class="warning"><strong class="warning">Warning</strong>
+   <p class="para">
+    <span class="function">isset</span> only works with variables as passing anything
+    else will result in a parse error.  For checking if 
+    <a href="language.constants.html" class="link">constants</a> are set use the 
+    <span class="function">defined</span> function.
+   </p>
+  </div>
+  <blockquote class="note"><p><strong class="note">Note</strong>: <span class="simpara">Because this is a
+language construct and not a function, it cannot be called using
+<a href="functions.variable-functions.html" class="link">variable functions</a>.</span>
+</p></blockquote>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    When using <span class="function">isset</span> on inaccessible object properties,
+    the <a href="language.oop5.overloading.html#object.isset" class="link">__isset()</a>
+    overloading method will be called, if declared.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.isset-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">empty</span></li>
+    <li class="member"><a href="language.oop5.overloading.html#object.isset" class="link">__isset()</a></li>
+    <li class="member"><span class="function">unset</span></li>
+    <li class="member"><span class="function">defined</span></li>
+    <li class="member"><a href="types.comparisons.html" class="link">the type comparison tables</a></li>
+    <li class="member"><span class="function">array_key_exists</span></li>
+    <li class="member"><span class="function">is_null</span></li>
+    <li class="member">the error control <a href="language.operators.errorcontrol.html" class="link">@</a> operator</li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

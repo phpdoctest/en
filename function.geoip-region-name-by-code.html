@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Returns the region name for some country and region code combo</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.geoip.html">GeoIP</a></li>
+  <li class="header up"><a href="ref.geoip.html">GeoIP Functions</a></li>
+  <li><a href="function.geoip-asnum-by-name.html">geoip_asnum_by_name</a></li>
+  <li><a href="function.geoip-continent-code-by-name.html">geoip_continent_code_by_name</a></li>
+  <li><a href="function.geoip-country-code-by-name.html">geoip_country_code_by_name</a></li>
+  <li><a href="function.geoip-country-code3-by-name.html">geoip_country_code3_by_name</a></li>
+  <li><a href="function.geoip-country-name-by-name.html">geoip_country_name_by_name</a></li>
+  <li><a href="function.geoip-database-info.html">geoip_database_info</a></li>
+  <li><a href="function.geoip-db-avail.html">geoip_db_avail</a></li>
+  <li><a href="function.geoip-db-filename.html">geoip_db_filename</a></li>
+  <li><a href="function.geoip-db-get-all-info.html">geoip_db_get_all_info</a></li>
+  <li><a href="function.geoip-domain-by-name.html">geoip_domain_by_name</a></li>
+  <li><a href="function.geoip-id-by-name.html">geoip_id_by_name</a></li>
+  <li><a href="function.geoip-isp-by-name.html">geoip_isp_by_name</a></li>
+  <li><a href="function.geoip-netspeedcell-by-name.html">geoip_netspeedcell_by_name</a></li>
+  <li><a href="function.geoip-org-by-name.html">geoip_org_by_name</a></li>
+  <li><a href="function.geoip-record-by-name.html">geoip_record_by_name</a></li>
+  <li><a href="function.geoip-region-by-name.html">geoip_region_by_name</a></li>
+  <li class="active"><a href="function.geoip-region-name-by-code.html">geoip_region_name_by_code</a></li>
+  <li><a href="function.geoip-setup-custom-directory.html">geoip_setup_custom_directory</a></li>
+  <li><a href="function.geoip-time-zone-by-country-and-region.html">geoip_time_zone_by_country_and_region</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.geoip-region-by-name.html">geoip_region_by_name</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.geoip-setup-custom-directory.html">geoip_setup_custom_directory</a></div>
+                <div class="up"><a href="ref.geoip.html">GeoIP Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.geoip-region-name-by-code" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">geoip_region_name_by_code</h1>
+  <p class="refpurpose">Returns the region name for some country and region code combo</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.geoip-region-name-by-code-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname">geoip_region_name_by_code</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$country_code</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$region_code</code></span>
+   )</div>
+
+
+  <p class="para rdfs-comment">
+   The <span class="function">geoip_region_name_by_code</span> function will return the region
+   name corresponding to a country and region code combo.
+  </p>
+  <p class="para">
+   In the United States, the region code corresponds to the two-letter abbreviation
+   of each state. In Canada, the region code corresponds to the two-letter province or
+   territory code as attributed by Canada Post.
+  </p>
+  <p class="para">
+   For the rest of the world, GeoIP uses FIPS 10-4 codes to represent regions.
+   You can check <a href="http://www.maxmind.com/app/fips10_4" class="link external">&raquo;&nbsp;http://www.maxmind.com/app/fips10_4</a>
+   for a detailed list of FIPS 10-4 codes.
+  </p>
+  <p class="para">
+   This function is always available if using GeoIP Library version 1.4.1 or newer. The
+   data is taken directly from the GeoIP Library and not from any database.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.geoip-region-name-by-code-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">country_code</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The two-letter country code (see
+       <span class="function">geoip_country_code_by_name</span>)
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">region_code</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The two-letter (or digit) region code (see 
+       <span class="function">geoip_region_by_name</span>)
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.geoip-region-name-by-code-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the region name on success, or <strong><code>FALSE</code></strong> if the country and region code
+   combo cannot be found.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.geoip-region-name-by-code-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4325">
+    <p><strong>Example #1 A <span class="function">geoip_region_name_by_code</span> example using region code for US/Canada</strong></p>
+    <div class="example-contents"><p>
+     This will print the region name for country CA (Canada), region QC (Quebec).
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$region&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">geoip_region_name_by_code</span><span style="color: #007700">(</span><span style="color: #DD0000">'CA'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'QC'</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">$region</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Region&nbsp;name&nbsp;for&nbsp;CA/QC&nbsp;is:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$region</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Region name for CA/QC is: Quebec
+</pre></div>
+    </div>
+   </div>
+   <div class="example" id="example-4326">
+    <p><strong>Example #2 A <span class="function">geoip_region_name_by_code</span> example using FIPS codes</strong></p>
+    <div class="example-contents"><p>
+     This will print the region name for country JP (Japan), region 01.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$region&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">geoip_region_name_by_code</span><span style="color: #007700">(</span><span style="color: #DD0000">'JP'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'01'</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">$region</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Region&nbsp;name&nbsp;for&nbsp;JP/01&nbsp;is:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$region</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Region name for JP/01 is: Aichi
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

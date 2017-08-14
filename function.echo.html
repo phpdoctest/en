@@ -1,0 +1,324 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Output one or more strings</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.text.html">Text Processing</a></li>
+  <li class="header up"><a href="book.strings.html">Strings</a></li>
+  <li class="header up"><a href="ref.strings.html">String Functions</a></li>
+  <li><a href="function.addcslashes.html">addcslashes</a></li>
+  <li><a href="function.addslashes.html">addslashes</a></li>
+  <li><a href="function.bin2hex.html">bin2hex</a></li>
+  <li><a href="function.chop.html">chop</a></li>
+  <li><a href="function.chr.html">chr</a></li>
+  <li><a href="function.chunk-split.html">chunk_split</a></li>
+  <li><a href="function.convert-cyr-string.html">convert_cyr_string</a></li>
+  <li><a href="function.convert-uudecode.html">convert_uudecode</a></li>
+  <li><a href="function.convert-uuencode.html">convert_uuencode</a></li>
+  <li><a href="function.count-chars.html">count_chars</a></li>
+  <li><a href="function.crc32.html">crc32</a></li>
+  <li><a href="function.crypt.html">crypt</a></li>
+  <li class="active"><a href="function.echo.html">echo</a></li>
+  <li><a href="function.explode.html">explode</a></li>
+  <li><a href="function.fprintf.html">fprintf</a></li>
+  <li><a href="function.get-html-translation-table.html">get_html_translation_table</a></li>
+  <li><a href="function.hebrev.html">hebrev</a></li>
+  <li><a href="function.hebrevc.html">hebrevc</a></li>
+  <li><a href="function.hex2bin.html">hex2bin</a></li>
+  <li><a href="function.html-entity-decode.html">html_entity_decode</a></li>
+  <li><a href="function.htmlentities.html">htmlentities</a></li>
+  <li><a href="function.htmlspecialchars-decode.html">htmlspecialchars_decode</a></li>
+  <li><a href="function.htmlspecialchars.html">htmlspecialchars</a></li>
+  <li><a href="function.implode.html">implode</a></li>
+  <li><a href="function.join.html">join</a></li>
+  <li><a href="function.lcfirst.html">lcfirst</a></li>
+  <li><a href="function.levenshtein.html">levenshtein</a></li>
+  <li><a href="function.localeconv.html">localeconv</a></li>
+  <li><a href="function.ltrim.html">ltrim</a></li>
+  <li><a href="function.md5-file.html">md5_file</a></li>
+  <li><a href="function.md5.html">md5</a></li>
+  <li><a href="function.metaphone.html">metaphone</a></li>
+  <li><a href="function.money-format.html">money_format</a></li>
+  <li><a href="function.nl-langinfo.html">nl_langinfo</a></li>
+  <li><a href="function.nl2br.html">nl2br</a></li>
+  <li><a href="function.number-format.html">number_format</a></li>
+  <li><a href="function.ord.html">ord</a></li>
+  <li><a href="function.parse-str.html">parse_str</a></li>
+  <li><a href="function.print.html">print</a></li>
+  <li><a href="function.printf.html">printf</a></li>
+  <li><a href="function.quoted-printable-decode.html">quoted_printable_decode</a></li>
+  <li><a href="function.quoted-printable-encode.html">quoted_printable_encode</a></li>
+  <li><a href="function.quotemeta.html">quotemeta</a></li>
+  <li><a href="function.rtrim.html">rtrim</a></li>
+  <li><a href="function.setlocale.html">setlocale</a></li>
+  <li><a href="function.sha1-file.html">sha1_file</a></li>
+  <li><a href="function.sha1.html">sha1</a></li>
+  <li><a href="function.similar-text.html">similar_text</a></li>
+  <li><a href="function.soundex.html">soundex</a></li>
+  <li><a href="function.sprintf.html">sprintf</a></li>
+  <li><a href="function.sscanf.html">sscanf</a></li>
+  <li><a href="function.str-getcsv.html">str_getcsv</a></li>
+  <li><a href="function.str-ireplace.html">str_ireplace</a></li>
+  <li><a href="function.str-pad.html">str_pad</a></li>
+  <li><a href="function.str-repeat.html">str_repeat</a></li>
+  <li><a href="function.str-replace.html">str_replace</a></li>
+  <li><a href="function.str-rot13.html">str_rot13</a></li>
+  <li><a href="function.str-shuffle.html">str_shuffle</a></li>
+  <li><a href="function.str-split.html">str_split</a></li>
+  <li><a href="function.str-word-count.html">str_word_count</a></li>
+  <li><a href="function.strcasecmp.html">strcasecmp</a></li>
+  <li><a href="function.strchr.html">strchr</a></li>
+  <li><a href="function.strcmp.html">strcmp</a></li>
+  <li><a href="function.strcoll.html">strcoll</a></li>
+  <li><a href="function.strcspn.html">strcspn</a></li>
+  <li><a href="function.strip-tags.html">strip_tags</a></li>
+  <li><a href="function.stripcslashes.html">stripcslashes</a></li>
+  <li><a href="function.stripos.html">stripos</a></li>
+  <li><a href="function.stripslashes.html">stripslashes</a></li>
+  <li><a href="function.stristr.html">stristr</a></li>
+  <li><a href="function.strlen.html">strlen</a></li>
+  <li><a href="function.strnatcasecmp.html">strnatcasecmp</a></li>
+  <li><a href="function.strnatcmp.html">strnatcmp</a></li>
+  <li><a href="function.strncasecmp.html">strncasecmp</a></li>
+  <li><a href="function.strncmp.html">strncmp</a></li>
+  <li><a href="function.strpbrk.html">strpbrk</a></li>
+  <li><a href="function.strpos.html">strpos</a></li>
+  <li><a href="function.strrchr.html">strrchr</a></li>
+  <li><a href="function.strrev.html">strrev</a></li>
+  <li><a href="function.strripos.html">strripos</a></li>
+  <li><a href="function.strrpos.html">strrpos</a></li>
+  <li><a href="function.strspn.html">strspn</a></li>
+  <li><a href="function.strstr.html">strstr</a></li>
+  <li><a href="function.strtok.html">strtok</a></li>
+  <li><a href="function.strtolower.html">strtolower</a></li>
+  <li><a href="function.strtoupper.html">strtoupper</a></li>
+  <li><a href="function.strtr.html">strtr</a></li>
+  <li><a href="function.substr-compare.html">substr_compare</a></li>
+  <li><a href="function.substr-count.html">substr_count</a></li>
+  <li><a href="function.substr-replace.html">substr_replace</a></li>
+  <li><a href="function.substr.html">substr</a></li>
+  <li><a href="function.trim.html">trim</a></li>
+  <li><a href="function.ucfirst.html">ucfirst</a></li>
+  <li><a href="function.ucwords.html">ucwords</a></li>
+  <li><a href="function.vfprintf.html">vfprintf</a></li>
+  <li><a href="function.vprintf.html">vprintf</a></li>
+  <li><a href="function.vsprintf.html">vsprintf</a></li>
+  <li><a href="function.wordwrap.html">wordwrap</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.crypt.html">crypt</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.explode.html">explode</a></div>
+                <div class="up"><a href="ref.strings.html">String Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.echo" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">echo</h1>
+  <p class="refpurpose">Output one or more strings</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.echo-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname">echo</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$arg1</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$...</code></span>
+  ] )</div>
+
+  <p class="simpara">
+   Outputs all parameters. No additional newline is appended.
+  </p>
+  <p class="para">
+   <em>echo</em> is not actually a function (it is a
+   language construct), so you are not required to use parentheses
+   with it. <em>echo</em> (unlike some other language
+   constructs) does not behave like a function, so it cannot
+   always be used in the context of a function. Additionally, if you want to
+   pass more than one parameter to <em>echo</em>, the parameters
+   must not be enclosed within parentheses.
+  </p>
+  <p class="para">
+   <em>echo</em> also has a shortcut syntax, where you can
+   immediately follow the opening tag with an equals sign. Prior to PHP 5.4.0,
+   this short syntax only works with the
+   <a href="ini.core.html#ini.short-open-tag" class="link">short_open_tag</a> configuration
+   setting enabled.
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+I&nbsp;have&nbsp;<span style="color: #0000BB">&lt;?=$foo?&gt;</span>&nbsp;foo.</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   The major differences to <em>print</em> are that
+   <em>echo</em> accepts an argument list and doesn&#039;t have a return value.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.echo-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">arg1</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The parameter to output.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">...</code></dt>
+
+     <dd>
+
+      <p class="para">
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.echo-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   No value is returned.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.echo-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-5443">
+    <p><strong>Example #1 <em>echo</em> examples</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;World"</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">"This&nbsp;spans<br />multiple&nbsp;lines.&nbsp;The&nbsp;newlines&nbsp;will&nbsp;be<br />output&nbsp;as&nbsp;well"</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">"This&nbsp;spans\nmultiple&nbsp;lines.&nbsp;The&nbsp;newlines&nbsp;will&nbsp;be\noutput&nbsp;as&nbsp;well."</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Escaping&nbsp;characters&nbsp;is&nbsp;done&nbsp;\"Like&nbsp;this\"."</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;You&nbsp;can&nbsp;use&nbsp;variables&nbsp;inside&nbsp;of&nbsp;an&nbsp;echo&nbsp;statement<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"foobar"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"barbaz"</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">"foo&nbsp;is&nbsp;</span><span style="color: #0000BB">$foo</span><span style="color: #DD0000">"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;foo&nbsp;is&nbsp;foobar<br /><br />//&nbsp;You&nbsp;can&nbsp;also&nbsp;use&nbsp;arrays<br /></span><span style="color: #0000BB">$baz&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"value"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"foo"</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"this&nbsp;is&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$baz</span><span style="color: #007700">[</span><span style="color: #DD0000">'value'</span><span style="color: #007700">]}</span><span style="color: #DD0000">&nbsp;!"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;this&nbsp;is&nbsp;foo&nbsp;!<br /><br />//&nbsp;Using&nbsp;single&nbsp;quotes&nbsp;will&nbsp;print&nbsp;the&nbsp;variable&nbsp;name,&nbsp;not&nbsp;the&nbsp;value<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'foo&nbsp;is&nbsp;$foo'</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;foo&nbsp;is&nbsp;$foo<br /><br />//&nbsp;If&nbsp;you&nbsp;are&nbsp;not&nbsp;using&nbsp;any&nbsp;other&nbsp;characters,&nbsp;you&nbsp;can&nbsp;just&nbsp;echo&nbsp;variables<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$foo</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;foobar<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$foo</span><span style="color: #007700">,</span><span style="color: #0000BB">$bar</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;foobarbarbaz<br /><br />//&nbsp;Strings&nbsp;can&nbsp;either&nbsp;be&nbsp;passed&nbsp;individually&nbsp;as&nbsp;multiple&nbsp;arguments&nbsp;or<br />//&nbsp;concatenated&nbsp;together&nbsp;and&nbsp;passed&nbsp;as&nbsp;a&nbsp;single&nbsp;argument<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'This&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'string&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'was&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'made&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'with&nbsp;multiple&nbsp;parameters.'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">chr</span><span style="color: #007700">(</span><span style="color: #0000BB">10</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">'This&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">'string&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">'was&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">'made&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">'with&nbsp;concatenation.'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br />echo&nbsp;&lt;&lt;&lt;END<br /></span><span style="color: #DD0000">This&nbsp;uses&nbsp;the&nbsp;"here&nbsp;document"&nbsp;syntax&nbsp;to&nbsp;output<br />multiple&nbsp;lines&nbsp;with&nbsp;</span><span style="color: #0000BB">$variable</span><span style="color: #DD0000">&nbsp;interpolation.&nbsp;Note<br />that&nbsp;the&nbsp;here&nbsp;document&nbsp;terminator&nbsp;must&nbsp;appear&nbsp;on&nbsp;a<br />line&nbsp;with&nbsp;just&nbsp;a&nbsp;semicolon.&nbsp;no&nbsp;extra&nbsp;whitespace!<br /></span><span style="color: #007700">END;<br /><br /></span><span style="color: #FF8000">//&nbsp;Because&nbsp;echo&nbsp;does&nbsp;not&nbsp;behave&nbsp;like&nbsp;a&nbsp;function,&nbsp;the&nbsp;following&nbsp;code&nbsp;is&nbsp;invalid.<br /></span><span style="color: #007700">(</span><span style="color: #0000BB">$some_var</span><span style="color: #007700">)&nbsp;?&nbsp;echo&nbsp;</span><span style="color: #DD0000">'true'&nbsp;</span><span style="color: #007700">:&nbsp;echo&nbsp;</span><span style="color: #DD0000">'false'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;However,&nbsp;the&nbsp;following&nbsp;examples&nbsp;will&nbsp;work:<br /></span><span style="color: #007700">(</span><span style="color: #0000BB">$some_var</span><span style="color: #007700">)&nbsp;?&nbsp;print&nbsp;</span><span style="color: #DD0000">'true'&nbsp;</span><span style="color: #007700">:&nbsp;print&nbsp;</span><span style="color: #DD0000">'false'</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;print&nbsp;is&nbsp;also&nbsp;a&nbsp;construct,&nbsp;but<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;it&nbsp;behaves&nbsp;like&nbsp;a&nbsp;function,&nbsp;so<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;it&nbsp;may&nbsp;be&nbsp;used&nbsp;in&nbsp;this&nbsp;context.<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$some_var&nbsp;</span><span style="color: #007700">?&nbsp;</span><span style="color: #DD0000">'true'</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'false'</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;changing&nbsp;the&nbsp;statement&nbsp;around<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.echo-notes">
+  <h3 class="title">Notes</h3>
+  <blockquote class="note"><p><strong class="note">Note</strong>: <span class="simpara">Because this is a
+language construct and not a function, it cannot be called using
+<a href="functions.variable-functions.html" class="link">variable functions</a>.</span>
+</p></blockquote>
+  <div class="tip"><strong class="tip">Tip</strong>
+   <p class="para">
+    A benefit to passing in multiple arguments over using concatenation in
+    <span class="function">echo</span> regards the precedence of the period operator in
+    PHP. If multiple arguments are passed in, then parentheses will not be
+    required to enforce precedence:
+   </p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"Sum:&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;"</span><span style="color: #007700">,&nbsp;isset(</span><span style="color: #0000BB">$name</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #0000BB">$name&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">"John&nbsp;Doe"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"!"</span><span style="color: #007700">;</span>
+</span>
+</code></div>
+   </div>
+
+
+   <p class="para">
+    With concatenation, the period operator has a higher precedence than both
+    the addition and ternary operators, and so parentheses must be used for the
+    correct behaviour:
+   </p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'Sum:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;(</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">'Hello&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;(isset(</span><span style="color: #0000BB">$name</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #0000BB">$name&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'John&nbsp;Doe'</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'!'</span><span style="color: #007700">;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.echo-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">print</span></li>
+    <li class="member"><span class="function">printf</span></li>
+    <li class="member"><span class="function">flush</span></li>
+    <li class="member"><a href="language.types.string.html#language.types.string.syntax.heredoc" class="link">Heredoc syntax</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

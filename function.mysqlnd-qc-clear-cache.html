@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Flush all cache contents</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="set.mysqlinfo.html">MySQL</a></li>
+  <li class="header up"><a href="book.mysqlnd-qc.html">mysqlnd_qc</a></li>
+  <li class="header up"><a href="ref.mysqlnd-qc.html">mysqlnd_qc Functions</a></li>
+  <li class="active"><a href="function.mysqlnd-qc-clear-cache.html">mysqlnd_qc_clear_cache</a></li>
+  <li><a href="function.mysqlnd-qc-get-available-handlers.html">mysqlnd_qc_get_available_handlers</a></li>
+  <li><a href="function.mysqlnd-qc-get-cache-info.html">mysqlnd_qc_get_cache_info</a></li>
+  <li><a href="function.mysqlnd-qc-get-core-stats.html">mysqlnd_qc_get_core_stats</a></li>
+  <li><a href="function.mysqlnd-qc-get-normalized-query-trace-log.html">mysqlnd_qc_get_normalized_query_trace_log</a></li>
+  <li><a href="function.mysqlnd-qc-get-query-trace-log.html">mysqlnd_qc_get_query_trace_log</a></li>
+  <li><a href="function.mysqlnd-qc-set-cache-condition.html">mysqlnd_qc_set_cache_condition</a></li>
+  <li><a href="function.mysqlnd-qc-set-is-select.html">mysqlnd_qc_set_is_select</a></li>
+  <li><a href="function.mysqlnd-qc-set-storage-handler.html">mysqlnd_qc_set_storage_handler</a></li>
+  <li><a href="function.mysqlnd-qc-set-user-handlers.html">mysqlnd_qc_set_user_handlers</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="ref.mysqlnd-qc.html">mysqlnd_qc Functions</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.mysqlnd-qc-get-available-handlers.html">mysqlnd_qc_get_available_handlers</a></div>
+                <div class="up"><a href="ref.mysqlnd-qc.html">mysqlnd_qc Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.mysqlnd-qc-clear-cache" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mysqlnd_qc_clear_cache</h1>
+  <p class="refpurpose">Flush all cache contents</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.mysqlnd-qc-clear-cache-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span>
+    <span class="methodname">mysqlnd_qc_clear_cache</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Flush all cache contents.
+  </p>
+  <p class="para">
+   Flushing the cache is a storage handler responsibility.
+   All built-in storage handler but the
+   <em>memcache</em> storage
+   handler support flushing the cache. The
+   <em>memcache</em>
+   storage handler cannot flush its cache contents.
+  </p>
+  <p class="para">
+   User-defined storage handler may or may not support the operation.
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.mysqlnd-qc-clear-cache-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">This function has no parameters.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.mysqlnd-qc-clear-cache-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> on success or <strong><code>FALSE</code></strong> on failure.
+  </p>
+  <p class="para">
+   A return value of
+   <strong><code>FALSE</code></strong>
+   indicates that flushing all cache contents has
+   failed or the operation is not supported by
+   the active storage handler. Applications must
+   not expect that calling the function will always
+   flush the cache.
+  </p>
+ </div>
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,823 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Get the requested schema information</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.cubrid.html">CUBRID</a></li>
+  <li class="header up"><a href="ref.cubrid.html">CUBRID Functions</a></li>
+  <li><a href="function.cubrid-bind.html">cubrid_bind</a></li>
+  <li><a href="function.cubrid-close-prepare.html">cubrid_close_prepare</a></li>
+  <li><a href="function.cubrid-close-request.html">cubrid_close_request</a></li>
+  <li><a href="function.cubrid-col-get.html">cubrid_col_get</a></li>
+  <li><a href="function.cubrid-col-size.html">cubrid_col_size</a></li>
+  <li><a href="function.cubrid-column-names.html">cubrid_column_names</a></li>
+  <li><a href="function.cubrid-column-types.html">cubrid_column_types</a></li>
+  <li><a href="function.cubrid-commit.html">cubrid_commit</a></li>
+  <li><a href="function.cubrid-connect-with-url.html">cubrid_connect_with_url</a></li>
+  <li><a href="function.cubrid-connect.html">cubrid_connect</a></li>
+  <li><a href="function.cubrid-current-oid.html">cubrid_current_oid</a></li>
+  <li><a href="function.cubrid-disconnect.html">cubrid_disconnect</a></li>
+  <li><a href="function.cubrid-drop.html">cubrid_drop</a></li>
+  <li><a href="function.cubrid-error-code-facility.html">cubrid_error_code_facility</a></li>
+  <li><a href="function.cubrid-error-code.html">cubrid_error_code</a></li>
+  <li><a href="function.cubrid-error-msg.html">cubrid_error_msg</a></li>
+  <li><a href="function.cubrid-execute.html">cubrid_execute</a></li>
+  <li><a href="function.cubrid-fetch.html">cubrid_fetch</a></li>
+  <li><a href="function.cubrid-free-result.html">cubrid_free_result</a></li>
+  <li><a href="function.cubrid-get-autocommit.html">cubrid_get_autocommit</a></li>
+  <li><a href="function.cubrid-get-charset.html">cubrid_get_charset</a></li>
+  <li><a href="function.cubrid-get-class-name.html">cubrid_get_class_name</a></li>
+  <li><a href="function.cubrid-get-client-info.html">cubrid_get_client_info</a></li>
+  <li><a href="function.cubrid-get-db-parameter.html">cubrid_get_db_parameter</a></li>
+  <li><a href="function.cubrid-get-query-timeout.html">cubrid_get_query_timeout</a></li>
+  <li><a href="function.cubrid-get-server-info.html">cubrid_get_server_info</a></li>
+  <li><a href="function.cubrid-get.html">cubrid_get</a></li>
+  <li><a href="function.cubrid-insert-id.html">cubrid_insert_id</a></li>
+  <li><a href="function.cubrid-is-instance.html">cubrid_is_instance</a></li>
+  <li><a href="function.cubrid-lob-close.html">cubrid_lob_close</a></li>
+  <li><a href="function.cubrid-lob-export.html">cubrid_lob_export</a></li>
+  <li><a href="function.cubrid-lob-get.html">cubrid_lob_get</a></li>
+  <li><a href="function.cubrid-lob-send.html">cubrid_lob_send</a></li>
+  <li><a href="function.cubrid-lob-size.html">cubrid_lob_size</a></li>
+  <li><a href="function.cubrid-lob2-bind.html">cubrid_lob2_bind</a></li>
+  <li><a href="function.cubrid-lob2-close.html">cubrid_lob2_close</a></li>
+  <li><a href="function.cubrid-lob2-export.html">cubrid_lob2_export</a></li>
+  <li><a href="function.cubrid-lob2-import.html">cubrid_lob2_import</a></li>
+  <li><a href="function.cubrid-lob2-new.html">cubrid_lob2_new</a></li>
+  <li><a href="function.cubrid-lob2-read.html">cubrid_lob2_read</a></li>
+  <li><a href="function.cubrid-lob2-seek64.html">cubrid_lob2_seek64</a></li>
+  <li><a href="function.cubrid-lob2-seek.html">cubrid_lob2_seek</a></li>
+  <li><a href="function.cubrid-lob2-size64.html">cubrid_lob2_size64</a></li>
+  <li><a href="function.cubrid-lob2-size.html">cubrid_lob2_size</a></li>
+  <li><a href="function.cubrid-lob2-tell64.html">cubrid_lob2_tell64</a></li>
+  <li><a href="function.cubrid-lob2-tell.html">cubrid_lob2_tell</a></li>
+  <li><a href="function.cubrid-lob2-write.html">cubrid_lob2_write</a></li>
+  <li><a href="function.cubrid-lock-read.html">cubrid_lock_read</a></li>
+  <li><a href="function.cubrid-lock-write.html">cubrid_lock_write</a></li>
+  <li><a href="function.cubrid-move-cursor.html">cubrid_move_cursor</a></li>
+  <li><a href="function.cubrid-next-result.html">cubrid_next_result</a></li>
+  <li><a href="function.cubrid-num-cols.html">cubrid_num_cols</a></li>
+  <li><a href="function.cubrid-num-rows.html">cubrid_num_rows</a></li>
+  <li><a href="function.cubrid-pconnect-with-url.html">cubrid_pconnect_with_url</a></li>
+  <li><a href="function.cubrid-pconnect.html">cubrid_pconnect</a></li>
+  <li><a href="function.cubrid-prepare.html">cubrid_prepare</a></li>
+  <li><a href="function.cubrid-put.html">cubrid_put</a></li>
+  <li><a href="function.cubrid-rollback.html">cubrid_rollback</a></li>
+  <li class="active"><a href="function.cubrid-schema.html">cubrid_schema</a></li>
+  <li><a href="function.cubrid-seq-drop.html">cubrid_seq_drop</a></li>
+  <li><a href="function.cubrid-seq-insert.html">cubrid_seq_insert</a></li>
+  <li><a href="function.cubrid-seq-put.html">cubrid_seq_put</a></li>
+  <li><a href="function.cubrid-set-add.html">cubrid_set_add</a></li>
+  <li><a href="function.cubrid-set-autocommit.html">cubrid_set_autocommit</a></li>
+  <li><a href="function.cubrid-set-db-parameter.html">cubrid_set_db_parameter</a></li>
+  <li><a href="function.cubrid-set-drop.html">cubrid_set_drop</a></li>
+  <li><a href="function.cubrid-set-query-timeout.html">cubrid_set_query_timeout</a></li>
+  <li><a href="function.cubrid-version.html">cubrid_version</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.cubrid-rollback.html">cubrid_rollback</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.cubrid-seq-drop.html">cubrid_seq_drop</a></div>
+                <div class="up"><a href="ref.cubrid.html">CUBRID Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.cubrid-schema" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">cubrid_schema</h1>
+  <p class="refpurpose">Get the requested schema information</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.cubrid-schema-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname">cubrid_schema</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$conn_identifier</code></span>  
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$schema_type</code></span>  
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$class_name</code></span> 
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$attr_name</code></span>  
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+    The <span class="function">cubrid_schema</span> function is used to get the
+    requested schema information from database. You have to designate
+    <code class="parameter">class_name</code>, if you want to get information on
+    certain class, <code class="parameter">attr_name</code>, if you want to get
+    information on certain attribute (can be used only with CUBRID_
+    SCH_ATTR_PRIVILEGE).
+  </p>
+
+  <p class="para">
+  The result of the cubrid_schema function is returned as a two-dimensional
+  array (column (associative array) * row (numeric array)). The following
+  tables shows types of schema and the column structure of the result array to
+  be returned based on the schema type.
+  </p>
+
+  <p class="para">
+  <table class="doctable table">
+   <caption><strong>Result Composition of Each Type</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>Schema</th>
+       <th>Column Number</th>
+       <th>Column Name</th>
+       <th>Value</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>CUBRID_SCH_CLASS</td>
+       <td>1</td>
+       <td>NAME</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>2</td>
+       <td>TYPE</td>
+       <td>0:system class 1:vclass 2:class</td>
+      </tr>
+
+
+      <tr>
+       <td>CUBRID_SCH_VCLASS</td>
+       <td>1</td>
+       <td>NAME</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>2</td>
+       <td>TYPE</td>
+       <td>1:vclass</td>
+      </tr>
+
+
+      <tr>
+       <td>CUBRID_SCH_QUERY_SPEC</td>
+       <td>1</td>
+       <td>QUERY_SPEC</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+
+      <tr>
+       <td>CUBRID_SCH_ATTRIBUTE / CUBRID_SCH_CLASS_ATTRIBUTE</td>
+       <td>1</td>
+       <td>ATTR_NAME</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>2</td>
+       <td>DOMAIN</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>3</td>
+       <td>SCALE</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>4</td>
+       <td>PRECISION</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>5</td>
+       <td>INDEXED</td>
+       <td>1:indexed</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>6</td>
+       <td>NOT NULL</td>
+       <td>1:not null</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>7</td>
+       <td>SHARED</td>
+       <td>1:shared</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>8</td>
+       <td>UNIQUE</td>
+       <td>1:unique</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>9</td>
+       <td>DEFAULT</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>10</td>
+       <td>ATTR_ORDER</td>
+       <td>base:1</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>11</td>
+       <td>CLASS_NAME</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>12</td>
+       <td>SOURCE_CLASS</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>13</td>
+       <td>IS_KEY</td>
+       <td>1:key</td>
+      </tr>
+
+
+      <tr>
+       <td>CUBRID_SCH_METHOD / CUBRID_SCH_CLASS_METHOD</td>
+       <td>1</td>
+       <td>NAME</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>2</td>
+       <td>RET_DOMAIN</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>3</td>
+       <td>ARG_DOMAIN</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+
+      <tr>
+       <td>CUBRID_SCH_METHOD_FILE</td>
+       <td>1</td>
+       <td>METHOD_FILE</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+
+      <tr>
+       <td>CUBRID_SCH_SUPERCLASS / CUBRID_SCH_DIRECT_SUPER_CLASS / CUBRID_SCH_SUBCLASS</td>
+       <td>1</td>
+       <td>CLASS_NAME</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>2</td>
+       <td>TYPE</td>
+       <td>0:system class 1:vclass 2:class</td>
+      </tr>
+
+
+      <tr>
+       <td>CUBRID_SCH_CONSTRAINT</td>
+       <td>1</td>
+       <td>TYPE</td>
+       <td>0:unique 1:index 2:reverse unique 3:reverse index</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>2</td>
+       <td>NAME</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>3</td>
+       <td>ATTR_NAME</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>4</td>
+       <td>NUM_PAGES</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>5</td>
+       <td>NUM_KEYS</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>6</td>
+       <td>PRIMARY_KEY</td>
+       <td>1:primary key</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>7</td>
+       <td>KEY_ORDER</td>
+       <td>base:1</td>
+      </tr>
+
+
+      <tr>
+       <td>CUBRID_SCH_TRIGGER</td>
+       <td>1</td>
+       <td>NAME</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>2</td>
+       <td>STATUS</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>3</td>
+       <td>EVENT</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>4</td>
+       <td>TARGET_CLASS</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>5</td>
+       <td>TARGET_ATTR</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>6</td>
+       <td>ACTION_TIME</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>7</td>
+       <td>ACTION</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>8</td>
+       <td>PRIORITY</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>9</td>
+       <td>CONDITION_TIME</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>10</td>
+       <td>CONDITION</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+
+      <tr>
+       <td>CUBRID_SCH_CLASS_PRIVILEGE / CUBRID_SCH_ATTR_PRIVILEGE</td>
+       <td>1</td>
+       <td>CLASS_NAME / ATTR_NAME</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>2</td>
+       <td>PRIVILEGE</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>3</td>
+       <td>GRANTABLE</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+
+      <tr>
+       <td>CUBRID_SCH_PRIMARY_KEY</td>
+       <td>1</td>
+       <td>CLASS_NAME</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>2</td>
+       <td>ATTR_NAME</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>3</td>
+       <td>KEY_SEQ</td>
+       <td>base:1</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>4</td>
+       <td>KEY_NAME</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+
+      <tr>
+       <td>CUBRID_SCH_IMPORTED_KEYS / CUBRID_SCH_EXPORTED_KEYS / CUBRID_SCH_CROSS_REFERENCE</td>
+       <td>1</td>
+       <td>PKTABLE_NAME</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>2</td>
+       <td>PKCOLUMN_NAME</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>3</td>
+       <td>FKTABLE_NAME</td>
+       <td>base:1</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>4</td>
+       <td>FKCOLUMN_NAME</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>5</td>
+       <td>KEY_SEQ</td>
+       <td>base:1</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>6</td>
+       <td>UPDATE_ACTION</td>
+       <td>0:cascade 1:restrict 2:no action 3:set null</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>7</td>
+       <td>DELETE_ACTION</td>
+       <td>0:cascade 1:restrict 2:no action 3:set null</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>8</td>
+       <td>FK_NAME</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+      <tr>
+       <td class="empty">&nbsp;</td>
+       <td>9</td>
+       <td>PK_NAME</td>
+       <td class="empty">&nbsp;</td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+
+ </div>
+
+
+<div class="refsect1 parameters" id="refsect1-function.cubrid-schema-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+  <dl>
+
+    
+  <dt>
+<code class="parameter">conn_identifier</code></dt>
+
+  <dd>
+<p class="para">Connection identifier.</p></dd>
+
+   
+   
+  <dt>
+<code class="parameter">schema_type</code></dt>
+
+  <dd>
+<p class="para">Schema data that you want to know.</p></dd>
+
+   
+   
+  <dt>
+<code class="parameter">class_name</code></dt>
+
+  <dd>
+<p class="para">Class you want to know the schema of.</p></dd>
+
+   
+   
+  <dt>
+<code class="parameter">attr_name</code></dt>
+
+  <dd>
+<p class="para">Attribute you want to know the schema of.</p></dd>
+
+   
+  </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.cubrid-schema-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+    Array containing the schema information, when process is successful; 
+  </p>
+  <p class="para">
+    <strong><code>FALSE</code></strong>, when process is unsuccessful
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 changelog" id="refsect1-function.cubrid-schema-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>8.3.1</td>
+       <td>
+        Change return value: when process is unsuccessful, return false, not -1.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.cubrid-schema-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-1144">
+   <p><strong>Example #1 <span class="function">cubrid_schema</span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">33000</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"demodb"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"dba"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"\n---&nbsp;Primary&nbsp;Key&nbsp;---\n"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$pk&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_schema</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">CUBRID_SCH_PRIMARY_KEY</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"game"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$pk</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"\n---&nbsp;Foreign&nbsp;Keys&nbsp;---\n"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$fk&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_schema</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">CUBRID_SCH_IMPORTED_KEYS</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"game"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$fk</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"\n---&nbsp;Column&nbsp;Attribute&nbsp;---\n"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$attr&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_schema</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">CUBRID_SCH_ATTRIBUTE</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"stadium"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"area"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$attr</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">cubrid_disconnect</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+
+--- Primary Key ---
+array(3) {
+  [0]=&gt;
+  array(4) {
+    [&quot;CLASS_NAME&quot;]=&gt;
+    string(4) &quot;game&quot;
+    [&quot;ATTR_NAME&quot;]=&gt;
+    string(12) &quot;athlete_code&quot;
+    [&quot;KEY_SEQ&quot;]=&gt;
+    string(1) &quot;3&quot;
+    [&quot;KEY_NAME&quot;]=&gt;
+    string(41) &quot;pk_game_host_year_event_code_athlete_code&quot;
+  }
+  [1]=&gt;
+  array(4) {
+    [&quot;CLASS_NAME&quot;]=&gt;
+    string(4) &quot;game&quot;
+    [&quot;ATTR_NAME&quot;]=&gt;
+    string(10) &quot;event_code&quot;
+    [&quot;KEY_SEQ&quot;]=&gt;
+    string(1) &quot;2&quot;
+    [&quot;KEY_NAME&quot;]=&gt;
+    string(41) &quot;pk_game_host_year_event_code_athlete_code&quot;
+  }
+  [2]=&gt;
+  array(4) {
+    [&quot;CLASS_NAME&quot;]=&gt;
+    string(4) &quot;game&quot;
+    [&quot;ATTR_NAME&quot;]=&gt;
+    string(9) &quot;host_year&quot;
+    [&quot;KEY_SEQ&quot;]=&gt;
+    string(1) &quot;1&quot;
+    [&quot;KEY_NAME&quot;]=&gt;
+    string(41) &quot;pk_game_host_year_event_code_athlete_code&quot;
+  }
+}
+
+--- Foreign Keys ---
+array(2) {
+  [0]=&gt;
+  array(9) {
+    [&quot;PKTABLE_NAME&quot;]=&gt;
+    string(7) &quot;athlete&quot;
+    [&quot;PKCOLUMN_NAME&quot;]=&gt;
+    string(4) &quot;code&quot;
+    [&quot;FKTABLE_NAME&quot;]=&gt;
+    string(4) &quot;game&quot;
+    [&quot;FKCOLUMN_NAME&quot;]=&gt;
+    string(12) &quot;athlete_code&quot;
+    [&quot;KEY_SEQ&quot;]=&gt;
+    string(1) &quot;1&quot;
+    [&quot;UPDATE_RULE&quot;]=&gt;
+    string(1) &quot;1&quot;
+    [&quot;DELETE_RULE&quot;]=&gt;
+    string(1) &quot;1&quot;
+    [&quot;FK_NAME&quot;]=&gt;
+    string(20) &quot;fk_game_athlete_code&quot;
+    [&quot;PK_NAME&quot;]=&gt;
+    string(15) &quot;pk_athlete_code&quot;
+  }
+  [1]=&gt;
+  array(9) {
+    [&quot;PKTABLE_NAME&quot;]=&gt;
+    string(5) &quot;event&quot;
+    [&quot;PKCOLUMN_NAME&quot;]=&gt;
+    string(4) &quot;code&quot;
+    [&quot;FKTABLE_NAME&quot;]=&gt;
+    string(4) &quot;game&quot;
+    [&quot;FKCOLUMN_NAME&quot;]=&gt;
+    string(10) &quot;event_code&quot;
+    [&quot;KEY_SEQ&quot;]=&gt;
+    string(1) &quot;1&quot;
+    [&quot;UPDATE_RULE&quot;]=&gt;
+    string(1) &quot;1&quot;
+    [&quot;DELETE_RULE&quot;]=&gt;
+    string(1) &quot;1&quot;
+    [&quot;FK_NAME&quot;]=&gt;
+    string(18) &quot;fk_game_event_code&quot;
+    [&quot;PK_NAME&quot;]=&gt;
+    string(13) &quot;pk_event_code&quot;
+  }
+}
+
+--- Column Attribute ---
+array(1) {
+  [0]=&gt;
+  array(13) {
+    [&quot;ATTR_NAME&quot;]=&gt;
+    string(4) &quot;area&quot;
+    [&quot;DOMAIN&quot;]=&gt;
+    string(1) &quot;7&quot;
+    [&quot;SCALE&quot;]=&gt;
+    string(1) &quot;2&quot;
+    [&quot;PRECISION&quot;]=&gt;
+    string(2) &quot;10&quot;
+    [&quot;INDEXED&quot;]=&gt;
+    string(1) &quot;0&quot;
+    [&quot;NON_NULL&quot;]=&gt;
+    string(1) &quot;0&quot;
+    [&quot;SHARED&quot;]=&gt;
+    string(1) &quot;0&quot;
+    [&quot;UNIQUE&quot;]=&gt;
+    string(1) &quot;0&quot;
+    [&quot;DEFAULT&quot;]=&gt;
+    NULL
+    [&quot;ATTR_ORDER&quot;]=&gt;
+    string(1) &quot;4&quot;
+    [&quot;CLASS_NAME&quot;]=&gt;
+    string(7) &quot;stadium&quot;
+    [&quot;SOURCE_CLASS&quot;]=&gt;
+    string(7) &quot;stadium&quot;
+    [&quot;IS_KEY&quot;]=&gt;
+    string(1) &quot;0&quot;
+  }
+}
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

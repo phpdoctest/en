@@ -1,0 +1,96 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Examples</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.crypto.html">Cryptography Extensions</a></li>
+  <li class="header up"><a href="book.crack.html">Crack</a></li>
+  <li><a href="intro.crack.html">Introduction</a></li>
+  <li><a href="crack.setup.html">Installing/Configuring</a></li>
+  <li><a href="crack.constants.html">Predefined Constants</a></li>
+  <li class="active"><a href="crack.examples.html">Examples</a></li>
+  <li><a href="ref.crack.html">Crack Functions</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="crack.constants.html">Predefined Constants</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="ref.crack.html">Crack Functions</a></div>
+                <div class="up"><a href="book.crack.html">Crack</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="crack.examples" class="appendix">
+ <h1>Examples</h1>
+ <p class="para">
+  This example shows how to open a CrackLib dictionary, test a given
+  password, retrieve any diagnostic messages, and close the dictionary.
+  <div class="example" id="example-897">
+   <p><strong>Example #1 CrackLib example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Open&nbsp;CrackLib&nbsp;Dictionary<br /></span><span style="color: #0000BB">$dictionary&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">crack_opendict</span><span style="color: #007700">(</span><span style="color: #DD0000">'/usr/local/lib/pw_dict'</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;die(</span><span style="color: #DD0000">'Unable&nbsp;to&nbsp;open&nbsp;CrackLib&nbsp;dictionary'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Perform&nbsp;password&nbsp;check<br /></span><span style="color: #0000BB">$check&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">crack_check</span><span style="color: #007700">(</span><span style="color: #0000BB">$dictionary</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'gx9A2s0x'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Retrieve&nbsp;messages<br /></span><span style="color: #0000BB">$diag&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">crack_getlastmessage</span><span style="color: #007700">();<br />echo&nbsp;</span><span style="color: #0000BB">$diag</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;'strong&nbsp;password'<br /><br />//&nbsp;Close&nbsp;dictionary<br /></span><span style="color: #0000BB">crack_closedict</span><span style="color: #007700">(</span><span style="color: #0000BB">$dictionary</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+  </div>
+ </p>
+ <blockquote class="note"><p><strong class="note">Note</strong>: 
+  <p class="para">
+   If <span class="function">crack_check</span> returns <strong><code>TRUE</code></strong>,
+   <span class="function">crack_getlastmessage</span> will return
+   <em>&#039;strong password&#039;</em>.
+  </p>
+ </p></blockquote>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

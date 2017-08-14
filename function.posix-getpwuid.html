@@ -1,0 +1,282 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Return info about a user by user id</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.fileprocess.process.html">Process Control Extensions</a></li>
+  <li class="header up"><a href="book.posix.html">POSIX</a></li>
+  <li class="header up"><a href="ref.posix.html">POSIX Functions</a></li>
+  <li><a href="function.posix-access.html">posix_access</a></li>
+  <li><a href="function.posix-ctermid.html">posix_ctermid</a></li>
+  <li><a href="function.posix-errno.html">posix_errno</a></li>
+  <li><a href="function.posix-get-last-error.html">posix_get_last_error</a></li>
+  <li><a href="function.posix-getcwd.html">posix_getcwd</a></li>
+  <li><a href="function.posix-getegid.html">posix_getegid</a></li>
+  <li><a href="function.posix-geteuid.html">posix_geteuid</a></li>
+  <li><a href="function.posix-getgid.html">posix_getgid</a></li>
+  <li><a href="function.posix-getgrgid.html">posix_getgrgid</a></li>
+  <li><a href="function.posix-getgrnam.html">posix_getgrnam</a></li>
+  <li><a href="function.posix-getgroups.html">posix_getgroups</a></li>
+  <li><a href="function.posix-getlogin.html">posix_getlogin</a></li>
+  <li><a href="function.posix-getpgid.html">posix_getpgid</a></li>
+  <li><a href="function.posix-getpgrp.html">posix_getpgrp</a></li>
+  <li><a href="function.posix-getpid.html">posix_getpid</a></li>
+  <li><a href="function.posix-getppid.html">posix_getppid</a></li>
+  <li><a href="function.posix-getpwnam.html">posix_getpwnam</a></li>
+  <li class="active"><a href="function.posix-getpwuid.html">posix_getpwuid</a></li>
+  <li><a href="function.posix-getrlimit.html">posix_getrlimit</a></li>
+  <li><a href="function.posix-getsid.html">posix_getsid</a></li>
+  <li><a href="function.posix-getuid.html">posix_getuid</a></li>
+  <li><a href="function.posix-initgroups.html">posix_initgroups</a></li>
+  <li><a href="function.posix-isatty.html">posix_isatty</a></li>
+  <li><a href="function.posix-kill.html">posix_kill</a></li>
+  <li><a href="function.posix-mkfifo.html">posix_mkfifo</a></li>
+  <li><a href="function.posix-mknod.html">posix_mknod</a></li>
+  <li><a href="function.posix-setegid.html">posix_setegid</a></li>
+  <li><a href="function.posix-seteuid.html">posix_seteuid</a></li>
+  <li><a href="function.posix-setgid.html">posix_setgid</a></li>
+  <li><a href="function.posix-setpgid.html">posix_setpgid</a></li>
+  <li><a href="function.posix-setrlimit.html">posix_setrlimit</a></li>
+  <li><a href="function.posix-setsid.html">posix_setsid</a></li>
+  <li><a href="function.posix-setuid.html">posix_setuid</a></li>
+  <li><a href="function.posix-strerror.html">posix_strerror</a></li>
+  <li><a href="function.posix-times.html">posix_times</a></li>
+  <li><a href="function.posix-ttyname.html">posix_ttyname</a></li>
+  <li><a href="function.posix-uname.html">posix_uname</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.posix-getpwnam.html">posix_getpwnam</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.posix-getrlimit.html">posix_getrlimit</a></div>
+                <div class="up"><a href="ref.posix.html">POSIX Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.posix-getpwuid" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">posix_getpwuid</h1>
+  <p class="refpurpose">Return info about a user by user id</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.posix-getpwuid-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname">posix_getpwuid</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$uid</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Returns an <span class="type">array</span> of information about the user 
+   referenced by the given user ID.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.posix-getpwuid-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">uid</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The user identifier.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.posix-getpwuid-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns an associative array with the following elements:
+   <table class="doctable table">
+    <caption><strong>The user information array</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>Element</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>name</td>
+       <td>
+        The name element contains the username of the user. This is
+        a short, usually less than 16 character &quot;handle&quot; of the
+        user, not the real, full name.
+       </td>
+      </tr>
+
+      <tr>
+       <td>passwd</td>
+       <td>
+        The passwd element contains the user&#039;s password in an
+        encrypted format. Often, for example on a system employing
+        &quot;shadow&quot; passwords, an asterisk is returned instead.
+       </td>
+      </tr>
+
+      <tr>
+       <td>uid</td>
+       <td>
+        User ID, should be the same as the
+        <code class="parameter">uid</code> parameter used when calling the
+        function, and hence redundant.
+       </td>
+      </tr>
+
+      <tr>
+       <td>gid</td>
+       <td>
+        The group ID of the user. Use the function
+        <span class="function">posix_getgrgid</span> to resolve the group
+        name and a list of its members.
+       </td>
+      </tr>
+
+      <tr>
+       <td>gecos</td>
+       <td>
+        GECOS is an obsolete term that refers to the finger
+        information field on a Honeywell batch processing system.
+        The field, however, lives on, and its contents have been
+        formalized by POSIX. The field contains a comma separated
+        list containing the user&#039;s full name, office phone, office
+        number, and home phone number. On most systems, only the
+        user&#039;s full name is available.
+       </td>
+      </tr>
+
+      <tr>
+       <td>dir</td>
+       <td>
+        This element contains the absolute path to the
+        home directory of the user.
+       </td>
+      </tr>
+
+      <tr>
+       <td>shell</td>
+       <td>
+        The shell element contains the absolute path to the
+        executable of the user&#039;s default shell.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.posix-getpwuid-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4211">
+    <p><strong>Example #1 Example use of <span class="function">posix_getpwuid</span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$userinfo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">posix_getpwuid</span><span style="color: #007700">(</span><span style="color: #0000BB">10000</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$userinfo</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [name]    =&gt; tom
+    [passwd]  =&gt; x
+    [uid]     =&gt; 10000
+    [gid]     =&gt; 42
+    [gecos]   =&gt; &quot;tom,,,&quot;
+    [dir]     =&gt; &quot;/home/tom&quot;
+    [shell]   =&gt; &quot;/bin/bash&quot;
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.posix-getpwuid-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">posix_getpwnam</span></li>
+    <li class="member">POSIX man page GETPWNAM(3)</li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

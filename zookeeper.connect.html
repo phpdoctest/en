@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Create a handle to used communicate with zookeeper.</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li class="header up"><a href="book.zookeeper.html">ZooKeeper</a></li>
+  <li class="header up"><a href="class.zookeeper.html">ZooKeeper</a></li>
+  <li><a href="zookeeper.addauth.html">Zookeeper::addAuth</a></li>
+  <li class="active"><a href="zookeeper.connect.html">Zookeeper::connect</a></li>
+  <li><a href="zookeeper.construct.html">Zookeeper::__construct</a></li>
+  <li><a href="zookeeper.create.html">Zookeeper::create</a></li>
+  <li><a href="zookeeper.delete.html">Zookeeper::delete</a></li>
+  <li><a href="zookeeper.exists.html">Zookeeper::exists</a></li>
+  <li><a href="zookeeper.get.html">Zookeeper::get</a></li>
+  <li><a href="zookeeper.getacl.html">Zookeeper::getAcl</a></li>
+  <li><a href="zookeeper.getclientid.html">Zookeeper::getClientId</a></li>
+  <li><a href="zookeeper.getrecvtimeout.html">Zookeeper::getRecvTimeout</a></li>
+  <li><a href="zookeeper.getstate.html">Zookeeper::getState</a></li>
+  <li><a href="zookeeper.isrecoverable.html">Zookeeper::isRecoverable</a></li>
+  <li><a href="zookeeper.set.html">Zookeeper::set</a></li>
+  <li><a href="zookeeper.setacl.html">Zookeeper::setAcl</a></li>
+  <li><a href="zookeeper.setdebuglevel.html">Zookeeper::setDebugLevel</a></li>
+  <li><a href="zookeeper.setdeterministicconnorder.html">Zookeeper::setDeterministicConnOrder</a></li>
+  <li><a href="zookeeper.setlogstream.html">Zookeeper::setLogStream</a></li>
+  <li><a href="zookeeper.setwatcher.html">Zookeeper::setWatcher</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="zookeeper.addauth.html">Zookeeper::addAuth</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="zookeeper.construct.html">Zookeeper::__construct</a></div>
+                <div class="up"><a href="class.zookeeper.html">ZooKeeper</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="zookeeper.connect" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Zookeeper::connect</h1>
+  <p class="refpurpose">Create a handle to used communicate with zookeeper.</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-zookeeper.connect-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span> <span class="methodname">Zookeeper::connect</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$host</code></span>
+   [, <span class="methodparam"><span class="type">callable</span> <code class="parameter">$watcher_cb</code><span class="initializer"> = null</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$recv_timeout</code><span class="initializer"> = 10000</span></span>
+  ]] )</div>
+
+
+  <p class="para rdfs-comment">
+   This method creates a new handle and a zookeeper session that corresponds to that handle. Session establishment is asynchronous, meaning that the session should not be considered established until (and unless) an event of state ZOO_CONNECTED_STATE is received.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-zookeeper.connect-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">host</code></dt>
+
+    <dd>
+
+     <p class="para">
+      Comma separated host:port pairs, each corresponding to a zk server. e.g. &quot;127.0.0.1:3000,127.0.0.1:3001,127.0.0.1:3002&quot;
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">watcher_cb</code></dt>
+
+    <dd>
+
+     <p class="para">
+      The global watcher callback function. When notifications are triggered this function will be invoked.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">recv_timeout</code></dt>
+
+    <dd>
+
+     <p class="para">
+      The timeout for this session, only valid if the connections is currently connected (ie. last watcher state is ZOO_CONNECTED_STATE).
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-zookeeper.connect-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   This method emits PHP error/warning when parameters count or types are wrong or could not init instance.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-zookeeper.connect-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li class="member"> <span class="methodname">Zookeeper::__construct</span></li>
+  </ul>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

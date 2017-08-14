@@ -1,0 +1,4260 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Reflection</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.vartype.html">Variable and Type Related Extensions</a></li>
+  <li><a href="book.array.html">Arrays</a></li>
+  <li><a href="book.classobj.html">Classes/Objects</a></li>
+  <li><a href="book.classkit.html">Classkit</a></li>
+  <li><a href="book.ctype.html">Ctype</a></li>
+  <li><a href="book.ds.html">Data Structures</a></li>
+  <li><a href="book.filter.html">Filter</a></li>
+  <li><a href="book.funchand.html">Function Handling</a></li>
+  <li><a href="book.quickhash.html">Quickhash</a></li>
+  <li class="active"><a href="book.reflection.html">Reflection</a></li>
+  <li><a href="book.var.html">Variable handling</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="quickhashintstringhash.update.html">QuickHashIntStringHash::update</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="intro.reflection.html">Introduction</a></div>
+                <div class="up"><a href="refs.basic.vartype.html">Variable and Type Related Extensions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="book.reflection" class="book">
+ 
+ <h1>Reflection</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="intro.reflection.html">Introduction</a></li>
+<li><a href="reflection.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_title">
+<li><a href="reflection.requirements.html">Requirements</a></li>
+<li><a href="reflection.installation.html">Installation</a></li>
+<li><a href="reflection.configuration.html">Runtime Configuration</a></li>
+<li><a href="reflection.resources.html">Resource Types</a></li>
+</ul>
+</li>
+<li><a href="reflection.constants.html">Predefined Constants</a></li>
+<li><a href="reflection.examples.html">Examples</a></li>
+<li><a href="reflection.extending.html">Extending</a></li>
+<li><a href="class.reflection.html">Reflection</a> — The Reflection class<ul class="chunklist chunklist_title">
+<li><a href="reflection.export.html">Reflection::export</a> — Exports</li>
+<li><a href="reflection.getmodifiernames.html">Reflection::getModifierNames</a> — Gets modifier names</li>
+</ul>
+</li>
+<li><a href="class.reflectionclass.html">ReflectionClass</a> — The ReflectionClass class<ul class="chunklist chunklist_title">
+<li><a href="reflectionclass.construct.html">ReflectionClass::__construct</a> — Constructs a ReflectionClass</li>
+<li><a href="reflectionclass.export.html">ReflectionClass::export</a> — Exports a class</li>
+<li><a href="reflectionclass.getconstant.html">ReflectionClass::getConstant</a> — Gets defined constant</li>
+<li><a href="reflectionclass.getconstants.html">ReflectionClass::getConstants</a> — Gets constants</li>
+<li><a href="reflectionclass.getconstructor.html">ReflectionClass::getConstructor</a> — Gets the constructor of the class</li>
+<li><a href="reflectionclass.getdefaultproperties.html">ReflectionClass::getDefaultProperties</a> — Gets default properties</li>
+<li><a href="reflectionclass.getdoccomment.html">ReflectionClass::getDocComment</a> — Gets doc comments</li>
+<li><a href="reflectionclass.getendline.html">ReflectionClass::getEndLine</a> — Gets end line</li>
+<li><a href="reflectionclass.getextension.html">ReflectionClass::getExtension</a> — Gets a ReflectionExtension object for the extension which defined the class</li>
+<li><a href="reflectionclass.getextensionname.html">ReflectionClass::getExtensionName</a> — Gets the name of the extension which defined the class</li>
+<li><a href="reflectionclass.getfilename.html">ReflectionClass::getFileName</a> — Gets the filename of the file in which the class has been defined</li>
+<li><a href="reflectionclass.getinterfacenames.html">ReflectionClass::getInterfaceNames</a> — Gets the interface names</li>
+<li><a href="reflectionclass.getinterfaces.html">ReflectionClass::getInterfaces</a> — Gets the interfaces</li>
+<li><a href="reflectionclass.getmethod.html">ReflectionClass::getMethod</a> — Gets a ReflectionMethod for a class method.</li>
+<li><a href="reflectionclass.getmethods.html">ReflectionClass::getMethods</a> — Gets an array of methods</li>
+<li><a href="reflectionclass.getmodifiers.html">ReflectionClass::getModifiers</a> — Gets the class modifiers</li>
+<li><a href="reflectionclass.getname.html">ReflectionClass::getName</a> — Gets class name</li>
+<li><a href="reflectionclass.getnamespacename.html">ReflectionClass::getNamespaceName</a> — Gets namespace name</li>
+<li><a href="reflectionclass.getparentclass.html">ReflectionClass::getParentClass</a> — Gets parent class</li>
+<li><a href="reflectionclass.getproperties.html">ReflectionClass::getProperties</a> — Gets properties</li>
+<li><a href="reflectionclass.getproperty.html">ReflectionClass::getProperty</a> — Gets a ReflectionProperty for a class's property</li>
+<li><a href="reflectionclass.getshortname.html">ReflectionClass::getShortName</a> — Gets short name</li>
+<li><a href="reflectionclass.getstartline.html">ReflectionClass::getStartLine</a> — Gets starting line number</li>
+<li><a href="reflectionclass.getstaticproperties.html">ReflectionClass::getStaticProperties</a> — Gets static properties</li>
+<li><a href="reflectionclass.getstaticpropertyvalue.html">ReflectionClass::getStaticPropertyValue</a> — Gets static property value</li>
+<li><a href="reflectionclass.gettraitaliases.html">ReflectionClass::getTraitAliases</a> — Returns an array of trait aliases</li>
+<li><a href="reflectionclass.gettraitnames.html">ReflectionClass::getTraitNames</a> — Returns an array of names of traits used by this class</li>
+<li><a href="reflectionclass.gettraits.html">ReflectionClass::getTraits</a> — Returns an array of traits used by this class</li>
+<li><a href="reflectionclass.hasconstant.html">ReflectionClass::hasConstant</a> — Checks if constant is defined</li>
+<li><a href="reflectionclass.hasmethod.html">ReflectionClass::hasMethod</a> — Checks if method is defined</li>
+<li><a href="reflectionclass.hasproperty.html">ReflectionClass::hasProperty</a> — Checks if property is defined</li>
+<li><a href="reflectionclass.implementsinterface.html">ReflectionClass::implementsInterface</a> — Implements interface</li>
+<li><a href="reflectionclass.innamespace.html">ReflectionClass::inNamespace</a> — Checks if in namespace</li>
+<li><a href="reflectionclass.isabstract.html">ReflectionClass::isAbstract</a> — Checks if class is abstract</li>
+<li><a href="reflectionclass.isanonymous.html">ReflectionClass::isAnonymous</a> — Checks if class is anonymous</li>
+<li><a href="reflectionclass.iscloneable.html">ReflectionClass::isCloneable</a> — Returns whether this class is cloneable</li>
+<li><a href="reflectionclass.isfinal.html">ReflectionClass::isFinal</a> — Checks if class is final</li>
+<li><a href="reflectionclass.isinstance.html">ReflectionClass::isInstance</a> — Checks class for instance</li>
+<li><a href="reflectionclass.isinstantiable.html">ReflectionClass::isInstantiable</a> — Checks if the class is instantiable</li>
+<li><a href="reflectionclass.isinterface.html">ReflectionClass::isInterface</a> — Checks if the class is an interface</li>
+<li><a href="reflectionclass.isinternal.html">ReflectionClass::isInternal</a> — Checks if class is defined internally by an extension, or the core</li>
+<li><a href="reflectionclass.isiterateable.html">ReflectionClass::isIterateable</a> — Checks if iterateable</li>
+<li><a href="reflectionclass.issubclassof.html">ReflectionClass::isSubclassOf</a> — Checks if a subclass</li>
+<li><a href="reflectionclass.istrait.html">ReflectionClass::isTrait</a> — Returns whether this is a trait</li>
+<li><a href="reflectionclass.isuserdefined.html">ReflectionClass::isUserDefined</a> — Checks if user defined</li>
+<li><a href="reflectionclass.newinstance.html">ReflectionClass::newInstance</a> — Creates a new class instance from given arguments.</li>
+<li><a href="reflectionclass.newinstanceargs.html">ReflectionClass::newInstanceArgs</a> — Creates a new class instance from given arguments.</li>
+<li><a href="reflectionclass.newinstancewithoutconstructor.html">ReflectionClass::newInstanceWithoutConstructor</a> — Creates a new class instance without invoking the constructor.</li>
+<li><a href="reflectionclass.setstaticpropertyvalue.html">ReflectionClass::setStaticPropertyValue</a> — Sets static property value</li>
+<li><a href="reflectionclass.tostring.html">ReflectionClass::__toString</a> — Returns the string representation of the ReflectionClass object.</li>
+</ul>
+</li>
+<li><a href="class.reflectionzendextension.html">ReflectionZendExtension</a> — The ReflectionZendExtension class<ul class="chunklist chunklist_title">
+<li><a href="reflectionzendextension.clone.html">ReflectionZendExtension::__clone</a> — Clone handler</li>
+<li><a href="reflectionzendextension.construct.html">ReflectionZendExtension::__construct</a> — Constructor</li>
+<li><a href="reflectionzendextension.export.html">ReflectionZendExtension::export</a> — Export</li>
+<li><a href="reflectionzendextension.getauthor.html">ReflectionZendExtension::getAuthor</a> — Gets author</li>
+<li><a href="reflectionzendextension.getcopyright.html">ReflectionZendExtension::getCopyright</a> — Gets copyright</li>
+<li><a href="reflectionzendextension.getname.html">ReflectionZendExtension::getName</a> — Gets name</li>
+<li><a href="reflectionzendextension.geturl.html">ReflectionZendExtension::getURL</a> — Gets URL</li>
+<li><a href="reflectionzendextension.getversion.html">ReflectionZendExtension::getVersion</a> — Gets version</li>
+<li><a href="reflectionzendextension.tostring.html">ReflectionZendExtension::__toString</a> — To string handler</li>
+</ul>
+</li>
+<li><a href="class.reflectionextension.html">ReflectionExtension</a> — The ReflectionExtension class<ul class="chunklist chunklist_title">
+<li><a href="reflectionextension.clone.html">ReflectionExtension::__clone</a> — Clones</li>
+<li><a href="reflectionextension.construct.html">ReflectionExtension::__construct</a> — Constructs a ReflectionExtension</li>
+<li><a href="reflectionextension.export.html">ReflectionExtension::export</a> — Export</li>
+<li><a href="reflectionextension.getclasses.html">ReflectionExtension::getClasses</a> — Gets classes</li>
+<li><a href="reflectionextension.getclassnames.html">ReflectionExtension::getClassNames</a> — Gets class names</li>
+<li><a href="reflectionextension.getconstants.html">ReflectionExtension::getConstants</a> — Gets constants</li>
+<li><a href="reflectionextension.getdependencies.html">ReflectionExtension::getDependencies</a> — Gets dependencies</li>
+<li><a href="reflectionextension.getfunctions.html">ReflectionExtension::getFunctions</a> — Gets extension functions</li>
+<li><a href="reflectionextension.getinientries.html">ReflectionExtension::getINIEntries</a> — Gets extension ini entries</li>
+<li><a href="reflectionextension.getname.html">ReflectionExtension::getName</a> — Gets extension name</li>
+<li><a href="reflectionextension.getversion.html">ReflectionExtension::getVersion</a> — Gets extension version</li>
+<li><a href="reflectionextension.info.html">ReflectionExtension::info</a> — Print extension info</li>
+<li><a href="reflectionextension.ispersistent.html">ReflectionExtension::isPersistent</a> — Returns whether this extension is persistent</li>
+<li><a href="reflectionextension.istemporary.html">ReflectionExtension::isTemporary</a> — Returns whether this extension is temporary</li>
+<li><a href="reflectionextension.tostring.html">ReflectionExtension::__toString</a> — To string</li>
+</ul>
+</li>
+<li><a href="class.reflectionfunction.html">ReflectionFunction</a> — The ReflectionFunction class<ul class="chunklist chunklist_title">
+<li><a href="reflectionfunction.construct.html">ReflectionFunction::__construct</a> — Constructs a ReflectionFunction object</li>
+<li><a href="reflectionfunction.export.html">ReflectionFunction::export</a> — Exports function</li>
+<li><a href="reflectionfunction.getclosure.html">ReflectionFunction::getClosure</a> — Returns a dynamically created closure for the function</li>
+<li><a href="reflectionfunction.invoke.html">ReflectionFunction::invoke</a> — Invokes function</li>
+<li><a href="reflectionfunction.invokeargs.html">ReflectionFunction::invokeArgs</a> — Invokes function args</li>
+<li><a href="reflectionfunction.isdisabled.html">ReflectionFunction::isDisabled</a> — Checks if function is disabled</li>
+<li><a href="reflectionfunction.tostring.html">ReflectionFunction::__toString</a> — To string</li>
+</ul>
+</li>
+<li><a href="class.reflectionfunctionabstract.html">ReflectionFunctionAbstract</a> — The ReflectionFunctionAbstract class<ul class="chunklist chunklist_title">
+<li><a href="reflectionfunctionabstract.clone.html">ReflectionFunctionAbstract::__clone</a> — Clones function</li>
+<li><a href="reflectionfunctionabstract.getclosurescopeclass.html">ReflectionFunctionAbstract::getClosureScopeClass</a> — Returns the scope associated to the closure</li>
+<li><a href="reflectionfunctionabstract.getclosurethis.html">ReflectionFunctionAbstract::getClosureThis</a> — Returns this pointer bound to closure</li>
+<li><a href="reflectionfunctionabstract.getdoccomment.html">ReflectionFunctionAbstract::getDocComment</a> — Gets doc comment</li>
+<li><a href="reflectionfunctionabstract.getendline.html">ReflectionFunctionAbstract::getEndLine</a> — Gets end line number</li>
+<li><a href="reflectionfunctionabstract.getextension.html">ReflectionFunctionAbstract::getExtension</a> — Gets extension info</li>
+<li><a href="reflectionfunctionabstract.getextensionname.html">ReflectionFunctionAbstract::getExtensionName</a> — Gets extension name</li>
+<li><a href="reflectionfunctionabstract.getfilename.html">ReflectionFunctionAbstract::getFileName</a> — Gets file name</li>
+<li><a href="reflectionfunctionabstract.getname.html">ReflectionFunctionAbstract::getName</a> — Gets function name</li>
+<li><a href="reflectionfunctionabstract.getnamespacename.html">ReflectionFunctionAbstract::getNamespaceName</a> — Gets namespace name</li>
+<li><a href="reflectionfunctionabstract.getnumberofparameters.html">ReflectionFunctionAbstract::getNumberOfParameters</a> — Gets number of parameters</li>
+<li><a href="reflectionfunctionabstract.getnumberofrequiredparameters.html">ReflectionFunctionAbstract::getNumberOfRequiredParameters</a> — Gets number of required parameters</li>
+<li><a href="reflectionfunctionabstract.getparameters.html">ReflectionFunctionAbstract::getParameters</a> — Gets parameters</li>
+<li><a href="reflectionfunctionabstract.getreturntype.html">ReflectionFunctionAbstract::getReturnType</a> — Gets the specified return type of a function</li>
+<li><a href="reflectionfunctionabstract.getshortname.html">ReflectionFunctionAbstract::getShortName</a> — Gets function short name</li>
+<li><a href="reflectionfunctionabstract.getstartline.html">ReflectionFunctionAbstract::getStartLine</a> — Gets starting line number</li>
+<li><a href="reflectionfunctionabstract.getstaticvariables.html">ReflectionFunctionAbstract::getStaticVariables</a> — Gets static variables</li>
+<li><a href="reflectionfunctionabstract.hasreturntype.html">ReflectionFunctionAbstract::hasReturnType</a> — Checks if the function has a specified return type</li>
+<li><a href="reflectionfunctionabstract.innamespace.html">ReflectionFunctionAbstract::inNamespace</a> — Checks if function in namespace</li>
+<li><a href="reflectionfunctionabstract.isclosure.html">ReflectionFunctionAbstract::isClosure</a> — Checks if closure</li>
+<li><a href="reflectionfunctionabstract.isdeprecated.html">ReflectionFunctionAbstract::isDeprecated</a> — Checks if deprecated</li>
+<li><a href="reflectionfunctionabstract.isgenerator.html">ReflectionFunctionAbstract::isGenerator</a> — Returns whether this function is a generator</li>
+<li><a href="reflectionfunctionabstract.isinternal.html">ReflectionFunctionAbstract::isInternal</a> — Checks if is internal</li>
+<li><a href="reflectionfunctionabstract.isuserdefined.html">ReflectionFunctionAbstract::isUserDefined</a> — Checks if user defined</li>
+<li><a href="reflectionfunctionabstract.isvariadic.html">ReflectionFunctionAbstract::isVariadic</a> — Checks if the function is variadic</li>
+<li><a href="reflectionfunctionabstract.returnsreference.html">ReflectionFunctionAbstract::returnsReference</a> — Checks if returns reference</li>
+<li><a href="reflectionfunctionabstract.tostring.html">ReflectionFunctionAbstract::__toString</a> — To string</li>
+</ul>
+</li>
+<li><a href="class.reflectionmethod.html">ReflectionMethod</a> — The ReflectionMethod class<ul class="chunklist chunklist_title">
+<li><a href="reflectionmethod.construct.html">ReflectionMethod::__construct</a> — Constructs a ReflectionMethod</li>
+<li><a href="reflectionmethod.export.html">ReflectionMethod::export</a> — Export a reflection method.</li>
+<li><a href="reflectionmethod.getclosure.html">ReflectionMethod::getClosure</a> — Returns a dynamically created closure for the method</li>
+<li><a href="reflectionmethod.getdeclaringclass.html">ReflectionMethod::getDeclaringClass</a> — Gets declaring class for the reflected method.</li>
+<li><a href="reflectionmethod.getmodifiers.html">ReflectionMethod::getModifiers</a> — Gets the method modifiers</li>
+<li><a href="reflectionmethod.getprototype.html">ReflectionMethod::getPrototype</a> — Gets the method prototype (if there is one).</li>
+<li><a href="reflectionmethod.invoke.html">ReflectionMethod::invoke</a> — Invoke</li>
+<li><a href="reflectionmethod.invokeargs.html">ReflectionMethod::invokeArgs</a> — Invoke args</li>
+<li><a href="reflectionmethod.isabstract.html">ReflectionMethod::isAbstract</a> — Checks if method is abstract</li>
+<li><a href="reflectionmethod.isconstructor.html">ReflectionMethod::isConstructor</a> — Checks if method is a constructor</li>
+<li><a href="reflectionmethod.isdestructor.html">ReflectionMethod::isDestructor</a> — Checks if method is a destructor</li>
+<li><a href="reflectionmethod.isfinal.html">ReflectionMethod::isFinal</a> — Checks if method is final</li>
+<li><a href="reflectionmethod.isprivate.html">ReflectionMethod::isPrivate</a> — Checks if method is private</li>
+<li><a href="reflectionmethod.isprotected.html">ReflectionMethod::isProtected</a> — Checks if method is protected</li>
+<li><a href="reflectionmethod.ispublic.html">ReflectionMethod::isPublic</a> — Checks if method is public</li>
+<li><a href="reflectionmethod.isstatic.html">ReflectionMethod::isStatic</a> — Checks if method is static</li>
+<li><a href="reflectionmethod.setaccessible.html">ReflectionMethod::setAccessible</a> — Set method accessibility</li>
+<li><a href="reflectionmethod.tostring.html">ReflectionMethod::__toString</a> — Returns the string representation of the Reflection method object.</li>
+</ul>
+</li>
+<li><a href="class.reflectionobject.html">ReflectionObject</a> — The ReflectionObject class<ul class="chunklist chunklist_title">
+<li><a href="reflectionobject.construct.html">ReflectionObject::__construct</a> — Constructs a ReflectionObject</li>
+<li><a href="reflectionobject.export.html">ReflectionObject::export</a> — Export</li>
+</ul>
+</li>
+<li><a href="class.reflectionparameter.html">ReflectionParameter</a> — The ReflectionParameter class<ul class="chunklist chunklist_title">
+<li><a href="reflectionparameter.allowsnull.html">ReflectionParameter::allowsNull</a> — Checks if null is allowed</li>
+<li><a href="reflectionparameter.canbepassedbyvalue.html">ReflectionParameter::canBePassedByValue</a> — Returns whether this parameter can be passed by value</li>
+<li><a href="reflectionparameter.clone.html">ReflectionParameter::__clone</a> — Clone</li>
+<li><a href="reflectionparameter.construct.html">ReflectionParameter::__construct</a> — Construct</li>
+<li><a href="reflectionparameter.export.html">ReflectionParameter::export</a> — Exports</li>
+<li><a href="reflectionparameter.getclass.html">ReflectionParameter::getClass</a> — Get the type hinted class</li>
+<li><a href="reflectionparameter.getdeclaringclass.html">ReflectionParameter::getDeclaringClass</a> — Gets declaring class</li>
+<li><a href="reflectionparameter.getdeclaringfunction.html">ReflectionParameter::getDeclaringFunction</a> — Gets declaring function</li>
+<li><a href="reflectionparameter.getdefaultvalue.html">ReflectionParameter::getDefaultValue</a> — Gets default parameter value</li>
+<li><a href="reflectionparameter.getdefaultvalueconstantname.html">ReflectionParameter::getDefaultValueConstantName</a> — Returns the default value's constant name if default value is constant or null</li>
+<li><a href="reflectionparameter.getname.html">ReflectionParameter::getName</a> — Gets parameter name</li>
+<li><a href="reflectionparameter.getposition.html">ReflectionParameter::getPosition</a> — Gets parameter position</li>
+<li><a href="reflectionparameter.gettype.html">ReflectionParameter::getType</a> — Gets a parameter's type</li>
+<li><a href="reflectionparameter.hastype.html">ReflectionParameter::hasType</a> — Checks if parameter has a type</li>
+<li><a href="reflectionparameter.isarray.html">ReflectionParameter::isArray</a> — Checks if parameter expects an array</li>
+<li><a href="reflectionparameter.iscallable.html">ReflectionParameter::isCallable</a> — Returns whether parameter MUST be callable</li>
+<li><a href="reflectionparameter.isdefaultvalueavailable.html">ReflectionParameter::isDefaultValueAvailable</a> — Checks if a default value is available</li>
+<li><a href="reflectionparameter.isdefaultvalueconstant.html">ReflectionParameter::isDefaultValueConstant</a> — Returns whether the default value of this parameter is constant</li>
+<li><a href="reflectionparameter.isoptional.html">ReflectionParameter::isOptional</a> — Checks if optional</li>
+<li><a href="reflectionparameter.ispassedbyreference.html">ReflectionParameter::isPassedByReference</a> — Checks if passed by reference</li>
+<li><a href="reflectionparameter.isvariadic.html">ReflectionParameter::isVariadic</a> — Checks if the parameter is variadic</li>
+<li><a href="reflectionparameter.tostring.html">ReflectionParameter::__toString</a> — To string</li>
+</ul>
+</li>
+<li><a href="class.reflectionproperty.html">ReflectionProperty</a> — The ReflectionProperty class<ul class="chunklist chunklist_title">
+<li><a href="reflectionproperty.clone.html">ReflectionProperty::__clone</a> — Clone</li>
+<li><a href="reflectionproperty.construct.html">ReflectionProperty::__construct</a> — Construct a ReflectionProperty object</li>
+<li><a href="reflectionproperty.export.html">ReflectionProperty::export</a> — Export</li>
+<li><a href="reflectionproperty.getdeclaringclass.html">ReflectionProperty::getDeclaringClass</a> — Gets declaring class</li>
+<li><a href="reflectionproperty.getdoccomment.html">ReflectionProperty::getDocComment</a> — Gets the property doc comment</li>
+<li><a href="reflectionproperty.getmodifiers.html">ReflectionProperty::getModifiers</a> — Gets the property modifiers</li>
+<li><a href="reflectionproperty.getname.html">ReflectionProperty::getName</a> — Gets property name</li>
+<li><a href="reflectionproperty.getvalue.html">ReflectionProperty::getValue</a> — Gets value</li>
+<li><a href="reflectionproperty.isdefault.html">ReflectionProperty::isDefault</a> — Checks if property is a default property</li>
+<li><a href="reflectionproperty.isprivate.html">ReflectionProperty::isPrivate</a> — Checks if property is private</li>
+<li><a href="reflectionproperty.isprotected.html">ReflectionProperty::isProtected</a> — Checks if property is protected</li>
+<li><a href="reflectionproperty.ispublic.html">ReflectionProperty::isPublic</a> — Checks if property is public</li>
+<li><a href="reflectionproperty.isstatic.html">ReflectionProperty::isStatic</a> — Checks if property is static</li>
+<li><a href="reflectionproperty.setaccessible.html">ReflectionProperty::setAccessible</a> — Set property accessibility</li>
+<li><a href="reflectionproperty.setvalue.html">ReflectionProperty::setValue</a> — Set property value</li>
+<li><a href="reflectionproperty.tostring.html">ReflectionProperty::__toString</a> — To string</li>
+</ul>
+</li>
+<li><a href="class.reflectiontype.html">ReflectionType</a> — The ReflectionType class<ul class="chunklist chunklist_title">
+<li><a href="reflectiontype.allowsnull.html">ReflectionType::allowsNull</a> — Checks if null is allowed</li>
+<li><a href="reflectiontype.isbuiltin.html">ReflectionType::isBuiltin</a> — Checks if it is a built-in type</li>
+<li><a href="reflectiontype.tostring.html">ReflectionType::__toString</a> — To string</li>
+</ul>
+</li>
+<li><a href="class.reflectiongenerator.html">ReflectionGenerator</a> — The ReflectionGenerator class<ul class="chunklist chunklist_title">
+<li><a href="reflectiongenerator.construct.html">ReflectionGenerator::__construct</a> — Constructs a ReflectionGenerator object</li>
+<li><a href="reflectiongenerator.getexecutingfile.html">ReflectionGenerator::getExecutingFile</a> — Gets the file name of the currently executing generator</li>
+<li><a href="reflectiongenerator.getexecutinggenerator.html">ReflectionGenerator::getExecutingGenerator</a> — Gets the executing Generator object</li>
+<li><a href="reflectiongenerator.getexecutingline.html">ReflectionGenerator::getExecutingLine</a> — Gets the currently executing line of the generator</li>
+<li><a href="reflectiongenerator.getfunction.html">ReflectionGenerator::getFunction</a> — Gets the function name of the generator</li>
+<li><a href="reflectiongenerator.getthis.html">ReflectionGenerator::getThis</a> — Gets the $this value of the generator</li>
+<li><a href="reflectiongenerator.gettrace.html">ReflectionGenerator::getTrace</a> — Gets the trace of the executing generator</li>
+</ul>
+</li>
+<li><a href="class.reflector.html">Reflector</a> — The Reflector interface<ul class="chunklist chunklist_title">
+<li><a href="reflector.export.html">Reflector::export</a> — Exports</li>
+<li><a href="reflector.tostring.html">Reflector::__toString</a> — To string</li>
+</ul>
+</li>
+<li><a href="class.reflectionexception.html">ReflectionException</a> — The ReflectionException class</li>
+</ul>
+
+ 
+
+ 
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The Reflection class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="reflection.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The reflection class.
+   </p>
+  </div>
+
+
+  <div class="section" id="reflection.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">Reflection</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">Reflection</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">string</span> <span class="methodname">export</span>
+    ( <span class="methodparam"><span class="type">Reflector</span> <code class="parameter">$reflector</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$return</code><span class="initializer"> = false</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">array</span> <span class="methodname">getModifierNames</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$modifiers</code></span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The ReflectionClass class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="reflectionclass.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The <span class="classname">ReflectionClass</span> class reports
+    information about a class.
+   </p>
+  </div>
+
+
+  <div class="section" id="reflectionclass.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">ReflectionClass</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">ReflectionClass</strong>
+     </span>
+     
+     <span class="oointerface">implements 
+      <span class="interfacename">Reflector</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">ReflectionClass::IS_IMPLICIT_ABSTRACT</var>
+     <span class="initializer"> = 16</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">ReflectionClass::IS_EXPLICIT_ABSTRACT</var>
+     <span class="initializer"> = 32</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">ReflectionClass::IS_FINAL</var>
+     <span class="initializer"> = 64</span>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$name</var>
+    ;</div>
+
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$argument</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">string</span> <span class="methodname">export</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$argument</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$return</code><span class="initializer"> = false</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">getConstant</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getConstants</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ReflectionMethod</span>  <span class="methodname">getConstructor</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getDefaultProperties</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getDocComment</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getEndLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ReflectionExtension</span> <span class="methodname">getExtension</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getExtensionName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getFileName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getInterfaceNames</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getInterfaces</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ReflectionMethod</span> <span class="methodname">getMethod</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getMethods</span>
+    ([ <span class="methodparam"><span class="type">int</span> <code class="parameter">$filter</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getModifiers</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getNamespaceName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ReflectionClass</span> <span class="methodname">getParentClass</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getProperties</span>
+    ([ <span class="methodparam"><span class="type">int</span> <code class="parameter">$filter</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ReflectionProperty</span> <span class="methodname">getProperty</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getShortName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getStartLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getStaticProperties</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">getStaticPropertyValue</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter reference">&$def_value</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getTraitAliases</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getTraitNames</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getTraits</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">hasConstant</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">hasMethod</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">hasProperty</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">implementsInterface</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$interface</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">inNamespace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isAbstract</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isAnonymous</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isCloneable</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isFinal</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isInstance</span>
+    ( <span class="methodparam"><span class="type">object</span> <code class="parameter">$object</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isInstantiable</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isInterface</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isInternal</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isIterateable</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isSubclassOf</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$class</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isTrait</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isUserDefined</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">object</span> <span class="methodname">newInstance</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$args</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$...</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">object</span> <span class="methodname">newInstanceArgs</span>
+    ([ <span class="methodparam"><span class="type">array</span> <code class="parameter">$args</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">object</span> <span class="methodname">newInstanceWithoutConstructor</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">setStaticPropertyValue</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+  
+
+  <div class="section" id="reflectionclass.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="reflectionclass.props.name"><var class="varname">name</var></dt>
+
+     <dd>
+
+      <p class="para">
+       Name of the class. Read-only, throws
+       <span class="classname">ReflectionException</span> in attempt to write.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+  
+
+  <div class="section" id="reflectionclass.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <div class="section" id="reflectionclass.constants.modifiers">
+    <h2 class="title">ReflectionClass Modifiers</h2>
+    <dl>
+
+
+     
+      <dt id="reflectionclass.constants.is-implicit-abstract"><strong><code>ReflectionClass::IS_IMPLICIT_ABSTRACT</code></strong></dt>
+
+      <dd>
+
+       <p class="para">
+        Indicates class that is <a href="language.oop5.abstract.html" class="link">
+        abstract</a> because it has some abstract methods.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="reflectionclass.constants.is-explicit-abstract"><strong><code>ReflectionClass::IS_EXPLICIT_ABSTRACT</code></strong></dt>
+
+      <dd>
+
+       <p class="para">
+        Indicates class that is <a href="language.oop5.abstract.html" class="link">
+        abstract</a> because of its definition.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="reflectionclass.constants.is-final"><strong><code>ReflectionClass::IS_FINAL</code></strong></dt>
+
+      <dd>
+
+       <p class="para">
+        Indicates <a href="language.oop5.final.html" class="link">final</a>
+        class.
+       </p>
+      </dd>
+
+     
+
+    </dl>
+
+   </div>
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The ReflectionZendExtension class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="reflectionzendextension.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+
+   </p>
+  </div>
+
+
+  <div class="section" id="reflectionzendextension.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">ReflectionZendExtension</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">ReflectionZendExtension</strong>
+     </span>
+     
+     <span class="oointerface">implements 
+      <span class="interfacename">Reflector</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$name</var>
+    ;</div>
+
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">string</span> <span class="methodname">export</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$return</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getAuthor</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getCopyright</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getURL</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getVersion</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+  
+
+  <div class="section" id="reflectionzendextension.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="reflectionzendextension.props.name"><var class="varname">name</var></dt>
+
+     <dd>
+
+      <p class="para">
+       Name of the extension. Read-only, throws
+       <span class="classname">ReflectionException</span> in attempt to write.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The ReflectionExtension class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="reflectionextension.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The <span class="classname">ReflectionExtension</span> class reports
+    information about an extension.
+   </p>
+  </div>
+
+
+  <div class="section" id="reflectionextension.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">ReflectionExtension</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">ReflectionExtension</strong>
+     </span>
+     
+     <span class="oointerface">implements 
+      <span class="interfacename">Reflector</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$name</var>
+    ;</div>
+
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">string</span> <span class="methodname">export</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$return</code><span class="initializer"> = false</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getClasses</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getClassNames</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getConstants</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getDependencies</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getFunctions</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getINIEntries</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getVersion</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">info</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">isPersistent</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">isTemporary</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+  
+
+  <div class="section" id="reflectionextension.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="reflectionextension.props.name"><var class="varname">name</var></dt>
+
+     <dd>
+
+      <p class="para">
+       Name of the extension, same as calling the 
+        <span class="methodname">ReflectionExtension::getName</span> 
+       method.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The ReflectionFunction class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="reflectionfunction.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The <span class="classname">ReflectionFunction</span> class reports
+    information about a function.
+   </p>
+  </div>
+
+
+  <div class="section" id="reflectionfunction.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">ReflectionFunction</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">ReflectionFunction</strong>
+     </span>
+     
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> ReflectionFunctionAbstract</strong>
+     </span>
+     
+     <span class="oointerface">implements 
+      <span class="interfacename">Reflector</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">ReflectionFunction::IS_DEPRECATED</var>
+     <span class="initializer"> = 262144</span>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$name</var>
+    ;</div>
+
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$name</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">string</span> <span class="methodname">export</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$return</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Closure</span> <span class="methodname">getClosure</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">invoke</span>
+    ([ <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$parameter</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$...</code></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">invokeArgs</span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$args</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isDisabled</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">ReflectionFunctionAbstract::__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ReflectionClass</span> <span class="methodname">ReflectionFunctionAbstract::getClosureScopeClass</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">object</span> <span class="methodname">ReflectionFunctionAbstract::getClosureThis</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">ReflectionFunctionAbstract::getDocComment</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">ReflectionFunctionAbstract::getEndLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ReflectionExtension</span> <span class="methodname">ReflectionFunctionAbstract::getExtension</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">ReflectionFunctionAbstract::getExtensionName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">ReflectionFunctionAbstract::getFileName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">ReflectionFunctionAbstract::getName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">ReflectionFunctionAbstract::getNamespaceName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">ReflectionFunctionAbstract::getNumberOfParameters</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">ReflectionFunctionAbstract::getNumberOfRequiredParameters</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">ReflectionFunctionAbstract::getParameters</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ReflectionType</span> <span class="methodname">ReflectionFunctionAbstract::getReturnType</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">ReflectionFunctionAbstract::getShortName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">ReflectionFunctionAbstract::getStartLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">ReflectionFunctionAbstract::getStaticVariables</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionFunctionAbstract::hasReturnType</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionFunctionAbstract::inNamespace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionFunctionAbstract::isClosure</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionFunctionAbstract::isDeprecated</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionFunctionAbstract::isGenerator</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionFunctionAbstract::isInternal</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionFunctionAbstract::isUserDefined</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionFunctionAbstract::isVariadic</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionFunctionAbstract::returnsReference</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">ReflectionFunctionAbstract::__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+   }</div>
+
+
+  </div>
+
+  
+
+  <div class="section" id="reflectionfunction.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="reflectionfunction.props.name"><var class="varname">name</var></dt>
+
+     <dd>
+
+      <p class="para">
+       Name of the function. Read-only, throws
+       <span class="classname">ReflectionException</span> in attempt to write.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+  
+
+  <div class="section" id="reflectionfunction.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <div class="section" id="reflectionfunction.constants.modifiers">
+    <h2 class="title">ReflectionFunction Modifiers</h2>
+    <dl>
+
+
+     
+      <dt id="reflectionfunction.constants.is-deprecated"><strong><code>ReflectionFunction::IS_DEPRECATED</code></strong></dt>
+
+      <dd>
+
+       <p class="para">
+        Indicates deprecated functions.
+       </p>
+      </dd>
+
+     
+
+    </dl>
+
+   </div>
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The ReflectionFunctionAbstract class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="reflectionfunctionabstract.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    A parent class to <span class="classname">ReflectionFunction</span>, read its
+    description for details.
+   </p>
+  </div>
+
+
+  <div class="section" id="reflectionfunctionabstract.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">ReflectionFunctionAbstract</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">ReflectionFunctionAbstract</strong>
+     </span>
+     
+     <span class="oointerface">implements 
+      <span class="interfacename">Reflector</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$name</var>
+    ;</div>
+
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ReflectionClass</span> <span class="methodname">getClosureScopeClass</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">object</span> <span class="methodname">getClosureThis</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getDocComment</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getEndLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ReflectionExtension</span> <span class="methodname">getExtension</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getExtensionName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getFileName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getNamespaceName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getNumberOfParameters</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getNumberOfRequiredParameters</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getParameters</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ReflectionType</span> <span class="methodname">getReturnType</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getShortName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getStartLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getStaticVariables</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">hasReturnType</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">inNamespace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isClosure</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isDeprecated</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isGenerator</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isInternal</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isUserDefined</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isVariadic</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">returnsReference</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+  
+
+  <div class="section" id="reflectionfunctionabstract.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="reflectionfunctionabstract.props.name"><var class="varname">name</var></dt>
+
+     <dd>
+
+      <p class="para">
+       Name of the function. Read-only, throws
+       <span class="classname">ReflectionException</span> in attempt to write.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The ReflectionMethod class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="reflectionmethod.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The <span class="classname">ReflectionMethod</span> class reports
+    information about a method.
+   </p>
+  </div>
+
+
+  <div class="section" id="reflectionmethod.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">ReflectionMethod</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">ReflectionMethod</strong>
+     </span>
+     
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> ReflectionFunctionAbstract</strong>
+     </span>
+     
+     <span class="oointerface">implements 
+      <span class="interfacename">Reflector</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">ReflectionMethod::IS_STATIC</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">ReflectionMethod::IS_PUBLIC</var>
+     <span class="initializer"> = 256</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">ReflectionMethod::IS_PROTECTED</var>
+     <span class="initializer"> = 512</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">ReflectionMethod::IS_PRIVATE</var>
+     <span class="initializer"> = 1024</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">ReflectionMethod::IS_ABSTRACT</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">ReflectionMethod::IS_FINAL</var>
+     <span class="initializer"> = 4</span>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$name</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$class</var>
+    ;</div>
+
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$class</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">string</span> <span class="methodname">export</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$class</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$return</code><span class="initializer"> = false</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Closure</span> <span class="methodname">getClosure</span>
+    ( <span class="methodparam"><span class="type">object</span> <code class="parameter">$object</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ReflectionClass</span> <span class="methodname">getDeclaringClass</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getModifiers</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ReflectionMethod</span> <span class="methodname">getPrototype</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">invoke</span>
+    ( <span class="methodparam"><span class="type">object</span> <code class="parameter">$object</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$parameter</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$...</code></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">invokeArgs</span>
+    ( <span class="methodparam"><span class="type">object</span> <code class="parameter">$object</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$args</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isAbstract</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isConstructor</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isDestructor</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isFinal</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isPrivate</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isProtected</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isPublic</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isStatic</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">setAccessible</span>
+    ( <span class="methodparam"><span class="type">bool</span> <code class="parameter">$accessible</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">ReflectionFunctionAbstract::__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ReflectionClass</span> <span class="methodname">ReflectionFunctionAbstract::getClosureScopeClass</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">object</span> <span class="methodname">ReflectionFunctionAbstract::getClosureThis</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">ReflectionFunctionAbstract::getDocComment</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">ReflectionFunctionAbstract::getEndLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ReflectionExtension</span> <span class="methodname">ReflectionFunctionAbstract::getExtension</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">ReflectionFunctionAbstract::getExtensionName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">ReflectionFunctionAbstract::getFileName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">ReflectionFunctionAbstract::getName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">ReflectionFunctionAbstract::getNamespaceName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">ReflectionFunctionAbstract::getNumberOfParameters</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">ReflectionFunctionAbstract::getNumberOfRequiredParameters</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">ReflectionFunctionAbstract::getParameters</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ReflectionType</span> <span class="methodname">ReflectionFunctionAbstract::getReturnType</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">ReflectionFunctionAbstract::getShortName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">ReflectionFunctionAbstract::getStartLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">ReflectionFunctionAbstract::getStaticVariables</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionFunctionAbstract::hasReturnType</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionFunctionAbstract::inNamespace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionFunctionAbstract::isClosure</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionFunctionAbstract::isDeprecated</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionFunctionAbstract::isGenerator</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionFunctionAbstract::isInternal</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionFunctionAbstract::isUserDefined</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionFunctionAbstract::isVariadic</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionFunctionAbstract::returnsReference</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">ReflectionFunctionAbstract::__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+   }</div>
+
+
+  </div>
+
+  
+
+  <div class="section" id="reflectionmethod.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="reflectionmethod.props.name"><var class="varname">name</var></dt>
+
+     <dd>
+
+      <p class="para">Method name</p>
+     </dd>
+
+    
+    
+     <dt id="reflectionmethod.props.class"><var class="varname">class</var></dt>
+
+     <dd>
+
+      <p class="para">Class name</p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+
+
+  <div class="section" id="reflectionmethod.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <div class="section" id="reflectionmethod.constants.modifiers">
+    <h2 class="title">ReflectionMethod Modifiers</h2>
+    <dl>
+
+
+     
+      <dt id="reflectionmethod.constants.is-static"><strong><code>ReflectionMethod::IS_STATIC</code></strong></dt>
+
+      <dd>
+
+       <p class="para">Indicates that the method is static.</p>
+      </dd>
+
+     
+
+     
+      <dt id="reflectionmethod.constants.is-public"><strong><code>ReflectionMethod::IS_PUBLIC</code></strong></dt>
+
+      <dd>
+
+       <p class="para">Indicates that the method is public.</p>
+      </dd>
+
+     
+
+     
+      <dt id="reflectionmethod.constants.is-protected"><strong><code>ReflectionMethod::IS_PROTECTED</code></strong></dt>
+
+      <dd>
+
+       <p class="para">Indicates that the method is protected.</p>
+      </dd>
+
+     
+
+     
+      <dt id="reflectionmethod.constants.is-private"><strong><code>ReflectionMethod::IS_PRIVATE</code></strong></dt>
+
+      <dd>
+
+       <p class="para">Indicates that the method is private.</p>
+      </dd>
+
+     
+
+     
+      <dt id="reflectionmethod.constants.is-abstract"><strong><code>ReflectionMethod::IS_ABSTRACT</code></strong></dt>
+
+      <dd>
+
+       <p class="para">Indicates that the method is abstract.</p>
+      </dd>
+
+     
+
+     
+      <dt id="reflectionmethod.constants.is-final"><strong><code>ReflectionMethod::IS_FINAL</code></strong></dt>
+
+      <dd>
+
+       <p class="para">Indicates that the method is final.</p>
+      </dd>
+
+     
+
+    </dl>
+
+   </div>
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The ReflectionObject class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="reflectionobject.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The <span class="classname">ReflectionObject</span> class reports
+    information about an <span class="type">object</span>.
+   </p>
+  </div>
+
+
+  <div class="section" id="reflectionobject.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">ReflectionObject</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">ReflectionObject</strong>
+     </span>
+     
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> ReflectionClass</strong>
+     </span>
+     
+     <span class="oointerface">implements 
+      <span class="interfacename">Reflector</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">ReflectionObject::IS_IMPLICIT_ABSTRACT</var>
+     <span class="initializer"> = 16</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">ReflectionObject::IS_EXPLICIT_ABSTRACT</var>
+     <span class="initializer"> = 32</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">ReflectionObject::IS_FINAL</var>
+     <span class="initializer"> = 64</span>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$name</var>
+    ;</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">object</span> <code class="parameter">$argument</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">string</span> <span class="methodname">export</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$argument</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$return</code></span>
+  ] )</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">ReflectionClass::__construct</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$argument</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">string</span> <span class="methodname">ReflectionClass::export</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$argument</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$return</code><span class="initializer"> = false</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">ReflectionClass::getConstant</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">ReflectionClass::getConstants</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ReflectionMethod</span>  <span class="methodname">ReflectionClass::getConstructor</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">ReflectionClass::getDefaultProperties</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">ReflectionClass::getDocComment</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">ReflectionClass::getEndLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ReflectionExtension</span> <span class="methodname">ReflectionClass::getExtension</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">ReflectionClass::getExtensionName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">ReflectionClass::getFileName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">ReflectionClass::getInterfaceNames</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">ReflectionClass::getInterfaces</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ReflectionMethod</span> <span class="methodname">ReflectionClass::getMethod</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">ReflectionClass::getMethods</span>
+    ([ <span class="methodparam"><span class="type">int</span> <code class="parameter">$filter</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">ReflectionClass::getModifiers</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">ReflectionClass::getName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">ReflectionClass::getNamespaceName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ReflectionClass</span> <span class="methodname">ReflectionClass::getParentClass</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">ReflectionClass::getProperties</span>
+    ([ <span class="methodparam"><span class="type">int</span> <code class="parameter">$filter</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ReflectionProperty</span> <span class="methodname">ReflectionClass::getProperty</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">ReflectionClass::getShortName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">ReflectionClass::getStartLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">ReflectionClass::getStaticProperties</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">ReflectionClass::getStaticPropertyValue</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter reference">&$def_value</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">ReflectionClass::getTraitAliases</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">ReflectionClass::getTraitNames</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">ReflectionClass::getTraits</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionClass::hasConstant</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionClass::hasMethod</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionClass::hasProperty</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionClass::implementsInterface</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$interface</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionClass::inNamespace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionClass::isAbstract</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionClass::isAnonymous</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionClass::isCloneable</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionClass::isFinal</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionClass::isInstance</span>
+    ( <span class="methodparam"><span class="type">object</span> <code class="parameter">$object</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionClass::isInstantiable</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionClass::isInterface</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionClass::isInternal</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionClass::isIterateable</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionClass::isSubclassOf</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$class</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionClass::isTrait</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ReflectionClass::isUserDefined</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">object</span> <span class="methodname">ReflectionClass::newInstance</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$args</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$...</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">object</span> <span class="methodname">ReflectionClass::newInstanceArgs</span>
+    ([ <span class="methodparam"><span class="type">array</span> <code class="parameter">$args</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">object</span> <span class="methodname">ReflectionClass::newInstanceWithoutConstructor</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">ReflectionClass::setStaticPropertyValue</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">ReflectionClass::__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+   }</div>
+
+
+  </div>
+
+  
+
+  <div class="section" id="reflectionobject.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="reflectionobject.props.name"><var class="varname">name</var></dt>
+
+     <dd>
+
+      <p class="para">
+       Name of the object&#039;s class. Read-only, throws
+       <span class="classname">ReflectionException</span> in attempt to write.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The ReflectionParameter class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="reflectionparameter.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The <span class="classname">ReflectionParameter</span> class retrieves
+    information about function&#039;s or method&#039;s parameters.
+   </p>
+   <p class="para">
+    To introspect function parameters, first create an instance
+    of the <span class="classname">ReflectionFunction</span> or
+    <span class="classname">ReflectionMethod</span> classes and then use their
+     <span class="methodname">ReflectionFunctionAbstract::getParameters</span> method
+    to retrieve an array of parameters.
+   </p>
+  </div>
+
+
+  <div class="section" id="reflectionparameter.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">ReflectionParameter</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">ReflectionParameter</strong>
+     </span>
+     
+     <span class="oointerface">implements 
+      <span class="interfacename">Reflector</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$name</var>
+    ;</div>
+
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">allowsNull</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">canBePassedByValue</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$function</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$parameter</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">string</span> <span class="methodname">export</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$function</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$parameter</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$return</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ReflectionClass</span> <span class="methodname">getClass</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ReflectionClass</span> <span class="methodname">getDeclaringClass</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ReflectionFunctionAbstract</span> <span class="methodname">getDeclaringFunction</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">getDefaultValue</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getDefaultValueConstantName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getPosition</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ReflectionType</span> <span class="methodname">getType</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">hasType</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isArray</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isCallable</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isDefaultValueAvailable</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isDefaultValueConstant</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isOptional</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isPassedByReference</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isVariadic</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+  
+
+  <div class="section" id="reflectionparameter.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="reflectionparameter.props.name"><var class="varname">name</var></dt>
+
+     <dd>
+
+      <p class="para">
+       Name of the parameter. Read-only, throws
+       <span class="classname">ReflectionException</span> in attempt to write.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The ReflectionProperty class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="reflectionproperty.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The <span class="classname">ReflectionProperty</span> class reports
+    information about classes properties.
+   </p>
+  </div>
+
+
+  <div class="section" id="reflectionproperty.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">ReflectionProperty</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">ReflectionProperty</strong>
+     </span>
+     
+     <span class="oointerface">implements 
+      <span class="interfacename">Reflector</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">ReflectionProperty::IS_STATIC</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">ReflectionProperty::IS_PUBLIC</var>
+     <span class="initializer"> = 256</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">ReflectionProperty::IS_PROTECTED</var>
+     <span class="initializer"> = 512</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">ReflectionProperty::IS_PRIVATE</var>
+     <span class="initializer"> = 1024</span>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$name</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$class</var>
+    ;</div>
+
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$class</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">string</span> <span class="methodname">export</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$class</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$return</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ReflectionClass</span> <span class="methodname">getDeclaringClass</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getDocComment</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getModifiers</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">getValue</span>
+    ([ <span class="methodparam"><span class="type">object</span> <code class="parameter">$object</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isDefault</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isPrivate</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isProtected</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isPublic</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isStatic</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">setAccessible</span>
+    ( <span class="methodparam"><span class="type">bool</span> <code class="parameter">$accessible</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">setValue</span>
+    ( <span class="methodparam"><span class="type">object</span> <code class="parameter">$object</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+  
+
+  <div class="section" id="reflectionproperty.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="reflectionproperty.props.name"><var class="varname">name</var></dt>
+
+     <dd>
+
+      <p class="para">
+       Name of the property. Read-only, throws
+       <span class="classname">ReflectionException</span> in attempt to write.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="reflectionproperty.props.class"><var class="varname">class</var></dt>
+
+     <dd>
+
+      <p class="para">
+       Name of the class where the property is defined. Read-only, throws
+       <span class="classname">ReflectionException</span> in attempt to write.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+  
+
+  <div class="section" id="reflectionproperty.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <div class="section" id="reflectionproperty.constants.modifiers">
+    <h2 class="title">ReflectionProperty Modifiers</h2>
+    <dl>
+
+
+     
+      <dt id="reflectionproperty.constants.is-static"><strong><code>ReflectionProperty::IS_STATIC</code></strong></dt>
+
+      <dd>
+
+       <p class="para">
+        Indicates <a href="language.oop5.static.html" class="link">static</a>
+        properties.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="reflectionproperty.constants.is-public"><strong><code>ReflectionProperty::IS_PUBLIC</code></strong></dt>
+
+      <dd>
+
+       <p class="para">
+        Indicates <a href="language.oop5.visibility.html" class="link">public</a>
+        properties.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="reflectionproperty.constants.is-protected"><strong><code>ReflectionProperty::IS_PROTECTED</code></strong></dt>
+
+      <dd>
+
+       <p class="para">
+        Indicates <a href="language.oop5.visibility.html" class="link">protected</a>
+        properties.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="reflectionproperty.constants.is-private"><strong><code>ReflectionProperty::IS_PRIVATE</code></strong></dt>
+
+      <dd>
+
+       <p class="para">
+        Indicates <a href="language.oop5.visibility.html" class="link">private</a>
+        properties.
+       </p>
+      </dd>
+
+     
+
+    </dl>
+
+   </div>
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The ReflectionType class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="reflectiontype.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The <span class="classname">ReflectionType</span> class reports
+    information about a function&#039;s return type.
+   </p>
+  </div>
+
+
+  <div class="section" id="reflectiontype.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">ReflectionType</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">ReflectionType</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">allowsNull</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isBuiltin</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+   }</div>
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The ReflectionGenerator class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="reflectiongenerator.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The <span class="classname">ReflectionGenerator</span> class reports
+    information about a generator.
+   </p>
+  </div>
+
+
+  <div class="section" id="reflectiongenerator.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">ReflectionGenerator</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">ReflectionGenerator</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">Generator</span> <code class="parameter">$generator</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getExecutingFile</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Generator</span> <span class="methodname">getExecutingGenerator</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getExecutingLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ReflectionFunctionAbstract</span> <span class="methodname">getFunction</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">object</span> <span class="methodname">getThis</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getTrace</span>
+    ([ <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code><span class="initializer"> = DEBUG_BACKTRACE_PROVIDE_OBJECT</span></span>
+  ] )</div>
+
+
+   }</div>
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The Reflector interface</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="reflector.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    <span class="classname">Reflector</span> is an interface implemented by all
+    exportable Reflection classes.
+   </p>
+  </div>
+
+
+  <div class="section" id="reflector.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">Reflector</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">Reflector</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">string</span> <span class="methodname">export</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The ReflectionException class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="reflectionexception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The ReflectionException class.
+   </p>
+  </div>
+
+
+  <div class="section" id="reflectionexception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">ReflectionException</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">ReflectionException</strong>
+     </span>
+     
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> Exception</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$message</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$code</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$file</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$line</var>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">Throwable</span> <span class="methodname">Exception::getPrevious</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">Exception::getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getFile</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">Exception::getLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">Exception::getTrace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getTraceAsString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span>  <span class="methodname">Exception::__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">Exception::__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+   }</div>
+
+
+  </div>
+
+  
+ </div>
+
+
+
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

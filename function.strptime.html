@@ -1,0 +1,343 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Parse a time/date generated with strftime</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.calendar.html">Date and Time Related Extensions</a></li>
+  <li class="header up"><a href="book.datetime.html">Date/Time</a></li>
+  <li class="header up"><a href="ref.datetime.html">Date/Time Functions</a></li>
+  <li><a href="function.checkdate.html">checkdate</a></li>
+  <li><a href="function.date-add.html">date_add</a></li>
+  <li><a href="function.date-create-from-format.html">date_create_from_format</a></li>
+  <li><a href="function.date-create-immutable-from-format.html">date_create_immutable_from_format</a></li>
+  <li><a href="function.date-create-immutable.html">date_create_immutable</a></li>
+  <li><a href="function.date-create.html">date_create</a></li>
+  <li><a href="function.date-date-set.html">date_date_set</a></li>
+  <li><a href="function.date-default-timezone-get.html">date_default_timezone_get</a></li>
+  <li><a href="function.date-default-timezone-set.html">date_default_timezone_set</a></li>
+  <li><a href="function.date-diff.html">date_diff</a></li>
+  <li><a href="function.date-format.html">date_format</a></li>
+  <li><a href="function.date-get-last-errors.html">date_get_last_errors</a></li>
+  <li><a href="function.date-interval-create-from-date-string.html">date_interval_create_from_date_string</a></li>
+  <li><a href="function.date-interval-format.html">date_interval_format</a></li>
+  <li><a href="function.date-isodate-set.html">date_isodate_set</a></li>
+  <li><a href="function.date-modify.html">date_modify</a></li>
+  <li><a href="function.date-offset-get.html">date_offset_get</a></li>
+  <li><a href="function.date-parse-from-format.html">date_parse_from_format</a></li>
+  <li><a href="function.date-parse.html">date_parse</a></li>
+  <li><a href="function.date-sub.html">date_sub</a></li>
+  <li><a href="function.date-sun-info.html">date_sun_info</a></li>
+  <li><a href="function.date-sunrise.html">date_sunrise</a></li>
+  <li><a href="function.date-sunset.html">date_sunset</a></li>
+  <li><a href="function.date-time-set.html">date_time_set</a></li>
+  <li><a href="function.date-timestamp-get.html">date_timestamp_get</a></li>
+  <li><a href="function.date-timestamp-set.html">date_timestamp_set</a></li>
+  <li><a href="function.date-timezone-get.html">date_timezone_get</a></li>
+  <li><a href="function.date-timezone-set.html">date_timezone_set</a></li>
+  <li><a href="function.date.html">date</a></li>
+  <li><a href="function.getdate.html">getdate</a></li>
+  <li><a href="function.gettimeofday.html">gettimeofday</a></li>
+  <li><a href="function.gmdate.html">gmdate</a></li>
+  <li><a href="function.gmmktime.html">gmmktime</a></li>
+  <li><a href="function.gmstrftime.html">gmstrftime</a></li>
+  <li><a href="function.idate.html">idate</a></li>
+  <li><a href="function.localtime.html">localtime</a></li>
+  <li><a href="function.microtime.html">microtime</a></li>
+  <li><a href="function.mktime.html">mktime</a></li>
+  <li><a href="function.strftime.html">strftime</a></li>
+  <li class="active"><a href="function.strptime.html">strptime</a></li>
+  <li><a href="function.strtotime.html">strtotime</a></li>
+  <li><a href="function.time.html">time</a></li>
+  <li><a href="function.timezone-abbreviations-list.html">timezone_abbreviations_list</a></li>
+  <li><a href="function.timezone-identifiers-list.html">timezone_identifiers_list</a></li>
+  <li><a href="function.timezone-location-get.html">timezone_location_get</a></li>
+  <li><a href="function.timezone-name-from-abbr.html">timezone_name_from_abbr</a></li>
+  <li><a href="function.timezone-name-get.html">timezone_name_get</a></li>
+  <li><a href="function.timezone-offset-get.html">timezone_offset_get</a></li>
+  <li><a href="function.timezone-open.html">timezone_open</a></li>
+  <li><a href="function.timezone-transitions-get.html">timezone_transitions_get</a></li>
+  <li><a href="function.timezone-version-get.html">timezone_version_get</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.strftime.html">strftime</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.strtotime.html">strtotime</a></div>
+                <div class="up"><a href="ref.datetime.html">Date/Time Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.strptime" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">strptime</h1>
+    <p class="refpurpose">
+     Parse a time/date generated with <span class="function">strftime</span>
+    </p>
+   </div>
+   <div class="refsect1 description" id="refsect1-function.strptime-description">
+    <h3 class="title">Description</h3>
+    <div class="methodsynopsis dc-description">
+     <span class="type">array</span> <span class="methodname">strptime</span>
+      ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$date</code></span>
+     , <span class="methodparam"><span class="type">string</span> <code class="parameter">$format</code></span>
+     )</div>
+
+    <p class="para rdfs-comment">
+     <span class="function">strptime</span> returns an array with the
+     <code class="parameter">date</code> parsed, or <strong><code>FALSE</code></strong> on error.
+    </p>
+    <p class="para">
+     Month and weekday names and other language dependent strings respect the
+     current locale set with <span class="function">setlocale</span> (<strong><code>LC_TIME</code></strong>).
+    </p>
+   </div>
+
+
+   <div class="refsect1 parameters" id="refsect1-function.strptime-parameters">
+   <h3 class="title">Parameters</h3>
+   <p class="para">
+    <dl>
+
+     
+      <dt>
+<code class="parameter">date</code> (<span class="type">string</span>)</dt>
+
+      <dd>
+
+       <p class="para">
+        The string to parse (e.g. returned from <span class="function">strftime</span>).
+       </p>
+      </dd>
+
+     
+     
+      <dt>
+<code class="parameter">format</code> (<span class="type">string</span>)</dt>
+
+      <dd>
+
+       <p class="para">
+        The format used in <code class="parameter">date</code> (e.g. the same as
+        used in <span class="function">strftime</span>). Note that some of the format
+        options available to <span class="function">strftime</span> may not have any
+        effect within <span class="function">strptime</span>; the exact subset that are
+        supported will vary based on the operating system and C library in
+        use.
+       </p>
+       <p class="para">
+        For more information about the format options, read the
+        <span class="function">strftime</span> page.
+       </p>
+      </dd>
+
+     
+    </dl>
+
+   </p>
+  </div>
+
+
+  <div class="refsect1 returnvalues" id="refsect1-function.strptime-returnvalues">
+   <h3 class="title">Return Values</h3>
+   <p class="para">
+    Returns an array or <strong><code>FALSE</code></strong> on failure.
+   </p>
+
+    <p class="para">
+     <table class="doctable table">
+      <caption><strong>The following parameters are returned in the array</strong></caption>
+      
+       <thead>
+        <tr>
+         <th>parameters</th>
+         <th>Description</th>
+        </tr>
+
+       </thead>
+
+       <tbody class="tbody">
+        <tr>
+         <td><em>&quot;tm_sec&quot;</em></td>
+         <td>Seconds after the minute (0-61)</td>
+        </tr>
+
+        <tr>
+         <td><em>&quot;tm_min&quot;</em></td>
+         <td>Minutes after the hour (0-59)</td>
+        </tr>
+
+        <tr>
+         <td><em>&quot;tm_hour&quot;</em></td>
+         <td>Hour since midnight (0-23)</td>
+        </tr>
+
+        <tr>
+         <td><em>&quot;tm_mday&quot;</em></td>
+         <td>Day of the month (1-31)</td>
+        </tr>
+
+        <tr>
+         <td><em>&quot;tm_mon&quot;</em></td>
+         <td>Months since January (0-11)</td>
+        </tr>
+
+        <tr>
+         <td><em>&quot;tm_year&quot;</em></td>
+         <td>Years since 1900</td>
+        </tr>
+
+        <tr>
+         <td><em>&quot;tm_wday&quot;</em></td>
+         <td>Days since Sunday (0-6)</td>
+        </tr>
+
+        <tr>
+         <td><em>&quot;tm_yday&quot;</em></td>
+         <td>Days since January 1 (0-365)</td>
+        </tr>
+
+        <tr>
+         <td><em>&quot;unparsed&quot;</em></td>
+         <td>the <code class="parameter">date</code> part which was not
+          recognized using the specified <code class="parameter">format</code></td>
+        </tr>
+
+       </tbody>
+      
+     </table>
+
+    </p>
+
+  </div>
+
+
+  <div class="refsect1 examples" id="refsect1-function.strptime-examples">
+   <h3 class="title">Examples</h3>
+   <p class="para">
+   <div class="example" id="example-2577">
+    <p><strong>Example #1 <span class="function">strptime</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$format&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'%d/%m/%Y&nbsp;%H:%M:%S'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$strf&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">strftime</span><span style="color: #007700">(</span><span style="color: #0000BB">$format</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$strf</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">strptime</span><span style="color: #007700">(</span><span style="color: #0000BB">$strf</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$format</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+03/10/2004 15:54:19
+
+Array
+(
+    [tm_sec] =&gt; 19
+    [tm_min] =&gt; 54
+    [tm_hour] =&gt; 15
+    [tm_mday] =&gt; 3
+    [tm_mon] =&gt; 9
+    [tm_year] =&gt; 104
+    [tm_wday] =&gt; 0
+    [tm_yday] =&gt; 276
+    [unparsed] =&gt;
+)
+</pre></div>
+      </div>
+      </div>
+     </p>
+    </div>
+
+
+    <div class="refsect1 notes" id="refsect1-function.strptime-notes">
+     <h3 class="title">Notes</h3>
+     <blockquote class="note"><p><strong class="note">Note</strong>: <span class="simpara">This function is not
+implemented on Windows platforms.</span></p></blockquote>
+     <blockquote class="note"><p><strong class="note">Note</strong>: 
+      <p class="para">
+       Internally, this function calls the <em>strptime()</em>
+       function provided by the system&#039;s C library. This function can exhibit
+       noticeably different behaviour across different operating systems. The
+       use of <span class="function">date_parse_from_format</span>, which does not
+       suffer from these issues, is recommended on PHP 5.3.0 and later.
+      </p>
+     </p></blockquote>
+     <blockquote class="note"><p><strong class="note">Note</strong>: 
+      <p class="para">
+       <em>&quot;tm_sec&quot;</em> includes any leap seconds (currently upto 2
+       a year). For more information on leap seconds, see the <a href="http://en.wikipedia.org/wiki/Leap_second" class="link external">&raquo;&nbsp;Wikipedia article
+       on leap seconds</a>.
+      </p>
+     </p></blockquote>
+     <blockquote class="note"><p><strong class="note">Note</strong>: 
+      <p class="para">
+       Prior to PHP 5.2.0, this function could return undefined behaviour. Notably,
+       the <em>&quot;tm_sec&quot;</em>, <em>&quot;tm_min&quot;</em> and <em>&quot;tm_hour&quot;</em> 
+       entries would return undefined values.
+      </p>
+     </p></blockquote>
+    </div>
+
+
+    <div class="refsect1 seealso" id="refsect1-function.strptime-seealso">
+    <h3 class="title">See Also</h3>
+    <p class="para">
+     <ul class="simplelist">
+      <li class="member"><span class="function">checkdate</span></li>
+      <li class="member"><span class="function">strftime</span></li>
+      <li class="member"><span class="function">date_parse_from_format</span></li>
+      <li class="member"><span class="function">DateTime::createFromFormat</span></li>
+     </ul>
+    </p>
+   </div>
+
+  </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

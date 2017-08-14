@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Report the error message of the latest function call in the module</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.abstract.html">Abstraction Layers</a></li>
+  <li class="header up"><a href="book.dbx.html">dbx</a></li>
+  <li class="header up"><a href="ref.dbx.html">dbx Functions</a></li>
+  <li><a href="function.dbx-close.html">dbx_close</a></li>
+  <li><a href="function.dbx-compare.html">dbx_compare</a></li>
+  <li><a href="function.dbx-connect.html">dbx_connect</a></li>
+  <li class="active"><a href="function.dbx-error.html">dbx_error</a></li>
+  <li><a href="function.dbx-escape-string.html">dbx_escape_string</a></li>
+  <li><a href="function.dbx-fetch-row.html">dbx_fetch_row</a></li>
+  <li><a href="function.dbx-query.html">dbx_query</a></li>
+  <li><a href="function.dbx-sort.html">dbx_sort</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.dbx-connect.html">dbx_connect</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.dbx-escape-string.html">dbx_escape_string</a></div>
+                <div class="up"><a href="ref.dbx.html">dbx Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.dbx-error" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">dbx_error</h1>
+  <p class="refpurpose">
+   Report the error message of the latest function call in the module
+  </p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.dbx-error-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname">dbx_error</span>
+    ( <span class="methodparam"><span class="type">object</span> <code class="parameter">$link_identifier</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function">dbx_error</span> returns the last error message.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.dbx-error-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">link_identifier</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The DBX link object returned by <span class="function">dbx_connect</span>
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.dbx-error-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns a string containing the error message from the last function call
+   of the abstracted module (e.g. mysql module). If there are multiple 
+   connections in the same module, just the last error is given. If there are
+   connections on different modules, the latest error is returned for the 
+   module specified by the <code class="parameter">link_identifier</code> parameter.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.dbx-error-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="openssl_spki_verify.example.keygen">
+    <p><strong>Example #1 <span class="function">dbx_error</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$link&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">dbx_connect</span><span style="color: #007700">(</span><span style="color: #0000BB">DBX_MYSQL</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"db"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"username"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;die(</span><span style="color: #DD0000">"Could&nbsp;not&nbsp;connect"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">dbx_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"select&nbsp;id&nbsp;from&nbsp;non_existing_table"</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">dbx_error</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">dbx_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$link</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 notes" id="refsect1-function.dbx-error-notes">
+  <h3 class="title">Notes</h3>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    Always refer to the module-specific documentation as well.
+   </p>
+   <p class="para">
+    The error message for <span class="productname">Microsoft SQL Server</span> is actually the result
+    of the <span class="function">mssql_get_last_message</span> function.
+   </p>
+   <p class="para">
+    The error message for Oracle (oci8) is not implemented yet.
+   </p>
+  </p></blockquote>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

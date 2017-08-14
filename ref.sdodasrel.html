@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: SDO-DAS-Relational Functions</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.xml.html">XML Manipulation</a></li>
+  <li class="header up"><a href="book.sdodasrel.html">SDO-DAS-Relational</a></li>
+  <li><a href="intro.sdodasrel.html">Introduction</a></li>
+  <li><a href="sdodasrel.setup.html">Installing/Configuring</a></li>
+  <li><a href="sdodasrel.constants.html">Predefined Constants</a></li>
+  <li><a href="sdodasrel.examples.html">Examples</a></li>
+  <li><a href="sdodasrel.limitations.html">Limitations</a></li>
+  <li class="active"><a href="ref.sdodasrel.html">SDO-DAS-Relational Functions</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="sdodasrel.limitations.html">Limitations</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="sdo-das-relational.applychanges.html">SDO_DAS_Relational::applyChanges</a></div>
+                <div class="up"><a href="book.sdodasrel.html">SDO-DAS-Relational</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="ref.sdodasrel" class="reference">
+ <h1 class="title">SDO-DAS-Relational Functions</h1>
+
+ <div class="partintro">
+  
+  
+  <div class="section" id="sdodasrel.classes">
+    <h2 class="title">Predefined Classes</h2>
+   <p class="para">
+    The Relational DAS provides two classes: the Relational DAS itself and 
+    the subclass of Exception that can be thrown. The Relational DAS has 
+    four publicly useful calls: the constructor,
+    the
+    <span class="function">createRootDataObject</span>
+    call to obtain the root object of an empty data graph,
+    the
+    <span class="function">executeQuery</span>
+    call to obtain a data graph containing data from a relational database,
+    and the
+    <span class="function">applyChanges</span>
+    call to write changes made to a data graph back to the relational 
+    database.
+   </p>
+      
+
+   <div class="section" id="sdodasrel.sdo-das-relational">
+    <h2 class="title">
+     <span class="classname">SDO_DAS_Relational</span>
+    </h2>
+    <p class="para">
+     The only object other than an SDO_DAS_Relational_Exception with which 
+     the application is expected to interact.
+    </p>
+    <div class="section" id="sdodasrel.sdo-das-relational.methods">
+     <h2 class="title">Methods</h2>
+     <ul class="itemizedlist">
+      <li class="listitem">
+       <p class="para">
+        <a href="sdo-das-relational.construct.html" class="link">
+         __construct
+        </a> 
+        - construct the Relational DAS with a model derived from the 
+        passed metadata
+       </p>
+      </li>
+      <li class="listitem">
+       <p class="para">
+        <a href="sdo-das-relational.createrootdataobject.html" class="link">
+         createRootDataObject
+        </a> 
+        - obtain an otherwise empty data graph containing just the special 
+        root object
+       </p>
+      </li>
+      <li class="listitem">
+       <p class="para">
+        <a href="sdo-das-relational.executequery.html" class="link">
+         executeQuery
+        </a>
+        - execute an SQL query passed as a literal string and return  
+        the results as a normalised data graph
+       </p>
+      </li>
+      <li class="listitem">
+       <p class="para">
+        <a href="sdo-das-relational.executepreparedquery.html" class="link">
+         executePreparedQuery
+        </a>
+        - execute an SQL query passed as a prepared statement, with a 
+        list of values to substitute for placeholders, and return the 
+        results as a normalised data graph
+       </p>
+      </li>
+      <li class="listitem">
+       <p class="para">
+        <a href="sdo-das-relational.applychanges.html" class="link">
+         applyChanges
+        </a>
+        - examine the change summary in the data graph and apply those 
+        changes back to the database, subject to an assumption 
+        of optimistic concurrency
+       </p>
+      </li>
+     </ul>
+    </div>
+   </div>
+
+   <div class="section" id="sdodasrel.sdo-das-relational-exception">
+    <h2 class="title">
+     <span class="classname">SDO_DAS_Relational_Exception</span>
+    </h2>
+    <p class="para">
+     Is a subclass of PHP&#039;s
+     <span class="classname">Exception</span>.
+     It adds no behaviour to
+     <span class="classname">Exception</span>.
+     Thrown, with useful descriptive text, to signal errors in the 
+     metadata or unexpected failures to perform SQL operations.
+    </p>
+   </div>
+  </div>
+
+
+ </div>
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<strong>Table of Contents</strong><ul class="chunklist chunklist_reference">
+<li><a href="sdo-das-relational.applychanges.html">SDO_DAS_Relational::applyChanges</a> — Applies the changes made to a data graph back to the database.</li>
+<li><a href="sdo-das-relational.construct.html">SDO_DAS_Relational::__construct</a> — Creates an instance of a Relational Data Access Service</li>
+<li><a href="sdo-das-relational.createrootdataobject.html">SDO_DAS_Relational::createRootDataObject</a> — Returns the special root object in an otherwise 
+   empty data graph. Used when creating a data graph from scratch.</li>
+<li><a href="sdo-das-relational.executepreparedquery.html">SDO_DAS_Relational::executePreparedQuery</a> — Executes an SQL query passed as a prepared statement, with a 
+   list of values to substitute for placeholders, and return the 
+   results as a normalised data graph.</li>
+<li><a href="sdo-das-relational.executequery.html">SDO_DAS_Relational::executeQuery</a> — Executes a given SQL query against a relational database 
+   and returns the results as a normalised data graph.</li>
+</ul>
+</ol>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Get the read preference for this command</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.mongo.html">Mongo</a></li>
+  <li class="header up"><a href="mongo.core.html">Core Classes</a></li>
+  <li class="header up"><a href="class.mongocommandcursor.html">MongoCommandCursor</a></li>
+  <li><a href="mongocommandcursor.batchsize.html">MongoCommandCursor::batchSize</a></li>
+  <li><a href="mongocommandcursor.construct.html">MongoCommandCursor::__construct</a></li>
+  <li><a href="mongocommandcursor.createfromdocument.html">MongoCommandCursor::createFromDocument</a></li>
+  <li><a href="mongocommandcursor.current.html">MongoCommandCursor::current</a></li>
+  <li><a href="mongocommandcursor.dead.html">MongoCommandCursor::dead</a></li>
+  <li class="active"><a href="mongocommandcursor.getreadpreference.html">MongoCommandCursor::getReadPreference</a></li>
+  <li><a href="mongocommandcursor.info.html">MongoCommandCursor::info</a></li>
+  <li><a href="mongocommandcursor.key.html">MongoCommandCursor::key</a></li>
+  <li><a href="mongocommandcursor.next.html">MongoCommandCursor::next</a></li>
+  <li><a href="mongocommandcursor.rewind.html">MongoCommandCursor::rewind</a></li>
+  <li><a href="mongocommandcursor.setreadpreference.html">MongoCommandCursor::setReadPreference</a></li>
+  <li><a href="mongocommandcursor.timeout.html">MongoCommandCursor::timeout</a></li>
+  <li><a href="mongocommandcursor.valid.html">MongoCommandCursor::valid</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mongocommandcursor.dead.html">MongoCommandCursor::dead</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mongocommandcursor.info.html">MongoCommandCursor::info</a></div>
+                <div class="up"><a href="class.mongocommandcursor.html">MongoCommandCursor</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mongocommandcursor.getreadpreference" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">MongoCommandCursor::getReadPreference</h1>
+  <p class="refpurpose">Get the read preference for this command</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mongocommandcursor.getreadpreference-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">MongoCommandCursor::getReadPreference</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mongocommandcursor.getreadpreference-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">This function has no parameters.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-mongocommandcursor.getreadpreference-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">This function returns an array describing the read preference. The array contains the values <em>type</em> for the string read preference mode (corresponding to the <span class="classname">MongoClient</span> constants), and <em>tagsets</em> containing a list of all tag set criteria. If no tag sets were specified, <em>tagsets</em> will not be present in the array.</p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-mongocommandcursor.getreadpreference-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="mongocursor.doquery.example.basic">
+   <p><strong>Example #1  <span class="methodname">MongoCommandCursor::getReadPreference</span> return value example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$m&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoClient</span><span style="color: #007700">(</span><span style="color: #DD0000">'mongodb://rs1.example.com:27017'</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">'replicaSet'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'myReplSetName'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">$collection&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">selectCollection</span><span style="color: #007700">(</span><span style="color: #DD0000">'test'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'people'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;If&nbsp;a&nbsp;MongoCommandCursor&nbsp;is&nbsp;constructed&nbsp;directly,&nbsp;it&nbsp;will&nbsp;inherit&nbsp;the&nbsp;read<br />//&nbsp;preference&nbsp;of&nbsp;the&nbsp;MongoClient&nbsp;instance&nbsp;passed&nbsp;to&nbsp;its&nbsp;constructor;&nbsp;however,<br />//&nbsp;MongoCollection::aggregateCursor()&nbsp;will&nbsp;have&nbsp;the&nbsp;MongoCommandCursor&nbsp;inherit<br />//&nbsp;the&nbsp;collection's&nbsp;read&nbsp;preference.<br /></span><span style="color: #0000BB">$collection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setReadPreference</span><span style="color: #007700">(</span><span style="color: #0000BB">MongoClient</span><span style="color: #007700">::</span><span style="color: #0000BB">RP_SECONDARY</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$cursor&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$collection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">aggregateCursor</span><span style="color: #007700">(&nbsp;[<br />&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;</span><span style="color: #DD0000">'$group'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[&nbsp;</span><span style="color: #DD0000">'_id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'$name'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'points'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[&nbsp;</span><span style="color: #DD0000">'$sum'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'$points'&nbsp;</span><span style="color: #007700">]&nbsp;]&nbsp;],<br />&nbsp;&nbsp;&nbsp;&nbsp;[&nbsp;</span><span style="color: #DD0000">'$sort'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[&nbsp;</span><span style="color: #DD0000">'points'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;-</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">]&nbsp;],<br />]&nbsp;);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$cursor</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getReadPreference</span><span style="color: #007700">());<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+array(1) {
+  [&quot;type&quot;]=&gt;
+  string(9) &quot;secondary&quot;
+}
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-mongocommandcursor.getreadpreference-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li class="member">The <a href="mongo.readpreferences.html" class="link">read preferences</a> documentation.</li>
+   <li class="member"><span class="function">MongoCommandCursor::setReadPreference</span></li>
+   <li class="member"><span class="function">MongoCursorInterface::getReadPreference</span></li>
+  </ul>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

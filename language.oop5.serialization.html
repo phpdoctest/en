@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Object Serialization</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="langref.html">Language Reference</a></li>
+  <li class="header up"><a href="language.oop5.html">Classes and Objects</a></li>
+  <li><a href="oop5.intro.html">Introduction</a></li>
+  <li><a href="language.oop5.basic.html">The Basics</a></li>
+  <li><a href="language.oop5.properties.html">Properties</a></li>
+  <li><a href="language.oop5.constants.html">Class Constants</a></li>
+  <li><a href="language.oop5.autoload.html">Autoloading Classes</a></li>
+  <li><a href="language.oop5.decon.html">Constructors and Destructors</a></li>
+  <li><a href="language.oop5.visibility.html">Visibility</a></li>
+  <li><a href="language.oop5.inheritance.html">Object Inheritance</a></li>
+  <li><a href="language.oop5.paamayim-nekudotayim.html">Scope Resolution Operator (::)</a></li>
+  <li><a href="language.oop5.static.html">Static Keyword</a></li>
+  <li><a href="language.oop5.abstract.html">Class Abstraction</a></li>
+  <li><a href="language.oop5.interfaces.html">Object Interfaces</a></li>
+  <li><a href="language.oop5.traits.html">Traits</a></li>
+  <li><a href="language.oop5.anonymous.html">Anonymous classes</a></li>
+  <li><a href="language.oop5.overloading.html">Overloading</a></li>
+  <li><a href="language.oop5.iterations.html">Object Iteration</a></li>
+  <li><a href="language.oop5.magic.html">Magic Methods</a></li>
+  <li><a href="language.oop5.final.html">Final Keyword</a></li>
+  <li><a href="language.oop5.cloning.html">Object Cloning</a></li>
+  <li><a href="language.oop5.object-comparison.html">Comparing Objects</a></li>
+  <li><a href="language.oop5.typehinting.html">Type Hinting</a></li>
+  <li><a href="language.oop5.late-static-bindings.html">Late Static Bindings</a></li>
+  <li><a href="language.oop5.references.html">Objects and references</a></li>
+  <li class="active"><a href="language.oop5.serialization.html">Object Serialization</a></li>
+  <li><a href="language.oop5.changelog.html">OOP Changelog</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="language.oop5.references.html">Objects and references</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="language.oop5.changelog.html">OOP Changelog</a></div>
+                <div class="up"><a href="language.oop5.html">Classes and Objects</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="language.oop5.serialization" class="sect1">
+  <h2 class="title">Object Serialization</h2>
+  <h2 class="title">Serializing objects - objects in sessions</h2>
+
+  <p class="para">
+   <span class="function">serialize</span> returns a string containing a
+   byte-stream representation of any value that can be stored in
+   PHP. <span class="function">unserialize</span> can use this string to
+   recreate the original variable values. Using serialize to
+   save an object will save all variables in an object.  The
+   methods in an object will not be saved, only the name of
+   the class.
+  </p>
+  
+  <p class="para">
+   In order to be able to <span class="function">unserialize</span> an object, the
+   class of that object needs to be defined. That is, if you have an object
+    of class A and serialize this, you&#039;ll
+   get a string that refers to class A and contains all values of variables
+   contained in it. If you want to be able to unserialize
+   this in another file, an object of class A, the
+   definition of class A must be present in that file first.
+   This can be done for example by storing the class definition of class A
+   in an include file and including this file or making use of the
+   <span class="function">spl_autoload_register</span> function.
+  </p>
+  
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;classa.inc:<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">A&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$one&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">show_one</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">one</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;}<br />&nbsp;&nbsp;<br /></span><span style="color: #FF8000">//&nbsp;page1.php:<br /><br />&nbsp;&nbsp;</span><span style="color: #007700">include(</span><span style="color: #DD0000">"classa.inc"</span><span style="color: #007700">);<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$s&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">serialize</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;store&nbsp;$s&nbsp;somewhere&nbsp;where&nbsp;page2.php&nbsp;can&nbsp;find&nbsp;it.<br />&nbsp;&nbsp;</span><span style="color: #0000BB">file_put_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'store'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$s</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;page2.php:<br />&nbsp;&nbsp;<br />&nbsp;&nbsp;//&nbsp;this&nbsp;is&nbsp;needed&nbsp;for&nbsp;the&nbsp;unserialize&nbsp;to&nbsp;work&nbsp;properly.<br />&nbsp;&nbsp;</span><span style="color: #007700">include(</span><span style="color: #DD0000">"classa.inc"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;</span><span style="color: #0000BB">$s&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'store'</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">unserialize</span><span style="color: #007700">(</span><span style="color: #0000BB">$s</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;now&nbsp;use&nbsp;the&nbsp;function&nbsp;show_one()&nbsp;of&nbsp;the&nbsp;$a&nbsp;object.&nbsp;&nbsp;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">show_one</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+  
+  <p class="para">
+   If an application is using sessions and uses 
+   <span class="function">session_register</span> to register objects, these objects 
+   are serialized automatically at the end of each PHP page, and are 
+   unserialized automatically on each of the following pages. This means that 
+   these objects can show up on any of the application&#039;s pages once they become 
+   part of the session. However, the <span class="function">session_register</span> is
+   removed since PHP 5.4.0.
+  </p>
+  
+  <p class="para">
+   It is strongly recommended that if an application serializes objects, for use
+   later in the application, that the application includes the class definition
+   for that object throughout the application. Not doing so might result in an
+   object being unserialized without a class definition, which will result in
+   PHP giving the object a class of <span class="classname">__PHP_Incomplete_Class_Name</span>,
+   which has no methods and would render the object useless.
+  </p>
+  
+  <p class="para">
+   So if in the example above <var class="varname">$a</var> became part of a session
+   by running <em>session_register(&quot;a&quot;)</em>, you should include the
+   file <em>classa.inc</em> on all of your pages, not only <var class="filename">page1.php</var>
+   and <var class="filename">page2.php</var>.
+  </p>
+
+  <p class="para">
+   Beyond the above advice, note that you can also hook into the serialization
+   and unserialization events on an object using the
+   <a href="language.oop5.magic.html#object.sleep" class="link">__sleep()</a> and
+   <a href="language.oop5.magic.html#object.wakeup" class="link">__wakeup()</a> methods. Using
+   <a href="language.oop5.magic.html#object.sleep" class="link">__sleep()</a> also allows you to only
+   serialize a subset of the object&#039;s properties.
+  </p>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

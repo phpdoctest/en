@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: To create SDO_DAS_XML object for a given schema file</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.xml.html">XML Manipulation</a></li>
+  <li class="header up"><a href="book.sdo-das-xml.html">SDO DAS XML</a></li>
+  <li class="header up"><a href="ref.sdo-das-xml.html">SDO DAS XML Functions</a></li>
+  <li><a href="sdo-das-xml.addtypes.html">SDO_DAS_XML::addTypes</a></li>
+  <li class="active"><a href="sdo-das-xml.create.html">SDO_DAS_XML::create</a></li>
+  <li><a href="sdo-das-xml.createdataobject.html">SDO_DAS_XML::createDataObject</a></li>
+  <li><a href="sdo-das-xml.createdocument.html">SDO_DAS_XML::createDocument</a></li>
+  <li><a href="sdo-das-xml.loadfile.html">SDO_DAS_XML::loadFile</a></li>
+  <li><a href="sdo-das-xml.loadstring.html">SDO_DAS_XML::loadString</a></li>
+  <li><a href="sdo-das-xml.savefile.html">SDO_DAS_XML::saveFile</a></li>
+  <li><a href="sdo-das-xml.savestring.html">SDO_DAS_XML::saveString</a></li>
+  <li><a href="sdo-das-xml-document.getrootdataobject.html">SDO_DAS_XML_Document::getRootDataObject</a></li>
+  <li><a href="sdo-das-xml-document.getrootelementname.html">SDO_DAS_XML_Document::getRootElementName</a></li>
+  <li><a href="sdo-das-xml-document.getrootelementuri.html">SDO_DAS_XML_Document::getRootElementURI</a></li>
+  <li><a href="sdo-das-xml-document.setencoding.html">SDO_DAS_XML_Document::setEncoding</a></li>
+  <li><a href="sdo-das-xml-document.setxmldeclaration.html">SDO_DAS_XML_Document::setXMLDeclaration</a></li>
+  <li><a href="sdo-das-xml-document.setxmlversion.html">SDO_DAS_XML_Document::setXMLVersion</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="sdo-das-xml.addtypes.html">SDO_DAS_XML::addTypes</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="sdo-das-xml.createdataobject.html">SDO_DAS_XML::createDataObject</a></div>
+                <div class="up"><a href="ref.sdo-das-xml.html">SDO DAS XML Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="sdo-das-xml.create" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SDO_DAS_XML::create</h1>
+  <p class="refpurpose">
+   To create SDO_DAS_XML object for a given schema file
+  </p>
+ </div>
+ <div class="refsect1 description" id="refsect1-sdo-das-xml.create-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">SDO_DAS_XML</span> <span class="methodname">SDO_DAS_XML::create</span>
+    ([ <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$xsd_file</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$key</code></span>
+  ]] )</div>
+
+
+  <p class="para rdfs-comment">
+   This is the only static method of SDO_DAS_XML class. 
+   Used to instantiate SDO_DAS_XML object.
+  </p>
+
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-sdo-das-xml.create-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+
+      <code class="parameter">xsd_file</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Path to XSD Schema file. This is optional. If omitted a DAS will be created
+       that only has the SDO base types defined. Schema files can then be loaded
+       with the <span class="function">addTypes</span> method.
+       Can be string or array of values.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+
+      <code class="parameter">key</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-sdo-das-xml.create-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns SDO_DAS_XML object on success otherwise throws an exception as described below.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-sdo-das-xml.create-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+
+      <code class="parameter">SDO_TypeNotFoundException</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Thrown if a type is not defined in the underlying model.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+
+      <code class="parameter">SDO_DAS_XML_ParserException</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Thrown for any problems while parsing the given XSD File.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+
+      <code class="parameter">SDO_DAS_XML_FileException</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Thrown if the specified file cannot be found. 
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+
+ 
+
+
+ 
+
+
+ 
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

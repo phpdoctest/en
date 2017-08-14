@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Compression Streams</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="langref.html">Language Reference</a></li>
+  <li class="header up"><a href="wrappers.html">Supported Protocols and Wrappers</a></li>
+  <li><a href="wrappers.file.html">file://</a></li>
+  <li><a href="wrappers.http.html">http://</a></li>
+  <li><a href="wrappers.ftp.html">ftp://</a></li>
+  <li><a href="wrappers.php.html">php://</a></li>
+  <li class="active"><a href="wrappers.compression.html">zlib://</a></li>
+  <li><a href="wrappers.data.html">data://</a></li>
+  <li><a href="wrappers.glob.html">glob://</a></li>
+  <li><a href="wrappers.phar.html">phar://</a></li>
+  <li><a href="wrappers.ssh2.html">ssh2://</a></li>
+  <li><a href="wrappers.rar.html">rar://</a></li>
+  <li><a href="wrappers.audio.html">ogg://</a></li>
+  <li><a href="wrappers.expect.html">expect://</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="wrappers.php.html">php://</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="wrappers.data.html">data://</a></div>
+                <div class="up"><a href="wrappers.html">Supported Protocols and Wrappers</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="wrappers.compression" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">zlib://</h1>
+  <h1 class="refname">bzip2://</h1>
+  <h1 class="refname">zip://</h1>
+  <p class="refpurpose">Compression Streams</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-wrappers.compression-description">
+  <h3 class="title">Description</h3>
+  <p class="simpara"><var class="filename">zlib:</var> PHP 4.0.4 - PHP 4.2.3 (systems with fopencookie only)</p>
+  <p class="simpara"><var class="filename">compress.zlib://</var> and <var class="filename">compress.bzip2://</var> PHP 4.3.0 and up</p>
+
+  <p class="simpara">
+   <var class="filename">zlib:</var> works like <span class="function">gzopen</span>, except that the
+   stream can be used with <span class="function">fread</span> and the other
+   filesystem functions.  This is deprecated as of PHP 4.3.0 due
+   to ambiguities with filenames containing &#039;:&#039; characters; use
+   <var class="filename">compress.zlib://</var> instead.
+  </p>
+
+  <p class="simpara">
+   <var class="filename">compress.zlib://</var> and
+   <var class="filename">compress.bzip2://</var> are equivalent to
+   <span class="function">gzopen</span> and <span class="function">bzopen</span>
+   respectively, and operate even on systems that do not support
+   fopencookie.
+  </p>
+  <p class="para">
+   <a href="book.zip.html" class="link">ZIP extension</a> registers <var class="filename">zip:</var> wrapper.
+  </p>
+ </div>
+
+
+ <div class="refsect1 usage" id="refsect1-wrappers.compression-usage"> 
+  <h3 class="title">Usage</h3>
+  <ul class="itemizedlist">
+   <li class="listitem"><span class="simpara"><var class="filename">compress.zlib://file.gz</var></span></li>
+   <li class="listitem"><span class="simpara"><var class="filename">compress.bzip2://file.bz2</var></span></li>
+   <li class="listitem"><span class="simpara"><var class="filename">zip://archive.zip#dir/file.txt</var></span></li>
+  </ul>
+ </div>
+ 
+
+ <div class="refsect1 options" id="refsect1-wrappers.compression-options">
+  <h3 class="title">Options</h3>
+  <p class="para">
+   <table class="doctable table">
+    <caption><strong>Wrapper Summary</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>Attribute</th>
+       <th>Supported</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>Restricted by <a href="filesystem.configuration.html#ini.allow-url-fopen" class="link">allow_url_fopen</a></td>
+       <td>No</td>
+      </tr>
+
+      <tr>
+       <td>Allows Reading</td>
+       <td>Yes</td>
+      </tr>
+
+      <tr>
+       <td>Allows Writing</td>
+       <td>Yes (except <em>zip://</em>)</td>
+      </tr>
+
+      <tr>
+       <td>Allows Appending</td>
+       <td>Yes (except <em>zip://</em>)</td>
+      </tr>
+
+      <tr>
+       <td>Allows Simultaneous Reading and Writing</td>
+       <td>No</td>
+      </tr>
+
+      <tr>
+       <td>Supports <span class="function">stat</span></td>
+       <td>
+        No, use the normal <em>file://</em> wrapper
+        to stat compressed files.
+       </td>
+      </tr>
+
+      <tr>
+       <td>Supports <span class="function">unlink</span></td>
+       <td>
+        No, use the normal <em>file://</em> wrapper
+        to unlink compressed files.
+       </td>
+      </tr>
+
+      <tr>
+       <td>Supports <span class="function">rename</span></td>
+       <td>No</td>
+      </tr>
+
+      <tr>
+       <td>Supports <span class="function">mkdir</span></td>
+       <td>No</td>
+      </tr>
+
+      <tr>
+       <td>Supports <span class="function">rmdir</span></td>
+       <td>No</td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+ 
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

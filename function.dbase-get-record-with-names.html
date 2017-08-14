@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Gets a record from a database as an associative array</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.dbase.html">dBase</a></li>
+  <li class="header up"><a href="ref.dbase.html">dBase Functions</a></li>
+  <li><a href="function.dbase-add-record.html">dbase_add_record</a></li>
+  <li><a href="function.dbase-close.html">dbase_close</a></li>
+  <li><a href="function.dbase-create.html">dbase_create</a></li>
+  <li><a href="function.dbase-delete-record.html">dbase_delete_record</a></li>
+  <li><a href="function.dbase-get-header-info.html">dbase_get_header_info</a></li>
+  <li class="active"><a href="function.dbase-get-record-with-names.html">dbase_get_record_with_names</a></li>
+  <li><a href="function.dbase-get-record.html">dbase_get_record</a></li>
+  <li><a href="function.dbase-numfields.html">dbase_numfields</a></li>
+  <li><a href="function.dbase-numrecords.html">dbase_numrecords</a></li>
+  <li><a href="function.dbase-open.html">dbase_open</a></li>
+  <li><a href="function.dbase-pack.html">dbase_pack</a></li>
+  <li><a href="function.dbase-replace-record.html">dbase_replace_record</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.dbase-get-header-info.html">dbase_get_header_info</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.dbase-get-record.html">dbase_get_record</a></div>
+                <div class="up"><a href="ref.dbase.html">dBase Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.dbase-get-record-with-names" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">dbase_get_record_with_names</h1>
+  <p class="refpurpose">
+   Gets a record from a database as an associative array
+  </p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.dbase-get-record-with-names-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname">dbase_get_record_with_names</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$dbase_identifier</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$record_number</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Gets a record from a dBase database as an associative array.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.dbase-get-record-with-names-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">dbase_identifier</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The database link identifier, returned by <span class="function">dbase_open</span>
+       or <span class="function">dbase_create</span>.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">record_number</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The index of the record between <em>1</em> and
+       <em>dbase_numrecords($dbase_identifier)</em>.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.dbase-get-record-with-names-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   An associative array with the record. This will also include a key named 
+   <em>deleted</em> which is set to 1 if the record has been marked
+   for deletion (see <span class="function">dbase_delete_record</span>).
+   Therefore it is not possible to retrieve the value of a field named
+   <em>deleted</em> with this function.
+  </p>
+  <p class="para">
+   Each field is converted to the appropriate PHP type, except:
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      Dates are left as strings.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      DateTime values are converted to strings.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Integers outside the range
+      <strong><code>PHP_INT_MIN</code></strong>..<strong><code>PHP_INT_MAX</code></strong> are
+      returned as strings.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Before dbase 7.0.0, booleans (<em>L</em>) were converted to <em>1</em> or
+      <em>0</em>.
+     </span>
+    </li>
+   </ul>
+  </p>
+  <p class="para">
+   On error, <span class="function">dbase_get_record_with_names</span> will return <strong><code>FALSE</code></strong>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.dbase-get-record-with-names-changelog">
+  <h3 class="title">Changelog</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>Version</th>
+      <th>Description</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>dbase 7.0.0</td>
+      <td>
+       <code class="parameter">dbase_identifier</code> is now a <span class="type">resource</span>
+       instead of an <span class="type">int</span>.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.dbase-get-record-with-names-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-1187">
+    <p><strong>Example #1 Listing all the registered members in the database</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;open&nbsp;in&nbsp;read-only&nbsp;mode<br /></span><span style="color: #0000BB">$db&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">dbase_open</span><span style="color: #007700">(</span><span style="color: #DD0000">'/tmp/test.dbf'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /><br />if&nbsp;(</span><span style="color: #0000BB">$db</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$record_numbers&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">dbase_numrecords</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">);<br />&nbsp;&nbsp;for&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;=&nbsp;</span><span style="color: #0000BB">$record_numbers</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">dbase_get_record_with_names</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'ismember'</span><span style="color: #007700">]&nbsp;==&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Member&nbsp;#</span><span style="color: #0000BB">$i</span><span style="color: #DD0000">:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">trim</span><span style="color: #007700">(</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'name'</span><span style="color: #007700">])&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.dbase-get-record-with-names-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">dbase_get_record</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Examples</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.vartype.html">Variable and Type Related Extensions</a></li>
+  <li class="header up"><a href="book.reflection.html">Reflection</a></li>
+  <li><a href="intro.reflection.html">Introduction</a></li>
+  <li><a href="reflection.setup.html">Installing/Configuring</a></li>
+  <li><a href="reflection.constants.html">Predefined Constants</a></li>
+  <li class="active"><a href="reflection.examples.html">Examples</a></li>
+  <li><a href="reflection.extending.html">Extending</a></li>
+  <li><a href="class.reflection.html">Reflection</a></li>
+  <li><a href="class.reflectionclass.html">ReflectionClass</a></li>
+  <li><a href="class.reflectionzendextension.html">ReflectionZendExtension</a></li>
+  <li><a href="class.reflectionextension.html">ReflectionExtension</a></li>
+  <li><a href="class.reflectionfunction.html">ReflectionFunction</a></li>
+  <li><a href="class.reflectionfunctionabstract.html">ReflectionFunctionAbstract</a></li>
+  <li><a href="class.reflectionmethod.html">ReflectionMethod</a></li>
+  <li><a href="class.reflectionobject.html">ReflectionObject</a></li>
+  <li><a href="class.reflectionparameter.html">ReflectionParameter</a></li>
+  <li><a href="class.reflectionproperty.html">ReflectionProperty</a></li>
+  <li><a href="class.reflectiontype.html">ReflectionType</a></li>
+  <li><a href="class.reflectiongenerator.html">ReflectionGenerator</a></li>
+  <li><a href="class.reflector.html">Reflector</a></li>
+  <li><a href="class.reflectionexception.html">ReflectionException</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="reflection.constants.html">Predefined Constants</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="reflection.extending.html">Extending</a></div>
+                <div class="up"><a href="book.reflection.html">Reflection</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="reflection.examples" class="chapter">
+ <h1>Examples</h1>
+ <p class="para">
+  Many examples exist within the Reflection documentation, typically
+  within the __construct documentation for each class.
+ </p>
+ <div class="example" id="example-6033">
+  <p><strong>Example #1 Reflection Example from Shell (a Terminal)</strong></p>
+  <div class="example-contents">
+<div class="shellcode"><pre class="shellcode">$ php --rf strlen
+$ php --rc finfo
+$ php --re json
+$ php --ri dom</pre>
+</div>
+  </div>
+
+  <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+Function [ &lt;internal:Core&gt; function strlen ] {
+
+  - Parameters [1] {
+    Parameter #0 [ &lt;required&gt; $str ]
+  }
+}
+
+Class [ &lt;internal:fileinfo&gt; class finfo ] {
+
+  - Constants [0] {
+  }
+
+  - Static properties [0] {
+  }
+
+  - Static methods [0] {
+  }
+
+  - Properties [0] {
+  }
+
+  - Methods [4] {
+    Method [ &lt;internal:fileinfo, ctor&gt; public method finfo ] {
+
+      - Parameters [2] {
+        Parameter #0 [ &lt;optional&gt; $options ]
+        Parameter #1 [ &lt;optional&gt; $arg ]
+      }
+    }
+
+    Method [ &lt;internal:fileinfo&gt; public method set_flags ] {
+
+      - Parameters [1] {
+        Parameter #0 [ &lt;required&gt; $options ]
+      }
+    }
+
+    Method [ &lt;internal:fileinfo&gt; public method file ] {
+
+      - Parameters [3] {
+        Parameter #0 [ &lt;required&gt; $filename ]
+        Parameter #1 [ &lt;optional&gt; $options ]
+        Parameter #2 [ &lt;optional&gt; $context ]
+      }
+    }
+
+    Method [ &lt;internal:fileinfo&gt; public method buffer ] {
+
+      - Parameters [3] {
+        Parameter #0 [ &lt;required&gt; $string ]
+        Parameter #1 [ &lt;optional&gt; $options ]
+        Parameter #2 [ &lt;optional&gt; $context ]
+      }
+    }
+  }
+}
+
+Extension [ &lt;persistent&gt; extension #23 json version 1.2.1 ] {
+
+  - Constants [10] {
+    Constant [ integer JSON_HEX_TAG ] { 1 }
+    Constant [ integer JSON_HEX_AMP ] { 2 }
+    Constant [ integer JSON_HEX_APOS ] { 4 }
+    Constant [ integer JSON_HEX_QUOT ] { 8 }
+    Constant [ integer JSON_FORCE_OBJECT ] { 16 }
+    Constant [ integer JSON_ERROR_NONE ] { 0 }
+    Constant [ integer JSON_ERROR_DEPTH ] { 1 }
+    Constant [ integer JSON_ERROR_STATE_MISMATCH ] { 2 }
+    Constant [ integer JSON_ERROR_CTRL_CHAR ] { 3 }
+    Constant [ integer JSON_ERROR_SYNTAX ] { 4 }
+  }
+
+  - Functions {
+    Function [ &lt;internal:json&gt; function json_encode ] {
+
+      - Parameters [2] {
+        Parameter #0 [ &lt;required&gt; $value ]
+        Parameter #1 [ &lt;optional&gt; $options ]
+      }
+    }
+    Function [ &lt;internal:json&gt; function json_decode ] {
+
+      - Parameters [3] {
+        Parameter #0 [ &lt;required&gt; $json ]
+        Parameter #1 [ &lt;optional&gt; $assoc ]
+        Parameter #2 [ &lt;optional&gt; $depth ]
+      }
+    }
+    Function [ &lt;internal:json&gt; function json_last_error ] {
+
+      - Parameters [0] {
+      }
+    }
+  }
+}
+
+dom
+
+DOM/XML =&gt; enabled
+DOM/XML API Version =&gt; 20031129
+libxml Version =&gt; 2.7.3
+HTML Support =&gt; enabled
+XPath Support =&gt; enabled
+XPointer Support =&gt; enabled
+Schema Support =&gt; enabled
+RelaxNG Support =&gt; enabled
+</pre></div>
+  </div>
+ </div>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

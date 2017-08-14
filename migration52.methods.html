@@ -1,0 +1,283 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: New Methods</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="appendices.html">Appendices</a></li>
+  <li class="header up"><a href="migration52.html">Migrating from PHP 5.1.x to PHP 5.2.x</a></li>
+  <li><a href="migration52.changes.html">What has changed in PHP 5.2.x</a></li>
+  <li><a href="migration52.incompatible.html">Backward Incompatible Changes</a></li>
+  <li><a href="migration52.error-messages.html">New Error Messages</a></li>
+  <li><a href="migration52.datetime.html">Changes in PHP datetime
+   support</a></li>
+  <li><a href="migration52.parameters.html">New Parameters</a></li>
+  <li><a href="migration52.functions.html">New Functions</a></li>
+  <li class="active"><a href="migration52.methods.html">New Methods</a></li>
+  <li><a href="migration52.removed-extensions.html">Removed Extensions</a></li>
+  <li><a href="migration52.new-extensions.html">New Extensions</a></li>
+  <li><a href="migration52.classes.html">New Classes</a></li>
+  <li><a href="migration52.global-constants.html">New Global Constants</a></li>
+  <li><a href="migration52.class-constants.html">New Class Constants</a></li>
+  <li><a href="migration52.newconf.html">New INI Configuration Directives</a></li>
+  <li><a href="migration52.errorrep.html">Error Reporting</a></li>
+  <li><a href="migration52.other.html">Other Enhancements</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="migration52.functions.html">New Functions</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="migration52.removed-extensions.html">Removed Extensions</a></div>
+                <div class="up"><a href="migration52.html">Migrating from PHP 5.1.x to PHP 5.2.x</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="migration52.methods" class="section">
+  <h2 class="title">New Methods</h2>
+  <p class="para">
+   New methods were introduced in 5.2.0:
+  </p>
+
+  <p class="para"><a href="book.dom.html" class="link">dom</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">DOMDocument::registerNodeClass</span>
+     - Register extended class used to create base node type
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">DOMElement::setIDAttribute</span>
+     - Declares the attribute specified by name to be of type ID
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">DOMElement::setIDAttributeNode</span>
+     - Declares the attribute specified by node to be of type ID
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">DOMElement::setIDAttributeNS</span>
+     - Declares the attribute specified by local name and namespace URI to be
+     of type ID
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+      <span class="methodname">DOMNode::C14N</span>([bool exclusive [, bool with_comments [, array xpath [, array ns_prefixes]]]])
+     - Canonicalize nodes to a string
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+      <span class="methodname">DOMNode::C14NFile</span>(string uri [, bool exclusive [, bool with_comments [, array xpath [, array ns_prefixes]]]])
+     - Canonicalize nodes to a file
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+      <span class="methodname">DOMNode::getNodePath</span>()
+     - Gets an <em>xpath</em> for a node
+    </span>
+   </li>
+  </ul>
+
+  <p class="para"><a href="ref.soap.html" class="link">soap</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+      <span class="methodname">SoapServer::setObject</span>(object obj)
+     - Sets object which will handle SOAP requests
+    </span>
+   </li>
+  </ul>
+
+  <p class="para"><a href="ref.spl.html" class="link">spl</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     int  <span class="methodname">ArrayObject::asort</span>(void)
+     - Sort the entries by values
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     int  <span class="methodname">ArrayObject::ksort</span>(void)
+     - Sort the entries by key
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     int  <span class="methodname">ArrayObject::natcasesort</span>(void)
+     - Sort the entries by key using case insensitive
+     &quot;natural order&quot; algorithm.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     int  <span class="methodname">ArrayObject::natsort</span>(void)
+     - Sort the entries by values using &quot;natural order&quot; algorithm.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     int  <span class="methodname">ArrayObject::uasort</span>(callback cmp_function)
+     - Sort the entries by values using a user defined function
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     int  <span class="methodname">ArrayObject::uksort</span>(callback cmp_function)
+     - Sort the entries by key using a user defined function.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     ArrayIterator  <span class="methodname">AppendIterator::getArrayIterator</span>()
+     - Get access to inner <em>ArrayIterator</em>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     int  <span class="methodname">AppendIterator::getIteratorIndex</span>()
+     - Get index of iterator
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     bool  <span class="methodname">CachingIterator::getCache</span>()
+     - Return the cache
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     int  <span class="methodname">CachingIterator::getFlags</span>()
+     - Return the internal flags
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     bool  <span class="methodname">CachingIterator::offsetExists</span>(mixed index)
+     - Returns <strong><code>TRUE</code></strong> if the requested index exists
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     string  <span class="methodname">CachingIterator::offsetGet</span>(mixed index)
+     - Return the internal cache if used
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     void  <span class="methodname">CachingIterator::offsetSet</span>(mixed index, mixed newval)
+     - Set given index in cache
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     void  <span class="methodname">CachingIterator::offsetUnset</span>(mixed index)
+     - Unset given index in cache
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     void  <span class="methodname">CachingIterator::setFlags</span>()
+     - Set the internal flags
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     array(&quot;delimiter&quot; =&gt;, &quot;enclosure&quot; =&gt;)  <span class="methodname">SplFileObject::getCsvControl</span>(void)
+     - Get the delimiter and enclosure character used in <span class="function">fgetcsv</span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     void  <span class="methodname">SplFileObject::setCsvControl</span>([string delimiter = &#039;,&#039; [, string enclosure = &#039;&quot;&#039;]])
+     - Set the delimiter and enclosure character used in <span class="function">fgetcsv</span>
+    </span>
+   </li>
+  </ul>
+
+  <p class="para"><a href="ref.tidy.html" class="link">Tidy</a></p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     tidyNode  <span class="methodname">tidyNode::getParent</span>()
+     - Returns the parent node of the current node (Added in PHP 5.2.2)
+    </span>
+   </li>
+  </ul>
+
+  <p class="para"><a href="book.xmlreader.html" class="link">XMLReader</a></p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     boolean <span class="function">XMLReader::setSchema</span>
+     - Use W3C XSD schema to validate the document as it is processed. Activation is
+     only possible before the first <span class="function">XMLReader::read</span>
+    </span>
+   </li>
+  </ul>
+
+  <p class="para"><a href="ref.zip.html" class="link">zip</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+      <span class="methodname">ZipArchive::addEmptyDir</span>()
+     - Creates an empty directory in the archive
+    </span>
+   </li>
+  </ul>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

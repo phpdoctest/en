@@ -1,0 +1,4891 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Document Object Model</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.xml.html">XML Manipulation</a></li>
+  <li class="active"><a href="book.dom.html">DOM</a></li>
+  <li><a href="book.libxml.html">libxml</a></li>
+  <li><a href="book.sdo.html">SDO</a></li>
+  <li><a href="book.sdodasrel.html">SDO-DAS-Relational</a></li>
+  <li><a href="book.sdo-das-xml.html">SDO DAS XML</a></li>
+  <li><a href="book.simplexml.html">SimpleXML</a></li>
+  <li><a href="book.wddx.html">WDDX</a></li>
+  <li><a href="book.xmldiff.html">XMLDiff</a></li>
+  <li><a href="book.xml.html">XML Parser</a></li>
+  <li><a href="book.xmlreader.html">XMLReader</a></li>
+  <li><a href="book.xmlwriter.html">XMLWriter</a></li>
+  <li><a href="book.xsl.html">XSL</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="refs.xml.html">XML Manipulation</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="intro.dom.html">Introduction</a></div>
+                <div class="up"><a href="refs.xml.html">XML Manipulation</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="book.dom" class="book">
+ 
+ <h1>Document Object Model</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="intro.dom.html">Introduction</a></li>
+<li><a href="dom.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_title">
+<li><a href="dom.requirements.html">Requirements</a></li>
+<li><a href="dom.installation.html">Installation</a></li>
+<li><a href="dom.configuration.html">Runtime Configuration</a></li>
+<li><a href="dom.resources.html">Resource Types</a></li>
+</ul>
+</li>
+<li><a href="dom.constants.html">Predefined Constants</a></li>
+<li><a href="dom.examples.html">Examples</a></li>
+<li><a href="class.domattr.html">DOMAttr</a> — The DOMAttr class<ul class="chunklist chunklist_title">
+<li><a href="domattr.construct.html">DOMAttr::__construct</a> — Creates a new DOMAttr object</li>
+<li><a href="domattr.isid.html">DOMAttr::isId</a> — Checks if attribute is a defined ID</li>
+</ul>
+</li>
+<li><a href="class.domcdatasection.html">DOMCdataSection</a> — The DOMCdataSection class<ul class="chunklist chunklist_title">
+<li><a href="domcdatasection.construct.html">DOMCdataSection::__construct</a> — Constructs a new DOMCdataSection object</li>
+</ul>
+</li>
+<li><a href="class.domcharacterdata.html">DOMCharacterData</a> — The DOMCharacterData class<ul class="chunklist chunklist_title">
+<li><a href="domcharacterdata.appenddata.html">DOMCharacterData::appendData</a> — Append the string to the end of the character data of the node</li>
+<li><a href="domcharacterdata.deletedata.html">DOMCharacterData::deleteData</a> — Remove a range of characters from the node</li>
+<li><a href="domcharacterdata.insertdata.html">DOMCharacterData::insertData</a> — Insert a string at the specified 16-bit unit offset</li>
+<li><a href="domcharacterdata.replacedata.html">DOMCharacterData::replaceData</a> — Replace a substring within the DOMCharacterData node</li>
+<li><a href="domcharacterdata.substringdata.html">DOMCharacterData::substringData</a> — Extracts a range of data from the node</li>
+</ul>
+</li>
+<li><a href="class.domcomment.html">DOMComment</a> — The DOMComment class<ul class="chunklist chunklist_title">
+<li><a href="domcomment.construct.html">DOMComment::__construct</a> — Creates a new DOMComment object</li>
+</ul>
+</li>
+<li><a href="class.domdocument.html">DOMDocument</a> — The DOMDocument class<ul class="chunklist chunklist_title">
+<li><a href="domdocument.construct.html">DOMDocument::__construct</a> — Creates a new DOMDocument object</li>
+<li><a href="domdocument.createattribute.html">DOMDocument::createAttribute</a> — Create new attribute</li>
+<li><a href="domdocument.createattributens.html">DOMDocument::createAttributeNS</a> — Create new attribute node with an associated namespace</li>
+<li><a href="domdocument.createcdatasection.html">DOMDocument::createCDATASection</a> — Create new cdata node</li>
+<li><a href="domdocument.createcomment.html">DOMDocument::createComment</a> — Create new comment node</li>
+<li><a href="domdocument.createdocumentfragment.html">DOMDocument::createDocumentFragment</a> — Create new document fragment</li>
+<li><a href="domdocument.createelement.html">DOMDocument::createElement</a> — Create new element node</li>
+<li><a href="domdocument.createelementns.html">DOMDocument::createElementNS</a> — Create new element node with an associated namespace</li>
+<li><a href="domdocument.createentityreference.html">DOMDocument::createEntityReference</a> — Create new entity reference node</li>
+<li><a href="domdocument.createprocessinginstruction.html">DOMDocument::createProcessingInstruction</a> — Creates new PI node</li>
+<li><a href="domdocument.createtextnode.html">DOMDocument::createTextNode</a> — Create new text node</li>
+<li><a href="domdocument.getelementbyid.html">DOMDocument::getElementById</a> — Searches for an element with a certain id</li>
+<li><a href="domdocument.getelementsbytagname.html">DOMDocument::getElementsByTagName</a> — Searches for all elements with given local tag name</li>
+<li><a href="domdocument.getelementsbytagnamens.html">DOMDocument::getElementsByTagNameNS</a> — Searches for all elements with given tag name in specified namespace</li>
+<li><a href="domdocument.importnode.html">DOMDocument::importNode</a> — Import node into current document</li>
+<li><a href="domdocument.load.html">DOMDocument::load</a> — Load XML from a file</li>
+<li><a href="domdocument.loadhtml.html">DOMDocument::loadHTML</a> — Load HTML from a string</li>
+<li><a href="domdocument.loadhtmlfile.html">DOMDocument::loadHTMLFile</a> — Load HTML from a file</li>
+<li><a href="domdocument.loadxml.html">DOMDocument::loadXML</a> — Load XML from a string</li>
+<li><a href="domdocument.normalizedocument.html">DOMDocument::normalizeDocument</a> — Normalizes the document</li>
+<li><a href="domdocument.registernodeclass.html">DOMDocument::registerNodeClass</a> — Register extended class used to create base node type</li>
+<li><a href="domdocument.relaxngvalidate.html">DOMDocument::relaxNGValidate</a> — Performs relaxNG validation on the document</li>
+<li><a href="domdocument.relaxngvalidatesource.html">DOMDocument::relaxNGValidateSource</a> — Performs relaxNG validation on the document</li>
+<li><a href="domdocument.save.html">DOMDocument::save</a> — Dumps the internal XML tree back into a file</li>
+<li><a href="domdocument.savehtml.html">DOMDocument::saveHTML</a> — Dumps the internal document into a string using HTML formatting</li>
+<li><a href="domdocument.savehtmlfile.html">DOMDocument::saveHTMLFile</a> — Dumps the internal document into a file using HTML formatting</li>
+<li><a href="domdocument.savexml.html">DOMDocument::saveXML</a> — Dumps the internal XML tree back into a string</li>
+<li><a href="domdocument.schemavalidate.html">DOMDocument::schemaValidate</a> — Validates a document based on a schema</li>
+<li><a href="domdocument.schemavalidatesource.html">DOMDocument::schemaValidateSource</a> — Validates a document based on a schema</li>
+<li><a href="domdocument.validate.html">DOMDocument::validate</a> — Validates the document based on its DTD</li>
+<li><a href="domdocument.xinclude.html">DOMDocument::xinclude</a> — Substitutes XIncludes in a DOMDocument Object</li>
+</ul>
+</li>
+<li><a href="class.domdocumentfragment.html">DOMDocumentFragment</a> — The DOMDocumentFragment class<ul class="chunklist chunklist_title">
+<li><a href="domdocumentfragment.appendxml.html">DOMDocumentFragment::appendXML</a> — Append raw XML data</li>
+</ul>
+</li>
+<li><a href="class.domdocumenttype.html">DOMDocumentType</a> — The DOMDocumentType class</li>
+<li><a href="class.domelement.html">DOMElement</a> — The DOMElement class<ul class="chunklist chunklist_title">
+<li><a href="domelement.construct.html">DOMElement::__construct</a> — Creates a new DOMElement object</li>
+<li><a href="domelement.getattribute.html">DOMElement::getAttribute</a> — Returns value of attribute</li>
+<li><a href="domelement.getattributenode.html">DOMElement::getAttributeNode</a> — Returns attribute node</li>
+<li><a href="domelement.getattributenodens.html">DOMElement::getAttributeNodeNS</a> — Returns attribute node</li>
+<li><a href="domelement.getattributens.html">DOMElement::getAttributeNS</a> — Returns value of attribute</li>
+<li><a href="domelement.getelementsbytagname.html">DOMElement::getElementsByTagName</a> — Gets elements by tagname</li>
+<li><a href="domelement.getelementsbytagnamens.html">DOMElement::getElementsByTagNameNS</a> — Get elements by namespaceURI and localName</li>
+<li><a href="domelement.hasattribute.html">DOMElement::hasAttribute</a> — Checks to see if attribute exists</li>
+<li><a href="domelement.hasattributens.html">DOMElement::hasAttributeNS</a> — Checks to see if attribute exists</li>
+<li><a href="domelement.removeattribute.html">DOMElement::removeAttribute</a> — Removes attribute</li>
+<li><a href="domelement.removeattributenode.html">DOMElement::removeAttributeNode</a> — Removes attribute</li>
+<li><a href="domelement.removeattributens.html">DOMElement::removeAttributeNS</a> — Removes attribute</li>
+<li><a href="domelement.setattribute.html">DOMElement::setAttribute</a> — Adds new attribute</li>
+<li><a href="domelement.setattributenode.html">DOMElement::setAttributeNode</a> — Adds new attribute node to element</li>
+<li><a href="domelement.setattributenodens.html">DOMElement::setAttributeNodeNS</a> — Adds new attribute node to element</li>
+<li><a href="domelement.setattributens.html">DOMElement::setAttributeNS</a> — Adds new attribute</li>
+<li><a href="domelement.setidattribute.html">DOMElement::setIdAttribute</a> — Declares the attribute specified by name to be of type ID</li>
+<li><a href="domelement.setidattributenode.html">DOMElement::setIdAttributeNode</a> — Declares the attribute specified by node to be of type ID</li>
+<li><a href="domelement.setidattributens.html">DOMElement::setIdAttributeNS</a> — Declares the attribute specified by local name and namespace URI to be of type ID</li>
+</ul>
+</li>
+<li><a href="class.domentity.html">DOMEntity</a> — The DOMEntity class</li>
+<li><a href="class.domentityreference.html">DOMEntityReference</a> — The DOMEntityReference class<ul class="chunklist chunklist_title">
+<li><a href="domentityreference.construct.html">DOMEntityReference::__construct</a> — Creates a new DOMEntityReference object</li>
+</ul>
+</li>
+<li><a href="class.domexception.html">DOMException</a> — The DOMException class</li>
+<li><a href="class.domimplementation.html">DOMImplementation</a> — The DOMImplementation class<ul class="chunklist chunklist_title">
+<li><a href="domimplementation.construct.html">DOMImplementation::__construct</a> — Creates a new DOMImplementation object</li>
+<li><a href="domimplementation.createdocument.html">DOMImplementation::createDocument</a> — Creates a DOMDocument object of the specified type with its document element</li>
+<li><a href="domimplementation.createdocumenttype.html">DOMImplementation::createDocumentType</a> — Creates an empty DOMDocumentType object</li>
+<li><a href="domimplementation.hasfeature.html">DOMImplementation::hasFeature</a> — Test if the DOM implementation implements a specific feature</li>
+</ul>
+</li>
+<li><a href="class.domnamednodemap.html">DOMNamedNodeMap</a> — The DOMNamedNodeMap class<ul class="chunklist chunklist_title">
+<li><a href="domnamednodemap.getnameditem.html">DOMNamedNodeMap::getNamedItem</a> — Retrieves a node specified by name</li>
+<li><a href="domnamednodemap.getnameditemns.html">DOMNamedNodeMap::getNamedItemNS</a> — Retrieves a node specified by local name and namespace URI</li>
+<li><a href="domnamednodemap.item.html">DOMNamedNodeMap::item</a> — Retrieves a node specified by index</li>
+</ul>
+</li>
+<li><a href="class.domnode.html">DOMNode</a> — The DOMNode class<ul class="chunklist chunklist_title">
+<li><a href="domnode.appendchild.html">DOMNode::appendChild</a> — Adds new child at the end of the children</li>
+<li><a href="domnode.c14n.html">DOMNode::C14N</a> — Canonicalize nodes to a string</li>
+<li><a href="domnode.c14nfile.html">DOMNode::C14NFile</a> — Canonicalize nodes to a file</li>
+<li><a href="domnode.clonenode.html">DOMNode::cloneNode</a> — Clones a node</li>
+<li><a href="domnode.getlineno.html">DOMNode::getLineNo</a> — Get line number for a node</li>
+<li><a href="domnode.getnodepath.html">DOMNode::getNodePath</a> — Get an XPath for a node</li>
+<li><a href="domnode.hasattributes.html">DOMNode::hasAttributes</a> — Checks if node has attributes</li>
+<li><a href="domnode.haschildnodes.html">DOMNode::hasChildNodes</a> — Checks if node has children</li>
+<li><a href="domnode.insertbefore.html">DOMNode::insertBefore</a> — Adds a new child before a reference node</li>
+<li><a href="domnode.isdefaultnamespace.html">DOMNode::isDefaultNamespace</a> — Checks if the specified namespaceURI is the default namespace or not</li>
+<li><a href="domnode.issamenode.html">DOMNode::isSameNode</a> — Indicates if two nodes are the same node</li>
+<li><a href="domnode.issupported.html">DOMNode::isSupported</a> — Checks if feature is supported for specified version</li>
+<li><a href="domnode.lookupnamespaceuri.html">DOMNode::lookupNamespaceURI</a> — Gets the namespace URI of the node based on the prefix</li>
+<li><a href="domnode.lookupprefix.html">DOMNode::lookupPrefix</a> — Gets the namespace prefix of the node based on the namespace URI</li>
+<li><a href="domnode.normalize.html">DOMNode::normalize</a> — Normalizes the node</li>
+<li><a href="domnode.removechild.html">DOMNode::removeChild</a> — Removes child from list of children</li>
+<li><a href="domnode.replacechild.html">DOMNode::replaceChild</a> — Replaces a child</li>
+</ul>
+</li>
+<li><a href="class.domnodelist.html">DOMNodeList</a> — The DOMNodeList class<ul class="chunklist chunklist_title">
+<li><a href="domnodelist.item.html">DOMNodelist::item</a> — Retrieves a node specified by index</li>
+</ul>
+</li>
+<li><a href="class.domnotation.html">DOMNotation</a> — The DOMNotation class</li>
+<li><a href="class.domprocessinginstruction.html">DOMProcessingInstruction</a> — The DOMProcessingInstruction class<ul class="chunklist chunklist_title">
+<li><a href="domprocessinginstruction.construct.html">DOMProcessingInstruction::__construct</a> — Creates a new DOMProcessingInstruction object</li>
+</ul>
+</li>
+<li><a href="class.domtext.html">DOMText</a> — The DOMText class<ul class="chunklist chunklist_title">
+<li><a href="domtext.construct.html">DOMText::__construct</a> — Creates a new DOMText object</li>
+<li><a href="domtext.iswhitespaceinelementcontent.html">DOMText::isWhitespaceInElementContent</a> — Indicates whether this text node contains whitespace</li>
+<li><a href="domtext.splittext.html">DOMText::splitText</a> — Breaks this node into two nodes at the specified offset</li>
+</ul>
+</li>
+<li><a href="class.domxpath.html">DOMXPath</a> — The DOMXPath class<ul class="chunklist chunklist_title">
+<li><a href="domxpath.construct.html">DOMXPath::__construct</a> — Creates a new DOMXPath object</li>
+<li><a href="domxpath.evaluate.html">DOMXPath::evaluate</a> — Evaluates the given XPath expression and returns a typed result if possible</li>
+<li><a href="domxpath.query.html">DOMXPath::query</a> — Evaluates the given XPath expression</li>
+<li><a href="domxpath.registernamespace.html">DOMXPath::registerNamespace</a> — Registers the namespace with the DOMXPath object</li>
+<li><a href="domxpath.registerphpfunctions.html">DOMXPath::registerPhpFunctions</a> — Register PHP functions as XPath functions</li>
+</ul>
+</li>
+<li><a href="ref.dom.html">DOM Functions</a><ul class="chunklist chunklist_title">
+<li><a href="function.dom-import-simplexml.html">dom_import_simplexml</a> — Gets a DOMElement object from a
+   SimpleXMLElement object</li>
+</ul>
+</li>
+</ul>
+
+ 
+
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+
+
+ 
+ 
+
+
+ 
+
+
+
+   
+
+
+
+ 
+
+
+ <h1 class="title">The <span class="classname">DOMAttr</span> class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="domattr.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    <span class="classname">DOMAttr</span> represents an attribute in the 
+    <span class="classname">DOMElement</span> object.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="domattr.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">DOMAttr</strong></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">DOMAttr</strong>
+     </span>
+ 
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> DOMNode</strong>
+     </span>
+ 
+     {</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">string</span>
+     <var class="varname">$name</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">DOMElement</span>
+     <var class="varname">$ownerElement</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">bool</span>
+     <var class="varname">$schemaTypeInfo</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">bool</span>
+     <var class="varname">$specified</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$value</var>
+    ;</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$value</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isId</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+ 
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::appendChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::C14N</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclusive</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$with_comments</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$xpath</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ns_prefixes</code></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">DOMNode::C14NFile</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$uri</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclusive</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$with_comments</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$xpath</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ns_prefixes</code></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::cloneNode</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$deep</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">DOMNode::getLineNo</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::getNodePath</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::hasAttributes</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::hasChildNodes</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::insertBefore</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   [, <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$refnode</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isDefaultNamespace</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isSameNode</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$node</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isSupported</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$feature</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$version</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::lookupNamespaceURI</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$prefix</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::lookupPrefix</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">DOMNode::normalize</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::removeChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$oldnode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::replaceChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   , <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$oldnode</code></span>
+   )</div>
+
+   
+   }</div>
+
+ 
+  </div>
+ 
+
+  <div class="section" id="domattr.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="domattr.props.name"><var class="varname">name</var></dt>
+
+     <dd>
+
+      <p class="para">The name of the attribute</p>
+     </dd>
+
+    
+    
+     <dt id="domattr.props.ownerelement"><var class="varname">ownerElement</var></dt>
+
+     <dd>
+
+      <p class="para">The element which contains the attribute</p>
+     </dd>
+
+    
+    
+     <dt id="domattr.props.schematypeinfo"><var class="varname">schemaTypeInfo</var></dt>
+
+     <dd>
+
+      <p class="para">Not implemented yet, always is <strong><code>NULL</code></strong></p>
+     </dd>
+
+    
+    
+     <dt id="domattr.props.specified"><var class="varname">specified</var></dt>
+
+     <dd>
+
+      <p class="para">Not implemented yet, always is <strong><code>NULL</code></strong></p>
+     </dd>
+
+    
+    
+     <dt id="domattr.props.value"><var class="varname">value</var></dt>
+
+     <dd>
+
+      <p class="para">The value of the attribute</p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+ 
+
+  <div class="section">
+   <h2 class="title">See Also</h2>
+   <p class="para">
+    <ul class="simplelist">
+     <li class="member"><a href="http://www.w3.org/TR/2003/WD-DOM-Level-3-Core-20030226/DOM3-Core.html#core-ID-637646024" class="link external">&raquo;&nbsp;W3C specification of Attr</a></li>
+    </ul>
+   </p>
+  </div>
+
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The DOMCdataSection class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="domcdatasection.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The <span class="classname">DOMCdataSection</span> inherits from 
+    <span class="classname">DOMText</span> for textural representation 
+    of CData constructs.
+   </p>
+  </div>
+
+
+  <div class="section" id="domcdatasection.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">DOMCdataSection</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">DOMCdataSection</strong>
+     </span>
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> DOMText</strong>
+     </span>
+     {</div>
+
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$value</code></span>
+   )</div>
+
+    
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMText::isWhitespaceInElementContent</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMText</span> <span class="methodname">DOMText::splitText</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$offset</code></span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ <h1 class="title">The DOMCharacterData class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="domcharacterdata.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Represents nodes with character data. No nodes directly correspond to
+    this class, but other nodes do inherit from it.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="domcharacterdata.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">DOMCharacterData</strong></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">DOMCharacterData</strong>
+     </span>
+ 
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> DOMNode</strong>
+     </span>
+ 
+     {</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$data</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">readonly</span>
+     <span class="modifier">public</span>
+     <span class="type">int</span>
+     <var class="varname">$length</var>
+    ;</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname">appendData</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname">deleteData</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$offset</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$count</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname">insertData</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$offset</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname">replaceData</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$offset</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$count</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname">substringData</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$offset</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$count</code></span>
+   )</div>
+
+ 
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::appendChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::C14N</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclusive</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$with_comments</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$xpath</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ns_prefixes</code></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">DOMNode::C14NFile</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$uri</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclusive</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$with_comments</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$xpath</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ns_prefixes</code></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::cloneNode</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$deep</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">DOMNode::getLineNo</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::getNodePath</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::hasAttributes</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::hasChildNodes</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::insertBefore</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   [, <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$refnode</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isDefaultNamespace</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isSameNode</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$node</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isSupported</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$feature</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$version</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::lookupNamespaceURI</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$prefix</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::lookupPrefix</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">DOMNode::normalize</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::removeChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$oldnode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::replaceChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   , <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$oldnode</code></span>
+   )</div>
+
+
+   }</div>
+
+ 
+  </div>
+ 
+
+  <div class="section" id="domcharacterdata.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="domcharacterdata.props.data"><var class="varname">data</var></dt>
+
+     <dd>
+
+      <p class="para">The contents of the node.</p>
+     </dd>
+
+    
+    
+     <dt id="domcharacterdata.props.length"><var class="varname">length</var></dt>
+
+     <dd>
+
+      <p class="para">The length of the contents.</p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+ 
+  <div class="section">
+   <h2 class="title">See Also</h2>
+   <p class="para">
+    <ul class="simplelist">
+     <li class="member"><a href="http://www.w3.org/TR/2003/WD-DOM-Level-3-Core-20030226/DOM3-Core.html#core-ID-FF21A306" class="link external">&raquo;&nbsp;W3C specification of CharacterData</a></li>
+    </ul>
+   </p>
+  </div>
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+ <h1 class="title">The DOMComment class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="domcomment.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Represents comment nodes, characters delimited by <code class="code">&lt;!--</code>
+    and <code class="code">--&gt;</code>.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="domcomment.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">DOMComment</strong></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">DOMComment</strong>
+     </span>
+ 
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> DOMCharacterData</strong>
+     </span>
+ 
+     {</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$value</code></span>
+  ] )</div>
+
+ 
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname">DOMCharacterData::appendData</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname">DOMCharacterData::deleteData</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$offset</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$count</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname">DOMCharacterData::insertData</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$offset</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname">DOMCharacterData::replaceData</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$offset</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$count</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname">DOMCharacterData::substringData</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$offset</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$count</code></span>
+   )</div>
+
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::appendChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::C14N</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclusive</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$with_comments</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$xpath</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ns_prefixes</code></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">DOMNode::C14NFile</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$uri</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclusive</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$with_comments</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$xpath</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ns_prefixes</code></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::cloneNode</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$deep</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">DOMNode::getLineNo</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::getNodePath</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::hasAttributes</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::hasChildNodes</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::insertBefore</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   [, <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$refnode</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isDefaultNamespace</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isSameNode</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$node</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isSupported</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$feature</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$version</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::lookupNamespaceURI</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$prefix</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::lookupPrefix</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">DOMNode::normalize</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::removeChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$oldnode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::replaceChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   , <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$oldnode</code></span>
+   )</div>
+
+
+   }</div>
+
+ 
+  </div>
+  
+  <div class="section">
+   <h2 class="title">See Also</h2>
+   <p class="para">
+    <ul class="simplelist">
+     <li class="member"><a href="http://www.w3.org/TR/2003/WD-DOM-Level-3-Core-20030226/DOM3-Core.html#core-ID-1728279322" class="link external">&raquo;&nbsp;W3C specification of Comment</a></li>
+    </ul>
+   </p>
+  </div>
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+ <h1 class="title">The DOMDocument class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="domdocument.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Represents an entire HTML or XML document; serves as the root of the
+    document tree.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="domdocument.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">DOMDocument</strong></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">DOMDocument</strong>
+     </span>
+ 
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> DOMNode</strong>
+     </span>
+ 
+     {</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">readonly</span>
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$actualEncoding</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">readonly</span>
+     <span class="modifier">public</span>
+     <span class="type">DOMConfiguration</span>
+     <var class="varname">$config</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">readonly</span>
+     <span class="modifier">public</span>
+     <span class="type">DOMDocumentType</span>
+     <var class="varname">$doctype</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">readonly</span>
+     <span class="modifier">public</span>
+     <span class="type">DOMElement</span>
+     <var class="varname">$documentElement</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$documentURI</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$encoding</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">bool</span>
+     <var class="varname">$formatOutput</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">readonly</span>
+     <span class="modifier">public</span>
+     <span class="type">DOMImplementation</span>
+     <var class="varname">$implementation</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">bool</span>
+     <var class="varname">$preserveWhiteSpace</var>
+     <span class="initializer"> = true</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">bool</span>
+     <var class="varname">$recover</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">bool</span>
+     <var class="varname">$resolveExternals</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">bool</span>
+     <var class="varname">$standalone</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">bool</span>
+     <var class="varname">$strictErrorChecking</var>
+     <span class="initializer"> = true</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">bool</span>
+     <var class="varname">$substituteEntities</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">bool</span>
+     <var class="varname">$validateOnParse</var>
+     <span class="initializer"> = false</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$version</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">readonly</span>
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$xmlEncoding</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">bool</span>
+     <var class="varname">$xmlStandalone</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$xmlVersion</var>
+    ;</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$version</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$encoding</code></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMAttr</span> <span class="methodname">createAttribute</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMAttr</span> <span class="methodname">createAttributeNS</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$qualifiedName</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMCDATASection</span> <span class="methodname">createCDATASection</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMComment</span> <span class="methodname">createComment</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMDocumentFragment</span> <span class="methodname">createDocumentFragment</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMElement</span> <span class="methodname">createElement</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$value</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMElement</span> <span class="methodname">createElementNS</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$qualifiedName</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$value</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMEntityReference</span> <span class="methodname">createEntityReference</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMProcessingInstruction</span> <span class="methodname">createProcessingInstruction</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$target</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMText</span> <span class="methodname">createTextNode</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$content</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMElement</span> <span class="methodname">getElementById</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$elementId</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNodeList</span> <span class="methodname">getElementsByTagName</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNodeList</span> <span class="methodname">getElementsByTagNameNS</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$localName</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">importNode</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$importedNode</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$deep</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">load</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code><span class="initializer"> = 0</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">loadHTML</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$source</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code><span class="initializer"> = 0</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">loadHTMLFile</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code><span class="initializer"> = 0</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">loadXML</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$source</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code><span class="initializer"> = 0</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">normalizeDocument</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">registerNodeClass</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$baseclass</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$extendedclass</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">relaxNGValidate</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">relaxNGValidateSource</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$source</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">save</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">saveHTML</span>
+    ([ <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$node</code><span class="initializer"> = NULL</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">saveHTMLFile</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+  )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">saveXML</span>
+    ([ <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$node</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">schemaValidate</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">schemaValidateSource</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$source</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">validate</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">xinclude</span>
+    ([ <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code></span>
+  ] )</div>
+
+ 
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::appendChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::C14N</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclusive</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$with_comments</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$xpath</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ns_prefixes</code></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">DOMNode::C14NFile</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$uri</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclusive</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$with_comments</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$xpath</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ns_prefixes</code></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::cloneNode</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$deep</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">DOMNode::getLineNo</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::getNodePath</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::hasAttributes</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::hasChildNodes</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::insertBefore</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   [, <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$refnode</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isDefaultNamespace</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isSameNode</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$node</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isSupported</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$feature</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$version</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::lookupNamespaceURI</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$prefix</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::lookupPrefix</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">DOMNode::normalize</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::removeChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$oldnode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::replaceChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   , <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$oldnode</code></span>
+   )</div>
+
+
+   }</div>
+
+ 
+  </div>
+ 
+
+  <div class="section" id="domdocument.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="domdocument.props.actualencoding"><var class="varname">actualEncoding</var></dt>
+
+     <dd>
+
+      <p class="para">
+       <em class="emphasis">Deprecated</em>. Actual encoding of the document,
+       is a readonly equivalent to
+       <var class="varname">encoding</var>.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="domdocument.props.config"><var class="varname">config</var></dt>
+
+     <dd>
+
+      <p class="para">
+       <em class="emphasis">Deprecated</em>. Configuration used when
+       <span class="function">DOMDocument::normalizeDocument</span> is
+       invoked.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="domdocument.props.doctype"><var class="varname">doctype</var></dt>
+
+     <dd>
+
+      <p class="para">The Document Type Declaration associated with this document.</p>
+     </dd>
+
+    
+    
+     <dt id="domdocument.props.documentelement"><var class="varname">documentElement</var></dt>
+
+     <dd>
+
+      <p class="para">
+       This is a convenience attribute that allows direct access to the
+       child node that is the document element of the document.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="domdocument.props.documenturi"><var class="varname">documentURI</var></dt>
+
+     <dd>
+
+      <p class="para">The location of the document or <strong><code>NULL</code></strong> if undefined.</p>
+     </dd>
+
+    
+    
+     <dt id="domdocument.props.encoding"><var class="varname">encoding</var></dt>
+
+     <dd>
+
+      <p class="para">
+       Encoding of the document, as specified by the XML declaration. This
+       attribute is not present in the final DOM Level 3 specification, but
+       is the only way of manipulating XML document encoding in this
+       implementation.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="domdocument.props.formatoutput"><var class="varname">formatOutput</var></dt>
+
+     <dd>
+
+      <p class="para">Nicely formats output with indentation and extra space.</p>
+     </dd>
+
+    
+    
+     <dt id="domdocument.props.implementation"><var class="varname">implementation</var></dt>
+
+     <dd>
+
+      <p class="para">
+       The <span class="classname">DOMImplementation</span> object that handles 
+       this document.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="domdocument.props.preservewhitespace"><var class="varname">preserveWhiteSpace</var></dt>
+
+     <dd>
+
+      <p class="para">Do not remove redundant white space. Default to <strong><code>TRUE</code></strong>.</p>
+     </dd>
+
+    
+    
+     <dt id="domdocument.props.recover"><var class="varname">recover</var></dt>
+
+     <dd>
+
+      <p class="para">
+       <em class="emphasis">Proprietary</em>. Enables recovery mode, i.e. trying
+       to parse non-well formed documents. This attribute is not part of
+       the DOM specification and is specific to libxml.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="domdocument.props.resolveexternals"><var class="varname">resolveExternals</var></dt>
+
+     <dd>
+
+      <p class="para">
+       Set it to <strong><code>TRUE</code></strong> to load external entities from a doctype 
+       declaration. This is useful for including character entities in
+       your XML document.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="domdocument.props.standalone"><var class="varname">standalone</var></dt>
+
+     <dd>
+
+      <p class="para">
+       <em class="emphasis">Deprecated</em>. Whether or not the document is
+       standalone, as specified by the XML declaration, corresponds to
+       <var class="varname">xmlStandalone</var>.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="domdocument.props.stricterrorchecking"><var class="varname">strictErrorChecking</var></dt>
+
+     <dd>
+
+      <p class="para">Throws <span class="classname">DOMException</span> on errors. Default to <strong><code>TRUE</code></strong>.</p>
+     </dd>
+
+    
+    
+     <dt id="domdocument.props.substituteentities"><var class="varname">substituteEntities</var></dt>
+
+     <dd>
+
+      <p class="para">
+       <em class="emphasis">Proprietary</em>. Whether or not to substitute
+       entities. This attribute is not part of
+       the DOM specification and is specific to libxml.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="domdocument.props.validateonparse"><var class="varname">validateOnParse</var></dt>
+
+     <dd>
+
+      <p class="para">Loads and validates against the DTD. Default to <strong><code>FALSE</code></strong>.</p>
+     </dd>
+
+    
+    
+     <dt id="domdocument.props.version"><var class="varname">version</var></dt>
+
+     <dd>
+
+      <p class="para">
+       <em class="emphasis">Deprecated</em>. Version of XML, corresponds to
+       <var class="varname">xmlVersion</var>.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="domdocument.props.xmlencoding"><var class="varname">xmlEncoding</var></dt>
+
+     <dd>
+
+      <p class="para">
+       An attribute specifying, as part of the XML declaration, the
+       encoding of this document. This is <strong><code>NULL</code></strong> when unspecified or when it
+       is not known, such as when the Document was created in memory.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="domdocument.props.xmlstandalone"><var class="varname">xmlStandalone</var></dt>
+
+     <dd>
+
+      <p class="para">
+       An attribute specifying, as part of the XML declaration, whether
+       this document is standalone. This is <strong><code>FALSE</code></strong> when unspecified.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="domdocument.props.xmlversion"><var class="varname">xmlVersion</var></dt>
+
+     <dd>
+
+      <p class="para">
+       An attribute specifying, as part of the XML declaration, the
+       version number of this document. If there is no declaration and if
+       this document supports the &quot;XML&quot; feature, the value is &quot;1.0&quot;.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+
+  <div class="section">
+   <h2 class="title">Notes</h2>
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <p class="para">
+     The DOM extension uses UTF-8 encoding. Use <span class="function">utf8_encode</span>
+     and <span class="function">utf8_decode</span> to work with texts in ISO-8859-1
+     encoding or <a href="ref.iconv.html" class="link">Iconv</a> for other encodings.
+    </p>
+   </p></blockquote>
+  </div>
+
+  
+
+  <div class="section">
+   <h2 class="title">See Also</h2>
+   <p class="para">
+    <ul class="simplelist">
+     <li class="member"><a href="http://www.w3.org/TR/2003/WD-DOM-Level-3-Core-20030226/DOM3-Core.html#core-i-Document" class="link external">&raquo;&nbsp;W3C specification for Document</a></li>
+    </ul>
+   </p>
+  </div>
+
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+ <h1 class="title">The DOMDocumentFragment class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+
+
+ 
+  <div class="section" id="domdocumentfragment.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">DOMDocumentFragment</strong></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">DOMDocumentFragment</strong>
+     </span>
+ 
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> DOMNode</strong>
+     </span>
+ 
+     {</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">appendXML</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>
+   )</div>
+
+ 
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::appendChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::C14N</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclusive</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$with_comments</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$xpath</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ns_prefixes</code></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">DOMNode::C14NFile</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$uri</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclusive</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$with_comments</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$xpath</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ns_prefixes</code></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::cloneNode</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$deep</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">DOMNode::getLineNo</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::getNodePath</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::hasAttributes</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::hasChildNodes</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::insertBefore</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   [, <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$refnode</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isDefaultNamespace</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isSameNode</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$node</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isSupported</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$feature</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$version</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::lookupNamespaceURI</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$prefix</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::lookupPrefix</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">DOMNode::normalize</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::removeChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$oldnode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::replaceChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   , <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$oldnode</code></span>
+   )</div>
+
+
+   }</div>
+
+ 
+  </div>
+ 
+
+
+
+  
+
+
+
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+ <h1 class="title">The DOMDocumentType class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="domdocumenttype.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Each <span class="classname">DOMDocument</span> has a <em>doctype</em>
+    attribute whose value is either <strong><code>NULL</code></strong> or a <span class="classname">DOMDocumentType</span> object.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="domdocumenttype.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">DOMDocumentType</strong></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">DOMDocumentType</strong>
+     </span>
+ 
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> DOMNode</strong>
+     </span>
+ 
+     {</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">readonly</span>
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$publicId</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">readonly</span>
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$systemId</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">readonly</span>
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$name</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">readonly</span>
+     <span class="modifier">public</span>
+     <span class="type">DOMNamedNodeMap</span>
+     <var class="varname">$entities</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">readonly</span>
+     <span class="modifier">public</span>
+     <span class="type">DOMNamedNodeMap</span>
+     <var class="varname">$notations</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">readonly</span>
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$internalSubset</var>
+    ;</div>
+
+ 
+ 
+ 
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::appendChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::C14N</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclusive</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$with_comments</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$xpath</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ns_prefixes</code></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">DOMNode::C14NFile</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$uri</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclusive</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$with_comments</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$xpath</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ns_prefixes</code></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::cloneNode</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$deep</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">DOMNode::getLineNo</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::getNodePath</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::hasAttributes</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::hasChildNodes</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::insertBefore</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   [, <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$refnode</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isDefaultNamespace</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isSameNode</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$node</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isSupported</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$feature</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$version</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::lookupNamespaceURI</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$prefix</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::lookupPrefix</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">DOMNode::normalize</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::removeChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$oldnode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::replaceChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   , <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$oldnode</code></span>
+   )</div>
+
+
+   }</div>
+
+ 
+  </div>
+ 
+
+  <div class="section" id="domdocumenttype.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="domdocumenttype.props.publicid"><var class="varname">publicId</var></dt>
+
+     <dd>
+
+      <p class="para">The public identifier of the external subset.</p>
+     </dd>
+
+    
+    
+     <dt id="domdocumenttype.props.systemid"><var class="varname">systemId</var></dt>
+
+     <dd>
+
+      <p class="para">
+       The system identifier of the external subset. This may be an
+       absolute URI or not.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="domdocumenttype.props.name"><var class="varname">name</var></dt>
+
+     <dd>
+
+      <p class="para">
+       The name of DTD; i.e., the name immediately following the
+       <em>DOCTYPE</em> keyword.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="domdocumenttype.props.entities"><var class="varname">entities</var></dt>
+
+     <dd>
+
+      <p class="para">
+       A <span class="classname">DOMNamedNodeMap</span> containing the general 
+       entities, both external and internal, declared in the DTD.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="domdocumenttype.props.notations"><var class="varname">notations</var></dt>
+
+     <dd>
+
+      <p class="para">
+       A <span class="classname">DOMNamedNodeMap</span> containing the notations
+       declared in the DTD.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="domdocumenttype.props.internalsubset"><var class="varname">internalSubset</var></dt>
+
+     <dd>
+
+      <p class="para">
+       The internal subset as a string, or null if there is none. This
+       does not contain the delimiting square brackets.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+  
+
+
+
+ 
+ </div>
+ 
+
+ 
+
+
+
+ 
+
+
+ <h1 class="title">The DOMElement class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+
+
+ 
+  <div class="section" id="domelement.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">DOMElement</strong></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">DOMElement</strong>
+     </span>
+ 
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> DOMNode</strong>
+     </span>
+ 
+     {</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">readonly</span>
+     <span class="modifier">public</span>
+     <span class="type">bool</span>
+     <var class="varname">$schemaTypeInfo</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">readonly</span>
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$tagName</var>
+    ;</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$value</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getAttribute</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMAttr</span> <span class="methodname">getAttributeNode</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMAttr</span> <span class="methodname">getAttributeNodeNS</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$localName</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getAttributeNS</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$localName</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNodeList</span> <span class="methodname">getElementsByTagName</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNodeList</span> <span class="methodname">getElementsByTagNameNS</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$localName</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">hasAttribute</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">hasAttributeNS</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$localName</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">removeAttribute</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">removeAttributeNode</span>
+    ( <span class="methodparam"><span class="type">DOMAttr</span> <code class="parameter">$oldnode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">removeAttributeNS</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$localName</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMAttr</span> <span class="methodname">setAttribute</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMAttr</span> <span class="methodname">setAttributeNode</span>
+    ( <span class="methodparam"><span class="type">DOMAttr</span> <code class="parameter">$attr</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMAttr</span> <span class="methodname">setAttributeNodeNS</span>
+    ( <span class="methodparam"><span class="type">DOMAttr</span> <code class="parameter">$attr</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">setAttributeNS</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$qualifiedName</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">setIdAttribute</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   , <span class="methodparam"><span class="type">bool</span> <code class="parameter">$isId</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">setIdAttributeNode</span>
+    ( <span class="methodparam"><span class="type">DOMAttr</span> <code class="parameter">$attr</code></span>
+   , <span class="methodparam"><span class="type">bool</span> <code class="parameter">$isId</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">setIdAttributeNS</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$localName</code></span>
+   , <span class="methodparam"><span class="type">bool</span> <code class="parameter">$isId</code></span>
+   )</div>
+
+ 
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::appendChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::C14N</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclusive</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$with_comments</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$xpath</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ns_prefixes</code></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">DOMNode::C14NFile</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$uri</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclusive</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$with_comments</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$xpath</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ns_prefixes</code></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::cloneNode</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$deep</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">DOMNode::getLineNo</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::getNodePath</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::hasAttributes</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::hasChildNodes</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::insertBefore</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   [, <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$refnode</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isDefaultNamespace</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isSameNode</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$node</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isSupported</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$feature</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$version</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::lookupNamespaceURI</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$prefix</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::lookupPrefix</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">DOMNode::normalize</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::removeChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$oldnode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::replaceChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   , <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$oldnode</code></span>
+   )</div>
+
+
+   }</div>
+
+ 
+  </div>
+ 
+
+  <div class="section" id="domelement.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="domelement.props.schematypeinfo"><var class="varname">schemaTypeInfo</var></dt>
+
+     <dd>
+
+      <p class="para">Not implemented yet, always return <strong><code>NULL</code></strong></p>
+     </dd>
+
+    
+    
+     <dt id="domelement.props.tagname"><var class="varname">tagName</var></dt>
+
+     <dd>
+
+      <p class="para">The element name</p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+
+  <div class="section">
+   <h2 class="title">Notes</h2>
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <p class="para">
+     The DOM extension uses UTF-8 encoding. Use <span class="function">utf8_encode</span>
+     and <span class="function">utf8_decode</span> to work with texts in ISO-8859-1
+     encoding or <a href="ref.iconv.html" class="link">Iconv</a> for other encodings.
+    </p>
+   </p></blockquote>
+  </div>
+
+  
+
+
+
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+ <h1 class="title">The DOMEntity class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="domentity.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    This interface represents a known entity, either parsed or unparsed, in an XML document.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="domentity.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">DOMEntity</strong></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">DOMEntity</strong>
+     </span>
+ 
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> DOMNode</strong>
+     </span>
+ 
+     {</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">readonly</span>
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$publicId</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">readonly</span>
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$systemId</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">readonly</span>
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$notationName</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$actualEncoding</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">readonly</span>
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$encoding</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">readonly</span>
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$version</var>
+    ;</div>
+
+    
+ 
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::appendChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::C14N</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclusive</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$with_comments</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$xpath</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ns_prefixes</code></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">DOMNode::C14NFile</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$uri</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclusive</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$with_comments</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$xpath</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ns_prefixes</code></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::cloneNode</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$deep</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">DOMNode::getLineNo</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::getNodePath</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::hasAttributes</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::hasChildNodes</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::insertBefore</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   [, <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$refnode</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isDefaultNamespace</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isSameNode</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$node</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isSupported</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$feature</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$version</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::lookupNamespaceURI</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$prefix</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::lookupPrefix</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">DOMNode::normalize</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::removeChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$oldnode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::replaceChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   , <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$oldnode</code></span>
+   )</div>
+
+
+   }</div>
+
+ 
+  </div>
+ 
+
+  <div class="section" id="domentity.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="domentity.props.publicid"><var class="varname">publicId</var></dt>
+
+     <dd>
+
+      <p class="para">
+       The public identifier associated with the entity if specified, and
+       <strong><code>NULL</code></strong> otherwise.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="domentity.props.systemid"><var class="varname">systemId</var></dt>
+
+     <dd>
+
+      <p class="para">
+       The system identifier associated with the entity if specified, and
+       <strong><code>NULL</code></strong> otherwise. This may be an absolute URI or not.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="domentity.props.notationname"><var class="varname">notationName</var></dt>
+
+     <dd>
+
+      <p class="para">
+       For unparsed entities, the name of the notation for the entity. For
+       parsed entities, this is <strong><code>NULL</code></strong>.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="domentity.props.actualencoding"><var class="varname">actualEncoding</var></dt>
+
+     <dd>
+
+      <p class="para">
+       An attribute specifying the encoding used for this entity at the
+       time of parsing, when it is an external parsed entity. This is
+       <strong><code>NULL</code></strong> if it an entity from the internal subset or if it is not 
+       known.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="domentity.props.encoding"><var class="varname">encoding</var></dt>
+
+     <dd>
+
+      <p class="para">
+       An attribute specifying, as part of the text declaration, the
+       encoding of this entity, when it is an external parsed entity. This
+       is <strong><code>NULL</code></strong> otherwise.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="domentity.props.version"><var class="varname">version</var></dt>
+
+     <dd>
+
+      <p class="para">
+       An attribute specifying, as part of the text declaration, the
+       version number of this entity, when it is an external parsed
+       entity. This is <strong><code>NULL</code></strong> otherwise.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+  
+
+
+
+ 
+ </div>
+ 
+ 
+
+ 
+
+
+
+ 
+
+
+
+ <h1 class="title">The DOMEntityReference class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+
+
+ 
+  <div class="section" id="domentityreference.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">DOMEntityReference</strong></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">DOMEntityReference</strong>
+     </span>
+ 
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> DOMNode</strong>
+     </span>
+ 
+     {</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   )</div>
+
+ 
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::appendChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::C14N</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclusive</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$with_comments</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$xpath</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ns_prefixes</code></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">DOMNode::C14NFile</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$uri</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclusive</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$with_comments</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$xpath</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ns_prefixes</code></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::cloneNode</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$deep</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">DOMNode::getLineNo</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::getNodePath</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::hasAttributes</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::hasChildNodes</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::insertBefore</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   [, <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$refnode</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isDefaultNamespace</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isSameNode</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$node</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isSupported</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$feature</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$version</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::lookupNamespaceURI</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$prefix</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::lookupPrefix</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">DOMNode::normalize</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::removeChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$oldnode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::replaceChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   , <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$oldnode</code></span>
+   )</div>
+
+
+   }</div>
+
+ 
+  </div>
+ 
+
+
+
+  
+
+
+
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ <h1 class="title">The DOMException class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="domexception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    DOM operations raise exceptions under particular circumstances, i.e.,
+    when an operation is impossible to perform for logical reasons.
+   </p>
+   <p class="para">
+    See also <a href="language.exceptions.html" class="xref">Exceptions</a>.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="domexception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">DOMException</strong></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">DOMException</strong>
+     </span>
+ 
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> Exception</strong>
+     </span>
+ 
+     {</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">readonly</span>
+     <span class="modifier">public</span>
+     <span class="type">int</span>
+     <var class="varname">$code</var>
+    ;</div>
+
+ 
+ 
+ 
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">Throwable</span> <span class="methodname">Exception::getPrevious</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">Exception::getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getFile</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">Exception::getLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">Exception::getTrace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getTraceAsString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span>  <span class="methodname">Exception::__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">Exception::__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+ 
+  </div>
+ 
+
+  <div class="section" id="domexception.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="domexception.props.code"><var class="varname">code</var></dt>
+
+     <dd>
+
+      <p class="para">An integer indicating the type of error generated</p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+  
+
+
+
+ 
+ </div>
+ 
+
+ 
+
+
+
+ 
+
+
+
+ <h1 class="title">The DOMImplementation class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="domimplementation.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The <span class="classname">DOMImplementation</span> interface provides a number
+    of methods for performing operations that are independent of any 
+    particular instance of the document object model.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="domimplementation.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">DOMImplementation</strong></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">DOMImplementation</strong>
+     </span>
+     
+     {</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+    <span class="methodname">__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMDocument</span> <span class="methodname">createDocument</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code><span class="initializer"> = <strong><code>NULL</code></strong></span></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$qualifiedName</code><span class="initializer"> = <strong><code>NULL</code></strong></span></span>
+   [, <span class="methodparam"><span class="type">DOMDocumentType</span> <code class="parameter">$doctype</code><span class="initializer"> = <strong><code>NULL</code></strong></span></span>
+  ]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMDocumentType</span> <span class="methodname">createDocumentType</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$qualifiedName</code><span class="initializer"> = <strong><code>NULL</code></strong></span></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$publicId</code><span class="initializer"> = <strong><code>NULL</code></strong></span></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$systemId</code><span class="initializer"> = <strong><code>NULL</code></strong></span></span>
+  ]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">hasFeature</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$feature</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$version</code></span>
+   )</div>
+
+ 
+   }</div>
+
+ 
+  </div>
+ 
+
+
+
+  
+
+
+
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ <h1 class="title">The DOMNamedNodeMap class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+
+
+ 
+  <div class="section" id="domnamednodemap.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">DOMNamedNodeMap</strong></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">DOMNamedNodeMap</strong>
+     </span>
+ 
+     <span class="oointerface">implements 
+      <span class="interfacename">Traversable</span>
+     </span>
+     {</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">readonly</span>
+     <span class="modifier">public</span>
+     <span class="type">int</span>
+     <var class="varname">$length</var>
+    ;</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="type">DOMNode</span> <span class="methodname">getNamedItem</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">DOMNode</span> <span class="methodname">getNamedItemNS</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$localName</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">DOMNode</span> <span class="methodname">item</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>
+   )</div>
+
+ 
+   }</div>
+
+ 
+  </div>
+ 
+
+  <div class="section" id="domnamednodemap.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="domnamednodemap.props.length"><var class="varname">length</var></dt>
+
+     <dd>
+
+      <p class="para">
+       The number of nodes in the map. The range of valid child node 
+       indices is <em>0</em> to <em>length - 1</em> inclusive.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+  
+
+
+
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+ <h1 class="title">The DOMNode class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+ 
+  <div class="section" id="domnode.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">DOMNode</strong></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">DOMNode</strong>
+     </span>
+ 
+     {</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">string</span>
+     <var class="varname">$nodeName</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$nodeValue</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">int</span>
+     <var class="varname">$nodeType</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">DOMNode</span>
+     <var class="varname">$parentNode</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">DOMNodeList</span>
+     <var class="varname">$childNodes</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">DOMNode</span>
+     <var class="varname">$firstChild</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">DOMNode</span>
+     <var class="varname">$lastChild</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">DOMNode</span>
+     <var class="varname">$previousSibling</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">DOMNode</span>
+     <var class="varname">$nextSibling</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">DOMNamedNodeMap</span>
+     <var class="varname">$attributes</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">DOMDocument</span>
+     <var class="varname">$ownerDocument</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">string</span>
+     <var class="varname">$namespaceURI</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$prefix</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">string</span>
+     <var class="varname">$localName</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">string</span>
+     <var class="varname">$baseURI</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$textContent</var>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">appendChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">C14N</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclusive</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$with_comments</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$xpath</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ns_prefixes</code></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">C14NFile</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$uri</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclusive</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$with_comments</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$xpath</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ns_prefixes</code></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">cloneNode</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$deep</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getLineNo</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getNodePath</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">hasAttributes</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">hasChildNodes</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">insertBefore</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   [, <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$refnode</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isDefaultNamespace</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isSameNode</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$node</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isSupported</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$feature</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$version</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">lookupNamespaceURI</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$prefix</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">lookupPrefix</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">normalize</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">removeChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$oldnode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">replaceChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   , <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$oldnode</code></span>
+   )</div>
+
+   }</div>
+
+ 
+  </div>
+ 
+
+  <div class="section" id="domnode.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="domnode.props.nodename"><var class="varname">nodeName</var></dt>
+
+     <dd>
+
+      <p class="para">Returns the most accurate name for the current node type</p>
+     </dd>
+
+    
+    
+     <dt id="domnode.props.nodevalue"><var class="varname">nodeValue</var></dt>
+
+     <dd>
+
+      <p class="para">
+       The value of this node, depending on its type.
+       Contrary to the W3C specification, the node value of
+       <span class="classname">DOMElement</span> nodes is equal to <a href="class.domnode.html#domnode.props.textcontent" class="link">DOMNode::textContent</a> instead
+       of <strong><code>NULL</code></strong>.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="domnode.props.nodetype"><var class="varname">nodeType</var></dt>
+
+     <dd>
+
+      <p class="para">Gets the type of the node. One of the predefined <a href="dom.constants.html" class="link">XML_xxx_NODE constants</a></p>
+     </dd>
+
+    
+    
+     <dt id="domnode.props.parentnode"><var class="varname">parentNode</var></dt>
+
+     <dd>
+
+      <p class="para">The parent of this node. If there is no such node, this returns <strong><code>NULL</code></strong>.</p>
+     </dd>
+
+    
+    
+     <dt id="domnode.props.childnodes"><var class="varname">childNodes</var></dt>
+
+     <dd>
+
+      <p class="para">
+       A <span class="classname">DOMNodeList</span> that contains all
+       children of this node. If there are no children, this is an empty
+       <span class="classname">DOMNodeList</span>.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="domnode.props.firstchild"><var class="varname">firstChild</var></dt>
+
+     <dd>
+
+      <p class="para">
+       The first child of this node. If there is no such node, this
+       returns <strong><code>NULL</code></strong>.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="domnode.props.lastchild"><var class="varname">lastChild</var></dt>
+
+     <dd>
+
+      <p class="para">The last child of this node. If there is no such node, this returns <strong><code>NULL</code></strong>.</p>
+     </dd>
+
+    
+    
+     <dt id="domnode.props.previoussibling"><var class="varname">previousSibling</var></dt>
+
+     <dd>
+
+      <p class="para">
+       The node immediately preceding this node. If there is no such
+       node, this returns <strong><code>NULL</code></strong>.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="domnode.props.nextsibling"><var class="varname">nextSibling</var></dt>
+
+     <dd>
+
+      <p class="para">
+       The node immediately following this node. If there is no such
+       node, this returns <strong><code>NULL</code></strong>.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="domnode.props.attributes"><var class="varname">attributes</var></dt>
+
+     <dd>
+
+      <p class="para">
+       A <span class="classname">DOMNamedNodeMap</span> containing the
+       attributes of this node (if it is a <span class="classname">DOMElement</span>)
+       or <strong><code>NULL</code></strong> otherwise.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="domnode.props.ownerdocument"><var class="varname">ownerDocument</var></dt>
+
+     <dd>
+
+      <p class="para">The <span class="classname">DOMDocument</span> object associated with this node.</p>
+     </dd>
+
+    
+    
+     <dt id="domnode.props.namespaceuri"><var class="varname">namespaceURI</var></dt>
+
+     <dd>
+
+      <p class="para">The namespace URI of this node, or <strong><code>NULL</code></strong> if it is unspecified.</p>
+     </dd>
+
+    
+    
+     <dt id="domnode.props.prefix"><var class="varname">prefix</var></dt>
+
+     <dd>
+
+      <p class="para">The namespace prefix of this node, or <strong><code>NULL</code></strong> if it is unspecified.</p>
+     </dd>
+
+    
+    
+     <dt id="domnode.props.localname"><var class="varname">localName</var></dt>
+
+     <dd>
+
+      <p class="para">Returns the local part of the qualified name of this node.</p>
+     </dd>
+
+    
+    
+     <dt id="domnode.props.baseuri"><var class="varname">baseURI</var></dt>
+
+     <dd>
+
+      <p class="para">
+       The absolute base URI of this node or <strong><code>NULL</code></strong> if the implementation
+       wasn&#039;t able to obtain an absolute URI.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="domnode.props.textcontent"><var class="varname">textContent</var></dt>
+
+     <dd>
+
+      <p class="para">The text content of this node and its descendants.</p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+
+  <div class="section">
+   <h2 class="title">Notes</h2>
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <p class="para">
+     The DOM extension uses UTF-8 encoding. Use <span class="function">utf8_encode</span>
+     and <span class="function">utf8_decode</span> to work with texts in ISO-8859-1
+     encoding or <a href="ref.iconv.html" class="link">Iconv</a> for other encodings.
+    </p>
+   </p></blockquote>
+  </div>
+
+
+ <div class="section">
+  <h2 class="title">Changelog</h2>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.6.1</td>
+       <td>
+        The textContent property has been made writable (formerly it has been
+        readonly).
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+  <div class="section">
+   <h2 class="title">See Also</h2>
+   <p class="para">
+    <ul class="simplelist">
+     <li class="member"><a href="http://www.w3.org/TR/2003/WD-DOM-Level-3-Core-20030226/DOM3-Core.html#core-ID-1950641247" class="link external">&raquo;&nbsp;W3C specification of Node</a></li>
+    </ul>
+   </p>
+  </div>
+
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ <h1 class="title">The DOMNodeList class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+
+
+ 
+  <div class="section" id="domnodelist.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">DOMNodeList</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">DOMNodeList</strong>
+     </span>
+ 
+     <span class="oointerface">implements 
+      <span class="interfacename">Traversable</span>
+     </span>
+     {</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">readonly</span>
+     <span class="modifier">public</span>
+     <span class="type">int</span>
+     <var class="varname">$length</var>
+    ;</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="type">DOMElement</span> <span class="methodname">DOMNodelist::item</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>
+   )</div>
+
+ 
+   }</div>
+
+ 
+  </div>
+ 
+
+  <div class="section" id="domnodelist.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="domnodelist.props.length"><var class="varname">length</var></dt>
+
+     <dd>
+
+      <p class="para">
+       The number of nodes in the list. The range of valid child node 
+       indices is 0 to <em>length - 1</em> inclusive.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+  
+ 
+  <div class="section">
+   <h2 class="title">See Also</h2>
+   <p class="para">
+    <ul class="simplelist">
+     <li class="member"><a href="http://www.w3.org/TR/2003/WD-DOM-Level-3-Core-20030226/DOM3-Core.html#core-ID-536297177" class="link external">&raquo;&nbsp;W3C specification of NodeList</a></li>
+    </ul>
+   </p>
+  </div>
+
+ </div>
+ 
+ 
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ <h1 class="title">The DOMNotation class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+
+
+ 
+  <div class="section" id="domnotation.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">DOMNotation</strong></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">DOMNotation</strong>
+     </span>
+ 
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> DOMNode</strong>
+     </span>
+ 
+     {</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">readonly</span>
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$publicId</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">readonly</span>
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$systemId</var>
+    ;</div>
+
+ 
+ 
+ 
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::appendChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::C14N</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclusive</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$with_comments</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$xpath</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ns_prefixes</code></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">DOMNode::C14NFile</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$uri</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclusive</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$with_comments</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$xpath</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ns_prefixes</code></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::cloneNode</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$deep</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">DOMNode::getLineNo</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::getNodePath</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::hasAttributes</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::hasChildNodes</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::insertBefore</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   [, <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$refnode</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isDefaultNamespace</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isSameNode</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$node</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isSupported</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$feature</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$version</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::lookupNamespaceURI</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$prefix</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::lookupPrefix</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">DOMNode::normalize</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::removeChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$oldnode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::replaceChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   , <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$oldnode</code></span>
+   )</div>
+
+
+   }</div>
+
+ 
+  </div>
+ 
+
+
+  <div class="section" id="domnotation.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="domnotation.props.publicid"><var class="varname">publicId</var></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+
+    
+     <dt id="domnotation.props.systemid"><var class="varname">systemId</var></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+
+   </dl>
+
+  </div>
+
+  
+
+
+
+ 
+ </div>
+ 
+
+ 
+
+
+
+ 
+
+
+ <h1 class="title">The DOMProcessingInstruction class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+
+
+ 
+  <div class="section" id="domprocessinginstruction.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">DOMProcessingInstruction</strong></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">DOMProcessingInstruction</strong>
+     </span>
+ 
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> DOMNode</strong>
+     </span>
+ 
+     {</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">readonly</span>
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$target</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$data</var>
+    ;</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$value</code></span>
+  ] )</div>
+
+ 
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::appendChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::C14N</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclusive</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$with_comments</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$xpath</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ns_prefixes</code></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">DOMNode::C14NFile</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$uri</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclusive</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$with_comments</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$xpath</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ns_prefixes</code></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::cloneNode</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$deep</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">DOMNode::getLineNo</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::getNodePath</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::hasAttributes</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::hasChildNodes</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::insertBefore</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   [, <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$refnode</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isDefaultNamespace</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isSameNode</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$node</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isSupported</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$feature</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$version</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::lookupNamespaceURI</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$prefix</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::lookupPrefix</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">DOMNode::normalize</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::removeChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$oldnode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::replaceChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   , <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$oldnode</code></span>
+   )</div>
+
+
+   }</div>
+
+ 
+  </div>
+ 
+
+
+  <div class="section" id="domprocessinginstruction.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="domprocessinginstruction.props.target"><var class="varname">target</var></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+
+    
+     <dt id="domprocessinginstruction.props.data"><var class="varname">data</var></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+
+   </dl>
+
+  </div>
+
+  
+
+
+
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+ <h1 class="title">The DOMText class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="domtext.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The <span class="classname">DOMText</span> class inherits from 
+    <span class="classname">DOMCharacterData</span> and represents the textual
+    content of a <span class="classname">DOMElement</span> or 
+    <span class="classname">DOMAttr</span>.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="domtext.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">DOMText</strong></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">DOMText</strong>
+     </span>
+ 
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> DOMCharacterData</strong>
+     </span>
+ 
+     {</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">readonly</span>
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$wholeText</var>
+    ;</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$value</code></span>
+  ] )</div>
+
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isWhitespaceInElementContent</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMText</span> <span class="methodname">splitText</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$offset</code></span>
+   )</div>
+
+ 
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::appendChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::C14N</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclusive</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$with_comments</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$xpath</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ns_prefixes</code></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">DOMNode::C14NFile</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$uri</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclusive</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$with_comments</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$xpath</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ns_prefixes</code></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::cloneNode</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$deep</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">DOMNode::getLineNo</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::getNodePath</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::hasAttributes</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::hasChildNodes</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::insertBefore</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   [, <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$refnode</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isDefaultNamespace</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isSameNode</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$node</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMNode::isSupported</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$feature</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$version</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::lookupNamespaceURI</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$prefix</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">DOMNode::lookupPrefix</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">DOMNode::normalize</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::removeChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$oldnode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::replaceChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   , <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$oldnode</code></span>
+   )</div>
+
+
+   }</div>
+
+ 
+  </div>
+ 
+
+  <div class="section" id="domtext.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="domtext.props.wholetext"><var class="varname">wholeText</var></dt>
+
+     <dd>
+
+      <p class="para">
+       Holds all the text of logically-adjacent (not separated by Element, 
+       Comment or Processing Instruction) Text nodes.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+  
+
+
+
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ <h1 class="title">The DOMXPath class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="domxpath.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Supports XPath 1.0
+   </p>
+  </div>
+
+ 
+  <div class="section" id="domxpath.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">DOMXPath</strong></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">DOMXPath</strong>
+     </span>
+ 
+     {</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">DOMDocument</span>
+     <var class="varname">$document</var>
+    ;</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">DOMDocument</span> <code class="parameter">$doc</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">evaluate</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$expression</code></span>
+   [, <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$contextnode</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$registerNodeNS</code><span class="initializer"> = true</span></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNodeList</span> <span class="methodname">query</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$expression</code></span>
+   [, <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$contextnode</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$registerNodeNS</code><span class="initializer"> = true</span></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">registerNamespace</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$prefix</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespaceURI</code></span>      
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">registerPhpFunctions</span>
+    ([ <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$restrict</code></span>
+  ] )</div>
+
+ 
+   }</div>
+
+ 
+  </div>
+ 
+
+
+  <div class="section" id="domxpath.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="domxpath.props.document"><var class="varname">document</var></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+  
+
+
+
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+ 
+
+ 
+ 
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

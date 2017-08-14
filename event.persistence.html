@@ -1,0 +1,133 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: About event persistence</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li class="header up"><a href="book.event.html">Event</a></li>
+  <li><a href="intro.event.html">Introduction</a></li>
+  <li><a href="event.setup.html">Installing/Configuring</a></li>
+  <li><a href="event.examples.html">Examples</a></li>
+  <li><a href="event.flags.html">Event flags</a></li>
+  <li class="active"><a href="event.persistence.html">About event persistence</a></li>
+  <li><a href="event.callbacks.html">Event callbacks</a></li>
+  <li><a href="event.constructing.signal.events.html">Constructing signal events</a></li>
+  <li><a href="class.event.html">Event</a></li>
+  <li><a href="class.eventbase.html">EventBase</a></li>
+  <li><a href="class.eventbuffer.html">EventBuffer</a></li>
+  <li><a href="class.eventbufferevent.html">EventBufferEvent</a></li>
+  <li><a href="eventbufferevent.about.callbacks.html">About buffer event callbacks</a></li>
+  <li><a href="class.eventconfig.html">EventConfig</a></li>
+  <li><a href="class.eventdnsbase.html">EventDnsBase</a></li>
+  <li><a href="class.eventhttp.html">EventHttp</a></li>
+  <li><a href="class.eventhttpconnection.html">EventHttpConnection</a></li>
+  <li><a href="class.eventhttprequest.html">EventHttpRequest</a></li>
+  <li><a href="class.eventlistener.html">EventListener</a></li>
+  <li><a href="class.eventsslcontext.html">EventSslContext</a></li>
+  <li><a href="class.eventutil.html">EventUtil</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="event.flags.html">Event flags</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="event.callbacks.html">Event callbacks</a></div>
+                <div class="up"><a href="book.event.html">Event</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="event.persistence" class="chapter">
+ <h1>About event persistence</h1>
+ <p class="para">
+  By default, whenever a pending event becomes active (because its file
+  descriptor is ready to read or write, or because its timeout expires), it
+  becomes non-pending right before its callback is executed. Thus, to make the
+  event pending again one may call
+   <span class="methodname">Event::add</span>
+  on it again from inside the callback function.
+ </p>
+ <p class="para">
+  If the
+  <strong><code>Event::PERSIST</code></strong>
+  flag is set on an event, however, the event is
+  <em class="emphasis">persistent</em>
+  . This means that event remains pending even when its callback is activated.
+   <span class="methodname">Event::del</span>
+  method can be called to make it non-pending.
+ </p>
+ <p class="para">
+  The timeout on a persistent event resets whenever the event&#039;s callback runs.
+  Thus, if one has an event with flags
+  <strong><code>Event::READ</code></strong>
+  <em>|</em>
+  <strong><code>Event::PERSIST</code></strong>
+  and a timeout of five seconds, the event will become active:
+ </p>
+ <ol type="1">
+  <li class="listitem">
+   <p class="para">
+    Whenever the socket or file descriptor is ready for reading.
+   </p>
+  </li>
+  <li class="listitem">
+   <p class="para">
+    Whenever five seconds have passed since the event last became active.
+   </p>
+  </li>
+ </ol>
+ <p class="para">
+  See also
+  <a href="http://www.wangafu.net/~nickm/libevent-book/Ref4_event.html#_about_event_persistence" class="link external">&raquo;&nbsp;Fast
+ portable non-blocking network programming with Libevent, About Event
+ Persistence</a>
+ </p>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

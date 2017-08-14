@@ -1,0 +1,199 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Class Constants</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="langref.html">Language Reference</a></li>
+  <li class="header up"><a href="language.oop5.html">Classes and Objects</a></li>
+  <li><a href="oop5.intro.html">Introduction</a></li>
+  <li><a href="language.oop5.basic.html">The Basics</a></li>
+  <li><a href="language.oop5.properties.html">Properties</a></li>
+  <li class="active"><a href="language.oop5.constants.html">Class Constants</a></li>
+  <li><a href="language.oop5.autoload.html">Autoloading Classes</a></li>
+  <li><a href="language.oop5.decon.html">Constructors and Destructors</a></li>
+  <li><a href="language.oop5.visibility.html">Visibility</a></li>
+  <li><a href="language.oop5.inheritance.html">Object Inheritance</a></li>
+  <li><a href="language.oop5.paamayim-nekudotayim.html">Scope Resolution Operator (::)</a></li>
+  <li><a href="language.oop5.static.html">Static Keyword</a></li>
+  <li><a href="language.oop5.abstract.html">Class Abstraction</a></li>
+  <li><a href="language.oop5.interfaces.html">Object Interfaces</a></li>
+  <li><a href="language.oop5.traits.html">Traits</a></li>
+  <li><a href="language.oop5.anonymous.html">Anonymous classes</a></li>
+  <li><a href="language.oop5.overloading.html">Overloading</a></li>
+  <li><a href="language.oop5.iterations.html">Object Iteration</a></li>
+  <li><a href="language.oop5.magic.html">Magic Methods</a></li>
+  <li><a href="language.oop5.final.html">Final Keyword</a></li>
+  <li><a href="language.oop5.cloning.html">Object Cloning</a></li>
+  <li><a href="language.oop5.object-comparison.html">Comparing Objects</a></li>
+  <li><a href="language.oop5.typehinting.html">Type Hinting</a></li>
+  <li><a href="language.oop5.late-static-bindings.html">Late Static Bindings</a></li>
+  <li><a href="language.oop5.references.html">Objects and references</a></li>
+  <li><a href="language.oop5.serialization.html">Object Serialization</a></li>
+  <li><a href="language.oop5.changelog.html">OOP Changelog</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="language.oop5.properties.html">Properties</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="language.oop5.autoload.html">Autoloading Classes</a></div>
+                <div class="up"><a href="language.oop5.html">Classes and Objects</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="language.oop5.constants" class="sect1">
+ <h2 class="title">Class Constants</h2>
+ <p class="para">
+  It is possible to define constant values on a per-class basis remaining the
+  same and unchangeable. Constants differ from normal variables in that you
+  don&#039;t use the <var class="varname">$</var> symbol to declare or use them. 
+  The default visibility of class constants is <em>public</em>.
+ </p>
+ <p class="para">
+  The value must be a constant expression, not (for example) a variable, a
+  property, or a function call.
+ </p>
+ <p class="para">
+  It&#039;s also possible for interfaces to have <em>constants</em>. Look at 
+  the <a href="language.oop5.interfaces.html" class="link">interface documentation</a> for 
+  examples.
+ </p>
+ <p class="para">
+  As of PHP 5.3.0, it&#039;s possible to reference the class using a variable.
+  The variable&#039;s value can not be a keyword (e.g. <em>self</em>,
+  <em>parent</em> and <em>static</em>).
+ </p>
+ <p class="para">
+  Note that class constants are allocated once per class, and not for each
+  class instance.
+ </p>
+ <div class="example" id="example-182">
+  <p><strong>Example #1 Defining and using a constant</strong></p>
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyClass<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;</span><span style="color: #0000BB">CONSTANT&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'constant&nbsp;value'</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">showConstant</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">CONSTANT&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />echo&nbsp;</span><span style="color: #0000BB">MyClass</span><span style="color: #007700">::</span><span style="color: #0000BB">CONSTANT&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$classname&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"MyClass"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$classname</span><span style="color: #007700">::</span><span style="color: #0000BB">CONSTANT&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;As&nbsp;of&nbsp;PHP&nbsp;5.3.0<br /><br /></span><span style="color: #0000BB">$class&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MyClass</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$class</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">showConstant</span><span style="color: #007700">();<br /><br />echo&nbsp;</span><span style="color: #0000BB">$class</span><span style="color: #007700">::</span><span style="color: #0000BB">CONSTANT</span><span style="color: #007700">.</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;As&nbsp;of&nbsp;PHP&nbsp;5.3.0<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+  </div>
+
+ </div>
+ <div class="example" id="example-183">
+  <p><strong>Example #2 Static data example</strong></p>
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;As&nbsp;of&nbsp;PHP&nbsp;5.3.0<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">const&nbsp;</span><span style="color: #0000BB">BAR&nbsp;</span><span style="color: #007700">=&nbsp;&lt;&lt;&lt;'EOT'<br /></span><span style="color: #DD0000">bar<br /></span><span style="color: #007700">EOT;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;As&nbsp;of&nbsp;PHP&nbsp;5.3.0<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">const&nbsp;</span><span style="color: #0000BB">BAZ&nbsp;</span><span style="color: #007700">=&nbsp;&lt;&lt;&lt;EOT<br /></span><span style="color: #DD0000">baz<br /></span><span style="color: #007700">EOT;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+  </div>
+
+ </div>
+ <blockquote class="note"><p><strong class="note">Note</strong>: 
+  <p class="para">
+   Support for initializing constants with Heredoc and Nowdoc syntax was added in PHP 5.3.0.
+  </p>
+ </p></blockquote>
+ <p class="para">
+  The special <strong><code>::class</code></strong> constant are available as of PHP 5.5.0, and allows 
+  for fully qualified class name resolution at compile, this is useful for namespaced classes:
+ </p>
+ <div class="example" id="example-184">
+  <p><strong>Example #3 Namespaced ::class example</strong></p>
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">namespace&nbsp;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;class&nbsp;</span><span style="color: #0000BB">bar&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">bar</span><span style="color: #007700">::class;&nbsp;</span><span style="color: #FF8000">//&nbsp;foo\bar<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+  </div>
+
+ </div>
+ <div class="example" id="example-185">
+  <p><strong>Example #4 Constant expression example</strong></p>
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">const&nbsp;</span><span style="color: #0000BB">ONE&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /><br />class&nbsp;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;As&nbsp;of&nbsp;PHP&nbsp;5.6.0<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">const&nbsp;</span><span style="color: #0000BB">TWO&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ONE&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;</span><span style="color: #0000BB">THREE&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ONE&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">TWO</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;const&nbsp;</span><span style="color: #0000BB">SENTENCE&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'The&nbsp;value&nbsp;of&nbsp;THREE&nbsp;is&nbsp;'</span><span style="color: #007700">.</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">THREE</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+  </div>
+
+  <div class="example-contents"><p>
+   It is possible to provide a scalar expression involving numeric and string literals and/or constants in context of a class constant.
+  </p></div>
+ </div>
+ <blockquote class="note"><p><strong class="note">Note</strong>: 
+  <p class="para">
+   Constant expression support was added in PHP 5.6.0.
+  </p>
+ </p></blockquote>
+
+ <div class="example" id="language.oop5.basic.class.this">
+  <p><strong>Example #5 Class constant visibility modifiers</strong></p>
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">Foo&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;As&nbsp;of&nbsp;PHP&nbsp;7.1.0<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">public&nbsp;const&nbsp;</span><span style="color: #0000BB">BAR&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'bar'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;const&nbsp;</span><span style="color: #0000BB">BAZ&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'baz'</span><span style="color: #007700">;<br />}<br />echo&nbsp;</span><span style="color: #0000BB">Foo</span><span style="color: #007700">::</span><span style="color: #0000BB">BAR</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">Foo</span><span style="color: #007700">::</span><span style="color: #0000BB">BAZ</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+  </div>
+
+   <div class="example-contents"><p>Output of the above example in PHP 7.1:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+bar
+
+Fatal error: Uncaught Error: Cannot access private const Foo::BAZ in …
+</pre></div>
+   </div>
+ </div>
+ <blockquote class="note"><p><strong class="note">Note</strong>: 
+  <p class="para">
+   As of PHP 7.1.0 visibility modifiers are allowed for class constants.
+  </p>
+ </p></blockquote>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,310 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Retrieves header/meta data from streams/file pointers</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.stream.html">Streams</a></li>
+  <li class="header up"><a href="ref.stream.html">Stream Functions</a></li>
+  <li><a href="function.set-socket-blocking.html">set_socket_blocking</a></li>
+  <li><a href="function.stream-bucket-append.html">stream_bucket_append</a></li>
+  <li><a href="function.stream-bucket-make-writeable.html">stream_bucket_make_writeable</a></li>
+  <li><a href="function.stream-bucket-new.html">stream_bucket_new</a></li>
+  <li><a href="function.stream-bucket-prepend.html">stream_bucket_prepend</a></li>
+  <li><a href="function.stream-context-create.html">stream_context_create</a></li>
+  <li><a href="function.stream-context-get-default.html">stream_context_get_default</a></li>
+  <li><a href="function.stream-context-get-options.html">stream_context_get_options</a></li>
+  <li><a href="function.stream-context-get-params.html">stream_context_get_params</a></li>
+  <li><a href="function.stream-context-set-default.html">stream_context_set_default</a></li>
+  <li><a href="function.stream-context-set-option.html">stream_context_set_option</a></li>
+  <li><a href="function.stream-context-set-params.html">stream_context_set_params</a></li>
+  <li><a href="function.stream-copy-to-stream.html">stream_copy_to_stream</a></li>
+  <li><a href="function.stream-encoding.html">stream_encoding</a></li>
+  <li><a href="function.stream-filter-append.html">stream_filter_append</a></li>
+  <li><a href="function.stream-filter-prepend.html">stream_filter_prepend</a></li>
+  <li><a href="function.stream-filter-register.html">stream_filter_register</a></li>
+  <li><a href="function.stream-filter-remove.html">stream_filter_remove</a></li>
+  <li><a href="function.stream-get-contents.html">stream_get_contents</a></li>
+  <li><a href="function.stream-get-filters.html">stream_get_filters</a></li>
+  <li><a href="function.stream-get-line.html">stream_get_line</a></li>
+  <li class="active"><a href="function.stream-get-meta-data.html">stream_get_meta_data</a></li>
+  <li><a href="function.stream-get-transports.html">stream_get_transports</a></li>
+  <li><a href="function.stream-get-wrappers.html">stream_get_wrappers</a></li>
+  <li><a href="function.stream-is-local.html">stream_is_local</a></li>
+  <li><a href="function.stream-notification-callback.html">stream_notification_callback</a></li>
+  <li><a href="function.stream-register-wrapper.html">stream_register_wrapper</a></li>
+  <li><a href="function.stream-resolve-include-path.html">stream_resolve_include_path</a></li>
+  <li><a href="function.stream-select.html">stream_select</a></li>
+  <li><a href="function.stream-set-blocking.html">stream_set_blocking</a></li>
+  <li><a href="function.stream-set-chunk-size.html">stream_set_chunk_size</a></li>
+  <li><a href="function.stream-set-read-buffer.html">stream_set_read_buffer</a></li>
+  <li><a href="function.stream-set-timeout.html">stream_set_timeout</a></li>
+  <li><a href="function.stream-set-write-buffer.html">stream_set_write_buffer</a></li>
+  <li><a href="function.stream-socket-accept.html">stream_socket_accept</a></li>
+  <li><a href="function.stream-socket-client.html">stream_socket_client</a></li>
+  <li><a href="function.stream-socket-enable-crypto.html">stream_socket_enable_crypto</a></li>
+  <li><a href="function.stream-socket-get-name.html">stream_socket_get_name</a></li>
+  <li><a href="function.stream-socket-pair.html">stream_socket_pair</a></li>
+  <li><a href="function.stream-socket-recvfrom.html">stream_socket_recvfrom</a></li>
+  <li><a href="function.stream-socket-sendto.html">stream_socket_sendto</a></li>
+  <li><a href="function.stream-socket-server.html">stream_socket_server</a></li>
+  <li><a href="function.stream-socket-shutdown.html">stream_socket_shutdown</a></li>
+  <li><a href="function.stream-supports-lock.html">stream_supports_lock</a></li>
+  <li><a href="function.stream-wrapper-register.html">stream_wrapper_register</a></li>
+  <li><a href="function.stream-wrapper-restore.html">stream_wrapper_restore</a></li>
+  <li><a href="function.stream-wrapper-unregister.html">stream_wrapper_unregister</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.stream-get-line.html">stream_get_line</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.stream-get-transports.html">stream_get_transports</a></div>
+                <div class="up"><a href="ref.stream.html">Stream Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.stream-get-meta-data" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">stream_get_meta_data</h1>
+  <p class="refpurpose">Retrieves header/meta data from streams/file pointers</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.stream-get-meta-data-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname">stream_get_meta_data</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$stream</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Returns information about an existing <code class="parameter">stream</code>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.stream-get-meta-data-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">stream</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The stream can be any stream created by <span class="function">fopen</span>,
+       <span class="function">fsockopen</span> and <span class="function">pfsockopen</span>.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.stream-get-meta-data-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   The result array contains the following items:
+  </p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <p class="para">
+     <em>timed_out</em> (bool) - <strong><code>TRUE</code></strong> if the stream
+     timed out while waiting for data on the last call to
+     <span class="function">fread</span> or <span class="function">fgets</span>.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     <em>blocked</em> (bool) - <strong><code>TRUE</code></strong> if the stream is
+     in blocking IO mode. See <span class="function">stream_set_blocking</span>.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     <em>eof</em> (bool) - <strong><code>TRUE</code></strong> if the stream has reached
+     end-of-file.  Note that for socket streams this member can be <strong><code>TRUE</code></strong>
+     even when <em>unread_bytes</em> is non-zero.  To
+     determine if there is more data to be read, use
+     <span class="function">feof</span> instead of reading this item.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     <em>unread_bytes</em> (int) - the number of bytes
+     currently contained in the PHP&#039;s own internal buffer.
+    </p>
+    <blockquote class="note"><p><strong class="note">Note</strong>: 
+     <span class="simpara">
+      You shouldn&#039;t use this value in a script.
+     </span>
+    </p></blockquote>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     <em>stream_type</em> (string) - a label describing
+     the underlying implementation of the stream.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     <em>wrapper_type</em> (string) - a label describing
+     the protocol wrapper implementation layered over the stream.
+     See <a href="wrappers.html" class="xref">Supported Protocols and Wrappers</a> for more information about wrappers.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     <em>wrapper_data</em> (mixed) - wrapper specific
+     data attached to this stream.  See <a href="wrappers.html" class="xref">Supported Protocols and Wrappers</a> for
+     more information about wrappers and their wrapper data.
+    </p>
+   </li>
+   
+   <li class="listitem">
+    <p class="para">
+     <em>mode</em> (string) - the type of access required for
+     this stream (see Table 1 of the <a href="function.fopen.html" class="link">fopen()</a> reference)
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     <em>seekable</em> (bool) - whether the current stream can
+     be seeked.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     <em>uri</em> (string) - the URI/filename associated with this
+     stream.
+    </p>
+   </li>
+  </ul>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.stream-get-meta-data-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4612">
+    <p><strong>Example #1 <span class="function">stream_get_meta_data</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$url&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'http://www.example.com/'</span><span style="color: #007700">;<br /><br />if&nbsp;(!</span><span style="color: #0000BB">$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$url</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'r'</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">trigger_error</span><span style="color: #007700">(</span><span style="color: #DD0000">"Unable&nbsp;to&nbsp;open&nbsp;URL&nbsp;(</span><span style="color: #0000BB">$url</span><span style="color: #DD0000">)"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">E_USER_ERROR</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$meta&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">stream_get_meta_data</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$meta</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [wrapper_data] =&gt; Array
+        (
+            [0] =&gt; HTTP/1.1 200 OK
+            [1] =&gt; Server: Apache/2.2.3 (Red Hat)
+            [2] =&gt; Last-Modified: Tue, 15 Nov 2005 13:24:10 GMT
+            [3] =&gt; ETag: &quot;b300b4-1b6-4059a80bfd280&quot;
+            [4] =&gt; Accept-Ranges: bytes
+            [5] =&gt; Content-Type: text/html; charset=UTF-8
+            [6] =&gt; Set-Cookie: FOO=BAR; expires=Fri, 21-Dec-2012 12:00:00 GMT; path=/; domain=.example.com
+            [6] =&gt; Connection: close     
+            [7] =&gt; Date: Fri, 16 Oct 2009 12:00:00 GMT
+            [8] =&gt; Age: 1164   
+            [9] =&gt; Content-Length: 438
+        )
+
+    [wrapper_type] =&gt; http
+    [stream_type] =&gt; tcp_socket/ssl
+    [mode] =&gt; r
+    [unread_bytes] =&gt; 438
+    [seekable] =&gt; 
+    [uri] =&gt; http://www.example.com/
+    [timed_out] =&gt; 
+    [blocked] =&gt; 1
+    [eof] =&gt; 
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.stream-get-meta-data-notes">
+  <h3 class="title">Notes</h3>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">This function does NOT work on sockets created by the <a href="ref.sockets.html" class="link">Socket extension</a>.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.stream-get-meta-data-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">get_headers</span></li>
+    <li class="member"><a href="reserved.variables.httpresponseheader.html" class="link">$http_response_header</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

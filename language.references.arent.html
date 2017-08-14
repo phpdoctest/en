@@ -1,0 +1,103 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: What References Are Not</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="langref.html">Language Reference</a></li>
+  <li class="header up"><a href="language.references.html">References Explained</a></li>
+  <li><a href="language.references.whatare.html">What References Are</a></li>
+  <li><a href="language.references.whatdo.html">What References Do</a></li>
+  <li class="active"><a href="language.references.arent.html">What References Are Not</a></li>
+  <li><a href="language.references.pass.html">Passing by Reference</a></li>
+  <li><a href="language.references.return.html">Returning References</a></li>
+  <li><a href="language.references.unset.html">Unsetting References</a></li>
+  <li><a href="language.references.spot.html">Spotting References</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="language.references.whatdo.html">What References Do</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="language.references.pass.html">Passing by Reference</a></div>
+                <div class="up"><a href="language.references.html">References Explained</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="language.references.arent" class="sect1">
+   <h2 class="title">What References Are Not</h2>
+   <p class="para">
+    As said before, references are not pointers. That means, the
+    following construct won&#039;t do what you expect:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">(&amp;</span><span style="color: #0000BB">$var</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$var&nbsp;</span><span style="color: #007700">=&amp;&nbsp;</span><span style="color: #0000BB">$GLOBALS</span><span style="color: #007700">[</span><span style="color: #DD0000">"baz"</span><span style="color: #007700">];<br />}<br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$bar</span><span style="color: #007700">);&nbsp;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="simpara">
+    What happens is that <var class="varname">$var</var> in
+    <var class="varname">foo</var> will be bound with
+    <var class="varname">$bar</var> in the caller, but then
+    re-bound with <var class="varname">$GLOBALS[&quot;baz&quot;]</var>. There&#039;s no way
+    to bind <var class="varname">$bar</var> in the calling scope to something else
+    using the reference mechanism, since <var class="varname">$bar</var> is not
+    available in the function <var class="varname">foo</var> (it is represented by
+    <var class="varname">$var</var>, but <var class="varname">$var</var> has only
+    variable contents and not name-to-value binding in the calling
+    symbol table).
+    You can use <a href="language.references.return.html" class="link">returning
+    references</a> to reference variables selected by the function.
+   </p>
+  </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

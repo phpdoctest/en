@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Open directory handle</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.stream.html">Streams</a></li>
+  <li class="header up"><a href="class.streamwrapper.html">streamWrapper</a></li>
+  <li><a href="streamwrapper.construct.html">streamWrapper::__construct</a></li>
+  <li><a href="streamwrapper.destruct.html">streamWrapper::__destruct</a></li>
+  <li><a href="streamwrapper.dir-closedir.html">streamWrapper::dir_closedir</a></li>
+  <li class="active"><a href="streamwrapper.dir-opendir.html">streamWrapper::dir_opendir</a></li>
+  <li><a href="streamwrapper.dir-readdir.html">streamWrapper::dir_readdir</a></li>
+  <li><a href="streamwrapper.dir-rewinddir.html">streamWrapper::dir_rewinddir</a></li>
+  <li><a href="streamwrapper.mkdir.html">streamWrapper::mkdir</a></li>
+  <li><a href="streamwrapper.rename.html">streamWrapper::rename</a></li>
+  <li><a href="streamwrapper.rmdir.html">streamWrapper::rmdir</a></li>
+  <li><a href="streamwrapper.stream-cast.html">streamWrapper::stream_cast</a></li>
+  <li><a href="streamwrapper.stream-close.html">streamWrapper::stream_close</a></li>
+  <li><a href="streamwrapper.stream-eof.html">streamWrapper::stream_eof</a></li>
+  <li><a href="streamwrapper.stream-flush.html">streamWrapper::stream_flush</a></li>
+  <li><a href="streamwrapper.stream-lock.html">streamWrapper::stream_lock</a></li>
+  <li><a href="streamwrapper.stream-metadata.html">streamWrapper::stream_metadata</a></li>
+  <li><a href="streamwrapper.stream-open.html">streamWrapper::stream_open</a></li>
+  <li><a href="streamwrapper.stream-read.html">streamWrapper::stream_read</a></li>
+  <li><a href="streamwrapper.stream-seek.html">streamWrapper::stream_seek</a></li>
+  <li><a href="streamwrapper.stream-set-option.html">streamWrapper::stream_set_option</a></li>
+  <li><a href="streamwrapper.stream-stat.html">streamWrapper::stream_stat</a></li>
+  <li><a href="streamwrapper.stream-tell.html">streamWrapper::stream_tell</a></li>
+  <li><a href="streamwrapper.stream-truncate.html">streamWrapper::stream_truncate</a></li>
+  <li><a href="streamwrapper.stream-write.html">streamWrapper::stream_write</a></li>
+  <li><a href="streamwrapper.unlink.html">streamWrapper::unlink</a></li>
+  <li><a href="streamwrapper.url-stat.html">streamWrapper::url_stat</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="streamwrapper.dir-closedir.html">streamWrapper::dir_closedir</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="streamwrapper.dir-readdir.html">streamWrapper::dir_readdir</a></div>
+                <div class="up"><a href="class.streamwrapper.html">streamWrapper</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="streamwrapper.dir-opendir" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">streamWrapper::dir_opendir</h1>
+  <p class="refpurpose">Open directory handle</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-streamwrapper.dir-opendir-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">streamWrapper::dir_opendir</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$path</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   This method is called in response to <span class="function">opendir</span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-streamwrapper.dir-opendir-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">path</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Specifies the URL that was passed to <span class="function">opendir</span>.
+      </p>
+      <blockquote class="note"><p><strong class="note">Note</strong>: 
+       <p class="para">
+        The URL can be broken apart with <span class="function">parse_url</span>.
+       </p>
+      </p></blockquote>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">options</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Whether or not to enforce <a href="ini.sect.safe-mode.html#ini.safe-mode" class="link">safe_mode</a> (0x04).
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-streamwrapper.dir-opendir-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> on success or <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+
+
+
+ <div class="refsect1 seealso" id="refsect1-streamwrapper.dir-opendir-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">opendir</span></li>
+    <li class="member"> <span class="methodname">streamWrapper::dir_closedir</span></li>
+    <li class="member"><span class="function">parse_url</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

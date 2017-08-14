@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: OCI8 Fast Application Notification (FAN) Support</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.oci8.html">OCI8</a></li>
+  <li><a href="intro.oci8.html">Introduction</a></li>
+  <li><a href="oci8.setup.html">Installing/Configuring</a></li>
+  <li><a href="oci8.constants.html">Predefined Constants</a></li>
+  <li><a href="oci8.examples.html">Examples</a></li>
+  <li><a href="oci8.connection.html">OCI8 Connection Handling and Connection Pooling</a></li>
+  <li class="active"><a href="oci8.fan.html">OCI8 Fast Application Notification (FAN) Support</a></li>
+  <li><a href="oci8.dtrace.html">OCI8 and DTrace Dynamic Tracing</a></li>
+  <li><a href="oci8.datatypes.html">Supported Datatypes</a></li>
+  <li><a href="ref.oci8.html">OCI8 Functions</a></li>
+  <li><a href="class.OCI-Collection.html">OCI-Collection</a></li>
+  <li><a href="class.OCI-Lob.html">OCI-Lob</a></li>
+  <li><a href="oldaliases.oci8.html">OCI8 Obsolete Aliases and Functions</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="oci8.connection.html">OCI8 Connection Handling and Connection Pooling</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="oci8.dtrace.html">OCI8 and DTrace Dynamic Tracing</a></div>
+                <div class="up"><a href="book.oci8.html">OCI8</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="oci8.fan" class="chapter">
+ <h1>OCI8 Fast Application Notification (FAN) Support</h1>
+ <div class="section">
+  <p class="para">
+   FAN support gives fast connection failover, an Oracle Database high availability
+   feature.  This allows PHP OCI8 scripts to be notified when a
+   database machine or database instance becomes unavailable.  Without
+   FAN, OCI8 can hang until a TCP timeout occurs and an error is
+   returned, which might be several minutes.  Enabling FAN in OCI8 can
+   allow applications to detect errors and re-connect to an available
+   database instance without the web user being aware of an outage.
+  </p>
+  <p class="para">
+   FAN support is available when the Oracle client libraries that PHP
+   links with and the Oracle Database are either version 10gR2 or later.
+  </p>
+  <p class="para">
+   FAN benefits users of Oracle&#039;s clustering technology (RAC) because
+   connections to surviving database instances can be immediately
+   made.  Users of Oracle&#039;s Data Guard with a broker will see the FAN
+   events generated when the standby database goes online.  Standalone
+   databases will send FAN events when the database restarts.
+  </p>
+  <p class="para">
+   For active connections, when a machine or database instance becomes
+   unavailable, a connection failure error will be returned by the
+   OCI8 extension function currently being called.  On a subsequent
+   PHP script re-connect, a connection to a surviving database
+   instance will be established.  The OCI8 extension also
+   transparently cleans up any idle connections affected by a database
+   machine or instance failure so PHP connect calls will establish a
+   fresh connection without the script being aware of any service
+   disruption.
+  </p>
+  <p class="para">
+   When <a href="oci8.configuration.html#ini.oci8.events" class="link">oci8.events</a>
+   is <em>On</em>, it is suggested to
+   set <a href="oci8.configuration.html#ini.oci8.ping-interval" class="link">oci8.ping_interval</a>
+   to -1 to disable pinging, since enabling FAN events provide
+   pro-active connection management of idle connections made invalid
+   by a service disruption.
+  </p>
+  <p class="para">
+   To enable FAN support in PHP OCI8, build PHP OCI8 with Oracle 10gR2 or later
+   libraries and then follow these steps:
+  </p>
+  <p class="para">
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      As a privileged database administrator, use a program like
+      SQL*Plus to enable the database service to post FAN events, for
+      example:
+     </span>
+     <p class="para">
+      <div class="informalexample">
+       <div class="example-contents screen">
+<div class="cdata"><pre>
+    SQL&gt; execute dbms_service.modify_service(
+                   SERVICE_NAME        =&gt; &#039;sales&#039;,
+                   AQ_HA_NOTIFICATIONS =&gt; TRUE);
+</pre></div>
+       </div>
+      </div>
+     </p>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Edit php.ini and add
+     </span>
+     <p class="para">
+      <div class="informalexample">
+       <div class="example-contents screen">
+<div class="cdata"><pre>
+    oci8.events = On
+</pre></div>
+       </div>
+      </div>
+     </p>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      If the application does not already handle OCI8 error
+      conditions, modify it to detect failures and take appropriate
+      action.  This may include re-connecting and re-executing
+      statements.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Run the application, connecting to Oracle Database 10gR2 or later.
+     </span>
+    </li>
+   </ul>
+  </p>
+ </div>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

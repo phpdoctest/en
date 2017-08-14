@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Reduces the set to a single value using a callback function.</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.vartype.html">Variable and Type Related Extensions</a></li>
+  <li class="header up"><a href="book.ds.html">Data Structures</a></li>
+  <li class="header up"><a href="class.ds-set.html">Set</a></li>
+  <li><a href="ds-set.add.html">Ds\Set::add</a></li>
+  <li><a href="ds-set.allocate.html">Ds\Set::allocate</a></li>
+  <li><a href="ds-set.capacity.html">Ds\Set::capacity</a></li>
+  <li><a href="ds-set.clear.html">Ds\Set::clear</a></li>
+  <li><a href="ds-set.construct.html">Ds\Set::__construct</a></li>
+  <li><a href="ds-set.contains.html">Ds\Set::contains</a></li>
+  <li><a href="ds-set.copy.html">Ds\Set::copy</a></li>
+  <li><a href="ds-set.count.html">Ds\Set::count</a></li>
+  <li><a href="ds-set.diff.html">Ds\Set::diff</a></li>
+  <li><a href="ds-set.filter.html">Ds\Set::filter</a></li>
+  <li><a href="ds-set.first.html">Ds\Set::first</a></li>
+  <li><a href="ds-set.get.html">Ds\Set::get</a></li>
+  <li><a href="ds-set.intersect.html">Ds\Set::intersect</a></li>
+  <li><a href="ds-set.isempty.html">Ds\Set::isEmpty</a></li>
+  <li><a href="ds-set.join.html">Ds\Set::join</a></li>
+  <li><a href="ds-set.jsonserialize.html">Ds\Set::jsonSerialize</a></li>
+  <li><a href="ds-set.last.html">Ds\Set::last</a></li>
+  <li><a href="ds-set.merge.html">Ds\Set::merge</a></li>
+  <li class="active"><a href="ds-set.reduce.html">Ds\Set::reduce</a></li>
+  <li><a href="ds-set.remove.html">Ds\Set::remove</a></li>
+  <li><a href="ds-set.reverse.html">Ds\Set::reverse</a></li>
+  <li><a href="ds-set.reversed.html">Ds\Set::reversed</a></li>
+  <li><a href="ds-set.slice.html">Ds\Set::slice</a></li>
+  <li><a href="ds-set.sort.html">Ds\Set::sort</a></li>
+  <li><a href="ds-set.sorted.html">Ds\Set::sorted</a></li>
+  <li><a href="ds-set.sum.html">Ds\Set::sum</a></li>
+  <li><a href="ds-set.toarray.html">Ds\Set::toArray</a></li>
+  <li><a href="ds-set.union.html">Ds\Set::union</a></li>
+  <li><a href="ds-set.xor.html">Ds\Set::xor</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="ds-set.merge.html">Ds\Set::merge</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="ds-set.remove.html">Ds\Set::remove</a></div>
+                <div class="up"><a href="class.ds-set.html">Set</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="ds-set.reduce" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Ds\Set::reduce</h1>
+  <p class="refpurpose">Reduces the set to a single value using a callback function.</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-ds-set.reduce-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">Ds\Set::reduce</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$initial</code></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+    Reduces the set to a single value using a callback function.
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-ds-set.reduce-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">callback</code></dt>
+
+
+    <dd>
+
+      <div class="methodsynopsis dc-description">
+       <span class="type">mixed</span> <span class="methodname"><span class="replaceable">callback</span></span>
+        ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$carry</code></span>
+       , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value</code></span>
+       )</div>
+
+      <dl>
+
+       
+        <dt>
+<code class="parameter">carry</code></dt>
+
+        <dd>
+
+         <p class="para">
+          The return value of the previous callback, or <code class="parameter">initial</code> if
+          it&#039;s the first iteration.
+         </p>
+        </dd>
+
+       
+       
+        <dt>
+<code class="parameter">value</code></dt>
+
+        <dd>
+
+         <p class="para">
+          The value of the current iteration.
+         </p>
+        </dd>
+
+       
+      </dl>
+
+     </dd>
+
+
+   
+   
+    <dt>
+<code class="parameter">initial</code></dt>
+
+    <dd>
+
+     <p class="para">
+        The initial value of the carry value. Can be <strong><code>NULL</code></strong>.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-ds-set.reduce-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+    The return value of the final callback.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-ds-set.reduce-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-5899">
+   <p><strong>Example #1 <span class="function">Ds\Set::reduce</span> with initial value example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$set&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Ds</span><span style="color: #007700">\</span><span style="color: #0000BB">Set</span><span style="color: #007700">([</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">]);<br /><br /></span><span style="color: #0000BB">$callback&nbsp;</span><span style="color: #007700">=&nbsp;function(</span><span style="color: #0000BB">$carry</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$carry&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">;<br />};<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$set</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">reduce</span><span style="color: #007700">(</span><span style="color: #0000BB">$callback</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;Iterations:<br />//<br />//&nbsp;$carry&nbsp;=&nbsp;$initial&nbsp;=&nbsp;5<br />//<br />//&nbsp;$carry&nbsp;=&nbsp;$carry&nbsp;*&nbsp;1&nbsp;=&nbsp;&nbsp;5<br />//&nbsp;$carry&nbsp;=&nbsp;$carry&nbsp;*&nbsp;2&nbsp;=&nbsp;10<br />//&nbsp;$carry&nbsp;=&nbsp;$carry&nbsp;*&nbsp;3&nbsp;=&nbsp;30<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+int(30)
+</pre></div>
+   </div>
+  </div>
+  <div class="example" id="example-5900">
+   <p><strong>Example #2 <span class="function">Ds\Set::reduce</span> without an initial value example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$set&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Ds</span><span style="color: #007700">\</span><span style="color: #0000BB">Set</span><span style="color: #007700">([</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">]);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$set</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">reduce</span><span style="color: #007700">(function(</span><span style="color: #0000BB">$carry</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$carry&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #0000BB">$value&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">;<br />}));<br /><br /></span><span style="color: #FF8000">//&nbsp;Iterations:<br />//<br />//&nbsp;$carry&nbsp;=&nbsp;$initial&nbsp;=&nbsp;null<br />//<br />//&nbsp;$carry&nbsp;=&nbsp;$carry&nbsp;+&nbsp;1&nbsp;+&nbsp;5&nbsp;=&nbsp;&nbsp;6<br />//&nbsp;$carry&nbsp;=&nbsp;$carry&nbsp;+&nbsp;2&nbsp;+&nbsp;5&nbsp;=&nbsp;13<br />//&nbsp;$carry&nbsp;=&nbsp;$carry&nbsp;+&nbsp;3&nbsp;+&nbsp;5&nbsp;=&nbsp;21<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+int(21)
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

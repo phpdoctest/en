@@ -1,0 +1,805 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Support Vector Machine</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li><a href="book.chdb.html">chdb</a></li>
+  <li><a href="book.curl.html">cURL</a></li>
+  <li><a href="book.event.html">Event</a></li>
+  <li><a href="book.fam.html">FAM</a></li>
+  <li><a href="book.ftp.html">FTP</a></li>
+  <li><a href="book.gearman.html">Gearman</a></li>
+  <li><a href="book.net-gopher.html">Gopher</a></li>
+  <li><a href="book.gupnp.html">Gupnp</a></li>
+  <li><a href="book.hwapi.html">Hyperwave API</a></li>
+  <li><a href="book.ldap.html">LDAP</a></li>
+  <li><a href="book.memcache.html">Memcache</a></li>
+  <li><a href="book.memcached.html">Memcached</a></li>
+  <li><a href="book.mqseries.html">mqseries</a></li>
+  <li><a href="book.network.html">Network</a></li>
+  <li><a href="book.rrd.html">RRD</a></li>
+  <li><a href="book.sam.html">SAM</a></li>
+  <li><a href="book.snmp.html">SNMP</a></li>
+  <li><a href="book.sockets.html">Sockets</a></li>
+  <li><a href="book.ssh2.html">SSH2</a></li>
+  <li><a href="book.stomp.html">Stomp</a></li>
+  <li class="active"><a href="book.svm.html">SVM</a></li>
+  <li><a href="book.svn.html">SVN</a></li>
+  <li><a href="book.tcpwrap.html">TCP</a></li>
+  <li><a href="book.varnish.html">Varnish</a></li>
+  <li><a href="book.yaz.html">YAZ</a></li>
+  <li><a href="book.nis.html">YP/NIS</a></li>
+  <li><a href="book.zmq.html">0MQ messaging</a></li>
+  <li><a href="book.zookeeper.html">ZooKeeper</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="stomp.getdetails.html">StompException::getDetails</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="intro.svm.html">Introduction</a></div>
+                <div class="up"><a href="refs.remote.other.html">Other Services</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="book.svm" class="book">
+ <h1>Support Vector Machine</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="intro.svm.html">Introduction</a></li>
+<li><a href="svm.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_title">
+<li><a href="svm.requirements.html">Requirements</a></li>
+<li><a href="svm.installation.html">Installation</a></li>
+<li><a href="svm.configuration.html">Runtime Configuration</a></li>
+<li><a href="svm.resources.html">Resource Types</a></li>
+</ul>
+</li>
+<li><a href="svm.examples.html">Examples</a></li>
+<li><a href="class.svm.html">SVM</a> — The SVM class<ul class="chunklist chunklist_title">
+<li><a href="svm.construct.html">SVM::__construct</a> — Construct a new SVM object</li>
+<li><a href="svm.crossvalidate.html">SVM::crossvalidate</a> — Test training params on subsets of the training data.</li>
+<li><a href="svm.getoptions.html">SVM::getOptions</a> — Return the current training parameters</li>
+<li><a href="svm.setoptions.html">SVM::setOptions</a> — Set training parameters</li>
+<li><a href="svm.train.html">SVM::train</a> — Create a SVMModel based on training data</li>
+</ul>
+</li>
+<li><a href="class.svmmodel.html">SVMModel</a> — The SVMModel class<ul class="chunklist chunklist_title">
+<li><a href="svmmodel.checkprobabilitymodel.html">SVMModel::checkProbabilityModel</a> — Returns true if the model has probability information</li>
+<li><a href="svmmodel.construct.html">SVMModel::__construct</a> — Construct a new SVMModel</li>
+<li><a href="svmmodel.getlabels.html">SVMModel::getLabels</a> — Get the labels the model was trained on</li>
+<li><a href="svmmodel.getnrclass.html">SVMModel::getNrClass</a> — Returns the number of classes the model was trained with</li>
+<li><a href="svmmodel.getsvmtype.html">SVMModel::getSvmType</a> — Get the SVM type the model was trained with</li>
+<li><a href="svmmodel.getsvrprobability.html">SVMModel::getSvrProbability</a> — Get the sigma value for regression types</li>
+<li><a href="svmmodel.load.html">SVMModel::load</a> — Load a saved SVM Model</li>
+<li><a href="svmmodel.predict-probability.html">SVMModel::predict_probability</a> — Return class probabilities for previous unseen data</li>
+<li><a href="svmmodel.predict.html">SVMModel::predict</a> — Predict a value for previously unseen data</li>
+<li><a href="svmmodel.save.html">SVMModel::save</a> — Save a model to a file</li>
+</ul>
+</li>
+</ul>
+
+ 
+
+ 
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The SVM class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="svm.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+
+   </p>
+  </div>
+
+
+  <div class="section" id="svm.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">SVM</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">SVM</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SVM::C_SVC</var>
+     <span class="initializer"> = 0</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SVM::NU_SVC</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SVM::ONE_CLASS</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SVM::EPSILON_SVR</var>
+     <span class="initializer"> = 3</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SVM::NU_SVR</var>
+     <span class="initializer"> = 4</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SVM::KERNEL_LINEAR</var>
+     <span class="initializer"> = 0</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SVM::KERNEL_POLY</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SVM::KERNEL_RBF</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SVM::KERNEL_SIGMOID</var>
+     <span class="initializer"> = 3</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SVM::KERNEL_PRECOMPUTED</var>
+     <span class="initializer"> = 4</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SVM::OPT_TYPE</var>
+     <span class="initializer"> = 101</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SVM::OPT_KERNEL_TYPE</var>
+     <span class="initializer"> = 102</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SVM::OPT_DEGREE</var>
+     <span class="initializer"> = 103</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SVM::OPT_SHRINKING</var>
+     <span class="initializer"> = 104</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SVM::OPT_PROPABILITY</var>
+     <span class="initializer"> = 105</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SVM::OPT_GAMMA</var>
+     <span class="initializer"> = 201</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SVM::OPT_NU</var>
+     <span class="initializer"> = 202</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SVM::OPT_EPS</var>
+     <span class="initializer"> = 203</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SVM::OPT_P</var>
+     <span class="initializer"> = 204</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SVM::OPT_COEF_ZERO</var>
+     <span class="initializer"> = 205</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SVM::OPT_C</var>
+     <span class="initializer"> = 206</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SVM::OPT_CACHE_SIZE</var>
+     <span class="initializer"> = 207</span>
+    ;</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">float</span> <span class="methodname">svm::crossvalidate</span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$problem</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$number_of_folds</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getOptions</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setOptions</span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$params</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">SVMModel</span> <span class="methodname">svm::train</span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$problem</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$weights</code></span>
+  ] )</div>
+
+   }</div>
+
+
+  </div>
+  
+
+  <div class="section" id="svm.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <div class="section" id="svm.constants.types">
+    <h2 class="title">SVM Constants</h2>
+    <dl>
+
+
+     
+      <dt id="svm.constants.c-svc"><strong><code>SVM::C_SVC</code></strong></dt>
+
+      <dd>
+
+       <p class="para">The basic C_SVC SVM type. The default, and a good starting point</p>
+      </dd>
+
+     
+
+     
+      <dt id="svm.constants.nu-svc"><strong><code>SVM::NU_SVC</code></strong></dt>
+
+      <dd>
+
+       <p class="para">The NU_SVC type uses a different, more flexible, error weighting</p>
+      </dd>
+
+     
+
+     
+      <dt id="svm.constants.one-class"><strong><code>SVM::ONE_CLASS</code></strong></dt>
+
+      <dd>
+
+       <p class="para">One class SVM type. Train just on a single class, using outliers as negative examples</p>
+      </dd>
+
+     
+
+     
+      <dt id="svm.constants.epsilon-svr"><strong><code>SVM::EPSILON_SVR</code></strong></dt>
+
+      <dd>
+
+       <p class="para">A SVM type for regression (predicting a value rather than just a class)</p>
+      </dd>
+
+     
+
+     
+      <dt id="svm.constants.nu-svr"><strong><code>SVM::NU_SVR</code></strong></dt>
+
+      <dd>
+
+       <p class="para">A NU style SVM regression type</p>
+      </dd>
+
+     
+
+     
+      <dt id="svm.constants.kernel-linear"><strong><code>SVM::KERNEL_LINEAR</code></strong></dt>
+
+      <dd>
+
+       <p class="para">A very simple kernel, can work well on large document classification problems</p>
+      </dd>
+
+     
+
+     
+      <dt id="svm.constants.kernel-poly"><strong><code>SVM::KERNEL_POLY</code></strong></dt>
+
+      <dd>
+
+       <p class="para">A polynomial kernel</p>
+      </dd>
+
+     
+
+     
+      <dt id="svm.constants.kernel-rbf"><strong><code>SVM::KERNEL_RBF</code></strong></dt>
+
+      <dd>
+
+       <p class="para">The common Gaussian RBD kernel. Handles non-linear problems well and is a good default for classification</p>
+      </dd>
+
+     
+
+     
+      <dt id="svm.constants.kernel-sigmoid"><strong><code>SVM::KERNEL_SIGMOID</code></strong></dt>
+
+      <dd>
+
+       <p class="para">A kernel based on the sigmoid function. Using this makes the SVM very similar to a two layer sigmoid based neural network</p>
+      </dd>
+
+     
+
+     
+      <dt id="svm.constants.kernel-precomputed"><strong><code>SVM::KERNEL_PRECOMPUTED</code></strong></dt>
+
+      <dd>
+
+       <p class="para">A precomputed kernel - currently unsupported.</p>
+      </dd>
+
+     
+
+     
+      <dt id="svm.constants.opt-type"><strong><code>SVM::OPT_TYPE</code></strong></dt>
+
+      <dd>
+
+       <p class="para">The options key for the SVM type</p>
+      </dd>
+
+     
+
+     
+      <dt id="svm.constants.opt-kernel-type"><strong><code>SVM::OPT_KERNEL_TYPE</code></strong></dt>
+
+      <dd>
+
+       <p class="para">The options key for the kernel type</p>
+      </dd>
+
+     
+
+     
+      <dt id="svm.constants.opt-degree"><strong><code>SVM::OPT_DEGREE</code></strong></dt>
+
+      <dd>
+
+       <p class="para"/>
+      </dd>
+
+     
+
+     
+      <dt id="svm.constants.opt-shrinking"><strong><code>SVM::OPT_SHRINKING</code></strong></dt>
+
+      <dd>
+
+       <p class="para">Training parameter, boolean, for whether to use the shrinking heuristics</p>
+      </dd>
+
+     
+
+     
+      <dt id="svm.constants.opt-propability"><strong><code>SVM::OPT_PROBABILITY</code></strong></dt>
+
+      <dd>
+
+       <p class="para">Training parameter, boolean, for whether to collect and use probability estimates</p>
+      </dd>
+
+     
+
+     
+      <dt id="svm.constants.opt-gamma"><strong><code>SVM::OPT_GAMMA</code></strong></dt>
+
+      <dd>
+
+       <p class="para">Algorithm parameter for Poly, RBF and Sigmoid kernel types.</p>
+      </dd>
+
+     
+
+     
+      <dt id="svm.constants.opt-nu"><strong><code>SVM::OPT_NU</code></strong></dt>
+
+      <dd>
+
+       <p class="para">The option key for the nu parameter, only used in the NU_ SVM types</p>
+      </dd>
+
+     
+
+     
+      <dt id="svm.constants.opt-eps"><strong><code>SVM::OPT_EPS</code></strong></dt>
+
+      <dd>
+
+       <p class="para">The option key for the Epsilon parameter, used in epsilon regression</p>
+      </dd>
+
+     
+
+     
+      <dt id="svm.constants.opt-p"><strong><code>SVM::OPT_P</code></strong></dt>
+
+      <dd>
+
+       <p class="para">Training parameter used by Episilon SVR regression</p>
+      </dd>
+
+     
+
+     
+      <dt id="svm.constants.opt-coef-zero"><strong><code>SVM::OPT_COEF_ZERO</code></strong></dt>
+
+      <dd>
+
+       <p class="para">Algorithm parameter for poly and sigmoid kernels</p>
+      </dd>
+
+     
+
+     
+      <dt id="svm.constants.opt-c"><strong><code>SVM::OPT_C</code></strong></dt>
+
+      <dd>
+
+       <p class="para">The option for the cost parameter that controls tradeoff between errors and generality - effectively the penalty for misclassifying training examples. </p>
+      </dd>
+
+     
+
+     
+      <dt id="svm.constants.opt-cache-size"><strong><code>SVM::OPT_CACHE_SIZE</code></strong></dt>
+
+      <dd>
+
+       <p class="para">Memory cache size, in MB</p>
+      </dd>
+
+     
+    </dl>
+
+   </div>
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The SVMModel class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="svmmodel.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The SVMModel is the end result of the training process.
+    It can be used to classify previously unseen data.
+   </p>
+  </div>
+
+
+  <div class="section" id="svmmodel.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">SVMModel</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">SVMModel</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">checkProbabilityModel</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getLabels</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getNrClass</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getSvmType</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">float</span> <span class="methodname">getSvrProbability</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">load</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">float</span> <span class="methodname">predict_probability</span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$data</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">float</span> <span class="methodname">predict</span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$data</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">save</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

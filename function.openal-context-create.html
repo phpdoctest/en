@@ -1,0 +1,147 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Create an audio processing context</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.utilspec.audio.html">Audio Formats Manipulation</a></li>
+  <li class="header up"><a href="book.openal.html">OpenAL</a></li>
+  <li class="header up"><a href="ref.openal.html">OpenAL Functions</a></li>
+  <li><a href="function.openal-buffer-create.html">openal_buffer_create</a></li>
+  <li><a href="function.openal-buffer-data.html">openal_buffer_data</a></li>
+  <li><a href="function.openal-buffer-destroy.html">openal_buffer_destroy</a></li>
+  <li><a href="function.openal-buffer-get.html">openal_buffer_get</a></li>
+  <li><a href="function.openal-buffer-loadwav.html">openal_buffer_loadwav</a></li>
+  <li class="active"><a href="function.openal-context-create.html">openal_context_create</a></li>
+  <li><a href="function.openal-context-current.html">openal_context_current</a></li>
+  <li><a href="function.openal-context-destroy.html">openal_context_destroy</a></li>
+  <li><a href="function.openal-context-process.html">openal_context_process</a></li>
+  <li><a href="function.openal-context-suspend.html">openal_context_suspend</a></li>
+  <li><a href="function.openal-device-close.html">openal_device_close</a></li>
+  <li><a href="function.openal-device-open.html">openal_device_open</a></li>
+  <li><a href="function.openal-listener-get.html">openal_listener_get</a></li>
+  <li><a href="function.openal-listener-set.html">openal_listener_set</a></li>
+  <li><a href="function.openal-source-create.html">openal_source_create</a></li>
+  <li><a href="function.openal-source-destroy.html">openal_source_destroy</a></li>
+  <li><a href="function.openal-source-get.html">openal_source_get</a></li>
+  <li><a href="function.openal-source-pause.html">openal_source_pause</a></li>
+  <li><a href="function.openal-source-play.html">openal_source_play</a></li>
+  <li><a href="function.openal-source-rewind.html">openal_source_rewind</a></li>
+  <li><a href="function.openal-source-set.html">openal_source_set</a></li>
+  <li><a href="function.openal-source-stop.html">openal_source_stop</a></li>
+  <li><a href="function.openal-stream.html">openal_stream</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.openal-buffer-loadwav.html">openal_buffer_loadwav</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.openal-context-current.html">openal_context_current</a></div>
+                <div class="up"><a href="ref.openal.html">OpenAL Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.openal-context-create" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">openal_context_create</h1>
+  <p class="refpurpose">
+   Create an audio processing context 
+  </p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.openal-context-create-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname">openal_context_create</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$device</code></span>
+   )</div>
+
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.openal-context-create-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">device</code></dt>
+
+    <dd>
+
+     <p class="para">
+      An <a href="openal.resources.html" class="link">Open AL(Device)</a> resource
+      (previously created by <span class="function">openal_device_open</span>).
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.openal-context-create-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns an <a href="openal.resources.html" class="link">Open AL(Context)</a> resource on success or
+   <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.openal-context-create-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">openal_device_open</span></li>
+    <li class="member"><span class="function">openal_context_destroy</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

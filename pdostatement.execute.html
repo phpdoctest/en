@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Executes a prepared statement</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.abstract.html">Abstraction Layers</a></li>
+  <li class="header up"><a href="book.pdo.html">PDO</a></li>
+  <li class="header up"><a href="class.pdostatement.html">PDOStatement</a></li>
+  <li><a href="pdostatement.bindcolumn.html">PDOStatement::bindColumn</a></li>
+  <li><a href="pdostatement.bindparam.html">PDOStatement::bindParam</a></li>
+  <li><a href="pdostatement.bindvalue.html">PDOStatement::bindValue</a></li>
+  <li><a href="pdostatement.closecursor.html">PDOStatement::closeCursor</a></li>
+  <li><a href="pdostatement.columncount.html">PDOStatement::columnCount</a></li>
+  <li><a href="pdostatement.debugdumpparams.html">PDOStatement::debugDumpParams</a></li>
+  <li><a href="pdostatement.errorcode.html">PDOStatement::errorCode</a></li>
+  <li><a href="pdostatement.errorinfo.html">PDOStatement::errorInfo</a></li>
+  <li class="active"><a href="pdostatement.execute.html">PDOStatement::execute</a></li>
+  <li><a href="pdostatement.fetch.html">PDOStatement::fetch</a></li>
+  <li><a href="pdostatement.fetchall.html">PDOStatement::fetchAll</a></li>
+  <li><a href="pdostatement.fetchcolumn.html">PDOStatement::fetchColumn</a></li>
+  <li><a href="pdostatement.fetchobject.html">PDOStatement::fetchObject</a></li>
+  <li><a href="pdostatement.getattribute.html">PDOStatement::getAttribute</a></li>
+  <li><a href="pdostatement.getcolumnmeta.html">PDOStatement::getColumnMeta</a></li>
+  <li><a href="pdostatement.nextrowset.html">PDOStatement::nextRowset</a></li>
+  <li><a href="pdostatement.rowcount.html">PDOStatement::rowCount</a></li>
+  <li><a href="pdostatement.setattribute.html">PDOStatement::setAttribute</a></li>
+  <li><a href="pdostatement.setfetchmode.html">PDOStatement::setFetchMode</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="pdostatement.errorinfo.html">PDOStatement::errorInfo</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="pdostatement.fetch.html">PDOStatement::fetch</a></div>
+                <div class="up"><a href="class.pdostatement.html">PDOStatement</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="pdostatement.execute" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">PDOStatement::execute</h1>
+  <p class="refpurpose">
+   Executes a prepared statement
+  </p>
+ </div>
+ <div class="refsect1 description" id="refsect1-pdostatement.execute-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">PDOStatement::execute</span>
+    ([ <span class="methodparam"><span class="type">array</span> <code class="parameter">$input_parameters</code></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Execute the <a href="pdo.prepared-statements.html" class="link">prepared
+   statement</a>. If the prepared statement included parameter markers, either:
+   <ul class="itemizedlist">
+    <li class="listitem"><p class="para"><span class="function">PDOStatement::bindParam</span> and/or
+     <span class="function">PDOStatement::bindValue</span> has to be called to bind either variables or
+     values (respectively) to the parameter markers. Bound variables pass
+     their value as input and receive the output value, if any, of their
+     associated parameter markers</p></li>
+    <li class="listitem">
+     <p class="para">or an array of input-only parameter values has to be passed</p>
+    </li>
+   </ul>
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-pdostatement.execute-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">input_parameters</code></dt>
+
+     <dd>
+
+      <p class="para">
+       An array of values with as many elements as there are bound
+       parameters in the SQL statement being executed.
+       All values are treated as <strong><code>PDO::PARAM_STR</code></strong>.
+      </p>
+      <p class="para">
+       Multiple values cannot be bound to a single parameter; for example,
+       it is not allowed to bind two values to a single named parameter in an IN()
+       clause.
+      </p>
+      <p class="para">
+       Binding more values than specified is not possible; if more keys exist in 
+       <code class="parameter">input_parameters</code> than in the SQL specified 
+       in the  <span class="methodname">PDO::prepare</span>, then the statement will 
+       fail and an error is emitted.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-pdostatement.execute-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> on success or <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-pdostatement.execute-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.2.0</td>
+       <td>
+        The keys from <code class="parameter">input_parameters</code> must match the ones 
+        declared in the SQL. Before PHP 5.2.0 this was silently ignored.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-pdostatement.execute-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-1032"><p><strong>Example #1 Execute a prepared statement with a bound variable and value</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;Execute&nbsp;a&nbsp;prepared&nbsp;statement&nbsp;by&nbsp;binding&nbsp;a&nbsp;variable&nbsp;and&nbsp;value&nbsp;*/<br /></span><span style="color: #0000BB">$calories&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">150</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$colour&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'gre'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$sth&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #DD0000">'SELECT&nbsp;name,&nbsp;colour,&nbsp;calories<br />&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;fruit<br />&nbsp;&nbsp;&nbsp;&nbsp;WHERE&nbsp;calories&nbsp;&lt;&nbsp;:calories&nbsp;AND&nbsp;colour&nbsp;LIKE&nbsp;:colour'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bindParam</span><span style="color: #007700">(</span><span style="color: #DD0000">':calories'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$calories</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">PARAM_INT</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bindValue</span><span style="color: #007700">(</span><span style="color: #DD0000">':colour'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"%</span><span style="color: #007700">{</span><span style="color: #0000BB">$colour</span><span style="color: #007700">}</span><span style="color: #DD0000">%"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+
+  <div class="example" id="example-1033"><p><strong>Example #2 Execute a prepared statement with an array of insert values (named parameters)</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;Execute&nbsp;a&nbsp;prepared&nbsp;statement&nbsp;by&nbsp;passing&nbsp;an&nbsp;array&nbsp;of&nbsp;insert&nbsp;values&nbsp;*/<br /></span><span style="color: #0000BB">$calories&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">150</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$colour&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'red'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$sth&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #DD0000">'SELECT&nbsp;name,&nbsp;colour,&nbsp;calories<br />&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;fruit<br />&nbsp;&nbsp;&nbsp;&nbsp;WHERE&nbsp;calories&nbsp;&lt;&nbsp;:calories&nbsp;AND&nbsp;colour&nbsp;=&nbsp;:colour'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">(array(</span><span style="color: #DD0000">':calories'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$calories</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">':colour'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$colour</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+
+  <div class="example" id="example-1034"><p><strong>Example #3 Execute a prepared statement with an array of insert values (placeholders)</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;Execute&nbsp;a&nbsp;prepared&nbsp;statement&nbsp;by&nbsp;passing&nbsp;an&nbsp;array&nbsp;of&nbsp;insert&nbsp;values&nbsp;*/<br /></span><span style="color: #0000BB">$calories&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">150</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$colour&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'red'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$sth&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #DD0000">'SELECT&nbsp;name,&nbsp;colour,&nbsp;calories<br />&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;fruit<br />&nbsp;&nbsp;&nbsp;&nbsp;WHERE&nbsp;calories&nbsp;&lt;&nbsp;?&nbsp;AND&nbsp;colour&nbsp;=&nbsp;?'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">(array(</span><span style="color: #0000BB">$calories</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$colour</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+
+  <div class="example" id="example-1035"><p><strong>Example #4 Execute a prepared statement with question mark placeholders</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;Execute&nbsp;a&nbsp;prepared&nbsp;statement&nbsp;by&nbsp;binding&nbsp;PHP&nbsp;variables&nbsp;*/<br /></span><span style="color: #0000BB">$calories&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">150</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$colour&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'red'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$sth&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #DD0000">'SELECT&nbsp;name,&nbsp;colour,&nbsp;calories<br />&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;fruit<br />&nbsp;&nbsp;&nbsp;&nbsp;WHERE&nbsp;calories&nbsp;&lt;&nbsp;?&nbsp;AND&nbsp;colour&nbsp;=&nbsp;?'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bindParam</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$calories</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">PARAM_INT</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bindParam</span><span style="color: #007700">(</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$colour</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">PARAM_STR</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">12</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+
+  <div class="example" id="example-1036"><p><strong>Example #5 Execute a prepared statement using array for IN clause</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;Execute&nbsp;a&nbsp;prepared&nbsp;statement&nbsp;using&nbsp;an&nbsp;array&nbsp;of&nbsp;values&nbsp;for&nbsp;an&nbsp;IN&nbsp;clause&nbsp;*/<br /></span><span style="color: #0000BB">$params&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">21</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">63</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">171</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">/*&nbsp;Create&nbsp;a&nbsp;string&nbsp;for&nbsp;the&nbsp;parameter&nbsp;placeholders&nbsp;filled&nbsp;to&nbsp;the&nbsp;number&nbsp;of&nbsp;params&nbsp;*/<br /></span><span style="color: #0000BB">$place_holders&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">implode</span><span style="color: #007700">(</span><span style="color: #DD0000">','</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">array_fill</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$params</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">'?'</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">/*<br />&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;prepares&nbsp;the&nbsp;statement&nbsp;with&nbsp;enough&nbsp;unnamed&nbsp;placeholders&nbsp;for&nbsp;every&nbsp;value<br />&nbsp;&nbsp;&nbsp;&nbsp;in&nbsp;our&nbsp;$params&nbsp;array.&nbsp;The&nbsp;values&nbsp;of&nbsp;the&nbsp;$params&nbsp;array&nbsp;are&nbsp;then&nbsp;bound&nbsp;to&nbsp;the<br />&nbsp;&nbsp;&nbsp;&nbsp;placeholders&nbsp;in&nbsp;the&nbsp;prepared&nbsp;statement&nbsp;when&nbsp;the&nbsp;statement&nbsp;is&nbsp;executed.<br />&nbsp;&nbsp;&nbsp;&nbsp;This&nbsp;is&nbsp;not&nbsp;the&nbsp;same&nbsp;thing&nbsp;as&nbsp;using&nbsp;PDOStatement::bindParam()&nbsp;since&nbsp;this<br />&nbsp;&nbsp;&nbsp;&nbsp;requires&nbsp;a&nbsp;reference&nbsp;to&nbsp;the&nbsp;variable.&nbsp;PDOStatement::execute()&nbsp;only&nbsp;binds<br />&nbsp;&nbsp;&nbsp;&nbsp;by&nbsp;value&nbsp;instead.<br />*/<br /></span><span style="color: #0000BB">$sth&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;id,&nbsp;name&nbsp;FROM&nbsp;contacts&nbsp;WHERE&nbsp;id&nbsp;IN&nbsp;(</span><span style="color: #0000BB">$place_holders</span><span style="color: #DD0000">)"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$params</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-pdostatement.execute-notes">
+  <h3 class="title">Notes</h3>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    Some drivers require to <a href="pdostatement.closecursor.html" class="link">close
+    cursor</a> before executing next statement.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-pdostatement.execute-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">PDO::prepare</span></li>
+    <li class="member"><span class="function">PDOStatement::bindParam</span></li>
+    <li class="member"><span class="function">PDOStatement::fetch</span></li>
+    <li class="member"><span class="function">PDOStatement::fetchAll</span></li>
+    <li class="member"><span class="function">PDOStatement::fetchColumn</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

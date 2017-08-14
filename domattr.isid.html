@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Checks if attribute is a defined ID</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.xml.html">XML Manipulation</a></li>
+  <li class="header up"><a href="book.dom.html">DOM</a></li>
+  <li class="header up"><a href="class.domattr.html">DOMAttr</a></li>
+  <li><a href="domattr.construct.html">DOMAttr::__construct</a></li>
+  <li class="active"><a href="domattr.isid.html">DOMAttr::isId</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="domattr.construct.html">DOMAttr::__construct</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="class.domcdatasection.html">DOMCdataSection</a></div>
+                <div class="up"><a href="class.domattr.html">DOMAttr</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="domattr.isid" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DOMAttr::isId</h1>
+  <p class="refpurpose">
+   Checks if attribute is a defined ID
+  </p>
+ </div>
+ <div class="refsect1 description" id="refsect1-domattr.isid-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMAttr::isId</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   This function checks if the attribute is a defined ID.
+  </p>
+  <p class="para">
+   According to the DOM standard this requires a DTD which defines the 
+   attribute ID to be of type ID. You need to validate your document with
+   <a href="domdocument.validate.html" class="xref">DOMDocument::validate</a> 
+   or <em>DOMDocument::validateOnParse</em> before using this function.
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-domattr.isid-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> on success or <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-domattr.isid-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example.com2">
+    <p><strong>Example #1 DOMAttr::isId() Example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$doc&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DomDocument</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;We&nbsp;need&nbsp;to&nbsp;validate&nbsp;our&nbsp;document&nbsp;before&nbsp;refering&nbsp;to&nbsp;the&nbsp;id<br /></span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">validateOnParse&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">Load</span><span style="color: #007700">(</span><span style="color: #DD0000">'book.xml'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;We&nbsp;retrieve&nbsp;the&nbsp;attribute&nbsp;named&nbsp;id&nbsp;of&nbsp;the&nbsp;chapter&nbsp;element<br /></span><span style="color: #0000BB">$attr&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getElementsByTagName</span><span style="color: #007700">(</span><span style="color: #DD0000">'chapter'</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">item</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">getAttributeNode</span><span style="color: #007700">(</span><span style="color: #DD0000">'id'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$attr</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isId</span><span style="color: #007700">());&nbsp;</span><span style="color: #FF8000">//&nbsp;bool(true)<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

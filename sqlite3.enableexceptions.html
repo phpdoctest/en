@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Enable throwing exceptions</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.sqlite3.html">SQLite3</a></li>
+  <li class="header up"><a href="class.sqlite3.html">SQLite3</a></li>
+  <li><a href="sqlite3.busytimeout.html">SQLite3::busyTimeout</a></li>
+  <li><a href="sqlite3.changes.html">SQLite3::changes</a></li>
+  <li><a href="sqlite3.close.html">SQLite3::close</a></li>
+  <li><a href="sqlite3.construct.html">SQLite3::__construct</a></li>
+  <li><a href="sqlite3.createaggregate.html">SQLite3::createAggregate</a></li>
+  <li><a href="sqlite3.createcollation.html">SQLite3::createCollation</a></li>
+  <li><a href="sqlite3.createfunction.html">SQLite3::createFunction</a></li>
+  <li class="active"><a href="sqlite3.enableexceptions.html">SQLite3::enableExceptions</a></li>
+  <li><a href="sqlite3.escapestring.html">SQLite3::escapeString</a></li>
+  <li><a href="sqlite3.exec.html">SQLite3::exec</a></li>
+  <li><a href="sqlite3.lasterrorcode.html">SQLite3::lastErrorCode</a></li>
+  <li><a href="sqlite3.lasterrormsg.html">SQLite3::lastErrorMsg</a></li>
+  <li><a href="sqlite3.lastinsertrowid.html">SQLite3::lastInsertRowID</a></li>
+  <li><a href="sqlite3.loadextension.html">SQLite3::loadExtension</a></li>
+  <li><a href="sqlite3.open.html">SQLite3::open</a></li>
+  <li><a href="sqlite3.openblob.html">SQLite3::openBlob</a></li>
+  <li><a href="sqlite3.prepare.html">SQLite3::prepare</a></li>
+  <li><a href="sqlite3.query.html">SQLite3::query</a></li>
+  <li><a href="sqlite3.querysingle.html">SQLite3::querySingle</a></li>
+  <li><a href="sqlite3.version.html">SQLite3::version</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="sqlite3.createfunction.html">SQLite3::createFunction</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="sqlite3.escapestring.html">SQLite3::escapeString</a></div>
+                <div class="up"><a href="class.sqlite3.html">SQLite3</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="sqlite3.enableexceptions" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SQLite3::enableExceptions</h1>
+  <p class="refpurpose">
+   Enable throwing exceptions
+  </p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-sqlite3.enableexceptions-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">SQLite3::enableExceptions</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$enableExceptions</code><span class="initializer"> = false</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Controls whether the <span class="classname">SQLite3</span> instance will
+   throw exceptions or warnings on error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-sqlite3.enableexceptions-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">enable</code></dt>
+
+    <dd>
+
+     <p class="para">
+      When <strong><code>TRUE</code></strong>, the <span class="classname">SQLite3</span> instance, and 
+      <span class="classname">SQLite3Stmt</span> and <span class="classname">SQLite3Result</span>
+      instances derived from it, will throw exceptions on error.
+     </p>
+     <p class="para">
+      When <strong><code>FALSE</code></strong>, the <span class="classname">SQLite3</span> instance, and
+      <span class="classname">SQLite3Stmt</span> and <span class="classname">SQLite3Result</span>
+      instances derived from it, will raise warnings on error.
+     </p>
+     <p class="para">
+      For either mode, the error code and message, if any, will be available via
+       <span class="methodname">SQLite3::lastErrorCode</span> and
+       <span class="methodname">SQLite3::lastErrorMsg</span> respectively.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-sqlite3.enableexceptions-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the old value; <strong><code>TRUE</code></strong> if exceptions were enabled, <strong><code>FALSE</code></strong> otherwise.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-sqlite3.enableexceptions-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-2402">
+   <p><strong>Example #1  <span class="methodname">SQLite3::enableExceptions</span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$sqlite&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SQLite3</span><span style="color: #007700">(</span><span style="color: #DD0000">':memory:'</span><span style="color: #007700">);<br />try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sqlite</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">exec</span><span style="color: #007700">(</span><span style="color: #DD0000">'create&nbsp;table&nbsp;foo'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sqlite</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">enableExceptions</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sqlite</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">exec</span><span style="color: #007700">(</span><span style="color: #DD0000">'create&nbsp;table&nbsp;bar'</span><span style="color: #007700">);<br />}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">Exception&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Caught&nbsp;exception:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">();<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Warning: SQLite3::exec(): near &quot;foo&quot;: syntax error in example.php on line 4
+Caught exception: near &quot;bar&quot;: syntax error
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,126 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Close the session</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.session.html">Session Extensions</a></li>
+  <li class="header up"><a href="book.session.html">Sessions</a></li>
+  <li class="header up"><a href="class.sessionhandler.html">SessionHandler</a></li>
+  <li class="active"><a href="sessionhandler.close.html">SessionHandler::close</a></li>
+  <li><a href="sessionhandler.create-sid.html">SessionHandler::create_sid</a></li>
+  <li><a href="sessionhandler.destroy.html">SessionHandler::destroy</a></li>
+  <li><a href="sessionhandler.gc.html">SessionHandler::gc</a></li>
+  <li><a href="sessionhandler.open.html">SessionHandler::open</a></li>
+  <li><a href="sessionhandler.read.html">SessionHandler::read</a></li>
+  <li><a href="sessionhandler.write.html">SessionHandler::write</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="class.sessionhandler.html">SessionHandler</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="sessionhandler.create-sid.html">SessionHandler::create_sid</a></div>
+                <div class="up"><a href="class.sessionhandler.html">SessionHandler</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="sessionhandler.close" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SessionHandler::close</h1>
+  <p class="refpurpose">Close the session</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-sessionhandler.close-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">SessionHandler::close</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Closes the current session. This method is automatically executed internally by PHP when
+   closing the session, or explicitly via <span class="function">session_write_close</span> (which
+   first calls the <span class="function">SessionHandler::write</span>).
+  </p>
+  <p class="para">
+   This method wraps the internal PHP save handler defined in the
+   <a href="session.configuration.html#ini.session.save-handler" class="link">session.save_handler</a> ini setting that was set
+   before this handler was activated by <span class="function">session_set_save_handler</span>.
+  </p>
+  <p class="para">
+   If this class is extended by inheritiance, calling the parent <code class="parameter">close</code> method will invoke the
+   wrapper for this method and therefor invoke the associated internal callback.  This allows the method to be
+   overidden and or intercepted.
+  </p>
+  <p class="para">
+   For more information on what this method is expected to do, please refer to the documentation at
+   <span class="function">SessionHandlerInterface::close</span>.
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-sessionhandler.close-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">This function has no parameters.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-sessionhandler.close-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   The return value (usually <strong><code>TRUE</code></strong> on success, <strong><code>FALSE</code></strong> on failure). Note this value is returned internally to PHP for processing.
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

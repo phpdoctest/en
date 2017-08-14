@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Provides an array or document to serialize as BSON</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="set.mongodb.html">MongoDB</a></li>
+  <li class="header up"><a href="book.bson.html">MongoDB\BSON</a></li>
+  <li class="header up"><a href="class.mongodb-bson-serializable.html">MongoDB\BSON\Serializable</a></li>
+  <li class="active"><a href="mongodb-bson-serializable.bsonserialize.html">MongoDB\BSON\Serializable::bsonSerialize</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="class.mongodb-bson-serializable.html">MongoDB\BSON\Serializable</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="class.mongodb-bson-unserializable.html">MongoDB\BSON\Unserializable</a></div>
+                <div class="up"><a href="class.mongodb-bson-serializable.html">MongoDB\BSON\Serializable</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mongodb-bson-serializable.bsonserialize" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">MongoDB\BSON\Serializable::bsonSerialize</h1>
+  <p class="refpurpose">Provides an array or document to serialize as BSON</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mongodb-bson-serializable.bsonserialize-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">array|object</span> <span class="methodname">MongoDB\BSON\Serializable::bsonSerialize</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Called during serialization of the object to BSON. The method must return an
+   <span class="type">array</span> or <span class="classname">stdClass</span>.
+  </p>
+  <p class="para">
+   Root documents (e.g. a <span class="classname">MongoDB\BSON\Serializable</span>
+   passed to <span class="function">MongoDB\BSON\fromPHP</span>) will always be
+   serialized as a BSON document. For field values, associative arrays and
+   <span class="classname">stdClass</span> instances will be serialized as a BSON
+   document and sequential arrays (i.e. sequential, numeric indexes starting at
+   <em>0</em>) will be serialized as a BSON array.
+  </p>
+  <p class="para">
+   Users are encouraged to include an <span class="property">_id</span> property (e.g. a
+   <span class="classname">MongoDB\BSON\ObjectID</span> initialized in your constructor)
+   when returning data for a BSON root document; otherwise, the driver or
+   database will need to generate a
+   <span class="classname">MongoDB\BSON\ObjectID</span> when inserting or upserting the
+   document, respectively.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mongodb-bson-serializable.bsonserialize-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">This function has no parameters.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-mongodb-bson-serializable.bsonserialize-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   An <span class="type">array</span> or <span class="classname">stdClass</span> to be serialized as
+   a BSON array or document.
+  </p>
+ </div>
+
+
+
+ <div class="refsect1 examples" id="refsect1-mongodb-bson-serializable.bsonserialize-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-1739">
+   <p><strong>Example #1 <span class="function">MongoDB\BSON\Serializable::bsonSerialize</span> returning an associative array for root document</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyDocument&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">Serializable<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$id</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">id&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">ObjectID</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">bsonSerialize</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[</span><span style="color: #DD0000">'_id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">id</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'foo'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'bar'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$bson&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">fromPHP</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">MyDocument</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">toJSON</span><span style="color: #007700">(</span><span style="color: #0000BB">$bson</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+{ &quot;_id&quot; : { &quot;$oid&quot; : &quot;56cccdcada14d8755a58c591&quot; }, &quot;foo&quot; : &quot;bar&quot; }
+</pre></div>
+   </div>
+  </div>
+
+  <div class="example" id="example-1740">
+   <p><strong>Example #2 <span class="function">MongoDB\BSON\Serializable::bsonSerialize</span> returning a sequential array for root document</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyArray&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">Serializable<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">bsonSerialize</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$bson&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">fromPHP</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">MyArray</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">toJSON</span><span style="color: #007700">(</span><span style="color: #0000BB">$bson</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+{ &quot;0&quot; : 1, &quot;1&quot; : 2, &quot;2&quot; : 3 }
+</pre></div>
+   </div>
+  </div>
+
+  <div class="example" id="example-1741">
+   <p><strong>Example #3 <span class="function">MongoDB\BSON\Serializable::bsonSerialize</span> returning an associative array for document field</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyDocument&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">Serializable<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">bsonSerialize</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[</span><span style="color: #DD0000">'foo'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'bar'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$value&nbsp;</span><span style="color: #007700">=&nbsp;[</span><span style="color: #DD0000">'document'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;new&nbsp;</span><span style="color: #0000BB">MyDocument</span><span style="color: #007700">];<br /></span><span style="color: #0000BB">$bson&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">fromPHP</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">toJSON</span><span style="color: #007700">(</span><span style="color: #0000BB">$bson</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+{ &quot;document&quot; : { &quot;foo&quot; : &quot;bar&quot; } }
+</pre></div>
+   </div>
+  </div>
+
+  <div class="example" id="example-1742">
+   <p><strong>Example #4 <span class="function">MongoDB\BSON\Serializable::bsonSerialize</span> returning a sequential array for document field</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyArray&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">Serializable<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">bsonSerialize</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;[</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$value&nbsp;</span><span style="color: #007700">=&nbsp;[</span><span style="color: #DD0000">'array'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;new&nbsp;</span><span style="color: #0000BB">MyArray</span><span style="color: #007700">];<br /></span><span style="color: #0000BB">$bson&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">fromPHP</span><span style="color: #007700">(</span><span style="color: #0000BB">$value</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">toJSON</span><span style="color: #007700">(</span><span style="color: #0000BB">$bson</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+{ &quot;array&quot; : [ 1, 2, 3 ] }
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+
+ <div class="refsect1 seealso" id="refsect1-mongodb-bson-serializable.bsonserialize-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li class="member"><span class="function">MongoDB\BSON\Unserializable::bsonUnserialize</span></li>
+   <li class="member"><span class="classname">MongoDB\BSON\Persistable</span></li>
+   <li class="member"><a href="mongodb.persistence.html" class="xref">Persisting Data</a></li>
+  </ul>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

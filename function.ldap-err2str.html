@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Convert LDAP error number into string error message</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li class="header up"><a href="book.ldap.html">LDAP</a></li>
+  <li class="header up"><a href="ref.ldap.html">LDAP Functions</a></li>
+  <li><a href="function.ldap-8859-to-t61.html">ldap_8859_to_t61</a></li>
+  <li><a href="function.ldap-add.html">ldap_add</a></li>
+  <li><a href="function.ldap-bind.html">ldap_bind</a></li>
+  <li><a href="function.ldap-close.html">ldap_close</a></li>
+  <li><a href="function.ldap-compare.html">ldap_compare</a></li>
+  <li><a href="function.ldap-connect.html">ldap_connect</a></li>
+  <li><a href="function.ldap-control-paged-result-response.html">ldap_control_paged_result_response</a></li>
+  <li><a href="function.ldap-control-paged-result.html">ldap_control_paged_result</a></li>
+  <li><a href="function.ldap-count-entries.html">ldap_count_entries</a></li>
+  <li><a href="function.ldap-delete.html">ldap_delete</a></li>
+  <li><a href="function.ldap-dn2ufn.html">ldap_dn2ufn</a></li>
+  <li class="active"><a href="function.ldap-err2str.html">ldap_err2str</a></li>
+  <li><a href="function.ldap-errno.html">ldap_errno</a></li>
+  <li><a href="function.ldap-error.html">ldap_error</a></li>
+  <li><a href="function.ldap-escape.html">ldap_escape</a></li>
+  <li><a href="function.ldap-explode-dn.html">ldap_explode_dn</a></li>
+  <li><a href="function.ldap-first-attribute.html">ldap_first_attribute</a></li>
+  <li><a href="function.ldap-first-entry.html">ldap_first_entry</a></li>
+  <li><a href="function.ldap-first-reference.html">ldap_first_reference</a></li>
+  <li><a href="function.ldap-free-result.html">ldap_free_result</a></li>
+  <li><a href="function.ldap-get-attributes.html">ldap_get_attributes</a></li>
+  <li><a href="function.ldap-get-dn.html">ldap_get_dn</a></li>
+  <li><a href="function.ldap-get-entries.html">ldap_get_entries</a></li>
+  <li><a href="function.ldap-get-option.html">ldap_get_option</a></li>
+  <li><a href="function.ldap-get-values-len.html">ldap_get_values_len</a></li>
+  <li><a href="function.ldap-get-values.html">ldap_get_values</a></li>
+  <li><a href="function.ldap-list.html">ldap_list</a></li>
+  <li><a href="function.ldap-mod-add.html">ldap_mod_add</a></li>
+  <li><a href="function.ldap-mod-del.html">ldap_mod_del</a></li>
+  <li><a href="function.ldap-mod-replace.html">ldap_mod_replace</a></li>
+  <li><a href="function.ldap-modify-batch.html">ldap_modify_batch</a></li>
+  <li><a href="function.ldap-modify.html">ldap_modify</a></li>
+  <li><a href="function.ldap-next-attribute.html">ldap_next_attribute</a></li>
+  <li><a href="function.ldap-next-entry.html">ldap_next_entry</a></li>
+  <li><a href="function.ldap-next-reference.html">ldap_next_reference</a></li>
+  <li><a href="function.ldap-parse-reference.html">ldap_parse_reference</a></li>
+  <li><a href="function.ldap-parse-result.html">ldap_parse_result</a></li>
+  <li><a href="function.ldap-read.html">ldap_read</a></li>
+  <li><a href="function.ldap-rename.html">ldap_rename</a></li>
+  <li><a href="function.ldap-sasl-bind.html">ldap_sasl_bind</a></li>
+  <li><a href="function.ldap-search.html">ldap_search</a></li>
+  <li><a href="function.ldap-set-option.html">ldap_set_option</a></li>
+  <li><a href="function.ldap-set-rebind-proc.html">ldap_set_rebind_proc</a></li>
+  <li><a href="function.ldap-sort.html">ldap_sort</a></li>
+  <li><a href="function.ldap-start-tls.html">ldap_start_tls</a></li>
+  <li><a href="function.ldap-t61-to-8859.html">ldap_t61_to_8859</a></li>
+  <li><a href="function.ldap-unbind.html">ldap_unbind</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.ldap-dn2ufn.html">ldap_dn2ufn</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.ldap-errno.html">ldap_errno</a></div>
+                <div class="up"><a href="ref.ldap.html">LDAP Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.ldap-err2str" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ldap_err2str</h1>
+  <p class="refpurpose">Convert LDAP error number into string error message</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.ldap-err2str-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname">ldap_err2str</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$errno</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Returns the string error message explaining the error number
+   <code class="parameter">errno</code>. While LDAP errno numbers are standardized,
+   different libraries return different or even localized textual error
+   messages. Never check for a specific error message text, but always use an
+   error number to check.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.ldap-err2str-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">errno</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The error number.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.ldap-err2str-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the error message, as a string.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.ldap-err2str-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4944">
+    <p><strong>Example #1 Enumerating all LDAP error messages</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;</span><span style="color: #007700">for&nbsp;(</span><span style="color: #0000BB">$i</span><span style="color: #007700">=</span><span style="color: #0000BB">0</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">&lt;</span><span style="color: #0000BB">100</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Error&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #DD0000">:&nbsp;%s&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">ldap_err2str</span><span style="color: #007700">(</span><span style="color: #0000BB">$i</span><span style="color: #007700">));<br />&nbsp;&nbsp;}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.ldap-err2str-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">ldap_errno</span></li>
+    <li class="member"><span class="function">ldap_error</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

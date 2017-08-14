@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Firebird Functions (PDO_FIREBIRD)</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.abstract.html">Abstraction Layers</a></li>
+  <li class="header up"><a href="book.pdo.html">PDO</a></li>
+  <li class="header up"><a href="pdo.drivers.html">PDO Drivers</a></li>
+  <li><a href="ref.pdo-cubrid.html">CUBRID (PDO)</a></li>
+  <li><a href="ref.pdo-dblib.html">MS SQL Server (PDO)</a></li>
+  <li class="active"><a href="ref.pdo-firebird.html">Firebird (PDO)</a></li>
+  <li><a href="ref.pdo-ibm.html">IBM (PDO)</a></li>
+  <li><a href="ref.pdo-informix.html">Informix (PDO)</a></li>
+  <li><a href="ref.pdo-mysql.html">MySQL (PDO)</a></li>
+  <li><a href="ref.pdo-sqlsrv.html">MS SQL Server (PDO)</a></li>
+  <li><a href="ref.pdo-oci.html">Oracle (PDO)</a></li>
+  <li><a href="ref.pdo-odbc.html">ODBC and DB2 (PDO)</a></li>
+  <li><a href="ref.pdo-pgsql.html">PostgreSQL (PDO)</a></li>
+  <li><a href="ref.pdo-sqlite.html">SQLite (PDO)</a></li>
+  <li><a href="ref.pdo-4d.html">4D (PDO)</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="ref.pdo-dblib.connection.html">PDO_DBLIB DSN</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="ref.pdo-firebird.connection.html">PDO_FIREBIRD DSN</a></div>
+                <div class="up"><a href="pdo.drivers.html">PDO Drivers</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="ref.pdo-firebird" class="reference">
+  
+  <h1 class="title">Firebird Functions (PDO_FIREBIRD)</h1>
+  
+  <div class="partintro">
+
+   <div class="section" id="pdo-firebird.intro">
+   <h2 class="title">Introduction</h2>
+    <p class="para">
+     PDO_FIREBIRD is a driver that implements the PHP Data Objects (PDO)
+     interface to enable access from PHP to Firebird database.
+    </p>
+   </div>
+   
+
+<div class="section" id="ref.pdo-firebird.installation">
+ <h2 class="title">Installation</h2>
+ <p class="para">
+  Use <strong class="option configure">--with-pdo-firebird[=DIR]</strong>
+ to install
+  the PDO Firebird extension, where the optional <em>[=DIR]</em>
+  is the Firebird base install directory.
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+$ ./configure --with-pdo-firebird
+</pre></div>
+  </div>
+ </p>
+</div>
+
+
+
+   
+
+<div class="section" id="pdo-firebird.constants">
+ <h2 class="title">Predefined Constants</h2>
+ <p class="simpara">The constants below are defined by
+this driver, and will only be available when the extension has been either
+compiled into PHP or dynamically loaded at runtime. In addition, these
+driver-specific constants should only be used if you are using this driver.
+Using driver-specific attributes with another driver may result in
+unexpected behaviour. <span class="function">PDO::getAttribute</span> may be used to
+obtain the <strong><code>PDO_ATTR_DRIVER_NAME</code></strong> attribute to check the
+driver, if your code can run against multiple drivers.</p>
+ <dl>
+
+  
+   <dt id="pdo.constants.fb-attr-date-format">
+    <strong><code>PDO::FB_ATTR_DATE_FORMAT</code></strong>
+     (<span class="type">integer</span>)
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     Available since PHP 5.3.0.
+    </p>
+    <p class="para">
+     Sets the date format.
+    </p>
+   </dd>
+
+  
+  
+   <dt id="pdo.constants.fb-attr-time-format">
+    <strong><code>PDO::FB_ATTR_TIME_FORMAT</code></strong>
+     (<span class="type">integer</span>)
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     Sets the time format.
+    </p>
+    <p class="para">
+     Available since PHP 5.3.0.
+    </p>
+   </dd>
+
+  
+  
+   <dt id="pdo.constants.fb-attr-timestamp-format">
+    <strong><code>PDO::FB_ATTR_TIMESTAMP_FORMAT</code></strong>
+     (<span class="type">integer</span>)
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     Sets the timestamp format.
+    </p>
+    <p class="para">
+     Available since PHP 5.3.0.
+    </p>
+   </dd>
+
+  
+ </dl>
+
+</div>
+
+
+
+  </div>
+
+  
+
+ <strong>Table of Contents</strong><ul class="chunklist chunklist_reference">
+<li><a href="ref.pdo-firebird.connection.html">PDO_FIREBIRD DSN</a> — Connecting to Firebird databases</li>
+</ul>
+</ol>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

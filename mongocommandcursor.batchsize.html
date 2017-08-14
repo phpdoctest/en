@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Limits the number of elements returned in one batch.</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.mongo.html">Mongo</a></li>
+  <li class="header up"><a href="mongo.core.html">Core Classes</a></li>
+  <li class="header up"><a href="class.mongocommandcursor.html">MongoCommandCursor</a></li>
+  <li class="active"><a href="mongocommandcursor.batchsize.html">MongoCommandCursor::batchSize</a></li>
+  <li><a href="mongocommandcursor.construct.html">MongoCommandCursor::__construct</a></li>
+  <li><a href="mongocommandcursor.createfromdocument.html">MongoCommandCursor::createFromDocument</a></li>
+  <li><a href="mongocommandcursor.current.html">MongoCommandCursor::current</a></li>
+  <li><a href="mongocommandcursor.dead.html">MongoCommandCursor::dead</a></li>
+  <li><a href="mongocommandcursor.getreadpreference.html">MongoCommandCursor::getReadPreference</a></li>
+  <li><a href="mongocommandcursor.info.html">MongoCommandCursor::info</a></li>
+  <li><a href="mongocommandcursor.key.html">MongoCommandCursor::key</a></li>
+  <li><a href="mongocommandcursor.next.html">MongoCommandCursor::next</a></li>
+  <li><a href="mongocommandcursor.rewind.html">MongoCommandCursor::rewind</a></li>
+  <li><a href="mongocommandcursor.setreadpreference.html">MongoCommandCursor::setReadPreference</a></li>
+  <li><a href="mongocommandcursor.timeout.html">MongoCommandCursor::timeout</a></li>
+  <li><a href="mongocommandcursor.valid.html">MongoCommandCursor::valid</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="class.mongocommandcursor.html">MongoCommandCursor</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mongocommandcursor.construct.html">MongoCommandCursor::__construct</a></div>
+                <div class="up"><a href="class.mongocommandcursor.html">MongoCommandCursor</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mongocommandcursor.batchsize" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">MongoCommandCursor::batchSize</h1>
+  <p class="refpurpose">Limits the number of elements returned in one batch.</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mongocommandcursor.batchsize-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">MongoCommandCursor</span> <span class="methodname">MongoCommandCursor::batchSize</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$batchSize</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   A cursor typically fetches a batch of result objects and store them
+   locally. This method sets the batchSize value to configure the amount of
+   documents retrieved from the server in one round trip.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mongocommandcursor.batchsize-parameters">
+  <h3 class="title">Parameters</h3>  
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+
+      <code class="parameter">batchSize</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       The number of results to return per batch. Each batch requires a
+       round-trip to the server. 
+      </p>
+      <p class="para">
+       This cannot override MongoDB&#039;s limit on the amount of data it will return to 
+       the client (i.e., if you set batch size to 1,000,000,000, MongoDB will still 
+       only return 4-16MB of results per batch). 
+      </p>
+     </dd>
+
+       
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-mongocommandcursor.batchsize-returnvalues">
+  <h3 class="title">Return Values</h3>  
+  <p class="para">
+   Returns this cursor.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-mongocommandcursor.batchsize-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-1599">
+   <p><strong>Example #1 <span class="function">MongoCommandCursor::batchSize</span></strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$commandCursor</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">batchSize</span><span style="color: #007700">(</span><span style="color: #0000BB">20</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-mongocommandcursor.batchsize-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li class="member"> <span class="methodname">MongoCursorInterface::batchSize</span></li>
+  </ul>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

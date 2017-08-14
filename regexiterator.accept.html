@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Get accept status</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.spl.html">SPL</a></li>
+  <li class="header up"><a href="spl.iterators.html">Iterators</a></li>
+  <li class="header up"><a href="class.regexiterator.html">RegexIterator</a></li>
+  <li class="active"><a href="regexiterator.accept.html">RegexIterator::accept</a></li>
+  <li><a href="regexiterator.construct.html">RegexIterator::__construct</a></li>
+  <li><a href="regexiterator.getflags.html">RegexIterator::getFlags</a></li>
+  <li><a href="regexiterator.getmode.html">RegexIterator::getMode</a></li>
+  <li><a href="regexiterator.getpregflags.html">RegexIterator::getPregFlags</a></li>
+  <li><a href="regexiterator.getregex.html">RegexIterator::getRegex</a></li>
+  <li><a href="regexiterator.setflags.html">RegexIterator::setFlags</a></li>
+  <li><a href="regexiterator.setmode.html">RegexIterator::setMode</a></li>
+  <li><a href="regexiterator.setpregflags.html">RegexIterator::setPregFlags</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="class.regexiterator.html">RegexIterator</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="regexiterator.construct.html">RegexIterator::__construct</a></div>
+                <div class="up"><a href="class.regexiterator.html">RegexIterator</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="regexiterator.accept" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">RegexIterator::accept</h1>
+  <p class="refpurpose">Get accept status</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-regexiterator.accept-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">RegexIterator::accept</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Matches <em>(string)</em>  <span class="methodname">RegexIterator::current</span>
+   (or  <span class="methodname">RegexIterator::key</span> if the
+   <a href="class.regexiterator.html#regexiterator.constants.use-key" class="link">RegexIterator::USE_KEY</a> flag is set)
+   against the regular expression.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-regexiterator.accept-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">This function has no parameters.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-regexiterator.accept-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   <strong><code>TRUE</code></strong> if a match, <strong><code>FALSE</code></strong> otherwise.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-regexiterator.accept-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="multipleiterator.example.basic">
+    <p><strong>Example #1  <span class="methodname">RegexIterator::accept</span> example</strong></p>
+    <div class="example-contents"><p>
+     This example shows that only items matching the regular expression are accepted.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$names&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">ArrayIterator</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'Ann'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Bob'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Charlie'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'David'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">$filter&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">RegexIterator</span><span style="color: #007700">(</span><span style="color: #0000BB">$names</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'/^[B-D]/'</span><span style="color: #007700">);<br />foreach&nbsp;(</span><span style="color: #0000BB">$filter&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$name</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$name&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Bob
+Charlie
+David
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-regexiterator.accept-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="class.regexiterator.html#regexiterator.constants" class="link">RegexIterator constants</a></li>
+    <li class="member"> <span class="methodname">RegexIterator::setFlags</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

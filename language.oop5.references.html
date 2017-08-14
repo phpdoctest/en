@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Objects and references</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="langref.html">Language Reference</a></li>
+  <li class="header up"><a href="language.oop5.html">Classes and Objects</a></li>
+  <li><a href="oop5.intro.html">Introduction</a></li>
+  <li><a href="language.oop5.basic.html">The Basics</a></li>
+  <li><a href="language.oop5.properties.html">Properties</a></li>
+  <li><a href="language.oop5.constants.html">Class Constants</a></li>
+  <li><a href="language.oop5.autoload.html">Autoloading Classes</a></li>
+  <li><a href="language.oop5.decon.html">Constructors and Destructors</a></li>
+  <li><a href="language.oop5.visibility.html">Visibility</a></li>
+  <li><a href="language.oop5.inheritance.html">Object Inheritance</a></li>
+  <li><a href="language.oop5.paamayim-nekudotayim.html">Scope Resolution Operator (::)</a></li>
+  <li><a href="language.oop5.static.html">Static Keyword</a></li>
+  <li><a href="language.oop5.abstract.html">Class Abstraction</a></li>
+  <li><a href="language.oop5.interfaces.html">Object Interfaces</a></li>
+  <li><a href="language.oop5.traits.html">Traits</a></li>
+  <li><a href="language.oop5.anonymous.html">Anonymous classes</a></li>
+  <li><a href="language.oop5.overloading.html">Overloading</a></li>
+  <li><a href="language.oop5.iterations.html">Object Iteration</a></li>
+  <li><a href="language.oop5.magic.html">Magic Methods</a></li>
+  <li><a href="language.oop5.final.html">Final Keyword</a></li>
+  <li><a href="language.oop5.cloning.html">Object Cloning</a></li>
+  <li><a href="language.oop5.object-comparison.html">Comparing Objects</a></li>
+  <li><a href="language.oop5.typehinting.html">Type Hinting</a></li>
+  <li><a href="language.oop5.late-static-bindings.html">Late Static Bindings</a></li>
+  <li class="active"><a href="language.oop5.references.html">Objects and references</a></li>
+  <li><a href="language.oop5.serialization.html">Object Serialization</a></li>
+  <li><a href="language.oop5.changelog.html">OOP Changelog</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="language.oop5.late-static-bindings.html">Late Static Bindings</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="language.oop5.serialization.html">Object Serialization</a></div>
+                <div class="up"><a href="language.oop5.html">Classes and Objects</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="language.oop5.references" class="sect1">
+  <h2 class="title">Objects and references</h2>
+  <p class="para">
+   One of the key-points of PHP 5 OOP that is often mentioned is that 
+   &quot;objects are passed by references by default&quot;. This is not completely true. 
+   This section rectifies that general thought using some examples.
+  </p>
+
+  <p class="para">
+   A PHP reference is an alias, which allows two different variables to write
+   to the same value. As of PHP 5, an object variable doesn&#039;t contain the object
+   itself as value anymore. It only contains an object identifier which allows
+   object accessors to find the actual object. When an object is sent by 
+   argument, returned or assigned to another variable, the different variables
+   are not aliases: they hold a copy of the identifier, which points to the same
+   object.
+  </p>
+
+  <div class="example" id="example-241">
+   <p><strong>Example #1 References and Objects</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">A&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />}&nbsp;&nbsp;<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$a&nbsp;and&nbsp;$b&nbsp;are&nbsp;copies&nbsp;of&nbsp;the&nbsp;same&nbsp;identifier<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;($a)&nbsp;=&nbsp;($b)&nbsp;=&nbsp;&lt;id&gt;<br /></span><span style="color: #0000BB">$b</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo</span><span style="color: #007700">.</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /><br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$d&nbsp;</span><span style="color: #007700">=&nbsp;&amp;</span><span style="color: #0000BB">$c</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;$c&nbsp;and&nbsp;$d&nbsp;are&nbsp;references<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;($c,$d)&nbsp;=&nbsp;&lt;id&gt;<br /><br /></span><span style="color: #0000BB">$d</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$c</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo</span><span style="color: #007700">.</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /><br /></span><span style="color: #0000BB">$e&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">;<br /><br />function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;($obj)&nbsp;=&nbsp;($e)&nbsp;=&nbsp;&lt;id&gt;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo</span><span style="color: #007700">.</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+2
+2
+2
+</pre></div>
+   </div>
+  </div>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

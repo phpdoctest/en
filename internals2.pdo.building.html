@@ -1,0 +1,115 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Building</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="internals2.html">PHP at the Core: A Hacker's Guide</a></li>
+  <li class="header up"><a href="internals2.pdo.html">PDO Driver How-To</a></li>
+  <li><a href="internals2.pdo.prerequisites.html">Prerequisites</a></li>
+  <li><a href="internals2.pdo.preparation.html">Preparation and Housekeeping</a></li>
+  <li><a href="internals2.pdo.implementing.html">Fleshing out your skeleton</a></li>
+  <li class="active"><a href="internals2.pdo.building.html">Building</a></li>
+  <li><a href="internals2.pdo.testing.html">Testing</a></li>
+  <li><a href="internals2.pdo.packaging.html">Packaging and distribution</a></li>
+  <li><a href="internals2.pdo.pdo-dbh-t.html">pdo_dbh_t definition</a></li>
+  <li><a href="internals2.pdo.pdo-stmt-t.html">pdo_stmt_t definition</a></li>
+  <li><a href="internals2.pdo.constants.html">Constants</a></li>
+  <li><a href="internals2.pdo.error-handling.html">Error handling</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="internals2.pdo.implementing.html">Fleshing out your skeleton</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="internals2.pdo.testing.html">Testing</a></div>
+                <div class="up"><a href="internals2.pdo.html">PDO Driver How-To</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="internals2.pdo.building" class="sect1">
+ <h2 class="title">Building</h2>
+ <p class="para">
+  The build process is designed to work with PEAR (see <a href="http://pear.php.net/" class="link external">&raquo;&nbsp;http://pear.php.net/</a> for more information about
+  PEAR). There are two files that are used to assist in configuring your
+  package for building. The first is config.m4 which is the
+  <strong class="command">autoconf</strong> configuration file for all platforms except
+  Win32. The second is config.w32 which is a build configuration file for use
+  on Win32. Skeleton files for these are built for you when you first set up
+  your project. You then need to customize them to fit the needs of your
+  project.  Once you&#039;ve customized your config files, you can build your driver
+  using the following sequence of commands:
+ </p>
+
+ <p class="para">
+  Before first build:
+ </p>
+ 
+ <div class="example-contents screen"><div class="cdata"><pre>
+$ sudo pecl install PDO
+</pre></div></div>
+ 
+ <p class="para">
+  For each build:
+ </p>
+
+ <div class="example-contents screen"><div class="cdata"><pre>
+$ cd pdo_SKEL
+$ phpize
+$ ./configure
+$ make
+$ sudo make install
+</pre></div></div>
+
+ <p class="para">
+  The process can then be repeated as necessary during the development
+  process.
+ </p>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

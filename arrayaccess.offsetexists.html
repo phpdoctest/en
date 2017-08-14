@@ -1,0 +1,176 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Whether an offset exists</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="langref.html">Language Reference</a></li>
+  <li class="header up"><a href="reserved.interfaces.html">Predefined Interfaces and Classes</a></li>
+  <li class="header up"><a href="class.arrayaccess.html">ArrayAccess</a></li>
+  <li class="active"><a href="arrayaccess.offsetexists.html">ArrayAccess::offsetExists</a></li>
+  <li><a href="arrayaccess.offsetget.html">ArrayAccess::offsetGet</a></li>
+  <li><a href="arrayaccess.offsetset.html">ArrayAccess::offsetSet</a></li>
+  <li><a href="arrayaccess.offsetunset.html">ArrayAccess::offsetUnset</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="class.arrayaccess.html">ArrayAccess</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="arrayaccess.offsetget.html">ArrayAccess::offsetGet</a></div>
+                <div class="up"><a href="class.arrayaccess.html">ArrayAccess</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="arrayaccess.offsetexists" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ArrayAccess::offsetExists</h1>
+  <p class="refpurpose">Whether an offset exists</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-arrayaccess.offsetexists-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">boolean</span> <span class="methodname">ArrayAccess::offsetExists</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$offset</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Whether or not an offset exists.
+  </p>
+  <p class="para">
+   This method is executed when using <span class="function">isset</span> or
+   <span class="function">empty</span> on objects implementing <span class="classname">ArrayAccess</span>.
+  </p>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    When using <span class="function">empty</span> <span class="function">ArrayAccess::offsetGet</span> will
+    be called and checked if empty only if <span class="function">ArrayAccess::offsetExists</span>
+    returns <strong><code>TRUE</code></strong>.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-arrayaccess.offsetexists-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+<code class="parameter">offset</code></dt>
+
+     <dd>
+
+      <p class="para">
+       An offset to check for.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-arrayaccess.offsetexists-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> on success or <strong><code>FALSE</code></strong> on failure.
+  </p>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    The return value will be casted to <span class="type">boolean</span> if non-boolean was returned.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-arrayaccess.offsetexists-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-325">
+    <p><strong>Example #1 <span class="function">ArrayAccess::offsetExists</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">obj&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">arrayaccess&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">offsetSet</span><span style="color: #007700">(</span><span style="color: #0000BB">$offset</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">__METHOD__</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">offsetExists</span><span style="color: #007700">(</span><span style="color: #0000BB">$var</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">__METHOD__</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$var&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #DD0000">"foobar"</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">offsetUnset</span><span style="color: #007700">(</span><span style="color: #0000BB">$var</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">__METHOD__</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">offsetGet</span><span style="color: #007700">(</span><span style="color: #0000BB">$var</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">__METHOD__</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #DD0000">"value"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">obj</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Runs&nbsp;obj::offsetExists()\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">[</span><span style="color: #DD0000">"foobar"</span><span style="color: #007700">]));<br /><br />echo&nbsp;</span><span style="color: #DD0000">"\nRuns&nbsp;obj::offsetExists()&nbsp;and&nbsp;obj::offsetGet()\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(empty(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">[</span><span style="color: #DD0000">"foobar"</span><span style="color: #007700">]));<br /><br />echo&nbsp;</span><span style="color: #DD0000">"\nRuns&nbsp;obj::offsetExists(),&nbsp;*not*&nbsp;obj:offsetGet()&nbsp;as&nbsp;there&nbsp;is&nbsp;nothing&nbsp;to&nbsp;get\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(empty(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">[</span><span style="color: #DD0000">"foobaz"</span><span style="color: #007700">]));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Runs obj::offsetExists()
+string(17) &quot;obj::offsetExists&quot;
+bool(true)
+
+Runs obj::offsetExists() and obj::offsetGet()
+string(17) &quot;obj::offsetExists&quot;
+string(14) &quot;obj::offsetGet&quot;
+bool(false)
+
+Runs obj::offsetExists(), *not* obj:offsetGet() as there is nothing to get
+string(17) &quot;obj::offsetExists&quot;
+bool(true)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

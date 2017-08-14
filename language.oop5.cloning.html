@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Object Cloning</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="langref.html">Language Reference</a></li>
+  <li class="header up"><a href="language.oop5.html">Classes and Objects</a></li>
+  <li><a href="oop5.intro.html">Introduction</a></li>
+  <li><a href="language.oop5.basic.html">The Basics</a></li>
+  <li><a href="language.oop5.properties.html">Properties</a></li>
+  <li><a href="language.oop5.constants.html">Class Constants</a></li>
+  <li><a href="language.oop5.autoload.html">Autoloading Classes</a></li>
+  <li><a href="language.oop5.decon.html">Constructors and Destructors</a></li>
+  <li><a href="language.oop5.visibility.html">Visibility</a></li>
+  <li><a href="language.oop5.inheritance.html">Object Inheritance</a></li>
+  <li><a href="language.oop5.paamayim-nekudotayim.html">Scope Resolution Operator (::)</a></li>
+  <li><a href="language.oop5.static.html">Static Keyword</a></li>
+  <li><a href="language.oop5.abstract.html">Class Abstraction</a></li>
+  <li><a href="language.oop5.interfaces.html">Object Interfaces</a></li>
+  <li><a href="language.oop5.traits.html">Traits</a></li>
+  <li><a href="language.oop5.anonymous.html">Anonymous classes</a></li>
+  <li><a href="language.oop5.overloading.html">Overloading</a></li>
+  <li><a href="language.oop5.iterations.html">Object Iteration</a></li>
+  <li><a href="language.oop5.magic.html">Magic Methods</a></li>
+  <li><a href="language.oop5.final.html">Final Keyword</a></li>
+  <li class="active"><a href="language.oop5.cloning.html">Object Cloning</a></li>
+  <li><a href="language.oop5.object-comparison.html">Comparing Objects</a></li>
+  <li><a href="language.oop5.typehinting.html">Type Hinting</a></li>
+  <li><a href="language.oop5.late-static-bindings.html">Late Static Bindings</a></li>
+  <li><a href="language.oop5.references.html">Objects and references</a></li>
+  <li><a href="language.oop5.serialization.html">Object Serialization</a></li>
+  <li><a href="language.oop5.changelog.html">OOP Changelog</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="language.oop5.final.html">Final Keyword</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="language.oop5.object-comparison.html">Comparing Objects</a></div>
+                <div class="up"><a href="language.oop5.html">Classes and Objects</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="language.oop5.cloning" class="sect1">
+  <h2 class="title">Object Cloning</h2>
+  
+  <p class="para">
+   Creating a copy of an object with fully replicated properties is not
+   always the wanted behavior. A good example of the need for copy
+   constructors, is if you have an object which represents a GTK window and the
+   object holds the resource of this GTK window, when you create a duplicate
+   you might want to create a new window with the same properties and have the
+   new object hold the resource of the new window. Another example is if your
+   object holds a reference to another object which it uses and when you
+   replicate the parent object you want to create a new instance of this other
+   object so that the replica has its own separate copy.
+  </p>
+
+  <p class="para">
+   An object copy is created by using the <em class="emphasis">clone</em> keyword (which calls the
+   object&#039;s <a href="language.oop5.cloning.html#object.clone" class="link">__clone()</a> method if possible).
+   An object&#039;s <a href="language.oop5.cloning.html#object.clone" class="link">__clone()</a> method
+   cannot be called directly.
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="cdata"><pre>
+$copy_of_object = clone $object;
+</pre></div>
+   </div>
+
+  </div>
+
+  <p class="para">
+   When an object is cloned, PHP 5 will perform a shallow copy of all of the
+   object&#039;s properties. Any properties that are references to other variables
+   will remain references.
+  </p>
+
+  <div class="methodsynopsis dc-description" id="object.clone">
+   <span class="type">void</span> <span class="methodname">__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+  <p class="para">
+   Once the cloning is complete, if a <a href="language.oop5.cloning.html#object.clone" class="link">__clone()</a> method is defined, then
+   the newly created object&#039;s <a href="language.oop5.cloning.html#object.clone" class="link">__clone()</a> method will be called, to allow any
+   necessary properties that need to be changed.
+  </p>
+
+  <div class="example" id="language.oop5.traits.static.ex2">
+   <p><strong>Example #1 Cloning an object</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">SubObject<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;</span><span style="color: #0000BB">$instances&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$instance</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">instance&nbsp;</span><span style="color: #007700">=&nbsp;++</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$instances</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__clone</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">instance&nbsp;</span><span style="color: #007700">=&nbsp;++</span><span style="color: #0000BB">self</span><span style="color: #007700">::</span><span style="color: #0000BB">$instances</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />class&nbsp;</span><span style="color: #0000BB">MyCloneable<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$object1</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$object2</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">__clone</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Force&nbsp;a&nbsp;copy&nbsp;of&nbsp;this-&gt;object,&nbsp;otherwise<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;it&nbsp;will&nbsp;point&nbsp;to&nbsp;same&nbsp;object.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">object1&nbsp;</span><span style="color: #007700">=&nbsp;clone&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">object1</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MyCloneable</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">object1&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SubObject</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">object2&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SubObject</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$obj2&nbsp;</span><span style="color: #007700">=&nbsp;clone&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">;<br /><br /><br />print(</span><span style="color: #DD0000">"Original&nbsp;Object:\n"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">);<br /><br />print(</span><span style="color: #DD0000">"Cloned&nbsp;Object:\n"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$obj2</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Original Object:
+MyCloneable Object
+(
+    [object1] =&gt; SubObject Object
+        (
+            [instance] =&gt; 1
+        )
+
+    [object2] =&gt; SubObject Object
+        (
+            [instance] =&gt; 2
+        )
+
+)
+Cloned Object:
+MyCloneable Object
+(
+    [object1] =&gt; SubObject Object
+        (
+            [instance] =&gt; 3
+        )
+
+    [object2] =&gt; SubObject Object
+        (
+            [instance] =&gt; 2
+        )
+
+)
+</pre></div>
+
+   </div>
+
+  </div>
+
+  <p class="para">
+   PHP 7.0.0 introduced the possibility to access a member of a freshly cloned
+   object in a single expression:
+  </p>
+  <div class="example" id="language.oop5.traits.properties.example">
+   <p><strong>Example #2 Access member of freshly cloned object</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$dateTime&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTime</span><span style="color: #007700">();<br />echo&nbsp;(clone&nbsp;</span><span style="color: #0000BB">$dateTime</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">'Y'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+2016
+</pre></div>
+   </div>
+  </div>
+
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

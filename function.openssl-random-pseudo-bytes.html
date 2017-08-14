@@ -1,0 +1,253 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Generate a pseudo-random string of bytes</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.crypto.html">Cryptography Extensions</a></li>
+  <li class="header up"><a href="book.openssl.html">OpenSSL</a></li>
+  <li class="header up"><a href="ref.openssl.html">OpenSSL Functions</a></li>
+  <li><a href="function.openssl-cipher-iv-length.html">openssl_cipher_iv_length</a></li>
+  <li><a href="function.openssl-csr-export-to-file.html">openssl_csr_export_to_file</a></li>
+  <li><a href="function.openssl-csr-export.html">openssl_csr_export</a></li>
+  <li><a href="function.openssl-csr-get-public-key.html">openssl_csr_get_public_key</a></li>
+  <li><a href="function.openssl-csr-get-subject.html">openssl_csr_get_subject</a></li>
+  <li><a href="function.openssl-csr-new.html">openssl_csr_new</a></li>
+  <li><a href="function.openssl-csr-sign.html">openssl_csr_sign</a></li>
+  <li><a href="function.openssl-decrypt.html">openssl_decrypt</a></li>
+  <li><a href="function.openssl-dh-compute-key.html">openssl_dh_compute_key</a></li>
+  <li><a href="function.openssl-digest.html">openssl_digest</a></li>
+  <li><a href="function.openssl-encrypt.html">openssl_encrypt</a></li>
+  <li><a href="function.openssl-error-string.html">openssl_error_string</a></li>
+  <li><a href="function.openssl-free-key.html">openssl_free_key</a></li>
+  <li><a href="function.openssl-get-cert-locations.html">openssl_get_cert_locations</a></li>
+  <li><a href="function.openssl-get-cipher-methods.html">openssl_get_cipher_methods</a></li>
+  <li><a href="function.openssl-get-md-methods.html">openssl_get_md_methods</a></li>
+  <li><a href="function.openssl-get-privatekey.html">openssl_get_privatekey</a></li>
+  <li><a href="function.openssl-get-publickey.html">openssl_get_publickey</a></li>
+  <li><a href="function.openssl-open.html">openssl_open</a></li>
+  <li><a href="function.openssl-pbkdf2.html">openssl_pbkdf2</a></li>
+  <li><a href="function.openssl-pkcs12-export-to-file.html">openssl_pkcs12_export_to_file</a></li>
+  <li><a href="function.openssl-pkcs12-export.html">openssl_pkcs12_export</a></li>
+  <li><a href="function.openssl-pkcs12-read.html">openssl_pkcs12_read</a></li>
+  <li><a href="function.openssl-pkcs7-decrypt.html">openssl_pkcs7_decrypt</a></li>
+  <li><a href="function.openssl-pkcs7-encrypt.html">openssl_pkcs7_encrypt</a></li>
+  <li><a href="function.openssl-pkcs7-sign.html">openssl_pkcs7_sign</a></li>
+  <li><a href="function.openssl-pkcs7-verify.html">openssl_pkcs7_verify</a></li>
+  <li><a href="function.openssl-pkey-export-to-file.html">openssl_pkey_export_to_file</a></li>
+  <li><a href="function.openssl-pkey-export.html">openssl_pkey_export</a></li>
+  <li><a href="function.openssl-pkey-free.html">openssl_pkey_free</a></li>
+  <li><a href="function.openssl-pkey-get-details.html">openssl_pkey_get_details</a></li>
+  <li><a href="function.openssl-pkey-get-private.html">openssl_pkey_get_private</a></li>
+  <li><a href="function.openssl-pkey-get-public.html">openssl_pkey_get_public</a></li>
+  <li><a href="function.openssl-pkey-new.html">openssl_pkey_new</a></li>
+  <li><a href="function.openssl-private-decrypt.html">openssl_private_decrypt</a></li>
+  <li><a href="function.openssl-private-encrypt.html">openssl_private_encrypt</a></li>
+  <li><a href="function.openssl-public-decrypt.html">openssl_public_decrypt</a></li>
+  <li><a href="function.openssl-public-encrypt.html">openssl_public_encrypt</a></li>
+  <li class="active"><a href="function.openssl-random-pseudo-bytes.html">openssl_random_pseudo_bytes</a></li>
+  <li><a href="function.openssl-seal.html">openssl_seal</a></li>
+  <li><a href="function.openssl-sign.html">openssl_sign</a></li>
+  <li><a href="function.openssl-spki-export-challenge.html">openssl_spki_export_challenge</a></li>
+  <li><a href="function.openssl-spki-export.html">openssl_spki_export</a></li>
+  <li><a href="function.openssl-spki-new.html">openssl_spki_new</a></li>
+  <li><a href="function.openssl-spki-verify.html">openssl_spki_verify</a></li>
+  <li><a href="function.openssl-verify.html">openssl_verify</a></li>
+  <li><a href="function.openssl-x509-check-private-key.html">openssl_x509_check_private_key</a></li>
+  <li><a href="function.openssl-x509-checkpurpose.html">openssl_x509_checkpurpose</a></li>
+  <li><a href="function.openssl-x509-export-to-file.html">openssl_x509_export_to_file</a></li>
+  <li><a href="function.openssl-x509-export.html">openssl_x509_export</a></li>
+  <li><a href="function.openssl-x509-fingerprint.html">openssl_x509_fingerprint</a></li>
+  <li><a href="function.openssl-x509-free.html">openssl_x509_free</a></li>
+  <li><a href="function.openssl-x509-parse.html">openssl_x509_parse</a></li>
+  <li><a href="function.openssl-x509-read.html">openssl_x509_read</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.openssl-public-encrypt.html">openssl_public_encrypt</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.openssl-seal.html">openssl_seal</a></div>
+                <div class="up"><a href="ref.openssl.html">OpenSSL Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.openssl-random-pseudo-bytes" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">openssl_random_pseudo_bytes</h1>
+  <p class="refpurpose">Generate a pseudo-random string of bytes</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.openssl-random-pseudo-bytes-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname">openssl_random_pseudo_bytes</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$length</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter reference">&$crypto_strong</code></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Generates a <span class="type">string</span> of pseudo-random bytes, with the number of bytes
+   determined by the <code class="parameter">length</code> parameter. 
+  </p>
+  <p class="para">
+   It also indicates if a cryptographically strong algorithm was used to produce the
+   pseudo-random bytes, and does this via the optional <code class="parameter">crypto_strong</code>
+   parameter. It&#039;s rare for this to be <strong><code>FALSE</code></strong>, but some systems may be broken or old.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.openssl-random-pseudo-bytes-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">length</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The length of the desired string of bytes. Must be a positive integer. PHP will
+       try to cast this parameter to a non-null integer to use it. 
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">crypto_strong</code></dt>
+
+     <dd>
+
+      <p class="para">
+       If passed into the function, this will hold a <span class="type">boolean</span> value that determines
+       if the algorithm used was &quot;cryptographically strong&quot;, e.g., safe for usage with GPG, 
+       passwords, etc. <strong><code>TRUE</code></strong> if it did, otherwise <strong><code>FALSE</code></strong>
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.openssl-random-pseudo-bytes-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the generated <span class="type">string</span> of bytes on success,  or <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.openssl-random-pseudo-bytes-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-945">
+    <p><strong>Example #1 <span class="function">openssl_random_pseudo_bytes</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">for&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;=&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$bytes&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">openssl_random_pseudo_bytes</span><span style="color: #007700">(</span><span style="color: #0000BB">$i</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$cstrong</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$hex&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">bin2hex</span><span style="color: #007700">(</span><span style="color: #0000BB">$bytes</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Lengths:&nbsp;Bytes:&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #DD0000">&nbsp;and&nbsp;Hex:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$hex</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$hex</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$cstrong</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Lengths: Bytes: -1 and Hex: 0
+string(0) &quot;&quot;
+NULL
+
+Lengths: Bytes: 0 and Hex: 0
+string(0) &quot;&quot;
+NULL
+
+Lengths: Bytes: 1 and Hex: 2
+string(2) &quot;42&quot;
+bool(true)
+
+Lengths: Bytes: 2 and Hex: 4
+string(4) &quot;dc6e&quot;
+bool(true)
+
+Lengths: Bytes: 3 and Hex: 6
+string(6) &quot;288591&quot;
+bool(true)
+
+Lengths: Bytes: 4 and Hex: 8
+string(8) &quot;ab86d144&quot;
+bool(true)
+
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.openssl-random-pseudo-bytes-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li class="member"><span class="function">random_bytes</span></li>
+   <li class="member"><span class="function">bin2hex</span></li>
+   <li class="member"><span class="function">crypt</span></li>
+   <li class="member"><span class="function">mt_rand</span></li>
+   <li class="member"><span class="function">uniqid</span></li>
+  </ul>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

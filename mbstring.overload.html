@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Function Overloading Feature</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.international.html">Human Language and Character Encoding Support</a></li>
+  <li class="header up"><a href="book.mbstring.html">Multibyte String</a></li>
+  <li><a href="intro.mbstring.html">Introduction</a></li>
+  <li><a href="mbstring.setup.html">Installing/Configuring</a></li>
+  <li><a href="mbstring.constants.html">Predefined Constants</a></li>
+  <li><a href="mbstring.encodings.html">Summaries of supported encodings</a></li>
+  <li><a href="mbstring.ja-basic.html">Basics of Japanese multi-byte encodings</a></li>
+  <li><a href="mbstring.http.html">HTTP Input and Output</a></li>
+  <li><a href="mbstring.supported-encodings.html">Supported Character Encodings</a></li>
+  <li class="active"><a href="mbstring.overload.html">Function Overloading Feature</a></li>
+  <li><a href="mbstring.php4.req.html">PHP Character Encoding Requirements</a></li>
+  <li><a href="ref.mbstring.html">Multibyte String Functions</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mbstring.supported-encodings.html">Supported Character Encodings</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mbstring.php4.req.html">PHP Character Encoding Requirements</a></div>
+                <div class="up"><a href="book.mbstring.html">Multibyte String</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mbstring.overload" class="chapter">
+ <h1>
+  Function Overloading Feature
+ </h1>
+
+ <p class="para">
+  <div class="warning"><strong class="warning">Warning</strong><p class="simpara">This feature has been
+<em class="emphasis">DEPRECATED</em> as of PHP 7.2.0. Relying on this feature
+is highly discouraged.</p></div>
+ </p>
+ <p class="para">
+  You might often find it difficult to get an existing PHP application
+  to work in a given multibyte environment. This happens because most 
+  PHP applications out there are written with the standard string 
+  functions such as <span class="function">substr</span>, which are known to 
+  not properly handle multibyte-encoded strings.
+ </p>
+ <p class="para">
+  mbstring supports a &#039;function overloading&#039; feature which enables
+  you to add multibyte awareness to such an application without
+  code modification by overloading multibyte counterparts on
+  the standard string functions. For example,
+  <span class="function">mb_substr</span> is called instead of
+  <span class="function">substr</span> if function overloading is enabled.
+  This feature makes it easy to port applications that only support
+  single-byte encodings to a multibyte environment in many cases.
+ </p>
+ <p class="para">
+  To use function overloading, set
+  <em>mbstring.func_overload</em> in <var class="filename">php.ini</var> to a
+  positive value that represents a combination of bitmasks specifying
+  the categories of functions to be overloaded. It should be set
+  to 1 to overload the <span class="function">mail</span> function. 2 for string
+  functions, 4 for regular expression functions. For example,
+  if it is set to 7, mail, strings and regular expression functions will
+  be overloaded. The list of overloaded functions are shown below.
+  <table class="doctable table">
+   <caption><strong>Functions to be overloaded</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>value of mbstring.func_overload</th>
+      <th>original function</th>
+      <th>overloaded function</th>
+     </tr>
+
+   </thead>
+
+   <tbody class="tbody">
+     <tr>
+      <td>1</td>
+      <td><span class="function">mail</span></td>
+      <td><span class="function">mb_send_mail</span></td>
+     </tr>
+
+     <tr>
+      <td>2</td>
+      <td><span class="function">strlen</span></td>
+      <td><span class="function">mb_strlen</span></td>
+     </tr>
+
+     <tr>
+      <td>2</td>
+      <td><span class="function">strpos</span></td>
+      <td><span class="function">mb_strpos</span></td>
+     </tr>
+
+     <tr>
+      <td>2</td>
+      <td><span class="function">strrpos</span></td>
+      <td><span class="function">mb_strrpos</span></td>
+     </tr>
+
+     <tr>
+      <td>2</td>
+      <td><span class="function">substr</span></td>
+      <td><span class="function">mb_substr</span></td>
+     </tr>
+
+     <tr>
+      <td>2</td>
+      <td><span class="function">strtolower</span></td>
+      <td><span class="function">mb_strtolower</span></td>
+     </tr>
+
+     <tr>
+      <td>2</td>
+      <td><span class="function">strtoupper</span></td>
+      <td><span class="function">mb_strtoupper</span></td>
+     </tr>
+
+     <tr>
+      <td>2</td>
+      <td><span class="function">stripos</span></td>
+      <td><span class="function">mb_stripos</span></td>
+     </tr>
+
+     <tr>
+      <td>2</td>
+      <td><span class="function">strripos</span></td>
+      <td><span class="function">mb_strripos</span></td>
+     </tr>
+
+     <tr>
+      <td>2</td>
+      <td><span class="function">strstr</span></td>
+      <td><span class="function">mb_strstr</span></td>
+     </tr>
+
+     <tr>
+      <td>2</td>
+      <td><span class="function">stristr</span></td>
+      <td><span class="function">mb_stristr</span></td>
+     </tr>
+
+     <tr>
+      <td>2</td>
+      <td><span class="function">strrchr</span></td>
+      <td><span class="function">mb_strrchr</span></td>
+     </tr>
+
+     <tr>
+      <td>2</td>
+      <td><span class="function">substr_count</span></td>
+      <td><span class="function">mb_substr_count</span></td>
+     </tr>
+
+     <tr>
+      <td>4</td>
+      <td><span class="function">ereg</span></td>
+      <td><span class="function">mb_ereg</span></td>
+     </tr>
+
+     <tr>
+      <td>4</td>
+      <td><span class="function">eregi</span></td>
+      <td><span class="function">mb_eregi</span></td>
+     </tr>
+
+     <tr>
+      <td>4</td>
+      <td><span class="function">ereg_replace</span></td>
+      <td><span class="function">mb_ereg_replace</span></td>
+     </tr>
+
+     <tr>
+      <td>4</td>
+      <td><span class="function">eregi_replace</span></td>
+      <td><span class="function">mb_eregi_replace</span></td>
+     </tr>
+
+     <tr>
+      <td>4</td>
+      <td><span class="function">split</span></td>
+      <td><span class="function">mb_split</span></td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </p>
+ <blockquote class="note"><p><strong class="note">Note</strong>: 
+  <p class="para">
+   It is not recommended to use the function overloading option in
+   the per-directory context, because it&#039;s not confirmed yet to be
+   stable enough in a production environment and may lead to undefined
+   behaviour.
+  </p>
+ </p></blockquote>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

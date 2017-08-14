@@ -1,0 +1,125 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Call a user defined function for each document value</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.utilspec.nontext.html">Non-Text MIME Output</a></li>
+  <li class="header up"><a href="book.fdf.html">FDF</a></li>
+  <li class="header up"><a href="ref.fdf.html">FDF Functions</a></li>
+  <li><a href="function.fdf-add-doc-javascript.html">fdf_add_doc_javascript</a></li>
+  <li><a href="function.fdf-add-template.html">fdf_add_template</a></li>
+  <li><a href="function.fdf-close.html">fdf_close</a></li>
+  <li><a href="function.fdf-create.html">fdf_create</a></li>
+  <li class="active"><a href="function.fdf-enum-values.html">fdf_enum_values</a></li>
+  <li><a href="function.fdf-errno.html">fdf_errno</a></li>
+  <li><a href="function.fdf-error.html">fdf_error</a></li>
+  <li><a href="function.fdf-get-ap.html">fdf_get_ap</a></li>
+  <li><a href="function.fdf-get-attachment.html">fdf_get_attachment</a></li>
+  <li><a href="function.fdf-get-encoding.html">fdf_get_encoding</a></li>
+  <li><a href="function.fdf-get-file.html">fdf_get_file</a></li>
+  <li><a href="function.fdf-get-flags.html">fdf_get_flags</a></li>
+  <li><a href="function.fdf-get-opt.html">fdf_get_opt</a></li>
+  <li><a href="function.fdf-get-status.html">fdf_get_status</a></li>
+  <li><a href="function.fdf-get-value.html">fdf_get_value</a></li>
+  <li><a href="function.fdf-get-version.html">fdf_get_version</a></li>
+  <li><a href="function.fdf-header.html">fdf_header</a></li>
+  <li><a href="function.fdf-next-field-name.html">fdf_next_field_name</a></li>
+  <li><a href="function.fdf-open-string.html">fdf_open_string</a></li>
+  <li><a href="function.fdf-open.html">fdf_open</a></li>
+  <li><a href="function.fdf-remove-item.html">fdf_remove_item</a></li>
+  <li><a href="function.fdf-save-string.html">fdf_save_string</a></li>
+  <li><a href="function.fdf-save.html">fdf_save</a></li>
+  <li><a href="function.fdf-set-ap.html">fdf_set_ap</a></li>
+  <li><a href="function.fdf-set-encoding.html">fdf_set_encoding</a></li>
+  <li><a href="function.fdf-set-file.html">fdf_set_file</a></li>
+  <li><a href="function.fdf-set-flags.html">fdf_set_flags</a></li>
+  <li><a href="function.fdf-set-javascript-action.html">fdf_set_javascript_action</a></li>
+  <li><a href="function.fdf-set-on-import-javascript.html">fdf_set_on_import_javascript</a></li>
+  <li><a href="function.fdf-set-opt.html">fdf_set_opt</a></li>
+  <li><a href="function.fdf-set-status.html">fdf_set_status</a></li>
+  <li><a href="function.fdf-set-submit-form-action.html">fdf_set_submit_form_action</a></li>
+  <li><a href="function.fdf-set-target-frame.html">fdf_set_target_frame</a></li>
+  <li><a href="function.fdf-set-value.html">fdf_set_value</a></li>
+  <li><a href="function.fdf-set-version.html">fdf_set_version</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.fdf-create.html">fdf_create</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.fdf-errno.html">fdf_errno</a></div>
+                <div class="up"><a href="ref.fdf.html">FDF Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.fdf-enum-values" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">fdf_enum_values</h1>
+  <p class="refpurpose">Call a user defined function for each document value </p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.fdf-enum-values-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">fdf_enum_values</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$fdf_document</code></span>
+   , <span class="methodparam"><span class="type">callable</span> <code class="parameter">$function</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$userdata</code></span>
+  ] )</div>
+
+  <div class="warning"><strong class="warning">Warning</strong><p class="simpara">This function is
+currently not documented; only its argument list is available.
+</p></div>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

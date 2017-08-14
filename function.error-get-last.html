@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Get the last occurred error</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.php.html">Affecting PHP's Behaviour</a></li>
+  <li class="header up"><a href="book.errorfunc.html">Error Handling</a></li>
+  <li class="header up"><a href="ref.errorfunc.html">Error Handling Functions</a></li>
+  <li><a href="function.debug-backtrace.html">debug_backtrace</a></li>
+  <li><a href="function.debug-print-backtrace.html">debug_print_backtrace</a></li>
+  <li><a href="function.error-clear-last.html">error_clear_last</a></li>
+  <li class="active"><a href="function.error-get-last.html">error_get_last</a></li>
+  <li><a href="function.error-log.html">error_log</a></li>
+  <li><a href="function.error-reporting.html">error_reporting</a></li>
+  <li><a href="function.restore-error-handler.html">restore_error_handler</a></li>
+  <li><a href="function.restore-exception-handler.html">restore_exception_handler</a></li>
+  <li><a href="function.set-error-handler.html">set_error_handler</a></li>
+  <li><a href="function.set-exception-handler.html">set_exception_handler</a></li>
+  <li><a href="function.trigger-error.html">trigger_error</a></li>
+  <li><a href="function.user-error.html">user_error</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.error-clear-last.html">error_clear_last</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.error-log.html">error_log</a></div>
+                <div class="up"><a href="ref.errorfunc.html">Error Handling Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.error-get-last" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">error_get_last</h1>
+  <p class="refpurpose">Get the last occurred error</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.error-get-last-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname">error_get_last</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Gets information about the last error that occurred.
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.error-get-last-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns an associative array describing the last error with keys &quot;type&quot;,
+   &quot;message&quot;, &quot;file&quot; and &quot;line&quot;. If the error has been caused by a PHP
+   internal function then the &quot;message&quot; begins with its name.
+   Returns <strong><code>NULL</code></strong> if there hasn&#039;t been an error yet.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.error-get-last-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-491">
+    <p><strong>Example #1 An <span class="function">error_get_last</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">error_get_last</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [type] =&gt; 8
+    [message] =&gt; Undefined variable: a
+    [file] =&gt; C:\WWW\index.php
+    [line] =&gt; 2
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.error-get-last-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="errorfunc.constants.html" class="link">Error constants</a></li>
+    <li class="member">Variable <var class="varname">$php_errormsg</var></li>
+    <li class="member"><span class="function">error_clear_last</span></li>
+    <li class="member"><a href="errorfunc.configuration.html#ini.display-errors" class="link">Directive <code class="parameter">display_errors</code></a></li>
+    <li class="member"><a href="errorfunc.configuration.html#ini.html-errors" class="link">Directive <code class="parameter">html_errors</code></a></li>
+    <li class="member"><a href="errorfunc.configuration.html#ini.xmlrpc-errors" class="link">Directive <code class="parameter">xmlrpc_errors</code></a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

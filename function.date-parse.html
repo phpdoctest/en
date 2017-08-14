@@ -1,0 +1,274 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Returns associative array with detailed info about given date</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.calendar.html">Date and Time Related Extensions</a></li>
+  <li class="header up"><a href="book.datetime.html">Date/Time</a></li>
+  <li class="header up"><a href="ref.datetime.html">Date/Time Functions</a></li>
+  <li><a href="function.checkdate.html">checkdate</a></li>
+  <li><a href="function.date-add.html">date_add</a></li>
+  <li><a href="function.date-create-from-format.html">date_create_from_format</a></li>
+  <li><a href="function.date-create-immutable-from-format.html">date_create_immutable_from_format</a></li>
+  <li><a href="function.date-create-immutable.html">date_create_immutable</a></li>
+  <li><a href="function.date-create.html">date_create</a></li>
+  <li><a href="function.date-date-set.html">date_date_set</a></li>
+  <li><a href="function.date-default-timezone-get.html">date_default_timezone_get</a></li>
+  <li><a href="function.date-default-timezone-set.html">date_default_timezone_set</a></li>
+  <li><a href="function.date-diff.html">date_diff</a></li>
+  <li><a href="function.date-format.html">date_format</a></li>
+  <li><a href="function.date-get-last-errors.html">date_get_last_errors</a></li>
+  <li><a href="function.date-interval-create-from-date-string.html">date_interval_create_from_date_string</a></li>
+  <li><a href="function.date-interval-format.html">date_interval_format</a></li>
+  <li><a href="function.date-isodate-set.html">date_isodate_set</a></li>
+  <li><a href="function.date-modify.html">date_modify</a></li>
+  <li><a href="function.date-offset-get.html">date_offset_get</a></li>
+  <li><a href="function.date-parse-from-format.html">date_parse_from_format</a></li>
+  <li class="active"><a href="function.date-parse.html">date_parse</a></li>
+  <li><a href="function.date-sub.html">date_sub</a></li>
+  <li><a href="function.date-sun-info.html">date_sun_info</a></li>
+  <li><a href="function.date-sunrise.html">date_sunrise</a></li>
+  <li><a href="function.date-sunset.html">date_sunset</a></li>
+  <li><a href="function.date-time-set.html">date_time_set</a></li>
+  <li><a href="function.date-timestamp-get.html">date_timestamp_get</a></li>
+  <li><a href="function.date-timestamp-set.html">date_timestamp_set</a></li>
+  <li><a href="function.date-timezone-get.html">date_timezone_get</a></li>
+  <li><a href="function.date-timezone-set.html">date_timezone_set</a></li>
+  <li><a href="function.date.html">date</a></li>
+  <li><a href="function.getdate.html">getdate</a></li>
+  <li><a href="function.gettimeofday.html">gettimeofday</a></li>
+  <li><a href="function.gmdate.html">gmdate</a></li>
+  <li><a href="function.gmmktime.html">gmmktime</a></li>
+  <li><a href="function.gmstrftime.html">gmstrftime</a></li>
+  <li><a href="function.idate.html">idate</a></li>
+  <li><a href="function.localtime.html">localtime</a></li>
+  <li><a href="function.microtime.html">microtime</a></li>
+  <li><a href="function.mktime.html">mktime</a></li>
+  <li><a href="function.strftime.html">strftime</a></li>
+  <li><a href="function.strptime.html">strptime</a></li>
+  <li><a href="function.strtotime.html">strtotime</a></li>
+  <li><a href="function.time.html">time</a></li>
+  <li><a href="function.timezone-abbreviations-list.html">timezone_abbreviations_list</a></li>
+  <li><a href="function.timezone-identifiers-list.html">timezone_identifiers_list</a></li>
+  <li><a href="function.timezone-location-get.html">timezone_location_get</a></li>
+  <li><a href="function.timezone-name-from-abbr.html">timezone_name_from_abbr</a></li>
+  <li><a href="function.timezone-name-get.html">timezone_name_get</a></li>
+  <li><a href="function.timezone-offset-get.html">timezone_offset_get</a></li>
+  <li><a href="function.timezone-open.html">timezone_open</a></li>
+  <li><a href="function.timezone-transitions-get.html">timezone_transitions_get</a></li>
+  <li><a href="function.timezone-version-get.html">timezone_version_get</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.date-parse-from-format.html">date_parse_from_format</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.date-sub.html">date_sub</a></div>
+                <div class="up"><a href="ref.datetime.html">Date/Time Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.date-parse" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">date_parse</h1>
+  <p class="refpurpose">Returns associative array with detailed info about given date</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.date-parse-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname">date_parse</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$date</code></span>
+   )</div>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.date-parse-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">date</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Date in format accepted by <span class="function">strtotime</span>.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.date-parse-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <span class="type">array</span> with information about the parsed date
+   on success or <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-function.date-parse-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   In case the date format has an error, the element &#039;errors&#039; will 
+   contains the error messages.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.date-parse-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-2551">
+    <p><strong>Example #1 A <span class="function">date_parse</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">date_parse</span><span style="color: #007700">(</span><span style="color: #DD0000">"2006-12-12&nbsp;10:00:00.5"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [year] =&gt; 2006
+    [month] =&gt; 12
+    [day] =&gt; 12
+    [hour] =&gt; 10
+    [minute] =&gt; 0
+    [second] =&gt; 0
+    [fraction] =&gt; 0.5
+    [warning_count] =&gt; 0
+    [warnings] =&gt; Array()
+    [error_count] =&gt; 0
+    [errors] =&gt; Array()
+    [is_localtime] =&gt; 
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <a href="datetime.formats.relative.html" class="link">Relative formats</a> do not
+   influence the values parsed from absolute formats, but are parsed into the
+   &quot;relative&quot; element.
+   <div class="example" id="example-2552">
+    <p><strong>Example #2 <span class="function">date_parse</span> with relative formats</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">date_parse</span><span style="color: #007700">(</span><span style="color: #DD0000">"2006-12-12&nbsp;10:00:00.5&nbsp;+1&nbsp;week&nbsp;+1&nbsp;hour"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [year] =&gt; 2006
+    [month] =&gt; 12
+    [day] =&gt; 12
+    [hour] =&gt; 10
+    [minute] =&gt; 0
+    [second] =&gt; 0
+    [fraction] =&gt; 0.5
+    [warning_count] =&gt; 0
+    [warnings] =&gt; Array
+        (
+        )
+
+    [error_count] =&gt; 0
+    [errors] =&gt; Array
+        (
+        )
+
+    [is_localtime] =&gt;
+    [relative] =&gt; Array
+        (
+            [year] =&gt; 0
+            [month] =&gt; 0
+            [day] =&gt; 7
+            [hour] =&gt; 1
+            [minute] =&gt; 0
+            [second] =&gt; 0
+        )
+
+)</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.date-parse-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">checkdate</span></li>
+    <li class="member"><span class="function">getdate</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,150 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: String Filters</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="appendices.html">Appendices</a></li>
+  <li class="header up"><a href="filters.html">List of Available Filters</a></li>
+  <li class="active"><a href="filters.string.html">String Filters</a></li>
+  <li><a href="filters.convert.html">Conversion Filters</a></li>
+  <li><a href="filters.compression.html">Compression Filters</a></li>
+  <li><a href="filters.encryption.html">Encryption Filters</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="filters.html">List of Available Filters</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="filters.convert.html">Conversion Filters</a></div>
+                <div class="up"><a href="filters.html">List of Available Filters</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="filters.string" class="section">
+  <h2 class="title">String Filters</h2>
+
+  <p class="simpara">
+   Each of these filters does precisely what their name implies and
+   correspond to the behavior of a built-in php string handling function.
+   For more information on a given filter, refer to the manual page for
+   the corresponding function.
+  </p>
+
+  <p class="simpara">
+   <em>string.rot13</em>
+   Use of this filter is equivalent to processing all stream data through
+   the <span class="function">str_rot13</span> function.
+  </p>
+  <div class="example" id="example-6470">
+   <p><strong>Example #1 string.rot13</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'php://output'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'w'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">stream_filter_append</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'string.rot13'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"This&nbsp;is&nbsp;a&nbsp;test.\n"</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">/*&nbsp;Outputs:&nbsp;&nbsp;Guvf&nbsp;vf&nbsp;n&nbsp;grfg.&nbsp;&nbsp;&nbsp;*/<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+
+  <p class="simpara">
+   <em>string.toupper</em>
+   Use of this filter is equivalent to processing all stream data through
+   the <span class="function">strtoupper</span> function.
+  </p>
+  <div class="example" id="example-6471">
+   <p><strong>Example #2 string.toupper</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'php://output'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'w'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">stream_filter_append</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'string.toupper'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"This&nbsp;is&nbsp;a&nbsp;test.\n"</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">/*&nbsp;Outputs:&nbsp;&nbsp;THIS&nbsp;IS&nbsp;A&nbsp;TEST.&nbsp;&nbsp;&nbsp;*/<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+
+  <p class="simpara">
+   <em>string.tolower</em>
+   Use of this filter is equivalent to processing all stream data through
+   the <span class="function">strtolower</span> function.
+  </p>
+  <div class="example" id="example-6472">
+   <p><strong>Example #3 string.tolower</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'php://output'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'w'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">stream_filter_append</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'string.tolower'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"This&nbsp;is&nbsp;a&nbsp;test.\n"</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">/*&nbsp;Outputs:&nbsp;&nbsp;this&nbsp;is&nbsp;a&nbsp;test.&nbsp;&nbsp;&nbsp;*/<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+
+  <p class="simpara">
+   <em>string.strip_tags</em>
+   (since PHP 5.0.0)
+   Use of this filter is equivalent to processing all stream data through
+   the <span class="function">strip_tags</span> function.
+   It accepts parameters in one of two forms:
+   Either as a string containing a list of tags similar to the
+   second parameter of the <span class="function">strip_tags</span> function,
+   or as an array of tag names.
+  </p>
+  <div class="example" id="example-6473">
+   <p><strong>Example #4 string.strip_tags</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'php://output'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'w'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">stream_filter_append</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'string.strip_tags'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">STREAM_FILTER_WRITE</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"&lt;b&gt;&lt;i&gt;&lt;u&gt;"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"&lt;b&gt;bolded&nbsp;text&lt;/b&gt;&nbsp;enlarged&nbsp;to&nbsp;a&nbsp;&lt;h1&gt;level&nbsp;1&nbsp;heading&lt;/h1&gt;\n"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">/*&nbsp;Outputs:&nbsp;&nbsp;&lt;b&gt;bolded&nbsp;text&lt;/b&gt;&nbsp;enlarged&nbsp;to&nbsp;a&nbsp;level&nbsp;1&nbsp;heading&nbsp;&nbsp;&nbsp;*/<br /><br /></span><span style="color: #0000BB">$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'php://output'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'w'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">stream_filter_append</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'string.strip_tags'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">STREAM_FILTER_WRITE</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">'b'</span><span style="color: #007700">,</span><span style="color: #DD0000">'i'</span><span style="color: #007700">,</span><span style="color: #DD0000">'u'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">fwrite</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"&lt;b&gt;bolded&nbsp;text&lt;/b&gt;&nbsp;enlarged&nbsp;to&nbsp;a&nbsp;&lt;h1&gt;level&nbsp;1&nbsp;heading&lt;/h1&gt;\n"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">fclose</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">/*&nbsp;Outputs:&nbsp;&nbsp;&lt;b&gt;bolded&nbsp;text&lt;/b&gt;&nbsp;enlarged&nbsp;to&nbsp;a&nbsp;level&nbsp;1&nbsp;heading&nbsp;&nbsp;&nbsp;*/<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+   
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

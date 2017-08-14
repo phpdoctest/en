@@ -1,0 +1,188 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Frees resources associated with a result set</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.ibm-db2.html">IBM DB2</a></li>
+  <li class="header up"><a href="ref.ibm-db2.html">IBM DB2 Functions</a></li>
+  <li><a href="function.db2-autocommit.html">db2_autocommit</a></li>
+  <li><a href="function.db2-bind-param.html">db2_bind_param</a></li>
+  <li><a href="function.db2-client-info.html">db2_client_info</a></li>
+  <li><a href="function.db2-close.html">db2_close</a></li>
+  <li><a href="function.db2-column-privileges.html">db2_column_privileges</a></li>
+  <li><a href="function.db2-columns.html">db2_columns</a></li>
+  <li><a href="function.db2-commit.html">db2_commit</a></li>
+  <li><a href="function.db2-conn-error.html">db2_conn_error</a></li>
+  <li><a href="function.db2-conn-errormsg.html">db2_conn_errormsg</a></li>
+  <li><a href="function.db2-connect.html">db2_connect</a></li>
+  <li><a href="function.db2-cursor-type.html">db2_cursor_type</a></li>
+  <li><a href="function.db2-escape-string.html">db2_escape_string</a></li>
+  <li><a href="function.db2-exec.html">db2_exec</a></li>
+  <li><a href="function.db2-execute.html">db2_execute</a></li>
+  <li><a href="function.db2-fetch-array.html">db2_fetch_array</a></li>
+  <li><a href="function.db2-fetch-assoc.html">db2_fetch_assoc</a></li>
+  <li><a href="function.db2-fetch-both.html">db2_fetch_both</a></li>
+  <li><a href="function.db2-fetch-object.html">db2_fetch_object</a></li>
+  <li><a href="function.db2-fetch-row.html">db2_fetch_row</a></li>
+  <li><a href="function.db2-field-display-size.html">db2_field_display_size</a></li>
+  <li><a href="function.db2-field-name.html">db2_field_name</a></li>
+  <li><a href="function.db2-field-num.html">db2_field_num</a></li>
+  <li><a href="function.db2-field-precision.html">db2_field_precision</a></li>
+  <li><a href="function.db2-field-scale.html">db2_field_scale</a></li>
+  <li><a href="function.db2-field-type.html">db2_field_type</a></li>
+  <li><a href="function.db2-field-width.html">db2_field_width</a></li>
+  <li><a href="function.db2-foreign-keys.html">db2_foreign_keys</a></li>
+  <li class="active"><a href="function.db2-free-result.html">db2_free_result</a></li>
+  <li><a href="function.db2-free-stmt.html">db2_free_stmt</a></li>
+  <li><a href="function.db2-get-option.html">db2_get_option</a></li>
+  <li><a href="function.db2-last-insert-id.html">db2_last_insert_id</a></li>
+  <li><a href="function.db2-lob-read.html">db2_lob_read</a></li>
+  <li><a href="function.db2-next-result.html">db2_next_result</a></li>
+  <li><a href="function.db2-num-fields.html">db2_num_fields</a></li>
+  <li><a href="function.db2-num-rows.html">db2_num_rows</a></li>
+  <li><a href="function.db2-pclose.html">db2_pclose</a></li>
+  <li><a href="function.db2-pconnect.html">db2_pconnect</a></li>
+  <li><a href="function.db2-prepare.html">db2_prepare</a></li>
+  <li><a href="function.db2-primary-keys.html">db2_primary_keys</a></li>
+  <li><a href="function.db2-procedure-columns.html">db2_procedure_columns</a></li>
+  <li><a href="function.db2-procedures.html">db2_procedures</a></li>
+  <li><a href="function.db2-result.html">db2_result</a></li>
+  <li><a href="function.db2-rollback.html">db2_rollback</a></li>
+  <li><a href="function.db2-server-info.html">db2_server_info</a></li>
+  <li><a href="function.db2-set-option.html">db2_set_option</a></li>
+  <li><a href="function.db2-special-columns.html">db2_special_columns</a></li>
+  <li><a href="function.db2-statistics.html">db2_statistics</a></li>
+  <li><a href="function.db2-stmt-error.html">db2_stmt_error</a></li>
+  <li><a href="function.db2-stmt-errormsg.html">db2_stmt_errormsg</a></li>
+  <li><a href="function.db2-table-privileges.html">db2_table_privileges</a></li>
+  <li><a href="function.db2-tables.html">db2_tables</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.db2-foreign-keys.html">db2_foreign_keys</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.db2-free-stmt.html">db2_free_stmt</a></div>
+                <div class="up"><a href="ref.ibm-db2.html">IBM DB2 Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.db2-free-result" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">db2_free_result</h1>
+  <p class="refpurpose">
+   Frees resources associated with a result set
+  </p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.db2-free-result-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">db2_free_result</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$stmt</code></span>
+   )</div>
+
+
+  <p class="para rdfs-comment">
+   Frees the system and database resources that are associated with a result
+   set. These resources are freed implicitly when a script finishes, but you
+   can call <span class="function">db2_free_result</span> to explicitly free the result
+   set resources before the end of the script.
+  </p>
+
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.db2-free-result-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">stmt</code></dt>
+
+     <dd>
+
+      <p class="para">
+       A valid statement resource.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.db2-free-result-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> on success or <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+
+ 
+
+ <div class="refsect1 seealso" id="refsect1-function.db2-free-result-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">db2_free_stmt</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,2259 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Datastructures</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.spl.html">SPL</a></li>
+  <li><a href="intro.spl.html">Introduction</a></li>
+  <li><a href="spl.setup.html">Installing/Configuring</a></li>
+  <li><a href="spl.constants.html">Predefined Constants</a></li>
+  <li class="active"><a href="spl.datastructures.html">Datastructures</a></li>
+  <li><a href="spl.iterators.html">Iterators</a></li>
+  <li><a href="spl.interfaces.html">Interfaces</a></li>
+  <li><a href="spl.exceptions.html">Exceptions</a></li>
+  <li><a href="ref.spl.html">SPL Functions</a></li>
+  <li><a href="spl.files.html">File Handling</a></li>
+  <li><a href="spl.misc.html">Miscellaneous Classes and Interfaces</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="spl.constants.html">Predefined Constants</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="class.spldoublylinkedlist.html">SplDoublyLinkedList</a></div>
+                <div class="up"><a href="book.spl.html">SPL</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="spl.datastructures" class="part">
+
+ <h1>Datastructures</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="class.spldoublylinkedlist.html">SplDoublyLinkedList</a> — The SplDoublyLinkedList class<ul class="chunklist chunklist_title">
+<li><a href="spldoublylinkedlist.add.html">SplDoublyLinkedList::add</a> — Add/insert a new value at the specified index</li>
+<li><a href="spldoublylinkedlist.bottom.html">SplDoublyLinkedList::bottom</a> — Peeks at the node from the beginning of the doubly linked list</li>
+<li><a href="spldoublylinkedlist.construct.html">SplDoublyLinkedList::__construct</a> — Constructs a new doubly linked list</li>
+<li><a href="spldoublylinkedlist.count.html">SplDoublyLinkedList::count</a> — Counts the number of elements in the doubly linked list.</li>
+<li><a href="spldoublylinkedlist.current.html">SplDoublyLinkedList::current</a> — Return current array entry</li>
+<li><a href="spldoublylinkedlist.getiteratormode.html">SplDoublyLinkedList::getIteratorMode</a> — Returns the mode of iteration</li>
+<li><a href="spldoublylinkedlist.isempty.html">SplDoublyLinkedList::isEmpty</a> — Checks whether the doubly linked list is empty.</li>
+<li><a href="spldoublylinkedlist.key.html">SplDoublyLinkedList::key</a> — Return current node index</li>
+<li><a href="spldoublylinkedlist.next.html">SplDoublyLinkedList::next</a> — Move to next entry</li>
+<li><a href="spldoublylinkedlist.offsetexists.html">SplDoublyLinkedList::offsetExists</a> — Returns whether the requested $index exists</li>
+<li><a href="spldoublylinkedlist.offsetget.html">SplDoublyLinkedList::offsetGet</a> — Returns the value at the specified $index</li>
+<li><a href="spldoublylinkedlist.offsetset.html">SplDoublyLinkedList::offsetSet</a> — Sets the value at the specified $index to $newval</li>
+<li><a href="spldoublylinkedlist.offsetunset.html">SplDoublyLinkedList::offsetUnset</a> — Unsets the value at the specified $index</li>
+<li><a href="spldoublylinkedlist.pop.html">SplDoublyLinkedList::pop</a> — Pops a node from the end of the doubly linked list</li>
+<li><a href="spldoublylinkedlist.prev.html">SplDoublyLinkedList::prev</a> — Move to previous entry</li>
+<li><a href="spldoublylinkedlist.push.html">SplDoublyLinkedList::push</a> — Pushes an element at the end of the doubly linked list</li>
+<li><a href="spldoublylinkedlist.rewind.html">SplDoublyLinkedList::rewind</a> — Rewind iterator back to the start</li>
+<li><a href="spldoublylinkedlist.serialize.html">SplDoublyLinkedList::serialize</a> — Serializes the storage</li>
+<li><a href="spldoublylinkedlist.setiteratormode.html">SplDoublyLinkedList::setIteratorMode</a> — Sets the mode of iteration</li>
+<li><a href="spldoublylinkedlist.shift.html">SplDoublyLinkedList::shift</a> — Shifts a node from the beginning of the doubly linked list</li>
+<li><a href="spldoublylinkedlist.top.html">SplDoublyLinkedList::top</a> — Peeks at the node from the end of the doubly linked list</li>
+<li><a href="spldoublylinkedlist.unserialize.html">SplDoublyLinkedList::unserialize</a> — Unserializes the storage</li>
+<li><a href="spldoublylinkedlist.unshift.html">SplDoublyLinkedList::unshift</a> — Prepends the doubly linked list with an element</li>
+<li><a href="spldoublylinkedlist.valid.html">SplDoublyLinkedList::valid</a> — Check whether the doubly linked list contains more nodes</li>
+</ul>
+</li>
+<li><a href="class.splstack.html">SplStack</a> — The SplStack class<ul class="chunklist chunklist_title">
+<li><a href="splstack.construct.html">SplStack::__construct</a> — Constructs a new stack implemented using a doubly linked list</li>
+<li><a href="splstack.setiteratormode.html">SplStack::setIteratorMode</a> — Sets the mode of iteration</li>
+</ul>
+</li>
+<li><a href="class.splqueue.html">SplQueue</a> — The SplQueue class<ul class="chunklist chunklist_title">
+<li><a href="splqueue.construct.html">SplQueue::__construct</a> — Constructs a new queue implemented using a doubly linked list</li>
+<li><a href="splqueue.dequeue.html">SplQueue::dequeue</a> — Dequeues a node from the queue</li>
+<li><a href="splqueue.enqueue.html">SplQueue::enqueue</a> — Adds an element to the queue.</li>
+<li><a href="splqueue.setiteratormode.html">SplQueue::setIteratorMode</a> — Sets the mode of iteration</li>
+</ul>
+</li>
+<li><a href="class.splheap.html">SplHeap</a> — The SplHeap class<ul class="chunklist chunklist_title">
+<li><a href="splheap.compare.html">SplHeap::compare</a> — Compare elements in order to place them correctly in the heap while sifting up.</li>
+<li><a href="splheap.construct.html">SplHeap::__construct</a> — Constructs a new empty heap</li>
+<li><a href="splheap.count.html">SplHeap::count</a> — Counts the number of elements in the heap.</li>
+<li><a href="splheap.current.html">SplHeap::current</a> — Return current node pointed by the iterator</li>
+<li><a href="splheap.extract.html">SplHeap::extract</a> — Extracts a node from top of the heap and sift up.</li>
+<li><a href="splheap.insert.html">SplHeap::insert</a> — Inserts an element in the heap by sifting it up.</li>
+<li><a href="splheap.isempty.html">SplHeap::isEmpty</a> — Checks whether the heap is empty.</li>
+<li><a href="splheap.key.html">SplHeap::key</a> — Return current node index</li>
+<li><a href="splheap.next.html">SplHeap::next</a> — Move to the next node</li>
+<li><a href="splheap.recoverfromcorruption.html">SplHeap::recoverFromCorruption</a> — Recover from the corrupted state and allow further actions on the heap.</li>
+<li><a href="splheap.rewind.html">SplHeap::rewind</a> — Rewind iterator back to the start (no-op)</li>
+<li><a href="splheap.top.html">SplHeap::top</a> — Peeks at the node from the top of the heap</li>
+<li><a href="splheap.valid.html">SplHeap::valid</a> — Check whether the heap contains more nodes</li>
+</ul>
+</li>
+<li><a href="class.splmaxheap.html">SplMaxHeap</a> — The SplMaxHeap class<ul class="chunklist chunklist_title">
+<li><a href="splmaxheap.compare.html">SplMaxHeap::compare</a> — Compare elements in order to place them correctly in the heap while sifting up.</li>
+</ul>
+</li>
+<li><a href="class.splminheap.html">SplMinHeap</a> — The SplMinHeap class<ul class="chunklist chunklist_title">
+<li><a href="splminheap.compare.html">SplMinHeap::compare</a> — Compare elements in order to place them correctly in the heap while sifting up.</li>
+</ul>
+</li>
+<li><a href="class.splpriorityqueue.html">SplPriorityQueue</a> — The SplPriorityQueue class<ul class="chunklist chunklist_title">
+<li><a href="splpriorityqueue.compare.html">SplPriorityQueue::compare</a> — Compare priorities in order to place elements correctly in the heap while sifting up.</li>
+<li><a href="splpriorityqueue.construct.html">SplPriorityQueue::__construct</a> — Constructs a new empty queue</li>
+<li><a href="splpriorityqueue.count.html">SplPriorityQueue::count</a> — Counts the number of elements in the queue.</li>
+<li><a href="splpriorityqueue.current.html">SplPriorityQueue::current</a> — Return current node pointed by the iterator</li>
+<li><a href="splpriorityqueue.extract.html">SplPriorityQueue::extract</a> — Extracts a node from top of the heap and shift up.</li>
+<li><a href="splpriorityqueue.insert.html">SplPriorityQueue::insert</a> — Inserts an element in the queue by sifting it up.</li>
+<li><a href="splpriorityqueue.isempty.html">SplPriorityQueue::isEmpty</a> — Checks whether the queue is empty.</li>
+<li><a href="splpriorityqueue.key.html">SplPriorityQueue::key</a> — Return current node index</li>
+<li><a href="splpriorityqueue.next.html">SplPriorityQueue::next</a> — Move to the next node</li>
+<li><a href="splpriorityqueue.recoverfromcorruption.html">SplPriorityQueue::recoverFromCorruption</a> — Recover from the corrupted state and allow further actions on the queue.</li>
+<li><a href="splpriorityqueue.rewind.html">SplPriorityQueue::rewind</a> — Rewind iterator back to the start (no-op)</li>
+<li><a href="splpriorityqueue.setextractflags.html">SplPriorityQueue::setExtractFlags</a> — Sets the mode of extraction</li>
+<li><a href="splpriorityqueue.top.html">SplPriorityQueue::top</a> — Peeks at the node from the top of the queue</li>
+<li><a href="splpriorityqueue.valid.html">SplPriorityQueue::valid</a> — Check whether the queue contains more nodes</li>
+</ul>
+</li>
+<li><a href="class.splfixedarray.html">SplFixedArray</a> — The SplFixedArray class<ul class="chunklist chunklist_title">
+<li><a href="splfixedarray.construct.html">SplFixedArray::__construct</a> — Constructs a new fixed array</li>
+<li><a href="splfixedarray.count.html">SplFixedArray::count</a> — Returns the size of the array</li>
+<li><a href="splfixedarray.current.html">SplFixedArray::current</a> — Return current array entry</li>
+<li><a href="splfixedarray.fromarray.html">SplFixedArray::fromArray</a> — Import a PHP array in a SplFixedArray instance</li>
+<li><a href="splfixedarray.getsize.html">SplFixedArray::getSize</a> — Gets the size of the array</li>
+<li><a href="splfixedarray.key.html">SplFixedArray::key</a> — Return current array index</li>
+<li><a href="splfixedarray.next.html">SplFixedArray::next</a> — Move to next entry</li>
+<li><a href="splfixedarray.offsetexists.html">SplFixedArray::offsetExists</a> — Returns whether the requested index exists</li>
+<li><a href="splfixedarray.offsetget.html">SplFixedArray::offsetGet</a> — Returns the value at the specified index</li>
+<li><a href="splfixedarray.offsetset.html">SplFixedArray::offsetSet</a> — Sets a new value at a specified index</li>
+<li><a href="splfixedarray.offsetunset.html">SplFixedArray::offsetUnset</a> — Unsets the value at the specified $index</li>
+<li><a href="splfixedarray.rewind.html">SplFixedArray::rewind</a> — Rewind iterator back to the start</li>
+<li><a href="splfixedarray.setsize.html">SplFixedArray::setSize</a> — Change the size of an array</li>
+<li><a href="splfixedarray.toarray.html">SplFixedArray::toArray</a> — Returns a PHP array from the fixed array</li>
+<li><a href="splfixedarray.valid.html">SplFixedArray::valid</a> — Check whether the array contains more elements</li>
+<li><a href="splfixedarray.wakeup.html">SplFixedArray::__wakeup</a> — Reinitialises the array after being unserialised</li>
+</ul>
+</li>
+<li><a href="class.splobjectstorage.html">SplObjectStorage</a> — The SplObjectStorage class<ul class="chunklist chunklist_title">
+<li><a href="splobjectstorage.addall.html">SplObjectStorage::addAll</a> — Adds all objects from another storage</li>
+<li><a href="splobjectstorage.attach.html">SplObjectStorage::attach</a> — Adds an object in the storage</li>
+<li><a href="splobjectstorage.contains.html">SplObjectStorage::contains</a> — Checks if the storage contains a specific object</li>
+<li><a href="splobjectstorage.count.html">SplObjectStorage::count</a> — Returns the number of objects in the storage</li>
+<li><a href="splobjectstorage.current.html">SplObjectStorage::current</a> — Returns the current storage entry</li>
+<li><a href="splobjectstorage.detach.html">SplObjectStorage::detach</a> — Removes an object from the storage</li>
+<li><a href="splobjectstorage.gethash.html">SplObjectStorage::getHash</a> — Calculate a unique identifier for the contained objects</li>
+<li><a href="splobjectstorage.getinfo.html">SplObjectStorage::getInfo</a> — Returns the data associated with the current iterator entry</li>
+<li><a href="splobjectstorage.key.html">SplObjectStorage::key</a> — Returns the index at which the iterator currently is</li>
+<li><a href="splobjectstorage.next.html">SplObjectStorage::next</a> — Move to the next entry</li>
+<li><a href="splobjectstorage.offsetexists.html">SplObjectStorage::offsetExists</a> — Checks whether an object exists in the storage</li>
+<li><a href="splobjectstorage.offsetget.html">SplObjectStorage::offsetGet</a> — Returns the data associated with an object</li>
+<li><a href="splobjectstorage.offsetset.html">SplObjectStorage::offsetSet</a> — Associates data to an object in the storage</li>
+<li><a href="splobjectstorage.offsetunset.html">SplObjectStorage::offsetUnset</a> — Removes an object from the storage</li>
+<li><a href="splobjectstorage.removeall.html">SplObjectStorage::removeAll</a> — Removes objects contained in another storage from the current storage</li>
+<li><a href="splobjectstorage.removeallexcept.html">SplObjectStorage::removeAllExcept</a> — Removes all objects except for those contained in another storage from the current storage</li>
+<li><a href="splobjectstorage.rewind.html">SplObjectStorage::rewind</a> — Rewind the iterator to the first storage element</li>
+<li><a href="splobjectstorage.serialize.html">SplObjectStorage::serialize</a> — Serializes the storage</li>
+<li><a href="splobjectstorage.setinfo.html">SplObjectStorage::setInfo</a> — Sets the data associated with the current iterator entry</li>
+<li><a href="splobjectstorage.unserialize.html">SplObjectStorage::unserialize</a> — Unserializes a storage from its string representation</li>
+<li><a href="splobjectstorage.valid.html">SplObjectStorage::valid</a> — Returns if the current iterator entry is valid</li>
+</ul>
+</li>
+</ul>
+
+
+ <div class="partintro">
+  <p class="para">
+   SPL provides a set of standard datastructures. They are grouped here by their 
+   underlying implementation which usually defines their general field of 
+   application.
+  </p>
+
+  <div class="section">
+   <h2 class="title">Doubly Linked Lists</h2>
+
+   <p class="para">
+    A Doubly Linked List (DLL) is a list of nodes linked in both directions to 
+    each other. Iterator&#039;s operations, access to both ends, addition or 
+    removal of nodes have a cost of O(1) when the underlying structure is a DLL.
+    It hence provides a decent implementation for stacks and queues.
+   </p>
+
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara"><span class="classname">SplDoublyLinkedList</span></span>
+     <ul class="itemizedlist">
+      <li class="listitem"><span class="simpara"><span class="classname">SplStack</span></span></li>
+      <li class="listitem"><span class="simpara"><span class="classname">SplQueue</span></span></li>
+     </ul>
+    </li>
+   </ul>
+
+  </div>
+  <div class="section">
+   <h2 class="title">Heaps</h2>
+
+   <p class="para">
+    Heaps are tree-like structures that follow the heap-property: each node
+    is greater than or equal to its children, when compared using the 
+    implemented compare method which is global to the heap.
+   </p>
+
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara"><span class="classname">SplHeap</span></span>
+     <ul class="itemizedlist">
+      <li class="listitem"><span class="simpara"><span class="classname">SplMaxHeap</span></span></li>
+      <li class="listitem"><span class="simpara"><span class="classname">SplMinHeap</span></span></li>
+     </ul>
+    </li>
+    <li class="listitem">
+     <span class="simpara"><span class="classname">SplPriorityQueue</span></span>
+    </li>
+   </ul>
+
+  </div>
+
+  <div class="section">
+   <h2 class="title">Arrays</h2>
+
+   <p class="para">
+    Arrays are structures that store the data in a continuous way, accessible
+    via indexes. Don&#039;t confuse them with PHP arrays: PHP arrays are in fact 
+    implemented as ordered hashtables.
+   </p>
+
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara"><span class="classname">SplFixedArray</span></span>
+    </li>
+   </ul>
+
+  </div>
+
+  <div class="section">
+   <h2 class="title">Map</h2>
+
+   <p class="para">
+    A map is a datastructure holding key-value pairs. PHP arrays can be seen as maps from integers/strings to values. SPL provides a map from objects to data. This map can also be used as an object set.
+   </p>
+
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara"><span class="classname">SplObjectStorage</span></span>
+    </li>
+   </ul>
+
+  </div>
+ </div>
+
+ 
+
+
+ <h1 class="title">The SplDoublyLinkedList class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="spldoublylinkedlist.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The SplDoublyLinkedList class provides the main functionalities of a doubly linked list.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="spldoublylinkedlist.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">SplDoublyLinkedList</strong></div>
+ 
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">SplDoublyLinkedList</strong>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename">Iterator</span>
+     </span>
+
+     <span class="oointerface">, 
+      <span class="interfacename">ArrayAccess</span>
+     </span>
+ 
+     <span class="oointerface">, 
+      <span class="interfacename">Countable</span>
+     </span>
+ 
+     {</div>
+
+ 
+    
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">add</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$index</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$newval</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">bottom</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">count</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">current</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getIteratorMode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isEmpty</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">key</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">next</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">offsetExists</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$index</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">offsetGet</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$index</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">offsetSet</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$index</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$newval</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">offsetUnset</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$index</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">pop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">prev</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">push</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">rewind</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">serialize</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">setIteratorMode</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">shift</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">top</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">unserialize</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$serialized</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">unshift</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">valid</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+ 
+  </div>
+ 
+
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+ <h1 class="title">The SplStack class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="splstack.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The SplStack class provides the main functionalities of a stack implemented using a doubly linked list.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="splstack.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">SplStack</strong></div>
+ 
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">SplStack</strong>
+     </span>
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> SplDoublyLinkedList</strong>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename">Iterator</span>
+     </span>
+
+     <span class="oointerface">, 
+      <span class="interfacename">ArrayAccess</span>
+     </span>
+ 
+     <span class="oointerface">, 
+      <span class="interfacename">Countable</span>
+     </span>
+ 
+     {</div>
+
+ 
+    
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="constructorsynopsis dc-description">
+    <span class="methodname">__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+    <div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname">setIteratorMode</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code></span>
+   )</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SplDoublyLinkedList::add</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$index</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$newval</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">SplDoublyLinkedList::bottom</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">SplDoublyLinkedList::count</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">SplDoublyLinkedList::current</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">SplDoublyLinkedList::getIteratorMode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">SplDoublyLinkedList::isEmpty</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">SplDoublyLinkedList::key</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SplDoublyLinkedList::next</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">SplDoublyLinkedList::offsetExists</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$index</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">SplDoublyLinkedList::offsetGet</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$index</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SplDoublyLinkedList::offsetSet</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$index</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$newval</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SplDoublyLinkedList::offsetUnset</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$index</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">SplDoublyLinkedList::pop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SplDoublyLinkedList::prev</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SplDoublyLinkedList::push</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SplDoublyLinkedList::rewind</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">SplDoublyLinkedList::serialize</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SplDoublyLinkedList::setIteratorMode</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">SplDoublyLinkedList::shift</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">SplDoublyLinkedList::top</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SplDoublyLinkedList::unserialize</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$serialized</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SplDoublyLinkedList::unshift</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">SplDoublyLinkedList::valid</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+ 
+  </div>
+
+
+
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+ <h1 class="title">The SplQueue class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="splqueue.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The SplQueue class provides the main functionalities of a queue implemented using a doubly linked list.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="splqueue.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">SplQueue</strong></div>
+ 
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">SplQueue</strong>
+     </span>
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> SplDoublyLinkedList</strong>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename">Iterator</span>
+     </span>
+
+     <span class="oointerface">, 
+      <span class="interfacename">ArrayAccess</span>
+     </span>
+ 
+     <span class="oointerface">, 
+      <span class="interfacename">Countable</span>
+     </span>
+ 
+     {</div>
+
+ 
+    
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="constructorsynopsis dc-description">
+    <span class="methodname">__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+    <div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname">dequeue</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname">enqueue</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname">setIteratorMode</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code></span>
+   )</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SplDoublyLinkedList::add</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$index</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$newval</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">SplDoublyLinkedList::bottom</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">SplDoublyLinkedList::count</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">SplDoublyLinkedList::current</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">SplDoublyLinkedList::getIteratorMode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">SplDoublyLinkedList::isEmpty</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">SplDoublyLinkedList::key</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SplDoublyLinkedList::next</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">SplDoublyLinkedList::offsetExists</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$index</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">SplDoublyLinkedList::offsetGet</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$index</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SplDoublyLinkedList::offsetSet</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$index</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$newval</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SplDoublyLinkedList::offsetUnset</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$index</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">SplDoublyLinkedList::pop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SplDoublyLinkedList::prev</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SplDoublyLinkedList::push</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SplDoublyLinkedList::rewind</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">SplDoublyLinkedList::serialize</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SplDoublyLinkedList::setIteratorMode</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">SplDoublyLinkedList::shift</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">SplDoublyLinkedList::top</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SplDoublyLinkedList::unserialize</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$serialized</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SplDoublyLinkedList::unshift</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">SplDoublyLinkedList::valid</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+ 
+  </div>
+
+
+
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+ <h1 class="title">The SplHeap class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="splheap.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The SplHeap class provides the main functionalities of a Heap.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="splheap.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">SplHeap</strong></div>
+ 
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">abstract</span>  class <strong class="classname">SplHeap</strong>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename">Iterator</span>
+     </span>
+
+     <span class="oointerface">, 
+      <span class="interfacename">Countable</span>
+     </span>
+ 
+     {</div>
+
+ 
+    
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">protected</span> <span class="type">int</span> <span class="methodname">compare</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value1</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value2</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">count</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">current</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">extract</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">insert</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isEmpty</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">key</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">next</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">recoverFromCorruption</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">rewind</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">top</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">valid</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+ 
+  </div>
+ 
+
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+ <h1 class="title">The SplMaxHeap class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="splmaxheap.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The SplMaxHeap class provides the main functionalities of a heap, keeping the maximum on the top.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="splmaxheap.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">SplMaxHeap</strong></div>
+ 
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">SplMaxHeap</strong>
+     </span>
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> SplHeap</strong>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename">Iterator</span>
+     </span>
+
+     <span class="oointerface">, 
+      <span class="interfacename">Countable</span>
+     </span>
+ 
+     {</div>
+
+ 
+    
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">protected</span> <span class="type">int</span> <span class="methodname">compare</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value1</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value2</code></span>
+   )</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">protected</span> <span class="type">int</span> <span class="methodname">SplHeap::compare</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value1</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value2</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">SplHeap::count</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">SplHeap::current</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">SplHeap::extract</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SplHeap::insert</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">SplHeap::isEmpty</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">SplHeap::key</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SplHeap::next</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SplHeap::recoverFromCorruption</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SplHeap::rewind</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">SplHeap::top</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">SplHeap::valid</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+ 
+  </div>
+
+
+
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+ <h1 class="title">The SplMinHeap class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="splminheap.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The SplMinHeap class provides the main functionalities of a heap, keeping the minimum on the top.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="splminheap.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">SplMinHeap</strong></div>
+ 
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">SplMinHeap</strong>
+     </span>
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> SplHeap</strong>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename">Iterator</span>
+     </span>
+
+     <span class="oointerface">, 
+      <span class="interfacename">Countable</span>
+     </span>
+ 
+     {</div>
+
+ 
+    
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">protected</span> <span class="type">int</span> <span class="methodname">compare</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value1</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value2</code></span>
+   )</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">protected</span> <span class="type">int</span> <span class="methodname">SplHeap::compare</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value1</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value2</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">SplHeap::count</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">SplHeap::current</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">SplHeap::extract</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SplHeap::insert</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">SplHeap::isEmpty</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">SplHeap::key</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SplHeap::next</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SplHeap::recoverFromCorruption</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SplHeap::rewind</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">SplHeap::top</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">SplHeap::valid</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+ 
+  </div>
+
+
+
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+ <h1 class="title">The SplPriorityQueue class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="splpriorityqueue.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The SplPriorityQueue class provides the main functionalities of a 
+    prioritized queue, implemented using a max heap.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="splpriorityqueue.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">SplPriorityQueue</strong></div>
+ 
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">SplPriorityQueue</strong>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename">Iterator</span>
+     </span>
+
+     <span class="oointerface">, 
+      <span class="interfacename">Countable</span>
+     </span>
+ 
+     {</div>
+
+ 
+    
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">compare</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$priority1</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$priority2</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">count</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">current</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">extract</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">insert</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$priority</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isEmpty</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">key</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">next</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">recoverFromCorruption</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">rewind</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">setExtractFlags</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">top</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">valid</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+ 
+  </div>
+ 
+
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+ 
+
+
+ <h1 class="title">The SplFixedArray class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="splfixedarray.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The SplFixedArray class provides the main functionalities of array. The 
+    main differences between a SplFixedArray and a normal PHP array is that 
+    the SplFixedArray is of fixed length and allows only integers within 
+    the range as indexes. The advantage is that it allows a faster array
+    implementation.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="splfixedarray.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">SplFixedArray</strong></div>
+ 
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">SplFixedArray</strong>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename">Iterator</span>
+     </span>
+
+     <span class="oointerface">, 
+      <span class="interfacename">ArrayAccess</span>
+     </span>
+ 
+     <span class="oointerface">, 
+      <span class="interfacename">Countable</span>
+     </span>
+ 
+     {</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ([ <span class="methodparam"><span class="type">int</span> <code class="parameter">$size</code><span class="initializer"> = 0</span></span>
+  ] )</div>
+
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">count</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">current</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">SplFixedArray</span> <span class="methodname">fromArray</span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$array</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$save_indexes</code><span class="initializer"> = true</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getSize</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">key</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">next</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">offsetExists</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">offsetGet</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">offsetSet</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$newval</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">offsetUnset</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">rewind</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">setSize</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$size</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">toArray</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">valid</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">__wakeup</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+ 
+  </div>
+
+  <div class="section" id="splfixedarray.examples">
+   <h2 class="title">Examples</h2>
+   <p class="para">
+    <div class="example" id="example-4386">
+     <p><strong>Example #1 <span class="classname">SplFixedArray</span> usage example</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Initialize&nbsp;the&nbsp;array&nbsp;with&nbsp;a&nbsp;fixed&nbsp;length<br /></span><span style="color: #0000BB">$array&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SplFixedArray</span><span style="color: #007700">(</span><span style="color: #0000BB">5</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #0000BB">4</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"foo"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]);&nbsp;</span><span style="color: #FF8000">//&nbsp;NULL<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]);&nbsp;</span><span style="color: #FF8000">//&nbsp;int(2)<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #DD0000">"4"</span><span style="color: #007700">]);&nbsp;</span><span style="color: #FF8000">//&nbsp;string(3)&nbsp;"foo"<br /><br />//&nbsp;Increase&nbsp;the&nbsp;size&nbsp;of&nbsp;the&nbsp;array&nbsp;to&nbsp;10<br /></span><span style="color: #0000BB">$array</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setSize</span><span style="color: #007700">(</span><span style="color: #0000BB">10</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #0000BB">9</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"asdf"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Shrink&nbsp;the&nbsp;array&nbsp;to&nbsp;a&nbsp;size&nbsp;of&nbsp;2<br /></span><span style="color: #0000BB">$array</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setSize</span><span style="color: #007700">(</span><span style="color: #0000BB">2</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;The&nbsp;following&nbsp;lines&nbsp;throw&nbsp;a&nbsp;RuntimeException:&nbsp;Index&nbsp;invalid&nbsp;or&nbsp;out&nbsp;of&nbsp;range<br /></span><span style="color: #007700">try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #DD0000">"non-numeric"</span><span style="color: #007700">]);<br />}&nbsp;catch(</span><span style="color: #0000BB">RuntimeException&nbsp;$re</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"RuntimeException:&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">$re</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">().</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br />try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">[-</span><span style="color: #0000BB">1</span><span style="color: #007700">]);<br />}&nbsp;catch(</span><span style="color: #0000BB">RuntimeException&nbsp;$re</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"RuntimeException:&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">$re</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">().</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br />try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">[</span><span style="color: #0000BB">5</span><span style="color: #007700">]);<br />}&nbsp;catch(</span><span style="color: #0000BB">RuntimeException&nbsp;$re</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"RuntimeException:&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">$re</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">().</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+NULL
+int(2)
+string(3) &quot;foo&quot;
+RuntimeException: Index invalid or out of range
+RuntimeException: Index invalid or out of range
+RuntimeException: Index invalid or out of range
+</pre></div>
+     </div>
+    </div>
+   </p>
+  </div>
+
+ 
+
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The SplObjectStorage class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="splobjectstorage.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The SplObjectStorage class provides a map from objects to data or, by
+    ignoring data, an object set. This dual purpose can be useful in many
+    cases involving the need to uniquely identify objects.
+   </p>
+  </div>
+
+
+  <div class="section" id="splobjectstorage.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">SplObjectStorage</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">SplObjectStorage</strong>
+     </span>
+     
+     <span class="oointerface">implements 
+      <span class="interfacename">Countable</span>
+     </span>
+
+     <span class="oointerface">, 
+      <span class="interfacename">Iterator</span>
+     </span>
+
+     <span class="oointerface">, 
+      <span class="interfacename">Serializable</span>
+     </span>
+
+     <span class="oointerface">, 
+      <span class="interfacename">ArrayAccess</span>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">addAll</span>
+    ( <span class="methodparam"><span class="type">SplObjectStorage</span> <code class="parameter">$storage</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">attach</span>
+    ( <span class="methodparam"><span class="type">object</span> <code class="parameter">$object</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$data</code><span class="initializer"> = <strong><code>NULL</code></strong></span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">contains</span>
+    ( <span class="methodparam"><span class="type">object</span> <code class="parameter">$object</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">count</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">object</span> <span class="methodname">current</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">detach</span>
+    ( <span class="methodparam"><span class="type">object</span> <code class="parameter">$object</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getHash</span>
+    ( <span class="methodparam"><span class="type">object</span> <code class="parameter">$object</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">getInfo</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">key</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">next</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">offsetExists</span>
+    ( <span class="methodparam"><span class="type">object</span> <code class="parameter">$object</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">offsetGet</span>
+    ( <span class="methodparam"><span class="type">object</span> <code class="parameter">$object</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">offsetSet</span>
+    ( <span class="methodparam"><span class="type">object</span> <code class="parameter">$object</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$data</code><span class="initializer"> = <strong><code>NULL</code></strong></span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">offsetUnset</span>
+    ( <span class="methodparam"><span class="type">object</span> <code class="parameter">$object</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">removeAll</span>
+    ( <span class="methodparam"><span class="type">SplObjectStorage</span> <code class="parameter">$storage</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">removeAllExcept</span>
+    ( <span class="methodparam"><span class="type">SplObjectStorage</span> <code class="parameter">$storage</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">rewind</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">serialize</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">setInfo</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$data</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">unserialize</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$serialized</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">valid</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+
+  <div class="section" id="splobjectstorage.examples">
+   <h2 class="title">Examples</h2>
+   <p class="para">
+    <div class="example" id="example-4393">
+     <p><strong>Example #1 <span class="classname">SplObjectStorage</span> as a set</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;As&nbsp;an&nbsp;object&nbsp;set<br /></span><span style="color: #0000BB">$s&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SplObjectStorage</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$o1&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">StdClass</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$o2&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">StdClass</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$o3&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">StdClass</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$s</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">attach</span><span style="color: #007700">(</span><span style="color: #0000BB">$o1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$s</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">attach</span><span style="color: #007700">(</span><span style="color: #0000BB">$o2</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$s</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">contains</span><span style="color: #007700">(</span><span style="color: #0000BB">$o1</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$s</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">contains</span><span style="color: #007700">(</span><span style="color: #0000BB">$o2</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$s</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">contains</span><span style="color: #007700">(</span><span style="color: #0000BB">$o3</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">$s</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">detach</span><span style="color: #007700">(</span><span style="color: #0000BB">$o2</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$s</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">contains</span><span style="color: #007700">(</span><span style="color: #0000BB">$o1</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$s</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">contains</span><span style="color: #007700">(</span><span style="color: #0000BB">$o2</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$s</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">contains</span><span style="color: #007700">(</span><span style="color: #0000BB">$o3</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+bool(true)
+bool(true)
+bool(false)
+bool(true)
+bool(false)
+bool(false)
+</pre></div>
+     </div>
+    </div>
+    <div class="example" id="example-4394">
+     <p><strong>Example #2 <span class="classname">SplObjectStorage</span> as a map</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;As&nbsp;a&nbsp;map&nbsp;from&nbsp;objects&nbsp;to&nbsp;data<br /></span><span style="color: #0000BB">$s&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SplObjectStorage</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$o1&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">StdClass</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$o2&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">StdClass</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$o3&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">StdClass</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$s</span><span style="color: #007700">[</span><span style="color: #0000BB">$o1</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"data&nbsp;for&nbsp;object&nbsp;1"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$s</span><span style="color: #007700">[</span><span style="color: #0000BB">$o2</span><span style="color: #007700">]&nbsp;=&nbsp;array(</span><span style="color: #0000BB">1</span><span style="color: #007700">,</span><span style="color: #0000BB">2</span><span style="color: #007700">,</span><span style="color: #0000BB">3</span><span style="color: #007700">);<br /><br />if&nbsp;(isset(</span><span style="color: #0000BB">$s</span><span style="color: #007700">[</span><span style="color: #0000BB">$o2</span><span style="color: #007700">]))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$s</span><span style="color: #007700">[</span><span style="color: #0000BB">$o2</span><span style="color: #007700">]);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+array(3) {
+  [0]=&gt;
+  int(1)
+  [1]=&gt;
+  int(2)
+  [2]=&gt;
+  int(3)
+}
+</pre></div>
+     </div>
+    </div>
+   </p>
+  </div>
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

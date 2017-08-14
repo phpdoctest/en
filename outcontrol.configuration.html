@@ -1,0 +1,276 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Runtime Configuration</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.php.html">Affecting PHP's Behaviour</a></li>
+  <li class="header up"><a href="book.outcontrol.html">Output Control</a></li>
+  <li class="header up"><a href="outcontrol.setup.html">Installing/Configuring</a></li>
+  <li><a href="outcontrol.requirements.html">Requirements</a></li>
+  <li><a href="outcontrol.installation.html">Installation</a></li>
+  <li class="active"><a href="outcontrol.configuration.html">Runtime Configuration</a></li>
+  <li><a href="outcontrol.resources.html">Resource Types</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="outcontrol.installation.html">Installation</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="outcontrol.resources.html">Resource Types</a></div>
+                <div class="up"><a href="outcontrol.setup.html">Installing/Configuring</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="outcontrol.configuration" class="section">
+ <h2 class="title">Runtime Configuration</h2>
+ <p class="simpara">
+The behaviour of these functions is affected by settings in <var class="filename">php.ini</var>.
+</p>
+ <p class="para">
+  <table class="doctable table">
+   <caption><strong>Output Control configuration options</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>Name</th>
+      <th>Default</th>
+      <th>Changeable</th>
+      <th>Changelog</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+    <tr>
+     <td><a href="outcontrol.configuration.html#ini.output-buffering" class="link">output_buffering</a></td>
+     <td>&quot;0&quot;</td>
+     <td>PHP_INI_PERDIR</td>
+     <td class="empty">&nbsp;</td>
+    </tr>
+
+    <tr>
+     <td><a href="outcontrol.configuration.html#ini.output-handler" class="link">output_handler</a></td>
+     <td>NULL</td>
+     <td>PHP_INI_PERDIR</td>
+     <td>Available since PHP 4.0.4.</td>
+    </tr>
+
+    <tr>
+     <td><a href="outcontrol.configuration.html#ini.implicit-flush" class="link">implicit_flush</a></td>
+     <td>&quot;0&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td>PHP_INI_PERDIR in PHP &lt;= 4.2.3.</td>
+    </tr>
+
+    <tr>
+     <td><a href="outcontrol.configuration.html#ini.url-rewriter.tags" class="link">url_rewriter.tags</a></td>
+     <td>&quot;a=href,area=href,frame=src,form=,fieldset=&quot;</td>
+     <td>PHP_INI_ALL</td>
+     <td>Available since PHP 4.0.4. Before PHP 7.1.0, this was used to set
+     session&#039;s trans sid rewrite. From PHP 7.1.0, it is only used by 
+     <span class="function">output_add_rewrite_var</span>.</td>
+    </tr>
+
+    <tr>
+     <td><a href="outcontrol.configuration.html#ini.url-rewriter.hosts" class="link">url_rewriter.hosts</a></td>
+     <td><em>$_SERVER[&#039;HTTP_HOST&#039;]</em> is used as default.</td>
+     <td>PHP_INI_ALL</td>
+     <td>Available since PHP 7.1.0</td>
+    </tr>
+
+    </tbody>
+   
+  </table>
+
+   For further details and definitions of the
+PHP_INI_* modes, see the <a href="configuration.changes.modes.html" class="xref">Where a configuration setting may be set</a>.
+ </p>
+ 
+ <p class="para">Here&#039;s a short explanation of
+the configuration directives.</p>
+ 
+ <p class="para">
+ <dl>
+
+  
+   <dt id="ini.output-buffering">
+    <code class="parameter">output_buffering</code>
+    <span class="type">boolean</span>/<span class="type">integer</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     You can enable output buffering for all files by setting this directive
+     to &#039;On&#039;. If you wish to limit the size of the buffer to a certain size -
+     you can use a maximum number of bytes instead of &#039;On&#039;, as a value for
+     this directive (e.g., output_buffering=4096).
+     This directive is always Off in PHP-CLI.
+    </p>
+   </dd>
+
+  
+
+  
+   <dt id="ini.output-handler">
+    <code class="parameter">output_handler</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     You can redirect all of the output of your scripts to a function. For
+     example, if you set output_handler to
+     <span class="function">mb_output_handler</span>, character encoding will be
+     transparently converted to the specified encoding. Setting any output
+     handler automatically turns on output buffering.
+    </p>
+    <blockquote class="note"><p><strong class="note">Note</strong>: 
+     <p class="para">
+      You cannot use both <span class="function">mb_output_handler</span> with
+      <span class="function">ob_iconv_handler</span> and you cannot use both
+      <span class="function">ob_gzhandler</span> and
+      <a href="zlib.configuration.html#ini.zlib.output-compression" class="link">zlib.output_compression</a>.
+     </p>
+    </p></blockquote>
+    <blockquote class="note"><p><strong class="note">Note</strong>: 
+     <p class="para">
+      Only built-in functions can be used with this directive. For user
+      defined functions, use <span class="function">ob_start</span>.
+     </p>
+    </p></blockquote>
+   </dd>
+
+  
+
+  
+   <dt id="ini.implicit-flush">
+    <code class="parameter">implicit_flush</code>
+    <span class="type">boolean</span>
+   </dt>
+
+   <dd>
+
+    <p class="para">
+     <strong><code>FALSE</code></strong> by default. Changing this to <strong><code>TRUE</code></strong> tells PHP to tell the
+     output layer to flush itself automatically after every output block.
+     This is equivalent to calling the PHP function
+     <span class="function">flush</span> after each and every call to
+     <span class="function">print</span> or <span class="function">echo</span> and each and
+     every <em>HTML</em> block.
+    </p>
+    <p class="para">
+     When using PHP within an web environment, turning
+     this option on has serious performance implications and is generally
+     recommended for debugging purposes only. This value defaults to
+     <strong><code>TRUE</code></strong> when operating under the <em>CLI SAPI</em>.
+    </p>
+    <p class="para">
+     See also <span class="function">ob_implicit_flush</span>.
+    </p>
+   </dd>
+
+  
+
+  
+   <dt id="ini.url-rewriter.tags">
+    <code class="parameter">url_rewriter.tags</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     <em>url_rewriter.tags</em> specifies which HTML tags
+     are rewritten by <span class="function">output_add_rewrite_var</span> values.
+     Defaults to
+     <em>a=href,area=href,frame=src,input=src,form=</em>
+    </span>
+    <span class="simpara">
+     <em>form</em> is special tag. <em>&lt;input hidden=&quot;session_id&quot; name=&quot;session_name&quot;&gt;</em>
+     is added as form variable.
+    </span>
+    <blockquote class="note"><p><strong class="note">Note</strong>: 
+     <span class="simpara">
+      Before PHP 7.1.0, <a href="outcontrol.configuration.html#ini.url-rewriter.tags" class="link">url_rewriter.tags</a>
+      was used to specify <a href="session.configuration.html#ini.session.trans-sid-tags" class="link">session.trans_sid_tags</a>.
+      Since PHP 7.1.0, <em>fieldset</em> is no longer considered as special tag.
+     </span>
+    </p></blockquote>
+   </dd>
+
+  
+
+  
+   <dt id="ini.url-rewriter.hosts">
+    <code class="parameter">url_rewriter.hosts</code>
+    <span class="type">string</span>
+   </dt>
+
+   <dd>
+
+    <span class="simpara">
+     <em>url_rewriter.hosts</em> specifies which hosts are
+     rewritten to include <span class="function">output_add_rewrite_var</span> values.
+     Defaults to <em>$_SERVER[&#039;HTTP_HOST&#039;]</em>. Multiple hosts
+     can be specified by &quot;,&quot;, no space is allowed between hosts. e.g.
+     <em>php.net,wiki.php.net,bugs.php.net</em>
+    </span>
+   </dd>
+
+  
+
+ </dl>
+
+ </p>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

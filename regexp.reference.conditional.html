@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Conditional subpatterns</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.text.html">Text Processing</a></li>
+  <li class="header up"><a href="book.pcre.html">PCRE</a></li>
+  <li class="header up"><a href="pcre.pattern.html">PCRE Patterns</a></li>
+  <li class="header up"><a href="reference.pcre.pattern.syntax.html">PCRE regex syntax</a></li>
+  <li><a href="regexp.introduction.html">Introduction</a></li>
+  <li><a href="regexp.reference.delimiters.html">Delimiters</a></li>
+  <li><a href="regexp.reference.meta.html">Meta-characters</a></li>
+  <li><a href="regexp.reference.escape.html">Escape sequences</a></li>
+  <li><a href="regexp.reference.unicode.html">Unicode character properties</a></li>
+  <li><a href="regexp.reference.anchors.html">Anchors</a></li>
+  <li><a href="regexp.reference.dot.html">Dot</a></li>
+  <li><a href="regexp.reference.character-classes.html">Character classes</a></li>
+  <li><a href="regexp.reference.alternation.html">Alternation</a></li>
+  <li><a href="regexp.reference.internal-options.html">Internal option setting</a></li>
+  <li><a href="regexp.reference.subpatterns.html">Subpatterns</a></li>
+  <li><a href="regexp.reference.repetition.html">Repetition</a></li>
+  <li><a href="regexp.reference.back-references.html">Back references</a></li>
+  <li><a href="regexp.reference.assertions.html">Assertions</a></li>
+  <li><a href="regexp.reference.onlyonce.html">Once-only subpatterns</a></li>
+  <li class="active"><a href="regexp.reference.conditional.html">Conditional subpatterns</a></li>
+  <li><a href="regexp.reference.comments.html">Comments</a></li>
+  <li><a href="regexp.reference.recursive.html">Recursive patterns</a></li>
+  <li><a href="regexp.reference.performance.html">Performance</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="regexp.reference.onlyonce.html">Once-only subpatterns</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="regexp.reference.comments.html">Comments</a></div>
+                <div class="up"><a href="reference.pcre.pattern.syntax.html">PCRE regex syntax</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="regexp.reference.conditional" class="section">
+  <h2 class="title">Conditional subpatterns</h2>
+  <p class="para">
+   It is possible to cause the matching process to obey a  subpattern
+   conditionally  or to choose between two alternative
+   subpatterns, depending on the result  of  an  assertion,  or
+   whether  a previous capturing subpattern matched or not. The
+   two possible forms of conditional subpattern are
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="cdata"><pre>
+(?(condition)yes-pattern)
+(?(condition)yes-pattern|no-pattern)
+</pre></div>
+   </div>
+
+  </div>
+  <p class="para">
+   If the condition is satisfied, the yes-pattern is used; otherwise
+   the  no-pattern  (if  present) is used. If there are
+   more than two alternatives in the subpattern, a compile-time
+   error occurs.
+  </p>
+  <p class="para">
+   There are two kinds of condition. If the  text  between  the
+   parentheses  consists  of  a  sequence  of  digits, then the
+   condition is satisfied if the capturing subpattern  of  that
+   number  has  previously matched. Consider the following pattern,
+   which contains non-significant white space to make  it
+   more  readable  (assume  the  <a href="reference.pcre.pattern.modifiers.html" class="link">PCRE_EXTENDED</a>
+   option)  and to divide it into three parts for ease of discussion:
+  </p>
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="cdata"><pre>
+( \( )?    [^()]+    (?(1) \) )
+</pre></div>
+   </div>
+
+  </div>
+  <p class="para">
+   The first part matches an optional opening parenthesis,  and
+   if  that character is present, sets it as the first captured
+   substring. The second part matches one  or  more  characters
+   that  are  not  parentheses. The third part is a conditional
+   subpattern that tests whether the first set  of  parentheses
+   matched  or  not.  If  they did, that is, if subject started
+   with an opening parenthesis, the condition is <strong><code>TRUE</code></strong>,  and  so
+   the  yes-pattern  is  executed  and a closing parenthesis is
+   required. Otherwise, since no-pattern is  not  present,  the
+   subpattern  matches  nothing.  In  other words, this pattern
+   matches a sequence of non-parentheses,  optionally  enclosed
+   in parentheses.
+  </p>
+  <p class="para">
+   If the condition is the string <em>(R)</em>, it is satisfied if
+   a recursive call to the pattern or subpattern has been made. At &quot;top
+   level&quot;, the condition is false.
+  </p>
+  <p class="para">
+   If the condition is not a sequence of digits or (R), it must be  an
+   assertion.  This  may be a positive or negative lookahead or
+   lookbehind assertion. Consider this pattern, again  containing
+   non-significant  white space, and with the two alternatives on
+   the second line:
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="cdata"><pre>
+(?(?=[^a-z]*[a-z])
+\d{2}-[a-z]{3}-\d{2}  |  \d{2}-\d{2}-\d{2} )
+</pre></div>
+   </div>
+
+  </div>
+  <p class="para">
+   The condition is a positive lookahead assertion that matches
+   an optional sequence of non-letters followed by a letter. In
+   other words, it tests for  the  presence  of  at  least  one
+   letter  in the subject. If a letter is found, the subject is
+   matched against  the  first  alternative;  otherwise  it  is
+   matched  against the second. This pattern matches strings in
+   one of the two forms dd-aaa-dd or dd-dd-dd,  where  aaa  are
+   letters and dd are digits.
+  </p>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,139 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: PHP tags</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="langref.html">Language Reference</a></li>
+  <li class="header up"><a href="language.basic-syntax.html">Basic syntax</a></li>
+  <li class="active"><a href="language.basic-syntax.phptags.html">PHP tags</a></li>
+  <li><a href="language.basic-syntax.phpmode.html">Escaping from HTML</a></li>
+  <li><a href="language.basic-syntax.instruction-separation.html">Instruction separation</a></li>
+  <li><a href="language.basic-syntax.comments.html">Comments</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="language.basic-syntax.html">Basic syntax</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="language.basic-syntax.phpmode.html">Escaping from HTML</a></div>
+                <div class="up"><a href="language.basic-syntax.html">Basic syntax</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="language.basic-syntax.phptags" class="sect1">
+   <h2 class="title">PHP tags</h2>
+   <p class="para">
+    When PHP parses a file, it looks for opening and closing tags, which are
+    <em>&lt;?php</em> and <em>?&gt;</em> which tell PHP to
+    start and stop interpreting the code between them. Parsing in this manner
+    allows PHP to be embedded in all sorts of different documents, as
+    everything outside of a pair of opening and closing tags is ignored by the
+    PHP parser.
+   </p>
+   <p class="para">
+    PHP also allows for short open tag <em>&lt;?</em> (which is
+    discouraged since it is only available if enabled using the
+    <a href="ini.core.html#ini.short-open-tag" class="link">short_open_tag</a> <var class="filename">php.ini</var>
+    configuration file directive, or if PHP was configured with the
+    <strong class="option unknown">--enable-short-tags</strong>
+ option).
+   </p>
+   <p class="para">
+    If a file is pure PHP code, it is preferable to omit the PHP closing tag
+    at the end of the file.  This prevents accidental whitespace or new lines
+    being added after the PHP closing tag, which may cause unwanted effects
+    because PHP will start output buffering when there is no intention from
+    the programmer to send any output at that point in the script.
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;world"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;...&nbsp;more&nbsp;code<br /><br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"Last&nbsp;statement"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;the&nbsp;script&nbsp;ends&nbsp;here&nbsp;with&nbsp;no&nbsp;PHP&nbsp;closing&nbsp;tag</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    <table class="doctable table">
+     <caption><strong>Changelog</strong></caption>
+     
+      <thead>
+       <tr>
+        <th>Version</th>
+        <th>Description</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td>7.0.0</td>
+         <td>
+          The ASP tags <code class="code">&lt;%</code>, <code class="code">%&gt;</code>,
+          <code class="code">&lt;%=</code>, and the script tag
+          <code class="code">&lt;script language=&quot;php&quot;&gt;</code> are removed from PHP.
+         </td>
+       </tr>
+
+       <tr>
+        <td>5.4.0</td>
+         <td>
+          The tag &lt;?= is always available regardless of the short_open_tag ini setting.
+         </td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+  </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

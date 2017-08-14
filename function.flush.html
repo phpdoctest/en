@@ -1,0 +1,158 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Flush system output buffer</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.php.html">Affecting PHP's Behaviour</a></li>
+  <li class="header up"><a href="book.outcontrol.html">Output Control</a></li>
+  <li class="header up"><a href="ref.outcontrol.html">Output Control Functions</a></li>
+  <li class="active"><a href="function.flush.html">flush</a></li>
+  <li><a href="function.ob-clean.html">ob_clean</a></li>
+  <li><a href="function.ob-end-clean.html">ob_end_clean</a></li>
+  <li><a href="function.ob-end-flush.html">ob_end_flush</a></li>
+  <li><a href="function.ob-flush.html">ob_flush</a></li>
+  <li><a href="function.ob-get-clean.html">ob_get_clean</a></li>
+  <li><a href="function.ob-get-contents.html">ob_get_contents</a></li>
+  <li><a href="function.ob-get-flush.html">ob_get_flush</a></li>
+  <li><a href="function.ob-get-length.html">ob_get_length</a></li>
+  <li><a href="function.ob-get-level.html">ob_get_level</a></li>
+  <li><a href="function.ob-get-status.html">ob_get_status</a></li>
+  <li><a href="function.ob-gzhandler.html">ob_gzhandler</a></li>
+  <li><a href="function.ob-implicit-flush.html">ob_implicit_flush</a></li>
+  <li><a href="function.ob-list-handlers.html">ob_list_handlers</a></li>
+  <li><a href="function.ob-start.html">ob_start</a></li>
+  <li><a href="function.output-add-rewrite-var.html">output_add_rewrite_var</a></li>
+  <li><a href="function.output-reset-rewrite-vars.html">output_reset_rewrite_vars</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="ref.outcontrol.html">Output Control Functions</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.ob-clean.html">ob_clean</a></div>
+                <div class="up"><a href="ref.outcontrol.html">Output Control Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.flush" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">flush</h1>
+  <p class="refpurpose">Flush system output buffer</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.flush-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname">flush</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Flushes the system write buffers of PHP and whatever backend PHP is using (CGI,
+   a web server, etc).  This attempts to push current output all the way to
+   the browser with a few caveats.
+  </p>
+  <p class="para">
+   <span class="function">flush</span> may not be able to override the buffering scheme
+   of your web server and it has no effect on any client-side buffering in the
+   browser.  It also doesn&#039;t affect PHP&#039;s userspace output buffering mechanism.
+   This means you will have to call both <span class="function">ob_flush</span> and
+   <span class="function">flush</span> to flush the ob output buffers if you are using
+   those.
+  </p>
+  <p class="para">
+   Several servers, especially on Win32, will still buffer the output from
+   your script until it terminates before transmitting the results to the
+   browser.
+  </p>
+  <p class="para">
+   Server modules for Apache like mod_gzip may do buffering of their own that
+   will cause <span class="function">flush</span> to not result in data being sent
+   immediately to the client.
+  </p>
+  <p class="para">
+   Even the browser may buffer its input before displaying it. Netscape, for
+   example, buffers text until it receives an end-of-line or the beginning of
+   a tag, and it won&#039;t render tables until the &lt;/table&gt; tag of the
+   outermost table is seen.
+  </p>
+  <p class="para">
+   Some versions of Microsoft Internet Explorer will only start to display
+   the page after they have received 256 bytes of output, so you may need to
+   send extra whitespace before flushing to get those browsers to display the
+   page.
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.flush-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   No value is returned.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.flush-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">ob_flush</span></li>
+    <li class="member"><span class="function">ob_clean</span></li>
+    <li class="member"><span class="function">ob_end_flush</span></li>
+    <li class="member"><span class="function">ob_end_clean</span></li>
+   </ul>
+  </p>
+ </div>
+ 
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Subpatterns</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.text.html">Text Processing</a></li>
+  <li class="header up"><a href="book.pcre.html">PCRE</a></li>
+  <li class="header up"><a href="pcre.pattern.html">PCRE Patterns</a></li>
+  <li class="header up"><a href="reference.pcre.pattern.syntax.html">PCRE regex syntax</a></li>
+  <li><a href="regexp.introduction.html">Introduction</a></li>
+  <li><a href="regexp.reference.delimiters.html">Delimiters</a></li>
+  <li><a href="regexp.reference.meta.html">Meta-characters</a></li>
+  <li><a href="regexp.reference.escape.html">Escape sequences</a></li>
+  <li><a href="regexp.reference.unicode.html">Unicode character properties</a></li>
+  <li><a href="regexp.reference.anchors.html">Anchors</a></li>
+  <li><a href="regexp.reference.dot.html">Dot</a></li>
+  <li><a href="regexp.reference.character-classes.html">Character classes</a></li>
+  <li><a href="regexp.reference.alternation.html">Alternation</a></li>
+  <li><a href="regexp.reference.internal-options.html">Internal option setting</a></li>
+  <li class="active"><a href="regexp.reference.subpatterns.html">Subpatterns</a></li>
+  <li><a href="regexp.reference.repetition.html">Repetition</a></li>
+  <li><a href="regexp.reference.back-references.html">Back references</a></li>
+  <li><a href="regexp.reference.assertions.html">Assertions</a></li>
+  <li><a href="regexp.reference.onlyonce.html">Once-only subpatterns</a></li>
+  <li><a href="regexp.reference.conditional.html">Conditional subpatterns</a></li>
+  <li><a href="regexp.reference.comments.html">Comments</a></li>
+  <li><a href="regexp.reference.recursive.html">Recursive patterns</a></li>
+  <li><a href="regexp.reference.performance.html">Performance</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="regexp.reference.internal-options.html">Internal option setting</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="regexp.reference.repetition.html">Repetition</a></div>
+                <div class="up"><a href="reference.pcre.pattern.syntax.html">PCRE regex syntax</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="regexp.reference.subpatterns" class="section">
+  <h2 class="title">Subpatterns</h2>
+  <p class="para">
+   Subpatterns are delimited by parentheses  (round  brackets),
+   which can be nested.  Marking part of a pattern as a subpattern
+   does two things:
+  </p>
+  <ol type="1">
+   <li class="listitem">
+    <p class="para">
+     It localizes a set of alternatives. For example, the pattern
+     <em>cat(aract|erpillar|)</em> matches one of the words &quot;cat&quot;,
+     &quot;cataract&quot;, or &quot;caterpillar&quot;. Without the parentheses, it would match
+     &quot;cataract&quot;, &quot;erpillar&quot; or the empty string.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     It sets up the subpattern as a capturing subpattern (as defined above).
+     When the whole pattern matches, that portion of the subject string
+     that matched the subpattern is passed back to the caller via the
+     <em class="emphasis">ovector</em> argument of <span class="function">pcre_exec</span>.
+     Opening parentheses are counted from left to right (starting from 1) to
+     obtain the numbers of the capturing subpatterns.
+    </p>
+   </li>
+  </ol>
+  <p class="para">
+   For example, if the string &quot;the red king&quot; is matched against
+   the pattern
+
+   <em>the ((red|white) (king|queen))</em>
+
+   the captured substrings are &quot;red king&quot;, &quot;red&quot;,  and  &quot;king&quot;,
+   and are numbered 1, 2, and 3.
+  </p>
+  <p class="para">
+   The fact that plain parentheses fulfill two functions is  not
+   always  helpful.  There are often times when a grouping subpattern
+   is required without a capturing requirement.  If  an
+   opening parenthesis is followed by &quot;?:&quot;, the subpattern does
+   not do any capturing, and is not counted when computing  the
+   number of any subsequent capturing subpatterns. For example,
+   if the string &quot;the  white  queen&quot;  is  matched  against  the
+   pattern
+
+   <em>the ((?:red|white) (king|queen))</em>
+
+   the captured substrings are &quot;white queen&quot; and  &quot;queen&quot;,  and
+   are  numbered  1  and 2. The maximum number of captured substrings
+   is 65535. It may not be possible to compile such large patterns,
+   however, depending on the configuration options of libpcre.
+  </p>
+  <p class="para">
+   As a  convenient  shorthand,  if  any  option  settings  are
+   required  at  the  start  of a non-capturing subpattern, the
+   option letters may appear between the &quot;?&quot; and the &quot;:&quot;.  Thus
+   the two patterns
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="cdata"><pre>
+(?i:saturday|sunday)
+(?:(?i)saturday|sunday)
+</pre></div>
+   </div>
+
+  </div>
+
+  <p class="para">
+   match exactly the same set of strings.  Because  alternative
+   branches  are  tried from left to right, and options are not
+   reset until the end of the subpattern is reached, an  option
+   setting  in  one  branch does affect subsequent branches, so
+   the above patterns match &quot;SUNDAY&quot; as well as &quot;Saturday&quot;.
+  </p>
+
+  <p class="para">
+   It is possible to name a subpattern using the syntax
+   <em>(?P&lt;name&gt;pattern)</em>. This subpattern will then
+   be indexed in the matches array by its normal numeric position and
+   also by name. PHP 5.2.2 introduced two alternative syntaxes
+   <em>(?&lt;name&gt;pattern)</em> and <em>(?&#039;name&#039;pattern)</em>.
+  </p>
+
+  <p class="para">
+   Sometimes it is necessary to have multiple matching, but alternating
+   subgroups in a regular expression. Normally, each of these would be given
+   their own backreference number even though only one of them would ever
+   possibly match. To overcome this, the <em>(?|</em> syntax allows
+   having duplicate numbers. Consider the following regex matched against the
+   string <em>Sunday</em>:
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="cdata"><pre>(?:(Sat)ur|(Sun))day</pre></div>
+   </div>
+
+  </div>
+
+  <p class="para">
+   Here <em>Sun</em> is stored in backreference 2, while
+   backreference 1 is empty. Matching yields <em>Sat</em> in
+   backreference 1 while backreference 2 does not exist. Changing the pattern
+   to use the <em>(?|</em> fixes this problem:
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="cdata"><pre>(?|(Sat)ur|(Sun))day</pre></div>
+   </div>
+
+  </div>
+
+  <p class="para">
+   Using this pattern, both <em>Sun</em> and <em>Sat</em>
+   would be stored in backreference 1.
+  </p>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

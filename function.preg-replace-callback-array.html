@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Perform a regular expression search and replace using callbacks</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.text.html">Text Processing</a></li>
+  <li class="header up"><a href="book.pcre.html">PCRE</a></li>
+  <li class="header up"><a href="ref.pcre.html">PCRE Functions</a></li>
+  <li><a href="function.preg-filter.html">preg_filter</a></li>
+  <li><a href="function.preg-grep.html">preg_grep</a></li>
+  <li><a href="function.preg-last-error.html">preg_last_error</a></li>
+  <li><a href="function.preg-match-all.html">preg_match_all</a></li>
+  <li><a href="function.preg-match.html">preg_match</a></li>
+  <li><a href="function.preg-quote.html">preg_quote</a></li>
+  <li class="active"><a href="function.preg-replace-callback-array.html">preg_replace_callback_array</a></li>
+  <li><a href="function.preg-replace-callback.html">preg_replace_callback</a></li>
+  <li><a href="function.preg-replace.html">preg_replace</a></li>
+  <li><a href="function.preg-split.html">preg_split</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.preg-quote.html">preg_quote</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.preg-replace-callback.html">preg_replace_callback</a></div>
+                <div class="up"><a href="ref.pcre.html">PCRE Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.preg-replace-callback-array" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">preg_replace_callback_array</h1>
+  <p class="refpurpose">Perform a regular expression search and replace using callbacks</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.preg-replace-callback-array-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname">preg_replace_callback_array</span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$patterns_and_callbacks</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$subject</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$limit</code><span class="initializer"> = -1</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter reference">&$count</code></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   The behavior of this function is similar to
+   <span class="function">preg_replace_callback</span>, except that callbacks are
+   executed on a per-pattern basis.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.preg-replace-callback-array-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">patterns_and_callbacks</code></dt>
+
+     <dd>
+
+      <p class="para">
+       An associative array mapping patterns (keys) to callbacks (values).
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">subject</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The string or an array with strings to search and replace.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">limit</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The maximum possible replacements for each pattern in each
+       <code class="parameter">subject</code> string. Defaults to
+       <em>-1</em> (no limit).
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">count</code></dt>
+
+     <dd>
+
+      <p class="para">
+       If specified, this variable will be filled with the number of
+       replacements done.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.preg-replace-callback-array-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   <span class="function">preg_replace_callback_array</span> returns an array if the
+   <code class="parameter">subject</code> parameter is an array, or a string
+   otherwise. On errors the return value is <strong><code>NULL</code></strong>
+  </p>
+  <p class="para">
+   If matches are found, the new subject will be returned, otherwise
+   <code class="parameter">subject</code> will be returned unchanged. 
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.preg-replace-callback-array-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-5408">
+    <p><strong>Example #1 <span class="function">preg_replace_callback_array</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$subject&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'Aaaaaa&nbsp;Bbb'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">preg_replace_callback_array</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;[<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'~[a]+~i'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;function&nbsp;(</span><span style="color: #0000BB">$match</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$match</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]),&nbsp;</span><span style="color: #DD0000">'&nbsp;matches&nbsp;for&nbsp;"a"&nbsp;found'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;},<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'~[b]+~i'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;function&nbsp;(</span><span style="color: #0000BB">$match</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$match</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]),&nbsp;</span><span style="color: #DD0000">'&nbsp;matches&nbsp;for&nbsp;"b"&nbsp;found'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;],<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$subject<br /></span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+6 matches for &quot;a&quot; found
+3 matches for &quot;b&quot; found
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.preg-replace-callback-array-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="pcre.pattern.html" class="link">PCRE Patterns</a></li>
+    <li class="member"><span class="function">preg_replace_callback</span></li>
+    <li class="member"><span class="function">preg_quote</span></li>
+    <li class="member"><span class="function">preg_replace</span></li>
+    <li class="member"><span class="function">preg_last_error</span></li>
+    <li class="member"><a href="functions.anonymous.html" class="link">Anonymous functions</a></li>
+    <li class="member">information about the <a href="language.pseudo-types.html#language.types.callback" class="link">callback</a> type</li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,365 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Create a socket (endpoint for communication)</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li class="header up"><a href="book.sockets.html">Sockets</a></li>
+  <li class="header up"><a href="ref.sockets.html">Socket Functions</a></li>
+  <li><a href="function.socket-accept.html">socket_accept</a></li>
+  <li><a href="function.socket-bind.html">socket_bind</a></li>
+  <li><a href="function.socket-clear-error.html">socket_clear_error</a></li>
+  <li><a href="function.socket-close.html">socket_close</a></li>
+  <li><a href="function.socket-cmsg-space.html">socket_cmsg_space</a></li>
+  <li><a href="function.socket-connect.html">socket_connect</a></li>
+  <li><a href="function.socket-create-listen.html">socket_create_listen</a></li>
+  <li><a href="function.socket-create-pair.html">socket_create_pair</a></li>
+  <li class="active"><a href="function.socket-create.html">socket_create</a></li>
+  <li><a href="function.socket-get-option.html">socket_get_option</a></li>
+  <li><a href="function.socket-getopt.html">socket_getopt</a></li>
+  <li><a href="function.socket-getpeername.html">socket_getpeername</a></li>
+  <li><a href="function.socket-getsockname.html">socket_getsockname</a></li>
+  <li><a href="function.socket-import-stream.html">socket_import_stream</a></li>
+  <li><a href="function.socket-last-error.html">socket_last_error</a></li>
+  <li><a href="function.socket-listen.html">socket_listen</a></li>
+  <li><a href="function.socket-read.html">socket_read</a></li>
+  <li><a href="function.socket-recv.html">socket_recv</a></li>
+  <li><a href="function.socket-recvfrom.html">socket_recvfrom</a></li>
+  <li><a href="function.socket-recvmsg.html">socket_recvmsg</a></li>
+  <li><a href="function.socket-select.html">socket_select</a></li>
+  <li><a href="function.socket-send.html">socket_send</a></li>
+  <li><a href="function.socket-sendmsg.html">socket_sendmsg</a></li>
+  <li><a href="function.socket-sendto.html">socket_sendto</a></li>
+  <li><a href="function.socket-set-block.html">socket_set_block</a></li>
+  <li><a href="function.socket-set-nonblock.html">socket_set_nonblock</a></li>
+  <li><a href="function.socket-set-option.html">socket_set_option</a></li>
+  <li><a href="function.socket-setopt.html">socket_setopt</a></li>
+  <li><a href="function.socket-shutdown.html">socket_shutdown</a></li>
+  <li><a href="function.socket-strerror.html">socket_strerror</a></li>
+  <li><a href="function.socket-write.html">socket_write</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.socket-create-pair.html">socket_create_pair</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.socket-get-option.html">socket_get_option</a></div>
+                <div class="up"><a href="ref.sockets.html">Socket Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.socket-create" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">socket_create</h1>
+  <p class="refpurpose">Create a socket (endpoint for communication)</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.socket-create-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname">socket_create</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$domain</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$type</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$protocol</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Creates and returns a socket resource, also referred to as an endpoint
+   of communication. A typical network connection is made up of 2 sockets, one
+   performing the role of the client, and another performing the role of the server.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.socket-create-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">domain</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The <code class="parameter">domain</code> parameter specifies the protocol
+       family to be used by the socket.
+      </p>
+      <table class="doctable table">
+       <caption><strong>Available address/protocol families</strong></caption>
+       
+        <thead>
+         <tr>
+          <th>Domain</th>
+          <th>Description</th>
+         </tr>
+
+        </thead>
+
+        <tbody class="tbody">
+         <tr>
+          <td><strong><code>AF_INET</code></strong></td>
+          <td>
+           IPv4 Internet based protocols. TCP and UDP are common protocols of
+           this protocol family.
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>AF_INET6</code></strong></td>
+          <td>
+           IPv6 Internet based protocols. TCP and UDP are common protocols of
+           this protocol family.
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>AF_UNIX</code></strong></td>
+          <td>
+           Local communication protocol family. High efficiency and low
+           overhead make it a great form of IPC (Interprocess Communication).
+          </td>
+         </tr>
+
+        </tbody>
+       
+      </table>
+
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">type</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The <code class="parameter">type</code> parameter selects the type of communication
+       to be used by the socket.
+      </p>
+      <table class="doctable table">
+       <caption><strong>Available socket types</strong></caption>
+       
+        <thead>
+         <tr>
+          <th>Type</th>
+          <th>Description</th>
+         </tr>
+
+        </thead>
+
+        <tbody class="tbody">
+         <tr>
+          <td><strong><code>SOCK_STREAM</code></strong></td>
+          <td>
+           Provides sequenced, reliable, full-duplex, connection-based byte streams.
+           An out-of-band data transmission mechanism may be supported.
+           The TCP protocol is based on this socket type.
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>SOCK_DGRAM</code></strong></td>
+          <td>
+           Supports datagrams (connectionless, unreliable messages of a fixed maximum length).
+           The UDP protocol is based on this socket type.
+          </td>
+         </tr>
+
+           <tr>
+          <td><strong><code>SOCK_SEQPACKET</code></strong></td>
+          <td>
+           Provides a sequenced, reliable, two-way connection-based data transmission path for
+           datagrams of fixed maximum length;  a consumer is required to read an
+           entire packet with each read call.
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>SOCK_RAW</code></strong></td>
+          <td>
+           Provides raw network protocol access. This special type of socket
+           can be used to manually construct any type of protocol. A common use
+           for this socket type is to perform ICMP requests (like ping).
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>SOCK_RDM</code></strong></td>
+          <td>
+           Provides a reliable datagram layer that does not guarantee ordering.
+           This is most likely not implemented on your operating system.
+          </td>
+         </tr>
+
+        </tbody>
+       
+      </table>
+
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">protocol</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The <code class="parameter">protocol</code> parameter sets the specific
+       protocol within the specified <code class="parameter">domain</code> to be used
+       when communicating on the returned socket. The proper value can be
+       retrieved by name by using <span class="function">getprotobyname</span>. If
+       the desired protocol is TCP, or UDP the corresponding constants
+       <strong><code>SOL_TCP</code></strong>, and <strong><code>SOL_UDP</code></strong>
+       can also be used.
+      </p>
+      <table class="doctable table">
+       <caption><strong>Common protocols</strong></caption>
+       
+        <thead>
+         <tr>
+          <th>Name</th>
+          <th>Description</th>
+         </tr>
+
+        </thead>
+
+        <tbody class="tbody">
+         <tr>
+          <td>icmp</td>
+          <td>
+           The Internet Control Message Protocol is used primarily by gateways
+           and hosts to report errors in datagram communication. The &quot;ping&quot;
+           command (present in most modern operating systems) is an example
+           application of ICMP.
+          </td>
+         </tr>
+
+         <tr>
+          <td>udp</td>
+          <td>
+           The User Datagram Protocol is a connectionless, unreliable,
+           protocol with fixed record lengths. Due to these aspects, UDP
+           requires a minimum amount of protocol overhead.
+          </td>
+         </tr>
+
+         <tr>
+          <td>tcp</td>
+          <td>
+           The Transmission Control Protocol is a reliable, connection based,
+           stream oriented, full duplex protocol. TCP guarantees that all data packets
+           will be received in the order in which they were sent. If any packet is somehow
+           lost during communication, TCP will automatically retransmit the packet until
+           the destination host acknowledges that packet. For reliability and performance
+           reasons, the TCP implementation itself decides the appropriate octet boundaries
+           of the underlying datagram communication layer. Therefore, TCP applications must
+           allow for the possibility of partial record transmission.
+          </td>
+         </tr>
+
+        </tbody>
+       
+      </table>
+
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.socket-create-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   <span class="function">socket_create</span> returns a socket resource on success,
+   or <strong><code>FALSE</code></strong> on error. The actual error code can be retrieved by calling
+   <span class="function">socket_last_error</span>. This error code may be passed to
+   <span class="function">socket_strerror</span> to get a textual explanation of the
+   error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-function.socket-create-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+   <p class="para">
+    If an invalid <code class="parameter">domain</code> or
+    <code class="parameter">type</code> is given, <span class="function">socket_create</span>
+    defaults to <strong><code>AF_INET</code></strong> and
+    <strong><code>SOCK_STREAM</code></strong> respectively and additionally emits an
+    <strong><code>E_WARNING</code></strong> message.
+   </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.socket-create-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">socket_accept</span></li>
+    <li class="member"><span class="function">socket_bind</span></li>
+    <li class="member"><span class="function">socket_connect</span></li>
+    <li class="member"><span class="function">socket_listen</span></li>
+    <li class="member"><span class="function">socket_last_error</span></li>
+    <li class="member"><span class="function">socket_strerror</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

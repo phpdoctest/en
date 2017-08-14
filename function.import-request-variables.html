@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Import GET/POST/Cookie variables into the global scope</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.vartype.html">Variable and Type Related Extensions</a></li>
+  <li class="header up"><a href="book.var.html">Variable handling</a></li>
+  <li class="header up"><a href="ref.var.html">Variable handling Functions</a></li>
+  <li><a href="function.boolval.html">boolval</a></li>
+  <li><a href="function.debug-zval-dump.html">debug_zval_dump</a></li>
+  <li><a href="function.doubleval.html">doubleval</a></li>
+  <li><a href="function.empty.html">empty</a></li>
+  <li><a href="function.floatval.html">floatval</a></li>
+  <li><a href="function.get-defined-vars.html">get_defined_vars</a></li>
+  <li><a href="function.get-resource-type.html">get_resource_type</a></li>
+  <li><a href="function.gettype.html">gettype</a></li>
+  <li class="active"><a href="function.import-request-variables.html">import_request_variables</a></li>
+  <li><a href="function.intval.html">intval</a></li>
+  <li><a href="function.is-array.html">is_array</a></li>
+  <li><a href="function.is-bool.html">is_bool</a></li>
+  <li><a href="function.is-callable.html">is_callable</a></li>
+  <li><a href="function.is-double.html">is_double</a></li>
+  <li><a href="function.is-float.html">is_float</a></li>
+  <li><a href="function.is-int.html">is_int</a></li>
+  <li><a href="function.is-integer.html">is_integer</a></li>
+  <li><a href="function.is-iterable.html">is_iterable</a></li>
+  <li><a href="function.is-long.html">is_long</a></li>
+  <li><a href="function.is-null.html">is_null</a></li>
+  <li><a href="function.is-numeric.html">is_numeric</a></li>
+  <li><a href="function.is-object.html">is_object</a></li>
+  <li><a href="function.is-real.html">is_real</a></li>
+  <li><a href="function.is-resource.html">is_resource</a></li>
+  <li><a href="function.is-scalar.html">is_scalar</a></li>
+  <li><a href="function.is-string.html">is_string</a></li>
+  <li><a href="function.isset.html">isset</a></li>
+  <li><a href="function.print-r.html">print_r</a></li>
+  <li><a href="function.serialize.html">serialize</a></li>
+  <li><a href="function.settype.html">settype</a></li>
+  <li><a href="function.strval.html">strval</a></li>
+  <li><a href="function.unserialize.html">unserialize</a></li>
+  <li><a href="function.unset.html">unset</a></li>
+  <li><a href="function.var-dump.html">var_dump</a></li>
+  <li><a href="function.var-export.html">var_export</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.gettype.html">gettype</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.intval.html">intval</a></div>
+                <div class="up"><a href="ref.var.html">Variable handling Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.import-request-variables" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">import_request_variables</h1>
+  <p class="refpurpose">Import GET/POST/Cookie variables into the global scope</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.import-request-variables-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">import_request_variables</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$types</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$prefix</code></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Imports GET/POST/Cookie variables into the global scope. It is useful if
+   you disabled <a href="ini.core.html#ini.register-globals" class="link">register_globals</a>,
+   but would like to see some variables in the global scope.
+  </p>
+  <p class="para">
+   If you&#039;re interested in importing other variables into the global scope,
+   such as <var class="varname">$_SERVER</var>, consider using <span class="function">extract</span>.
+  </p>
+  <div class="warning"><strong class="warning">Warning</strong><p class="simpara">This function has been
+<em class="emphasis">DEPRECATED</em> as of PHP 5.3.0 and <em class="emphasis">REMOVED</em> as of PHP 5.4.0.</p></div>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.import-request-variables-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">types</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Using the <code class="parameter">types</code> parameter, you can specify
+       which request variables to import. You can use &#039;G&#039;, &#039;P&#039; and &#039;C&#039; 
+       characters respectively for GET, POST and Cookie. These characters are
+       not case sensitive, so you can also use any combination of &#039;g&#039;, &#039;p&#039;
+       and &#039;c&#039;. POST includes the POST uploaded file information.
+      </p>
+      <blockquote class="note"><p><strong class="note">Note</strong>: 
+       <p class="para">
+        Note that the order of the letters matters, as when using
+        &quot;<em>GP</em>&quot;, the
+        POST variables will overwrite GET variables with the same name. Any
+        other letters than GPC are discarded.
+       </p>
+      </p></blockquote>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">prefix</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Variable name prefix, prepended before all variable&#039;s name imported
+       into the global scope. So if you have a GET value named
+       &quot;<em>userid</em>&quot;, and provide a prefix
+       &quot;<em>pref_</em>&quot;, then you&#039;ll get a global variable named
+       <var class="varname">$pref_userid</var>.
+      </p>
+      <blockquote class="note"><p><strong class="note">Note</strong>: 
+       <p class="para">
+        Although the <code class="parameter">prefix</code> parameter is optional, you
+        will get an <a href="" class="link"><strong><code>E_NOTICE</code></strong></a> level
+        error if you specify no prefix, or specify an empty string as a
+        prefix. This is a possible security hazard. Notice level errors are
+        not displayed using the default <a href="errorfunc.configuration.html#ini.error-reporting" class="link">error reporting</a> level.
+       </p>
+      </p></blockquote>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.import-request-variables-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> on success or <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.import-request-variables-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-6131">
+    <p><strong>Example #1 <span class="function">import_request_variables</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;This&nbsp;will&nbsp;import&nbsp;GET&nbsp;and&nbsp;POST&nbsp;vars<br />//&nbsp;with&nbsp;an&nbsp;"rvar_"&nbsp;prefix<br /></span><span style="color: #0000BB">import_request_variables</span><span style="color: #007700">(</span><span style="color: #DD0000">"gp"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"rvar_"</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">$rvar_foo</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.import-request-variables-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><var class="varname">$_REQUEST</var></li>
+    <li class="member"><a href="ini.core.html#ini.register-globals" class="link">register_globals</a></li>
+    <li class="member"><a href="language.variables.predefined.html" class="link">Predefined Variables</a></li>
+    <li class="member"><span class="function">extract</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

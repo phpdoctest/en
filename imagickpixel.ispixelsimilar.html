@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Check the distance between this color and another</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.utilspec.image.html">Image Processing and Generation</a></li>
+  <li class="header up"><a href="book.imagick.html">ImageMagick</a></li>
+  <li class="header up"><a href="class.imagickpixel.html">ImagickPixel</a></li>
+  <li><a href="imagickpixel.clear.html">ImagickPixel::clear</a></li>
+  <li><a href="imagickpixel.construct.html">ImagickPixel::__construct</a></li>
+  <li><a href="imagickpixel.destroy.html">ImagickPixel::destroy</a></li>
+  <li><a href="imagickpixel.getcolor.html">ImagickPixel::getColor</a></li>
+  <li><a href="imagickpixel.getcolorasstring.html">ImagickPixel::getColorAsString</a></li>
+  <li><a href="imagickpixel.getcolorcount.html">ImagickPixel::getColorCount</a></li>
+  <li><a href="imagickpixel.getcolorquantum.html">ImagickPixel::getColorQuantum</a></li>
+  <li><a href="imagickpixel.getcolorvalue.html">ImagickPixel::getColorValue</a></li>
+  <li><a href="imagickpixel.getcolorvaluequantum.html">ImagickPixel::getColorValueQuantum</a></li>
+  <li><a href="imagickpixel.gethsl.html">ImagickPixel::getHSL</a></li>
+  <li><a href="imagickpixel.getindex.html">ImagickPixel::getIndex</a></li>
+  <li class="active"><a href="imagickpixel.ispixelsimilar.html">ImagickPixel::isPixelSimilar</a></li>
+  <li><a href="imagickpixel.ispixelsimilarquantum.html">ImagickPixel::isPixelSimilarQuantum</a></li>
+  <li><a href="imagickpixel.issimilar.html">ImagickPixel::isSimilar</a></li>
+  <li><a href="imagickpixel.setcolor.html">ImagickPixel::setColor</a></li>
+  <li><a href="imagickpixel.setcolorcount.html">ImagickPixel::setColorCount</a></li>
+  <li><a href="imagickpixel.setcolorvalue.html">ImagickPixel::setColorValue</a></li>
+  <li><a href="imagickpixel.setcolorvaluequantum.html">ImagickPixel::setColorValueQuantum</a></li>
+  <li><a href="imagickpixel.sethsl.html">ImagickPixel::setHSL</a></li>
+  <li><a href="imagickpixel.setindex.html">ImagickPixel::setIndex</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="imagickpixel.getindex.html">ImagickPixel::getIndex</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="imagickpixel.ispixelsimilarquantum.html">ImagickPixel::isPixelSimilarQuantum</a></div>
+                <div class="up"><a href="class.imagickpixel.html">ImagickPixel</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="imagickpixel.ispixelsimilar" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ImagickPixel::isPixelSimilar</h1>
+  <p class="refpurpose">Check the distance between this color and another</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-imagickpixel.ispixelsimilar-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">ImagickPixel::isPixelSimilar</span>
+    ( <span class="methodparam"><span class="type">ImagickPixel</span> <code class="parameter">$color</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$fuzz</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Checks the distance between the color described by this ImagickPixel
+   object and that of the provided object, by plotting their RGB values
+   on the color cube. If the distance between the two points is less than
+   the fuzz value given, the colors are similar.
+   This method replaces <a href="imagickpixel.issimilar.html" class="link">ImagickPixel::isSimilar()</a>
+   and correctly normalises the fuzz value to ImageMagick QuantumRange.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-imagickpixel.ispixelsimilar-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">color</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The ImagickPixel object to compare this object against.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">fuzz</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The maximum distance within which to consider these colors as similar.
+       The theoretical maximum for this value is the square root of three
+       (1.732).
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-imagickpixel.ispixelsimilar-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> on success.
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

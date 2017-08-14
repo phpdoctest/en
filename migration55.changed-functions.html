@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Changed Functions</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="appendices.html">Appendices</a></li>
+  <li class="header up"><a href="migration55.html">Migrating from PHP 5.4.x to PHP 5.5.x</a></li>
+  <li><a href="migration55.changes.html">What has changed in PHP 5.5.x</a></li>
+  <li><a href="migration55.incompatible.html">Backward Incompatible Changes</a></li>
+  <li><a href="migration55.new-features.html">New features</a></li>
+  <li><a href="migration55.deprecated.html">Deprecated features in PHP 5.5.x</a></li>
+  <li class="active"><a href="migration55.changed-functions.html">Changed Functions</a></li>
+  <li><a href="migration55.new-functions.html">New Functions</a></li>
+  <li><a href="migration55.classes.html">New Classes and Interfaces</a></li>
+  <li><a href="migration55.new-methods.html">New Methods</a></li>
+  <li><a href="migration55.extensions-other.html">Other changes to extensions</a></li>
+  <li><a href="migration55.global-constants.html">New Global Constants</a></li>
+  <li><a href="migration55.ini.html">Changes to INI file handling</a></li>
+  <li><a href="migration55.internals.html">Changes to PHP Internals</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="migration55.deprecated.html">Deprecated features in PHP 5.5.x</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="migration55.new-functions.html">New Functions</a></div>
+                <div class="up"><a href="migration55.html">Migrating from PHP 5.4.x to PHP 5.5.x</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="migration55.changed-functions" class="sect1">
+  <h2 class="title">Changed Functions</h2>
+
+  <div class="sect2" id="migration55.changed-functions.core">
+   <h3 class="title">PHP Core</h3>
+
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function">set_error_handler</span> can now be called with <strong><code>NULL</code></strong> as
+      an argument to reset the error handler.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      When called with <strong><code>NULL</code></strong>, <span class="function">set_error_handler</span> and
+      <span class="function">set_exception_handler</span> now return the previous error
+      or exception handler, respectively.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function">json_encode</span> now accepts <code class="parameter">depth</code>
+      parameter.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      The behaviour of <span class="function">pack</span> and
+      <span class="function">unpack</span> with the &quot;a&quot; and &quot;A&quot; format codes has
+      changed.
+      <a href="migration55.incompatible.html#migration55.incompatible.pack" class="link">Detailed notes on these changes are available.</a>
+     </span>
+    </li>
+   </ul>
+  </div>
+
+  <div class="sect2" id="migration55.changed-functions.intl">
+   <h3 class="title"><a href="book.intl.html" class="link">intl</a></h3>
+
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+       <span class="methodname">MessageFormatter::format</span> and related functions
+      now accept named arguments and mixed numeric and named arguments when PHP
+      is linked to ICU 4.8 or later.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+       <span class="methodname">MessageFormatter::format</span> and related functions
+      no longer error when an insufficient number of arguments have been
+      provided. Instead, the placeholders will not be substituted.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+       <span class="methodname">MessageFormatter::format</span> and
+       <span class="methodname">MessageFormatter::parse</span> are no longer limited to
+      second precision when dealing with times.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+       <span class="methodname">IntlDateFormatter::__construct</span> and
+      <span class="function">datefmt_create</span> now accept
+      <span class="classname">IntlTimeZone</span> and
+      <span class="classname">DateTimeZone</span> objects for the
+      <code class="parameter">timezone</code> argument, and
+      <span class="classname">IntlCalendar</span> objects for the
+      <code class="parameter">calendar</code> argument. Furthermore, if the time zone
+      is omitted and the <code class="parameter">calendar</code> doesn&#039;t specify a time
+      zone, PHP&#039;s default time zone from
+      <span class="function">date_default_timezone_get</span> is now used instead of the
+      default ICU time zone.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+       <span class="methodname">IntlDateFormatter::getCalendar</span> and
+      <span class="function">datefmt_get_calendar</span> return false if the
+      <span class="classname">IntlDateFormatter</span> object was created with an
+      <span class="classname">IntlCalendar</span> instance instead of one of the
+      <span class="classname">IntlDateFormatter</span> constants.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+       <span class="methodname">IntlDateFormatter::setCalendar</span> and
+      <span class="function">datefmt_set_calendar</span> now accept
+      <span class="classname">IntlCalendar</span> objects in addition to the
+      <span class="classname">IntlDateFormatter</span> constants.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+       <span class="methodname">IntlDateFormatter::format</span> and
+      <span class="function">datefmt_format</span> now accept
+      <span class="classname">IntlCalendar</span> objects.
+     </span>
+    </li>
+   </ul>
+  </div>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

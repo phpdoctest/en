@@ -1,0 +1,239 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Deletes an index from this collection</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.mongo.html">Mongo</a></li>
+  <li class="header up"><a href="mongo.core.html">Core Classes</a></li>
+  <li class="header up"><a href="class.mongocollection.html">MongoCollection</a></li>
+  <li><a href="mongocollection.aggregate.html">MongoCollection::aggregate</a></li>
+  <li><a href="mongocollection.aggregatecursor.html">MongoCollection::aggregateCursor</a></li>
+  <li><a href="mongocollection.batchinsert.html">MongoCollection::batchInsert</a></li>
+  <li><a href="mongocollection.construct.html">MongoCollection::__construct</a></li>
+  <li><a href="mongocollection.count.html">MongoCollection::count</a></li>
+  <li><a href="mongocollection.createdbref.html">MongoCollection::createDBRef</a></li>
+  <li><a href="mongocollection.createindex.html">MongoCollection::createIndex</a></li>
+  <li class="active"><a href="mongocollection.deleteindex.html">MongoCollection::deleteIndex</a></li>
+  <li><a href="mongocollection.deleteindexes.html">MongoCollection::deleteIndexes</a></li>
+  <li><a href="mongocollection.distinct.html">MongoCollection::distinct</a></li>
+  <li><a href="mongocollection.drop.html">MongoCollection::drop</a></li>
+  <li><a href="mongocollection.ensureindex.html">MongoCollection::ensureIndex</a></li>
+  <li><a href="mongocollection.find.html">MongoCollection::find</a></li>
+  <li><a href="mongocollection.findandmodify.html">MongoCollection::findAndModify</a></li>
+  <li><a href="mongocollection.findone.html">MongoCollection::findOne</a></li>
+  <li><a href="mongocollection.get.html">MongoCollection::__get</a></li>
+  <li><a href="mongocollection.getdbref.html">MongoCollection::getDBRef</a></li>
+  <li><a href="mongocollection.getindexinfo.html">MongoCollection::getIndexInfo</a></li>
+  <li><a href="mongocollection.getname.html">MongoCollection::getName</a></li>
+  <li><a href="mongocollection.getreadpreference.html">MongoCollection::getReadPreference</a></li>
+  <li><a href="mongocollection.getslaveokay.html">MongoCollection::getSlaveOkay</a></li>
+  <li><a href="mongocollection.getwriteconcern.html">MongoCollection::getWriteConcern</a></li>
+  <li><a href="mongocollection.group.html">MongoCollection::group</a></li>
+  <li><a href="mongocollection.insert.html">MongoCollection::insert</a></li>
+  <li><a href="mongocollection.parallelcollectionscan.html">MongoCollection::parallelCollectionScan</a></li>
+  <li><a href="mongocollection.remove.html">MongoCollection::remove</a></li>
+  <li><a href="mongocollection.save.html">MongoCollection::save</a></li>
+  <li><a href="mongocollection.setreadpreference.html">MongoCollection::setReadPreference</a></li>
+  <li><a href="mongocollection.setslaveokay.html">MongoCollection::setSlaveOkay</a></li>
+  <li><a href="mongocollection.setwriteconcern.html">MongoCollection::setWriteConcern</a></li>
+  <li><a href="mongocollection.toindexstring.html">MongoCollection::toIndexString</a></li>
+  <li><a href="mongocollection.--tostring.html">MongoCollection::__toString</a></li>
+  <li><a href="mongocollection.update.html">MongoCollection::update</a></li>
+  <li><a href="mongocollection.validate.html">MongoCollection::validate</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mongocollection.createindex.html">MongoCollection::createIndex</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mongocollection.deleteindexes.html">MongoCollection::deleteIndexes</a></div>
+                <div class="up"><a href="class.mongocollection.html">MongoCollection</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mongocollection.deleteindex" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">MongoCollection::deleteIndex</h1>
+  <p class="refpurpose">Deletes an index from this collection</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mongocollection.deleteindex-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">MongoCollection::deleteIndex</span>
+    ( <span class="methodparam"><span class="type">string|array</span> <code class="parameter">$keys</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   This method is identical to:
+  </p>
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">deleteIndexes</span><span style="color: #007700">(</span><span style="color: #0000BB">$keys</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$indexName&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">toIndexString</span><span style="color: #007700">(</span><span style="color: #0000BB">$keys</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">command</span><span style="color: #007700">(array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"deleteIndexes"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getName</span><span style="color: #007700">(),<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"index"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$indexName</span><span style="color: #007700">,<br />&nbsp;&nbsp;));<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+  </div>
+
+  <p class="para">
+   Each index is given a unique name when it is created. This is often generated
+   by the driver based on the index key(s) and order/type, but custom names may
+   also be specified with <span class="function">MongoCollection::createIndex</span>&#039;s
+   <em>&quot;name&quot;</em> option).
+  </p>
+  <p class="para">
+   Unfortunately, <span class="function">MongoCollection::deleteIndex</span> cannot
+   delete custom-named indexes due to a backwards compatibility issue. When a
+   string argument is provided, it is assumed to be the single field name in an
+   ascending index (e.g. the name <em>&quot;x_1&quot;</em> would be used for the
+   argument <em>&quot;x&quot;</em>). If an array or object is provided, an index
+   name is generated just as if that argument was passed to
+   <span class="function">MongoCollection::createIndex</span>.
+  </p>
+  <p class="para">
+   In order to delete a custom-named index with the PHP driver, the
+   <em>deleteIndexes</em> database command must be used. For instance,
+   an index named &quot;myIndex&quot; could be deleted with the PHP driver by running:
+  </p>
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">command</span><span style="color: #007700">(array(<br />&nbsp;&nbsp;</span><span style="color: #DD0000">"deleteIndexes"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$collection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getName</span><span style="color: #007700">(),<br />&nbsp;&nbsp;</span><span style="color: #DD0000">"index"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"myIndex"</span><span style="color: #007700">,<br />));<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+  </div>
+
+  <p class="para">
+   To determine the name of an index with the PHP driver, you can query the
+   <em>system.indexes</em> collection of a database and look for the
+   <em>&quot;name&quot;</em> field of each result. The <em>&quot;ns&quot;</em>
+   field will indicate the collection to which each index belongs.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mongocollection.deleteindex-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+
+      <code class="parameter">keys</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       An array specifying the index&#039;s fields as its keys. For each field, the
+       value is either the index direction or
+       <a href="https://docs.mongodb.com/manual/core/index-types/" class="link external">&raquo;&nbsp;index type</a>.
+       If specifying direction, specify <em>1</em> for ascending or
+       <em>-1</em> for descending.
+      </p>
+      <p class="para">
+       If a string is provided, it is assumed to be the single field name in an
+       ascending index.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-mongocollection.deleteindex-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the database response.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-mongocollection.deleteindex-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-1542">
+   <p><strong>Example #1 <span class="function">MongoCollection::deleteIndex</span> example</strong></p>
+   <div class="example-contents"><p>
+    This example passes the function string and array parameters.
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$m&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoClient</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">example</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">indices</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;create&nbsp;and&nbsp;remove&nbsp;a&nbsp;simple&nbsp;index<br /></span><span style="color: #0000BB">$c</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createIndex</span><span style="color: #007700">(array(</span><span style="color: #DD0000">"i"</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">1</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">$c</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">deleteIndex</span><span style="color: #007700">(</span><span style="color: #DD0000">"i"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;create&nbsp;and&nbsp;remove&nbsp;a&nbsp;multi-key&nbsp;index<br /></span><span style="color: #0000BB">$c</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">ensureIndex</span><span style="color: #007700">(array(</span><span style="color: #DD0000">"j"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"k"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">$c</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">deleteIndex</span><span style="color: #007700">(array(</span><span style="color: #DD0000">"j"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"k"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-mongocollection.deleteindex-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li class="member"> <span class="methodname">MongoCollection::createIndex</span></li>
+   <li class="member"> <span class="methodname">MongoCollection::deleteIndexes</span></li>
+   <li class="member"> <span class="methodname">MongoCollection::toIndexString</span></li>
+   <li class="member">
+    The MongoDB
+    <a href="https://docs.mongodb.com/manual/indexes/" class="link external">&raquo;&nbsp;index</a> and
+    <a href="https://docs.mongodb.com/manual/core/index-types/" class="link external">&raquo;&nbsp;index type</a>
+    documentation.
+   </li>
+  </ul>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,210 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Add new float range filter</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.search.html">Search Engine Extensions</a></li>
+  <li class="header up"><a href="book.sphinx.html">Sphinx</a></li>
+  <li class="header up"><a href="class.sphinxclient.html">SphinxClient</a></li>
+  <li><a href="sphinxclient.addquery.html">SphinxClient::addQuery</a></li>
+  <li><a href="sphinxclient.buildexcerpts.html">SphinxClient::buildExcerpts</a></li>
+  <li><a href="sphinxclient.buildkeywords.html">SphinxClient::buildKeywords</a></li>
+  <li><a href="sphinxclient.close.html">SphinxClient::close</a></li>
+  <li><a href="sphinxclient.construct.html">SphinxClient::__construct</a></li>
+  <li><a href="sphinxclient.escapestring.html">SphinxClient::escapeString</a></li>
+  <li><a href="sphinxclient.getlasterror.html">SphinxClient::getLastError</a></li>
+  <li><a href="sphinxclient.getlastwarning.html">SphinxClient::getLastWarning</a></li>
+  <li><a href="sphinxclient.open.html">SphinxClient::open</a></li>
+  <li><a href="sphinxclient.query.html">SphinxClient::query</a></li>
+  <li><a href="sphinxclient.resetfilters.html">SphinxClient::resetFilters</a></li>
+  <li><a href="sphinxclient.resetgroupby.html">SphinxClient::resetGroupBy</a></li>
+  <li><a href="sphinxclient.runqueries.html">SphinxClient::runQueries</a></li>
+  <li><a href="sphinxclient.setarrayresult.html">SphinxClient::setArrayResult</a></li>
+  <li><a href="sphinxclient.setconnecttimeout.html">SphinxClient::setConnectTimeout</a></li>
+  <li><a href="sphinxclient.setfieldweights.html">SphinxClient::setFieldWeights</a></li>
+  <li><a href="sphinxclient.setfilter.html">SphinxClient::setFilter</a></li>
+  <li class="active"><a href="sphinxclient.setfilterfloatrange.html">SphinxClient::setFilterFloatRange</a></li>
+  <li><a href="sphinxclient.setfilterrange.html">SphinxClient::setFilterRange</a></li>
+  <li><a href="sphinxclient.setgeoanchor.html">SphinxClient::setGeoAnchor</a></li>
+  <li><a href="sphinxclient.setgroupby.html">SphinxClient::setGroupBy</a></li>
+  <li><a href="sphinxclient.setgroupdistinct.html">SphinxClient::setGroupDistinct</a></li>
+  <li><a href="sphinxclient.setidrange.html">SphinxClient::setIDRange</a></li>
+  <li><a href="sphinxclient.setindexweights.html">SphinxClient::setIndexWeights</a></li>
+  <li><a href="sphinxclient.setlimits.html">SphinxClient::setLimits</a></li>
+  <li><a href="sphinxclient.setmatchmode.html">SphinxClient::setMatchMode</a></li>
+  <li><a href="sphinxclient.setmaxquerytime.html">SphinxClient::setMaxQueryTime</a></li>
+  <li><a href="sphinxclient.setoverride.html">SphinxClient::setOverride</a></li>
+  <li><a href="sphinxclient.setrankingmode.html">SphinxClient::setRankingMode</a></li>
+  <li><a href="sphinxclient.setretries.html">SphinxClient::setRetries</a></li>
+  <li><a href="sphinxclient.setselect.html">SphinxClient::setSelect</a></li>
+  <li><a href="sphinxclient.setserver.html">SphinxClient::setServer</a></li>
+  <li><a href="sphinxclient.setsortmode.html">SphinxClient::setSortMode</a></li>
+  <li><a href="sphinxclient.status.html">SphinxClient::status</a></li>
+  <li><a href="sphinxclient.updateattributes.html">SphinxClient::updateAttributes</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="sphinxclient.setfilter.html">SphinxClient::setFilter</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="sphinxclient.setfilterrange.html">SphinxClient::setFilterRange</a></div>
+                <div class="up"><a href="class.sphinxclient.html">SphinxClient</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="sphinxclient.setfilterfloatrange" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SphinxClient::setFilterFloatRange</h1>
+  <p class="refpurpose">Add new float range filter</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-sphinxclient.setfilterfloatrange-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">SphinxClient::setFilterFloatRange</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$attribute</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$min</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$max</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclude</code><span class="initializer"> = false</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Adds new float range filter to the existing list of filters.
+   Only those documents which have <code class="parameter">attribute</code> 
+   value stored in the index between <code class="parameter">min</code> and
+   <code class="parameter">max</code> (including values that are exactly equal 
+   to <code class="parameter">min</code> or <code class="parameter">max</code>) will 
+   be matched (or rejected, if <code class="parameter">exclude</code> is <strong><code>TRUE</code></strong>).
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-sphinxclient.setfilterfloatrange-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">attribute</code></dt>
+
+     <dd>
+
+      <p class="para">
+       An attribute name.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">min</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Minimum value.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">max</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Maximum value.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">exclude</code></dt>
+
+     <dd>
+
+      <p class="para">
+       If set to <strong><code>TRUE</code></strong>, matching documents are excluded from the result set.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-sphinxclient.setfilterfloatrange-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> on success or <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-sphinxclient.setfilterfloatrange-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="sphinxclient.setfilterrange.html" class="xref">SphinxClient::setFilterRange</a></li>
+    <li class="member"><a href="sphinxclient.setfilter.html" class="xref">SphinxClient::setFilter</a></li>
+    <li class="member"><a href="sphinxclient.resetfilters.html" class="xref">SphinxClient::resetFilters</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

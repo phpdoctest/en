@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Restores the previous error handler function</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.php.html">Affecting PHP's Behaviour</a></li>
+  <li class="header up"><a href="book.errorfunc.html">Error Handling</a></li>
+  <li class="header up"><a href="ref.errorfunc.html">Error Handling Functions</a></li>
+  <li><a href="function.debug-backtrace.html">debug_backtrace</a></li>
+  <li><a href="function.debug-print-backtrace.html">debug_print_backtrace</a></li>
+  <li><a href="function.error-clear-last.html">error_clear_last</a></li>
+  <li><a href="function.error-get-last.html">error_get_last</a></li>
+  <li><a href="function.error-log.html">error_log</a></li>
+  <li><a href="function.error-reporting.html">error_reporting</a></li>
+  <li class="active"><a href="function.restore-error-handler.html">restore_error_handler</a></li>
+  <li><a href="function.restore-exception-handler.html">restore_exception_handler</a></li>
+  <li><a href="function.set-error-handler.html">set_error_handler</a></li>
+  <li><a href="function.set-exception-handler.html">set_exception_handler</a></li>
+  <li><a href="function.trigger-error.html">trigger_error</a></li>
+  <li><a href="function.user-error.html">user_error</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.error-reporting.html">error_reporting</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.restore-exception-handler.html">restore_exception_handler</a></div>
+                <div class="up"><a href="ref.errorfunc.html">Error Handling Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.restore-error-handler" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">restore_error_handler</h1>
+  <p class="refpurpose">Restores the previous error handler function</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.restore-error-handler-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">restore_error_handler</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Used after changing the error handler function using
+   <span class="function">set_error_handler</span>, to revert to the previous error
+   handler (which could be the built-in or a user defined function). 
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.restore-error-handler-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   This function always returns <strong><code>TRUE</code></strong>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.restore-error-handler-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-494">
+    <p><strong>Example #1 <span class="function">restore_error_handler</span> example</strong></p>
+    <div class="example-contents"><p>
+     Decide if <span class="function">unserialize</span> caused an error, then
+     restore the original error handler.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">unserialize_handler</span><span style="color: #007700">(</span><span style="color: #0000BB">$errno</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$errstr</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Invalid&nbsp;serialized&nbsp;value.\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$serialized&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">set_error_handler</span><span style="color: #007700">(</span><span style="color: #DD0000">'unserialize_handler'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$original&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">unserialize</span><span style="color: #007700">(</span><span style="color: #0000BB">$serialized</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">restore_error_handler</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Invalid serialized value.
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.restore-error-handler-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">error_reporting</span></li>
+    <li class="member"><span class="function">set_error_handler</span></li>
+    <li class="member"><span class="function">restore_exception_handler</span></li>
+    <li class="member"><span class="function">trigger_error</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

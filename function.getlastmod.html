@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Gets time of last page modification</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.php.html">Affecting PHP's Behaviour</a></li>
+  <li class="header up"><a href="book.info.html">PHP Options/Info</a></li>
+  <li class="header up"><a href="ref.info.html">PHP Options/Info Functions</a></li>
+  <li><a href="function.assert-options.html">assert_options</a></li>
+  <li><a href="function.assert.html">assert</a></li>
+  <li><a href="function.cli-get-process-title.html">cli_get_process_title</a></li>
+  <li><a href="function.cli-set-process-title.html">cli_set_process_title</a></li>
+  <li><a href="function.dl.html">dl</a></li>
+  <li><a href="function.extension-loaded.html">extension_loaded</a></li>
+  <li><a href="function.gc-collect-cycles.html">gc_collect_cycles</a></li>
+  <li><a href="function.gc-disable.html">gc_disable</a></li>
+  <li><a href="function.gc-enable.html">gc_enable</a></li>
+  <li><a href="function.gc-enabled.html">gc_enabled</a></li>
+  <li><a href="function.gc-mem-caches.html">gc_mem_caches</a></li>
+  <li><a href="function.get-cfg-var.html">get_cfg_var</a></li>
+  <li><a href="function.get-current-user.html">get_current_user</a></li>
+  <li><a href="function.get-defined-constants.html">get_defined_constants</a></li>
+  <li><a href="function.get-extension-funcs.html">get_extension_funcs</a></li>
+  <li><a href="function.get-include-path.html">get_include_path</a></li>
+  <li><a href="function.get-included-files.html">get_included_files</a></li>
+  <li><a href="function.get-loaded-extensions.html">get_loaded_extensions</a></li>
+  <li><a href="function.get-magic-quotes-gpc.html">get_magic_quotes_gpc</a></li>
+  <li><a href="function.get-magic-quotes-runtime.html">get_magic_quotes_runtime</a></li>
+  <li><a href="function.get-required-files.html">get_required_files</a></li>
+  <li><a href="function.get-resources.html">get_resources</a></li>
+  <li><a href="function.getenv.html">getenv</a></li>
+  <li class="active"><a href="function.getlastmod.html">getlastmod</a></li>
+  <li><a href="function.getmygid.html">getmygid</a></li>
+  <li><a href="function.getmyinode.html">getmyinode</a></li>
+  <li><a href="function.getmypid.html">getmypid</a></li>
+  <li><a href="function.getmyuid.html">getmyuid</a></li>
+  <li><a href="function.getopt.html">getopt</a></li>
+  <li><a href="function.getrusage.html">getrusage</a></li>
+  <li><a href="function.ini-alter.html">ini_alter</a></li>
+  <li><a href="function.ini-get-all.html">ini_get_all</a></li>
+  <li><a href="function.ini-get.html">ini_get</a></li>
+  <li><a href="function.ini-restore.html">ini_restore</a></li>
+  <li><a href="function.ini-set.html">ini_set</a></li>
+  <li><a href="function.magic-quotes-runtime.html">magic_quotes_runtime</a></li>
+  <li><a href="function.main.html">main</a></li>
+  <li><a href="function.memory-get-peak-usage.html">memory_get_peak_usage</a></li>
+  <li><a href="function.memory-get-usage.html">memory_get_usage</a></li>
+  <li><a href="function.php-ini-loaded-file.html">php_ini_loaded_file</a></li>
+  <li><a href="function.php-ini-scanned-files.html">php_ini_scanned_files</a></li>
+  <li><a href="function.php-logo-guid.html">php_logo_guid</a></li>
+  <li><a href="function.php-sapi-name.html">php_sapi_name</a></li>
+  <li><a href="function.php-uname.html">php_uname</a></li>
+  <li><a href="function.phpcredits.html">phpcredits</a></li>
+  <li><a href="function.phpinfo.html">phpinfo</a></li>
+  <li><a href="function.phpversion.html">phpversion</a></li>
+  <li><a href="function.putenv.html">putenv</a></li>
+  <li><a href="function.restore-include-path.html">restore_include_path</a></li>
+  <li><a href="function.set-include-path.html">set_include_path</a></li>
+  <li><a href="function.set-magic-quotes-runtime.html">set_magic_quotes_runtime</a></li>
+  <li><a href="function.set-time-limit.html">set_time_limit</a></li>
+  <li><a href="function.sys-get-temp-dir.html">sys_get_temp_dir</a></li>
+  <li><a href="function.version-compare.html">version_compare</a></li>
+  <li><a href="function.zend-logo-guid.html">zend_logo_guid</a></li>
+  <li><a href="function.zend-thread-id.html">zend_thread_id</a></li>
+  <li><a href="function.zend-version.html">zend_version</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.getenv.html">getenv</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.getmygid.html">getmygid</a></div>
+                <div class="up"><a href="ref.info.html">PHP Options/Info Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.getlastmod" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">getlastmod</h1>
+  <p class="refpurpose">Gets time of last page modification</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.getlastmod-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname">getlastmod</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Gets the time of the last modification of the main script of execution.
+  </p>
+  <p class="para">
+   If you&#039;re interested in getting the last modification time
+   of a different file, consider using <span class="function">filemtime</span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.getlastmod-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the time of the last modification of the current
+   page. The value returned is a Unix timestamp, suitable for
+   feeding to <span class="function">date</span>. Returns <strong><code>FALSE</code></strong> on error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.getlastmod-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-539">
+    <p><strong>Example #1 <span class="function">getlastmod</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;outputs&nbsp;e.g.&nbsp;'Last&nbsp;modified:&nbsp;March&nbsp;04&nbsp;1998&nbsp;20:43:59.'<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"Last&nbsp;modified:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">date&nbsp;</span><span style="color: #007700">(</span><span style="color: #DD0000">"F&nbsp;d&nbsp;Y&nbsp;H:i:s."</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">getlastmod</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.getlastmod-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">date</span></li>
+    <li class="member"><span class="function">getmyuid</span></li>
+    <li class="member"><span class="function">getmygid</span></li>
+    <li class="member"><span class="function">get_current_user</span></li>
+    <li class="member"><span class="function">getmyinode</span></li>
+    <li class="member"><span class="function">getmypid</span></li>
+    <li class="member"><span class="function">filemtime</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

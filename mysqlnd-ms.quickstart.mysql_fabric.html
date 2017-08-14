@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: MySQL Fabric</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="set.mysqlinfo.html">MySQL</a></li>
+  <li class="header up"><a href="book.mysqlnd-ms.html">mysqlnd_ms</a></li>
+  <li class="header up"><a href="mysqlnd-ms.quickstart.html">Quickstart and Examples</a></li>
+  <li><a href="mysqlnd-ms.quickstart.configuration.html">Setup</a></li>
+  <li><a href="mysqlnd-ms.quickstart.usage.html">Running statements</a></li>
+  <li><a href="mysqlnd-ms.quickstart.connectionpooling.html">Connection state</a></li>
+  <li><a href="mysqlnd-ms.quickstart.sqlhints.html">SQL Hints</a></li>
+  <li><a href="mysqlnd-ms.quickstart.transactions.html">Local transactions</a></li>
+  <li><a href="mysqlnd-ms.quickstart.xa_transactions.html">XA/Distributed Transactions</a></li>
+  <li><a href="mysqlnd-ms.quickstart.qos-consistency.html">Service level and consistency</a></li>
+  <li><a href="mysqlnd-ms.quickstart.gtid.html">Global transaction IDs</a></li>
+  <li><a href="mysqlnd-ms.quickstart.cache.html">Cache integration</a></li>
+  <li><a href="mysqlnd-ms.quickstart.failover.html">Failover</a></li>
+  <li><a href="mysqlnd-ms.quickstart.partitioning.html">Partitioning and Sharding</a></li>
+  <li class="active"><a href="mysqlnd-ms.quickstart.mysql_fabric.html">MySQL Fabric</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mysqlnd-ms.quickstart.partitioning.html">Partitioning and Sharding</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mysqlnd-ms.concepts.html">Concepts</a></div>
+                <div class="up"><a href="mysqlnd-ms.quickstart.html">Quickstart and Examples</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mysqlnd-ms.quickstart.mysql_fabric" class="section">
+  <h2 class="title">MySQL Fabric</h2>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <strong>Version requirement and status</strong><br />
+   <p class="para">
+    Work on supporting MySQL Fabric started in version 1.6. Please,
+    consider the support to be of pre-alpha quality. The manual may
+    not list all features or feature limitations. This is work in progress.
+   </p>
+   <p class="para">
+    Sharding is the only use case supported by the plugin to date.
+   </p>
+  </p></blockquote>
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <strong>MySQL Fabric concepts</strong><br />
+   <p class="para">
+    Please, check the MySQL reference manual for more information about MySQL Fabric
+    and how to set it up. The PHP manual assumes that you are familiar
+    with the basic concepts and ideas of MySQL Fabric.
+   </p>
+  </p></blockquote>
+  <p class="para">
+   MySQL Fabric is a system for managing farms of MySQL servers to achive
+   High Availability and optionally support sharding. Technically, it is a
+   middleware to manage and monitor MySQL servers.
+  </p>
+  <p class="para">
+   Clients query MySQL Fabric to obtain lists of MySQL servers,
+   their state and their roles. For example, clients can request a list of
+   slaves for a MySQL Replication group and whether they are ready to
+   handle SQL requests. Another example is a cluster of sharded MySQL servers
+   where the client seeks to know which shard to query for a given
+   table and shard key. If configured to use Fabric, the plugin uses XML RCP over HTTP
+   to obtain the list at runtime from a MySQL Fabric host. The XML remote
+   procedure call itself is done in the background and transparent from a
+   developers point of view.
+  </p>
+  <p class="para">
+   Instead of listing MySQL servers directly in the plugins configuration file
+   it contains a list of one or more MySQL Fabric hosts
+  </p>
+    <p class="para">
+   <div class="example" id="example-2026">
+    <p><strong>Example #1 Plugin config: Fabric hosts instead of MySQL servers</strong></p>
+    <div class="example-contents">
+<div class="inicode"><pre class="inicode">{
+    &quot;myapp&quot;: {
+        &quot;fabric&quot;: {
+            &quot;hosts&quot;: [
+                {
+                    &quot;host&quot; : &quot;127.0.0.1&quot;,
+                    &quot;port&quot; : 8080
+                }
+            ]
+        }
+    }
+}</pre>
+</div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Users utilize the new functions
+   <span class="function">mysqlnd_ms_fabric_select_shard</span> and
+   <span class="function">mysqlnd_ms_fabric_select_global</span> to switch to
+   the set of servers responsible for a given shard key. Then, the
+   plugin picks an appropriate server for running queries on.
+   When doing so, the plugin takes care of additional
+   load balancing rules set.
+  </p>
+  <p class="para">
+   The below example assumes that MySQL Fabric has been setup
+   to shard the table <em>test.fabrictest</em> using
+   the <em>id</em> column of the table as a shard key.
+  </p>
+  <p class="para">
+   <div class="example" id="example-2027">
+    <p><strong>Example #2 Manual partitioning using SQL hints</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$mysqli&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"myapp"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"user"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"database"</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;Of&nbsp;course,&nbsp;your&nbsp;error&nbsp;handling&nbsp;is&nbsp;nicer...&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">die(</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"[%d]&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mysqli_connect_errno</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">mysqli_connect_error</span><span style="color: #007700">()));<br />}<br /><br /></span><span style="color: #FF8000">/*&nbsp;Create&nbsp;a&nbsp;global&nbsp;table&nbsp;-&nbsp;a&nbsp;table&nbsp;available&nbsp;on&nbsp;all&nbsp;shards&nbsp;*/<br /></span><span style="color: #0000BB">mysqlnd_ms_fabric_select_global</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"test.fabrictest"</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"CREATE&nbsp;TABLE&nbsp;test.fabrictest(id&nbsp;INT&nbsp;NOT&nbsp;NULL&nbsp;PRIMARY&nbsp;KEY)"</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"[%d]&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errno</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">error</span><span style="color: #007700">));<br />}<br /><br /></span><span style="color: #FF8000">/*&nbsp;Switch&nbsp;connection&nbsp;to&nbsp;appropriate&nbsp;shard&nbsp;and&nbsp;insert&nbsp;record&nbsp;*/<br /></span><span style="color: #0000BB">mysqlnd_ms_fabric_select_shard</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"test.fabrictest"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">);<br />if&nbsp;(!(</span><span style="color: #0000BB">$res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;fabrictest(id)&nbsp;VALUES&nbsp;(10)"</span><span style="color: #007700">)))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"[%d]&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errno</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">error</span><span style="color: #007700">));<br />}<br /><br /></span><span style="color: #FF8000">/*&nbsp;Try&nbsp;to&nbsp;read&nbsp;newly&nbsp;inserted&nbsp;record&nbsp;*/<br /></span><span style="color: #0000BB">mysqlnd_ms_fabric_select_shard</span><span style="color: #007700">(</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"test.fabrictest"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">);<br />if&nbsp;(!(</span><span style="color: #0000BB">$res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;id&nbsp;FROM&nbsp;test&nbsp;WHERE&nbsp;id&nbsp;=&nbsp;10"</span><span style="color: #007700">)))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;die(</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">"[%d]&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errno</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">error</span><span style="color: #007700">));<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   The example creates the sharded table, inserts a record and reads
+   the record thereafter. All SQL data definition language (DDL)
+   operations on a sharded table  must be applied to the so called global server group.
+   Prior to creating or altering a sharded table,
+   <span class="function">mysqlnd_ms_fabric_select_global</span> is called
+   to switch the given connection to the corresponding servers of the global
+   group. Data manipulation (DML) SQL statements must be sent to the shards
+   directly. The <a href="function.mysqlnd-ms-fabric-select-shard.html" class="link">
+   <span class="function">mysqlnd_ms_fabric_select_shard</span></a> switches a
+   connection to shards handling a certain shard key.
+  </p>
+
+
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

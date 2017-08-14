@@ -1,0 +1,182 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Checks whether a given named constant exists</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.misc.html">Misc.</a></li>
+  <li class="header up"><a href="ref.misc.html">Misc. Functions</a></li>
+  <li><a href="function.connection-aborted.html">connection_aborted</a></li>
+  <li><a href="function.connection-status.html">connection_status</a></li>
+  <li><a href="function.constant.html">constant</a></li>
+  <li><a href="function.define.html">define</a></li>
+  <li class="active"><a href="function.defined.html">defined</a></li>
+  <li><a href="function.die.html">die</a></li>
+  <li><a href="function.eval.html">eval</a></li>
+  <li><a href="function.exit.html">exit</a></li>
+  <li><a href="function.get-browser.html">get_browser</a></li>
+  <li><a href="function.halt-compiler.html">__halt_compiler</a></li>
+  <li><a href="function.highlight-file.html">highlight_file</a></li>
+  <li><a href="function.highlight-string.html">highlight_string</a></li>
+  <li><a href="function.ignore-user-abort.html">ignore_user_abort</a></li>
+  <li><a href="function.pack.html">pack</a></li>
+  <li><a href="function.php-check-syntax.html">php_check_syntax</a></li>
+  <li><a href="function.php-strip-whitespace.html">php_strip_whitespace</a></li>
+  <li><a href="function.show-source.html">show_source</a></li>
+  <li><a href="function.sleep.html">sleep</a></li>
+  <li><a href="function.sys-getloadavg.html">sys_getloadavg</a></li>
+  <li><a href="function.time-nanosleep.html">time_nanosleep</a></li>
+  <li><a href="function.time-sleep-until.html">time_sleep_until</a></li>
+  <li><a href="function.uniqid.html">uniqid</a></li>
+  <li><a href="function.unpack.html">unpack</a></li>
+  <li><a href="function.usleep.html">usleep</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.define.html">define</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.die.html">die</a></div>
+                <div class="up"><a href="ref.misc.html">Misc. Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.defined" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">defined</h1>
+  <p class="refpurpose">Checks whether a given named constant exists</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.defined-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">defined</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Checks whether the given constant exists and is defined.
+  </p>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    If you want to see if a variable exists, use <span class="function">isset</span>
+    as <span class="function">defined</span> only applies to <a href="language.constants.html" class="link">constants</a>. If you want to see if a
+    function exists, use <span class="function">function_exists</span>.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.defined-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">name</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The constant name.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.defined-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> if the named constant given by <code class="parameter">name</code>
+   has been defined, <strong><code>FALSE</code></strong> otherwise.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.defined-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4359">
+    <p><strong>Example #1 Checking Constants</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;Note&nbsp;the&nbsp;use&nbsp;of&nbsp;quotes,&nbsp;this&nbsp;is&nbsp;important.&nbsp;&nbsp;This&nbsp;example&nbsp;is&nbsp;checking<br />&nbsp;*&nbsp;if&nbsp;the&nbsp;string&nbsp;'TEST'&nbsp;is&nbsp;the&nbsp;name&nbsp;of&nbsp;a&nbsp;constant&nbsp;named&nbsp;TEST&nbsp;*/<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">defined</span><span style="color: #007700">(</span><span style="color: #DD0000">'TEST'</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">TEST</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.defined-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">define</span></li>
+    <li class="member"><span class="function">constant</span></li>
+    <li class="member"><span class="function">get_defined_constants</span></li>
+    <li class="member"><span class="function">function_exists</span></li>
+    <li class="member">The section on <a href="language.constants.html" class="link">Constants</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

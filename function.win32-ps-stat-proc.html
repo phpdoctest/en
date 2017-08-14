@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Stat process</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.utilspec.windows.html">Windows Only Extensions</a></li>
+  <li class="header up"><a href="book.win32ps.html">win32ps</a></li>
+  <li class="header up"><a href="ref.win32ps.html">win32ps Functions</a></li>
+  <li><a href="function.win32-ps-list-procs.html">win32_ps_list_procs</a></li>
+  <li><a href="function.win32-ps-stat-mem.html">win32_ps_stat_mem</a></li>
+  <li class="active"><a href="function.win32-ps-stat-proc.html">win32_ps_stat_proc</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.win32-ps-stat-mem.html">win32_ps_stat_mem</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="book.win32service.html">win32service</a></div>
+                <div class="up"><a href="ref.win32ps.html">win32ps Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.win32-ps-stat-proc" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">win32_ps_stat_proc</h1>
+  <p class="refpurpose">Stat process</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.win32-ps-stat-proc-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname">win32_ps_stat_proc</span>
+    ([ <span class="methodparam"><span class="type">int</span> <code class="parameter">$pid</code><span class="initializer"> = 0</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Retrieves statistics about the process with the process id <code class="parameter">pid</code>.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.win32-ps-stat-proc-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">pid</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The process id of the process to stat.  If omitted, the id of the current process.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.win32-ps-stat-proc-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>FALSE</code></strong> on failure, or an array consisting of the
+   following information on success:
+  </p>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">pid</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The process id.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">exe</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The path to the executable image.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">mem</code></dt>
+
+     <dd>
+
+      <p class="para">
+       An array containing information about the following memory utilization indicators:
+       <code class="parameter">page_fault_count</code>,
+       <code class="parameter">peak_working_set_size</code>,
+       <code class="parameter">working_set_size</code>,
+       <code class="parameter">quota_peak_paged_pool_usage</code>,
+       <code class="parameter">quota_paged_pool_usage</code>,
+       <code class="parameter">quota_peak_non_paged_pool_usage</code>,
+       <code class="parameter">quota_non_paged_pool_usage</code>,
+       <code class="parameter">pagefile_usage</code> and
+       <code class="parameter">peak_pagefile_usage</code>.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">tms</code></dt>
+
+     <dd>
+
+      <p class="para">
+       An array containing information about the following CPU time utilization indicators:
+       <code class="parameter">created</code>, <code class="parameter">kernel</code> and <code class="parameter">user</code>.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.win32-ps-stat-proc-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">win32_ps_list_procs</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

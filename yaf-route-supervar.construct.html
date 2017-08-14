@@ -1,0 +1,168 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: The __construct purpose</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.yaf.html">Yaf</a></li>
+  <li class="header up"><a href="class.yaf-route-supervar.html">Yaf_Route_Supervar</a></li>
+  <li><a href="yaf-route-supervar.assemble.html">Yaf_Route_Supervar::assemble</a></li>
+  <li class="active"><a href="yaf-route-supervar.construct.html">Yaf_Route_Supervar::__construct</a></li>
+  <li><a href="yaf-route-supervar.route.html">Yaf_Route_Supervar::route</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="yaf-route-supervar.assemble.html">Yaf_Route_Supervar::assemble</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="yaf-route-supervar.route.html">Yaf_Route_Supervar::route</a></div>
+                <div class="up"><a href="class.yaf-route-supervar.html">Yaf_Route_Supervar</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="yaf-route-supervar.construct" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Yaf_Route_Supervar::__construct</h1>
+  <p class="refpurpose">The __construct purpose</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-yaf-route-supervar.construct-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">Yaf_Route_Supervar::__construct</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$supervar_name</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <span class="classname">Yaf_Route_Supervar</span> is similar with
+   <span class="classname">Yaf_Route_Static</span>, the difference is
+   <span class="classname">Yaf_Route_Supervar</span> will look for path info in query
+   string, and the parameter <var class="varname">supervar_name</var> is the key.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-yaf-route-supervar.construct-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">supervar_name</code></dt>
+
+    <dd>
+
+     <p class="para">
+      The name of key.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-yaf-route-supervar.construct-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-yaf-route-supervar.construct-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-4782">
+   <p><strong>Example #1 <span class="function">Yaf_Route_Supervar</span>example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/**<br />&nbsp;&nbsp;&nbsp;&nbsp;*&nbsp;Add&nbsp;a&nbsp;supervar&nbsp;route&nbsp;to&nbsp;Yaf_Router&nbsp;route&nbsp;stack<br />&nbsp;&nbsp;&nbsp;&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">Yaf_Dispatcher</span><span style="color: #007700">::</span><span style="color: #0000BB">getInstance</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">getRouter</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">addRoute</span><span style="color: #007700">(</span><span style="color: #DD0000">"name"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;</span><span style="color: #0000BB">Yaf_Route_Supervar</span><span style="color: #007700">(</span><span style="color: #DD0000">"r"</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+/** for request: http://yourdomain.com/xx/oo/?r=/ctr/act/var/value
+  * will result in following:
+  */
+  array (
+    &quot;module&quot;   =&gt; index(default),
+    &quot;controller&quot; =&gt; ctr,
+    &quot;action&quot;     =&gt; act,
+    &quot;params&quot;     =&gt; array(
+          &quot;var&quot; =&gt; value,
+     )
+  )
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-yaf-route-supervar.construct-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li class="member"> <span class="methodname">Yaf_Router::addRoute</span></li>
+   <li class="member"> <span class="methodname">Yaf_Router::addConfig</span></li>
+   <li class="member"><span class="classname">Yaf_Route_Static</span></li>
+   <li class="member"><span class="classname">Yaf_Route_Regex</span></li>
+   <li class="member"><span class="classname">Yaf_Route_Simple</span></li>
+   <li class="member"><span class="classname">Yaf_Route_Rewrite</span></li>
+   <li class="member"><span class="classname">Yaf_Route_Map</span></li>
+  </ul>                       
+ </div>
+  
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

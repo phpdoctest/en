@@ -1,0 +1,480 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Deserialization from BSON</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="set.mongodb.html">MongoDB</a></li>
+  <li class="header up"><a href="mongodb.architecture.html">Driver Architecture and Internals</a></li>
+  <li class="header up"><a href="mongodb.persistence.html">Persisting Data</a></li>
+  <li><a href="mongodb.persistence.serialization.html">Serialization to BSON</a></li>
+  <li class="active"><a href="mongodb.persistence.deserialization.html">Deserialization from BSON</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mongodb.persistence.serialization.html">Serialization to BSON</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mongodb.security.html">Security</a></div>
+                <div class="up"><a href="mongodb.persistence.html">Persisting Data</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mongodb.persistence.deserialization" class="section">
+   <h2 class="title">Deserialization from BSON</h2>
+
+   <p class="para">
+    For compound types, there are three data types:
+   </p>
+
+   <p class="para">
+    <dl>
+
+     
+      <dt>
+root</dt>
+
+      <dd>
+
+       <p class="para">
+        refers to the top-level BSON document <em class="emphasis">only</em>
+       </p>
+      </dd>
+
+     
+     
+      <dt>
+document</dt>
+
+      <dd>
+
+       <p class="para">
+        refers to embedded BSON documents <em class="emphasis">only</em>
+       </p>
+      </dd>
+
+     
+     
+      <dt>
+array</dt>
+
+      <dd>
+
+       <p class="para">
+        refers to a BSON array
+       </p>
+      </dd>
+
+     
+    </dl>
+
+   </p>
+
+   <p class="para">
+    Each of those three data types can be mapped against different PHP types.
+    The possible mapping values are:
+   </p>
+
+   <p class="para">
+    <dl>
+
+     
+      <dt>
+<em class="emphasis">not set</em> or <span class="type">NULL</span> (the is the
+      default)</dt>
+
+      <dd>
+
+       <p class="para">
+        <ul class="itemizedlist">
+         <li class="listitem">
+          <p class="para">
+           A BSON array will be deserialized as a PHP <span class="type">array</span>.
+          </p>
+         </li>
+         <li class="listitem">
+          <p class="para">
+           A BSON document (root or embedded) without a
+           <span class="property">__pclass</span> property
+           <a href="#fnidmongodb.pclass" name="fnmongodb.pclass"><sup>[1]</sup></a>
+            
+           
+           becomes a PHP <span class="classname">stdClass</span> object, with each
+           BSON document key set as a public <span class="classname">stdClass</span>
+           property.
+          </p>
+         </li>
+         <li class="listitem">
+          <p class="para">
+           A BSON document (root or embedded) with a
+           <span class="property">__pclass</span> property <a href="#fnidmongodb.pclass"><sup>[1]</sup></a> becomes a PHP object of
+           the class name as defined by the <span class="property">__pclass</span>
+           property.
+          </p>
+          <p class="para">
+           If the named class implements the
+           <span class="classname">MongoDB\BSON\Persistable</span> interface, then the
+           properties of the BSON document, including the
+           <span class="property">__pclass</span> property, are sent as an associative
+           array to the
+            <span class="methodname">MongoDB\BSON\Unserializable::bsonUnserialize</span>
+           function to initialise the object&#039;s properties.
+          </p>
+          <p class="para">
+           If the named class does not exist or does not implement the
+           <span class="classname">MongoDB\BSON\Persistable</span> interface,
+           <span class="classname">stdClass</span> will be used and each BSON document
+           key (including <span class="property">__pclass</span>) will be set as a
+           public <span class="classname">stdClass</span> property.
+          </p>
+         </li>
+        </ul>
+       </p>
+      </dd>
+
+     
+
+     
+      <dt>
+<em>&quot;array&quot;</em></dt>
+
+      <dd>
+
+       <p class="para">
+        Turns a BSON array or BSON document into a PHP array. There will be no
+        special treatment of a <span class="property">__pclass</span> property <a href="#fnidmongodb.pclass"><sup>[1]</sup></a>,
+        but it may be set as an element in the returned array if it was
+        present in the BSON document.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt>
+<em>&quot;object&quot;</em> or <em>&quot;stdClass&quot;</em></dt>
+
+      <dd>
+
+       <p class="para">
+        Turns a BSON array or BSON document into a
+        <span class="classname">stdClass</span> object. There will be no special
+        treatment of a <span class="property">__pclass</span> property <a href="#fnidmongodb.pclass"><sup>[1]</sup></a>, but it may
+        be set as a public property in the returned object if it was present
+        in the BSON document.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt>
+any other string</dt>
+
+      <dd>
+
+       <p class="para">
+        Defines the class name that the BSON array or BSON object should be
+        deserialized as. For BSON objects that include
+        <span class="property">__pclass</span> properties, that class will take
+        priority.
+       </p>
+
+       <p class="para">
+        If the named class does not exist, is not concrete (i.e. it is
+        abstract or an interface), or does not implement
+        <span class="classname">MongoDB\BSON\Unserializable</span> then an
+        <span class="classname">MongoDB\Driver\Exception\InvalidArgumentException</span>
+        exception is thrown.
+       </p>
+
+       <p class="para">
+        If the BSON object has a <span class="property">__pclass</span> property and
+        that class exists and implements
+        <span class="classname">MongoDB\BSON\Persistable</span> it will supersede the
+        class provided in the type map.
+       </p>
+
+       <p class="para">
+        The properties of the BSON document, <em class="emphasis">including</em>
+        the <span class="property">__pclass</span> property if it exists, will be sent
+        as an associative array to the
+         <span class="methodname">MongoDB\BSON\Unserializable::bsonUnserialize</span>
+        function to initialise the object&#039;s properties.
+       </p>
+      </dd>
+
+     
+    </dl>
+
+   </p>
+
+   <div class="section" id="mongodb.persistence.typemaps">
+    <h2 class="title">TypeMaps</h2>
+
+     <p class="para">
+      TypeMaps can be set through the
+       <span class="methodname">MongoDB\Driver\Cursor::setTypeMap</span> method on a
+      <span class="classname">MongoDB\Driver\Cursor</span> object, or the
+      <em>$typeMap</em> argument of
+      <span class="function">MongoDB\BSON\toPHP</span>. Each of the three
+      classes (<em class="emphasis">root</em>, <em class="emphasis">document</em> and
+      <em class="emphasis">array</em>) can be individually set.
+     </p>
+
+     <p class="para">
+      If the value in the map is <span class="type">NULL</span>, it means the same as the
+      <em class="emphasis">default</em> value for that item.
+     </p>
+    </div>
+
+    <div class="section">
+     <h2 class="title">Examples</h2>
+
+     <p class="para">
+      These examples use the following classes:
+     </p>
+
+     <p class="para">
+      <dl>
+
+       
+        <dt>
+MyClass</dt>
+
+        <dd>
+
+         <p class="para">
+          which does <em class="emphasis">not</em> implement any interface
+         </p>
+        </dd>
+
+       
+       
+        <dt>
+YourClass</dt>
+
+        <dd>
+
+         <p class="para">
+          which implements <span class="classname">MongoDB\BSON\Unserializable</span>
+         </p>
+        </dd>
+
+       
+       
+        <dt>
+OurClass</dt>
+
+        <dd>
+
+         <p class="para">
+          which implements <span class="classname">MongoDB\BSON\Persistable</span>
+         </p>
+        </dd>
+
+       
+       
+        <dt>
+TheirClass</dt>
+
+        <dd>
+
+         <p class="para">
+          which extends OurClass
+         </p>
+        </dd>
+
+       
+      </dl>
+
+     </p>
+
+     <p class="para">
+      The  <span class="methodname">MongoDB\BSON\Unserializable::bsonUnserialize</span>
+      method of YourClass, OurClass, TheirClass iterate over the array and set
+      the properties without modifications. It <em class="emphasis">also</em> sets
+      the <em>$unserialized</em> property to <em>true</em>:
+
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">bsonUnserialize</span><span style="color: #007700">(&nbsp;array&nbsp;</span><span style="color: #0000BB">$map&nbsp;</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(&nbsp;</span><span style="color: #0000BB">$map&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$k&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$value&nbsp;</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">$k&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">unserialized&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br />}</span>
+</span>
+</code></div>
+      </div>
+
+     </p>
+
+     <p class="para">
+      <div class="example-contents">
+<div class="textcode"><pre class="textcode">/* typemap: [] (all defaults) */
+{ &quot;foo&quot;: &quot;yes&quot;, &quot;bar&quot; : false }
+  -&gt; stdClass { $foo =&gt; &#039;yes&#039;, $bar =&gt; false }
+
+{ &quot;foo&quot;: &quot;no&quot;, &quot;array&quot; : [ 5, 6 ] }
+  -&gt; stdClass { $foo =&gt; &#039;no&#039;, $array =&gt; [ 5, 6 ] }
+
+{ &quot;foo&quot;: &quot;no&quot;, &quot;obj&quot; : { &quot;embedded&quot; : 3.14 } }
+  -&gt; stdClass { $foo =&gt; &#039;no&#039;, $obj =&gt; stdClass { $embedded =&gt; 3.14 } }
+
+{ &quot;foo&quot;: &quot;yes&quot;, &quot;__pclass&quot;: &quot;MyClass&quot; }
+  -&gt; stdClass { $foo =&gt; &#039;yes&#039;, $__pclass =&gt; &#039;MyClass&#039; }
+
+{ &quot;foo&quot;: &quot;yes&quot;, &quot;__pclass&quot;: { &quot;$type&quot; : &quot;80&quot;, &quot;$binary&quot; : &quot;MyClass&quot; } }
+  -&gt; stdClass { $foo =&gt; &#039;yes&#039;, $__pclass =&gt; Binary(0x80, &#039;MyClass&#039;) }
+
+{ &quot;foo&quot;: &quot;yes&quot;, &quot;__pclass&quot;: { &quot;$type&quot; : &quot;80&quot;, &quot;$binary&quot; : &quot;YourClass&quot;) }
+  -&gt; stdClass { $foo =&gt; &#039;yes&#039;, $__pclass =&gt; Binary(0x80, &#039;YourClass&#039;) }
+
+{ &quot;foo&quot;: &quot;yes&quot;, &quot;__pclass&quot;: { &quot;$type&quot; : &quot;80&quot;, &quot;$binary&quot; : &quot;OurClass&quot;) }
+  -&gt; OurClass { $foo =&gt; &#039;yes&#039;, $__pclass =&gt; Binary(0x80, &#039;OurClass&#039;), $unserialized =&gt; true }
+
+{ &quot;foo&quot;: &quot;yes&quot;, &quot;__pclass&quot;: { &quot;$type&quot; : &quot;44&quot;, &quot;$binary&quot; : &quot;YourClass&quot;) }
+  -&gt; stdClass { $foo =&gt; &#039;yes&#039;, $__pclass =&gt; Binary(0x44, &#039;YourClass&#039;) }</pre>
+</div>
+      </div>
+
+     </p>
+
+     <p class="para">
+      <div class="example-contents">
+<div class="textcode"><pre class="textcode">/* typemap: [ &quot;root&quot; =&gt; &quot;MissingClass&quot; ] */
+{ &quot;foo&quot;: &quot;yes&quot; }
+  -&gt; MongoDB\Driver\Exception\InvalidArgumentException(&quot;MissingClass does not exist&quot;)
+
+/* typemap: [ &quot;root&quot; =&gt; &quot;MyClass&quot; ] */
+{ &quot;foo&quot;: &quot;yes&quot;, &quot;__pclass&quot; : { &quot;$type&quot;: &quot;80&quot;, &quot;$binary&quot;: &quot;MyClass&quot; } }
+  -&gt; MongoDB\Driver\Exception\InvalidArgumentException(&quot;MyClass does not implement Unserializable interface&quot;)
+
+/* typemap: [ &quot;root&quot; =&gt; &quot;MongoDB\BSON\Unserializable&quot; ] */
+{ &quot;foo&quot;: &quot;yes&quot; }
+  -&gt; MongoDB\Driver\Exception\InvalidArgumentException(&quot;Unserializable is not a concrete class&quot;)
+
+/* typemap: [ &quot;root&quot; =&gt; &quot;YourClass&quot; ] */
+{ &quot;foo&quot;: &quot;yes&quot;, &quot;__pclass&quot; : { &quot;$type&quot;: &quot;80&quot;, &quot;$binary&quot;: &quot;MongoDB\BSON\Unserializable&quot; } }
+  -&gt; YourClass { $foo =&gt; &quot;yes&quot;, $__pclass =&gt; Binary(0x80, &quot;MongoDB\BSON\Unserializable&quot;), $unserialized =&gt; true }
+
+/* typemap: [ &quot;root&quot; =&gt; &quot;YourClass&quot; ] */
+{ &quot;foo&quot;: &quot;yes&quot;, &quot;__pclass&quot; : { &quot;$type&quot;: &quot;80&quot;, &quot;$binary&quot;: &quot;MyClass&quot; } }
+  -&gt; YourClass { $foo =&gt; &quot;yes&quot;, $__pclass =&gt; Binary(0x80, &quot;MyClass&quot;), $unserialized =&gt; true }
+
+/* typemap: [ &quot;root&quot; =&gt; &quot;YourClass&quot; ] */
+{ &quot;foo&quot;: &quot;yes&quot;, &quot;__pclass&quot; : { &quot;$type&quot;: &quot;80&quot;, &quot;$binary&quot;: &quot;OurClass&quot; } }
+  -&gt; OurClass { $foo =&gt; &quot;yes&quot;, $__pclass =&gt; Binary(0x80, &quot;OurClass&quot;), $unserialized =&gt; true }
+
+/* typemap: [ &quot;root&quot; =&gt; &quot;YourClass&quot; ] */
+{ &quot;foo&quot;: &quot;yes&quot;, &quot;__pclass&quot; : { &quot;$type&quot;: &quot;80&quot;, &quot;$binary&quot;: &quot;TheirClass&quot; } }
+  -&gt; TheirClass { $foo =&gt; &quot;yes&quot;, $__pclass =&gt; Binary(0x80, &quot;TheirClass&quot;), $unserialized =&gt; true }
+
+/* typemap: [ &quot;root&quot; =&gt; &quot;OurClass&quot; ] */
+{ foo: &quot;yes&quot;, &quot;__pclass&quot; : { &quot;$type&quot;: &quot;80&quot;, &quot;$binary&quot;: &quot;TheirClass&quot; } }
+  -&gt; TheirClass { $foo =&gt; &quot;yes&quot;, $__pclass =&gt; Binary(0x80, &quot;TheirClass&quot;), $unserialized =&gt; true }</pre>
+</div>
+      </div>
+
+     </p>
+
+     <p class="para">
+      <div class="example-contents">
+<div class="textcode"><pre class="textcode">/* typemap: [ &#039;root&#039; =&gt; &#039;YourClass&#039; ] */
+{ foo: &quot;yes&quot;, &quot;__pclass&quot; : { &quot;$type&quot;: &quot;80&quot;, &quot;$binary&quot;: &quot;YourClass&quot; } }
+  -&gt; YourClass { $foo =&gt; &#039;yes&#039;, $__pclass =&gt; Binary(0x80, &#039;YourClass&#039;), $unserialized =&gt; true }</pre>
+</div>
+      </div>
+
+     </p>
+
+     <p class="para">
+      <div class="example-contents">
+<div class="textcode"><pre class="textcode">/* typemap: [ &#039;root&#039; =&gt; &#039;array&#039;, &#039;document&#039; =&gt; &#039;array&#039; ] */
+{ &quot;foo&quot;: &quot;yes&quot;, &quot;bar&quot; : false }
+  -&gt; [ &quot;foo&quot; =&gt; &quot;yes&quot;, &quot;bar&quot; =&gt; false ]
+
+{ &quot;foo&quot;: &quot;no&quot;, &quot;array&quot; : [ 5, 6 ] }
+  -&gt; [ &quot;foo&quot; =&gt; &quot;no&quot;, &quot;array&quot; =&gt; [ 5, 6 ] ]
+
+{ &quot;foo&quot;: &quot;no&quot;, &quot;obj&quot; : { &quot;embedded&quot; : 3.14 } }
+  -&gt; [ &quot;foo&quot; =&gt; &quot;no&quot;, &quot;obj&quot; =&gt; [ &quot;embedded =&gt; 3.14 ] ]
+
+{ &quot;foo&quot;: &quot;yes&quot;, &quot;__pclass&quot;: &quot;MyClass&quot; }
+  -&gt; [ &quot;foo&quot; =&gt; &quot;yes&quot;, &quot;__pclass&quot; =&gt; &quot;MyClass&quot; ]
+
+{ &quot;foo&quot;: &quot;yes&quot;, &quot;__pclass&quot; : { &quot;$type&quot;: &quot;80&quot;, &quot;$binary&quot;: &quot;MyClass&quot; } }
+  -&gt; [ &quot;foo&quot; =&gt; &quot;yes&quot;, &quot;__pclass&quot; =&gt; Binary(0x80, &quot;MyClass&quot;) ]
+
+{ &quot;foo&quot;: &quot;yes&quot;, &quot;__pclass&quot; : { &quot;$type&quot;: &quot;80&quot;, &quot;$binary&quot;: &quot;OurClass&quot; } }
+  -&gt; [ &quot;foo&quot; =&gt; &quot;yes&quot;, &quot;__pclass&quot; =&gt; Binary(0x80, &quot;OurClass&quot;) ]</pre>
+</div>
+      </div>
+
+     </p>
+
+     <p class="para">
+      <div class="example-contents">
+<div class="textcode"><pre class="textcode">/* typemap: [ &#039;root&#039; =&gt; &#039;object&#039;, &#039;document&#039; =&gt; &#039;object&#039; ] */
+{ &quot;foo&quot;: &quot;yes&quot;, &quot;__pclass&quot;: { &quot;$type&quot;: &quot;80&quot;, &quot;$binary&quot;: &quot;MyClass&quot; } }
+  -&gt; stdClass { $foo =&gt; &quot;yes&quot;, &quot;__pclass&quot; =&gt; Binary(0x80, &quot;MyClass&quot;) }</pre>
+</div>
+      </div>
+
+     </p>
+
+   </div>
+  <div class="footnote"><a name="fnidmongodb.pclass" href="#fnmongodb.pclass"><sup>[1]</sup></a><span class="para footnote">
+             A __pclass property is only deemed to exist if
+             there exists a property with that name, and it is a Binary value,
+             and the sub-type of the Binary value is 0x80. If any of these three
+             conditions is not met, the __pclass property does not exist and
+             should be treated as any other normal property.
+            </span></div>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Errors in PHP 7</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="langref.html">Language Reference</a></li>
+  <li class="header up"><a href="language.errors.html">Errors</a></li>
+  <li><a href="language.errors.basics.html">Basics</a></li>
+  <li class="active"><a href="language.errors.php7.html">Errors in PHP 7</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="language.errors.basics.html">Basics</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="language.exceptions.html">Exceptions</a></div>
+                <div class="up"><a href="language.errors.html">Errors</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="language.errors.php7" class="sect1">
+ <h2 class="title">Errors in PHP 7</h2>
+
+ <p class="para">
+  PHP 7 changes how most errors are reported by PHP. Instead of reporting
+  errors through the traditional error reporting mechanism used by PHP 5, most
+  errors are now reported by throwing <span class="classname">Error</span> exceptions.
+ </p>
+
+ <p class="para">
+  As with normal exceptions, these <span class="classname">Error</span> exceptions
+  will bubble up until they reach the first matching
+  <a href="language.exceptions.html#language.exceptions.catch" class="link"><em>catch</em></a>
+  block. If there are no matching blocks, then any default exception handler
+  installed with <span class="function">set_exception_handler</span> will be called,
+  and if there is no default exception handler, then the exception will be
+  converted to a fatal error and will be handled like a traditional error.
+ </p>
+
+ <p class="para">
+  As the <span class="classname">Error</span> hierarchy does not inherit from
+  <span class="classname">Exception</span>, code that uses
+  <code class="code">catch (Exception $e) { ... }</code> blocks to handle uncaught
+  exceptions in PHP 5 will find that these <span class="classname">Error</span>s are
+  not caught by these blocks. Either a <code class="code">catch (Error $e) { ... }</code>
+  block or a <span class="function">set_exception_handler</span> handler is required.
+ </p>
+
+ <div class="sect2" id="language.errors.php7.hierarchy">
+  <h3 class="title"><span class="classname">Error</span> hierarchy</h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara"><span class="classname">Throwable</span></span>
+    <ul class="itemizedlist">
+     <li class="listitem">
+      <span class="simpara"><span class="classname">Error</span></span>
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <span class="simpara"><span class="classname">ArithmeticError</span></span>
+        <ul class="itemizedlist">
+         <li class="listitem">
+          <span class="simpara"><span class="classname">DivisionByZeroError</span></span>
+         </li>
+        </ul>
+       </li>
+       <li class="listitem">
+        <span class="simpara"><span class="classname">AssertionError</span></span>
+       </li>
+       <li class="listitem">
+        <span class="simpara"><span class="classname">ParseError</span></span>
+       </li>
+       <li class="listitem">
+        <span class="simpara"><span class="classname">TypeError</span></span>
+       </li>
+      </ul>
+     </li>
+     <li class="listitem">
+      <span class="simpara"><span class="classname">Exception</span></span>
+      <ul class="itemizedlist">
+       <li class="listitem">
+        <span class="simpara">...</span>
+       </li>
+      </ul>
+     </li>
+    </ul>
+   </li>
+  </ul>
+ </div>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

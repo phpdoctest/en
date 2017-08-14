@@ -1,0 +1,263 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Format a GMT/UTC date/time</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.calendar.html">Date and Time Related Extensions</a></li>
+  <li class="header up"><a href="book.datetime.html">Date/Time</a></li>
+  <li class="header up"><a href="ref.datetime.html">Date/Time Functions</a></li>
+  <li><a href="function.checkdate.html">checkdate</a></li>
+  <li><a href="function.date-add.html">date_add</a></li>
+  <li><a href="function.date-create-from-format.html">date_create_from_format</a></li>
+  <li><a href="function.date-create-immutable-from-format.html">date_create_immutable_from_format</a></li>
+  <li><a href="function.date-create-immutable.html">date_create_immutable</a></li>
+  <li><a href="function.date-create.html">date_create</a></li>
+  <li><a href="function.date-date-set.html">date_date_set</a></li>
+  <li><a href="function.date-default-timezone-get.html">date_default_timezone_get</a></li>
+  <li><a href="function.date-default-timezone-set.html">date_default_timezone_set</a></li>
+  <li><a href="function.date-diff.html">date_diff</a></li>
+  <li><a href="function.date-format.html">date_format</a></li>
+  <li><a href="function.date-get-last-errors.html">date_get_last_errors</a></li>
+  <li><a href="function.date-interval-create-from-date-string.html">date_interval_create_from_date_string</a></li>
+  <li><a href="function.date-interval-format.html">date_interval_format</a></li>
+  <li><a href="function.date-isodate-set.html">date_isodate_set</a></li>
+  <li><a href="function.date-modify.html">date_modify</a></li>
+  <li><a href="function.date-offset-get.html">date_offset_get</a></li>
+  <li><a href="function.date-parse-from-format.html">date_parse_from_format</a></li>
+  <li><a href="function.date-parse.html">date_parse</a></li>
+  <li><a href="function.date-sub.html">date_sub</a></li>
+  <li><a href="function.date-sun-info.html">date_sun_info</a></li>
+  <li><a href="function.date-sunrise.html">date_sunrise</a></li>
+  <li><a href="function.date-sunset.html">date_sunset</a></li>
+  <li><a href="function.date-time-set.html">date_time_set</a></li>
+  <li><a href="function.date-timestamp-get.html">date_timestamp_get</a></li>
+  <li><a href="function.date-timestamp-set.html">date_timestamp_set</a></li>
+  <li><a href="function.date-timezone-get.html">date_timezone_get</a></li>
+  <li><a href="function.date-timezone-set.html">date_timezone_set</a></li>
+  <li><a href="function.date.html">date</a></li>
+  <li><a href="function.getdate.html">getdate</a></li>
+  <li><a href="function.gettimeofday.html">gettimeofday</a></li>
+  <li class="active"><a href="function.gmdate.html">gmdate</a></li>
+  <li><a href="function.gmmktime.html">gmmktime</a></li>
+  <li><a href="function.gmstrftime.html">gmstrftime</a></li>
+  <li><a href="function.idate.html">idate</a></li>
+  <li><a href="function.localtime.html">localtime</a></li>
+  <li><a href="function.microtime.html">microtime</a></li>
+  <li><a href="function.mktime.html">mktime</a></li>
+  <li><a href="function.strftime.html">strftime</a></li>
+  <li><a href="function.strptime.html">strptime</a></li>
+  <li><a href="function.strtotime.html">strtotime</a></li>
+  <li><a href="function.time.html">time</a></li>
+  <li><a href="function.timezone-abbreviations-list.html">timezone_abbreviations_list</a></li>
+  <li><a href="function.timezone-identifiers-list.html">timezone_identifiers_list</a></li>
+  <li><a href="function.timezone-location-get.html">timezone_location_get</a></li>
+  <li><a href="function.timezone-name-from-abbr.html">timezone_name_from_abbr</a></li>
+  <li><a href="function.timezone-name-get.html">timezone_name_get</a></li>
+  <li><a href="function.timezone-offset-get.html">timezone_offset_get</a></li>
+  <li><a href="function.timezone-open.html">timezone_open</a></li>
+  <li><a href="function.timezone-transitions-get.html">timezone_transitions_get</a></li>
+  <li><a href="function.timezone-version-get.html">timezone_version_get</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.gettimeofday.html">gettimeofday</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.gmmktime.html">gmmktime</a></div>
+                <div class="up"><a href="ref.datetime.html">Date/Time Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.gmdate" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">gmdate</h1>
+  <p class="refpurpose">Format a GMT/UTC date/time</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.gmdate-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname">gmdate</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$format</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$timestamp</code><span class="initializer"> = time()</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Identical to the <span class="function">date</span> function except that
+   the time returned is Greenwich Mean Time (GMT). 
+  </p>
+ </div>
+ 
+
+ <div class="refsect1 parameters" id="refsect1-function.gmdate-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">format</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The format of the outputted date <span class="type">string</span>. See the formatting
+       options for the <span class="function">date</span> function.
+      </p>
+     </dd>
+
+    
+    
+    
+<dt>
+<code class="parameter">timestamp</code></dt>
+<dd>
+<p class="para">
+The optional <code class="parameter">timestamp</code> parameter is an
+<span class="type">integer</span> Unix timestamp that defaults to the current
+local time if a <code class="parameter">timestamp</code> is not given. In other
+words, it defaults to the value of <span class="function">time</span>.
+</p></dd>
+
+   
+   </dl>
+
+  </p>
+ </div>
+   
+
+ <div class="refsect1 returnvalues" id="refsect1-function.gmdate-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns a formatted date string. If a non-numeric value is used for 
+   <code class="parameter">timestamp</code>, <strong><code>FALSE</code></strong> is returned and an 
+   <strong><code>E_WARNING</code></strong> level error is emitted.
+  </p>
+ </div>
+   
+
+ <div class="refsect1 changelog" id="refsect1-function.gmdate-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.1.0</td>
+       <td>
+        The valid range of a timestamp is typically from Fri, 13 Dec
+        1901 20:45:54 GMT to Tue, 19 Jan 2038 03:14:07 GMT. (These are
+        the dates that correspond to the minimum and maximum values for
+        a 32-bit signed integer). However, before PHP 5.1.0 this range was limited
+        from 01-01-1970 to 19-01-2038 on some systems (e.g. Windows).
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.1.1</td>
+       <td>
+        There are useful <a href="datetime.constants.html" class="link">constants</a> 
+        of standard date/time formats that can be used to specify the 
+        <code class="parameter">format</code> parameter.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.gmdate-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-2562">
+    <p><strong>Example #1 <span class="function">gmdate</span> example</strong></p>
+    <div class="example-contents"><p>
+     When run in Finland (GMT +0200), the first line below prints &quot;Jan 01
+     1998 00:00:00&quot;, while the second prints &quot;Dec 31 1997 22:00:00&quot;.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"M&nbsp;d&nbsp;Y&nbsp;H:i:s"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1998</span><span style="color: #007700">));<br />echo&nbsp;</span><span style="color: #0000BB">gmdate</span><span style="color: #007700">(</span><span style="color: #DD0000">"M&nbsp;d&nbsp;Y&nbsp;H:i:s"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">mktime</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1998</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.gmdate-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">date</span></li>
+    <li class="member"><span class="function">mktime</span></li>
+    <li class="member"><span class="function">gmmktime</span></li>
+    <li class="member"><span class="function">strftime</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

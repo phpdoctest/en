@@ -1,0 +1,513 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Query language and locale information</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.text.html">Text Processing</a></li>
+  <li class="header up"><a href="book.strings.html">Strings</a></li>
+  <li class="header up"><a href="ref.strings.html">String Functions</a></li>
+  <li><a href="function.addcslashes.html">addcslashes</a></li>
+  <li><a href="function.addslashes.html">addslashes</a></li>
+  <li><a href="function.bin2hex.html">bin2hex</a></li>
+  <li><a href="function.chop.html">chop</a></li>
+  <li><a href="function.chr.html">chr</a></li>
+  <li><a href="function.chunk-split.html">chunk_split</a></li>
+  <li><a href="function.convert-cyr-string.html">convert_cyr_string</a></li>
+  <li><a href="function.convert-uudecode.html">convert_uudecode</a></li>
+  <li><a href="function.convert-uuencode.html">convert_uuencode</a></li>
+  <li><a href="function.count-chars.html">count_chars</a></li>
+  <li><a href="function.crc32.html">crc32</a></li>
+  <li><a href="function.crypt.html">crypt</a></li>
+  <li><a href="function.echo.html">echo</a></li>
+  <li><a href="function.explode.html">explode</a></li>
+  <li><a href="function.fprintf.html">fprintf</a></li>
+  <li><a href="function.get-html-translation-table.html">get_html_translation_table</a></li>
+  <li><a href="function.hebrev.html">hebrev</a></li>
+  <li><a href="function.hebrevc.html">hebrevc</a></li>
+  <li><a href="function.hex2bin.html">hex2bin</a></li>
+  <li><a href="function.html-entity-decode.html">html_entity_decode</a></li>
+  <li><a href="function.htmlentities.html">htmlentities</a></li>
+  <li><a href="function.htmlspecialchars-decode.html">htmlspecialchars_decode</a></li>
+  <li><a href="function.htmlspecialchars.html">htmlspecialchars</a></li>
+  <li><a href="function.implode.html">implode</a></li>
+  <li><a href="function.join.html">join</a></li>
+  <li><a href="function.lcfirst.html">lcfirst</a></li>
+  <li><a href="function.levenshtein.html">levenshtein</a></li>
+  <li><a href="function.localeconv.html">localeconv</a></li>
+  <li><a href="function.ltrim.html">ltrim</a></li>
+  <li><a href="function.md5-file.html">md5_file</a></li>
+  <li><a href="function.md5.html">md5</a></li>
+  <li><a href="function.metaphone.html">metaphone</a></li>
+  <li><a href="function.money-format.html">money_format</a></li>
+  <li class="active"><a href="function.nl-langinfo.html">nl_langinfo</a></li>
+  <li><a href="function.nl2br.html">nl2br</a></li>
+  <li><a href="function.number-format.html">number_format</a></li>
+  <li><a href="function.ord.html">ord</a></li>
+  <li><a href="function.parse-str.html">parse_str</a></li>
+  <li><a href="function.print.html">print</a></li>
+  <li><a href="function.printf.html">printf</a></li>
+  <li><a href="function.quoted-printable-decode.html">quoted_printable_decode</a></li>
+  <li><a href="function.quoted-printable-encode.html">quoted_printable_encode</a></li>
+  <li><a href="function.quotemeta.html">quotemeta</a></li>
+  <li><a href="function.rtrim.html">rtrim</a></li>
+  <li><a href="function.setlocale.html">setlocale</a></li>
+  <li><a href="function.sha1-file.html">sha1_file</a></li>
+  <li><a href="function.sha1.html">sha1</a></li>
+  <li><a href="function.similar-text.html">similar_text</a></li>
+  <li><a href="function.soundex.html">soundex</a></li>
+  <li><a href="function.sprintf.html">sprintf</a></li>
+  <li><a href="function.sscanf.html">sscanf</a></li>
+  <li><a href="function.str-getcsv.html">str_getcsv</a></li>
+  <li><a href="function.str-ireplace.html">str_ireplace</a></li>
+  <li><a href="function.str-pad.html">str_pad</a></li>
+  <li><a href="function.str-repeat.html">str_repeat</a></li>
+  <li><a href="function.str-replace.html">str_replace</a></li>
+  <li><a href="function.str-rot13.html">str_rot13</a></li>
+  <li><a href="function.str-shuffle.html">str_shuffle</a></li>
+  <li><a href="function.str-split.html">str_split</a></li>
+  <li><a href="function.str-word-count.html">str_word_count</a></li>
+  <li><a href="function.strcasecmp.html">strcasecmp</a></li>
+  <li><a href="function.strchr.html">strchr</a></li>
+  <li><a href="function.strcmp.html">strcmp</a></li>
+  <li><a href="function.strcoll.html">strcoll</a></li>
+  <li><a href="function.strcspn.html">strcspn</a></li>
+  <li><a href="function.strip-tags.html">strip_tags</a></li>
+  <li><a href="function.stripcslashes.html">stripcslashes</a></li>
+  <li><a href="function.stripos.html">stripos</a></li>
+  <li><a href="function.stripslashes.html">stripslashes</a></li>
+  <li><a href="function.stristr.html">stristr</a></li>
+  <li><a href="function.strlen.html">strlen</a></li>
+  <li><a href="function.strnatcasecmp.html">strnatcasecmp</a></li>
+  <li><a href="function.strnatcmp.html">strnatcmp</a></li>
+  <li><a href="function.strncasecmp.html">strncasecmp</a></li>
+  <li><a href="function.strncmp.html">strncmp</a></li>
+  <li><a href="function.strpbrk.html">strpbrk</a></li>
+  <li><a href="function.strpos.html">strpos</a></li>
+  <li><a href="function.strrchr.html">strrchr</a></li>
+  <li><a href="function.strrev.html">strrev</a></li>
+  <li><a href="function.strripos.html">strripos</a></li>
+  <li><a href="function.strrpos.html">strrpos</a></li>
+  <li><a href="function.strspn.html">strspn</a></li>
+  <li><a href="function.strstr.html">strstr</a></li>
+  <li><a href="function.strtok.html">strtok</a></li>
+  <li><a href="function.strtolower.html">strtolower</a></li>
+  <li><a href="function.strtoupper.html">strtoupper</a></li>
+  <li><a href="function.strtr.html">strtr</a></li>
+  <li><a href="function.substr-compare.html">substr_compare</a></li>
+  <li><a href="function.substr-count.html">substr_count</a></li>
+  <li><a href="function.substr-replace.html">substr_replace</a></li>
+  <li><a href="function.substr.html">substr</a></li>
+  <li><a href="function.trim.html">trim</a></li>
+  <li><a href="function.ucfirst.html">ucfirst</a></li>
+  <li><a href="function.ucwords.html">ucwords</a></li>
+  <li><a href="function.vfprintf.html">vfprintf</a></li>
+  <li><a href="function.vprintf.html">vprintf</a></li>
+  <li><a href="function.vsprintf.html">vsprintf</a></li>
+  <li><a href="function.wordwrap.html">wordwrap</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.money-format.html">money_format</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.nl2br.html">nl2br</a></div>
+                <div class="up"><a href="ref.strings.html">String Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.nl-langinfo" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">nl_langinfo</h1>
+  <p class="refpurpose">Query language and locale information</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.nl-langinfo-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname">nl_langinfo</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$item</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function">nl_langinfo</span> is used to access individual elements of
+   the locale categories.  Unlike <span class="function">localeconv</span>, which
+   returns all of the elements, <span class="function">nl_langinfo</span> allows you
+   to select any specific element.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.nl-langinfo-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">item</code></dt>
+
+     <dd>
+
+      <p class="para">
+       <code class="parameter">item</code> may be an integer value of the element or the
+       constant name of the element. The following is a list of constant names
+       for <code class="parameter">item</code> that may be used and their description.
+       Some of these constants may not be defined or hold no value for certain
+       locales.
+       <table class="doctable table">
+        <caption><strong>nl_langinfo Constants</strong></caption>
+        
+         <col />
+         <col />
+         <thead>
+          <tr>
+           <th>Constant</th>
+           <th>Description</th>
+          </tr>
+
+         </thead>
+
+         <tbody class="tbody">
+          <tr>
+           <td colspan="2" style="text-align: center;"><em class="emphasis">LC_TIME Category Constants</em></td>
+          </tr>
+
+          <tr>
+           <td><strong><code>ABDAY_(1-7)</code></strong></td>
+           <td>Abbreviated name of n-th day of the week.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>DAY_(1-7)</code></strong></td>
+           <td>Name of the n-th day of the week (DAY_1 = Sunday).</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>ABMON_(1-12)</code></strong></td>
+           <td>Abbreviated name of the n-th month of the year.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>MON_(1-12)</code></strong></td>
+           <td>Name of the n-th month of the year.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>AM_STR</code></strong></td>
+           <td>String for Ante meridian.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>PM_STR</code></strong></td>
+           <td>String for Post meridian.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>D_T_FMT</code></strong></td>
+           <td>String that can be used as the format string for <span class="function">strftime</span> to represent time and date.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>D_FMT</code></strong></td>
+           <td>String that can be used as the format string for <span class="function">strftime</span> to represent date.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>T_FMT</code></strong></td>
+           <td>String that can be used as the format string for <span class="function">strftime</span> to represent time.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>T_FMT_AMPM</code></strong></td>
+           <td>String that can be used as the format string for <span class="function">strftime</span> to represent time in 12-hour format with ante/post meridian.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>ERA</code></strong></td>
+           <td>Alternate era.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>ERA_YEAR</code></strong></td>
+           <td>Year in alternate era format.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>ERA_D_T_FMT</code></strong></td>
+           <td>Date and time in alternate era format (string can be used in <span class="function">strftime</span>).</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>ERA_D_FMT</code></strong></td>
+           <td>Date in alternate era format (string can be used in <span class="function">strftime</span>).</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>ERA_T_FMT</code></strong></td>
+           <td>Time in alternate era format (string can be used in <span class="function">strftime</span>).</td>
+          </tr>
+
+          <tr>
+           <td colspan="2" style="text-align: center;"><em class="emphasis">LC_MONETARY Category Constants</em></td>
+          </tr>
+
+          <tr>
+           <td><strong><code>INT_CURR_SYMBOL</code></strong></td>
+           <td>International currency symbol.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>CURRENCY_SYMBOL</code></strong></td>
+           <td>Local currency symbol.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>CRNCYSTR</code></strong></td>
+           <td>Same value as <strong><code>CURRENCY_SYMBOL</code></strong>.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>MON_DECIMAL_POINT</code></strong></td>
+           <td>Decimal point character.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>MON_THOUSANDS_SEP</code></strong></td>
+           <td>Thousands separator (groups of three digits).</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>MON_GROUPING</code></strong></td>
+           <td>Like <em>&quot;grouping&quot;</em> element.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>POSITIVE_SIGN</code></strong></td>
+           <td>Sign for positive values.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>NEGATIVE_SIGN</code></strong></td>
+           <td>Sign for negative values.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>INT_FRAC_DIGITS</code></strong></td>
+           <td>International fractional digits.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>FRAC_DIGITS</code></strong></td>
+           <td>Local fractional digits.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>P_CS_PRECEDES</code></strong></td>
+           <td>Returns 1 if <strong><code>CURRENCY_SYMBOL</code></strong> precedes a positive value.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>P_SEP_BY_SPACE</code></strong></td>
+           <td>Returns 1 if a space separates <strong><code>CURRENCY_SYMBOL</code></strong> from a positive value.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>N_CS_PRECEDES</code></strong></td>
+           <td>Returns 1 if <strong><code>CURRENCY_SYMBOL</code></strong> precedes a negative value.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>N_SEP_BY_SPACE</code></strong></td>
+           <td>Returns 1 if a space separates <strong><code>CURRENCY_SYMBOL</code></strong> from a negative value.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>P_SIGN_POSN</code></strong></td>
+           <td rowspan="2" style="vertical-align: middle;">
+            <ul class="itemizedlist">
+             <li class="listitem">
+              <span class="simpara">
+                Returns 0 if parentheses surround the quantity and <strong><code>CURRENCY_SYMBOL</code></strong>.
+              </span>
+             </li>
+             <li class="listitem">
+              <span class="simpara">
+               Returns 1 if the sign string precedes the quantity and <strong><code>CURRENCY_SYMBOL</code></strong>.
+              </span>
+             </li>
+             <li class="listitem">
+              <span class="simpara">
+               Returns 2 if the sign string follows the quantity and <strong><code>CURRENCY_SYMBOL</code></strong>.
+              </span>
+             </li>
+             <li class="listitem">
+              <span class="simpara">
+               Returns 3 if the sign string immediately precedes the <strong><code>CURRENCY_SYMBOL</code></strong>.
+              </span>
+             </li>
+             <li class="listitem">
+              <span class="simpara">
+               Returns 4 if the sign string immediately follows the <strong><code>CURRENCY_SYMBOL</code></strong>.
+              </span>
+             </li>
+            </ul>
+           </td>
+          </tr>
+
+          <tr>
+           <td><strong><code>N_SIGN_POSN</code></strong></td>
+          </tr>
+
+          <tr>
+           <td colspan="2" style="text-align: center;"><em class="emphasis">LC_NUMERIC Category Constants</em></td>
+          </tr>
+
+          <tr>
+           <td><strong><code>DECIMAL_POINT</code></strong></td>
+           <td>Decimal point character.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>RADIXCHAR</code></strong></td>
+           <td>Same value as <strong><code>DECIMAL_POINT</code></strong>.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>THOUSANDS_SEP</code></strong></td>
+           <td>Separator character for thousands (groups of three digits).</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>THOUSEP</code></strong></td>
+           <td>Same value as <strong><code>THOUSANDS_SEP</code></strong>.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>GROUPING</code></strong></td>
+           <td class="empty">&nbsp;</td>
+          </tr>
+
+          <tr>
+           <td colspan="2" style="text-align: center;"><em class="emphasis">LC_MESSAGES Category Constants</em></td>
+          </tr>
+
+          <tr>
+           <td><strong><code>YESEXPR</code></strong></td>
+           <td>Regex string for matching <em>&quot;yes&quot;</em> input.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>NOEXPR</code></strong></td>
+           <td>Regex string for matching <em>&quot;no&quot;</em> input.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>YESSTR</code></strong></td>
+           <td>Output string for <em>&quot;yes&quot;</em>.</td>
+          </tr>
+
+          <tr>
+           <td><strong><code>NOSTR</code></strong></td>
+           <td>Output string for <em>&quot;no&quot;</em>.</td>
+          </tr>
+
+          <tr>
+           <td colspan="2" style="text-align: center;"><em class="emphasis">LC_CTYPE Category Constants</em></td>
+          </tr>
+
+          <tr>
+           <td><strong><code>CODESET</code></strong></td>
+           <td>Return a string with the name of the character encoding.</td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.nl-langinfo-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the element as a string, or <strong><code>FALSE</code></strong> if <code class="parameter">item</code>
+   is not valid.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.nl-langinfo-notes">
+  <h3 class="title">Notes</h3>
+  <blockquote class="note"><p><strong class="note">Note</strong>: <span class="simpara">This function is not
+implemented on Windows platforms.</span></p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.nl-langinfo-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">setlocale</span></li>
+    <li class="member"><span class="function">localeconv</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

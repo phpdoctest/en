@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Construct a NoRewindIterator</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.spl.html">SPL</a></li>
+  <li class="header up"><a href="spl.iterators.html">Iterators</a></li>
+  <li class="header up"><a href="class.norewinditerator.html">NoRewindIterator</a></li>
+  <li class="active"><a href="norewinditerator.construct.html">NoRewindIterator::__construct</a></li>
+  <li><a href="norewinditerator.current.html">NoRewindIterator::current</a></li>
+  <li><a href="norewinditerator.getinneriterator.html">NoRewindIterator::getInnerIterator</a></li>
+  <li><a href="norewinditerator.key.html">NoRewindIterator::key</a></li>
+  <li><a href="norewinditerator.next.html">NoRewindIterator::next</a></li>
+  <li><a href="norewinditerator.rewind.html">NoRewindIterator::rewind</a></li>
+  <li><a href="norewinditerator.valid.html">NoRewindIterator::valid</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="class.norewinditerator.html">NoRewindIterator</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="norewinditerator.current.html">NoRewindIterator::current</a></div>
+                <div class="up"><a href="class.norewinditerator.html">NoRewindIterator</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="norewinditerator.construct" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">NoRewindIterator::__construct</h1>
+  <p class="refpurpose">Construct a NoRewindIterator</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-norewinditerator.construct-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">NoRewindIterator::__construct</span>
+    ( <span class="methodparam"><span class="type">Iterator</span> <code class="parameter">$iterator</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Constructs a NoRewindIterator.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-norewinditerator.construct-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">iterator</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The iterator being used.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-norewinditerator.construct-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   A  <span class="methodname">NoRewindIterator</span> based on the passed in
+   <code class="parameter">iterator</code>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-norewinditerator.construct-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4474">
+    <p><strong>Example #1  <span class="methodname">NoRewindIterator::__construct</span> example</strong></p>
+    <div class="example-contents"><p>
+     The second loop does not output because the iterator is only used once,
+     as it does not rewind.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$fruit&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">'apple'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'banana'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'cranberry'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$arr&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">ArrayObject</span><span style="color: #007700">(</span><span style="color: #0000BB">$fruit</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$it&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">NoRewindIterator</span><span style="color: #007700">(</span><span style="color: #0000BB">$arr</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getIterator</span><span style="color: #007700">());<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Fruit&nbsp;A:\n"</span><span style="color: #007700">;<br />foreach(&nbsp;</span><span style="color: #0000BB">$it&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$item&nbsp;</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$item&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Fruit&nbsp;B:\n"</span><span style="color: #007700">;<br />foreach(&nbsp;</span><span style="color: #0000BB">$it&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$item&nbsp;</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$item&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Fruit A:
+apple
+banana
+cranberry
+Fruit B:
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+
+ <div class="refsect1 seealso" id="refsect1-norewinditerator.construct-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"> <span class="methodname">NoRewindIterator::valid</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

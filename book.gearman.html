@@ -1,0 +1,1759 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Gearman</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li><a href="book.chdb.html">chdb</a></li>
+  <li><a href="book.curl.html">cURL</a></li>
+  <li><a href="book.event.html">Event</a></li>
+  <li><a href="book.fam.html">FAM</a></li>
+  <li><a href="book.ftp.html">FTP</a></li>
+  <li class="active"><a href="book.gearman.html">Gearman</a></li>
+  <li><a href="book.net-gopher.html">Gopher</a></li>
+  <li><a href="book.gupnp.html">Gupnp</a></li>
+  <li><a href="book.hwapi.html">Hyperwave API</a></li>
+  <li><a href="book.ldap.html">LDAP</a></li>
+  <li><a href="book.memcache.html">Memcache</a></li>
+  <li><a href="book.memcached.html">Memcached</a></li>
+  <li><a href="book.mqseries.html">mqseries</a></li>
+  <li><a href="book.network.html">Network</a></li>
+  <li><a href="book.rrd.html">RRD</a></li>
+  <li><a href="book.sam.html">SAM</a></li>
+  <li><a href="book.snmp.html">SNMP</a></li>
+  <li><a href="book.sockets.html">Sockets</a></li>
+  <li><a href="book.ssh2.html">SSH2</a></li>
+  <li><a href="book.stomp.html">Stomp</a></li>
+  <li><a href="book.svm.html">SVM</a></li>
+  <li><a href="book.svn.html">SVN</a></li>
+  <li><a href="book.tcpwrap.html">TCP</a></li>
+  <li><a href="book.varnish.html">Varnish</a></li>
+  <li><a href="book.yaz.html">YAZ</a></li>
+  <li><a href="book.nis.html">YP/NIS</a></li>
+  <li><a href="book.zmq.html">0MQ messaging</a></li>
+  <li><a href="book.zookeeper.html">ZooKeeper</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.ftp-systype.html">ftp_systype</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="intro.gearman.html">Introduction</a></div>
+                <div class="up"><a href="refs.remote.other.html">Other Services</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="book.gearman" class="book">
+ <h1>Gearman</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="intro.gearman.html">Introduction</a></li>
+<li><a href="gearman.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_title">
+<li><a href="gearman.requirements.html">Requirements</a></li>
+<li><a href="gearman.installation.html">Installation</a></li>
+<li><a href="gearman.configuration.html">Runtime Configuration</a></li>
+<li><a href="gearman.resources.html">Resource Types</a></li>
+</ul>
+</li>
+<li><a href="gearman.constants.html">Predefined Constants</a></li>
+<li><a href="gearman.examples.html">Examples</a><ul class="chunklist chunklist_title">
+<li><a href="gearman.examples-reverse.html">Basic usage</a></li>
+<li><a href="gearman.examples-reverse-bg.html">Basic Gearman client and worker, background</a></li>
+<li><a href="gearman.examples-reverse-task.html">Basic Gearman client and worker, submitting tasks</a></li>
+</ul>
+</li>
+<li><a href="class.gearmanclient.html">GearmanClient</a> — The GearmanClient class<ul class="chunklist chunklist_title">
+<li><a href="gearmanclient.addoptions.html">GearmanClient::addOptions</a> — Add client options</li>
+<li><a href="gearmanclient.addserver.html">GearmanClient::addServer</a> — Add a job server to the client</li>
+<li><a href="gearmanclient.addservers.html">GearmanClient::addServers</a> — Add a list of job servers to the client</li>
+<li><a href="gearmanclient.addtask.html">GearmanClient::addTask</a> — Add a task to be run in parallel</li>
+<li><a href="gearmanclient.addtaskbackground.html">GearmanClient::addTaskBackground</a> — Add a background task to be run in parallel</li>
+<li><a href="gearmanclient.addtaskhigh.html">GearmanClient::addTaskHigh</a> — Add a high priority task to run in parallel</li>
+<li><a href="gearmanclient.addtaskhighbackground.html">GearmanClient::addTaskHighBackground</a> — Add a high priority background task to be run in parallel</li>
+<li><a href="gearmanclient.addtasklow.html">GearmanClient::addTaskLow</a> — Add a low priority task to run in parallel</li>
+<li><a href="gearmanclient.addtasklowbackground.html">GearmanClient::addTaskLowBackground</a> — Add a low priority background task to be run in parallel</li>
+<li><a href="gearmanclient.addtaskstatus.html">GearmanClient::addTaskStatus</a> — Add a task to get status</li>
+<li><a href="gearmanclient.clearcallbacks.html">GearmanClient::clearCallbacks</a> — Clear all task callback functions</li>
+<li><a href="gearmanclient.clone.html">GearmanClient::clone</a> — Create a copy of a GearmanClient object</li>
+<li><a href="gearmanclient.construct.html">GearmanClient::__construct</a> — Create a GearmanClient instance</li>
+<li><a href="gearmanclient.context.html">GearmanClient::context</a> — Get the application context</li>
+<li><a href="gearmanclient.data.html">GearmanClient::data</a> — Get the application data (deprecated)</li>
+<li><a href="gearmanclient.do.html">GearmanClient::do</a> — Run a single task and return a result [deprecated]</li>
+<li><a href="gearmanclient.dobackground.html">GearmanClient::doBackground</a> — Run a task in the background</li>
+<li><a href="gearmanclient.dohigh.html">GearmanClient::doHigh</a> — Run a single high priority task</li>
+<li><a href="gearmanclient.dohighbackground.html">GearmanClient::doHighBackground</a> — Run a high priority task in the background</li>
+<li><a href="gearmanclient.dojobhandle.html">GearmanClient::doJobHandle</a> — Get the job handle for the running task</li>
+<li><a href="gearmanclient.dolow.html">GearmanClient::doLow</a> — Run a single low priority task</li>
+<li><a href="gearmanclient.dolowbackground.html">GearmanClient::doLowBackground</a> — Run a low priority task in the background</li>
+<li><a href="gearmanclient.donormal.html">GearmanClient::doNormal</a> — Run a single task and return a result</li>
+<li><a href="gearmanclient.dostatus.html">GearmanClient::doStatus</a> — Get the status for the running task</li>
+<li><a href="gearmanclient.echo.html">GearmanClient::echo</a> — Send data to all job servers to see if they echo it back [deprecated]</li>
+<li><a href="gearmanclient.error.html">GearmanClient::error</a> — Returns an error string for the last error encountered.</li>
+<li><a href="gearmanclient.geterrno.html">GearmanClient::getErrno</a> — Get an errno value</li>
+<li><a href="gearmanclient.jobstatus.html">GearmanClient::jobStatus</a> — Get the status of a background job</li>
+<li><a href="gearmanclient.ping.html">GearmanClient::ping</a> — Send data to all job servers to see if they echo it back</li>
+<li><a href="gearmanclient.removeoptions.html">GearmanClient::removeOptions</a> — Remove client options</li>
+<li><a href="gearmanclient.returncode.html">GearmanClient::returnCode</a> — Get the last Gearman return code</li>
+<li><a href="gearmanclient.runtasks.html">GearmanClient::runTasks</a> — Run a list of tasks in parallel</li>
+<li><a href="gearmanclient.setclientcallback.html">GearmanClient::setClientCallback</a> — Callback function when there is a data packet for a task (deprecated)</li>
+<li><a href="gearmanclient.setcompletecallback.html">GearmanClient::setCompleteCallback</a> — Set a function to be called on task completion</li>
+<li><a href="gearmanclient.setcontext.html">GearmanClient::setContext</a> — Set application context</li>
+<li><a href="gearmanclient.setcreatedcallback.html">GearmanClient::setCreatedCallback</a> — Set a callback for when a task is queued</li>
+<li><a href="gearmanclient.setdata.html">GearmanClient::setData</a> — Set application data (deprecated)</li>
+<li><a href="gearmanclient.setdatacallback.html">GearmanClient::setDataCallback</a> — Callback function when there is a data packet for a task</li>
+<li><a href="gearmanclient.setexceptioncallback.html">GearmanClient::setExceptionCallback</a> — Set a callback for worker exceptions</li>
+<li><a href="gearmanclient.setfailcallback.html">GearmanClient::setFailCallback</a> — Set callback for job failure</li>
+<li><a href="gearmanclient.setoptions.html">GearmanClient::setOptions</a> — Set client options</li>
+<li><a href="gearmanclient.setstatuscallback.html">GearmanClient::setStatusCallback</a> — Set a callback for collecting task status</li>
+<li><a href="gearmanclient.settimeout.html">GearmanClient::setTimeout</a> — Set socket I/O activity timeout</li>
+<li><a href="gearmanclient.setwarningcallback.html">GearmanClient::setWarningCallback</a> — Set a callback for worker warnings</li>
+<li><a href="gearmanclient.setworkloadcallback.html">GearmanClient::setWorkloadCallback</a> — Set a callback for accepting incremental data updates</li>
+<li><a href="gearmanclient.timeout.html">GearmanClient::timeout</a> — Get current socket I/O activity timeout value</li>
+</ul>
+</li>
+<li><a href="class.gearmanjob.html">GearmanJob</a> — The GearmanJob class<ul class="chunklist chunklist_title">
+<li><a href="gearmanjob.complete.html">GearmanJob::complete</a> — Send the result and complete status (deprecated)</li>
+<li><a href="gearmanjob.construct.html">GearmanJob::__construct</a> — Create a GearmanJob instance</li>
+<li><a href="gearmanjob.data.html">GearmanJob::data</a> — Send data for a running job (deprecated)</li>
+<li><a href="gearmanjob.exception.html">GearmanJob::exception</a> — Send exception for running job (deprecated)</li>
+<li><a href="gearmanjob.fail.html">GearmanJob::fail</a> — Send fail status (deprecated)</li>
+<li><a href="gearmanjob.functionname.html">GearmanJob::functionName</a> — Get function name</li>
+<li><a href="gearmanjob.handle.html">GearmanJob::handle</a> — Get the job handle</li>
+<li><a href="gearmanjob.returncode.html">GearmanJob::returnCode</a> — Get last return code</li>
+<li><a href="gearmanjob.sendcomplete.html">GearmanJob::sendComplete</a> — Send the result and complete status</li>
+<li><a href="gearmanjob.senddata.html">GearmanJob::sendData</a> — Send data for a running job</li>
+<li><a href="gearmanjob.sendexception.html">GearmanJob::sendException</a> — Send exception for running job (exception)</li>
+<li><a href="gearmanjob.sendfail.html">GearmanJob::sendFail</a> — Send fail status</li>
+<li><a href="gearmanjob.sendstatus.html">GearmanJob::sendStatus</a> — Send status</li>
+<li><a href="gearmanjob.sendwarning.html">GearmanJob::sendWarning</a> — Send a warning</li>
+<li><a href="gearmanjob.setreturn.html">GearmanJob::setReturn</a> — Set a return value</li>
+<li><a href="gearmanjob.status.html">GearmanJob::status</a> — Send status (deprecated)</li>
+<li><a href="gearmanjob.unique.html">GearmanJob::unique</a> — Get the unique identifier</li>
+<li><a href="gearmanjob.warning.html">GearmanJob::warning</a> — Send a warning (deprecated)</li>
+<li><a href="gearmanjob.workload.html">GearmanJob::workload</a> — Get workload</li>
+<li><a href="gearmanjob.workloadsize.html">GearmanJob::workloadSize</a> — Get size of work load</li>
+</ul>
+</li>
+<li><a href="class.gearmantask.html">GearmanTask</a> — The GearmanTask class<ul class="chunklist chunklist_title">
+<li><a href="gearmantask.construct.html">GearmanTask::__construct</a> — Create a GearmanTask instance</li>
+<li><a href="gearmantask.create.html">GearmanTask::create</a> — Create a task (deprecated)</li>
+<li><a href="gearmantask.data.html">GearmanTask::data</a> — Get data returned for a task</li>
+<li><a href="gearmantask.datasize.html">GearmanTask::dataSize</a> — Get the size of returned data</li>
+<li><a href="gearmantask.function.html">GearmanTask::function</a> — Get associated function name (deprecated)</li>
+<li><a href="gearmantask.functionname.html">GearmanTask::functionName</a> — Get associated function name</li>
+<li><a href="gearmantask.isknown.html">GearmanTask::isKnown</a> — Determine if task is known</li>
+<li><a href="gearmantask.isrunning.html">GearmanTask::isRunning</a> — Test whether the task is currently running</li>
+<li><a href="gearmantask.jobhandle.html">GearmanTask::jobHandle</a> — Get the job handle</li>
+<li><a href="gearmantask.recvdata.html">GearmanTask::recvData</a> — Read work or result data into a buffer for a task</li>
+<li><a href="gearmantask.returncode.html">GearmanTask::returnCode</a> — Get the last return code</li>
+<li><a href="gearmantask.senddata.html">GearmanTask::sendData</a> — Send data for a task (deprecated)</li>
+<li><a href="gearmantask.sendworkload.html">GearmanTask::sendWorkload</a> — Send data for a task</li>
+<li><a href="gearmantask.taskdenominator.html">GearmanTask::taskDenominator</a> — Get completion percentage denominator</li>
+<li><a href="gearmantask.tasknumerator.html">GearmanTask::taskNumerator</a> — Get completion percentage numerator</li>
+<li><a href="gearmantask.unique.html">GearmanTask::unique</a> — Get the unique identifier for a task</li>
+<li><a href="gearmantask.uuid.html">GearmanTask::uuid</a> — Get the unique identifier for a task (deprecated)</li>
+</ul>
+</li>
+<li><a href="class.gearmanworker.html">GearmanWorker</a> — The GearmanWorker class<ul class="chunklist chunklist_title">
+<li><a href="gearmanworker.addfunction.html">GearmanWorker::addFunction</a> — Register and add callback function</li>
+<li><a href="gearmanworker.addoptions.html">GearmanWorker::addOptions</a> — Add worker options</li>
+<li><a href="gearmanworker.addserver.html">GearmanWorker::addServer</a> — Add a job server</li>
+<li><a href="gearmanworker.addservers.html">GearmanWorker::addServers</a> — Add job servers</li>
+<li><a href="gearmanworker.clone.html">GearmanWorker::clone</a> — Create a copy of the worker</li>
+<li><a href="gearmanworker.construct.html">GearmanWorker::__construct</a> — Create a GearmanWorker instance</li>
+<li><a href="gearmanworker.echo.html">GearmanWorker::echo</a> — Test job server response</li>
+<li><a href="gearmanworker.error.html">GearmanWorker::error</a> — Get the last error encountered</li>
+<li><a href="gearmanworker.geterrno.html">GearmanWorker::getErrno</a> — Get errno</li>
+<li><a href="gearmanworker.options.html">GearmanWorker::options</a> — Get worker options</li>
+<li><a href="gearmanworker.register.html">GearmanWorker::register</a> — Register a function with the job server</li>
+<li><a href="gearmanworker.removeoptions.html">GearmanWorker::removeOptions</a> — Remove worker options</li>
+<li><a href="gearmanworker.returncode.html">GearmanWorker::returnCode</a> — Get last Gearman return code</li>
+<li><a href="gearmanworker.setid.html">GearmanWorker::setId</a> — Give the worker an identifier so it can be tracked when asking gearmand for the list of available workers.</li>
+<li><a href="gearmanworker.setoptions.html">GearmanWorker::setOptions</a> — Set worker options</li>
+<li><a href="gearmanworker.settimeout.html">GearmanWorker::setTimeout</a> — Set socket I/O activity timeout</li>
+<li><a href="gearmanworker.timeout.html">GearmanWorker::timeout</a> — Get socket I/O activity timeout</li>
+<li><a href="gearmanworker.unregister.html">GearmanWorker::unregister</a> — Unregister a function name with the job servers</li>
+<li><a href="gearmanworker.unregisterall.html">GearmanWorker::unregisterAll</a> — Unregister all function names with the job servers</li>
+<li><a href="gearmanworker.wait.html">GearmanWorker::wait</a> — Wait for activity from one of the job servers</li>
+<li><a href="gearmanworker.work.html">GearmanWorker::work</a> — Wait for and perform jobs</li>
+</ul>
+</li>
+<li><a href="class.gearmanexception.html">GearmanException</a> — The GearmanException class</li>
+</ul>
+
+ 
+
+ 
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The GearmanClient class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="gearmanclient.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Represents a class for connecting to a Gearman job server and making requests to perform
+    some function on provided data.  The function performed must be one registered by a Gearman
+    worker and the data passed is opaque to the job server.
+   </p>
+  </div>
+
+
+  <div class="section" id="gearmanclient.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">GearmanClient</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">GearmanClient</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">addOptions</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">addServer</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$host</code><span class="initializer"> = 127.0.0.1</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$port</code><span class="initializer"> = 4730</span></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">addServers</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$servers</code><span class="initializer"> = 127.0.0.1:4730</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GearmanTask</span> <span class="methodname">addTask</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$function_name</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$workload</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter reference">&$context</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$unique</code></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GearmanTask</span> <span class="methodname">addTaskBackground</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$function_name</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$workload</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter reference">&$context</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$unique</code></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GearmanTask</span> <span class="methodname">addTaskHigh</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$function_name</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$workload</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter reference">&$context</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$unique</code></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GearmanTask</span> <span class="methodname">addTaskHighBackground</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$function_name</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$workload</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter reference">&$context</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$unique</code></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GearmanTask</span> <span class="methodname">addTaskLow</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$function_name</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$workload</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter reference">&$context</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$unique</code></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GearmanTask</span> <span class="methodname">addTaskLowBackground</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$function_name</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$workload</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter reference">&$context</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$unique</code></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GearmanTask</span> <span class="methodname">addTaskStatus</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$job_handle</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter reference">&$context</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">clearCallbacks</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GearmanClient</span> <span class="methodname">clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">context</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">data</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">do</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$function_name</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$workload</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$unique</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">doBackground</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$function_name</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$workload</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$unique</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">doHigh</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$function_name</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$workload</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$unique</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">doHighBackground</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$function_name</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$workload</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$unique</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">doJobHandle</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">doLow</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$function_name</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$workload</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$unique</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">doLowBackground</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$function_name</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$workload</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$unique</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">doNormal</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$function_name</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$workload</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$unique</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">doStatus</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">echo</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$workload</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">error</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getErrno</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">jobStatus</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$job_handle</code></span>
+    )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">ping</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$workload</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">removeOptions</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">returnCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">runTasks</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">setClientCallback</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setCompleteCallback</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setContext</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$context</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setCreatedCallback</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$callback</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setData</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setDataCallback</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setExceptionCallback</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setFailCallback</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setOptions</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setStatusCallback</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setTimeout</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$timeout</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setWarningCallback</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setWorkloadCallback</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">timeout</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The GearmanJob class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="gearmanjob.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    
+   </p>
+  </div>
+
+
+  <div class="section" id="gearmanjob.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">GearmanJob</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">GearmanJob</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">complete</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$result</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">data</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">exception</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$exception</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">fail</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">functionName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">handle</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">returnCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">sendComplete</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$result</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">sendData</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">sendException</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$exception</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">sendFail</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">sendStatus</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$numerator</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$denominator</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">sendWarning</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$warning</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setReturn</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$gearman_return_t</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">status</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$numerator</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$denominator</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">unique</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">warning</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$warning</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">workload</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">workloadSize</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The GearmanTask class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="gearmantask.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    
+   </p>
+  </div>
+
+
+  <div class="section" id="gearmantask.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">GearmanTask</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">GearmanTask</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GearmanTask</span> <span class="methodname">create</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">data</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">dataSize</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">function</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">functionName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isKnown</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isRunning</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">jobHandle</span>
+    ( <span class="methodparam">void</span>
+    )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">recvData</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$data_len</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">returnCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">sendData</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">sendWorkload</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">taskDenominator</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">taskNumerator</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">unique</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">uuid</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The GearmanWorker class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="gearmanworker.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    
+   </p>
+  </div>
+
+
+  <div class="section" id="gearmanworker.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">GearmanWorker</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">GearmanWorker</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">addFunction</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$function_name</code></span>
+   , <span class="methodparam"><span class="type">callable</span> <code class="parameter">$function</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter reference">&$context</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$timeout</code></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">addOptions</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$option</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">addServer</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$host</code><span class="initializer"> = 127.0.0.1</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$port</code><span class="initializer"> = 4730</span></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">addServers</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$servers</code><span class="initializer"> = 127.0.0.1:4730</span></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">echo</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$workload</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">error</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getErrno</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">options</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">register</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$function_name</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$timeout</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">removeOptions</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$option</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">returnCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setId</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$id</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setOptions</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$option</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setTimeout</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$timeout</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">timeout</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">unregister</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$function_name</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">unregisterAll</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">wait</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">work</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The GearmanException class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="gearmanexception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    
+   </p>
+  </div>
+
+
+  <div class="section" id="gearmanexception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">GearmanException</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">GearmanException</strong>
+     </span>
+     
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> Exception</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$message</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$code</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$file</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$line</var>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">Throwable</span> <span class="methodname">Exception::getPrevious</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">Exception::getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getFile</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">Exception::getLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">Exception::getTrace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getTraceAsString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span>  <span class="methodname">Exception::__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">Exception::__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+   }</div>
+
+
+  </div>
+
+  
+ </div>
+
+
+
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,225 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: MQSeries MQPUT1</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li class="header up"><a href="book.mqseries.html">mqseries</a></li>
+  <li class="header up"><a href="ref.mqseries.html">mqseries Functions</a></li>
+  <li><a href="function.mqseries-back.html">mqseries_back</a></li>
+  <li><a href="function.mqseries-begin.html">mqseries_begin</a></li>
+  <li><a href="function.mqseries-close.html">mqseries_close</a></li>
+  <li><a href="function.mqseries-cmit.html">mqseries_cmit</a></li>
+  <li><a href="function.mqseries-conn.html">mqseries_conn</a></li>
+  <li><a href="function.mqseries-connx.html">mqseries_connx</a></li>
+  <li><a href="function.mqseries-disc.html">mqseries_disc</a></li>
+  <li><a href="function.mqseries-get.html">mqseries_get</a></li>
+  <li><a href="function.mqseries-inq.html">mqseries_inq</a></li>
+  <li><a href="function.mqseries-open.html">mqseries_open</a></li>
+  <li class="active"><a href="function.mqseries-put1.html">mqseries_put1</a></li>
+  <li><a href="function.mqseries-put.html">mqseries_put</a></li>
+  <li><a href="function.mqseries-set.html">mqseries_set</a></li>
+  <li><a href="function.mqseries-strerror.html">mqseries_strerror</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.mqseries-open.html">mqseries_open</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.mqseries-put.html">mqseries_put</a></div>
+                <div class="up"><a href="ref.mqseries.html">mqseries Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.mqseries-put1" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mqseries_put1</h1>
+  <p class="refpurpose">MQSeries MQPUT1</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.mqseries-put1-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname">mqseries_put1</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$hconn</code></span>
+   , <span class="methodparam"><span class="type">resource</span> <code class="parameter reference">&$objDesc</code></span>
+   , <span class="methodparam"><span class="type">resource</span> <code class="parameter reference">&$msgDesc</code></span>
+   , <span class="methodparam"><span class="type">resource</span> <code class="parameter reference">&$pmo</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$buffer</code></span>
+   , <span class="methodparam"><span class="type">resource</span> <code class="parameter reference">&$compCode</code></span>
+   , <span class="methodparam"><span class="type">resource</span> <code class="parameter reference">&$reason</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   The
+   <span class="function">mqseries_put1</span>
+   (MQPUT1) call puts one message on a queue. The queue need not be open.
+  </p>
+  <p class="para">
+   You can use both the <span class="function">mqseries_put</span> and <span class="function">mqseries_put1</span>
+   calls to put messages on a queue; which call to use depends on the circumstances.
+   Use the <span class="function">mqseries_put</span> (MQPUT) call to place multiple messages on the same queue.
+   Use the <span class="function">mqseries_put1</span> (MQPUT1) call to put only one message on a queue.
+   This call encapsulates the MQOPEN, MQPUT, and MQCLOSE calls into a single call, minimizing the
+   number of calls that must be issued.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.mqseries-put1-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+
+      <code class="parameter">hConn</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">Connection handle.</p>
+      <p class="para">This handle represents the connection to the queue manager.</p>
+     </dd>
+
+    
+    
+     <dt>
+
+      <code class="parameter">objDesc</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">Object descriptor. (MQOD)</p>
+      <p class="para">
+       This is a structure which identifies the queue to which the message is
+       added.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+
+      <code class="parameter">msgDesc</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">Message descriptor (MQMD).</p>
+     </dd>
+
+    
+    
+     <dt>
+
+      <code class="parameter">pmo</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">Put message options (MQPMO).</p>
+     </dd>
+
+    
+    
+    
+     <dt>
+
+      <code class="parameter">compCode</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">Completion code.</p>
+     </dd>
+
+    
+    
+     <dt>
+
+      <code class="parameter">reason</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">Reason code qualifying the compCode.</p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.mqseries-put1-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">No value is returned.</p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.mqseries-put1-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">mqseries_conn</span></li>
+    <li class="member"><span class="function">mqseries_connx</span></li>
+    <li class="member"><span class="function">mqseries_open</span></li>
+    <li class="member"><span class="function">mqseries_get</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

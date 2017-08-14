@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Backward Incompatible Changes</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="appendices.html">Appendices</a></li>
+  <li class="header up"><a href="migration53.html">Migrating from PHP 5.2.x to PHP 5.3.x</a></li>
+  <li><a href="migration53.changes.html">What has changed in PHP 5.3.x</a></li>
+  <li class="active"><a href="migration53.incompatible.html">Backward Incompatible Changes</a></li>
+  <li><a href="migration53.new-features.html">New features</a></li>
+  <li><a href="migration53.windows.html">Changes made to Windows support</a></li>
+  <li><a href="migration53.sapi.html">Changes in SAPI modules</a></li>
+  <li><a href="migration53.deprecated.html">Deprecated features in PHP 5.3.x</a></li>
+  <li><a href="migration53.undeprecated.html">Undeprecated features in PHP 5.3.x</a></li>
+  <li><a href="migration53.parameters.html">New Parameters</a></li>
+  <li><a href="migration53.functions.html">New Functions</a></li>
+  <li><a href="migration53.new-stream-wrappers.html">New stream wrappers</a></li>
+  <li><a href="migration53.new-stream-filters.html">New stream filters</a></li>
+  <li><a href="migration53.class-constants.html">New Class Constants</a></li>
+  <li><a href="migration53.methods.html">New Methods</a></li>
+  <li><a href="migration53.new-extensions.html">New Extensions</a></li>
+  <li><a href="migration53.removed-extensions.html">Removed Extensions</a></li>
+  <li><a href="migration53.extensions-other.html">Other changes to extensions</a></li>
+  <li><a href="migration53.classes.html">New Classes</a></li>
+  <li><a href="migration53.global-constants.html">New Global Constants</a></li>
+  <li><a href="migration53.ini.html">Changes to INI file handling</a></li>
+  <li><a href="migration53.other.html">Other changes</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="migration53.changes.html">What has changed in PHP 5.3.x</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="migration53.new-features.html">New features</a></div>
+                <div class="up"><a href="migration53.html">Migrating from PHP 5.2.x to PHP 5.3.x</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="migration53.incompatible" class="section">
+  <h2 class="title">Backward Incompatible Changes</h2>
+  <p class="simpara">
+   Although most existing PHP 5 code should work without changes, please take
+   note of some backward incompatible changes:
+  </p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     The newer internal parameter parsing API has been applied across all the
+     extensions bundled with PHP 5.3.x. This parameter parsing API causes
+     functions to return <strong><code>NULL</code></strong> when passed incompatible parameters. There are
+     some exceptions to this rule, such as the <span class="function">get_class</span>
+     function, which will continue to return <strong><code>FALSE</code></strong> on error.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">clearstatcache</span> no longer clears the realpath cache by
+     default.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">realpath</span> is now fully platform-independent.
+     Consequence of this is that invalid relative paths such as
+     <em>__FILE__ . &quot;/../x&quot;</em> do not work anymore.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The <span class="function">call_user_func</span> family of functions now propagate
+     <em>$this</em> even if the callee is a parent class.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The array functions <span class="function">natsort</span>,
+     <span class="function">natcasesort</span>, <span class="function">usort</span>,
+     <span class="function">uasort</span>, <span class="function">uksort</span>,
+     <span class="function">array_flip</span>, and <span class="function">array_unique</span> no
+     longer accept objects passed as arguments. To apply these functions to an
+     object, cast the object to an array first.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The behaviour of functions with by-reference parameters called by value has
+     changed. Where previously the function would accept the by-value argument,
+     a fatal error is now emitted. Any previous code passing constants or 
+     literals to functions expecting references, will need altering to assign 
+     the value to a variable before calling the function.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The new mysqlnd library necessitates the use of MySQL 4.1&#039;s newer 41-byte
+     password format. Continued use of the old 16-byte passwords will cause
+     <span class="function">mysql_connect</span> and similar functions to emit the error,
+     <em>&quot;mysqlnd cannot connect to MySQL 4.1+ using old
+     authentication.&quot;</em>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The new mysqlnd library does not read mysql configuration files 
+     (my.cnf/my.ini), as the older libmysqlclient library does.  If your code relies on 
+     settings in the configuration file, you can load it explicitly with the 
+     <span class="function">mysqli_options</span> function. Note that this means the 
+     PDO specific constants <strong><code>PDO::MYSQL_ATTR_READ_DEFAULT_FILE</code></strong> 
+     and <strong><code>PDO::MYSQL_ATTR_READ_DEFAULT_GROUP</code></strong> are not defined 
+     if MySQL support in PDO is compiled with mysqlnd.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The trailing / has been removed from the <span class="classname">SplFileInfo</span>
+     class and other related directory classes.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The <a href="language.oop5.magic.html#object.tostring" class="link">__toString()</a> magic
+     method can no longer accept arguments.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The magic methods 
+     <a href="language.oop5.overloading.html#object.get" class="link">__get()</a>, 
+     <a href="language.oop5.overloading.html#object.set" class="link">__set()</a>, 
+     <a href="language.oop5.overloading.html#object.isset" class="link">__isset()</a>, 
+     <a href="language.oop5.overloading.html#object.unset" class="link">__unset()</a>, and
+     <a href="language.oop5.overloading.html#object.call" class="link">__call()</a> must always
+     be public and can no longer be static. Method signatures are now enforced.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The <a href="language.oop5.overloading.html#object.call" class="link">__call()</a>
+     magic method is now invoked on access to private and protected methods.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">func_get_arg</span>, <span class="function">func_get_args</span> and
+     <span class="function">func_num_args</span> can no longer be called from the
+     outermost scope of a file that has been included by calling
+     <span class="function">include</span> or <span class="function">require</span> from within
+     a function in the calling file.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     An emulation layer for the MHASH extension to wrap around the Hash extension 
+     have been added. However not all the algorithms are covered, notable the 
+     s2k hashing algorithm. This means that s2k hashing is no longer available 
+     as of PHP 5.3.0.
+    </span>
+   </li>
+  </ul>
+  <p class="simpara">
+   The following keywords are now reserved and may not be used in function,
+   class, etc. names.
+  </p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <a href="control-structures.goto.html" class="link">goto</a>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="language.namespaces.html" class="link">namespace</a>
+    </span>
+   </li>
+  </ul>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

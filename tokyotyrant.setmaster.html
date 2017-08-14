@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Set the replication master</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.tokyo-tyrant.html">tokyo_tyrant</a></li>
+  <li class="header up"><a href="class.tokyotyrant.html">TokyoTyrant</a></li>
+  <li><a href="tokyotyrant.add.html">TokyoTyrant::add</a></li>
+  <li><a href="tokyotyrant.connect.html">TokyoTyrant::connect</a></li>
+  <li><a href="tokyotyrant.connecturi.html">TokyoTyrant::connectUri</a></li>
+  <li><a href="tokyotyrant.construct.html">TokyoTyrant::__construct</a></li>
+  <li><a href="tokyotyrant.copy.html">TokyoTyrant::copy</a></li>
+  <li><a href="tokyotyrant.ext.html">TokyoTyrant::ext</a></li>
+  <li><a href="tokyotyrant.fwmkeys.html">TokyoTyrant::fwmKeys</a></li>
+  <li><a href="tokyotyrant.get.html">TokyoTyrant::get</a></li>
+  <li><a href="tokyotyrant.getiterator.html">TokyoTyrant::getIterator</a></li>
+  <li><a href="tokyotyrant.num.html">TokyoTyrant::num</a></li>
+  <li><a href="tokyotyrant.out.html">TokyoTyrant::out</a></li>
+  <li><a href="tokyotyrant.put.html">TokyoTyrant::put</a></li>
+  <li><a href="tokyotyrant.putcat.html">TokyoTyrant::putCat</a></li>
+  <li><a href="tokyotyrant.putkeep.html">TokyoTyrant::putKeep</a></li>
+  <li><a href="tokyotyrant.putnr.html">TokyoTyrant::putNr</a></li>
+  <li><a href="tokyotyrant.putshl.html">TokyoTyrant::putShl</a></li>
+  <li><a href="tokyotyrant.restore.html">TokyoTyrant::restore</a></li>
+  <li class="active"><a href="tokyotyrant.setmaster.html">TokyoTyrant::setMaster</a></li>
+  <li><a href="tokyotyrant.size.html">TokyoTyrant::size</a></li>
+  <li><a href="tokyotyrant.stat.html">TokyoTyrant::stat</a></li>
+  <li><a href="tokyotyrant.sync.html">TokyoTyrant::sync</a></li>
+  <li><a href="tokyotyrant.tune.html">TokyoTyrant::tune</a></li>
+  <li><a href="tokyotyrant.vanish.html">TokyoTyrant::vanish</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="tokyotyrant.restore.html">TokyoTyrant::restore</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="tokyotyrant.size.html">TokyoTyrant::size</a></div>
+                <div class="up"><a href="class.tokyotyrant.html">TokyoTyrant</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="tokyotyrant.setmaster" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">TokyoTyrant::setMaster</h1>
+  <p class="refpurpose">Set the replication master</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-tokyotyrant.setmaster-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">TokyoTyrant::setMaster</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$host</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$port</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$timestamp</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$check_consistency</code><span class="initializer"> = true</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Sets the replication master of the database
+  </p>
+  <div class="warning"><strong class="warning">Warning</strong>
+   <p class="simpara">
+    This method is not supported on 32bit platforms.
+   </p>
+  </div>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-tokyotyrant.setmaster-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">host</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Hostname of the replication master. If <strong><code>NULL</code></strong> the replication is disabled.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">port</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Port of the replication master
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">timestamp</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Beginning timestamp with microseconds
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">check_consistency</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Whether to check consistency.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-tokyotyrant.setmaster-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   This method returns the current object and throws TokyoTyrantException on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-tokyotyrant.setmaster-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-2463">
+    <p><strong>Example #1  <span class="methodname">TokyoTyrant::setMaster</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;Connect&nbsp;to&nbsp;a&nbsp;database&nbsp;*/<br /></span><span style="color: #0000BB">$tt&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">TokyoTyrant</span><span style="color: #007700">(</span><span style="color: #DD0000">"tokyotyrant.example.com"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;Disable&nbsp;the&nbsp;replication&nbsp;*/<br /></span><span style="color: #0000BB">$tt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setMaster</span><span style="color: #007700">(</span><span style="color: #0000BB">NULL</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-tokyotyrant.setmaster-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"> <span class="methodname">Classname::Method</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Deprecated features in PHP 5.5.x</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="appendices.html">Appendices</a></li>
+  <li class="header up"><a href="migration55.html">Migrating from PHP 5.4.x to PHP 5.5.x</a></li>
+  <li><a href="migration55.changes.html">What has changed in PHP 5.5.x</a></li>
+  <li><a href="migration55.incompatible.html">Backward Incompatible Changes</a></li>
+  <li><a href="migration55.new-features.html">New features</a></li>
+  <li class="active"><a href="migration55.deprecated.html">Deprecated features in PHP 5.5.x</a></li>
+  <li><a href="migration55.changed-functions.html">Changed Functions</a></li>
+  <li><a href="migration55.new-functions.html">New Functions</a></li>
+  <li><a href="migration55.classes.html">New Classes and Interfaces</a></li>
+  <li><a href="migration55.new-methods.html">New Methods</a></li>
+  <li><a href="migration55.extensions-other.html">Other changes to extensions</a></li>
+  <li><a href="migration55.global-constants.html">New Global Constants</a></li>
+  <li><a href="migration55.ini.html">Changes to INI file handling</a></li>
+  <li><a href="migration55.internals.html">Changes to PHP Internals</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="migration55.new-features.html">New features</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="migration55.changed-functions.html">Changed Functions</a></div>
+                <div class="up"><a href="migration55.html">Migrating from PHP 5.4.x to PHP 5.5.x</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="migration55.deprecated" class="sect1">
+  <h2 class="title">Deprecated features in PHP 5.5.x</h2>
+
+  <div class="sect2" id="migration55.deprecated.mysql">
+   <h3 class="title"><a href="book.mysql.html" class="link">ext/mysql</a> deprecation</h3>
+
+   <p class="para">
+    The <a href="book.mysql.html" class="link">original MySQL extension</a> is now
+    deprecated, and will generate <strong><code>E_DEPRECATED</code></strong> errors
+    when connecting to a database. Instead, use the
+    <a href="book.mysqli.html" class="link">MySQLi</a> or
+    <a href="ref.pdo-mysql.html" class="link">PDO_MySQL</a> extensions.
+   </p>
+  </div>
+
+  <div class="sect2" id="migration55.deprecated.preg-replace-e">
+   <h3 class="title"><span class="function">preg_replace</span> <em>/e</em> modifier</h3>
+
+   <p class="para">
+    The <span class="function">preg_replace</span> <em>/e</em> modifier is
+    now deprecated. Instead, use the
+    <span class="function">preg_replace_callback</span> function.
+   </p>
+  </div>
+
+  <div class="sect2" id="migration55.deprecated.intl">
+   <h3 class="title"><a href="book.intl.html" class="link">intl</a> deprecations</h3>
+
+   <p class="para">
+     <span class="methodname">IntlDateFormatter::setTimeZoneID</span> and
+    <span class="function">datefmt_set_timezone_id</span> are now deprecated. Instead,
+    use the  <span class="methodname">IntlDateFormatter::setTimeZone</span> method and
+    <span class="function">datefmt_set_timezone</span> function, respectively.
+   </p>
+  </div>
+
+  <div class="sect2" id="migration55.deprecated.mcrypt">
+   <h3 class="title"><a href="book.mcrypt.html" class="link">mcrypt</a> deprecations</h3>
+
+   <p class="simpara">
+    The following functions have been deprecated:
+   </p>
+
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function">mcrypt_cbc</span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function">mcrypt_cfb</span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function">mcrypt_ecb</span>
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function">mcrypt_ofb</span>
+     </span>
+    </li>
+   </ul>
+  </div>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

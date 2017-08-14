@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Solaris specific installation tips</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="install.html">Installation and Configuration</a></li>
+  <li class="header up"><a href="install.unix.html">Installation on Unix systems</a></li>
+  <li><a href="install.unix.apache.html">Apache 1.3.x on Unix systems</a></li>
+  <li><a href="install.unix.apache2.html">Apache 2.x on Unix systems</a></li>
+  <li><a href="install.unix.nginx.html">Nginx 1.4.x on Unix systems</a></li>
+  <li><a href="install.unix.lighttpd-14.html">Lighttpd 1.4 on Unix systems</a></li>
+  <li><a href="install.unix.sun.html">Sun, iPlanet and Netscape servers on Sun Solaris</a></li>
+  <li><a href="install.unix.litespeed.html">LiteSpeed Web Server/OpenLiteSpeed Web Server on Unix systems</a></li>
+  <li><a href="install.unix.commandline.html">CGI and command line setups</a></li>
+  <li><a href="install.unix.hpux.html">HP-UX specific installation notes</a></li>
+  <li><a href="install.unix.openbsd.html">OpenBSD installation notes</a></li>
+  <li class="active"><a href="install.unix.solaris.html">Solaris specific installation tips</a></li>
+  <li><a href="install.unix.debian.html">Debian GNU/Linux installation notes</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="install.unix.openbsd.html">OpenBSD installation notes</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="install.unix.debian.html">Debian GNU/Linux installation notes</a></div>
+                <div class="up"><a href="install.unix.html">Installation on Unix systems</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="install.unix.solaris" class="sect1">
+ <h2 class="title"><span class="productname">Solaris</span> specific installation tips</h2>
+ <p class="para">
+  This section contains notes and hints specific to installing
+  PHP on <span class="productname">Solaris</span> systems.
+ </p>
+ <div class="sect2" id="install.unix.solaris.required">
+  <h3 class="title">Required software</h3>
+  <p class="para">
+   <span class="productname">Solaris</span> installs often lack C compilers and their related tools.
+   Read <a href="faq.build.html#faq.installation.needgnu" class="link">this FAQ</a> 
+   for information on why using GNU versions for some of these
+   tools is necessary.
+  </p>
+  <p class="para">
+   For unpacking the PHP distribution you need
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      tar
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      gzip or
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      bzip2
+     </span>
+    </li>
+   </ul>
+  </p>
+  <p class="para">
+   For compiling PHP you need
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      gcc (recommended, other C compilers may work)
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      make
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      GNU sed
+     </span>
+    </li>
+   </ul>
+  </p>
+  <p class="para">
+   For building extra extensions or hacking the code of PHP you might also need
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      flex (up to PHP 5.2)
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      re2c
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      bison
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      m4
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      autoconf
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      automake
+     </span>
+    </li>
+   </ul>
+    In addition, you will need to install (and possibly compile) any
+    additional software specific to your configuration, such as Oracle
+    or MySQL.
+  </p>     
+ </div>
+ <div class="sect2" id="install.unix.solaris.packages">
+  <h3 class="title">Using Packages</h3>
+  <p class="simpara">
+   You can simplify the <span class="productname">Solaris</span> install process by using pkgadd to
+   install most of your needed components. The Image Packaging System (IPS) for
+   <span class="productname">Solaris 11 Express</span> also contains most of the required components
+   for installation using the pkg command.
+  </p>
+ </div>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

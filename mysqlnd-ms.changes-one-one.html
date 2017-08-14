@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: PECL/mysqlnd_ms 1.1 series</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="set.mysqlinfo.html">MySQL</a></li>
+  <li class="header up"><a href="book.mysqlnd-ms.html">mysqlnd_ms</a></li>
+  <li class="header up"><a href="mysqlnd-ms.changes.html">Change History</a></li>
+  <li><a href="mysqlnd-ms.changes-one-six.html">PECL/mysqlnd_ms 1.6 series</a></li>
+  <li><a href="mysqlnd-ms.changes-one-five.html">PECL/mysqlnd_ms 1.5 series</a></li>
+  <li><a href="mysqlnd-ms.changes-one-four.html">PECL/mysqlnd_ms 1.4 series</a></li>
+  <li><a href="mysqlnd-ms.changes-one-three.html">PECL/mysqlnd_ms 1.3 series</a></li>
+  <li><a href="mysqlnd-ms.changes-one-two.html">PECL/mysqlnd_ms 1.2 series</a></li>
+  <li class="active"><a href="mysqlnd-ms.changes-one-one.html">PECL/mysqlnd_ms 1.1 series</a></li>
+  <li><a href="mysqlnd-ms.changes-one-o.html">PECL/mysqlnd_ms 1.0 series</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mysqlnd-ms.changes-one-two.html">PECL/mysqlnd_ms 1.2 series</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mysqlnd-ms.changes-one-o.html">PECL/mysqlnd_ms 1.0 series</a></div>
+                <div class="up"><a href="mysqlnd-ms.changes.html">Change History</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mysqlnd-ms.changes-one-one" class="section">
+  <h2 class="title">PECL/mysqlnd_ms 1.1 series</h2>
+  <p class="para">
+   1.1.0
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      Release date: 09/2011
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Motto/theme: Cover replication basics with production quality
+     </span>
+    </li>
+   </ul>
+  </p>
+  <p class="para">
+   The 1.1 and 1.0 series expose a similar feature set. Internally,
+   the 1.1 series has been refactored to plan for future feature
+   additions. A new configuration file format has been introduced,
+   and limitations have been lifted. And the code quality and quality
+   assurance has been improved.
+  </p>
+  <p class="para">
+   Feature changes
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <p class="para">
+      Added the (chainable) <a href="mysqlnd-ms.filter.html" class="link">filter concept</a>:
+      <ul class="itemizedlist">
+       <li class="listitem">
+         <span class="simpara">
+          BC break:
+          <span class="function">mysqlnd_ms_set_user_pick_server</span>
+          has been removed. Thehttp://svn.php.net/viewvc/pecl/mysqlnd_ms/trunk/
+          <a href="mysqlnd-ms.filter.html" class="link"><em>user</em></a>
+          filter has been introduced to replace it.
+          The filter offers similar functionality, but see below for an
+          explanation of the differences.
+         </span>
+       </li>
+      </ul>
+     </p>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      New powerful <acronym class="acronym">JSON</acronym> based configuration syntax.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      <a href="mysqlnd-ms.pooling.html" class="link">Lazy connections improved</a>:
+      security relevant, and state changing commands are covered.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Support for (native) prepared statements.
+     </span>
+    </li>
+    <li class="listitem">
+     <p class="para">
+      New statistics: <em>use_master_guess</em>,
+      <em>use_slave_guess</em>.
+      <ul class="itemizedlist">
+       <li class="listitem">
+         <span class="simpara">
+          BC break: Semantics of statistics changed for
+          <em>use_slave</em>, <em>use_master</em>.
+          Future changes are likely. Please see,
+          <span class="function">mysqlnd_ms_get_stats</span>.
+         </span>
+       </li>
+      </ul>
+     </p>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      List of broadcasted messages extended by <em>ssl_set</em>.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Library calls now monitored to remember settings for lazy connections:
+      <em>change_user</em>, <em>select_db</em>,
+      <em>set_charset</em>, <em>set_autocommit</em>.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Introduced <a href="mysqlnd-ms.configuration.html#ini.mysqlnd-ms.disable-rw-split" class="link"><em>mysqlnd_ms.disable_rw_split</em></a>.
+      The configuration setting allows using the load balancing and lazy connection
+      functionality independently of read write splitting.
+     </span>
+    </li>
+   </ul>
+  </p>
+  <p class="para">
+   Bug fixes
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      Fixed PECL #22724 - Server switching (mysqlnd_ms_query_is_select() case sensitive)
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Fixed PECL #22784 - Using mysql_connect and mysql_select_db did not work
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Fixed PECL #59982 - Unusable extension with --enable-mysqlnd-ms-table-filter.
+      Use of the option is NOT supported. You must not used it. Added note to m4.
+     </span>
+    </li>
+    <li class="listitem">
+     <span class="simpara">
+      Fixed Bug #60119 - host=&quot;localhost&quot; lost in mysqlnd_ms_get_last_used_connection()
+     </span>
+    </li>
+   </ul>
+  </p>
+  <p class="para">
+    The <span class="function">mysqlnd_ms_set_user_pick_server</span> function was removed, and
+    replaced in favor of a new <em>user</em> filter. You can no longer set a
+    callback function using <span class="function">mysqlnd_ms_set_user_pick_server</span> at
+    runtime, but instead have to configure it in the plugins configuration file. The <em>user</em>
+    filter will pass the same arguments to the callback as before.
+    Therefore, you can continue to use the same procedural function as a callback.callback
+    It is no longer possible to use static class methods, or class methods of
+    an object instance, as a callback. Doing so will cause the function
+    executing a statement handled by the plugin to emit an
+    <strong><code>E_RECOVERABLE_ERROR</code></strong> level error, which might look like:
+    &quot;<em>(mysqlnd_ms) Specified callback (picker) is not a valid callback</em>.&quot;
+    Note: this may halt your application.
+  </p>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

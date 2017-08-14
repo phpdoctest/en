@@ -1,0 +1,322 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Alternative PHP Cache</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.php.html">Affecting PHP's Behaviour</a></li>
+  <li class="active"><a href="book.apc.html">APC</a></li>
+  <li><a href="book.apcu.html">APCu</a></li>
+  <li><a href="book.apd.html">APD</a></li>
+  <li><a href="book.bcompiler.html">bcompiler</a></li>
+  <li><a href="book.blenc.html">BLENC</a></li>
+  <li><a href="book.errorfunc.html">Error Handling</a></li>
+  <li><a href="book.htscanner.html">htscanner</a></li>
+  <li><a href="book.inclued.html">inclued</a></li>
+  <li><a href="book.memtrack.html">Memtrack</a></li>
+  <li><a href="book.opcache.html">OPcache</a></li>
+  <li><a href="book.outcontrol.html">Output Control</a></li>
+  <li><a href="book.info.html">PHP Options/Info</a></li>
+  <li><a href="book.runkit.html">runkit</a></li>
+  <li><a href="book.scream.html">scream</a></li>
+  <li><a href="book.uopz.html">uopz</a></li>
+  <li><a href="book.weakref.html">Weakref</a></li>
+  <li><a href="book.wincache.html">WinCache</a></li>
+  <li><a href="book.xhprof.html">Xhprof</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="refs.basic.php.html">Affecting PHP's Behaviour</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="intro.apc.html">Introduction</a></div>
+                <div class="up"><a href="refs.basic.php.html">Affecting PHP's Behaviour</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="book.apc" class="book">
+ <h1>Alternative PHP Cache</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="intro.apc.html">Introduction</a></li>
+<li><a href="apc.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_title">
+<li><a href="apc.requirements.html">Requirements</a></li>
+<li><a href="apc.installation.html">Installation</a></li>
+<li><a href="apc.configuration.html">Runtime Configuration</a></li>
+<li><a href="apc.resources.html">Resource Types</a></li>
+</ul>
+</li>
+<li><a href="apc.constants.html">Predefined Constants</a></li>
+<li><a href="ref.apc.html">APC Functions</a><ul class="chunklist chunklist_title">
+<li><a href="function.apc-add.html">apc_add</a> — Cache a new variable in the data store</li>
+<li><a href="function.apc-bin-dump.html">apc_bin_dump</a> — Get a binary dump of the given files and user variables</li>
+<li><a href="function.apc-bin-dumpfile.html">apc_bin_dumpfile</a> — Output a binary dump of cached files and user variables to a file</li>
+<li><a href="function.apc-bin-load.html">apc_bin_load</a> — Load a binary dump into the APC file/user cache</li>
+<li><a href="function.apc-bin-loadfile.html">apc_bin_loadfile</a> — Load a binary dump from a file into the APC file/user cache</li>
+<li><a href="function.apc-cache-info.html">apc_cache_info</a> — Retrieves cached information from APC's data store</li>
+<li><a href="function.apc-cas.html">apc_cas</a> — Updates an old value with a new value</li>
+<li><a href="function.apc-clear-cache.html">apc_clear_cache</a> — Clears the APC cache</li>
+<li><a href="function.apc-compile-file.html">apc_compile_file</a> — Stores a file in the bytecode cache, bypassing all filters.</li>
+<li><a href="function.apc-dec.html">apc_dec</a> — Decrease a stored number</li>
+<li><a href="function.apc-define-constants.html">apc_define_constants</a> — Defines a set of constants for retrieval and mass-definition</li>
+<li><a href="function.apc-delete-file.html">apc_delete_file</a> — Deletes files from the opcode cache</li>
+<li><a href="function.apc-delete.html">apc_delete</a> — Removes a stored variable from the cache</li>
+<li><a href="function.apc-exists.html">apc_exists</a> — Checks if APC key exists</li>
+<li><a href="function.apc-fetch.html">apc_fetch</a> — Fetch a stored variable from the cache</li>
+<li><a href="function.apc-inc.html">apc_inc</a> — Increase a stored number</li>
+<li><a href="function.apc-load-constants.html">apc_load_constants</a> — Loads a set of constants from the cache</li>
+<li><a href="function.apc-sma-info.html">apc_sma_info</a> — Retrieves APC's Shared Memory Allocation information</li>
+<li><a href="function.apc-store.html">apc_store</a> — Cache a variable in the data store</li>
+</ul>
+</li>
+<li><a href="class.apciterator.html">APCIterator</a> — The APCIterator class<ul class="chunklist chunklist_title">
+<li><a href="apciterator.construct.html">APCIterator::__construct</a> — Constructs an APCIterator iterator object</li>
+<li><a href="apciterator.current.html">APCIterator::current</a> — Get current item</li>
+<li><a href="apciterator.gettotalcount.html">APCIterator::getTotalCount</a> — Get total count</li>
+<li><a href="apciterator.gettotalhits.html">APCIterator::getTotalHits</a> — Get total cache hits</li>
+<li><a href="apciterator.gettotalsize.html">APCIterator::getTotalSize</a> — Get total cache size</li>
+<li><a href="apciterator.key.html">APCIterator::key</a> — Get iterator key</li>
+<li><a href="apciterator.next.html">APCIterator::next</a> — Move pointer to next item</li>
+<li><a href="apciterator.rewind.html">APCIterator::rewind</a> — Rewinds iterator</li>
+<li><a href="apciterator.valid.html">APCIterator::valid</a> — Checks if current position is valid</li>
+</ul>
+</li>
+</ul>
+
+ 
+
+ 
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The APCIterator class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="apciterator.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The <span class="classname">APCIterator</span> class makes it easier to iterate
+    over large APC caches. This is helpful as it allows iterating over large
+    caches in steps, while grabbing a defined number of entries per lock instance,
+    so it frees the cache locks for other activities rather than hold up the
+    entire cache to grab 100 (the default) entries. Also, using regular expression
+    matching is more efficient as it&#039;s been moved to the C level.
+   </p>
+  </div>
+
+
+  <div class="section" id="apciterator.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">APCIterator</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">APCIterator</strong>
+     </span>
+     
+     <span class="oointerface">implements 
+      <span class="interfacename">Iterator</span>
+     </span>
+
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$cache</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$search</code><span class="initializer"> = null</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$format</code><span class="initializer"> = APC_ITER_ALL</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$chunk_size</code><span class="initializer"> = 100</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$list</code><span class="initializer"> = APC_LIST_ACTIVE</span></span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">current</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getTotalCount</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getTotalHits</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getTotalSize</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">key</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">next</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">rewind</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">valid</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

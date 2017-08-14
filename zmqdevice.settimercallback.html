@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Set the timer callback function</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li class="header up"><a href="book.zmq.html">0MQ messaging</a></li>
+  <li class="header up"><a href="class.zmqdevice.html">ZMQDevice</a></li>
+  <li><a href="zmqdevice.construct.html">ZMQDevice::__construct</a></li>
+  <li><a href="zmqdevice.getidletimeout.html">ZMQDevice::getIdleTimeout</a></li>
+  <li><a href="zmqdevice.gettimertimeout.html">ZMQDevice::getTimerTimeout</a></li>
+  <li><a href="zmqdevice.run.html">ZMQDevice::run</a></li>
+  <li><a href="zmqdevice.setidlecallback.html">ZMQDevice::setIdleCallback</a></li>
+  <li><a href="zmqdevice.setidletimeout.html">ZMQDevice::setIdleTimeout</a></li>
+  <li class="active"><a href="zmqdevice.settimercallback.html">ZMQDevice::setTimerCallback</a></li>
+  <li><a href="zmqdevice.settimertimeout.html">ZMQDevice::setTimerTimeout</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="zmqdevice.setidletimeout.html">ZMQDevice::setIdleTimeout</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="zmqdevice.settimertimeout.html">ZMQDevice::setTimerTimeout</a></div>
+                <div class="up"><a href="class.zmqdevice.html">ZMQDevice</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="zmqdevice.settimercallback" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ZMQDevice::setTimerCallback</h1>
+  <p class="refpurpose">Set the timer callback function</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-zmqdevice.settimercallback-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ZMQDevice</span> <span class="methodname">ZMQDevice::setTimerCallback</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$cb_func</code></span>
+   , <span class="methodparam"><span class="type">integer</span> <code class="parameter">$timeout</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$user_data</code></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Sets the timer callback function. The timer callback will be invoked after timeout has
+   passed. The difference between idle and timer callbacks are that idle callback is invoked
+   only when the device is idle.
+
+   The callback function signature is callback (mixed $user_data). Added in ZMQ extension version 1.1.0.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-zmqdevice.settimercallback-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">cb_func</code></dt>
+
+    <dd>
+
+     <p class="para">
+      Callback function to invoke when the device is idle. Returning false
+      or a value that evaluates to false from this function will cause the 
+      device to stop.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">timeout</code></dt>
+
+    <dd>
+
+     <p class="para">
+      How often to invoke the idle callback in milliseconds. The idle callback is invoked
+      periodically when there is no activity on the device.
+      The timeout value guarantees that there is at least this amount of milliseconds between
+      invocations of the callback function.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">user_data</code></dt>
+
+    <dd>
+
+     <p class="para">
+      Additional data to pass to the callback function.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-zmqdevice.settimercallback-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   On success this method returns the current object.
+  </p>
+ </div>
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

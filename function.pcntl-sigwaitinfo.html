@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Waits for signals</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.fileprocess.process.html">Process Control Extensions</a></li>
+  <li class="header up"><a href="book.pcntl.html">PCNTL</a></li>
+  <li class="header up"><a href="ref.pcntl.html">PCNTL Functions</a></li>
+  <li><a href="function.pcntl-alarm.html">pcntl_alarm</a></li>
+  <li><a href="function.pcntl-errno.html">pcntl_errno</a></li>
+  <li><a href="function.pcntl-exec.html">pcntl_exec</a></li>
+  <li><a href="function.pcntl-fork.html">pcntl_fork</a></li>
+  <li><a href="function.pcntl-get-last-error.html">pcntl_get_last_error</a></li>
+  <li><a href="function.pcntl-getpriority.html">pcntl_getpriority</a></li>
+  <li><a href="function.pcntl-setpriority.html">pcntl_setpriority</a></li>
+  <li><a href="function.pcntl-signal-dispatch.html">pcntl_signal_dispatch</a></li>
+  <li><a href="function.pcntl-signal-get-handler.html">pcntl_signal_get_handler</a></li>
+  <li><a href="function.pcntl-signal.html">pcntl_signal</a></li>
+  <li><a href="function.pcntl-sigprocmask.html">pcntl_sigprocmask</a></li>
+  <li><a href="function.pcntl-sigtimedwait.html">pcntl_sigtimedwait</a></li>
+  <li class="active"><a href="function.pcntl-sigwaitinfo.html">pcntl_sigwaitinfo</a></li>
+  <li><a href="function.pcntl-strerror.html">pcntl_strerror</a></li>
+  <li><a href="function.pcntl-wait.html">pcntl_wait</a></li>
+  <li><a href="function.pcntl-waitpid.html">pcntl_waitpid</a></li>
+  <li><a href="function.pcntl-wexitstatus.html">pcntl_wexitstatus</a></li>
+  <li><a href="function.pcntl-wifexited.html">pcntl_wifexited</a></li>
+  <li><a href="function.pcntl-wifsignaled.html">pcntl_wifsignaled</a></li>
+  <li><a href="function.pcntl-wifstopped.html">pcntl_wifstopped</a></li>
+  <li><a href="function.pcntl-wstopsig.html">pcntl_wstopsig</a></li>
+  <li><a href="function.pcntl-wtermsig.html">pcntl_wtermsig</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.pcntl-sigtimedwait.html">pcntl_sigtimedwait</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.pcntl-strerror.html">pcntl_strerror</a></div>
+                <div class="up"><a href="ref.pcntl.html">PCNTL Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.pcntl-sigwaitinfo" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">pcntl_sigwaitinfo</h1>
+  <p class="refpurpose">Waits for signals</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.pcntl-sigwaitinfo-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname">pcntl_sigwaitinfo</span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$set</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter reference">&$siginfo</code></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   The <span class="function">pcntl_sigwaitinfo</span> function suspends execution of the
+   calling script until one of the signals given in <code class="parameter">set</code>
+   are delivered. If one of the signal is already pending (e.g. blocked by
+   <span class="function">pcntl_sigprocmask</span>),
+   <span class="function">pcntl_sigwaitinfo</span> will return immediately.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.pcntl-sigwaitinfo-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">set</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Array of signals to wait for.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">siginfo</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The <code class="parameter">siginfo</code> parameter is set to an array containing
+       informations about the signal.
+      </p>
+      <p class="para">
+       The following elements are set for all signals:
+       <ul class="simplelist">
+        <li class="member">signo: Signal number</li>
+        <li class="member">errno: An error number</li>
+        <li class="member">code: Signal code</li>
+       </ul>
+      </p>
+      <p class="para">
+       The following elements may be set for the <strong><code>SIGCHLD</code></strong> signal:
+       <ul class="simplelist">
+        <li class="member">status: Exit value or signal</li>
+        <li class="member">utime: User time consumed</li>
+        <li class="member">stime: System time consumed</li>
+        <li class="member">pid: Sending process ID</li>
+        <li class="member">uid: Real user ID of sending process</li>
+       </ul>
+      </p>
+      <p class="para">
+       The following elements may be set for the <strong><code>SIGILL</code></strong>,
+       <strong><code>SIGFPE</code></strong>, <strong><code>SIGSEGV</code></strong> and
+       <strong><code>SIGBUS</code></strong> signals:
+       <ul class="simplelist">
+        <li class="member">addr: Memory location which caused fault</li>
+       </ul>
+      </p>
+      <p class="para">
+       The following element may be set for the <strong><code>SIGPOLL</code></strong>
+       signal:
+       <ul class="simplelist">
+        <li class="member">band: Band event</li>
+        <li class="member">fd: File descriptor number</li>
+       </ul>
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.pcntl-sigwaitinfo-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   On success, <span class="function">pcntl_sigwaitinfo</span> returns a signal number.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.pcntl-sigwaitinfo-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4195">
+    <p><strong>Example #1 <span class="function">pcntl_sigwaitinfo</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"Blocking&nbsp;SIGHUP&nbsp;signal\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">pcntl_sigprocmask</span><span style="color: #007700">(</span><span style="color: #0000BB">SIG_BLOCK</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #0000BB">SIGHUP</span><span style="color: #007700">));<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Sending&nbsp;SIGHUP&nbsp;to&nbsp;self\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">posix_kill</span><span style="color: #007700">(</span><span style="color: #0000BB">posix_getpid</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">SIGHUP</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Waiting&nbsp;for&nbsp;signals\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">=&nbsp;array();<br /></span><span style="color: #0000BB">pcntl_sigwaitinfo</span><span style="color: #007700">(array(</span><span style="color: #0000BB">SIGHUP</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">$info</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.pcntl-sigwaitinfo-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">pcntl_sigprocmask</span></li>
+    <li class="member"><span class="function">pcntl_sigtimedwait</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

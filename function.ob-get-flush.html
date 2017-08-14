@@ -1,0 +1,166 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Flush the output buffer, return it as a string and turn off output buffering</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.php.html">Affecting PHP's Behaviour</a></li>
+  <li class="header up"><a href="book.outcontrol.html">Output Control</a></li>
+  <li class="header up"><a href="ref.outcontrol.html">Output Control Functions</a></li>
+  <li><a href="function.flush.html">flush</a></li>
+  <li><a href="function.ob-clean.html">ob_clean</a></li>
+  <li><a href="function.ob-end-clean.html">ob_end_clean</a></li>
+  <li><a href="function.ob-end-flush.html">ob_end_flush</a></li>
+  <li><a href="function.ob-flush.html">ob_flush</a></li>
+  <li><a href="function.ob-get-clean.html">ob_get_clean</a></li>
+  <li><a href="function.ob-get-contents.html">ob_get_contents</a></li>
+  <li class="active"><a href="function.ob-get-flush.html">ob_get_flush</a></li>
+  <li><a href="function.ob-get-length.html">ob_get_length</a></li>
+  <li><a href="function.ob-get-level.html">ob_get_level</a></li>
+  <li><a href="function.ob-get-status.html">ob_get_status</a></li>
+  <li><a href="function.ob-gzhandler.html">ob_gzhandler</a></li>
+  <li><a href="function.ob-implicit-flush.html">ob_implicit_flush</a></li>
+  <li><a href="function.ob-list-handlers.html">ob_list_handlers</a></li>
+  <li><a href="function.ob-start.html">ob_start</a></li>
+  <li><a href="function.output-add-rewrite-var.html">output_add_rewrite_var</a></li>
+  <li><a href="function.output-reset-rewrite-vars.html">output_reset_rewrite_vars</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.ob-get-contents.html">ob_get_contents</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.ob-get-length.html">ob_get_length</a></div>
+                <div class="up"><a href="ref.outcontrol.html">Output Control Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.ob-get-flush" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ob_get_flush</h1>
+  <p class="refpurpose">Flush the output buffer, return it as a string and turn off output buffering</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.ob-get-flush-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname">ob_get_flush</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function">ob_get_flush</span> flushes the output buffer, return
+   it as a string and turns off output buffering.
+  </p>
+  <p class="para">
+   The output buffer must be started by
+   <span class="function">ob_start</span> with <a href="outcontrol.constants.html#constant.php-output-handler-flushable" class="link">PHP_OUTPUT_HANDLER_FLUSHABLE</a>
+   flag. Otherwise <span class="function">ob_get_flush</span> will not work.
+  </p>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <span class="simpara">
+    This function is similar to <span class="function">ob_end_flush</span>, except
+    that this function returns the buffer as a string.
+   </span>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.ob-get-flush-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the output buffer or <strong><code>FALSE</code></strong> if no buffering is active.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.ob-get-flush-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-510">
+    <p><strong>Example #1 <span class="function">ob_get_flush</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//using&nbsp;output_buffering=On<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">ob_list_handlers</span><span style="color: #007700">());<br /><br /></span><span style="color: #FF8000">//save&nbsp;buffer&nbsp;in&nbsp;a&nbsp;file<br /></span><span style="color: #0000BB">$buffer&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ob_get_flush</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">file_put_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'buffer.txt'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$buffer</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">ob_list_handlers</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [0] =&gt; default output handler
+)
+Array
+(
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.ob-get-flush-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">ob_end_clean</span></li>
+    <li class="member"><span class="function">ob_end_flush</span></li>
+    <li class="member"><span class="function">ob_list_handlers</span></li>
+   </ul>
+  </p>
+ </div>
+ 
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

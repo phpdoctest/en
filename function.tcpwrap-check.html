@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Performs a tcpwrap check</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li class="header up"><a href="book.tcpwrap.html">TCP</a></li>
+  <li class="header up"><a href="ref.tcpwrap.html">TCP Functions</a></li>
+  <li class="active"><a href="function.tcpwrap-check.html">tcpwrap_check</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="ref.tcpwrap.html">TCP Functions</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="book.varnish.html">Varnish</a></div>
+                <div class="up"><a href="ref.tcpwrap.html">TCP Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.tcpwrap-check" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">tcpwrap_check</h1>
+  <p class="refpurpose">Performs a tcpwrap check</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.tcpwrap-check-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">tcpwrap_check</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$daemon</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$address</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$user</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$nodns</code><span class="initializer"> = false</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   This function consults the <var class="filename">/etc/hosts.allow</var> and 
+   <var class="filename">/etc/hosts.deny</var> files to check if access to service 
+   <code class="parameter">daemon</code> should be granted or denied for a client.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.tcpwrap-check-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">daemon</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The service name.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">address</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The client remote address. Can be either an IP address or a domain name.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">user</code></dt>
+
+     <dd>
+
+      <p class="para">
+       An optional user name.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">nodns</code></dt>
+
+     <dd>
+
+      <p class="para">
+       If <code class="parameter">address</code> looks like domain name then DNS is 
+       used to resolve it to IP address; set <code class="parameter">nodns</code> to 
+       <strong><code>TRUE</code></strong> to avoid this.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.tcpwrap-check-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   This function returns <strong><code>TRUE</code></strong> if access should be granted, <strong><code>FALSE</code></strong> otherwise.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.tcpwrap-check-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-5229">
+   <p><strong>Example #1 Deny all connections from localhost</strong></p>
+   <div class="example-contents"><p>
+    If your <var class="filename">/etc/hosts.deny</var> file contains:
+   </p></div>
+   <div class="example-contents screen">
+<div class="examplescode"><pre class="examplescode">php: 127.0.0.1</pre>
+</div>
+   </div>
+   <div class="example-contents"><p>
+    And your code looks like:
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">tcpwrap_check</span><span style="color: #007700">(</span><span style="color: #DD0000">'php'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">'REMOTE_ADDR'</span><span style="color: #007700">]))&nbsp;{<br />&nbsp;&nbsp;die(</span><span style="color: #DD0000">'You&nbsp;are&nbsp;not&nbsp;welcome&nbsp;here'</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.tcpwrap-check-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   For more details please consult hosts_access(3) man page.
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

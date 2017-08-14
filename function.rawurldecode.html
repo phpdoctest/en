@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Decode URL-encoded strings</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.url.html">URLs</a></li>
+  <li class="header up"><a href="ref.url.html">URL Functions</a></li>
+  <li><a href="function.base64-decode.html">base64_decode</a></li>
+  <li><a href="function.base64-encode.html">base64_encode</a></li>
+  <li><a href="function.get-headers.html">get_headers</a></li>
+  <li><a href="function.get-meta-tags.html">get_meta_tags</a></li>
+  <li><a href="function.http-build-query.html">http_build_query</a></li>
+  <li><a href="function.parse-url.html">parse_url</a></li>
+  <li class="active"><a href="function.rawurldecode.html">rawurldecode</a></li>
+  <li><a href="function.rawurlencode.html">rawurlencode</a></li>
+  <li><a href="function.urldecode.html">urldecode</a></li>
+  <li><a href="function.urlencode.html">urlencode</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.parse-url.html">parse_url</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.rawurlencode.html">rawurlencode</a></div>
+                <div class="up"><a href="ref.url.html">URL Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.rawurldecode" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">rawurldecode</h1>
+  <p class="refpurpose">Decode URL-encoded strings</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.rawurldecode-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname">rawurldecode</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$str</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Returns a string in which the sequences with percent
+   (<em>%</em>) signs followed by two hex digits have been replaced
+   with literal characters.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.rawurldecode-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">str</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The URL to be decoded.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.rawurldecode-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the decoded URL, as a string.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.rawurldecode-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4683">
+    <p><strong>Example #1 <span class="function">rawurldecode</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">rawurldecode</span><span style="color: #007700">(</span><span style="color: #DD0000">'foo%20bar%40baz'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;foo&nbsp;bar@baz<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.rawurldecode-notes">
+  <h3 class="title">Notes</h3>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    <span class="function">rawurldecode</span> does not decode plus symbols (&#039;+&#039;)
+    into spaces. <span class="function">urldecode</span> does.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.rawurldecode-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">rawurlencode</span></li>
+    <li class="member"><span class="function">urldecode</span></li>
+    <li class="member"><span class="function">urlencode</span></li>
+    <li class="member"><a href="http://www.faqs.org/rfcs/rfc3986" class="link external">&raquo;&nbsp;RFC 3986</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

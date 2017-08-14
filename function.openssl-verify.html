@@ -1,0 +1,290 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Verify signature</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.crypto.html">Cryptography Extensions</a></li>
+  <li class="header up"><a href="book.openssl.html">OpenSSL</a></li>
+  <li class="header up"><a href="ref.openssl.html">OpenSSL Functions</a></li>
+  <li><a href="function.openssl-cipher-iv-length.html">openssl_cipher_iv_length</a></li>
+  <li><a href="function.openssl-csr-export-to-file.html">openssl_csr_export_to_file</a></li>
+  <li><a href="function.openssl-csr-export.html">openssl_csr_export</a></li>
+  <li><a href="function.openssl-csr-get-public-key.html">openssl_csr_get_public_key</a></li>
+  <li><a href="function.openssl-csr-get-subject.html">openssl_csr_get_subject</a></li>
+  <li><a href="function.openssl-csr-new.html">openssl_csr_new</a></li>
+  <li><a href="function.openssl-csr-sign.html">openssl_csr_sign</a></li>
+  <li><a href="function.openssl-decrypt.html">openssl_decrypt</a></li>
+  <li><a href="function.openssl-dh-compute-key.html">openssl_dh_compute_key</a></li>
+  <li><a href="function.openssl-digest.html">openssl_digest</a></li>
+  <li><a href="function.openssl-encrypt.html">openssl_encrypt</a></li>
+  <li><a href="function.openssl-error-string.html">openssl_error_string</a></li>
+  <li><a href="function.openssl-free-key.html">openssl_free_key</a></li>
+  <li><a href="function.openssl-get-cert-locations.html">openssl_get_cert_locations</a></li>
+  <li><a href="function.openssl-get-cipher-methods.html">openssl_get_cipher_methods</a></li>
+  <li><a href="function.openssl-get-md-methods.html">openssl_get_md_methods</a></li>
+  <li><a href="function.openssl-get-privatekey.html">openssl_get_privatekey</a></li>
+  <li><a href="function.openssl-get-publickey.html">openssl_get_publickey</a></li>
+  <li><a href="function.openssl-open.html">openssl_open</a></li>
+  <li><a href="function.openssl-pbkdf2.html">openssl_pbkdf2</a></li>
+  <li><a href="function.openssl-pkcs12-export-to-file.html">openssl_pkcs12_export_to_file</a></li>
+  <li><a href="function.openssl-pkcs12-export.html">openssl_pkcs12_export</a></li>
+  <li><a href="function.openssl-pkcs12-read.html">openssl_pkcs12_read</a></li>
+  <li><a href="function.openssl-pkcs7-decrypt.html">openssl_pkcs7_decrypt</a></li>
+  <li><a href="function.openssl-pkcs7-encrypt.html">openssl_pkcs7_encrypt</a></li>
+  <li><a href="function.openssl-pkcs7-sign.html">openssl_pkcs7_sign</a></li>
+  <li><a href="function.openssl-pkcs7-verify.html">openssl_pkcs7_verify</a></li>
+  <li><a href="function.openssl-pkey-export-to-file.html">openssl_pkey_export_to_file</a></li>
+  <li><a href="function.openssl-pkey-export.html">openssl_pkey_export</a></li>
+  <li><a href="function.openssl-pkey-free.html">openssl_pkey_free</a></li>
+  <li><a href="function.openssl-pkey-get-details.html">openssl_pkey_get_details</a></li>
+  <li><a href="function.openssl-pkey-get-private.html">openssl_pkey_get_private</a></li>
+  <li><a href="function.openssl-pkey-get-public.html">openssl_pkey_get_public</a></li>
+  <li><a href="function.openssl-pkey-new.html">openssl_pkey_new</a></li>
+  <li><a href="function.openssl-private-decrypt.html">openssl_private_decrypt</a></li>
+  <li><a href="function.openssl-private-encrypt.html">openssl_private_encrypt</a></li>
+  <li><a href="function.openssl-public-decrypt.html">openssl_public_decrypt</a></li>
+  <li><a href="function.openssl-public-encrypt.html">openssl_public_encrypt</a></li>
+  <li><a href="function.openssl-random-pseudo-bytes.html">openssl_random_pseudo_bytes</a></li>
+  <li><a href="function.openssl-seal.html">openssl_seal</a></li>
+  <li><a href="function.openssl-sign.html">openssl_sign</a></li>
+  <li><a href="function.openssl-spki-export-challenge.html">openssl_spki_export_challenge</a></li>
+  <li><a href="function.openssl-spki-export.html">openssl_spki_export</a></li>
+  <li><a href="function.openssl-spki-new.html">openssl_spki_new</a></li>
+  <li><a href="function.openssl-spki-verify.html">openssl_spki_verify</a></li>
+  <li class="active"><a href="function.openssl-verify.html">openssl_verify</a></li>
+  <li><a href="function.openssl-x509-check-private-key.html">openssl_x509_check_private_key</a></li>
+  <li><a href="function.openssl-x509-checkpurpose.html">openssl_x509_checkpurpose</a></li>
+  <li><a href="function.openssl-x509-export-to-file.html">openssl_x509_export_to_file</a></li>
+  <li><a href="function.openssl-x509-export.html">openssl_x509_export</a></li>
+  <li><a href="function.openssl-x509-fingerprint.html">openssl_x509_fingerprint</a></li>
+  <li><a href="function.openssl-x509-free.html">openssl_x509_free</a></li>
+  <li><a href="function.openssl-x509-parse.html">openssl_x509_parse</a></li>
+  <li><a href="function.openssl-x509-read.html">openssl_x509_read</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.openssl-spki-verify.html">openssl_spki_verify</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.openssl-x509-check-private-key.html">openssl_x509_check_private_key</a></div>
+                <div class="up"><a href="ref.openssl.html">OpenSSL Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.openssl-verify" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">openssl_verify</h1>
+  <p class="refpurpose">Verify signature</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.openssl-verify-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname">openssl_verify</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$signature</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$pub_key_id</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$signature_alg</code><span class="initializer"> = OPENSSL_ALGO_SHA1</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function">openssl_verify</span> verifies that the
+   <code class="parameter">signature</code> is correct for the specified
+   <code class="parameter">data</code> using the public key associated with
+   <code class="parameter">pub_key_id</code>. This must be the public key
+   corresponding to the private key used for signing.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.openssl-verify-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">data</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The string of data used to generate the signature previously
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">signature</code></dt>
+
+     <dd>
+
+      <p class="para">
+       A raw binary string, generated by <span class="function">openssl_sign</span> or similar means
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">pub_key_id</code></dt>
+
+     <dd>
+
+      <p class="para">
+       <span class="type">resource</span> - a key, returned by <span class="function">openssl_get_publickey</span>
+      </p>
+      <p class="para">
+       <span class="type">string</span> - a PEM formatted key, example, &quot;-----BEGIN PUBLIC KEY-----
+MIIBCgK...&quot;
+      </p>     
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">signature_alg</code></dt>
+
+     <dd>
+
+      <p class="para">
+       <span class="type">int</span> - one of these <a href="openssl.signature-algos.html" class="link">Signature Algorithms</a>.
+      </p>
+      <p class="para">
+       <span class="type">string</span> - a valid string returned by <span class="function">openssl_get_md_methods</span> example, &quot;sha1WithRSAEncryption&quot; or &quot;sha512&quot;.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.openssl-verify-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns 1 if the signature is correct, 0 if it is incorrect, and
+   -1 on error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.openssl-verify-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.2.0</td>
+       <td>
+        The <code class="parameter">signature_alg</code> parameter was added.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.openssl-verify-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-956">
+    <p><strong>Example #1 <span class="function">openssl_verify</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;$data&nbsp;and&nbsp;$signature&nbsp;are&nbsp;assumed&nbsp;to&nbsp;contain&nbsp;the&nbsp;data&nbsp;and&nbsp;the&nbsp;signature<br /><br />//&nbsp;fetch&nbsp;public&nbsp;key&nbsp;from&nbsp;certificate&nbsp;and&nbsp;ready&nbsp;it<br /></span><span style="color: #0000BB">$pubkeyid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">openssl_pkey_get_public</span><span style="color: #007700">(</span><span style="color: #DD0000">"file://src/openssl-0.9.6/demos/sign/cert.pem"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;state&nbsp;whether&nbsp;signature&nbsp;is&nbsp;okay&nbsp;or&nbsp;not<br /></span><span style="color: #0000BB">$ok&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">openssl_verify</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$signature</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$pubkeyid</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">$ok&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"good"</span><span style="color: #007700">;<br />}&nbsp;elseif&nbsp;(</span><span style="color: #0000BB">$ok&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"bad"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"ugly,&nbsp;error&nbsp;checking&nbsp;signature"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #FF8000">//&nbsp;free&nbsp;the&nbsp;key&nbsp;from&nbsp;memory<br /></span><span style="color: #0000BB">openssl_free_key</span><span style="color: #007700">(</span><span style="color: #0000BB">$pubkeyid</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <div class="example" id="example-957">
+    <p><strong>Example #2 <span class="function">openssl_verify</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//data&nbsp;you&nbsp;want&nbsp;to&nbsp;sign<br /></span><span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'my&nbsp;data'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//create&nbsp;new&nbsp;private&nbsp;and&nbsp;public&nbsp;key<br /></span><span style="color: #0000BB">$private_key_res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">openssl_pkey_new</span><span style="color: #007700">(array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"private_key_bits"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">2048</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"private_key_type"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">OPENSSL_KEYTYPE_RSA</span><span style="color: #007700">,<br />));<br /></span><span style="color: #0000BB">$details&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">openssl_pkey_get_details</span><span style="color: #007700">(</span><span style="color: #0000BB">$private_key_res</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$public_key_res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">openssl_pkey_get_public</span><span style="color: #007700">(</span><span style="color: #0000BB">$details</span><span style="color: #007700">[</span><span style="color: #DD0000">'key'</span><span style="color: #007700">]);<br /><br /></span><span style="color: #FF8000">//create&nbsp;signature<br /></span><span style="color: #0000BB">openssl_sign</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$signature</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$private_key_res</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"sha1WithRSAEncryption"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//verify&nbsp;signature<br /></span><span style="color: #0000BB">$ok&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">openssl_verify</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$signature</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$public_key_res</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">OPENSSL_ALGO_SHA1</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">$ok&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"valid"</span><span style="color: #007700">;<br />}&nbsp;elseif&nbsp;(</span><span style="color: #0000BB">$ok&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"invalid"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"error:&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">openssl_error_string</span><span style="color: #007700">();<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.openssl-verify-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">openssl_sign</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

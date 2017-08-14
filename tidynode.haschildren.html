@@ -1,0 +1,127 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Checks if a node has children</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.tidy.html">Tidy</a></li>
+  <li class="header up"><a href="class.tidynode.html">tidyNode</a></li>
+  <li><a href="tidynode.getparent.html">tidyNode::getParent</a></li>
+  <li class="active"><a href="tidynode.haschildren.html">tidyNode::hasChildren</a></li>
+  <li><a href="tidynode.hassiblings.html">tidyNode::hasSiblings</a></li>
+  <li><a href="tidynode.isasp.html">tidyNode::isAsp</a></li>
+  <li><a href="tidynode.iscomment.html">tidyNode::isComment</a></li>
+  <li><a href="tidynode.ishtml.html">tidyNode::isHtml</a></li>
+  <li><a href="tidynode.isjste.html">tidyNode::isJste</a></li>
+  <li><a href="tidynode.isphp.html">tidyNode::isPhp</a></li>
+  <li><a href="tidynode.istext.html">tidyNode::isText</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="tidynode.getparent.html">tidyNode::getParent</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="tidynode.hassiblings.html">tidyNode::hasSiblings</a></div>
+                <div class="up"><a href="class.tidynode.html">tidyNode</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="tidynode.haschildren" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">tidyNode::hasChildren</h1>
+  <p class="refpurpose">Checks if a node has children</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-tidynode.haschildren-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">tidyNode::hasChildren</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Tells if the node has children.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-tidynode.haschildren-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> if the node has children, <strong><code>FALSE</code></strong> otherwise.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-tidynode.haschildren-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4651">
+    <p><strong>Example #1 <span class="function">tidyNode::hasChildren</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$html&nbsp;</span><span style="color: #007700">=&nbsp;&lt;&lt;&lt;&nbsp;HTML<br /></span><span style="color: #DD0000">&lt;html&gt;&lt;head&gt;<br />&lt;?php&nbsp;echo&nbsp;'&lt;title&gt;title&lt;/title&gt;';&nbsp;?&gt;<br />&lt;#&nbsp;<br />&nbsp;&nbsp;/*&nbsp;JSTE&nbsp;code&nbsp;*/<br />&nbsp;&nbsp;alert('Hello&nbsp;World');&nbsp;<br />#&gt;<br />&lt;/head&gt;<br />&lt;body&gt;<br /><br />&lt;?php<br />&nbsp;&nbsp;//&nbsp;PHP&nbsp;code<br />&nbsp;&nbsp;echo&nbsp;'hello&nbsp;world!';<br />?&gt;<br /><br />&lt;%<br />&nbsp;&nbsp;/*&nbsp;ASP&nbsp;code&nbsp;*/<br />&nbsp;&nbsp;response.write("Hello&nbsp;World!")<br />%&gt;<br /><br />&lt;!--&nbsp;Comments&nbsp;--&gt;<br />Hello&nbsp;World<br />&lt;/body&gt;&lt;/html&gt;<br />Outside&nbsp;HTML<br /></span><span style="color: #007700">HTML;<br /><br /><br /></span><span style="color: #0000BB">$tidy&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">tidy_parse_string</span><span style="color: #007700">(</span><span style="color: #0000BB">$html</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$num&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;the&nbsp;head&nbsp;tag<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$tidy</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">html</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">child</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]-&gt;</span><span style="color: #0000BB">hasChildren</span><span style="color: #007700">());<br /><br /></span><span style="color: #FF8000">//&nbsp;the&nbsp;php&nbsp;inside&nbsp;the&nbsp;head&nbsp;tag<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$tidy</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">html</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">child</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]-&gt;</span><span style="color: #0000BB">child</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]-&gt;</span><span style="color: #0000BB">hasChildren</span><span style="color: #007700">());<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+bool(true)
+bool(false)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

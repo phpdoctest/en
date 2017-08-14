@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Simple Asynchronous Messaging</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li><a href="book.chdb.html">chdb</a></li>
+  <li><a href="book.curl.html">cURL</a></li>
+  <li><a href="book.event.html">Event</a></li>
+  <li><a href="book.fam.html">FAM</a></li>
+  <li><a href="book.ftp.html">FTP</a></li>
+  <li><a href="book.gearman.html">Gearman</a></li>
+  <li><a href="book.net-gopher.html">Gopher</a></li>
+  <li><a href="book.gupnp.html">Gupnp</a></li>
+  <li><a href="book.hwapi.html">Hyperwave API</a></li>
+  <li><a href="book.ldap.html">LDAP</a></li>
+  <li><a href="book.memcache.html">Memcache</a></li>
+  <li><a href="book.memcached.html">Memcached</a></li>
+  <li><a href="book.mqseries.html">mqseries</a></li>
+  <li><a href="book.network.html">Network</a></li>
+  <li><a href="book.rrd.html">RRD</a></li>
+  <li class="active"><a href="book.sam.html">SAM</a></li>
+  <li><a href="book.snmp.html">SNMP</a></li>
+  <li><a href="book.sockets.html">Sockets</a></li>
+  <li><a href="book.ssh2.html">SSH2</a></li>
+  <li><a href="book.stomp.html">Stomp</a></li>
+  <li><a href="book.svm.html">SVM</a></li>
+  <li><a href="book.svn.html">SVN</a></li>
+  <li><a href="book.tcpwrap.html">TCP</a></li>
+  <li><a href="book.varnish.html">Varnish</a></li>
+  <li><a href="book.yaz.html">YAZ</a></li>
+  <li><a href="book.nis.html">YP/NIS</a></li>
+  <li><a href="book.zmq.html">0MQ messaging</a></li>
+  <li><a href="book.zookeeper.html">ZooKeeper</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="rrdupdater.update.html">RRDUpdater::update</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="intro.sam.html">Introduction</a></div>
+                <div class="up"><a href="refs.remote.other.html">Other Services</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="book.sam" class="book">
+ <h1>Simple Asynchronous Messaging</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="intro.sam.html">Introduction</a></li>
+<li><a href="sam.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_title">
+<li><a href="sam.requirements.html">Requirements</a></li>
+<li><a href="sam.installation.html">Installation</a></li>
+<li><a href="sam.configuration.html">Runtime Configuration</a></li>
+<li><a href="sam.resources.html">Resource Types</a></li>
+</ul>
+</li>
+<li><a href="sam.constants.html">Predefined Constants</a></li>
+<li><a href="sam.examples.html">Examples</a><ul class="chunklist chunklist_title">
+<li><a href="sam.connections.html">Connections</a></li>
+<li><a href="sam.messages.html">Messages</a></li>
+<li><a href="sam.operations.html">Messaging operations</a></li>
+<li><a href="sam.pubsub.html">Publish/Subscribe and subscriptions to topics</a></li>
+<li><a href="sam.errors.html">Error handling</a></li>
+</ul>
+</li>
+<li><a href="ref.sam.html">SAM Functions</a><ul class="chunklist chunklist_title">
+<li><a href="samconnection.commit.html">SAMConnection::commit</a> — Commits (completes) the current unit of work.</li>
+<li><a href="samconnection.connect.html">SAMConnection::connect</a> — Establishes a connection to a Messaging Server</li>
+<li><a href="samconnection.construct.html">SAMConnection::__construct</a> — Creates a new connection to a Messaging Server</li>
+<li><a href="samconnection.disconnect.html">SAMConnection::disconnect</a> — Disconnects from a Messaging Server</li>
+<li><a href="samconnection.errno.html">SAMConnection::errno</a> — Contains the unique numeric error code of the last executed SAM operation.</li>
+<li><a href="samconnection.error.html">SAMConnection::error</a> — Contains the text description of the last failed SAM operation.</li>
+<li><a href="samconnection.isconnected.html">SAMConnection::isConnected</a> — Queries whether a connection is established to a Messaging Server</li>
+<li><a href="samconnection.peek.html">SAMConnection::peek</a> — Read a message from a queue without removing it from the queue.</li>
+<li><a href="samconnection.peekall.html">SAMConnection::peekAll</a> — Read one or more messages from a queue without removing it from the queue.</li>
+<li><a href="samconnection.receive.html">SAMConnection::receive</a> — Receive a message from a queue or subscription.</li>
+<li><a href="samconnection.remove.html">SAMConnection::remove</a> — Remove a message from a queue.</li>
+<li><a href="samconnection.rollback.html">SAMConnection::rollback</a> — Cancels (rolls back) an in-flight unit of work.</li>
+<li><a href="samconnection.send.html">SAMConnection::send</a> — Send a message to a queue or publish an item to a topic.</li>
+<li><a href="samconnection.setdebug.html">SAMConnection::setDebug</a> — Turn on or off additional debugging output.</li>
+<li><a href="samconnection.subscribe.html">SAMConnection::subscribe</a> — Create a subscription to a specified topic.</li>
+<li><a href="samconnection.unsubscribe.html">SAMConnection::unsubscribe</a> — Cancel a subscription to a specified topic.</li>
+<li><a href="sammessage.body.html">SAMMessage::body</a> — The body of the message.</li>
+<li><a href="sammessage.construct.html">SAMMessage::__construct</a> — Creates a new Message object</li>
+<li><a href="sammessage.header.html">SAMMessage::header</a> — The header properties of the message.</li>
+</ul>
+</li>
+</ul>
+
+ 
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

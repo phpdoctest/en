@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Checks if multiple results are available</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.abstract.html">Abstraction Layers</a></li>
+  <li class="header up"><a href="book.uodbc.html">ODBC</a></li>
+  <li class="header up"><a href="ref.uodbc.html">ODBC Functions</a></li>
+  <li><a href="function.odbc-autocommit.html">odbc_autocommit</a></li>
+  <li><a href="function.odbc-binmode.html">odbc_binmode</a></li>
+  <li><a href="function.odbc-close-all.html">odbc_close_all</a></li>
+  <li><a href="function.odbc-close.html">odbc_close</a></li>
+  <li><a href="function.odbc-columnprivileges.html">odbc_columnprivileges</a></li>
+  <li><a href="function.odbc-columns.html">odbc_columns</a></li>
+  <li><a href="function.odbc-commit.html">odbc_commit</a></li>
+  <li><a href="function.odbc-connect.html">odbc_connect</a></li>
+  <li><a href="function.odbc-cursor.html">odbc_cursor</a></li>
+  <li><a href="function.odbc-data-source.html">odbc_data_source</a></li>
+  <li><a href="function.odbc-do.html">odbc_do</a></li>
+  <li><a href="function.odbc-error.html">odbc_error</a></li>
+  <li><a href="function.odbc-errormsg.html">odbc_errormsg</a></li>
+  <li><a href="function.odbc-exec.html">odbc_exec</a></li>
+  <li><a href="function.odbc-execute.html">odbc_execute</a></li>
+  <li><a href="function.odbc-fetch-array.html">odbc_fetch_array</a></li>
+  <li><a href="function.odbc-fetch-into.html">odbc_fetch_into</a></li>
+  <li><a href="function.odbc-fetch-object.html">odbc_fetch_object</a></li>
+  <li><a href="function.odbc-fetch-row.html">odbc_fetch_row</a></li>
+  <li><a href="function.odbc-field-len.html">odbc_field_len</a></li>
+  <li><a href="function.odbc-field-name.html">odbc_field_name</a></li>
+  <li><a href="function.odbc-field-num.html">odbc_field_num</a></li>
+  <li><a href="function.odbc-field-precision.html">odbc_field_precision</a></li>
+  <li><a href="function.odbc-field-scale.html">odbc_field_scale</a></li>
+  <li><a href="function.odbc-field-type.html">odbc_field_type</a></li>
+  <li><a href="function.odbc-foreignkeys.html">odbc_foreignkeys</a></li>
+  <li><a href="function.odbc-free-result.html">odbc_free_result</a></li>
+  <li><a href="function.odbc-gettypeinfo.html">odbc_gettypeinfo</a></li>
+  <li><a href="function.odbc-longreadlen.html">odbc_longreadlen</a></li>
+  <li class="active"><a href="function.odbc-next-result.html">odbc_next_result</a></li>
+  <li><a href="function.odbc-num-fields.html">odbc_num_fields</a></li>
+  <li><a href="function.odbc-num-rows.html">odbc_num_rows</a></li>
+  <li><a href="function.odbc-pconnect.html">odbc_pconnect</a></li>
+  <li><a href="function.odbc-prepare.html">odbc_prepare</a></li>
+  <li><a href="function.odbc-primarykeys.html">odbc_primarykeys</a></li>
+  <li><a href="function.odbc-procedurecolumns.html">odbc_procedurecolumns</a></li>
+  <li><a href="function.odbc-procedures.html">odbc_procedures</a></li>
+  <li><a href="function.odbc-result-all.html">odbc_result_all</a></li>
+  <li><a href="function.odbc-result.html">odbc_result</a></li>
+  <li><a href="function.odbc-rollback.html">odbc_rollback</a></li>
+  <li><a href="function.odbc-setoption.html">odbc_setoption</a></li>
+  <li><a href="function.odbc-specialcolumns.html">odbc_specialcolumns</a></li>
+  <li><a href="function.odbc-statistics.html">odbc_statistics</a></li>
+  <li><a href="function.odbc-tableprivileges.html">odbc_tableprivileges</a></li>
+  <li><a href="function.odbc-tables.html">odbc_tables</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.odbc-longreadlen.html">odbc_longreadlen</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.odbc-num-fields.html">odbc_num_fields</a></div>
+                <div class="up"><a href="ref.uodbc.html">ODBC Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.odbc-next-result" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">odbc_next_result</h1>
+  <p class="refpurpose">Checks if multiple results are available</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.odbc-next-result-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">odbc_next_result</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$result_id</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Checks if there are more result sets available as well as allowing access
+   to the next result set via <span class="function">odbc_fetch_array</span>,
+   <span class="function">odbc_fetch_row</span>, <span class="function">odbc_result</span>, etc.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.odbc-next-result-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">result_id</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The result identifier.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.odbc-next-result-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> if there are more result sets, <strong><code>FALSE</code></strong> otherwise.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.odbc-next-result-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-981">
+    <p><strong>Example #1 <span class="function">odbc_next_result</span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$r_Connection&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">odbc_connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$dsn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$username</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$password</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$s_SQL&nbsp;</span><span style="color: #007700">=&nbsp;&lt;&lt;&lt;END_SQL<br /></span><span style="color: #DD0000">SELECT&nbsp;'A'<br />SELECT&nbsp;'B'<br />SELECT&nbsp;'C'<br /></span><span style="color: #007700">END_SQL;<br /><br /></span><span style="color: #0000BB">$r_Results&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">odbc_exec</span><span style="color: #007700">(</span><span style="color: #0000BB">$r_Connection</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$s_SQL</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$a_Row1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">odbc_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$r_Results</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$a_Row2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">odbc_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$r_Results</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"Dump&nbsp;first&nbsp;result&nbsp;set"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$a_Row1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$a_Row2</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Get&nbsp;second&nbsp;results&nbsp;set&nbsp;"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">odbc_next_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$r_Results</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">$a_Row1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">odbc_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$r_Results</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$a_Row2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">odbc_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$r_Results</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"Dump&nbsp;second&nbsp;result&nbsp;set&nbsp;"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$a_Row1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$a_Row2</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Get&nbsp;third&nbsp;results&nbsp;set&nbsp;"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">odbc_next_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$r_Results</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">$a_Row1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">odbc_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$r_Results</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$a_Row2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">odbc_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$r_Results</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"Dump&nbsp;third&nbsp;result&nbsp;set&nbsp;"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$a_Row1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$a_Row2</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Try&nbsp;for&nbsp;a&nbsp;fourth&nbsp;result&nbsp;set&nbsp;"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">odbc_next_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$r_Results</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Dump first result set array(1) {
+  [&quot;A&quot;]=&gt;
+  string(1) &quot;A&quot;
+}
+bool(false)
+Get second results set bool(true)
+Dump second result set array(1) {
+  [&quot;B&quot;]=&gt;
+  string(1) &quot;B&quot;
+}
+bool(false)
+Get third results set bool(true)
+Dump third result set array(1) {
+  [&quot;C&quot;]=&gt;
+  string(1) &quot;C&quot;
+}
+bool(false)
+Try for a fourth result set bool(false)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

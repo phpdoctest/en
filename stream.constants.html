@@ -1,0 +1,521 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Predefined Constants</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.stream.html">Streams</a></li>
+  <li><a href="intro.stream.html">Introduction</a></li>
+  <li><a href="stream.setup.html">Installing/Configuring</a></li>
+  <li class="active"><a href="stream.constants.html">Predefined Constants</a></li>
+  <li><a href="stream.filters.html">Stream Filters</a></li>
+  <li><a href="stream.contexts.html">Stream Contexts</a></li>
+  <li><a href="stream.errors.html">Stream Errors</a></li>
+  <li><a href="stream.examples.html">Examples</a></li>
+  <li><a href="class.php-user-filter.html">php_user_filter</a></li>
+  <li><a href="class.streamwrapper.html">streamWrapper</a></li>
+  <li><a href="ref.stream.html">Stream Functions</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="stream.resources.html">Stream Classes</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="stream.filters.html">Stream Filters</a></div>
+                <div class="up"><a href="book.stream.html">Streams</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="stream.constants" class="appendix">
+ <h1>Predefined Constants</h1>
+ <p class="simpara">
+The constants below are defined by this extension, and
+will only be available when the extension has either
+been compiled into PHP or dynamically loaded at runtime.
+</p>
+ <p class="para">
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>Constant</th>
+      <th>Description</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr id="constant.stream-filter-read">
+      <td><strong><code>STREAM_FILTER_READ</code></strong> *</td>
+      <td>
+       Used with <span class="function">stream_filter_append</span> and
+       <span class="function">stream_filter_prepend</span> to indicate
+       that the specified filter should only be applied when
+       <em class="emphasis">reading</em>
+      </td>
+     </tr>
+
+     <tr id="constant.stream-filter-write">
+      <td><strong><code>STREAM_FILTER_WRITE</code></strong> *</td>
+      <td>
+       Used with <span class="function">stream_filter_append</span> and
+       <span class="function">stream_filter_prepend</span> to indicate
+       that the specified filter should only be applied when
+       <em class="emphasis">writing</em>
+      </td>
+     </tr>
+
+     <tr id="constant.stream-filter-all">
+      <td><strong><code>STREAM_FILTER_ALL</code></strong> *</td>
+      <td>
+       This constant is equivalent to 
+       <code class="code">STREAM_FILTER_READ | STREAM_FILTER_WRITE</code>
+      </td>
+     </tr>
+
+     <tr id="constant.psfs-pass-on">
+      <td><strong><code>PSFS_PASS_ON</code></strong> *</td>
+      <td><em>Return Code</em> indicating that the
+       userspace filter returned buckets in <code class="parameter">$out</code>.
+      </td>
+     </tr>
+
+     <tr id="constant.psfs-feed-me">
+      <td><strong><code>PSFS_FEED_ME</code></strong> *</td>
+      <td><em>Return Code</em> indicating that the
+       userspace filter did not return buckets in <code class="parameter">$out</code>
+       (i.e. No data available).
+      </td>
+     </tr>
+
+     <tr id="constant.psfs-err-fatal">
+      <td><strong><code>PSFS_ERR_FATAL</code></strong> *</td>
+      <td><em>Return Code</em> indicating that the
+       userspace filter encountered an unrecoverable error
+       (i.e. Invalid data received).
+      </td>
+     </tr>
+
+     <tr id="constant.psfs-flag-normal">
+      <td><strong><code>PSFS_FLAG_NORMAL</code></strong></td>
+      <td>Regular read/write.</td>
+     </tr>
+
+     <tr id="constant.psfs-flag-flush-inc">
+      <td><strong><code>PSFS_FLAG_FLUSH_INC</code></strong></td>
+      <td>An incremental flush.</td>
+     </tr>
+
+     <tr id="constant.psfs-flag-flush-close">
+      <td><strong><code>PSFS_FLAG_FLUSH_CLOSE</code></strong></td>
+      <td>Final flush prior to closing.</td>
+     </tr>
+
+     <tr id="constant.stream-use-path">
+      <td><strong><code>STREAM_USE_PATH</code></strong></td>
+      <td><em>Flag</em> indicating if the <em>stream</em>
+       used the include path.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-report-errors">
+      <td><strong><code>STREAM_REPORT_ERRORS</code></strong></td>
+      <td><em>Flag</em> indicating if the <em>wrapper</em>
+       is responsible for raising errors using <span class="function">trigger_error</span> 
+       during opening of the stream.  If this flag is not set, you
+       should not raise any errors.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-client-async-connect">
+      <td><strong><code>STREAM_CLIENT_ASYNC_CONNECT</code></strong> *</td>
+      <td>Open client socket asynchronously. This option must be used
+       together with the <strong><code>STREAM_CLIENT_CONNECT</code></strong> flag.
+       Used with <span class="function">stream_socket_client</span>.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-client-connect">
+      <td><strong><code>STREAM_CLIENT_CONNECT</code></strong> *</td>
+      <td>Open client socket connection. Client sockets should always
+       include this flag. Used with <span class="function">stream_socket_client</span>.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-client-persistent">
+      <td><strong><code>STREAM_CLIENT_PERSISTENT</code></strong> *</td>
+      <td>Client socket opened with <span class="function">stream_socket_client</span>
+       should remain persistent between page loads.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-server-bind">
+      <td><strong><code>STREAM_SERVER_BIND</code></strong> *</td>
+      <td>Tells a stream created with <span class="function">stream_socket_server</span>
+       to bind to the specified target.  Server sockets should always include this flag.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-server-listen">
+      <td><strong><code>STREAM_SERVER_LISTEN</code></strong> *</td>
+      <td>Tells a stream created with <span class="function">stream_socket_server</span>
+       and bound using the <strong><code>STREAM_SERVER_BIND</code></strong> flag to start
+       listening on the socket. Connection-orientated transports (such as TCP)
+       must use this flag, otherwise the server socket will not be enabled.
+       Using this flag for connect-less transports (such as UDP) is an error.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-notify-resolve">
+      <td><strong><code>STREAM_NOTIFY_RESOLVE</code></strong> *</td>
+      <td>
+       A remote address required for this stream has been resolved, or the resolution
+       failed.  See <code class="parameter">severity</code> for an indication of which happened.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-notify-connect">
+      <td><strong><code>STREAM_NOTIFY_CONNECT</code></strong></td>
+      <td>
+       A connection with an external resource has been established.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-notify-auth-required">
+      <td><strong><code>STREAM_NOTIFY_AUTH_REQUIRED</code></strong></td>
+      <td>
+       Additional authorization is required to access the specified resource.
+       Typical issued with <code class="parameter">severity</code> level of
+       <strong><code>STREAM_NOTIFY_SEVERITY_ERR</code></strong>.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-notify-mime-type-is">
+      <td><strong><code>STREAM_NOTIFY_MIME_TYPE_IS</code></strong></td>
+      <td>
+       The <em>mime-type</em> of resource has been identified,
+       refer to <code class="parameter">message</code> for a description of the
+       discovered type.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-notify-file-size-is">
+      <td><strong><code>STREAM_NOTIFY_FILE_SIZE_IS</code></strong></td>
+      <td>
+       The <em>size</em> of the resource has been discovered.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-notify-redirected">
+      <td><strong><code>STREAM_NOTIFY_REDIRECTED</code></strong></td>
+      <td>
+       The external resource has redirected the stream to an alternate
+       location.  Refer to <code class="parameter">message</code>.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-notify-progress">
+      <td><strong><code>STREAM_NOTIFY_PROGRESS</code></strong></td>
+      <td>
+       Indicates current progress of the stream transfer in
+       <code class="parameter">bytes_transferred</code> and possibly
+       <code class="parameter">bytes_max</code> as well.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-notify-completed">
+      <td><strong><code>STREAM_NOTIFY_COMPLETED</code></strong> *</td>
+      <td>
+       There is no more data available on the stream.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-notify-failure">
+      <td><strong><code>STREAM_NOTIFY_FAILURE</code></strong></td>
+      <td>
+       A generic error occurred on the stream, consult
+       <code class="parameter">message</code> and <code class="parameter">message_code</code>
+       for details.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-notify-auth-result">
+      <td><strong><code>STREAM_NOTIFY_AUTH_RESULT</code></strong></td>
+      <td>
+       Authorization has been completed (with or without success).
+      </td>
+     </tr>
+
+     <tr id="constant.stream-notify-severity-info">
+      <td><strong><code>STREAM_NOTIFY_SEVERITY_INFO</code></strong></td>
+      <td>
+       Normal, non-error related, notification.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-notify-severity-warn">
+      <td><strong><code>STREAM_NOTIFY_SEVERITY_WARN</code></strong></td>
+      <td>
+       Non critical error condition.  Processing may continue.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-notify-severity-err">
+      <td><strong><code>STREAM_NOTIFY_SEVERITY_ERR</code></strong></td>
+      <td>
+       A critical error occurred.  Processing cannot continue.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-ipproto-icmp">
+      <td><strong><code>STREAM_IPPROTO_ICMP</code></strong> +</td>
+      <td>
+       Provides a ICMP socket.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-ipproto-ip">
+      <td><strong><code>STREAM_IPPROTO_IP</code></strong> +</td>
+      <td>
+       Provides a IP socket.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-ipproto-raw">
+      <td><strong><code>STREAM_IPPROTO_RAW</code></strong> +</td>
+      <td>
+       Provides a RAW socket.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-ipproto-tcp">
+      <td><strong><code>STREAM_IPPROTO_TCP</code></strong> +</td>
+      <td>
+       Provides a TCP socket.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-ipproto-udp">
+      <td><strong><code>STREAM_IPPROTO_UDP</code></strong> +</td>
+      <td>
+       Provides a UDP socket.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-pf-inet">
+      <td><strong><code>STREAM_PF_INET</code></strong> +</td>
+      <td>
+       Internet Protocol Version 4 (IPv4).
+      </td>
+     </tr>
+
+     <tr id="constant.stream-pf-inet6">
+      <td><strong><code>STREAM_PF_INET6</code></strong> +</td>
+      <td>
+       Internet Protocol Version 6 (IPv6).
+      </td>
+     </tr>
+
+     <tr id="constant.stream-pf-unix">
+      <td><strong><code>STREAM_PF_UNIX</code></strong> +</td>
+      <td>
+       Unix system internal protocols.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-sock-dgram">
+      <td><strong><code>STREAM_SOCK_DGRAM</code></strong> +</td>
+      <td>
+       Provides datagrams, which are connectionless messages (UDP, for
+       example).
+      </td>
+     </tr>
+
+     <tr id="constant.stream-sock-raw">
+      <td><strong><code>STREAM_SOCK_RAW</code></strong> +</td>
+      <td>
+       Provides a raw socket, which provides access to internal network
+       protocols and interfaces. Usually this type of socket is just available
+       to the root user.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-sock-rdm">
+      <td><strong><code>STREAM_SOCK_RDM</code></strong> +</td>
+      <td>
+       Provides a RDM (Reliably-delivered messages) socket.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-sock-seqpacket">
+      <td><strong><code>STREAM_SOCK_SEQPACKET</code></strong> +</td>
+      <td>
+       Provides a sequenced packet stream socket.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-sock-stream">
+      <td><strong><code>STREAM_SOCK_STREAM</code></strong> +</td>
+      <td>
+       Provides sequenced, two-way byte streams with a transmission mechanism
+       for out-of-band data (TCP, for example).
+      </td>
+     </tr>
+
+     <tr id="constant.stream-shut-rd">
+      <td><strong><code>STREAM_SHUT_RD</code></strong></td>
+      <td>
+       Used with <span class="function">stream_socket_shutdown</span> to disable
+       further receptions. Added in PHP 5.2.1.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-shut-wr">
+      <td><strong><code>STREAM_SHUT_WR</code></strong></td>
+      <td>
+       Used with <span class="function">stream_socket_shutdown</span> to disable
+       further transmissions. Added in PHP 5.2.1.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-shut-rdwr">
+      <td><strong><code>STREAM_SHUT_RDWR</code></strong></td>
+      <td>
+       Used with <span class="function">stream_socket_shutdown</span> to disable
+       further receptions and transmissions. Added in PHP 5.2.1.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-cast-for-select">
+      <td><strong><code>STREAM_CAST_FOR_SELECT</code></strong></td>
+      <td>
+       Stream casting, for when <span class="function">stream_select</span> is 
+       calling <span class="function">stream_cast</span>.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-cast-as-stream">
+      <td><strong><code>STREAM_CAST_AS_STREAM</code></strong></td>
+      <td>
+       Stream casting, when <span class="function">stream_cast</span> is called 
+       otherwise (see above).
+      </td>
+     </tr>
+
+     <tr id="constant.stream-meta-touch">
+      <td><strong><code>STREAM_META_TOUCH</code></strong></td>
+      <td>
+       Used with <span class="function">stream_metadata</span>, to specify <span class="function">touch</span> call.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-meta-owner">
+      <td><strong><code>STREAM_META_OWNER</code></strong></td>
+      <td>
+       Used with <span class="function">stream_metadata</span>, to specify <span class="function">chown</span> call.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-meta-owner-name">
+      <td><strong><code>STREAM_META_OWNER_NAME</code></strong></td>
+      <td>
+       Used with <span class="function">stream_metadata</span>, to specify <span class="function">chown</span> call.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-meta-group">
+      <td><strong><code>STREAM_META_GROUP</code></strong></td>
+      <td>
+       Used with <span class="function">stream_metadata</span>, to specify <span class="function">chgrp</span> call.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-meta-group-name">
+      <td><strong><code>STREAM_META_GROUP_NAME</code></strong></td>
+      <td>
+       Used with <span class="function">stream_metadata</span>, to specify <span class="function">chgrp</span> call.
+      </td>
+     </tr>
+
+     <tr id="constant.stream-meta-access">
+      <td><strong><code>STREAM_META_ACCESS</code></strong></td>
+      <td>
+       Used with <span class="function">stream_metadata</span>, to specify <span class="function">chmod</span> call.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </p>
+ <blockquote class="note"><p><strong class="note">Note</strong>: 
+  <span class="simpara">
+   The constants marked with <em>*</em> are just available since
+   PHP 5.0.0.
+  </span>
+ </p></blockquote>
+ <blockquote class="note"><p><strong class="note">Note</strong>: 
+  <span class="simpara">
+   The constants marked with <em>+</em> are available since PHP
+   5.1.0 and are meant to be used with
+   <span class="function">stream_socket_pair</span>. Please note that some of these
+   constants might not be available in your system.
+  </span>
+ </p></blockquote>
+ <blockquote class="note"><p><strong class="note">Note</strong>: 
+  <span class="simpara">
+   The <strong><code>STREAM_META_*</code></strong> constants are available since PHP
+   5.4.0 and are meant to be used with <span class="function">stream_metadata</span>. 
+  </span>
+ </p></blockquote>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

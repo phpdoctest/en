@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Open directory handle</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.fileprocess.file.html">File System Related Extensions</a></li>
+  <li class="header up"><a href="book.dir.html">Directories</a></li>
+  <li class="header up"><a href="ref.dir.html">Directory Functions</a></li>
+  <li><a href="function.chdir.html">chdir</a></li>
+  <li><a href="function.chroot.html">chroot</a></li>
+  <li><a href="function.closedir.html">closedir</a></li>
+  <li><a href="function.dir.html">dir</a></li>
+  <li><a href="function.getcwd.html">getcwd</a></li>
+  <li class="active"><a href="function.opendir.html">opendir</a></li>
+  <li><a href="function.readdir.html">readdir</a></li>
+  <li><a href="function.rewinddir.html">rewinddir</a></li>
+  <li><a href="function.scandir.html">scandir</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.getcwd.html">getcwd</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.readdir.html">readdir</a></div>
+                <div class="up"><a href="ref.dir.html">Directory Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.opendir" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">opendir</h1>
+  <p class="refpurpose">Open directory handle</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.opendir-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname">opendir</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$path</code></span>
+   [, <span class="methodparam"><span class="type">resource</span> <code class="parameter">$context</code></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Opens up a directory handle to be used in subsequent
+   <span class="function">closedir</span>, <span class="function">readdir</span>, and
+   <span class="function">rewinddir</span> calls.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.opendir-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">path</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The directory path that is to be opened
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">context</code></dt>
+
+     <dd>
+
+      <p class="para">
+       For a description of the <code class="parameter">context</code> parameter, 
+       refer to <a href="ref.stream.html" class="link">the streams section</a> of
+       the manual.
+      </p> 
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.opendir-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns a directory handle <span class="type">resource</span> on success, or
+   <strong><code>FALSE</code></strong> on failure.
+  </p> 
+  <p class="para">
+   If <code class="parameter">path</code> is not a valid directory or the
+   directory can not be opened due to permission restrictions or
+   filesystem errors, <span class="function">opendir</span> returns <strong><code>FALSE</code></strong> and
+   generates a PHP error of level <a href="errorfunc.constants.html" class="link">
+   E_WARNING</a>.  You can suppress the error output of
+   <span class="function">opendir</span> by prepending
+   &#039;<a href="language.operators.errorcontrol.html" class="link">@</a>&#039; to the
+   front of the function name.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.opendir-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.0.0</td>
+       <td>
+        <code class="parameter">path</code> supports the <em>ftp://</em> 
+        URL wrapper.
+       </td>
+      </tr>
+
+      <tr>
+       <td>4.3.0</td>
+       <td>
+        <code class="parameter">path</code> can also be any URL which supports 
+        directory listing, however only the <em>file://</em>
+        URL wrapper supports this in PHP 4
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.opendir-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-2594">
+    <p><strong>Example #1 <span class="function">opendir</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$dir&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"/etc/php5/"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Open&nbsp;a&nbsp;known&nbsp;directory,&nbsp;and&nbsp;proceed&nbsp;to&nbsp;read&nbsp;its&nbsp;contents<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">is_dir</span><span style="color: #007700">(</span><span style="color: #0000BB">$dir</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$dh&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">opendir</span><span style="color: #007700">(</span><span style="color: #0000BB">$dir</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;((</span><span style="color: #0000BB">$file&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">readdir</span><span style="color: #007700">(</span><span style="color: #0000BB">$dh</span><span style="color: #007700">))&nbsp;!==&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"filename:&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #DD0000">&nbsp;:&nbsp;filetype:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">filetype</span><span style="color: #007700">(</span><span style="color: #0000BB">$dir&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">closedir</span><span style="color: #007700">(</span><span style="color: #0000BB">$dh</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+filename: . : filetype: dir
+filename: .. : filetype: dir
+filename: apache : filetype: dir
+filename: cgi : filetype: dir
+filename: cli : filetype: dir
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.opendir-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">is_dir</span></li>
+    <li class="member"><span class="function">readdir</span></li>
+    <li class="member"><span class="function">dir</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

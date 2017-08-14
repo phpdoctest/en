@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Prepares for a scan</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li class="header up"><a href="book.yaz.html">YAZ</a></li>
+  <li class="header up"><a href="ref.yaz.html">YAZ Functions</a></li>
+  <li><a href="function.yaz-addinfo.html">yaz_addinfo</a></li>
+  <li><a href="function.yaz-ccl-conf.html">yaz_ccl_conf</a></li>
+  <li><a href="function.yaz-ccl-parse.html">yaz_ccl_parse</a></li>
+  <li><a href="function.yaz-close.html">yaz_close</a></li>
+  <li><a href="function.yaz-connect.html">yaz_connect</a></li>
+  <li><a href="function.yaz-database.html">yaz_database</a></li>
+  <li><a href="function.yaz-element.html">yaz_element</a></li>
+  <li><a href="function.yaz-errno.html">yaz_errno</a></li>
+  <li><a href="function.yaz-error.html">yaz_error</a></li>
+  <li><a href="function.yaz-es-result.html">yaz_es_result</a></li>
+  <li><a href="function.yaz-es.html">yaz_es</a></li>
+  <li><a href="function.yaz-get-option.html">yaz_get_option</a></li>
+  <li><a href="function.yaz-hits.html">yaz_hits</a></li>
+  <li><a href="function.yaz-itemorder.html">yaz_itemorder</a></li>
+  <li><a href="function.yaz-present.html">yaz_present</a></li>
+  <li><a href="function.yaz-range.html">yaz_range</a></li>
+  <li><a href="function.yaz-record.html">yaz_record</a></li>
+  <li><a href="function.yaz-scan-result.html">yaz_scan_result</a></li>
+  <li class="active"><a href="function.yaz-scan.html">yaz_scan</a></li>
+  <li><a href="function.yaz-schema.html">yaz_schema</a></li>
+  <li><a href="function.yaz-search.html">yaz_search</a></li>
+  <li><a href="function.yaz-set-option.html">yaz_set_option</a></li>
+  <li><a href="function.yaz-sort.html">yaz_sort</a></li>
+  <li><a href="function.yaz-syntax.html">yaz_syntax</a></li>
+  <li><a href="function.yaz-wait.html">yaz_wait</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.yaz-scan-result.html">yaz_scan_result</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.yaz-schema.html">yaz_schema</a></div>
+                <div class="up"><a href="ref.yaz.html">YAZ Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.yaz-scan" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">yaz_scan</h1>
+  <p class="refpurpose">Prepares for a scan</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.yaz-scan-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname">yaz_scan</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$id</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$type</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$startterm</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$flags</code></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   This function prepares for a Z39.50 Scan Request on the specified 
+   connection.
+  </p>
+  <p class="para">
+   To actually transfer the Scan Request to the server and receive the
+   Scan Response, <span class="function">yaz_wait</span> must be called. Upon
+   completion of <span class="function">yaz_wait</span> call
+   <span class="function">yaz_error</span> and <span class="function">yaz_scan_result</span> to
+   handle the response.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.yaz-scan-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">id</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The connection resource returned by <span class="function">yaz_connect</span>.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">type</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Currently only type <em>rpn</em> is supported.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">startterm</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Starting term point for the scan.
+      </p>
+      <p class="para">
+       The form in which the starting term is specified is given by parameter
+       <code class="parameter">type</code>.
+      </p>
+      <p class="para">
+       The syntax this parameter is similar to the RPN query as described in
+       <span class="function">yaz_search</span>. It consists of zero or more 
+       <em>@attr</em>-operator specifications, then followed by 
+       exactly one token.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">flags</code></dt>
+
+     <dd>
+
+      <p class="para">
+       This optional parameter specifies additional information to control 
+       the behaviour of the scan request. Three indexes are currently read 
+       from the flags array:
+       <em>number</em> (number of terms requested),
+       <em>position</em> (preferred position of term) and
+       <em>stepSize</em> (preferred step size).
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.yaz-scan-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   No value is returned.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.yaz-scan-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-5240">
+    <p><strong>Example #1 PHP function that scans titles</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">scan_titles</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$startterm</span><span style="color: #007700">)&nbsp;<br />{<br />&nbsp;&nbsp;</span><span style="color: #0000BB">yaz_scan</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"rpn"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"@attr&nbsp;1=4&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$startterm</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">yaz_wait</span><span style="color: #007700">();<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$errno&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">yaz_errno</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">);<br />&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$errno&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$ar&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">yaz_scan_result</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$options</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Scan&nbsp;ok;&nbsp;'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">$options&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$key</span><span style="color: #DD0000">&nbsp;=&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #DD0000">&nbsp;&amp;nbsp;"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'&lt;br&nbsp;/&gt;&lt;table&gt;'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(list(</span><span style="color: #0000BB">$key</span><span style="color: #007700">,&nbsp;list(</span><span style="color: #0000BB">$k</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$term</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$tcount</span><span style="color: #007700">))&nbsp;=&nbsp;</span><span style="color: #0000BB">each</span><span style="color: #007700">(</span><span style="color: #0000BB">$ar</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(empty(</span><span style="color: #0000BB">$k</span><span style="color: #007700">))&nbsp;continue;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&lt;tr&gt;&lt;td&gt;</span><span style="color: #0000BB">$term</span><span style="color: #DD0000">&lt;/td&gt;&lt;td&gt;</span><span style="color: #0000BB">$tcount</span><span style="color: #DD0000">&lt;/td&gt;&lt;/tr&gt;"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'&lt;/table&gt;'</span><span style="color: #007700">;<br />&nbsp;&nbsp;}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Scan&nbsp;failed.&nbsp;Error:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">yaz_error</span><span style="color: #007700">(</span><span style="color: #0000BB">$id</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"&lt;br&nbsp;/&gt;"</span><span style="color: #007700">;<br />&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,296 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Attach a filter to a stream</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.stream.html">Streams</a></li>
+  <li class="header up"><a href="ref.stream.html">Stream Functions</a></li>
+  <li><a href="function.set-socket-blocking.html">set_socket_blocking</a></li>
+  <li><a href="function.stream-bucket-append.html">stream_bucket_append</a></li>
+  <li><a href="function.stream-bucket-make-writeable.html">stream_bucket_make_writeable</a></li>
+  <li><a href="function.stream-bucket-new.html">stream_bucket_new</a></li>
+  <li><a href="function.stream-bucket-prepend.html">stream_bucket_prepend</a></li>
+  <li><a href="function.stream-context-create.html">stream_context_create</a></li>
+  <li><a href="function.stream-context-get-default.html">stream_context_get_default</a></li>
+  <li><a href="function.stream-context-get-options.html">stream_context_get_options</a></li>
+  <li><a href="function.stream-context-get-params.html">stream_context_get_params</a></li>
+  <li><a href="function.stream-context-set-default.html">stream_context_set_default</a></li>
+  <li><a href="function.stream-context-set-option.html">stream_context_set_option</a></li>
+  <li><a href="function.stream-context-set-params.html">stream_context_set_params</a></li>
+  <li><a href="function.stream-copy-to-stream.html">stream_copy_to_stream</a></li>
+  <li><a href="function.stream-encoding.html">stream_encoding</a></li>
+  <li><a href="function.stream-filter-append.html">stream_filter_append</a></li>
+  <li class="active"><a href="function.stream-filter-prepend.html">stream_filter_prepend</a></li>
+  <li><a href="function.stream-filter-register.html">stream_filter_register</a></li>
+  <li><a href="function.stream-filter-remove.html">stream_filter_remove</a></li>
+  <li><a href="function.stream-get-contents.html">stream_get_contents</a></li>
+  <li><a href="function.stream-get-filters.html">stream_get_filters</a></li>
+  <li><a href="function.stream-get-line.html">stream_get_line</a></li>
+  <li><a href="function.stream-get-meta-data.html">stream_get_meta_data</a></li>
+  <li><a href="function.stream-get-transports.html">stream_get_transports</a></li>
+  <li><a href="function.stream-get-wrappers.html">stream_get_wrappers</a></li>
+  <li><a href="function.stream-is-local.html">stream_is_local</a></li>
+  <li><a href="function.stream-notification-callback.html">stream_notification_callback</a></li>
+  <li><a href="function.stream-register-wrapper.html">stream_register_wrapper</a></li>
+  <li><a href="function.stream-resolve-include-path.html">stream_resolve_include_path</a></li>
+  <li><a href="function.stream-select.html">stream_select</a></li>
+  <li><a href="function.stream-set-blocking.html">stream_set_blocking</a></li>
+  <li><a href="function.stream-set-chunk-size.html">stream_set_chunk_size</a></li>
+  <li><a href="function.stream-set-read-buffer.html">stream_set_read_buffer</a></li>
+  <li><a href="function.stream-set-timeout.html">stream_set_timeout</a></li>
+  <li><a href="function.stream-set-write-buffer.html">stream_set_write_buffer</a></li>
+  <li><a href="function.stream-socket-accept.html">stream_socket_accept</a></li>
+  <li><a href="function.stream-socket-client.html">stream_socket_client</a></li>
+  <li><a href="function.stream-socket-enable-crypto.html">stream_socket_enable_crypto</a></li>
+  <li><a href="function.stream-socket-get-name.html">stream_socket_get_name</a></li>
+  <li><a href="function.stream-socket-pair.html">stream_socket_pair</a></li>
+  <li><a href="function.stream-socket-recvfrom.html">stream_socket_recvfrom</a></li>
+  <li><a href="function.stream-socket-sendto.html">stream_socket_sendto</a></li>
+  <li><a href="function.stream-socket-server.html">stream_socket_server</a></li>
+  <li><a href="function.stream-socket-shutdown.html">stream_socket_shutdown</a></li>
+  <li><a href="function.stream-supports-lock.html">stream_supports_lock</a></li>
+  <li><a href="function.stream-wrapper-register.html">stream_wrapper_register</a></li>
+  <li><a href="function.stream-wrapper-restore.html">stream_wrapper_restore</a></li>
+  <li><a href="function.stream-wrapper-unregister.html">stream_wrapper_unregister</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.stream-filter-append.html">stream_filter_append</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.stream-filter-register.html">stream_filter_register</a></div>
+                <div class="up"><a href="ref.stream.html">Stream Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.stream-filter-prepend" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">stream_filter_prepend</h1>
+  <p class="refpurpose">Attach a filter to a stream</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.stream-filter-prepend-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname">stream_filter_prepend</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$stream</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$filtername</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$read_write</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$params</code></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Adds <code class="parameter">filtername</code> to the list of filters
+   attached to <code class="parameter">stream</code>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.stream-filter-prepend-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">stream</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The target stream.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">filtername</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The filter name.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">read_write</code></dt>
+
+     <dd>
+
+      <p class="para">
+       By default, <span class="function">stream_filter_prepend</span> will
+       attach the filter to the <em>read filter chain</em>
+       if the file was opened for reading (i.e. File Mode:
+       <em>r</em>, and/or <em>+</em>).  The filter
+       will also be attached to the <em>write filter chain</em>
+       if the file was opened for writing (i.e. File Mode:
+       <em>w</em>, <em>a</em>, and/or <em>+</em>).
+       <strong><code>STREAM_FILTER_READ</code></strong>,
+       <strong><code>STREAM_FILTER_WRITE</code></strong>, and/or
+       <strong><code>STREAM_FILTER_ALL</code></strong> can also be passed to the
+       <code class="parameter">read_write</code> parameter to override this behavior.
+       See <span class="function">stream_filter_append</span> for an example of
+       using this parameter.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">params</code></dt>
+
+     <dd>
+
+      <p class="para">
+       This filter will be added with the specified <code class="parameter">params</code>
+       to the <em class="emphasis">beginning</em> of the list and will therefore be
+       called first during stream operations.  To add a filter to the end of the
+       list, use <span class="function">stream_filter_append</span>.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.stream-filter-prepend-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns a resource on success or <strong><code>FALSE</code></strong> on failure. The resource can be
+   used to refer to this filter instance during a call to
+   <span class="function">stream_filter_remove</span>.
+  </p>
+
+  <p class="para">
+   <strong><code>FALSE</code></strong> is returned if <code class="parameter">stream</code> is not a resource or
+   if <code class="parameter">filtername</code> cannot be located.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.stream-filter-prepend-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.1.0</td>
+       <td>
+        Prior to PHP 5.1.0, this function returns <strong><code>TRUE</code></strong> on success
+        or <strong><code>FALSE</code></strong> on failure.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.stream-filter-prepend-notes">
+  <h3 class="title">Notes</h3>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <strong>When using custom (user) filters</strong><br />
+   <span class="simpara">
+    <span class="function">stream_filter_register</span> must be called first
+    in order to register the desired user filter to <code class="parameter">filtername</code>.
+   </span>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <span class="simpara">
+    Stream data is read from resources (both local and remote) in chunks,
+    with any unconsumed data kept in internal buffers.  When a new
+    filter is prepended to a stream, data in the internal buffers,
+    which has already been processed through other filters will
+    <em class="emphasis">not</em> be reprocessed through the new filter
+    at that time.  This differs from the behavior of
+    <span class="function">stream_filter_append</span>.
+   </span>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <span class="simpara">
+    When a filter is added for read and write, two instances of the filter
+    are created. <span class="function">stream_filter_prepend</span> must be called twice 
+    with <strong><code>STREAM_FILTER_READ</code></strong> and 
+    <strong><code>STREAM_FILTER_WRITE</code></strong> to get both filter resources.
+   </span>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.stream-filter-prepend-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li class="member"><span class="function">stream_filter_register</span></li>
+   <li class="member"><span class="function">stream_filter_append</span></li>
+  </ul>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

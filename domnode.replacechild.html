@@ -1,0 +1,224 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Replaces a child</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.xml.html">XML Manipulation</a></li>
+  <li class="header up"><a href="book.dom.html">DOM</a></li>
+  <li class="header up"><a href="class.domnode.html">DOMNode</a></li>
+  <li><a href="domnode.appendchild.html">DOMNode::appendChild</a></li>
+  <li><a href="domnode.c14n.html">DOMNode::C14N</a></li>
+  <li><a href="domnode.c14nfile.html">DOMNode::C14NFile</a></li>
+  <li><a href="domnode.clonenode.html">DOMNode::cloneNode</a></li>
+  <li><a href="domnode.getlineno.html">DOMNode::getLineNo</a></li>
+  <li><a href="domnode.getnodepath.html">DOMNode::getNodePath</a></li>
+  <li><a href="domnode.hasattributes.html">DOMNode::hasAttributes</a></li>
+  <li><a href="domnode.haschildnodes.html">DOMNode::hasChildNodes</a></li>
+  <li><a href="domnode.insertbefore.html">DOMNode::insertBefore</a></li>
+  <li><a href="domnode.isdefaultnamespace.html">DOMNode::isDefaultNamespace</a></li>
+  <li><a href="domnode.issamenode.html">DOMNode::isSameNode</a></li>
+  <li><a href="domnode.issupported.html">DOMNode::isSupported</a></li>
+  <li><a href="domnode.lookupnamespaceuri.html">DOMNode::lookupNamespaceURI</a></li>
+  <li><a href="domnode.lookupprefix.html">DOMNode::lookupPrefix</a></li>
+  <li><a href="domnode.normalize.html">DOMNode::normalize</a></li>
+  <li><a href="domnode.removechild.html">DOMNode::removeChild</a></li>
+  <li class="active"><a href="domnode.replacechild.html">DOMNode::replaceChild</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="domnode.removechild.html">DOMNode::removeChild</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="class.domnodelist.html">DOMNodeList</a></div>
+                <div class="up"><a href="class.domnode.html">DOMNode</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="domnode.replacechild" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DOMNode::replaceChild</h1>
+  <p class="refpurpose">
+   Replaces a child
+  </p>
+ </div>
+ <div class="refsect1 description" id="refsect1-domnode.replacechild-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMNode</span> <span class="methodname">DOMNode::replaceChild</span>
+    ( <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$newnode</code></span>
+   , <span class="methodparam"><span class="type">DOMNode</span> <code class="parameter">$oldnode</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   This function replaces the child <code class="parameter">oldnode</code> 
+   with the passed new node. If the <code class="parameter">newnode</code> is already a child it 
+   will not be added a second time. If the replacement succeeds the 
+   old node is returned.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-domnode.replacechild-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">newnode</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The new node. It must be a member of the target document, i.e.
+       created by one of the DOMDocument-&gt;createXXX() methods or imported in
+       the document by <a href="domdocument.importnode.html" class="xref">DOMDocument::importNode</a>.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">oldnode</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The old node.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-domnode.replacechild-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   The old node or <strong><code>FALSE</code></strong> if an error occur.
+  </p>
+ </div>
+
+ <div class="refsect1 errors" id="refsect1-domnode.replacechild-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<strong><code>DOM_NO_MODIFICATION_ALLOWED_ERR</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       Raised if this node is readonly or if the previous parent of the node
+       being inserted is readonly.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<strong><code>DOM_HIERARCHY_REQUEST_ERR</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       Raised if this node is of a type that does not allow children of the 
+       type of the <code class="parameter">newnode</code> node, or if the node to 
+       put in is one of this node&#039;s ancestors or this node itself.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<strong><code>DOM_WRONG_DOCUMENT_ERR</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       Raised if <code class="parameter">newnode</code> was created from a different 
+       document than the one that created this node.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<strong><code>DOM_NOT_FOUND</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       Raised if <code class="parameter">oldnode</code> is not a child of this node.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-domnode.replacechild-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"> <span class="methodname">DOMNode::appendChild</span></li>
+    <li class="member"> <span class="methodname">DOMNode::removeChild</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

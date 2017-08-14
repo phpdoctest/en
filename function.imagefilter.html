@@ -1,0 +1,548 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Applies a filter to an image</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.utilspec.image.html">Image Processing and Generation</a></li>
+  <li class="header up"><a href="book.image.html">GD</a></li>
+  <li class="header up"><a href="ref.image.html">GD and Image Functions</a></li>
+  <li><a href="function.gd-info.html">gd_info</a></li>
+  <li><a href="function.getimagesize.html">getimagesize</a></li>
+  <li><a href="function.getimagesizefromstring.html">getimagesizefromstring</a></li>
+  <li><a href="function.image-type-to-extension.html">image_type_to_extension</a></li>
+  <li><a href="function.image-type-to-mime-type.html">image_type_to_mime_type</a></li>
+  <li><a href="function.image2wbmp.html">image2wbmp</a></li>
+  <li><a href="function.imageaffine.html">imageaffine</a></li>
+  <li><a href="function.imageaffinematrixconcat.html">imageaffinematrixconcat</a></li>
+  <li><a href="function.imageaffinematrixget.html">imageaffinematrixget</a></li>
+  <li><a href="function.imagealphablending.html">imagealphablending</a></li>
+  <li><a href="function.imageantialias.html">imageantialias</a></li>
+  <li><a href="function.imagearc.html">imagearc</a></li>
+  <li><a href="function.imagebmp.html">imagebmp</a></li>
+  <li><a href="function.imagechar.html">imagechar</a></li>
+  <li><a href="function.imagecharup.html">imagecharup</a></li>
+  <li><a href="function.imagecolorallocate.html">imagecolorallocate</a></li>
+  <li><a href="function.imagecolorallocatealpha.html">imagecolorallocatealpha</a></li>
+  <li><a href="function.imagecolorat.html">imagecolorat</a></li>
+  <li><a href="function.imagecolorclosest.html">imagecolorclosest</a></li>
+  <li><a href="function.imagecolorclosestalpha.html">imagecolorclosestalpha</a></li>
+  <li><a href="function.imagecolorclosesthwb.html">imagecolorclosesthwb</a></li>
+  <li><a href="function.imagecolordeallocate.html">imagecolordeallocate</a></li>
+  <li><a href="function.imagecolorexact.html">imagecolorexact</a></li>
+  <li><a href="function.imagecolorexactalpha.html">imagecolorexactalpha</a></li>
+  <li><a href="function.imagecolormatch.html">imagecolormatch</a></li>
+  <li><a href="function.imagecolorresolve.html">imagecolorresolve</a></li>
+  <li><a href="function.imagecolorresolvealpha.html">imagecolorresolvealpha</a></li>
+  <li><a href="function.imagecolorset.html">imagecolorset</a></li>
+  <li><a href="function.imagecolorsforindex.html">imagecolorsforindex</a></li>
+  <li><a href="function.imagecolorstotal.html">imagecolorstotal</a></li>
+  <li><a href="function.imagecolortransparent.html">imagecolortransparent</a></li>
+  <li><a href="function.imageconvolution.html">imageconvolution</a></li>
+  <li><a href="function.imagecopy.html">imagecopy</a></li>
+  <li><a href="function.imagecopymerge.html">imagecopymerge</a></li>
+  <li><a href="function.imagecopymergegray.html">imagecopymergegray</a></li>
+  <li><a href="function.imagecopyresampled.html">imagecopyresampled</a></li>
+  <li><a href="function.imagecopyresized.html">imagecopyresized</a></li>
+  <li><a href="function.imagecreate.html">imagecreate</a></li>
+  <li><a href="function.imagecreatefrombmp.html">imagecreatefrombmp</a></li>
+  <li><a href="function.imagecreatefromgd2.html">imagecreatefromgd2</a></li>
+  <li><a href="function.imagecreatefromgd2part.html">imagecreatefromgd2part</a></li>
+  <li><a href="function.imagecreatefromgd.html">imagecreatefromgd</a></li>
+  <li><a href="function.imagecreatefromgif.html">imagecreatefromgif</a></li>
+  <li><a href="function.imagecreatefromjpeg.html">imagecreatefromjpeg</a></li>
+  <li><a href="function.imagecreatefrompng.html">imagecreatefrompng</a></li>
+  <li><a href="function.imagecreatefromstring.html">imagecreatefromstring</a></li>
+  <li><a href="function.imagecreatefromwbmp.html">imagecreatefromwbmp</a></li>
+  <li><a href="function.imagecreatefromwebp.html">imagecreatefromwebp</a></li>
+  <li><a href="function.imagecreatefromxbm.html">imagecreatefromxbm</a></li>
+  <li><a href="function.imagecreatefromxpm.html">imagecreatefromxpm</a></li>
+  <li><a href="function.imagecreatetruecolor.html">imagecreatetruecolor</a></li>
+  <li><a href="function.imagecrop.html">imagecrop</a></li>
+  <li><a href="function.imagecropauto.html">imagecropauto</a></li>
+  <li><a href="function.imagedashedline.html">imagedashedline</a></li>
+  <li><a href="function.imagedestroy.html">imagedestroy</a></li>
+  <li><a href="function.imageellipse.html">imageellipse</a></li>
+  <li><a href="function.imagefill.html">imagefill</a></li>
+  <li><a href="function.imagefilledarc.html">imagefilledarc</a></li>
+  <li><a href="function.imagefilledellipse.html">imagefilledellipse</a></li>
+  <li><a href="function.imagefilledpolygon.html">imagefilledpolygon</a></li>
+  <li><a href="function.imagefilledrectangle.html">imagefilledrectangle</a></li>
+  <li><a href="function.imagefilltoborder.html">imagefilltoborder</a></li>
+  <li class="active"><a href="function.imagefilter.html">imagefilter</a></li>
+  <li><a href="function.imageflip.html">imageflip</a></li>
+  <li><a href="function.imagefontheight.html">imagefontheight</a></li>
+  <li><a href="function.imagefontwidth.html">imagefontwidth</a></li>
+  <li><a href="function.imageftbbox.html">imageftbbox</a></li>
+  <li><a href="function.imagefttext.html">imagefttext</a></li>
+  <li><a href="function.imagegammacorrect.html">imagegammacorrect</a></li>
+  <li><a href="function.imagegd2.html">imagegd2</a></li>
+  <li><a href="function.imagegd.html">imagegd</a></li>
+  <li><a href="function.imagegetclip.html">imagegetclip</a></li>
+  <li><a href="function.imagegif.html">imagegif</a></li>
+  <li><a href="function.imagegrabscreen.html">imagegrabscreen</a></li>
+  <li><a href="function.imagegrabwindow.html">imagegrabwindow</a></li>
+  <li><a href="function.imageinterlace.html">imageinterlace</a></li>
+  <li><a href="function.imageistruecolor.html">imageistruecolor</a></li>
+  <li><a href="function.imagejpeg.html">imagejpeg</a></li>
+  <li><a href="function.imagelayereffect.html">imagelayereffect</a></li>
+  <li><a href="function.imageline.html">imageline</a></li>
+  <li><a href="function.imageloadfont.html">imageloadfont</a></li>
+  <li><a href="function.imageopenpolygon.html">imageopenpolygon</a></li>
+  <li><a href="function.imagepalettecopy.html">imagepalettecopy</a></li>
+  <li><a href="function.imagepalettetotruecolor.html">imagepalettetotruecolor</a></li>
+  <li><a href="function.imagepng.html">imagepng</a></li>
+  <li><a href="function.imagepolygon.html">imagepolygon</a></li>
+  <li><a href="function.imagepsbbox.html">imagepsbbox</a></li>
+  <li><a href="function.imagepsencodefont.html">imagepsencodefont</a></li>
+  <li><a href="function.imagepsextendfont.html">imagepsextendfont</a></li>
+  <li><a href="function.imagepsfreefont.html">imagepsfreefont</a></li>
+  <li><a href="function.imagepsloadfont.html">imagepsloadfont</a></li>
+  <li><a href="function.imagepsslantfont.html">imagepsslantfont</a></li>
+  <li><a href="function.imagepstext.html">imagepstext</a></li>
+  <li><a href="function.imagerectangle.html">imagerectangle</a></li>
+  <li><a href="function.imageresolution.html">imageresolution</a></li>
+  <li><a href="function.imagerotate.html">imagerotate</a></li>
+  <li><a href="function.imagesavealpha.html">imagesavealpha</a></li>
+  <li><a href="function.imagescale.html">imagescale</a></li>
+  <li><a href="function.imagesetbrush.html">imagesetbrush</a></li>
+  <li><a href="function.imagesetclip.html">imagesetclip</a></li>
+  <li><a href="function.imagesetinterpolation.html">imagesetinterpolation</a></li>
+  <li><a href="function.imagesetpixel.html">imagesetpixel</a></li>
+  <li><a href="function.imagesetstyle.html">imagesetstyle</a></li>
+  <li><a href="function.imagesetthickness.html">imagesetthickness</a></li>
+  <li><a href="function.imagesettile.html">imagesettile</a></li>
+  <li><a href="function.imagestring.html">imagestring</a></li>
+  <li><a href="function.imagestringup.html">imagestringup</a></li>
+  <li><a href="function.imagesx.html">imagesx</a></li>
+  <li><a href="function.imagesy.html">imagesy</a></li>
+  <li><a href="function.imagetruecolortopalette.html">imagetruecolortopalette</a></li>
+  <li><a href="function.imagettfbbox.html">imagettfbbox</a></li>
+  <li><a href="function.imagettftext.html">imagettftext</a></li>
+  <li><a href="function.imagetypes.html">imagetypes</a></li>
+  <li><a href="function.imagewbmp.html">imagewbmp</a></li>
+  <li><a href="function.imagewebp.html">imagewebp</a></li>
+  <li><a href="function.imagexbm.html">imagexbm</a></li>
+  <li><a href="function.iptcembed.html">iptcembed</a></li>
+  <li><a href="function.iptcparse.html">iptcparse</a></li>
+  <li><a href="function.jpeg2wbmp.html">jpeg2wbmp</a></li>
+  <li><a href="function.png2wbmp.html">png2wbmp</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.imagefilltoborder.html">imagefilltoborder</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.imageflip.html">imageflip</a></div>
+                <div class="up"><a href="ref.image.html">GD and Image Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.imagefilter" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">imagefilter</h1>
+  <p class="refpurpose">Applies a filter to an image</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.imagefilter-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">imagefilter</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$image</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$filtertype</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$arg1</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$arg2</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$arg3</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$arg4</code></span>
+  ]]]] )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function">imagefilter</span> applies the given filter
+   <code class="parameter">filtertype</code> on the <code class="parameter">image</code>.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.imagefilter-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+<code class="parameter">
+image</code></dt>
+<dd>
+<p class="para">An image resource, returned by one of the image creation functions,
+such as <span class="function">imagecreatetruecolor</span>.</p></dd>
+
+    
+     <dt>
+<code class="parameter">filtertype</code></dt>
+
+     <dd>
+
+      <p class="para">
+       <code class="parameter">filtertype</code> can be one of the following:
+       <ul class="itemizedlist">
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>IMG_FILTER_NEGATE</code></strong>: Reverses all colors of
+          the image.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>IMG_FILTER_GRAYSCALE</code></strong>: Converts the image into
+          grayscale.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>IMG_FILTER_BRIGHTNESS</code></strong>: Changes the brightness
+          of the image. Use <code class="parameter">arg1</code> to set the level of
+          brightness. The range for the brightness is -255 to 255.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>IMG_FILTER_CONTRAST</code></strong>: Changes the contrast of
+          the image. Use <code class="parameter">arg1</code> to set the level of
+          contrast.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>IMG_FILTER_COLORIZE</code></strong>: Like
+          <strong><code>IMG_FILTER_GRAYSCALE</code></strong>, except you can specify the
+          color. Use <code class="parameter">arg1</code>, <code class="parameter">arg2</code> and
+          <code class="parameter">arg3</code> in the form of
+          <code class="parameter">red</code>, <code class="parameter">green</code>,
+          <code class="parameter">blue</code> and <code class="parameter">arg4</code> for the
+          <code class="parameter">alpha</code> channel. The range for each color is 0 to 255.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>IMG_FILTER_EDGEDETECT</code></strong>: Uses edge detection to
+          highlight the edges in the image.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>IMG_FILTER_EMBOSS</code></strong>: Embosses the image.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>IMG_FILTER_GAUSSIAN_BLUR</code></strong>: Blurs the image using
+          the Gaussian method.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>IMG_FILTER_SELECTIVE_BLUR</code></strong>: Blurs the image.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>IMG_FILTER_MEAN_REMOVAL</code></strong>: Uses mean removal to
+          achieve a &quot;sketchy&quot; effect.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>IMG_FILTER_SMOOTH</code></strong>: Makes the image smoother.
+          Use <code class="parameter">arg1</code> to set the level of smoothness.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>IMG_FILTER_PIXELATE</code></strong>: Applies pixelation effect 
+          to the image, use <code class="parameter">arg1</code> to set the block size 
+          and <code class="parameter">arg2</code> to set the pixelation effect mode.
+         </span>
+        </li>
+       </ul>
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">arg1</code></dt>
+
+     <dd>
+
+      <p class="para">
+       <ul class="itemizedlist">
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>IMG_FILTER_BRIGHTNESS</code></strong>: Brightness level.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>IMG_FILTER_CONTRAST</code></strong>: Contrast level.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>IMG_FILTER_COLORIZE</code></strong>: Value of red component.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>IMG_FILTER_SMOOTH</code></strong>: Smoothness level.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>IMG_FILTER_PIXELATE</code></strong>: Block size in pixels.
+         </span>
+        </li>
+       </ul>
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">arg2</code></dt>
+
+     <dd>
+
+      <p class="para">
+       <ul class="itemizedlist">
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>IMG_FILTER_COLORIZE</code></strong>: Value of green component.
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>IMG_FILTER_PIXELATE</code></strong>: Whether to use advanced pixelation 
+          effect or not (defaults to <strong><code>FALSE</code></strong>).
+         </span>
+        </li>
+       </ul>
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">arg3</code></dt>
+
+     <dd>
+
+      <p class="para">
+       <ul class="itemizedlist">
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>IMG_FILTER_COLORIZE</code></strong>: Value of blue component.
+         </span>
+        </li>
+       </ul>
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">arg4</code></dt>
+
+     <dd>
+
+      <p class="para">
+       <ul class="itemizedlist">
+        <li class="listitem">
+         <span class="simpara">
+          <strong><code>IMG_FILTER_COLORIZE</code></strong>: Alpha channel, A value 
+          between 0 and 127. 0 indicates completely opaque while 127 indicates 
+          completely transparent.
+         </span>
+        </li>
+       </ul>
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.imagefilter-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> on success or <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+ <div class="refsect1 changelog" id="refsect1-function.imagefilter-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.3.0</td>
+       <td>
+        Pixelation support (<strong><code>IMG_FILTER_PIXELATE</code></strong>) was added.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.2.5</td>
+       <td>
+        Alpha support for <strong><code>IMG_FILTER_COLORIZE</code></strong> was added.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.imagefilter-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-3555">
+    <p><strong>Example #1 <span class="function">imagefilter</span> grayscale example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$im&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatefrompng</span><span style="color: #007700">(</span><span style="color: #DD0000">'dave.png'</span><span style="color: #007700">);<br /><br />if(</span><span style="color: #0000BB">$im&nbsp;</span><span style="color: #007700">&amp;&amp;&nbsp;</span><span style="color: #0000BB">imagefilter</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">IMG_FILTER_GRAYSCALE</span><span style="color: #007700">))<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Image&nbsp;converted&nbsp;to&nbsp;grayscale.'</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">imagepng</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'dave.png'</span><span style="color: #007700">);<br />}<br />else<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Conversion&nbsp;to&nbsp;grayscale&nbsp;failed.'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-3556">
+    <p><strong>Example #2 <span class="function">imagefilter</span> brightness example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$im&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatefrompng</span><span style="color: #007700">(</span><span style="color: #DD0000">'sean.png'</span><span style="color: #007700">);<br /><br />if(</span><span style="color: #0000BB">$im&nbsp;</span><span style="color: #007700">&amp;&amp;&nbsp;</span><span style="color: #0000BB">imagefilter</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">IMG_FILTER_BRIGHTNESS</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">20</span><span style="color: #007700">))<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Image&nbsp;brightness&nbsp;changed.'</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">imagepng</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'sean.png'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br />}<br />else<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Image&nbsp;brightness&nbsp;change&nbsp;failed.'</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-3557">
+    <p><strong>Example #3 <span class="function">imagefilter</span> colorize example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$im&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatefrompng</span><span style="color: #007700">(</span><span style="color: #DD0000">'philip.png'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;R,&nbsp;G,&nbsp;B,&nbsp;so&nbsp;0,&nbsp;255,&nbsp;0&nbsp;is&nbsp;green&nbsp;*/<br /></span><span style="color: #007700">if(</span><span style="color: #0000BB">$im&nbsp;</span><span style="color: #007700">&amp;&amp;&nbsp;</span><span style="color: #0000BB">imagefilter</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">IMG_FILTER_COLORIZE</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">))<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Image&nbsp;successfully&nbsp;shaded&nbsp;green.'</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">imagepng</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'philip.png'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br />}<br />else<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Green&nbsp;shading&nbsp;failed.'</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="function-name.example.basic">
+    <p><strong>Example #4 <span class="function">imagefilter</span> negate example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Define&nbsp;our&nbsp;negate&nbsp;function&nbsp;so&nbsp;its&nbsp;portable&nbsp;for&nbsp;<br />//&nbsp;php&nbsp;versions&nbsp;without&nbsp;imagefilter()<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">negate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;if(</span><span style="color: #0000BB">function_exists</span><span style="color: #007700">(</span><span style="color: #DD0000">'imagefilter'</span><span style="color: #007700">))<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">imagefilter</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">IMG_FILTER_NEGATE</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;for(</span><span style="color: #0000BB">$x&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$x&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">imagesx</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);&nbsp;++</span><span style="color: #0000BB">$x</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;for(</span><span style="color: #0000BB">$y&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$y&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">imagesy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);&nbsp;++</span><span style="color: #0000BB">$y</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$index&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorat</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$x</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$y</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$rgb&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorsforindex</span><span style="color: #007700">(</span><span style="color: #0000BB">$index</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$color&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecolorallocate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">255&nbsp;</span><span style="color: #007700">-&nbsp;</span><span style="color: #0000BB">$rgb</span><span style="color: #007700">[</span><span style="color: #DD0000">'red'</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">255&nbsp;</span><span style="color: #007700">-&nbsp;</span><span style="color: #0000BB">$rgb</span><span style="color: #007700">[</span><span style="color: #DD0000">'green'</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">255&nbsp;</span><span style="color: #007700">-&nbsp;</span><span style="color: #0000BB">$rgb</span><span style="color: #007700">[</span><span style="color: #DD0000">'blue'</span><span style="color: #007700">]);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">imagesetpixel</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$x</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$y</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$color</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;return(</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$im&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatefromjpeg</span><span style="color: #007700">(</span><span style="color: #DD0000">'kalle.jpg'</span><span style="color: #007700">);<br /><br />if(</span><span style="color: #0000BB">$im&nbsp;</span><span style="color: #007700">&amp;&amp;&nbsp;</span><span style="color: #0000BB">negate</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">))<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Image&nbsp;successfully&nbsp;converted&nbsp;to&nbsp;negative&nbsp;colors.'</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">imagejpeg</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'kalle.jpg'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">100</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br />}<br />else<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Converting&nbsp;to&nbsp;negative&nbsp;colors&nbsp;failed.'</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-3559">
+    <p><strong>Example #5 <span class="function">imagefilter</span> pixelate example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Load&nbsp;the&nbsp;PHP&nbsp;logo,&nbsp;we&nbsp;need&nbsp;to&nbsp;create&nbsp;two&nbsp;instances&nbsp;<br />//&nbsp;to&nbsp;show&nbsp;the&nbsp;differences<br /></span><span style="color: #0000BB">$logo1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatefrompng</span><span style="color: #007700">(</span><span style="color: #DD0000">'./php.png'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$logo2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatefrompng</span><span style="color: #007700">(</span><span style="color: #DD0000">'./php.png'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Create&nbsp;the&nbsp;image&nbsp;instance&nbsp;we&nbsp;want&nbsp;to&nbsp;show&nbsp;the&nbsp;<br />//&nbsp;differences&nbsp;on<br /></span><span style="color: #0000BB">$output&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatetruecolor</span><span style="color: #007700">(</span><span style="color: #0000BB">imagesx</span><span style="color: #007700">(</span><span style="color: #0000BB">$logo1</span><span style="color: #007700">)&nbsp;*&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">imagesy</span><span style="color: #007700">(</span><span style="color: #0000BB">$logo1</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;Apply&nbsp;pixelation&nbsp;to&nbsp;each&nbsp;instance,&nbsp;with&nbsp;a&nbsp;block&nbsp;<br />//&nbsp;size&nbsp;of&nbsp;3<br /></span><span style="color: #0000BB">imagefilter</span><span style="color: #007700">(</span><span style="color: #0000BB">$logo1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">IMG_FILTER_PIXELATE</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagefilter</span><span style="color: #007700">(</span><span style="color: #0000BB">$logo2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">IMG_FILTER_PIXELATE</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Merge&nbsp;the&nbsp;differences&nbsp;onto&nbsp;the&nbsp;output&nbsp;image<br /></span><span style="color: #0000BB">imagecopy</span><span style="color: #007700">(</span><span style="color: #0000BB">$output</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$logo1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">imagesx</span><span style="color: #007700">(</span><span style="color: #0000BB">$logo1</span><span style="color: #007700">)&nbsp;-&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">imagesy</span><span style="color: #007700">(</span><span style="color: #0000BB">$logo1</span><span style="color: #007700">)&nbsp;-&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagecopy</span><span style="color: #007700">(</span><span style="color: #0000BB">$output</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$logo2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">imagesx</span><span style="color: #007700">(</span><span style="color: #0000BB">$logo2</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">imagesx</span><span style="color: #007700">(</span><span style="color: #0000BB">$logo2</span><span style="color: #007700">)&nbsp;-&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">imagesy</span><span style="color: #007700">(</span><span style="color: #0000BB">$logo2</span><span style="color: #007700">)&nbsp;-&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$logo1</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$logo2</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Output&nbsp;the&nbsp;differences<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-Type:&nbsp;image/png'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagepng</span><span style="color: #007700">(</span><span style="color: #0000BB">$output</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$output</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="mediaobject">
+     
+     <div class="imageobject">
+      <img src="images/21009b70229598c6a80eef8b45bf282b-imagefilterpixelate.png" alt="Output of example : imagefilter() pixelate" width="190" height="51" />
+     </div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 notes" id="refsect1-function.imagefilter-notes">
+  <h3 class="title">Notes</h3>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.imagefilter-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">imageconvolution</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Overview</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="set.mysqlinfo.html">MySQL</a></li>
+  <li class="header up"><a href="book.mysqlnd.html">Mysqlnd</a></li>
+  <li><a href="intro.mysqlnd.html">Introduction</a></li>
+  <li class="active"><a href="mysqlnd.overview.html">Overview</a></li>
+  <li><a href="mysqlnd.install.html">Installation</a></li>
+  <li><a href="mysqlnd.config.html">Runtime Configuration</a></li>
+  <li><a href="mysqlnd.incompatibilities.html">Incompatibilities</a></li>
+  <li><a href="mysqlnd.persist.html">Persistent Connections</a></li>
+  <li><a href="mysqlnd.stats.html">Statistics</a></li>
+  <li><a href="mysqlnd.notes.html">Notes</a></li>
+  <li><a href="mysqlnd.memory.html">Memory management</a></li>
+  <li><a href="mysqlnd.plugin.html">MySQL Native Driver Plugin API</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="intro.mysqlnd.html">Introduction</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mysqlnd.install.html">Installation</a></div>
+                <div class="up"><a href="book.mysqlnd.html">Mysqlnd</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mysqlnd.overview" class="chapter">
+ <h1>Overview</h1>
+ <p class="para">
+  <em class="emphasis">What it is not</em>
+ </p>
+ <p class="para">
+  Although MySQL Native Driver is written as a PHP extension, it is
+  important to note that it does not provide a new API to the PHP
+  programmer. The programmer APIs for MySQL database connectivity are
+  provided by the MySQL extension, <em>mysqli</em> and PDO
+  MYSQL. These extensions can now use the services of MySQL Native
+  Driver to communicate with the MySQL Server. Therefore, you should not
+  think of MySQL Native Driver as an API.
+ </p>
+ <p class="para">
+  <em class="emphasis">Why use it?</em>
+ </p>
+ <p class="para">
+  Using the MySQL Native Driver offers a number of advantages over using
+  the MySQL Client Library.
+ </p>
+ <p class="para">
+  The older MySQL Client Library was written by MySQL AB (now Oracle 
+  Corporation) and so was released under the MySQL license. This
+  ultimately led to MySQL support being disabled by default in PHP.
+  However, the MySQL Native Driver has been developed as part of the PHP
+  project, and is therefore released under the PHP license. This removes
+  licensing issues that have been problematic in the past.
+ </p>
+ <p class="para">
+  Also, in the past, you needed to build the MySQL database extensions
+  against a copy of the MySQL Client Library. This typically meant you
+  needed to have MySQL installed on a machine where you were building
+  the PHP source code. Also, when your PHP application was running, the
+  MySQL database extensions would call down to the MySQL Client library
+  file at run time, so the file needed to be installed on your system.
+  With MySQL Native Driver that is no longer the case as it is included
+  as part of the standard distribution. So you do not need MySQL
+  installed in order to build PHP or run PHP database applications.
+ </p>
+ <p class="para">
+  Because MySQL Native Driver is written as a PHP extension, it is
+  tightly coupled to the workings of PHP. This leads to gains in
+  efficiency, especially when it comes to memory usage, as the driver
+  uses the PHP memory management system. It also supports the PHP memory
+  limit. Using MySQL Native Driver leads to comparable or better
+  performance than using MySQL Client Library, it always ensures the
+  most efficient use of memory. One example of the memory efficiency is
+  the fact that when using the MySQL Client Library, each row is stored
+  in memory twice, whereas with the MySQL Native Driver each row is only
+  stored once in memory.
+ </p>
+ <blockquote class="note"><p><strong class="note">Note</strong>: 
+  <strong>Reporting memory usage</strong><br />
+  <p class="para">
+   Because MySQL Native Driver uses the PHP memory management system, its
+   memory usage can be tracked with <span class="function">memory_get_usage</span>.
+   This is not possible with libmysqlclient because it uses the C function malloc()
+   instead.
+  </p>
+ </p></blockquote>
+ <p class="para">
+  <em class="emphasis">Special features</em>
+ </p>
+ <p class="para">
+  MySQL Native Driver also provides some special features not available
+  when the MySQL database extensions use MySQL Client Library. These
+  special features are listed below:
+ </p>
+ <ul class="itemizedlist">
+  <li class="listitem">
+   <p class="para">
+    Improved persistent connections
+   </p>
+  </li>
+  <li class="listitem">
+   <p class="para">
+    The special function <span class="function">mysqli_fetch_all</span>
+   </p>
+  </li>
+  <li class="listitem">
+   <p class="para">
+    Performance statistics calls:
+    <span class="function">mysqli_get_cache_stats</span>,
+    <span class="function">mysqli_get_client_stats</span>,
+    <span class="function">mysqli_get_connection_stats</span>
+   </p>
+  </li>
+ </ul>
+ <p class="para">
+  The performance statistics facility can prove to be very useful in
+  identifying performance bottlenecks.
+ </p>
+ <p class="para">
+  MySQL Native Driver also allows for persistent connections when used
+  with the <em>mysqli</em> extension.
+ </p>
+ <p class="para">
+  <em class="emphasis">SSL Support</em>
+ </p>
+ <p class="para">
+  MySQL Native Driver has supported SSL since PHP version 5.3.3 
+ </p>
+ <p class="para">
+  <em class="emphasis">Compressed Protocol Support</em>
+ </p>
+ <p class="para">
+  As of PHP 5.3.2 MySQL Native Driver supports the compressed client
+  server protocol. MySQL Native Driver did not support this in 5.3.0 and
+  5.3.1. Extensions such as <em>ext/mysql</em>,
+  <em>ext/mysqli</em>, that are configured to use MySQL Native Driver, 
+  can also take advantage of this feature. Note that <em>PDO_MYSQL</em> 
+  does <em class="emphasis">NOT</em> support compression when used together with mysqlnd.
+ </p>
+ <p class="para">
+  <em class="emphasis">Named Pipes Support</em>
+ </p>
+ <p class="para">
+  Named pipes support for Windows was added in PHP version 5.4.0. 
+ </p>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

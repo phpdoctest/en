@@ -1,0 +1,148 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: runkit</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.php.html">Affecting PHP's Behaviour</a></li>
+  <li><a href="book.apc.html">APC</a></li>
+  <li><a href="book.apcu.html">APCu</a></li>
+  <li><a href="book.apd.html">APD</a></li>
+  <li><a href="book.bcompiler.html">bcompiler</a></li>
+  <li><a href="book.blenc.html">BLENC</a></li>
+  <li><a href="book.errorfunc.html">Error Handling</a></li>
+  <li><a href="book.htscanner.html">htscanner</a></li>
+  <li><a href="book.inclued.html">inclued</a></li>
+  <li><a href="book.memtrack.html">Memtrack</a></li>
+  <li><a href="book.opcache.html">OPcache</a></li>
+  <li><a href="book.outcontrol.html">Output Control</a></li>
+  <li><a href="book.info.html">PHP Options/Info</a></li>
+  <li class="active"><a href="book.runkit.html">runkit</a></li>
+  <li><a href="book.scream.html">scream</a></li>
+  <li><a href="book.uopz.html">uopz</a></li>
+  <li><a href="book.weakref.html">Weakref</a></li>
+  <li><a href="book.wincache.html">WinCache</a></li>
+  <li><a href="book.xhprof.html">Xhprof</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.zend-version.html">zend_version</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="intro.runkit.html">Introduction</a></div>
+                <div class="up"><a href="refs.basic.php.html">Affecting PHP's Behaviour</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="book.runkit" class="book">
+ <h1>runkit</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="intro.runkit.html">Introduction</a></li>
+<li><a href="runkit.constants.html">Predefined Constants</a></li>
+<li><a href="runkit.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_title">
+<li><a href="runkit.requirements.html">Requirements</a></li>
+<li><a href="runkit.installation.html">Installation</a></li>
+<li><a href="runkit.configuration.html">Runtime Configuration</a></li>
+<li><a href="runkit.resources.html">Resource Types</a></li>
+</ul>
+</li>
+<li><a href="ref.runkit.html">runkit Functions</a><ul class="chunklist chunklist_title">
+<li><a href="runkit.sandbox.html">Runkit_Sandbox</a> — Runkit Sandbox Class -- PHP Virtual Machine</li>
+<li><a href="runkit.sandbox-parent.html">Runkit_Sandbox_Parent</a> — Runkit Anti-Sandbox Class</li>
+<li><a href="function.runkit-class-adopt.html">runkit_class_adopt</a> — Convert a base class to an inherited class, add ancestral methods when appropriate</li>
+<li><a href="function.runkit-class-emancipate.html">runkit_class_emancipate</a> — Convert an inherited class to a base class, removes any method whose scope is ancestral</li>
+<li><a href="function.runkit-constant-add.html">runkit_constant_add</a> — Similar to define(), but allows defining in class definitions as well</li>
+<li><a href="function.runkit-constant-redefine.html">runkit_constant_redefine</a> — Redefine an already defined constant</li>
+<li><a href="function.runkit-constant-remove.html">runkit_constant_remove</a> — Remove/Delete an already defined constant</li>
+<li><a href="function.runkit-function-add.html">runkit_function_add</a> — Add a new function, similar to create_function</li>
+<li><a href="function.runkit-function-copy.html">runkit_function_copy</a> — Copy a function to a new function name</li>
+<li><a href="function.runkit-function-redefine.html">runkit_function_redefine</a> — Replace a function definition with a new implementation</li>
+<li><a href="function.runkit-function-remove.html">runkit_function_remove</a> — Remove a function definition</li>
+<li><a href="function.runkit-function-rename.html">runkit_function_rename</a> — Change a function's name</li>
+<li><a href="function.runkit-import.html">runkit_import</a> — Process a PHP file importing function and class definitions, overwriting where appropriate</li>
+<li><a href="function.runkit-lint-file.html">runkit_lint_file</a> — Check the PHP syntax of the specified file</li>
+<li><a href="function.runkit-lint.html">runkit_lint</a> — Check the PHP syntax of the specified php code</li>
+<li><a href="function.runkit-method-add.html">runkit_method_add</a> — Dynamically adds a new method to a given class</li>
+<li><a href="function.runkit-method-copy.html">runkit_method_copy</a> — Copies a method from class to another</li>
+<li><a href="function.runkit-method-redefine.html">runkit_method_redefine</a> — Dynamically changes the code of the given method</li>
+<li><a href="function.runkit-method-remove.html">runkit_method_remove</a> — Dynamically removes the given method</li>
+<li><a href="function.runkit-method-rename.html">runkit_method_rename</a> — Dynamically changes the name of the given method</li>
+<li><a href="function.runkit-return-value-used.html">runkit_return_value_used</a> — Determines if the current functions return value will be used</li>
+<li><a href="function.runkit-sandbox-output-handler.html">runkit_sandbox_output_handler</a> — Specify a function to capture and/or process output from a runkit sandbox</li>
+<li><a href="function.runkit-superglobals.html">runkit_superglobals</a> — Return numerically indexed array of registered superglobals</li>
+</ul>
+</li>
+</ul>
+
+
+ 
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

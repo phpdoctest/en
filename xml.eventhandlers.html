@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Event Handlers</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.xml.html">XML Manipulation</a></li>
+  <li class="header up"><a href="book.xml.html">XML Parser</a></li>
+  <li><a href="intro.xml.html">Introduction</a></li>
+  <li><a href="xml.setup.html">Installing/Configuring</a></li>
+  <li><a href="xml.constants.html">Predefined Constants</a></li>
+  <li class="active"><a href="xml.eventhandlers.html">Event Handlers</a></li>
+  <li><a href="xml.case-folding.html">Case Folding</a></li>
+  <li><a href="xml.error-codes.html">Error Codes</a></li>
+  <li><a href="xml.encoding.html">Character Encoding</a></li>
+  <li><a href="xml.examples.html">Examples</a></li>
+  <li><a href="ref.xml.html">XML Parser Functions</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="xml.constants.html">Predefined Constants</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="xml.case-folding.html">Case Folding</a></div>
+                <div class="up"><a href="book.xml.html">XML Parser</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="xml.eventhandlers" class="article">
+ <h1>Event Handlers</h1>
+ <p class="para">
+  The XML event handlers defined are:
+  <table class="doctable table">
+   <caption><strong>Supported XML handlers</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>PHP function to set handler</th>
+      <th>Event description</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td><span class="function">xml_set_element_handler</span></td>
+      <td>
+       Element events are issued whenever the XML parser
+       encounters start or end tags.  There are separate handlers
+       for start tags and end tags.
+      </td>
+     </tr>
+
+     <tr>
+      <td>
+       <span class="function">xml_set_character_data_handler</span>
+      </td>
+      <td>
+       Character data is roughly all the non-markup contents of
+       XML documents, including whitespace between tags.  Note
+       that the XML parser does not add or remove any whitespace,
+       it is up to the application (you) to decide whether
+       whitespace is significant.
+      </td>
+     </tr>
+
+     <tr>
+      <td>
+       <span class="function">xml_set_processing_instruction_handler</span>
+      </td>
+      <td>
+       PHP programmers should be familiar with processing
+       instructions (PIs) already.  &lt;?php ?&gt; is a processing
+       instruction, where <span class="replaceable">php</span> is called
+       the &quot;PI target&quot;.  The handling of these are
+       application-specific, except that all PI targets starting
+       with &quot;XML&quot; are reserved.
+      </td>
+     </tr>
+
+     <tr>
+      <td><span class="function">xml_set_default_handler</span></td>
+      <td>
+       What goes not to another handler goes to the default
+       handler.  You will get things like the XML and document
+       type declarations in the default handler.
+      </td>
+     </tr>
+
+     <tr>
+      <td>
+       <span class="function">xml_set_unparsed_entity_decl_handler</span>
+      </td>
+      <td>
+       This handler will be called for declaration of an unparsed
+       (NDATA) entity.
+      </td>
+     </tr>
+
+     <tr>
+      <td>
+       <span class="function">xml_set_notation_decl_handler</span>
+      </td>
+      <td>
+       This handler is called for declaration of a notation.
+      </td>
+     </tr>
+
+     <tr>
+      <td>
+       <span class="function">xml_set_external_entity_ref_handler</span>
+      </td>
+      <td>
+       This handler is called when the XML parser finds a
+       reference to an external parsed general entity.  This can
+       be a reference to a file or URL, for example.  See <a href="example.xml-external-entity.html" class="link">the external entity
+       example</a> for a demonstration.
+      </td>
+     </tr>
+
+     <tr>
+      <td>
+       <span class="function">xml_set_start_namespace_decl_handler</span>
+      </td>
+      <td>
+       This handler is called for the start of a namespace declaration.
+      </td>
+     </tr>
+
+     <tr>
+      <td>
+       <span class="function">xml_set_end_namespace_decl_handler</span>
+      </td>
+      <td>
+       This handler is called for the end of a namespace declaration. Note 
+       that this event is <em class="emphasis">not</em> triggered by libXML.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </p>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

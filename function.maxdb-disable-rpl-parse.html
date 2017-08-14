@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Disable RPL parse</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.maxdb.html">MaxDB</a></li>
+  <li class="header up"><a href="ref.maxdb.html">MaxDB Functions</a></li>
+  <li><a href="function.maxdb-affected-rows.html">maxdb_affected_rows</a></li>
+  <li><a href="function.maxdb-autocommit.html">maxdb_autocommit</a></li>
+  <li><a href="function.maxdb-bind-param.html">maxdb_bind_param</a></li>
+  <li><a href="function.maxdb-bind-result.html">maxdb_bind_result</a></li>
+  <li><a href="function.maxdb-change-user.html">maxdb_change_user</a></li>
+  <li><a href="function.maxdb-character-set-name.html">maxdb_character_set_name</a></li>
+  <li><a href="function.maxdb-client-encoding.html">maxdb_client_encoding</a></li>
+  <li><a href="function.maxdb-close-long-data.html">maxdb_close_long_data</a></li>
+  <li><a href="function.maxdb-close.html">maxdb_close</a></li>
+  <li><a href="function.maxdb-commit.html">maxdb_commit</a></li>
+  <li><a href="function.maxdb-connect-errno.html">maxdb_connect_errno</a></li>
+  <li><a href="function.maxdb-connect-error.html">maxdb_connect_error</a></li>
+  <li><a href="function.maxdb-connect.html">maxdb_connect</a></li>
+  <li><a href="function.maxdb-data-seek.html">maxdb_data_seek</a></li>
+  <li><a href="function.maxdb-debug.html">maxdb_debug</a></li>
+  <li><a href="function.maxdb-disable-reads-from-master.html">maxdb_disable_reads_from_master</a></li>
+  <li class="active"><a href="function.maxdb-disable-rpl-parse.html">maxdb_disable_rpl_parse</a></li>
+  <li><a href="function.maxdb-dump-debug-info.html">maxdb_dump_debug_info</a></li>
+  <li><a href="function.maxdb-embedded-connect.html">maxdb_embedded_connect</a></li>
+  <li><a href="function.maxdb-enable-reads-from-master.html">maxdb_enable_reads_from_master</a></li>
+  <li><a href="function.maxdb-enable-rpl-parse.html">maxdb_enable_rpl_parse</a></li>
+  <li><a href="function.maxdb-errno.html">maxdb_errno</a></li>
+  <li><a href="function.maxdb-error.html">maxdb_error</a></li>
+  <li><a href="function.maxdb-escape-string.html">maxdb_escape_string</a></li>
+  <li><a href="function.maxdb-execute.html">maxdb_execute</a></li>
+  <li><a href="function.maxdb-fetch-array.html">maxdb_fetch_array</a></li>
+  <li><a href="function.maxdb-fetch-assoc.html">maxdb_fetch_assoc</a></li>
+  <li><a href="function.maxdb-fetch-field-direct.html">maxdb_fetch_field_direct</a></li>
+  <li><a href="function.maxdb-fetch-field.html">maxdb_fetch_field</a></li>
+  <li><a href="function.maxdb-fetch-fields.html">maxdb_fetch_fields</a></li>
+  <li><a href="function.maxdb-fetch-lengths.html">maxdb_fetch_lengths</a></li>
+  <li><a href="function.maxdb-fetch-object.html">maxdb_fetch_object</a></li>
+  <li><a href="function.maxdb-fetch-row.html">maxdb_fetch_row</a></li>
+  <li><a href="function.maxdb-fetch.html">maxdb_fetch</a></li>
+  <li><a href="function.maxdb-field-count.html">maxdb_field_count</a></li>
+  <li><a href="function.maxdb-field-seek.html">maxdb_field_seek</a></li>
+  <li><a href="function.maxdb-field-tell.html">maxdb_field_tell</a></li>
+  <li><a href="function.maxdb-free-result.html">maxdb_free_result</a></li>
+  <li><a href="function.maxdb-get-client-info.html">maxdb_get_client_info</a></li>
+  <li><a href="function.maxdb-get-client-version.html">maxdb_get_client_version</a></li>
+  <li><a href="function.maxdb-get-host-info.html">maxdb_get_host_info</a></li>
+  <li><a href="function.maxdb-get-metadata.html">maxdb_get_metadata</a></li>
+  <li><a href="function.maxdb-get-proto-info.html">maxdb_get_proto_info</a></li>
+  <li><a href="function.maxdb-get-server-info.html">maxdb_get_server_info</a></li>
+  <li><a href="function.maxdb-get-server-version.html">maxdb_get_server_version</a></li>
+  <li><a href="function.maxdb-info.html">maxdb_info</a></li>
+  <li><a href="function.maxdb-init.html">maxdb_init</a></li>
+  <li><a href="function.maxdb-insert-id.html">maxdb_insert_id</a></li>
+  <li><a href="function.maxdb-kill.html">maxdb_kill</a></li>
+  <li><a href="function.maxdb-master-query.html">maxdb_master_query</a></li>
+  <li><a href="function.maxdb-more-results.html">maxdb_more_results</a></li>
+  <li><a href="function.maxdb-multi-query.html">maxdb_multi_query</a></li>
+  <li><a href="function.maxdb-next-result.html">maxdb_next_result</a></li>
+  <li><a href="function.maxdb-num-fields.html">maxdb_num_fields</a></li>
+  <li><a href="function.maxdb-num-rows.html">maxdb_num_rows</a></li>
+  <li><a href="function.maxdb-options.html">maxdb_options</a></li>
+  <li><a href="function.maxdb-param-count.html">maxdb_param_count</a></li>
+  <li><a href="function.maxdb-ping.html">maxdb_ping</a></li>
+  <li><a href="function.maxdb-prepare.html">maxdb_prepare</a></li>
+  <li><a href="function.maxdb-query.html">maxdb_query</a></li>
+  <li><a href="function.maxdb-real-connect.html">maxdb_real_connect</a></li>
+  <li><a href="function.maxdb-real-escape-string.html">maxdb_real_escape_string</a></li>
+  <li><a href="function.maxdb-real-query.html">maxdb_real_query</a></li>
+  <li><a href="function.maxdb-report.html">maxdb_report</a></li>
+  <li><a href="function.maxdb-rollback.html">maxdb_rollback</a></li>
+  <li><a href="function.maxdb-rpl-parse-enabled.html">maxdb_rpl_parse_enabled</a></li>
+  <li><a href="function.maxdb-rpl-probe.html">maxdb_rpl_probe</a></li>
+  <li><a href="function.maxdb-rpl-query-type.html">maxdb_rpl_query_type</a></li>
+  <li><a href="function.maxdb-select-db.html">maxdb_select_db</a></li>
+  <li><a href="function.maxdb-send-long-data.html">maxdb_send_long_data</a></li>
+  <li><a href="function.maxdb-send-query.html">maxdb_send_query</a></li>
+  <li><a href="function.maxdb-server-end.html">maxdb_server_end</a></li>
+  <li><a href="function.maxdb-server-init.html">maxdb_server_init</a></li>
+  <li><a href="function.maxdb-set-opt.html">maxdb_set_opt</a></li>
+  <li><a href="function.maxdb-sqlstate.html">maxdb_sqlstate</a></li>
+  <li><a href="function.maxdb-ssl-set.html">maxdb_ssl_set</a></li>
+  <li><a href="function.maxdb-stat.html">maxdb_stat</a></li>
+  <li><a href="function.maxdb-stmt-affected-rows.html">maxdb_stmt_affected_rows</a></li>
+  <li><a href="function.maxdb-stmt-bind-param.html">maxdb_stmt_bind_param</a></li>
+  <li><a href="function.maxdb-stmt-bind-result.html">maxdb_stmt_bind_result</a></li>
+  <li><a href="function.maxdb-stmt-close-long-data.html">maxdb_stmt_close_long_data</a></li>
+  <li><a href="function.maxdb-stmt-close.html">maxdb_stmt_close</a></li>
+  <li><a href="function.maxdb-stmt-data-seek.html">maxdb_stmt_data_seek</a></li>
+  <li><a href="function.maxdb-stmt-errno.html">maxdb_stmt_errno</a></li>
+  <li><a href="function.maxdb-stmt-error.html">maxdb_stmt_error</a></li>
+  <li><a href="function.maxdb-stmt-execute.html">maxdb_stmt_execute</a></li>
+  <li><a href="function.maxdb-stmt-fetch.html">maxdb_stmt_fetch</a></li>
+  <li><a href="function.maxdb-stmt-free-result.html">maxdb_stmt_free_result</a></li>
+  <li><a href="function.maxdb-stmt-init.html">maxdb_stmt_init</a></li>
+  <li><a href="function.maxdb-stmt-num-rows.html">maxdb_stmt_num_rows</a></li>
+  <li><a href="function.maxdb-stmt-param-count.html">maxdb_stmt_param_count</a></li>
+  <li><a href="function.maxdb-stmt-prepare.html">maxdb_stmt_prepare</a></li>
+  <li><a href="function.maxdb-stmt-reset.html">maxdb_stmt_reset</a></li>
+  <li><a href="function.maxdb-stmt-result-metadata.html">maxdb_stmt_result_metadata</a></li>
+  <li><a href="function.maxdb-stmt-send-long-data.html">maxdb_stmt_send_long_data</a></li>
+  <li><a href="function.maxdb-stmt-sqlstate.html">maxdb_stmt_sqlstate</a></li>
+  <li><a href="function.maxdb-stmt-store-result.html">maxdb_stmt_store_result</a></li>
+  <li><a href="function.maxdb-store-result.html">maxdb_store_result</a></li>
+  <li><a href="function.maxdb-thread-id.html">maxdb_thread_id</a></li>
+  <li><a href="function.maxdb-thread-safe.html">maxdb_thread_safe</a></li>
+  <li><a href="function.maxdb-use-result.html">maxdb_use_result</a></li>
+  <li><a href="function.maxdb-warning-count.html">maxdb_warning_count</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.maxdb-disable-reads-from-master.html">maxdb_disable_reads_from_master</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.maxdb-dump-debug-info.html">maxdb_dump_debug_info</a></div>
+                <div class="up"><a href="ref.maxdb.html">MaxDB Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.maxdb-disable-rpl-parse" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">maxdb_disable_rpl_parse</h1>
+  <p class="refpurpose">Disable RPL parse</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.maxdb-disable-rpl-parse-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">maxdb_disable_rpl_parse</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$link</code></span>
+   )</div>
+
+
+  <div class="warning"><strong class="warning">Warning</strong><p class="simpara">This function is
+currently not documented; only its argument list is available.
+</p></div>
+
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

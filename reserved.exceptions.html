@@ -1,0 +1,1275 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Predefined Exceptions</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="langref.html">Language Reference</a></li>
+  <li><a href="language.basic-syntax.html">Basic syntax</a></li>
+  <li><a href="language.types.html">Types</a></li>
+  <li><a href="language.variables.html">Variables</a></li>
+  <li><a href="language.constants.html">Constants</a></li>
+  <li><a href="language.expressions.html">Expressions</a></li>
+  <li><a href="language.operators.html">Operators</a></li>
+  <li><a href="language.control-structures.html">Control Structures</a></li>
+  <li><a href="language.functions.html">Functions</a></li>
+  <li><a href="language.oop5.html">Classes and Objects</a></li>
+  <li><a href="language.namespaces.html">Namespaces</a></li>
+  <li><a href="language.errors.html">Errors</a></li>
+  <li><a href="language.exceptions.html">Exceptions</a></li>
+  <li><a href="language.generators.html">Generators</a></li>
+  <li><a href="language.references.html">References Explained</a></li>
+  <li><a href="reserved.variables.html">Predefined Variables</a></li>
+  <li class="active"><a href="reserved.exceptions.html">Predefined Exceptions</a></li>
+  <li><a href="reserved.interfaces.html">Predefined Interfaces and Classes</a></li>
+  <li><a href="context.html">Context options and parameters</a></li>
+  <li><a href="wrappers.html">Supported Protocols and Wrappers</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="reserved.variables.argv.html">$argv</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="class.exception.html">Exception</a></div>
+                <div class="up"><a href="langref.html">Language Reference</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="reserved.exceptions" class="part">
+ <h1>Predefined Exceptions</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="class.exception.html">Exception</a> — Exception<ul class="chunklist chunklist_title">
+<li><a href="exception.construct.html">Exception::__construct</a> — Construct the exception</li>
+<li><a href="exception.getmessage.html">Exception::getMessage</a> — Gets the Exception message</li>
+<li><a href="exception.getprevious.html">Exception::getPrevious</a> — Returns previous Exception</li>
+<li><a href="exception.getcode.html">Exception::getCode</a> — Gets the Exception code</li>
+<li><a href="exception.getfile.html">Exception::getFile</a> — Gets the file in which the exception was created</li>
+<li><a href="exception.getline.html">Exception::getLine</a> — Gets the line in which the exception was created</li>
+<li><a href="exception.gettrace.html">Exception::getTrace</a> — Gets the stack trace</li>
+<li><a href="exception.gettraceasstring.html">Exception::getTraceAsString</a> — Gets the stack trace as a string</li>
+<li><a href="exception.tostring.html">Exception::__toString</a> — String representation of the exception</li>
+<li><a href="exception.clone.html">Exception::__clone</a> — Clone the exception</li>
+</ul>
+</li>
+<li><a href="class.errorexception.html">ErrorException</a> — ErrorException<ul class="chunklist chunklist_title">
+<li><a href="errorexception.construct.html">ErrorException::__construct</a> — Constructs the exception</li>
+<li><a href="errorexception.getseverity.html">ErrorException::getSeverity</a> — Gets the exception severity</li>
+</ul>
+</li>
+<li><a href="class.error.html">Error</a> — Error<ul class="chunklist chunklist_title">
+<li><a href="error.construct.html">Error::__construct</a> — Construct the error object</li>
+<li><a href="error.getmessage.html">Error::getMessage</a> — Gets the error message</li>
+<li><a href="error.getprevious.html">Error::getPrevious</a> — Returns previous Throwable</li>
+<li><a href="error.getcode.html">Error::getCode</a> — Gets the error code</li>
+<li><a href="error.getfile.html">Error::getFile</a> — Gets the file in which the error occurred</li>
+<li><a href="error.getline.html">Error::getLine</a> — Gets the line in which the error occurred</li>
+<li><a href="error.gettrace.html">Error::getTrace</a> — Gets the stack trace</li>
+<li><a href="error.gettraceasstring.html">Error::getTraceAsString</a> — Gets the stack trace as a string</li>
+<li><a href="error.tostring.html">Error::__toString</a> — String representation of the error</li>
+<li><a href="error.clone.html">Error::__clone</a> — Clone the error</li>
+</ul>
+</li>
+<li><a href="class.arithmeticerror.html">ArithmeticError</a> — ArithmeticError</li>
+<li><a href="class.assertionerror.html">AssertionError</a> — AssertionError</li>
+<li><a href="class.divisionbyzeroerror.html">DivisionByZeroError</a> — DivisionByZeroError</li>
+<li><a href="class.parseerror.html">ParseError</a> — ParseError</li>
+<li><a href="class.typeerror.html">TypeError</a> — TypeError</li>
+</ul>
+
+
+ <div class="partintro">
+  <p class="para">
+   See also the <a href="spl.exceptions.html" class="link">SPL Exceptions</a>
+  </p>
+ </div>
+
+ 
+
+
+
+ <h1 class="title">Exception</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="exception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    <span class="ooclass"><strong class="classname">Exception</strong></span> is the base class for
+    all Exceptions in PHP 5, and the base class for all user exceptions in PHP
+    7.
+   </p>
+   <p class="para">
+    In PHP 7, <span class="classname">Exception</span> implements the
+    <span class="classname">Throwable</span> interface.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="exception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">Exception</strong></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">Exception</strong>
+     </span>
+     {</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$message</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$code</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$file</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$line</var>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$message</code><span class="initializer"> = &quot;&quot;</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$code</code><span class="initializer"> = 0</span></span>
+   [, <span class="methodparam"><span class="type">Throwable</span> <code class="parameter">$previous</code><span class="initializer"> = <strong><code>NULL</code></strong></span></span>
+  ]]] )</div>
+
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">Throwable</span> <span class="methodname">getPrevious</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getFile</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getTrace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getTraceAsString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span>  <span class="methodname">__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+ 
+
+ 
+  </div>
+ 
+
+  <div class="section" id="exception.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="exception.props.message"><var class="varname">message</var></dt>
+
+     <dd>
+
+      <p class="para">The exception message</p>
+     </dd>
+
+    
+    
+     <dt id="exception.props.code"><var class="varname">code</var></dt>
+
+     <dd>
+
+      <p class="para">The exception code</p>
+     </dd>
+
+    
+    
+     <dt id="exception.props.file"><var class="varname">file</var></dt>
+
+     <dd>
+
+      <p class="para">The filename where the exception was created</p>
+     </dd>
+
+    
+    
+     <dt id="exception.props.line"><var class="varname">line</var></dt>
+
+     <dd>
+
+      <p class="para">The line where the exception was created</p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+ 
+ </div>
+ 
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ <h1 class="title">ErrorException</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="errorexception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    An Error Exception.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="errorexception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">ErrorException</strong></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">ErrorException</strong>
+     </span>
+ 
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> Exception</strong>
+     </span>
+     {</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$severity</var>
+    ;</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$message</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$code</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$file</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$line</var>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$message</code><span class="initializer"> = &quot;&quot;</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$code</code><span class="initializer"> = 0</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$severity</code><span class="initializer"> = E_ERROR</span></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code><span class="initializer"> = __FILE__</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$lineno</code><span class="initializer"> = __LINE__</span></span>
+   [, <span class="methodparam"><span class="type">Exception</span> <code class="parameter">$previous</code><span class="initializer"> = <strong><code>NULL</code></strong></span></span>
+  ]]]]]] )</div>
+
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getSeverity</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">Throwable</span> <span class="methodname">Exception::getPrevious</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">Exception::getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getFile</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">Exception::getLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">Exception::getTrace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getTraceAsString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span>  <span class="methodname">Exception::__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">Exception::__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+ 
+  </div>
+ 
+
+  <div class="section" id="errorexception.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="errorexception.props.severity"><var class="varname">severity</var></dt>
+
+     <dd>
+
+      <p class="para">The severity of the exception</p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+  <div class="section" id="errorexception.examples">
+   <h2 class="title">Examples</h2>
+   <p class="para">
+    <div class="example" id="variable.post.basic">
+     <p><strong>Example #1 Use <span class="function">set_error_handler</span> to change error messages into ErrorException.</strong></p>
+     <div class="example-contents">
+ <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">exception_error_handler</span><span style="color: #007700">(</span><span style="color: #0000BB">$severity</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$message</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$line</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!(</span><span style="color: #0000BB">error_reporting</span><span style="color: #007700">()&nbsp;&amp;&nbsp;</span><span style="color: #0000BB">$severity</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;This&nbsp;error&nbsp;code&nbsp;is&nbsp;not&nbsp;included&nbsp;in&nbsp;error_reporting<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">return;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">ErrorException</span><span style="color: #007700">(</span><span style="color: #0000BB">$message</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$severity</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$line</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">set_error_handler</span><span style="color: #007700">(</span><span style="color: #DD0000">"exception_error_handler"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;Trigger&nbsp;exception&nbsp;*/<br /></span><span style="color: #0000BB">strpos</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+     <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+     <div class="example-contents screen">
+<div class="cdata"><pre>
+Fatal error: Uncaught exception &#039;ErrorException&#039; with message &#039;strpos() expects at least 2 parameters, 0 given&#039; in /home/bjori/tmp/ex.php:12
+Stack trace:
+#0 [internal function]: exception_error_handler(2, &#039;strpos() expect...&#039;, &#039;/home/bjori/php...&#039;, 12, Array)
+#1 /home/bjori/php/cleandocs/test.php(12): strpos()
+#2 {main}
+  thrown in /home/bjori/tmp/ex.php on line 12
+</pre></div>
+     </div>
+    </div>
+   </p>
+  </div>
+ 
+ </div>
+ 
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+
+
+ 
+
+ 
+
+
+
+
+ 
+ 
+
+
+
+ <h1 class="title">Error</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="error.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    <span class="ooclass"><strong class="classname">Error</strong></span> is the base class for all
+    internal PHP errors.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="error.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">Error</strong></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">Error</strong>
+     </span>
+
+     <span class="ooclass">
+      <span class="modifier">implements</span>
+      <strong class="classname"> Throwable</strong>
+     </span>
+     {</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$message</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$code</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$file</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$line</var>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$message</code><span class="initializer"> = &quot;&quot;</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$code</code><span class="initializer"> = 0</span></span>
+   [, <span class="methodparam"><span class="type">Throwable</span> <code class="parameter">$previous</code><span class="initializer"> = <strong><code>NULL</code></strong></span></span>
+  ]]] )</div>
+
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">Throwable</span> <span class="methodname">getPrevious</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getFile</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getTrace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getTraceAsString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span>  <span class="methodname">__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+ 
+
+ 
+  </div>
+  
+    <div class="section" id="error.props">
+     <h2 class="title">Properties</h2>
+     <dl>
+
+      
+       <dt id="error.props.message"><var class="varname">message</var></dt>
+
+       <dd>
+
+        <p class="para">The error message</p>
+       </dd>
+
+      
+      
+       <dt id="error.props.code"><var class="varname">code</var></dt>
+
+       <dd>
+
+        <p class="para">The error code</p>
+       </dd>
+
+      
+      
+       <dt id="error.props.file"><var class="varname">file</var></dt>
+
+       <dd>
+
+        <p class="para">The filename where the error happened</p>
+       </dd>
+
+      
+      
+       <dt id="error.props.line"><var class="varname">line</var></dt>
+
+       <dd>
+
+        <p class="para">The line where the error happened</p>
+       </dd>
+
+      
+     </dl>
+
+    </div>
+  
+
+ </div>
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+ 
+
+
+
+ <h1 class="title">ArithmeticError</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="arithmeticerror.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    <span class="ooclass"><strong class="classname">ArithmeticError</strong></span> is thrown when
+    an error occurs while performing mathematical operations. In PHP 7.0,
+    these errors include attempting to perform a bitshift by a negative
+    amount, and any call to <span class="function">intdiv</span> that would result in a
+    value outside the possible bounds of an <span class="type">integer</span>.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="arithmeticerror.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">ArithmeticError</strong></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">ArithmeticError</strong>
+     </span>
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> Error</strong>
+     </span>
+     {</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Error::getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">Throwable</span> <span class="methodname">Error::getPrevious</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">Error::getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Error::getFile</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">Error::getLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">Error::getTrace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Error::getTraceAsString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span>  <span class="methodname">Error::__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">Error::__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+ 
+
+ 
+  </div>
+ </div>
+
+ 
+
+
+ 
+
+
+
+ <h1 class="title">AssertionError</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="assertionerror.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    <span class="ooclass"><strong class="classname">AssertionError</strong></span> is thrown when
+    an assertion made via <span class="function">assert</span> fails.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="assertionerror.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">AssertionError</strong></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">AssertionError</strong>
+     </span>
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> Error</strong>
+     </span>
+     {</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Error::getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">Throwable</span> <span class="methodname">Error::getPrevious</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">Error::getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Error::getFile</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">Error::getLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">Error::getTrace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Error::getTraceAsString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span>  <span class="methodname">Error::__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">Error::__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+ 
+
+ 
+  </div>
+ </div>
+
+ 
+
+
+ 
+
+
+
+ <h1 class="title">DivisionByZeroError</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="divisionbyzeroerror.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    <span class="ooclass"><strong class="classname">DivisionByZeroError</strong></span> is thrown
+    when an attempt is made to divide a number by zero.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="divisionbyzeroerror.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">DivisionByZeroError</strong></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">DivisionByZeroError</strong>
+     </span>
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> ArithmeticError</strong>
+     </span>
+     {</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Error::getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">Throwable</span> <span class="methodname">Error::getPrevious</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">Error::getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Error::getFile</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">Error::getLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">Error::getTrace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Error::getTraceAsString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span>  <span class="methodname">Error::__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">Error::__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+ 
+
+ 
+  </div>
+ </div>
+
+ 
+
+
+ 
+
+
+
+ <h1 class="title">ParseError</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="parseerror.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    <span class="ooclass"><strong class="classname">ParseError</strong></span> is thrown when an
+    error occurs while parsing PHP code, such as when
+    <span class="function">eval</span> is called.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="parseerror.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">ParseError</strong></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">ParseError</strong>
+     </span>
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> Error</strong>
+     </span>
+     {</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Error::getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">Throwable</span> <span class="methodname">Error::getPrevious</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">Error::getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Error::getFile</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">Error::getLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">Error::getTrace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Error::getTraceAsString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span>  <span class="methodname">Error::__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">Error::__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+ 
+
+ 
+  </div>
+ </div>
+
+ 
+
+
+ 
+
+
+
+ <h1 class="title">TypeError</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="typeerror.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    There are three scenarios where a
+    <span class="ooclass"><strong class="classname">TypeError</strong></span> may be thrown. The
+    first is where the argument type being passed to a function does not match
+    its corresponding declared parameter type. The second is where a value
+    being returned from a function does not match the declared function return
+    type. The third is where an invalid number of arguments are passed to a
+    built-in PHP function (strict mode only).
+  </p>
+  </div>
+
+ 
+  <div class="section" id="typeerror.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">TypeError</strong></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">TypeError</strong>
+     </span>
+
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> Error</strong>
+     </span>
+     {</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Error::getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">Throwable</span> <span class="methodname">Error::getPrevious</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">Error::getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Error::getFile</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">Error::getLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">Error::getTrace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Error::getTraceAsString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span>  <span class="methodname">Error::__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">Error::__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+ 
+
+ 
+  </div>
+ </div>
+
+ 
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

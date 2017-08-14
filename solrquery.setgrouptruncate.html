@@ -1,0 +1,330 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: If true, facet counts are based on the most relevant document of each group matching the query.</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.search.html">Search Engine Extensions</a></li>
+  <li class="header up"><a href="book.solr.html">Solr</a></li>
+  <li class="header up"><a href="class.solrquery.html">SolrQuery</a></li>
+  <li><a href="solrquery.addexpandfilterquery.html">SolrQuery::addExpandFilterQuery</a></li>
+  <li><a href="solrquery.addexpandsortfield.html">SolrQuery::addExpandSortField</a></li>
+  <li><a href="solrquery.addfacetdatefield.html">SolrQuery::addFacetDateField</a></li>
+  <li><a href="solrquery.addfacetdateother.html">SolrQuery::addFacetDateOther</a></li>
+  <li><a href="solrquery.addfacetfield.html">SolrQuery::addFacetField</a></li>
+  <li><a href="solrquery.addfacetquery.html">SolrQuery::addFacetQuery</a></li>
+  <li><a href="solrquery.addfield.html">SolrQuery::addField</a></li>
+  <li><a href="solrquery.addfilterquery.html">SolrQuery::addFilterQuery</a></li>
+  <li><a href="solrquery.addgroupfield.html">SolrQuery::addGroupField</a></li>
+  <li><a href="solrquery.addgroupfunction.html">SolrQuery::addGroupFunction</a></li>
+  <li><a href="solrquery.addgroupquery.html">SolrQuery::addGroupQuery</a></li>
+  <li><a href="solrquery.addgroupsortfield.html">SolrQuery::addGroupSortField</a></li>
+  <li><a href="solrquery.addhighlightfield.html">SolrQuery::addHighlightField</a></li>
+  <li><a href="solrquery.addmltfield.html">SolrQuery::addMltField</a></li>
+  <li><a href="solrquery.addmltqueryfield.html">SolrQuery::addMltQueryField</a></li>
+  <li><a href="solrquery.addsortfield.html">SolrQuery::addSortField</a></li>
+  <li><a href="solrquery.addstatsfacet.html">SolrQuery::addStatsFacet</a></li>
+  <li><a href="solrquery.addstatsfield.html">SolrQuery::addStatsField</a></li>
+  <li><a href="solrquery.collapse.html">SolrQuery::collapse</a></li>
+  <li><a href="solrquery.construct.html">SolrQuery::__construct</a></li>
+  <li><a href="solrquery.destruct.html">SolrQuery::__destruct</a></li>
+  <li><a href="solrquery.getexpand.html">SolrQuery::getExpand</a></li>
+  <li><a href="solrquery.getexpandfilterqueries.html">SolrQuery::getExpandFilterQueries</a></li>
+  <li><a href="solrquery.getexpandquery.html">SolrQuery::getExpandQuery</a></li>
+  <li><a href="solrquery.getexpandrows.html">SolrQuery::getExpandRows</a></li>
+  <li><a href="solrquery.getexpandsortfields.html">SolrQuery::getExpandSortFields</a></li>
+  <li><a href="solrquery.getfacet.html">SolrQuery::getFacet</a></li>
+  <li><a href="solrquery.getfacetdateend.html">SolrQuery::getFacetDateEnd</a></li>
+  <li><a href="solrquery.getfacetdatefields.html">SolrQuery::getFacetDateFields</a></li>
+  <li><a href="solrquery.getfacetdategap.html">SolrQuery::getFacetDateGap</a></li>
+  <li><a href="solrquery.getfacetdatehardend.html">SolrQuery::getFacetDateHardEnd</a></li>
+  <li><a href="solrquery.getfacetdateother.html">SolrQuery::getFacetDateOther</a></li>
+  <li><a href="solrquery.getfacetdatestart.html">SolrQuery::getFacetDateStart</a></li>
+  <li><a href="solrquery.getfacetfields.html">SolrQuery::getFacetFields</a></li>
+  <li><a href="solrquery.getfacetlimit.html">SolrQuery::getFacetLimit</a></li>
+  <li><a href="solrquery.getfacetmethod.html">SolrQuery::getFacetMethod</a></li>
+  <li><a href="solrquery.getfacetmincount.html">SolrQuery::getFacetMinCount</a></li>
+  <li><a href="solrquery.getfacetmissing.html">SolrQuery::getFacetMissing</a></li>
+  <li><a href="solrquery.getfacetoffset.html">SolrQuery::getFacetOffset</a></li>
+  <li><a href="solrquery.getfacetprefix.html">SolrQuery::getFacetPrefix</a></li>
+  <li><a href="solrquery.getfacetqueries.html">SolrQuery::getFacetQueries</a></li>
+  <li><a href="solrquery.getfacetsort.html">SolrQuery::getFacetSort</a></li>
+  <li><a href="solrquery.getfields.html">SolrQuery::getFields</a></li>
+  <li><a href="solrquery.getfilterqueries.html">SolrQuery::getFilterQueries</a></li>
+  <li><a href="solrquery.getgroup.html">SolrQuery::getGroup</a></li>
+  <li><a href="solrquery.getgroupcachepercent.html">SolrQuery::getGroupCachePercent</a></li>
+  <li><a href="solrquery.getgroupfacet.html">SolrQuery::getGroupFacet</a></li>
+  <li><a href="solrquery.getgroupfields.html">SolrQuery::getGroupFields</a></li>
+  <li><a href="solrquery.getgroupformat.html">SolrQuery::getGroupFormat</a></li>
+  <li><a href="solrquery.getgroupfunctions.html">SolrQuery::getGroupFunctions</a></li>
+  <li><a href="solrquery.getgrouplimit.html">SolrQuery::getGroupLimit</a></li>
+  <li><a href="solrquery.getgroupmain.html">SolrQuery::getGroupMain</a></li>
+  <li><a href="solrquery.getgroupngroups.html">SolrQuery::getGroupNGroups</a></li>
+  <li><a href="solrquery.getgroupoffset.html">SolrQuery::getGroupOffset</a></li>
+  <li><a href="solrquery.getgroupqueries.html">SolrQuery::getGroupQueries</a></li>
+  <li><a href="solrquery.getgroupsortfields.html">SolrQuery::getGroupSortFields</a></li>
+  <li><a href="solrquery.getgrouptruncate.html">SolrQuery::getGroupTruncate</a></li>
+  <li><a href="solrquery.gethighlight.html">SolrQuery::getHighlight</a></li>
+  <li><a href="solrquery.gethighlightalternatefield.html">SolrQuery::getHighlightAlternateField</a></li>
+  <li><a href="solrquery.gethighlightfields.html">SolrQuery::getHighlightFields</a></li>
+  <li><a href="solrquery.gethighlightformatter.html">SolrQuery::getHighlightFormatter</a></li>
+  <li><a href="solrquery.gethighlightfragmenter.html">SolrQuery::getHighlightFragmenter</a></li>
+  <li><a href="solrquery.gethighlightfragsize.html">SolrQuery::getHighlightFragsize</a></li>
+  <li><a href="solrquery.gethighlighthighlightmultiterm.html">SolrQuery::getHighlightHighlightMultiTerm</a></li>
+  <li><a href="solrquery.gethighlightmaxalternatefieldlength.html">SolrQuery::getHighlightMaxAlternateFieldLength</a></li>
+  <li><a href="solrquery.gethighlightmaxanalyzedchars.html">SolrQuery::getHighlightMaxAnalyzedChars</a></li>
+  <li><a href="solrquery.gethighlightmergecontiguous.html">SolrQuery::getHighlightMergeContiguous</a></li>
+  <li><a href="solrquery.gethighlightregexmaxanalyzedchars.html">SolrQuery::getHighlightRegexMaxAnalyzedChars</a></li>
+  <li><a href="solrquery.gethighlightregexpattern.html">SolrQuery::getHighlightRegexPattern</a></li>
+  <li><a href="solrquery.gethighlightregexslop.html">SolrQuery::getHighlightRegexSlop</a></li>
+  <li><a href="solrquery.gethighlightrequirefieldmatch.html">SolrQuery::getHighlightRequireFieldMatch</a></li>
+  <li><a href="solrquery.gethighlightsimplepost.html">SolrQuery::getHighlightSimplePost</a></li>
+  <li><a href="solrquery.gethighlightsimplepre.html">SolrQuery::getHighlightSimplePre</a></li>
+  <li><a href="solrquery.gethighlightsnippets.html">SolrQuery::getHighlightSnippets</a></li>
+  <li><a href="solrquery.gethighlightusephrasehighlighter.html">SolrQuery::getHighlightUsePhraseHighlighter</a></li>
+  <li><a href="solrquery.getmlt.html">SolrQuery::getMlt</a></li>
+  <li><a href="solrquery.getmltboost.html">SolrQuery::getMltBoost</a></li>
+  <li><a href="solrquery.getmltcount.html">SolrQuery::getMltCount</a></li>
+  <li><a href="solrquery.getmltfields.html">SolrQuery::getMltFields</a></li>
+  <li><a href="solrquery.getmltmaxnumqueryterms.html">SolrQuery::getMltMaxNumQueryTerms</a></li>
+  <li><a href="solrquery.getmltmaxnumtokens.html">SolrQuery::getMltMaxNumTokens</a></li>
+  <li><a href="solrquery.getmltmaxwordlength.html">SolrQuery::getMltMaxWordLength</a></li>
+  <li><a href="solrquery.getmltmindocfrequency.html">SolrQuery::getMltMinDocFrequency</a></li>
+  <li><a href="solrquery.getmltmintermfrequency.html">SolrQuery::getMltMinTermFrequency</a></li>
+  <li><a href="solrquery.getmltminwordlength.html">SolrQuery::getMltMinWordLength</a></li>
+  <li><a href="solrquery.getmltqueryfields.html">SolrQuery::getMltQueryFields</a></li>
+  <li><a href="solrquery.getquery.html">SolrQuery::getQuery</a></li>
+  <li><a href="solrquery.getrows.html">SolrQuery::getRows</a></li>
+  <li><a href="solrquery.getsortfields.html">SolrQuery::getSortFields</a></li>
+  <li><a href="solrquery.getstart.html">SolrQuery::getStart</a></li>
+  <li><a href="solrquery.getstats.html">SolrQuery::getStats</a></li>
+  <li><a href="solrquery.getstatsfacets.html">SolrQuery::getStatsFacets</a></li>
+  <li><a href="solrquery.getstatsfields.html">SolrQuery::getStatsFields</a></li>
+  <li><a href="solrquery.getterms.html">SolrQuery::getTerms</a></li>
+  <li><a href="solrquery.gettermsfield.html">SolrQuery::getTermsField</a></li>
+  <li><a href="solrquery.gettermsincludelowerbound.html">SolrQuery::getTermsIncludeLowerBound</a></li>
+  <li><a href="solrquery.gettermsincludeupperbound.html">SolrQuery::getTermsIncludeUpperBound</a></li>
+  <li><a href="solrquery.gettermslimit.html">SolrQuery::getTermsLimit</a></li>
+  <li><a href="solrquery.gettermslowerbound.html">SolrQuery::getTermsLowerBound</a></li>
+  <li><a href="solrquery.gettermsmaxcount.html">SolrQuery::getTermsMaxCount</a></li>
+  <li><a href="solrquery.gettermsmincount.html">SolrQuery::getTermsMinCount</a></li>
+  <li><a href="solrquery.gettermsprefix.html">SolrQuery::getTermsPrefix</a></li>
+  <li><a href="solrquery.gettermsreturnraw.html">SolrQuery::getTermsReturnRaw</a></li>
+  <li><a href="solrquery.gettermssort.html">SolrQuery::getTermsSort</a></li>
+  <li><a href="solrquery.gettermsupperbound.html">SolrQuery::getTermsUpperBound</a></li>
+  <li><a href="solrquery.gettimeallowed.html">SolrQuery::getTimeAllowed</a></li>
+  <li><a href="solrquery.removeexpandfilterquery.html">SolrQuery::removeExpandFilterQuery</a></li>
+  <li><a href="solrquery.removeexpandsortfield.html">SolrQuery::removeExpandSortField</a></li>
+  <li><a href="solrquery.removefacetdatefield.html">SolrQuery::removeFacetDateField</a></li>
+  <li><a href="solrquery.removefacetdateother.html">SolrQuery::removeFacetDateOther</a></li>
+  <li><a href="solrquery.removefacetfield.html">SolrQuery::removeFacetField</a></li>
+  <li><a href="solrquery.removefacetquery.html">SolrQuery::removeFacetQuery</a></li>
+  <li><a href="solrquery.removefield.html">SolrQuery::removeField</a></li>
+  <li><a href="solrquery.removefilterquery.html">SolrQuery::removeFilterQuery</a></li>
+  <li><a href="solrquery.removehighlightfield.html">SolrQuery::removeHighlightField</a></li>
+  <li><a href="solrquery.removemltfield.html">SolrQuery::removeMltField</a></li>
+  <li><a href="solrquery.removemltqueryfield.html">SolrQuery::removeMltQueryField</a></li>
+  <li><a href="solrquery.removesortfield.html">SolrQuery::removeSortField</a></li>
+  <li><a href="solrquery.removestatsfacet.html">SolrQuery::removeStatsFacet</a></li>
+  <li><a href="solrquery.removestatsfield.html">SolrQuery::removeStatsField</a></li>
+  <li><a href="solrquery.setechohandler.html">SolrQuery::setEchoHandler</a></li>
+  <li><a href="solrquery.setechoparams.html">SolrQuery::setEchoParams</a></li>
+  <li><a href="solrquery.setexpand.html">SolrQuery::setExpand</a></li>
+  <li><a href="solrquery.setexpandquery.html">SolrQuery::setExpandQuery</a></li>
+  <li><a href="solrquery.setexpandrows.html">SolrQuery::setExpandRows</a></li>
+  <li><a href="solrquery.setexplainother.html">SolrQuery::setExplainOther</a></li>
+  <li><a href="solrquery.setfacet.html">SolrQuery::setFacet</a></li>
+  <li><a href="solrquery.setfacetdateend.html">SolrQuery::setFacetDateEnd</a></li>
+  <li><a href="solrquery.setfacetdategap.html">SolrQuery::setFacetDateGap</a></li>
+  <li><a href="solrquery.setfacetdatehardend.html">SolrQuery::setFacetDateHardEnd</a></li>
+  <li><a href="solrquery.setfacetdatestart.html">SolrQuery::setFacetDateStart</a></li>
+  <li><a href="solrquery.setfacetenumcachemindefaultfrequency.html">SolrQuery::setFacetEnumCacheMinDefaultFrequency</a></li>
+  <li><a href="solrquery.setfacetlimit.html">SolrQuery::setFacetLimit</a></li>
+  <li><a href="solrquery.setfacetmethod.html">SolrQuery::setFacetMethod</a></li>
+  <li><a href="solrquery.setfacetmincount.html">SolrQuery::setFacetMinCount</a></li>
+  <li><a href="solrquery.setfacetmissing.html">SolrQuery::setFacetMissing</a></li>
+  <li><a href="solrquery.setfacetoffset.html">SolrQuery::setFacetOffset</a></li>
+  <li><a href="solrquery.setfacetprefix.html">SolrQuery::setFacetPrefix</a></li>
+  <li><a href="solrquery.setfacetsort.html">SolrQuery::setFacetSort</a></li>
+  <li><a href="solrquery.setgroup.html">SolrQuery::setGroup</a></li>
+  <li><a href="solrquery.setgroupcachepercent.html">SolrQuery::setGroupCachePercent</a></li>
+  <li><a href="solrquery.setgroupfacet.html">SolrQuery::setGroupFacet</a></li>
+  <li><a href="solrquery.setgroupformat.html">SolrQuery::setGroupFormat</a></li>
+  <li><a href="solrquery.setgrouplimit.html">SolrQuery::setGroupLimit</a></li>
+  <li><a href="solrquery.setgroupmain.html">SolrQuery::setGroupMain</a></li>
+  <li><a href="solrquery.setgroupngroups.html">SolrQuery::setGroupNGroups</a></li>
+  <li><a href="solrquery.setgroupoffset.html">SolrQuery::setGroupOffset</a></li>
+  <li class="active"><a href="solrquery.setgrouptruncate.html">SolrQuery::setGroupTruncate</a></li>
+  <li><a href="solrquery.sethighlight.html">SolrQuery::setHighlight</a></li>
+  <li><a href="solrquery.sethighlightalternatefield.html">SolrQuery::setHighlightAlternateField</a></li>
+  <li><a href="solrquery.sethighlightformatter.html">SolrQuery::setHighlightFormatter</a></li>
+  <li><a href="solrquery.sethighlightfragmenter.html">SolrQuery::setHighlightFragmenter</a></li>
+  <li><a href="solrquery.sethighlightfragsize.html">SolrQuery::setHighlightFragsize</a></li>
+  <li><a href="solrquery.sethighlighthighlightmultiterm.html">SolrQuery::setHighlightHighlightMultiTerm</a></li>
+  <li><a href="solrquery.sethighlightmaxalternatefieldlength.html">SolrQuery::setHighlightMaxAlternateFieldLength</a></li>
+  <li><a href="solrquery.sethighlightmaxanalyzedchars.html">SolrQuery::setHighlightMaxAnalyzedChars</a></li>
+  <li><a href="solrquery.sethighlightmergecontiguous.html">SolrQuery::setHighlightMergeContiguous</a></li>
+  <li><a href="solrquery.sethighlightregexmaxanalyzedchars.html">SolrQuery::setHighlightRegexMaxAnalyzedChars</a></li>
+  <li><a href="solrquery.sethighlightregexpattern.html">SolrQuery::setHighlightRegexPattern</a></li>
+  <li><a href="solrquery.sethighlightregexslop.html">SolrQuery::setHighlightRegexSlop</a></li>
+  <li><a href="solrquery.sethighlightrequirefieldmatch.html">SolrQuery::setHighlightRequireFieldMatch</a></li>
+  <li><a href="solrquery.sethighlightsimplepost.html">SolrQuery::setHighlightSimplePost</a></li>
+  <li><a href="solrquery.sethighlightsimplepre.html">SolrQuery::setHighlightSimplePre</a></li>
+  <li><a href="solrquery.sethighlightsnippets.html">SolrQuery::setHighlightSnippets</a></li>
+  <li><a href="solrquery.sethighlightusephrasehighlighter.html">SolrQuery::setHighlightUsePhraseHighlighter</a></li>
+  <li><a href="solrquery.setmlt.html">SolrQuery::setMlt</a></li>
+  <li><a href="solrquery.setmltboost.html">SolrQuery::setMltBoost</a></li>
+  <li><a href="solrquery.setmltcount.html">SolrQuery::setMltCount</a></li>
+  <li><a href="solrquery.setmltmaxnumqueryterms.html">SolrQuery::setMltMaxNumQueryTerms</a></li>
+  <li><a href="solrquery.setmltmaxnumtokens.html">SolrQuery::setMltMaxNumTokens</a></li>
+  <li><a href="solrquery.setmltmaxwordlength.html">SolrQuery::setMltMaxWordLength</a></li>
+  <li><a href="solrquery.setmltmindocfrequency.html">SolrQuery::setMltMinDocFrequency</a></li>
+  <li><a href="solrquery.setmltmintermfrequency.html">SolrQuery::setMltMinTermFrequency</a></li>
+  <li><a href="solrquery.setmltminwordlength.html">SolrQuery::setMltMinWordLength</a></li>
+  <li><a href="solrquery.setomitheader.html">SolrQuery::setOmitHeader</a></li>
+  <li><a href="solrquery.setquery.html">SolrQuery::setQuery</a></li>
+  <li><a href="solrquery.setrows.html">SolrQuery::setRows</a></li>
+  <li><a href="solrquery.setshowdebuginfo.html">SolrQuery::setShowDebugInfo</a></li>
+  <li><a href="solrquery.setstart.html">SolrQuery::setStart</a></li>
+  <li><a href="solrquery.setstats.html">SolrQuery::setStats</a></li>
+  <li><a href="solrquery.setterms.html">SolrQuery::setTerms</a></li>
+  <li><a href="solrquery.settermsfield.html">SolrQuery::setTermsField</a></li>
+  <li><a href="solrquery.settermsincludelowerbound.html">SolrQuery::setTermsIncludeLowerBound</a></li>
+  <li><a href="solrquery.settermsincludeupperbound.html">SolrQuery::setTermsIncludeUpperBound</a></li>
+  <li><a href="solrquery.settermslimit.html">SolrQuery::setTermsLimit</a></li>
+  <li><a href="solrquery.settermslowerbound.html">SolrQuery::setTermsLowerBound</a></li>
+  <li><a href="solrquery.settermsmaxcount.html">SolrQuery::setTermsMaxCount</a></li>
+  <li><a href="solrquery.settermsmincount.html">SolrQuery::setTermsMinCount</a></li>
+  <li><a href="solrquery.settermsprefix.html">SolrQuery::setTermsPrefix</a></li>
+  <li><a href="solrquery.settermsreturnraw.html">SolrQuery::setTermsReturnRaw</a></li>
+  <li><a href="solrquery.settermssort.html">SolrQuery::setTermsSort</a></li>
+  <li><a href="solrquery.settermsupperbound.html">SolrQuery::setTermsUpperBound</a></li>
+  <li><a href="solrquery.settimeallowed.html">SolrQuery::setTimeAllowed</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="solrquery.setgroupoffset.html">SolrQuery::setGroupOffset</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="solrquery.sethighlight.html">SolrQuery::setHighlight</a></div>
+                <div class="up"><a href="class.solrquery.html">SolrQuery</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="solrquery.setgrouptruncate" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SolrQuery::setGroupTruncate</h1>
+  <p class="refpurpose">If true, facet counts are based on the most relevant document of each group matching the query.</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-solrquery.setgrouptruncate-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">SolrQuery</span> <span class="methodname">SolrQuery::setGroupTruncate</span>
+    ( <span class="methodparam"><span class="type">bool</span> <code class="parameter">$value</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+    If true, facet counts are based on the most relevant document of each group matching the query.
+    The server default value is false.
+    group.truncate parameter
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-solrquery.setgrouptruncate-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">value</code></dt>
+
+    <dd>
+
+     <p class="para">
+      
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-solrquery.setgrouptruncate-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-solrquery.setgrouptruncate-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li class="member"> <span class="methodname">SolrQuery::setGroup</span></li>
+   <li class="member"> <span class="methodname">SolrQuery::addGroupField</span></li>
+   <li class="member"> <span class="methodname">SolrQuery::addGroupFunction</span></li>
+   <li class="member"> <span class="methodname">SolrQuery::addGroupQuery</span></li>
+   <li class="member"> <span class="methodname">SolrQuery::addGroupSortField</span></li>
+   <li class="member"> <span class="methodname">SolrQuery::setGroupFacet</span></li>
+   <li class="member"> <span class="methodname">SolrQuery::setGroupOffset</span></li>
+   <li class="member"> <span class="methodname">SolrQuery::setGroupLimit</span></li>
+   <li class="member"> <span class="methodname">SolrQuery::setGroupMain</span></li>
+   <li class="member"> <span class="methodname">SolrQuery::setGroupNGroups</span></li>
+   <li class="member"> <span class="methodname">SolrQuery::setGroupFormat</span></li>
+   <li class="member"> <span class="methodname">SolrQuery::setGroupCachePercent</span></li>
+  </ul>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

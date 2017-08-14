@@ -1,0 +1,248 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Gets information about the cursor's creation and iteration</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.mongo.html">Mongo</a></li>
+  <li class="header up"><a href="mongo.core.html">Core Classes</a></li>
+  <li class="header up"><a href="class.mongocommandcursor.html">MongoCommandCursor</a></li>
+  <li><a href="mongocommandcursor.batchsize.html">MongoCommandCursor::batchSize</a></li>
+  <li><a href="mongocommandcursor.construct.html">MongoCommandCursor::__construct</a></li>
+  <li><a href="mongocommandcursor.createfromdocument.html">MongoCommandCursor::createFromDocument</a></li>
+  <li><a href="mongocommandcursor.current.html">MongoCommandCursor::current</a></li>
+  <li><a href="mongocommandcursor.dead.html">MongoCommandCursor::dead</a></li>
+  <li><a href="mongocommandcursor.getreadpreference.html">MongoCommandCursor::getReadPreference</a></li>
+  <li class="active"><a href="mongocommandcursor.info.html">MongoCommandCursor::info</a></li>
+  <li><a href="mongocommandcursor.key.html">MongoCommandCursor::key</a></li>
+  <li><a href="mongocommandcursor.next.html">MongoCommandCursor::next</a></li>
+  <li><a href="mongocommandcursor.rewind.html">MongoCommandCursor::rewind</a></li>
+  <li><a href="mongocommandcursor.setreadpreference.html">MongoCommandCursor::setReadPreference</a></li>
+  <li><a href="mongocommandcursor.timeout.html">MongoCommandCursor::timeout</a></li>
+  <li><a href="mongocommandcursor.valid.html">MongoCommandCursor::valid</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mongocommandcursor.getreadpreference.html">MongoCommandCursor::getReadPreference</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mongocommandcursor.key.html">MongoCommandCursor::key</a></div>
+                <div class="up"><a href="class.mongocommandcursor.html">MongoCommandCursor</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mongocommandcursor.info" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">MongoCommandCursor::info</h1>
+  <p class="refpurpose">Gets information about the cursor&#039;s creation and iteration</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mongocommandcursor.info-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">MongoCommandCursor::info</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   This can be called before or after the cursor has started iterating.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mongocommandcursor.info-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">This function has no parameters.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-mongocommandcursor.info-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the namespace, batch size, limit, skip, flags, query, and projected
+   fields for this cursor. If the cursor has started iterating, additional
+   information about iteration and the connection will be included.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-mongocommandcursor.info-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-1603">
+   <p><strong>Example #1 <span class="function">MongoCommandCursor::info</span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$m&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoClient</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$cursor&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoCommandCursor</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$m</span><span style="color: #007700">,&nbsp;</span><span style="color: #FF8000">//&nbsp;MongoClient&nbsp;object<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'demo.cities'</span><span style="color: #007700">,&nbsp;</span><span style="color: #FF8000">//&nbsp;namespace<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">[<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'aggregate'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'cities'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'pipeline'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[&nbsp;[&nbsp;</span><span style="color: #DD0000">'$match'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[&nbsp;</span><span style="color: #DD0000">'_id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[&nbsp;</span><span style="color: #DD0000">'$exists'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true&nbsp;</span><span style="color: #007700">]&nbsp;]&nbsp;]&nbsp;],<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'cursor'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[&nbsp;</span><span style="color: #DD0000">'batchSize'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">],<br />&nbsp;&nbsp;&nbsp;&nbsp;]<br />);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Before&nbsp;iteration&nbsp;started:\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$cursor</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">info</span><span style="color: #007700">());<br /><br />echo&nbsp;</span><span style="color: #DD0000">"\nAfter&nbsp;iteration&nbsp;started:\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$cursor</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">rewind</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$cursor</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">info</span><span style="color: #007700">());<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Before iteration started:
+array(8) {
+  [&quot;ns&quot;]=&gt;
+  string(11) &quot;demo.cities&quot;
+  [&quot;limit&quot;]=&gt;
+  int(0)
+  [&quot;batchSize&quot;]=&gt;
+  int(0)
+  [&quot;skip&quot;]=&gt;
+  int(0)
+  [&quot;flags&quot;]=&gt;
+  int(0)
+  [&quot;query&quot;]=&gt;
+  array(3) {
+    [&quot;aggregate&quot;]=&gt;
+    string(6) &quot;cities&quot;
+    [&quot;pipeline&quot;]=&gt;
+    array(1) {
+      [0]=&gt;
+      array(1) {
+        [&quot;$match&quot;]=&gt;
+        array(1) {
+          [&quot;_id&quot;]=&gt;
+          array(1) {
+            [&quot;$exists&quot;]=&gt;
+            bool(true)
+          }
+        }
+      }
+    }
+    [&quot;cursor&quot;]=&gt;
+    array(1) {
+      [&quot;batchSize&quot;]=&gt;
+      int(1)
+    }
+  }
+  [&quot;fields&quot;]=&gt;
+  NULL
+  [&quot;started_iterating&quot;]=&gt;
+  bool(false)
+}
+
+After iteration started:
+array(17) {
+  [&quot;ns&quot;]=&gt;
+  string(11) &quot;demo.cities&quot;
+  [&quot;limit&quot;]=&gt;
+  int(0)
+  [&quot;batchSize&quot;]=&gt;
+  int(0)
+  [&quot;skip&quot;]=&gt;
+  int(0)
+  [&quot;flags&quot;]=&gt;
+  int(0)
+  [&quot;query&quot;]=&gt;
+  array(3) {
+    [&quot;aggregate&quot;]=&gt;
+    string(6) &quot;cities&quot;
+    [&quot;pipeline&quot;]=&gt;
+    array(1) {
+      [0]=&gt;
+      array(1) {
+        [&quot;$match&quot;]=&gt;
+        array(1) {
+          [&quot;_id&quot;]=&gt;
+          array(1) {
+            [&quot;$exists&quot;]=&gt;
+            bool(true)
+          }
+        }
+      }
+    }
+    [&quot;cursor&quot;]=&gt;
+    array(1) {
+      [&quot;batchSize&quot;]=&gt;
+      int(1)
+    }
+  }
+  [&quot;fields&quot;]=&gt;
+  NULL
+  [&quot;started_iterating&quot;]=&gt;
+  bool(true)
+  [&quot;id&quot;]=&gt;
+  int(185840310129)
+  [&quot;at&quot;]=&gt;
+  int(0)
+  [&quot;numReturned&quot;]=&gt;
+  int(0)
+  [&quot;server&quot;]=&gt;
+  string(25) &quot;localhost:27017;-;.;23991&quot;
+  [&quot;host&quot;]=&gt;
+  string(9) &quot;localhost&quot;
+  [&quot;port&quot;]=&gt;
+  int(27017)
+  [&quot;connection_type_desc&quot;]=&gt;
+  string(10) &quot;STANDALONE&quot;
+  [&quot;firstBatchAt&quot;]=&gt;
+  int(0)
+  [&quot;firstBatchNumReturned&quot;]=&gt;
+  int(1)
+}
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-mongocommandcursor.info-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li class="member"> <span class="methodname">MongoCursorInterface::info</span></li>
+  </ul>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

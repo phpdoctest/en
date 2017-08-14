@@ -1,0 +1,97 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Objective interface</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="internals2.html">PHP at the Core: A Hacker's Guide</a></li>
+  <li class="header up"><a href="internals2.counter.html">The &quot;counter&quot; Extension - A Continuing Example</a></li>
+  <li class="header up"><a href="internals2.counter.examples.html">Examples</a></li>
+  <li><a href="internals2.counter.examples.basic.html">Basic interface</a></li>
+  <li><a href="internals2.counter.examples.extended.html">Extended interface</a></li>
+  <li class="active"><a href="internals2.counter.examples.objective.html">Objective interface</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="internals2.counter.examples.extended.html">Extended interface</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="internals2.counter.counter-class.html">Counter</a></div>
+                <div class="up"><a href="internals2.counter.examples.html">Examples</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="internals2.counter.examples.objective" class="section">
+    <h2 class="title">Objective interface</h2>
+    
+    <p class="simpara">
+     The objective interface provides an object-oriented way to access the
+     extended interfaces. The following example shows how the above one would be
+     implemented using the objective interface. The output of this example is
+     exactly the same, except that instead of printing &quot;Not a valid counter!&quot;,
+     this will instead issue a PHP warning that the variable
+     <em>$counter_three</em> is not an object. This example shows that
+     it is possible to subclass the <span class="classname">Counter</span> class defined
+     by the extension, as well as that the counter&#039;s value is maintained using
+     an instance variable rather than method access.
+    </p>
+    
+    <div class="example" id="example-6407">
+     <p><strong>Example #1 &quot;counter&quot;&#039;s objective interface</strong></p>
+     
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyCounter&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">Counter<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">printCounterInfo</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Counter's&nbsp;name&nbsp;is&nbsp;'%s'&nbsp;and&nbsp;is%s&nbsp;persistent.&nbsp;Its&nbsp;current&nbsp;value&nbsp;is&nbsp;%d.\n"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMeta</span><span style="color: #007700">(</span><span style="color: #0000BB">COUNTER_META_NAME</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMeta</span><span style="color: #007700">(</span><span style="color: #0000BB">COUNTER_META_IS_PERSISTENT</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">''&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'&nbsp;not'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">Counter</span><span style="color: #007700">::</span><span style="color: #0000BB">setCounterClass</span><span style="color: #007700">(</span><span style="color: #DD0000">"MyCounter"</span><span style="color: #007700">);<br />if&nbsp;((</span><span style="color: #0000BB">$counter_one&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">Counter</span><span style="color: #007700">::</span><span style="color: #0000BB">getNamed</span><span style="color: #007700">(</span><span style="color: #DD0000">"one"</span><span style="color: #007700">))&nbsp;===&nbsp;</span><span style="color: #0000BB">NULL</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$counter_one&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Counter</span><span style="color: #007700">(</span><span style="color: #DD0000">"one"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">COUNTER_FLAG_PERSIST</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">$counter_one</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bumpValue</span><span style="color: #007700">(</span><span style="color: #0000BB">2</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;we&nbsp;aren't&nbsp;allowed&nbsp;to&nbsp;"set"&nbsp;the&nbsp;value&nbsp;directly<br /></span><span style="color: #0000BB">$counter_two&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Counter</span><span style="color: #007700">(</span><span style="color: #DD0000">"two"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$counter_three&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">Counter</span><span style="color: #007700">::</span><span style="color: #0000BB">getNamed</span><span style="color: #007700">(</span><span style="color: #DD0000">"three"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$counter_four&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Counter</span><span style="color: #007700">(</span><span style="color: #DD0000">"four"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">COUNTER_FLAG_PERSIST&nbsp;</span><span style="color: #007700">|&nbsp;</span><span style="color: #0000BB">COUNTER_FLAG_SAVE&nbsp;</span><span style="color: #007700">|&nbsp;</span><span style="color: #0000BB">COUNTER_FLAG_NO_OVERWRITE</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$counter_four</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bumpValue</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$counter_one</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">printCounterInfo</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$counter_two</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">printCounterInfo</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$counter_three</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">printCounterInfo</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$counter_four</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">printCounterInfo</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

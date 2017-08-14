@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Meta-characters</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.text.html">Text Processing</a></li>
+  <li class="header up"><a href="book.pcre.html">PCRE</a></li>
+  <li class="header up"><a href="pcre.pattern.html">PCRE Patterns</a></li>
+  <li class="header up"><a href="reference.pcre.pattern.syntax.html">PCRE regex syntax</a></li>
+  <li><a href="regexp.introduction.html">Introduction</a></li>
+  <li><a href="regexp.reference.delimiters.html">Delimiters</a></li>
+  <li class="active"><a href="regexp.reference.meta.html">Meta-characters</a></li>
+  <li><a href="regexp.reference.escape.html">Escape sequences</a></li>
+  <li><a href="regexp.reference.unicode.html">Unicode character properties</a></li>
+  <li><a href="regexp.reference.anchors.html">Anchors</a></li>
+  <li><a href="regexp.reference.dot.html">Dot</a></li>
+  <li><a href="regexp.reference.character-classes.html">Character classes</a></li>
+  <li><a href="regexp.reference.alternation.html">Alternation</a></li>
+  <li><a href="regexp.reference.internal-options.html">Internal option setting</a></li>
+  <li><a href="regexp.reference.subpatterns.html">Subpatterns</a></li>
+  <li><a href="regexp.reference.repetition.html">Repetition</a></li>
+  <li><a href="regexp.reference.back-references.html">Back references</a></li>
+  <li><a href="regexp.reference.assertions.html">Assertions</a></li>
+  <li><a href="regexp.reference.onlyonce.html">Once-only subpatterns</a></li>
+  <li><a href="regexp.reference.conditional.html">Conditional subpatterns</a></li>
+  <li><a href="regexp.reference.comments.html">Comments</a></li>
+  <li><a href="regexp.reference.recursive.html">Recursive patterns</a></li>
+  <li><a href="regexp.reference.performance.html">Performance</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="regexp.reference.delimiters.html">Delimiters</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="regexp.reference.escape.html">Escape sequences</a></div>
+                <div class="up"><a href="reference.pcre.pattern.syntax.html">PCRE regex syntax</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="regexp.reference.meta" class="section">
+  <h2 class="title">Meta-characters</h2>
+  <p class="para">
+   The  power  of  regular  expressions comes from the
+   ability to include alternatives and repetitions in the
+   pattern.  These  are encoded in the pattern by the use of
+   <em class="emphasis">meta-characters</em>, which do not stand for  themselves  but  instead
+   are interpreted in some special way.
+  </p>
+  <p class="para">
+   There are two different sets of meta-characters: those  that
+   are  recognized anywhere in the pattern except within square
+   brackets, and those that are recognized in square brackets.
+   Outside square brackets, the meta-characters are as follows:
+
+   <table class="doctable table">
+     <caption><strong>Meta-characters outside square brackets</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>Meta-character</th><th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>\</td><td>general escape character with several uses</td>
+      </tr>
+
+      <tr>
+       <td>^</td><td>assert start of subject (or line, in multiline mode)</td>
+      </tr>
+
+      <tr>
+       <td>$</td><td>assert end of subject or before a terminating newline (or end of line, in multiline mode)</td>
+      </tr>
+
+      <tr>
+       <td>.</td><td>match any character except newline (by default)</td>
+      </tr>
+
+      <tr>
+       <td>[</td><td>start character class definition</td>
+      </tr>
+
+      <tr>
+       <td>]</td><td>end character class definition</td>
+      </tr>
+
+      <tr>
+       <td>|</td><td>start of alternative branch</td>
+      </tr>
+
+      <tr>
+       <td>(</td><td>start subpattern</td>
+      </tr>
+
+      <tr>
+       <td>)</td><td>end subpattern</td>
+      </tr>
+
+      <tr>
+       <td>?</td><td>extends the meaning of (, also 0 or 1 quantifier, also makes greedy
+        quantifiers lazy (see <a href="regexp.reference.repetition.html" class="link">repetition</a>)</td>
+      </tr>
+
+      <tr>
+       <td>*</td><td>0 or more quantifier</td>
+      </tr>
+
+      <tr>
+       <td>+</td><td>1 or more quantifier</td>
+      </tr>
+
+      <tr>
+       <td>{</td><td>start min/max quantifier</td>
+      </tr>
+
+      <tr>
+       <td>}</td><td>end min/max quantifier</td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+
+   Part of a pattern that is in square brackets is called a
+   <a href="regexp.reference.character-classes.html" class="link">character class</a>. In a character class the only
+   meta-characters are:
+
+   <table class="doctable table">
+     <caption><strong>Meta-characters inside square brackets (<em class="emphasis">character classes</em>)</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>Meta-character</th><th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>\</td><td>general escape character</td>
+      </tr>
+
+      <tr>
+       <td>^</td><td>negate the class, but only if the first character</td>
+      </tr>
+
+      <tr>
+       <td>-</td><td>indicates character range</td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+
+   The following sections describe the use of each of the
+   meta-characters.
+  </p>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Counts the number of documents in this collection</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.mongo.html">Mongo</a></li>
+  <li class="header up"><a href="mongo.core.html">Core Classes</a></li>
+  <li class="header up"><a href="class.mongocollection.html">MongoCollection</a></li>
+  <li><a href="mongocollection.aggregate.html">MongoCollection::aggregate</a></li>
+  <li><a href="mongocollection.aggregatecursor.html">MongoCollection::aggregateCursor</a></li>
+  <li><a href="mongocollection.batchinsert.html">MongoCollection::batchInsert</a></li>
+  <li><a href="mongocollection.construct.html">MongoCollection::__construct</a></li>
+  <li class="active"><a href="mongocollection.count.html">MongoCollection::count</a></li>
+  <li><a href="mongocollection.createdbref.html">MongoCollection::createDBRef</a></li>
+  <li><a href="mongocollection.createindex.html">MongoCollection::createIndex</a></li>
+  <li><a href="mongocollection.deleteindex.html">MongoCollection::deleteIndex</a></li>
+  <li><a href="mongocollection.deleteindexes.html">MongoCollection::deleteIndexes</a></li>
+  <li><a href="mongocollection.distinct.html">MongoCollection::distinct</a></li>
+  <li><a href="mongocollection.drop.html">MongoCollection::drop</a></li>
+  <li><a href="mongocollection.ensureindex.html">MongoCollection::ensureIndex</a></li>
+  <li><a href="mongocollection.find.html">MongoCollection::find</a></li>
+  <li><a href="mongocollection.findandmodify.html">MongoCollection::findAndModify</a></li>
+  <li><a href="mongocollection.findone.html">MongoCollection::findOne</a></li>
+  <li><a href="mongocollection.get.html">MongoCollection::__get</a></li>
+  <li><a href="mongocollection.getdbref.html">MongoCollection::getDBRef</a></li>
+  <li><a href="mongocollection.getindexinfo.html">MongoCollection::getIndexInfo</a></li>
+  <li><a href="mongocollection.getname.html">MongoCollection::getName</a></li>
+  <li><a href="mongocollection.getreadpreference.html">MongoCollection::getReadPreference</a></li>
+  <li><a href="mongocollection.getslaveokay.html">MongoCollection::getSlaveOkay</a></li>
+  <li><a href="mongocollection.getwriteconcern.html">MongoCollection::getWriteConcern</a></li>
+  <li><a href="mongocollection.group.html">MongoCollection::group</a></li>
+  <li><a href="mongocollection.insert.html">MongoCollection::insert</a></li>
+  <li><a href="mongocollection.parallelcollectionscan.html">MongoCollection::parallelCollectionScan</a></li>
+  <li><a href="mongocollection.remove.html">MongoCollection::remove</a></li>
+  <li><a href="mongocollection.save.html">MongoCollection::save</a></li>
+  <li><a href="mongocollection.setreadpreference.html">MongoCollection::setReadPreference</a></li>
+  <li><a href="mongocollection.setslaveokay.html">MongoCollection::setSlaveOkay</a></li>
+  <li><a href="mongocollection.setwriteconcern.html">MongoCollection::setWriteConcern</a></li>
+  <li><a href="mongocollection.toindexstring.html">MongoCollection::toIndexString</a></li>
+  <li><a href="mongocollection.--tostring.html">MongoCollection::__toString</a></li>
+  <li><a href="mongocollection.update.html">MongoCollection::update</a></li>
+  <li><a href="mongocollection.validate.html">MongoCollection::validate</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mongocollection.construct.html">MongoCollection::__construct</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mongocollection.createdbref.html">MongoCollection::createDBRef</a></div>
+                <div class="up"><a href="class.mongocollection.html">MongoCollection</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mongocollection.count" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">MongoCollection::count</h1>
+  <p class="refpurpose">Counts the number of documents in this collection</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mongocollection.count-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">MongoCollection::count</span>
+    ([ <span class="methodparam"><span class="type">array</span> <code class="parameter">$query</code><span class="initializer"> = array()</span></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$options</code><span class="initializer"> = array()</span></span>
+  ]] )</div>
+
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-mongocollection.count-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+
+      <code class="parameter">query</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Associative array or object with fields to match.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+
+      <code class="parameter">options</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       An array of options for the index creation. Currently available options
+       include:
+       <table class="doctable informaltable">
+        
+         <thead>
+          <tr>
+           <th>Name</th>
+           <th>Type</th>
+           <th>Description</th>
+          </tr>
+
+         </thead>
+
+         <tbody class="tbody">
+          <tr>
+           <td><var class="varname">hint</var></td>
+           <td><span class="type">mixed</span></td>
+           <td>
+            <p class="para">
+             Index to use for the query. If a string is passed, it should
+             correspond to an index name. If an array or object is passed, it
+             should correspond to the specification used to create the index
+             (i.e. the first argument to
+             <span class="function">MongoCollection::createIndex</span>).
+            </p>
+            <span class="simpara">This option is only supported in MongoDB 2.6+.</span>
+           </td>
+          </tr>
+
+          <tr>
+           <td><var class="varname">limit</var></td>
+           <td><span class="type">integer</span></td>
+           <td>The maximum number of matching documents to return.</td>
+          </tr>
+
+          <tr>
+           <td><var class="varname">maxTimeMS</var></td>
+           <td><span class="type">integer</span></td>
+           <td>
+            <p class="para">
+             Specifies a cumulative time limit in milliseconds for processing
+             the operation (does not include idle time). If the operation is not
+             completed within the timeout period, a
+             <span class="classname">MongoExecutionTimeoutException</span> will be
+             thrown.
+            </p>
+            <span class="simpara">This option is only supported in MongoDB 2.6+.</span>
+           </td>
+          </tr>
+
+          <tr>
+           <td><var class="varname">skip</var></td>
+           <td><span class="type">integer</span></td>
+           <td>The number of matching documents to skip before returning results.</td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-mongocollection.count-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the number of documents matching the query.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-mongocollection.count-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   Throws <span class="classname">MongoResultException</span> if the server could not
+   execute the command due to an error.
+  </p>
+  <p class="para">
+   Throws <span class="classname">MongoExecutionTimeoutException</span> if command
+   execution was terminated due to <var class="varname">maxTimeMS</var>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-mongocollection.count-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>1.6.0</td>
+       <td>
+        The second parameter is now an <code class="parameter">options</code> array.
+        Passing <code class="parameter">limit</code> and <code class="parameter">skip</code> as
+        the second and third parameters, respectively, is deprecated.
+       </td>
+      </tr>
+
+      <tr>
+       <td>1.0.7</td>
+       <td>
+        Added <code class="parameter">limit</code> and <code class="parameter">skip</code> as
+        second and third parameters, respectively.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-mongocollection.count-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-1537">
+   <p><strong>Example #1 <span class="function">MongoCollection::count</span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$collection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">insert</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'x'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">1</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">$collection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">insert</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'x'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">2</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">$collection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">insert</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'x'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">3</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$collection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">count</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$collection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">count</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'x'</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">1</span><span style="color: #007700">)));<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+int(3)
+int(1)
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

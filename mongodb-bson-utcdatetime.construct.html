@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Construct a new UTCDateTime</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="set.mongodb.html">MongoDB</a></li>
+  <li class="header up"><a href="book.bson.html">MongoDB\BSON</a></li>
+  <li class="header up"><a href="class.mongodb-bson-utcdatetime.html">MongoDB\BSON\UTCDateTime</a></li>
+  <li class="active"><a href="mongodb-bson-utcdatetime.construct.html">MongoDB\BSON\UTCDateTime::__construct</a></li>
+  <li><a href="mongodb-bson-utcdatetime.jsonserialize.html">MongoDB\BSON\UTCDateTime::jsonSerialize</a></li>
+  <li><a href="mongodb-bson-utcdatetime.serialize.html">MongoDB\BSON\UTCDateTime::serialize</a></li>
+  <li><a href="mongodb-bson-utcdatetime.todatetime.html">MongoDB\BSON\UTCDateTime::toDateTime</a></li>
+  <li><a href="mongodb-bson-utcdatetime.tostring.html">MongoDB\BSON\UTCDateTime::__toString</a></li>
+  <li><a href="mongodb-bson-utcdatetime.unserialize.html">MongoDB\BSON\UTCDateTime::unserialize</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="class.mongodb-bson-utcdatetime.html">MongoDB\BSON\UTCDateTime</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mongodb-bson-utcdatetime.jsonserialize.html">MongoDB\BSON\UTCDateTime::jsonSerialize</a></div>
+                <div class="up"><a href="class.mongodb-bson-utcdatetime.html">MongoDB\BSON\UTCDateTime</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mongodb-bson-utcdatetime.construct" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">MongoDB\BSON\UTCDateTime::__construct</h1>
+  <p class="refpurpose">Construct a new UTCDateTime</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mongodb-bson-utcdatetime.construct-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span>  <span class="methodname">MongoDB\BSON\UTCDateTime::__construct</span>
+    ([ <span class="methodparam"><span class="type">integer|float|string|DateTimeInterface</span> <code class="parameter">$milliseconds</code><span class="initializer"> = <strong><code>NULL</code></strong></span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mongodb-bson-utcdatetime.construct-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">milliseconds</code> (<span class="type">integer|float|string|DateTimeInterface</span>)</dt>
+
+    <dd>
+
+     <p class="para">
+      Number of milliseconds since the Unix epoch (Jan 1, 1970). Negative values
+      represent dates before 1970. This value may be provided as a 64-bit
+      <span class="type">integer</span>. For compatibility on 32-bit systems, this parameter
+      may also be provided as a <span class="type">float</span> or <span class="type">string</span>.
+     </p>
+     <p class="para">
+      If the argument is a <span class="classname">DateTimeInterface</span>, the number
+      of milliseconds since the Unix epoch will be derived from that value.
+      Note that in versions of PHP versions before 7.1.0,
+      <span class="classname">DateTime</span> and
+      <span class="classname">DateTimeImmutable</span> objects constructed from the
+      current time
+      <a href="migration71.incompatible.html#migration71.incompatible.datetime-microseconds" class="link">did not
+        incorporate sub-second precision</a>.
+     </p>
+     <p class="para">
+      If this argument is <strong><code>NULL</code></strong>, the current time will be used by default.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-mongodb-bson-utcdatetime.construct-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <ul class="simplelist">
+   <li class="member">Throws <span class="classname">MongoDB\Driver\Exception\InvalidArgumentException</span> on argument parsing errors.</li>
+  </ul>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-mongodb-bson-utcdatetime.construct-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>1.2.0</td>
+       <td>
+        <p class="para">
+         The <code class="parameter">milliseconds</code> argument is optional and
+         defaults to <strong><code>NULL</code></strong> (i.e. current time). The argument also accepts a
+         <span class="classname">DateTimeInterface</span>, which may be used to derive
+         the number of milliseconds since the Unix epoch.
+        </p>
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-mongodb-bson-utcdatetime.construct-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-1736">
+   <p><strong>Example #1 <span class="function">MongoDB\BSON\UTCDateTime::__construct</span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />var_dump</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">UTCDateTime</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">UTCDateTime</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">DateTime</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">UTCDateTime</span><span style="color: #007700">(</span><span style="color: #0000BB">1416445411987</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+object(MongoDB\BSON\UTCDateTime)#1 (1) {
+  [&quot;milliseconds&quot;]=&gt;
+  string(13) &quot;1484852905560&quot;
+}
+object(MongoDB\BSON\UTCDateTime)#1 (1) {
+  [&quot;milliseconds&quot;]=&gt;
+  string(13) &quot;1484852905560&quot;
+}
+object(MongoDB\BSON\UTCDateTime)#1 (1) {
+  [&quot;milliseconds&quot;]=&gt;
+  string(13) &quot;1416445411987&quot;
+}
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+
+ <div class="refsect1 seealso" id="refsect1-mongodb-bson-utcdatetime.construct-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li class="member"><a href="https://docs.mongodb.com/manual/reference/bson-types/#date" class="link external">&raquo;&nbsp;BSON Types: Date</a></li>
+  </ul>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,287 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Get the integer value of a variable</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.vartype.html">Variable and Type Related Extensions</a></li>
+  <li class="header up"><a href="book.var.html">Variable handling</a></li>
+  <li class="header up"><a href="ref.var.html">Variable handling Functions</a></li>
+  <li><a href="function.boolval.html">boolval</a></li>
+  <li><a href="function.debug-zval-dump.html">debug_zval_dump</a></li>
+  <li><a href="function.doubleval.html">doubleval</a></li>
+  <li><a href="function.empty.html">empty</a></li>
+  <li><a href="function.floatval.html">floatval</a></li>
+  <li><a href="function.get-defined-vars.html">get_defined_vars</a></li>
+  <li><a href="function.get-resource-type.html">get_resource_type</a></li>
+  <li><a href="function.gettype.html">gettype</a></li>
+  <li><a href="function.import-request-variables.html">import_request_variables</a></li>
+  <li class="active"><a href="function.intval.html">intval</a></li>
+  <li><a href="function.is-array.html">is_array</a></li>
+  <li><a href="function.is-bool.html">is_bool</a></li>
+  <li><a href="function.is-callable.html">is_callable</a></li>
+  <li><a href="function.is-double.html">is_double</a></li>
+  <li><a href="function.is-float.html">is_float</a></li>
+  <li><a href="function.is-int.html">is_int</a></li>
+  <li><a href="function.is-integer.html">is_integer</a></li>
+  <li><a href="function.is-iterable.html">is_iterable</a></li>
+  <li><a href="function.is-long.html">is_long</a></li>
+  <li><a href="function.is-null.html">is_null</a></li>
+  <li><a href="function.is-numeric.html">is_numeric</a></li>
+  <li><a href="function.is-object.html">is_object</a></li>
+  <li><a href="function.is-real.html">is_real</a></li>
+  <li><a href="function.is-resource.html">is_resource</a></li>
+  <li><a href="function.is-scalar.html">is_scalar</a></li>
+  <li><a href="function.is-string.html">is_string</a></li>
+  <li><a href="function.isset.html">isset</a></li>
+  <li><a href="function.print-r.html">print_r</a></li>
+  <li><a href="function.serialize.html">serialize</a></li>
+  <li><a href="function.settype.html">settype</a></li>
+  <li><a href="function.strval.html">strval</a></li>
+  <li><a href="function.unserialize.html">unserialize</a></li>
+  <li><a href="function.unset.html">unset</a></li>
+  <li><a href="function.var-dump.html">var_dump</a></li>
+  <li><a href="function.var-export.html">var_export</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.import-request-variables.html">import_request_variables</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.is-array.html">is_array</a></div>
+                <div class="up"><a href="ref.var.html">Variable handling Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.intval" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">intval</h1>
+  <p class="refpurpose">Get the integer value of a variable</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.intval-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname">intval</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$var</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$base</code><span class="initializer"> = 10</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Returns the <span class="type">integer</span> value of <code class="parameter">var</code>,
+   using the specified <code class="parameter">base</code> for the conversion 
+   (the default is base 10). <span class="function">intval</span> should not be used
+   on objects, as doing so will emit an <strong><code>E_NOTICE</code></strong> level
+   error and return 1.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.intval-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">var</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The scalar value being converted to an integer
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">base</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The base for the conversion
+      </p>
+      <blockquote class="note"><p><strong class="note">Note</strong>: 
+       <p class="para">
+        If <code class="parameter">base</code> is 0, the base used is determined
+        by the format of <code class="parameter">var</code>:
+        <ul class="itemizedlist">
+         <li class="listitem">
+          <span class="simpara">
+           if string includes a &quot;0x&quot; (or &quot;0X&quot;) prefix, the base is taken
+           as 16 (hex); otherwise,
+          </span>
+         </li>
+         <li class="listitem">
+          <span class="simpara">
+           if string starts with &quot;0&quot;, the base is taken as 8 (octal);
+           otherwise,
+          </span>
+         </li>
+         <li class="listitem">
+          <span class="simpara">
+           the base is taken as 10 (decimal).
+          </span>
+         </li>
+        </ul>
+       </p>
+      </p></blockquote>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.intval-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   The integer value of <code class="parameter">var</code> on success, or 0 on
+   failure. Empty arrays return 0, non-empty arrays return 1.
+  </p>
+  <p class="para">
+   The maximum value depends on the system. 32 bit systems have a 
+   maximum signed integer range of -2147483648 to 2147483647. So for example 
+   on such a system, <em>intval(&#039;1000000000000&#039;)</em> will return 
+   2147483647. The maximum signed integer value for 64 bit systems is 
+   9223372036854775807.
+  </p>
+  <p class="para">
+   Strings will most likely return 0 although this depends on the 
+   leftmost characters of the string. The common rules of 
+   <a href="language.types.integer.html#language.types.integer.casting" class="link">integer casting</a> 
+   apply.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.intval-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-6132">
+    <p><strong>Example #1 <span class="function">intval</span> examples</strong></p>
+    <div class="example-contents"><p>
+     The following examples are based on a 32 bit system.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">intval</span><span style="color: #007700">(</span><span style="color: #0000BB">42</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;42<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">intval</span><span style="color: #007700">(</span><span style="color: #0000BB">4.2</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;4<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">intval</span><span style="color: #007700">(</span><span style="color: #DD0000">'42'</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;42<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">intval</span><span style="color: #007700">(</span><span style="color: #DD0000">'+42'</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;42<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">intval</span><span style="color: #007700">(</span><span style="color: #DD0000">'-42'</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;-42<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">intval</span><span style="color: #007700">(</span><span style="color: #0000BB">042</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;34<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">intval</span><span style="color: #007700">(</span><span style="color: #DD0000">'042'</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;42<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">intval</span><span style="color: #007700">(</span><span style="color: #0000BB">1e10</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;1410065408<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">intval</span><span style="color: #007700">(</span><span style="color: #DD0000">'1e10'</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;1<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">intval</span><span style="color: #007700">(</span><span style="color: #0000BB">0x1A</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;26<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">intval</span><span style="color: #007700">(</span><span style="color: #0000BB">42000000</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;42000000<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">intval</span><span style="color: #007700">(</span><span style="color: #0000BB">420000000000000000000</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;0<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">intval</span><span style="color: #007700">(</span><span style="color: #DD0000">'420000000000000000000'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;2147483647<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">intval</span><span style="color: #007700">(</span><span style="color: #0000BB">42</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;42<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">intval</span><span style="color: #007700">(</span><span style="color: #DD0000">'42'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;34<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">intval</span><span style="color: #007700">(array());&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;0<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">intval</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'bar'</span><span style="color: #007700">));&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;1<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.intval-notes">
+  <h3 class="title">Notes</h3>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    The <code class="parameter">base</code> parameter has no effect unless the
+    <code class="parameter">var</code> parameter is a string.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.intval-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.1.0</td>
+       <td>
+        Throws <strong><code>E_NOTICE</code></strong> and
+        returns 1, when an object is passed to 
+        <code class="parameter">var</code>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.intval-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">boolval</span></li>
+    <li class="member"><span class="function">floatval</span></li>
+    <li class="member"><span class="function">strval</span></li>
+    <li class="member"><span class="function">settype</span></li>
+    <li class="member"><span class="function">is_numeric</span></li>
+    <li class="member"><a href="language.types.type-juggling.html" class="link">Type juggling</a></li>
+    <li class="member"><a href="ref.bc.html" class="link">BCMath Arbitrary Precision Mathematics Functions</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

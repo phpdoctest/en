@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Write session data</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.session.html">Session Extensions</a></li>
+  <li class="header up"><a href="book.session.html">Sessions</a></li>
+  <li class="header up"><a href="class.sessionhandlerinterface.html">SessionHandlerInterface</a></li>
+  <li><a href="sessionhandlerinterface.close.html">SessionHandlerInterface::close</a></li>
+  <li><a href="sessionhandlerinterface.destroy.html">SessionHandlerInterface::destroy</a></li>
+  <li><a href="sessionhandlerinterface.gc.html">SessionHandlerInterface::gc</a></li>
+  <li><a href="sessionhandlerinterface.open.html">SessionHandlerInterface::open</a></li>
+  <li><a href="sessionhandlerinterface.read.html">SessionHandlerInterface::read</a></li>
+  <li class="active"><a href="sessionhandlerinterface.write.html">SessionHandlerInterface::write</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="sessionhandlerinterface.read.html">SessionHandlerInterface::read</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="book.session-pgsql.html">Session PgSQL</a></div>
+                <div class="up"><a href="class.sessionhandlerinterface.html">SessionHandlerInterface</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="sessionhandlerinterface.write" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SessionHandlerInterface::write</h1>
+  <p class="refpurpose">Write session data</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-sessionhandlerinterface.write-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">SessionHandlerInterface::write</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$session_id</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$session_data</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Writes the session data to the session storage. Called by
+   <span class="function">session_write_close</span>, when <span class="function">session_register_shutdown</span> fails, or during a normal shutdown.
+   Note: <span class="function">SessionHandlerInterface::close</span> is called immediately after this function.
+  </p>
+  <p class="para">
+   PHP will call this method when the session is ready to be saved and closed. It encodes
+   the session data from the <var class="varname">$_SESSION</var> superglobal to a serialized string and passes this
+   along with the session ID to this method for storage.  The serialization method used
+   is specified in the <a href="session.configuration.html#ini.session.serialize-handler" class="link">session.serialize_handler</a> setting.
+  </p>
+  <p class="para">
+   Note this method is normally called by PHP after the output buffers have been closed unless explicitly
+   called by <span class="function">session_write_close</span>
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-sessionhandlerinterface.write-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">session_id</code></dt>
+
+    <dd>
+
+     <p class="para">
+      The session id.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">session_data</code></dt>
+
+    <dd>
+
+     <p class="para">
+      The encoded session data.  This data is the result of the PHP internally encoding the <var class="varname">$_SESSION</var> superglobal to a serialized
+      string and passing it as this parameter.  Please note sessions use an alternative serialization method.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-sessionhandlerinterface.write-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   The return value (usually <strong><code>TRUE</code></strong> on success, <strong><code>FALSE</code></strong> on failure). Note this value is returned internally to PHP for processing.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-sessionhandlerinterface.write-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member">
+     The <a href="session.configuration.html#ini.session.serialize-handler" class="link">session.serialize_handler</a>
+     configuration directive.
+    </li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

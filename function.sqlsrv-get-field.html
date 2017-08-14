@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Gets field data from the currently selected row</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.sqlsrv.html">SQLSRV</a></li>
+  <li class="header up"><a href="ref.sqlsrv.html">SQLSRV Functions</a></li>
+  <li><a href="function.sqlsrv-begin-transaction.html">sqlsrv_begin_transaction</a></li>
+  <li><a href="function.sqlsrv-cancel.html">sqlsrv_cancel</a></li>
+  <li><a href="function.sqlsrv-client-info.html">sqlsrv_client_info</a></li>
+  <li><a href="function.sqlsrv-close.html">sqlsrv_close</a></li>
+  <li><a href="function.sqlsrv-commit.html">sqlsrv_commit</a></li>
+  <li><a href="function.sqlsrv-configure.html">sqlsrv_configure</a></li>
+  <li><a href="function.sqlsrv-connect.html">sqlsrv_connect</a></li>
+  <li><a href="function.sqlsrv-errors.html">sqlsrv_errors</a></li>
+  <li><a href="function.sqlsrv-execute.html">sqlsrv_execute</a></li>
+  <li><a href="function.sqlsrv-fetch-array.html">sqlsrv_fetch_array</a></li>
+  <li><a href="function.sqlsrv-fetch-object.html">sqlsrv_fetch_object</a></li>
+  <li><a href="function.sqlsrv-fetch.html">sqlsrv_fetch</a></li>
+  <li><a href="function.sqlsrv-field-metadata.html">sqlsrv_field_metadata</a></li>
+  <li><a href="function.sqlsrv-free-stmt.html">sqlsrv_free_stmt</a></li>
+  <li><a href="function.sqlsrv-get-config.html">sqlsrv_get_config</a></li>
+  <li class="active"><a href="function.sqlsrv-get-field.html">sqlsrv_get_field</a></li>
+  <li><a href="function.sqlsrv-has-rows.html">sqlsrv_has_rows</a></li>
+  <li><a href="function.sqlsrv-next-result.html">sqlsrv_next_result</a></li>
+  <li><a href="function.sqlsrv-num-fields.html">sqlsrv_num_fields</a></li>
+  <li><a href="function.sqlsrv-num-rows.html">sqlsrv_num_rows</a></li>
+  <li><a href="function.sqlsrv-prepare.html">sqlsrv_prepare</a></li>
+  <li><a href="function.sqlsrv-query.html">sqlsrv_query</a></li>
+  <li><a href="function.sqlsrv-rollback.html">sqlsrv_rollback</a></li>
+  <li><a href="function.sqlsrv-rows-affected.html">sqlsrv_rows_affected</a></li>
+  <li><a href="function.sqlsrv-send-stream-data.html">sqlsrv_send_stream_data</a></li>
+  <li><a href="function.sqlsrv-server-info.html">sqlsrv_server_info</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.sqlsrv-get-config.html">sqlsrv_get_config</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.sqlsrv-has-rows.html">sqlsrv_has_rows</a></div>
+                <div class="up"><a href="ref.sqlsrv.html">SQLSRV Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.sqlsrv-get-field" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">sqlsrv_get_field</h1>
+  <p class="refpurpose">Gets field data from the currently selected row</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.sqlsrv-get-field-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname">sqlsrv_get_field</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$stmt</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$fieldIndex</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$getAsType</code></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Gets field data from the currently selected row. Fields must be accessed in 
+   order. Field indices start at 0.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.sqlsrv-get-field-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">stmt</code></dt>
+
+     <dd>
+
+      <p class="para">
+       A statement resource returned by <span class="function">sqlsrv_query</span> or 
+       <span class="function">sqlsrv_execute</span>.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">fieldIndex</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The index of the field to be retrieved. Field indices start at 0. Fields 
+       must be accessed in order. i.e. If you access field index 1, then field 
+       index 0 will not be available.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">getAsType</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The PHP data type for the returned field data. If this parameter is not 
+       set, the field data will be returned as its default PHP data type.
+       For information about default PHP data types, see 
+       <a href="http://msdn.microsoft.com/en-us/library/cc296193.aspx" class="link external">&raquo;&nbsp;Default PHP Data Types</a> 
+       in the Microsoft SQLSRV documentation.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.sqlsrv-get-field-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns data from the specified field on success. Returns <strong><code>FALSE</code></strong> otherwise.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.sqlsrv-get-field-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-2428">
+    <p><strong>Example #1 <span class="function">sqlsrv_get_field</span> example</strong></p>
+    <div class="example-contents"><p>
+    The following example demonstrates how to retrieve a row with 
+    <span class="function">sqlsrv_fetch</span> and get the row fields with 
+    <span class="function">sqlsrv_get_field</span>.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$serverName&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"serverName\sqlexpress"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$connectionInfo&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;</span><span style="color: #DD0000">"Database"</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"dbName"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"UID"</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"username"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"PWD"</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sqlsrv_connect</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$serverName</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$connectionInfo</span><span style="color: #007700">);<br />if(&nbsp;</span><span style="color: #0000BB">$conn&nbsp;</span><span style="color: #007700">===&nbsp;</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;die(&nbsp;</span><span style="color: #0000BB">print_r</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">sqlsrv_errors</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">));<br />}<br /><br /></span><span style="color: #0000BB">$sql&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;Name,&nbsp;Comment&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;Table_1<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;WHERE&nbsp;ReviewID=1"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sqlsrv_query</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$sql</span><span style="color: #007700">);<br />if(&nbsp;</span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">===&nbsp;</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;die(&nbsp;</span><span style="color: #0000BB">print_r</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">sqlsrv_errors</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">));<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Make&nbsp;the&nbsp;first&nbsp;(and&nbsp;in&nbsp;this&nbsp;case,&nbsp;only)&nbsp;row&nbsp;of&nbsp;the&nbsp;result&nbsp;set&nbsp;available&nbsp;for&nbsp;reading.<br /></span><span style="color: #007700">if(&nbsp;</span><span style="color: #0000BB">sqlsrv_fetch</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">)&nbsp;===&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;die(&nbsp;</span><span style="color: #0000BB">print_r</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">sqlsrv_errors</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">));<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Get&nbsp;the&nbsp;row&nbsp;fields.&nbsp;Field&nbsp;indeces&nbsp;start&nbsp;at&nbsp;0&nbsp;and&nbsp;must&nbsp;be&nbsp;retrieved&nbsp;in&nbsp;order.<br />//&nbsp;Retrieving&nbsp;row&nbsp;fields&nbsp;by&nbsp;name&nbsp;is&nbsp;not&nbsp;supported&nbsp;by&nbsp;sqlsrv_get_field.<br /></span><span style="color: #0000BB">$name&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sqlsrv_get_field</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$name</span><span style="color: #DD0000">:&nbsp;"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$comment&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sqlsrv_get_field</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$comment</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.sqlsrv-get-field-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">sqlsrv_fetch</span></li>
+    <li class="member"><span class="function">sqlsrv_fetch_array</span></li>
+    <li class="member"><span class="function">sqlsrv_fetch_object</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

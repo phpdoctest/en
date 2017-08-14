@@ -1,0 +1,187 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Reset URL rewriter values</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.php.html">Affecting PHP's Behaviour</a></li>
+  <li class="header up"><a href="book.outcontrol.html">Output Control</a></li>
+  <li class="header up"><a href="ref.outcontrol.html">Output Control Functions</a></li>
+  <li><a href="function.flush.html">flush</a></li>
+  <li><a href="function.ob-clean.html">ob_clean</a></li>
+  <li><a href="function.ob-end-clean.html">ob_end_clean</a></li>
+  <li><a href="function.ob-end-flush.html">ob_end_flush</a></li>
+  <li><a href="function.ob-flush.html">ob_flush</a></li>
+  <li><a href="function.ob-get-clean.html">ob_get_clean</a></li>
+  <li><a href="function.ob-get-contents.html">ob_get_contents</a></li>
+  <li><a href="function.ob-get-flush.html">ob_get_flush</a></li>
+  <li><a href="function.ob-get-length.html">ob_get_length</a></li>
+  <li><a href="function.ob-get-level.html">ob_get_level</a></li>
+  <li><a href="function.ob-get-status.html">ob_get_status</a></li>
+  <li><a href="function.ob-gzhandler.html">ob_gzhandler</a></li>
+  <li><a href="function.ob-implicit-flush.html">ob_implicit_flush</a></li>
+  <li><a href="function.ob-list-handlers.html">ob_list_handlers</a></li>
+  <li><a href="function.ob-start.html">ob_start</a></li>
+  <li><a href="function.output-add-rewrite-var.html">output_add_rewrite_var</a></li>
+  <li class="active"><a href="function.output-reset-rewrite-vars.html">output_reset_rewrite_vars</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.output-add-rewrite-var.html">output_add_rewrite_var</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="book.info.html">PHP Options/Info</a></div>
+                <div class="up"><a href="ref.outcontrol.html">Output Control Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.output-reset-rewrite-vars" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">output_reset_rewrite_vars</h1>
+  <p class="refpurpose">Reset URL rewriter values</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.output-reset-rewrite-vars-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">output_reset_rewrite_vars</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   This function resets the URL rewriter and removes all rewrite
+   variables previously set by the <span class="function">output_add_rewrite_var</span>
+   function.
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.output-reset-rewrite-vars-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> on success or <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.output-reset-rewrite-vars-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>7.1.0</td>
+       <td>
+        Before PHP 7.1.0, rewrite vars set by <span class="function">output_add_rewrite_var</span>
+        use the same Session module trans sid output buffer. Since PHP 7.1.0,
+        dedicated output buffer is used and <span class="function">output_reset_rewrite_vars</span>
+        only removes rewrite vars defined by <span class="function">output_add_rewrite_var</span>.
+      </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.output-reset-rewrite-vars-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-517">
+    <p><strong>Example #1 <span class="function">output_reset_rewrite_vars</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />session_start</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">output_add_rewrite_var</span><span style="color: #007700">(</span><span style="color: #DD0000">'var'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'value'</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">'&lt;a&nbsp;href="file.php"&gt;link&lt;/a&gt;'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">ob_flush</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">output_reset_rewrite_vars</span><span style="color: #007700">();<br />echo&nbsp;</span><span style="color: #DD0000">'&lt;a&nbsp;href="file.php"&gt;link&lt;/a&gt;'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+&lt;a href=&quot;file.php?PHPSESSID=xxx&amp;var=value&quot;&gt;link&lt;/a&gt;
+&lt;a href=&quot;file.php&quot;&gt;link&lt;/a&gt;
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.output-reset-rewrite-vars-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">output_add_rewrite_var</span></li>
+    <li class="member"><span class="function">ob_flush</span></li>
+    <li class="member"><span class="function">ob_list_handlers</span></li>
+    <li class="member"><a href="outcontrol.configuration.html#ini.url-rewriter.tags" class="link">url_rewriter.tags</a></li>
+    <li class="member"><a href="outcontrol.configuration.html#ini.url-rewriter.hosts" class="link">url_rewriter.hosts</a></li>
+    <li class="member"><a href="session.configuration.html#ini.session.trans-sid-tags" class="link">session.trans_sid_tags</a></li>
+    <li class="member"><a href="session.configuration.html#ini.session.trans-sid-hosts" class="link">session.trans_sid_hosts</a></li>
+   </ul>
+  </p>
+ </div>
+  
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

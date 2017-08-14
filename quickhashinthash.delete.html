@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: This method deletes am entry from the hash</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.vartype.html">Variable and Type Related Extensions</a></li>
+  <li class="header up"><a href="book.quickhash.html">Quickhash</a></li>
+  <li class="header up"><a href="class.quickhashinthash.html">QuickHashIntHash</a></li>
+  <li><a href="quickhashinthash.add.html">QuickHashIntHash::add</a></li>
+  <li><a href="quickhashinthash.construct.html">QuickHashIntHash::__construct</a></li>
+  <li class="active"><a href="quickhashinthash.delete.html">QuickHashIntHash::delete</a></li>
+  <li><a href="quickhashinthash.exists.html">QuickHashIntHash::exists</a></li>
+  <li><a href="quickhashinthash.get.html">QuickHashIntHash::get</a></li>
+  <li><a href="quickhashinthash.getsize.html">QuickHashIntHash::getSize</a></li>
+  <li><a href="quickhashinthash.loadfromfile.html">QuickHashIntHash::loadFromFile</a></li>
+  <li><a href="quickhashinthash.loadfromstring.html">QuickHashIntHash::loadFromString</a></li>
+  <li><a href="quickhashinthash.savetofile.html">QuickHashIntHash::saveToFile</a></li>
+  <li><a href="quickhashinthash.savetostring.html">QuickHashIntHash::saveToString</a></li>
+  <li><a href="quickhashinthash.set.html">QuickHashIntHash::set</a></li>
+  <li><a href="quickhashinthash.update.html">QuickHashIntHash::update</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="quickhashinthash.construct.html">QuickHashIntHash::__construct</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="quickhashinthash.exists.html">QuickHashIntHash::exists</a></div>
+                <div class="up"><a href="class.quickhashinthash.html">QuickHashIntHash</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="quickhashinthash.delete" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">QuickHashIntHash::delete</h1>
+  <p class="refpurpose">This method deletes am entry from the hash</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-quickhashinthash.delete-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">QuickHashIntHash::delete</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$key</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   This method deletes an entry from the hash, and returns whether the entry was
+   deleted or not. Associated memory structures will not be freed immediately,
+   but rather when the hash itself is freed.
+  </p>
+  <p class="para">
+   Elements can not be deleted when the hash is used in an iterator. The
+   method will not throw an exception, but simply return <strong><code>FALSE</code></strong> like would
+   happen with any other deletion failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-quickhashinthash.delete-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">key</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The key of the entry to delete.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-quickhashinthash.delete-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   <strong><code>TRUE</code></strong> when the entry was deleted, and <strong><code>FALSE</code></strong> if the entry was not deleted.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-quickhashinthash.delete-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-5995">
+    <p><strong>Example #1 <span class="function">QuickHashIntHash::delete</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$hash&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">QuickHashIntHash</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">1024&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$hash</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">exists</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">4&nbsp;</span><span style="color: #007700">)&nbsp;);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$hash</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5&nbsp;</span><span style="color: #007700">)&nbsp;);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$hash</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">delete</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">4&nbsp;</span><span style="color: #007700">)&nbsp;);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$hash</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">exists</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">4&nbsp;</span><span style="color: #007700">)&nbsp;);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$hash</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">delete</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">4&nbsp;</span><span style="color: #007700">)&nbsp;);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+bool(false)
+bool(true)
+bool(true)
+bool(false)
+bool(false)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

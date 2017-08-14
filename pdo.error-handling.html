@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Errors and error handling</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.abstract.html">Abstraction Layers</a></li>
+  <li class="header up"><a href="book.pdo.html">PDO</a></li>
+  <li><a href="intro.pdo.html">Introduction</a></li>
+  <li><a href="pdo.setup.html">Installing/Configuring</a></li>
+  <li><a href="pdo.constants.html">Predefined Constants</a></li>
+  <li><a href="pdo.connections.html">Connections and Connection management</a></li>
+  <li><a href="pdo.transactions.html">Transactions and auto-commit</a></li>
+  <li><a href="pdo.prepared-statements.html">Prepared statements and stored procedures</a></li>
+  <li class="active"><a href="pdo.error-handling.html">Errors and error handling</a></li>
+  <li><a href="pdo.lobs.html">Large Objects (LOBs)</a></li>
+  <li><a href="class.pdo.html">PDO</a></li>
+  <li><a href="class.pdostatement.html">PDOStatement</a></li>
+  <li><a href="class.pdoexception.html">PDOException</a></li>
+  <li><a href="pdo.drivers.html">PDO Drivers</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="pdo.prepared-statements.html">Prepared statements and stored procedures</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="pdo.lobs.html">Large Objects (LOBs)</a></div>
+                <div class="up"><a href="book.pdo.html">PDO</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="pdo.error-handling" class="chapter">
+ <h1>Errors and error handling</h1>
+ <p class="para">
+  PDO offers you a choice of 3 different error handling strategies, to fit
+  your style of application development.
+ </p>
+ <ul class="itemizedlist">
+  <li class="listitem">
+   <p class="para">
+    <strong><code>PDO::ERRMODE_SILENT</code></strong>
+   </p>
+   <p class="para">
+     This is the default mode. PDO will simply set the error code for you
+     to inspect using the <span class="function">PDO::errorCode</span> and
+     <span class="function">PDO::errorInfo</span> methods on both the
+     statement and database objects; if the error resulted from a call on a
+     statement object, you would invoke the
+     <span class="function">PDOStatement::errorCode</span> or
+     <span class="function">PDOStatement::errorInfo</span>
+     method on that object. If the error resulted from a call on the
+     database object, you would invoke those methods on the database object
+     instead.
+    </p>
+  </li>
+  <li class="listitem">
+   <p class="para">
+    <strong><code>PDO::ERRMODE_WARNING</code></strong>
+   </p>
+   <p class="para">
+     In addition to setting the error code, PDO will emit a traditional
+     E_WARNING message. This setting is useful during debugging/testing, if
+     you just want to see what problems occurred without interrupting the
+     flow of the application.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     <strong><code>PDO::ERRMODE_EXCEPTION</code></strong>
+    </p>
+    <p class="para">
+     In addition to setting the error code, PDO will throw a
+     <span class="classname">PDOException</span>
+     and set its properties to reflect the error code and error
+     information. This setting is also useful during debugging, as it will
+     effectively &quot;blow up&quot; the script at the point of the error, very
+     quickly pointing a finger at potential problem areas in your code
+     (remember: transactions are automatically rolled back if the exception
+     causes the script to terminate).
+    </p>
+    <p class="para">
+     Exception mode is also useful because you can structure your error
+     handling more clearly than with traditional PHP-style warnings, and
+     with less code/nesting than by running in silent mode and explicitly
+     checking the return value of each database call.
+    </p>
+    <p class="para">
+     See <a href="language.exceptions.html" class="link">Exceptions</a> for more
+     information about Exceptions in PHP.
+    </p>
+   </li>
+ </ul>
+ <p class="para">
+  PDO standardizes on using SQL-92 SQLSTATE error code strings; individual
+  PDO drivers are responsible for mapping their native codes to the
+  appropriate SQLSTATE codes.   The <span class="function">PDO::errorCode</span>
+  method returns a single SQLSTATE code. If you need more specific
+  information about an error, PDO also offers an
+  <span class="function">PDO::errorInfo</span> method which returns an array
+  containing the SQLSTATE code, the driver specific error code and driver
+  specific error string.
+ </p>
+ 
+ <p class="para">
+  <div class="example" id="example-997">
+   <p><strong>Example #1 Create a PDO instance and set the error mode</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$dsn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'mysql:dbname=testdb;host=127.0.0.1'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$user&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'dbuser'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$password&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'dbpass'</span><span style="color: #007700">;<br /><br />try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$dbh&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">(</span><span style="color: #0000BB">$dsn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$user</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$password</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setAttribute</span><span style="color: #007700">(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ATTR_ERRMODE</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ERRMODE_EXCEPTION</span><span style="color: #007700">);<br />}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">PDOException&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Connection&nbsp;failed:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">();<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+ <blockquote class="note"><p><strong class="note">Note</strong>: 
+  <p class="para">
+   <span class="function">PDO::__construct</span> will always throw a <span class="classname">PDOException</span> if the connection fails
+   regardless of which <strong><code>PDO::ATTR_ERRMODE</code></strong> is currently set. Uncaught Exceptions are fatal.
+  </p>
+ </p></blockquote>
+ <p class="para">
+  <div class="example" id="example-998">
+   <p><strong>Example #2 Create a PDO instance and set the error mode from the constructor</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$dsn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'mysql:dbname=test;host=127.0.0.1'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$user&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'googleguy'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$password&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'googleguy'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">/*<br />&nbsp;&nbsp;&nbsp;&nbsp;Using&nbsp;try/catch&nbsp;around&nbsp;the&nbsp;constructor&nbsp;is&nbsp;still&nbsp;valid&nbsp;even&nbsp;though&nbsp;we&nbsp;set&nbsp;the&nbsp;ERRMODE&nbsp;to&nbsp;WARNING&nbsp;since<br />&nbsp;&nbsp;&nbsp;&nbsp;PDO::__construct&nbsp;will&nbsp;always&nbsp;throw&nbsp;a&nbsp;PDOException&nbsp;if&nbsp;the&nbsp;connection&nbsp;fails.<br />*/<br /></span><span style="color: #007700">try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$dbh&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">(</span><span style="color: #0000BB">$dsn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$user</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$password</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ATTR_ERRMODE&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">ERRMODE_WARNING</span><span style="color: #007700">));<br />}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">PDOException&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Connection&nbsp;failed:&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;This&nbsp;will&nbsp;cause&nbsp;PDO&nbsp;to&nbsp;throw&nbsp;an&nbsp;error&nbsp;of&nbsp;level&nbsp;E_WARNING&nbsp;instead&nbsp;of&nbsp;an&nbsp;exception&nbsp;(when&nbsp;the&nbsp;table&nbsp;doesn't&nbsp;exist)<br /></span><span style="color: #0000BB">$dbh</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;wrongcolumn&nbsp;FROM&nbsp;wrongtable"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Warning: PDO::query(): SQLSTATE[42S02]: Base table or view not found: 1146 Table &#039;test.wrongtable&#039; doesn&#039;t exist in
+/tmp/pdo_test.php on line 18
+</pre></div>
+    </div>
+  </div>
+ </p>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

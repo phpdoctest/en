@@ -1,0 +1,936 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: The MySQLi Extension Function Summary</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="set.mysqlinfo.html">MySQL</a></li>
+  <li class="header up"><a href="book.mysqli.html">MySQLi</a></li>
+  <li><a href="intro.mysqli.html">Introduction</a></li>
+  <li><a href="mysqli.overview.html">Overview</a></li>
+  <li><a href="mysqli.quickstart.html">Quick start guide</a></li>
+  <li><a href="mysqli.setup.html">Installing/Configuring</a></li>
+  <li><a href="mysqli.persistconns.html">The mysqli Extension and Persistent Connections</a></li>
+  <li><a href="mysqli.constants.html">Predefined Constants</a></li>
+  <li><a href="mysqli.notes.html">Notes</a></li>
+  <li class="active"><a href="mysqli.summary.html">The MySQLi Extension Function Summary</a></li>
+  <li><a href="mysqli.examples.html">Examples</a></li>
+  <li><a href="class.mysqli.html">mysqli</a></li>
+  <li><a href="class.mysqli-stmt.html">mysqli_stmt</a></li>
+  <li><a href="class.mysqli-result.html">mysqli_result</a></li>
+  <li><a href="class.mysqli-driver.html">mysqli_driver</a></li>
+  <li><a href="class.mysqli-warning.html">mysqli_warning</a></li>
+  <li><a href="class.mysqli-sql-exception.html">mysqli_sql_exception</a></li>
+  <li><a href="ref.mysqli.html">Aliases and deprecated Mysqli Functions</a></li>
+  <li><a href="changelog.mysqli.html">Changelog</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mysqli.notes.html">Notes</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mysqli.examples.html">Examples</a></div>
+                <div class="up"><a href="book.mysqli.html">MySQLi</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mysqli.summary" class="chapter">
+
+ <h1>The MySQLi Extension Function Summary</h1>
+
+ <table class="doctable table">
+  <caption><strong>Summary of <span class="classname">mysqli</span> methods</strong></caption>
+  
+   <thead>
+    <tr>
+     <th>mysqli Class</th>
+    </tr>
+
+    <tr>
+     <th>OOP Interface</th>
+     <th>Procedural Interface</th>
+     <th>Alias (Do not use)</th>
+     <th>Description</th>
+    </tr>
+
+   </thead>
+
+   <tbody class="tbody">
+    <tr>
+     <td><em class="emphasis">Properties</em></td>
+    </tr>
+
+    <tr>
+     <td><a href="mysqli.affected-rows.html" class="link">$mysqli::affected_rows</a></td>
+     <td><span class="function">mysqli_affected_rows</span></td>
+     <td>N/A</td>
+     <td>Gets the number of affected rows in a previous MySQL operation</td>
+    </tr>
+
+    <tr>
+     <td><a href="mysqli.client-info.html" class="link">$mysqli::client_info</a></td>
+     <td><span class="function">mysqli_get_client_info</span></td>
+     <td>N/A</td>
+     <td>Returns the MySQL client version as a string</td>
+    </tr>
+
+    <tr>
+     <td><a href="mysqli.client-version.html" class="link">$mysqli::client_version</a></td>
+     <td><span class="function">mysqli_get_client_version</span></td>
+     <td>N/A</td>
+     <td>Returns MySQL client version info as an integer</td>    </tr>
+
+    <tr>
+     <td><a href="mysqli.connect-errno.html" class="link">$mysqli::connect_errno</a></td>
+     <td><span class="function">mysqli_connect_errno</span></td>
+     <td>N/A</td>
+     <td>Returns the error code from last connect call</td>
+    </tr>
+
+    <tr>
+     <td><a href="mysqli.connect-error.html" class="link">$mysqli::connect_error</a></td>
+     <td><span class="function">mysqli_connect_error</span></td>
+     <td>N/A</td>
+     <td>Returns a string description of the last connect error</td>
+    </tr>
+
+    <tr>
+     <td><a href="mysqli.errno.html" class="link">$mysqli::errno</a></td>
+     <td><span class="function">mysqli_errno</span></td>
+     <td>N/A</td>
+     <td>Returns the error code for the most recent function call</td>
+    </tr>
+
+    <tr>
+     <td><a href="mysqli.error.html" class="link">$mysqli::error</a></td>
+     <td><span class="function">mysqli_error</span></td>
+     <td>N/A</td>
+     <td>Returns a string description of the last error</td>
+    </tr>
+
+    <tr>
+     <td><a href="mysqli.field-count.html" class="link">$mysqli::field_count</a></td>
+     <td><span class="function">mysqli_field_count</span></td>
+     <td>N/A</td>
+     <td>Returns the number of columns for the most recent query</td>
+    </tr>
+
+    <tr>
+     <td><a href="mysqli.get-host-info.html" class="link">$mysqli::host_info</a></td>
+     <td><span class="function">mysqli_get_host_info</span></td>
+     <td>N/A</td>
+     <td>Returns a string representing the type of connection used</td>
+    </tr>
+
+    <tr>
+     <td><a href="mysqli.get-proto-info.html" class="link">$mysqli::protocol_version</a></td>
+     <td><span class="function">mysqli_get_proto_info</span></td>
+     <td>N/A</td>
+     <td>Returns the version of the MySQL protocol used</td>
+    </tr>
+
+    <tr>
+     <td><a href="mysqli.get-server-info.html" class="link">$mysqli::server_info</a></td>
+     <td><span class="function">mysqli_get_server_info</span></td>
+     <td>N/A</td>
+     <td>Returns the version of the MySQL server</td>
+    </tr>
+
+    <tr>
+     <td><a href="mysqli.get-server-version.html" class="link">$mysqli::server_version</a></td>
+     <td><span class="function">mysqli_get_server_version</span></td>
+     <td>N/A</td>
+     <td>Returns the version of the MySQL server as an integer</td>
+    </tr>
+
+    <tr>
+     <td><a href="mysqli.info.html" class="link">$mysqli::info</a></td>
+     <td><span class="function">mysqli_info</span></td>
+     <td>N/A</td>
+     <td>Retrieves information about the most recently executed query</td>
+    </tr>
+
+    <tr>
+     <td><a href="mysqli.insert-id.html" class="link">$mysqli::insert_id</a></td>
+     <td><span class="function">mysqli_insert_id</span></td>
+     <td>N/A</td>
+     <td>Returns the auto generated id used in the last query</td>
+    </tr>
+
+    <tr>
+     <td><a href="mysqli.sqlstate.html" class="link">$mysqli::sqlstate</a></td>
+     <td><span class="function">mysqli_sqlstate</span></td>
+     <td>N/A</td>
+     <td>Returns the SQLSTATE error from previous MySQL operation</td>
+    </tr>
+
+    <tr>
+     <td><a href="mysqli.warning-count.html" class="link">$mysqli::warning_count</a></td>
+     <td><span class="function">mysqli_warning_count</span></td>
+     <td>N/A</td>
+     <td>Returns the number of warnings from the last query for the given link</td>
+    </tr>
+
+    <tr>
+     <td><em class="emphasis">Methods</em></td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::autocommit</span></td>
+     <td><span class="function">mysqli_autocommit</span></td>
+     <td>N/A</td>
+     <td>Turns on or off auto-committing database modifications</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::change_user</span></td>
+     <td><span class="function">mysqli_change_user</span></td>
+     <td>N/A</td>
+     <td>Changes the user of the specified database connection</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::character_set_name</span>,<a href="mysqli.character-set-name.html" class="link">
+      mysqli::client_encoding</a></td>
+     <td><span class="function">mysqli_character_set_name</span></td>
+     <td><span class="function">mysqli_client_encoding</span></td>
+     <td>Returns the default character set for the database connection</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::close</span></td>
+     <td><span class="function">mysqli_close</span></td>
+     <td>N/A</td>
+     <td>Closes a previously opened database connection</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::commit</span></td>
+     <td><span class="function">mysqli_commit</span></td>
+     <td>N/A</td>
+     <td>Commits the current transaction</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::__construct</span></td>
+     <td><span class="function">mysqli_connect</span></td>
+     <td>N/A</td>
+     <td>Open a new connection to the MySQL server [Note: static (i.e. class)
+      method]</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::debug</span></td>
+     <td><span class="function">mysqli_debug</span></td>
+     <td>N/A</td>
+     <td>Performs debugging operations</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::dump_debug_info</span></td>
+     <td><span class="function">mysqli_dump_debug_info</span></td>
+     <td>N/A</td>
+     <td>Dump debugging information into the log</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::get_charset</span></td>
+     <td><span class="function">mysqli_get_charset</span></td>
+     <td>N/A</td>
+     <td>Returns a character set object</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::get_connection_stats</span></td>
+     <td><span class="function">mysqli_get_connection_stats</span></td>
+     <td>N/A</td>
+     <td>Returns client connection statistics. Available only with <a href="book.mysqlnd.html" class="link">mysqlnd</a>.</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::get_client_info</span></td>
+     <td><span class="function">mysqli_get_client_info</span></td>
+     <td>N/A</td>
+     <td>Returns the MySQL client version as a string</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::get_client_stats</span></td>
+     <td><span class="function">mysqli_get_client_stats</span></td>
+     <td>N/A</td>
+     <td>Returns client per-process statistics. Available only with <a href="book.mysqlnd.html" class="link">mysqlnd</a>.</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::get_cache_stats</span></td>
+     <td><span class="function">mysqli_get_cache_stats</span></td>
+     <td>N/A</td>
+     <td>Returns client Zval cache statistics. Available only with <a href="book.mysqlnd.html" class="link">mysqlnd</a>.</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::get_server_info</span></td>
+     <td><span class="function">mysqli_get_server_info</span></td>
+     <td>N/A</td>
+     <td>Returns a string representing the version of the MySQL server that the MySQLi extension is connected to</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::get_warnings</span></td>
+     <td><span class="function">mysqli_get_warnings</span></td>
+     <td>N/A</td>
+     <td>NOT DOCUMENTED</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::init</span></td>
+     <td><span class="function">mysqli_init</span></td>
+     <td>N/A</td>
+     <td>Initializes MySQLi and returns a resource for use with
+      mysqli_real_connect. [Not called on an object, as it returns a
+      $mysqli object.]</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::kill</span></td>
+     <td><span class="function">mysqli_kill</span></td>
+     <td>N/A</td>
+     <td>Asks the server to kill a MySQL thread</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::more_results</span></td>
+     <td><span class="function">mysqli_more_results</span></td>
+     <td>N/A</td>
+     <td>Check if there are any more query results from a multi query</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::multi_query</span></td>
+     <td><span class="function">mysqli_multi_query</span></td>
+     <td>N/A</td>
+     <td>Performs a query on the database</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::next_result</span></td>
+     <td><span class="function">mysqli_next_result</span></td>
+     <td>N/A</td>
+     <td>Prepare next result from multi_query</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::options</span></td>
+     <td><span class="function">mysqli_options</span></td>
+     <td><span class="function">mysqli_set_opt</span></td>
+     <td>Set options</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::ping</span></td>
+     <td><span class="function">mysqli_ping</span></td>
+     <td>N/A</td>
+     <td>Pings a server connection, or tries to reconnect if the connection has
+      gone down</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::prepare</span></td>
+     <td><span class="function">mysqli_prepare</span></td>
+     <td>N/A</td>
+     <td>Prepare an SQL statement for execution</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::query</span></td>
+     <td><span class="function">mysqli_query</span></td>
+     <td>N/A</td>
+     <td>Performs a query on the database</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::real_connect</span></td>
+     <td><span class="function">mysqli_real_connect</span></td>
+     <td>N/A</td>
+     <td>Opens a connection to a mysql server</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::real_escape_string</span>,
+       <span class="methodname">mysqli::escape_string</span></td>
+     <td><span class="function">mysqli_real_escape_string</span></td>
+     <td><span class="function">mysqli_escape_string</span></td>
+     <td>Escapes special characters in a string for use in an SQL statement,
+      taking into account the current charset of the connection</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::real_query</span></td>
+     <td><span class="function">mysqli_real_query</span></td>
+     <td>N/A</td>
+     <td>Execute an SQL query</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::refresh</span></td>
+     <td><span class="function">mysqli_refresh</span></td>
+     <td>N/A</td>
+     <td>Flushes tables or caches, or resets the replication server information</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::rollback</span></td>
+     <td><span class="function">mysqli_rollback</span></td>
+     <td>N/A</td>
+     <td>Rolls back current transaction</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::select_db</span></td>
+     <td><span class="function">mysqli_select_db</span></td>
+     <td>N/A</td>
+     <td>Selects the default database for database queries</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::set_charset</span></td>
+     <td><span class="function">mysqli_set_charset</span></td>
+     <td>N/A</td>
+     <td>Sets the default client character set</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::set_local_infile_default</span></td>
+     <td><span class="function">mysqli_set_local_infile_default</span></td>
+     <td>N/A</td>
+     <td>Unsets user defined handler for load local infile command</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::set_local_infile_handler</span></td>
+     <td><span class="function">mysqli_set_local_infile_handler</span></td>
+     <td>N/A</td>
+     <td>Set callback function for LOAD DATA LOCAL INFILE command</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::ssl_set</span></td>
+     <td><span class="function">mysqli_ssl_set</span></td>
+     <td>N/A</td>
+     <td>Used for establishing secure connections using SSL</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::stat</span></td>
+     <td><span class="function">mysqli_stat</span></td>
+     <td>N/A</td>
+     <td>Gets the current system status</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::stmt_init</span></td>
+     <td><span class="function">mysqli_stmt_init</span></td>
+     <td>N/A</td>
+     <td>Initializes a statement and returns an object for use with
+      mysqli_stmt_prepare</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::store_result</span></td>
+     <td><span class="function">mysqli_store_result</span></td>
+     <td>N/A</td>
+     <td>Transfers a result set from the last query</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::thread_id</span></td>
+     <td><span class="function">mysqli_thread_id</span></td>
+     <td>N/A</td>
+     <td>Returns the thread ID for the current connection</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::thread_safe</span></td>
+     <td><span class="function">mysqli_thread_safe</span></td>
+     <td>N/A</td>
+     <td>Returns whether thread safety is given or not</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli::use_result</span></td>
+     <td><span class="function">mysqli_use_result</span></td>
+     <td>N/A</td>
+     <td>Initiate a result set retrieval</td>
+    </tr>
+
+   </tbody>
+  
+ </table>
+
+
+ <table class="doctable table">
+  <caption><strong>Summary of <span class="classname">mysqli_stmt</span> methods</strong></caption>
+  
+   <thead>
+    <tr>
+     <th>MySQL_STMT</th>
+    </tr>
+
+    <tr>
+     <th>OOP Interface</th>
+     <th>Procedural Interface</th>
+     <th>Alias (Do not use)</th>
+     <th>Description</th>
+    </tr>
+
+   </thead>
+
+   <tbody class="tbody">
+    <tr>
+     <td><em class="emphasis">Properties</em></td>
+    </tr>
+
+    <tr>
+     <td><a href="mysqli-stmt.affected-rows.html" class="link">$mysqli_stmt::affected_rows</a></td>
+     <td><span class="function">mysqli_stmt_affected_rows</span></td>
+     <td>N/A</td>
+     <td>Returns the total number of rows changed, deleted, or inserted by the
+      last executed statement</td>
+    </tr>
+
+    <tr>
+     <td><a href="mysqli-stmt.errno.html" class="link">$mysqli_stmt::errno</a></td>
+     <td><span class="function">mysqli_stmt_errno</span></td>
+     <td>N/A</td>
+     <td>Returns the error code for the most recent statement call</td>
+    </tr>
+
+    <tr>
+     <td><a href="mysqli-stmt.error.html" class="link">$mysqli_stmt::error</a></td>
+     <td><span class="function">mysqli_stmt_error</span></td>
+     <td>N/A</td>
+     <td>Returns a string description for last statement error</td>
+    </tr>
+
+    <tr>
+     <td><a href="mysqli-stmt.field-count.html" class="link">$mysqli_stmt::field_count</a></td>
+     <td><span class="function">mysqli_stmt_field_count</span></td>
+     <td>N/A</td>
+     <td>Returns the number of field in the given statement - not documented</td>
+    </tr>
+
+    <tr>
+     <td><a href="mysqli-stmt.insert-id.html" class="link">$mysqli_stmt::insert_id</a></td>
+     <td><span class="function">mysqli_stmt_insert_id</span></td>
+     <td>N/A</td>
+     <td>Get the ID generated from the previous INSERT operation</td>
+    </tr>
+
+    <tr>
+     <td><a href="mysqli-stmt.num-rows.html" class="link">$mysqli_stmt::num_rows</a></td>
+     <td><span class="function">mysqli_stmt_num_rows</span></td>
+     <td>N/A</td>
+     <td>Return the number of rows in statements result set</td>
+    </tr>
+
+    <tr>
+     <td><a href="mysqli-stmt.param-count.html" class="link">$mysqli_stmt::param_count</a></td>
+     <td><span class="function">mysqli_stmt_param_count</span></td>
+     <td><span class="function">mysqli_param_count</span></td>
+     <td>Returns the number of parameter for the given statement</td>
+    </tr>
+
+    <tr>
+     <td><a href="mysqli-stmt.sqlstate.html" class="link">$mysqli_stmt::sqlstate</a></td>
+     <td><span class="function">mysqli_stmt_sqlstate</span></td>
+     <td>N/A</td>
+     <td>Returns SQLSTATE error from previous statement operation</td>
+    </tr>
+
+    <tr>
+     <td><em class="emphasis">Methods</em></td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_stmt::attr_get</span></td>
+     <td><span class="function">mysqli_stmt_attr_get</span></td>
+     <td>N/A</td>
+     <td>Used to get the current value of a statement attribute</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_stmt::attr_set</span></td>
+     <td><span class="function">mysqli_stmt_attr_set</span></td>
+     <td>N/A</td>
+     <td>Used to modify the behavior of a prepared statement</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_stmt::bind_param</span></td>
+     <td><span class="function">mysqli_stmt_bind_param</span></td>
+     <td><span class="function">mysqli_bind_param</span></td>
+     <td>Binds variables to a prepared statement as parameters</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_stmt::bind_result</span></td>
+     <td><span class="function">mysqli_stmt_bind_result</span></td>
+     <td><span class="function">mysqli_bind_result</span></td>
+     <td>Binds variables to a prepared statement for result storage</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_stmt::close</span></td>
+     <td><span class="function">mysqli_stmt_close</span></td>
+     <td>N/A</td>
+     <td>Closes a prepared statement</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_stmt::data_seek</span></td>
+     <td><span class="function">mysqli_stmt_data_seek</span></td>
+     <td>N/A</td>
+     <td>Seeks to an arbitrary row in statement result set</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_stmt::execute</span></td>
+     <td><span class="function">mysqli_stmt_execute</span></td>
+     <td><span class="function">mysqli_execute</span></td>
+     <td>Executes a prepared Query</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_stmt::fetch</span></td>
+     <td><span class="function">mysqli_stmt_fetch</span></td>
+     <td><span class="function">mysqli_fetch</span></td>
+     <td>Fetch results from a prepared statement into the bound variables</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_stmt::free_result</span></td>
+     <td><span class="function">mysqli_stmt_free_result</span></td>
+     <td>N/A</td>
+     <td>Frees stored result memory for the given statement handle</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_stmt::get_result</span></td>
+     <td><span class="function">mysqli_stmt_get_result</span></td>
+     <td>N/A</td>
+     <td>Gets a result set from a prepared statement. Available only with <a href="book.mysqlnd.html" class="link">mysqlnd</a>.</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_stmt::get_warnings</span></td>
+     <td><span class="function">mysqli_stmt_get_warnings</span></td>
+     <td>N/A</td>
+     <td>NOT DOCUMENTED</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">$mysqli_stmt::more_results</span></td>
+     <td><span class="function">mysqli_stmt_more_results</span></td>
+     <td>N/A</td>
+     <td>Checks if there are more query results from a multiple query</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">$mysqli_stmt::next_result</span></td>
+     <td><span class="function">mysqli_stmt_next_result</span></td>
+     <td>N/A</td>
+     <td>Reads the next result from a multiple query</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_stmt::num_rows</span></td>
+     <td><span class="function">mysqli_stmt_num_rows</span></td>
+     <td>N/A</td>
+     <td>See also property <a href="mysqli-stmt.num-rows.html" class="link">$mysqli_stmt::num_rows</a></td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_stmt::prepare</span></td>
+     <td><span class="function">mysqli_stmt_prepare</span></td>
+     <td>N/A</td>
+     <td>Prepare an SQL statement for execution</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_stmt::reset</span></td>
+     <td><span class="function">mysqli_stmt_reset</span></td>
+     <td>N/A</td>
+     <td>Resets a prepared statement</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_stmt::result_metadata</span></td>
+     <td><span class="function">mysqli_stmt_result_metadata</span></td>
+     <td><span class="function">mysqli_get_metadata</span></td>
+     <td>Returns result set metadata from a prepared statement</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_stmt::send_long_data</span></td>
+     <td><span class="function">mysqli_stmt_send_long_data</span></td>
+     <td><span class="function">mysqli_send_long_data</span></td>
+     <td>Send data in blocks</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_stmt::store_result</span></td>
+     <td><span class="function">mysqli_stmt_store_result</span></td>
+     <td>N/A</td>
+     <td>Transfers a result set from a prepared statement</td>
+    </tr>
+
+   </tbody>
+  
+ </table>
+
+
+ <table class="doctable table">
+  <caption><strong>Summary of <span class="classname">mysqli_result</span> methods</strong></caption>
+  
+   <thead>
+    <tr>
+     <th>mysqli_result</th>
+    </tr>
+
+    <tr>
+     <th>OOP Interface</th>
+     <th>Procedural Interface</th>
+     <th>Alias (Do not use)</th>
+     <th>Description</th>
+    </tr>
+
+   </thead>
+
+   <tbody class="tbody">
+    <tr>
+     <td><em class="emphasis">Properties</em></td>
+    </tr>
+
+    <tr>
+     <td><a href="mysqli-result.current-field.html" class="link">$mysqli_result::current_field</a></td>
+     <td><span class="function">mysqli_field_tell</span></td>
+     <td>N/A</td>
+     <td>Get current field offset of a result pointer</td>
+    </tr>
+
+    <tr>
+     <td><a href="mysqli-result.field-count.html" class="link">$mysqli_result::field_count</a></td>
+     <td><span class="function">mysqli_num_fields</span></td>
+     <td>N/A</td>
+     <td>Get the number of fields in a result</td>
+    </tr>
+
+    <tr>
+     <td><a href="mysqli-result.lengths.html" class="link">$mysqli_result::lengths</a></td>
+     <td><span class="function">mysqli_fetch_lengths</span></td>
+     <td>N/A</td>
+     <td>Returns the lengths of the columns of the current row in the result set</td>
+    </tr>
+
+    <tr>
+     <td><a href="mysqli-result.num-rows.html" class="link">$mysqli_result::num_rows</a></td>
+     <td><span class="function">mysqli_num_rows</span></td>
+     <td>N/A</td>
+     <td>Gets the number of rows in a result</td>
+    </tr>
+
+    <tr>
+     <td><em class="emphasis">Methods</em></td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_result::data_seek</span></td>
+     <td><span class="function">mysqli_data_seek</span></td>
+     <td>N/A</td>
+     <td>Adjusts the result pointer to an arbitrary row in the result</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_result::fetch_all</span></td>
+     <td><span class="function">mysqli_fetch_all</span></td>
+     <td>N/A</td>
+     <td>Fetches all result rows and returns the result set as an associative array, a numeric array, or both. Available only with <a href="book.mysqlnd.html" class="link">mysqlnd</a>.</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_result::fetch_array</span></td>
+     <td><span class="function">mysqli_fetch_array</span></td>
+     <td>N/A</td>
+     <td>Fetch a result row as an associative, a numeric array, or both</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_result::fetch_assoc</span></td>
+     <td><span class="function">mysqli_fetch_assoc</span></td>
+     <td>N/A</td>
+     <td>Fetch a result row as an associative array</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_result::fetch_field_direct</span></td>
+     <td><span class="function">mysqli_fetch_field_direct</span></td>
+     <td>N/A</td>
+     <td>Fetch meta-data for a single field</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_result::fetch_field</span></td>
+     <td><span class="function">mysqli_fetch_field</span></td>
+     <td>N/A</td>
+     <td>Returns the next field in the result set</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_result::fetch_fields</span></td>
+     <td><span class="function">mysqli_fetch_fields</span></td>
+     <td>N/A</td>
+     <td>Returns an array of objects representing the fields in a result set</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_result::fetch_object</span></td>
+     <td><span class="function">mysqli_fetch_object</span></td>
+     <td>N/A</td>
+     <td>Returns the current row of a result set as an object</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_result::fetch_row</span></td>
+     <td><span class="function">mysqli_fetch_row</span></td>
+     <td>N/A</td>
+     <td>Get a result row as an enumerated array</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_result::field_seek</span></td>
+     <td><span class="function">mysqli_field_seek</span></td>
+     <td>N/A</td>
+     <td>Set result pointer to a specified field offset</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_result::free</span>,
+      <a href="mysqli-result.free.html" class="link">mysqli_result::close</a>,
+      <a href="mysqli-result.free.html" class="link">mysqli_result::free_result</a></td>
+     <td><span class="function">mysqli_free_result</span></td>
+     <td>N/A</td>
+     <td>Frees the memory associated with a result</td>
+    </tr>
+
+   </tbody>
+  
+ </table>
+
+
+ <table class="doctable table">
+  <caption><strong>Summary of <span class="classname">mysqli_driver</span> methods</strong></caption>
+  
+   <thead>
+    <tr>
+     <th>MySQL_Driver</th>
+    </tr>
+
+    <tr>
+     <th>OOP Interface</th>
+     <th>Procedural Interface</th>
+     <th>Alias (Do not use)</th>
+     <th>Description</th>
+    </tr>
+
+   </thead>
+
+   <tbody class="tbody">
+    <tr>
+     <td><em class="emphasis">Properties</em></td>
+    </tr>
+
+    <tr>
+     <td>N/A</td>
+    </tr>
+
+    <tr>
+     <td><em class="emphasis">Methods</em></td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_driver::embedded_server_end</span></td>
+     <td><span class="function">mysqli_embedded_server_end</span></td>
+     <td>N/A</td>
+     <td>NOT DOCUMENTED</td>
+    </tr>
+
+    <tr>
+     <td> <span class="methodname">mysqli_driver::embedded_server_start</span></td>
+     <td><span class="function">mysqli_embedded_server_start</span></td>
+     <td>N/A</td>
+     <td>NOT DOCUMENTED</td>
+    </tr>
+
+   </tbody>
+  
+ </table>
+
+
+ <blockquote class="note"><p><strong class="note">Note</strong>: 
+  <p class="para">
+   Alias functions are provided for backward compatibility purposes
+   only. Do not use them in new projects.
+  </p>
+ </p></blockquote>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

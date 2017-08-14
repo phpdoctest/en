@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Registers a PHP function for use as an SQL scalar function</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.sqlite3.html">SQLite3</a></li>
+  <li class="header up"><a href="class.sqlite3.html">SQLite3</a></li>
+  <li><a href="sqlite3.busytimeout.html">SQLite3::busyTimeout</a></li>
+  <li><a href="sqlite3.changes.html">SQLite3::changes</a></li>
+  <li><a href="sqlite3.close.html">SQLite3::close</a></li>
+  <li><a href="sqlite3.construct.html">SQLite3::__construct</a></li>
+  <li><a href="sqlite3.createaggregate.html">SQLite3::createAggregate</a></li>
+  <li><a href="sqlite3.createcollation.html">SQLite3::createCollation</a></li>
+  <li class="active"><a href="sqlite3.createfunction.html">SQLite3::createFunction</a></li>
+  <li><a href="sqlite3.enableexceptions.html">SQLite3::enableExceptions</a></li>
+  <li><a href="sqlite3.escapestring.html">SQLite3::escapeString</a></li>
+  <li><a href="sqlite3.exec.html">SQLite3::exec</a></li>
+  <li><a href="sqlite3.lasterrorcode.html">SQLite3::lastErrorCode</a></li>
+  <li><a href="sqlite3.lasterrormsg.html">SQLite3::lastErrorMsg</a></li>
+  <li><a href="sqlite3.lastinsertrowid.html">SQLite3::lastInsertRowID</a></li>
+  <li><a href="sqlite3.loadextension.html">SQLite3::loadExtension</a></li>
+  <li><a href="sqlite3.open.html">SQLite3::open</a></li>
+  <li><a href="sqlite3.openblob.html">SQLite3::openBlob</a></li>
+  <li><a href="sqlite3.prepare.html">SQLite3::prepare</a></li>
+  <li><a href="sqlite3.query.html">SQLite3::query</a></li>
+  <li><a href="sqlite3.querysingle.html">SQLite3::querySingle</a></li>
+  <li><a href="sqlite3.version.html">SQLite3::version</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="sqlite3.createcollation.html">SQLite3::createCollation</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="sqlite3.enableexceptions.html">SQLite3::enableExceptions</a></div>
+                <div class="up"><a href="class.sqlite3.html">SQLite3</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="sqlite3.createfunction" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SQLite3::createFunction</h1>
+  <p class="refpurpose">Registers a PHP function for use as an SQL scalar function</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-sqlite3.createfunction-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">SQLite3::createFunction</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$callback</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$argument_count</code><span class="initializer"> = -1</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = 0</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Registers a PHP function or user-defined function for use as an SQL scalar
+   function for use within SQL statements.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-sqlite3.createfunction-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">name</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Name of the SQL function to be created or redefined.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">callback</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The name of a PHP function or user-defined function to apply as a
+       callback, defining the behavior of the SQL function.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">argument_count</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The number of arguments that the SQL function takes. If
+       this parameter is <em>-1</em>, then the SQL function may take
+       any number of arguments.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">flags</code></dt>
+
+     <dd>
+
+      <p class="para">
+       A bitwise conjunction of flags. Currently, only
+       <strong><code>SQLITE3_DETERMINISTIC</code></strong> is supported, which specifies
+       that the function always returns the same result given the same inputs
+       within a single SQL statement.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-sqlite3.createfunction-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> upon successful creation of the function, <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-sqlite3.createfunction-changelog">
+  <h3 class="title">Changelog</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>Version</th>
+      <th>Description</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>PHP 7.1.4</td>
+      <td>
+       The <code class="parameter">flags</code> has been added.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-sqlite3.createfunction-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-2401">
+    <p><strong>Example #1 <span class="function">SQLite3::createFunction</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">my_udf_md5</span><span style="color: #007700">(</span><span style="color: #0000BB">$string</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">md5</span><span style="color: #007700">(</span><span style="color: #0000BB">$string</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$db&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SQLite3</span><span style="color: #007700">(</span><span style="color: #DD0000">'mysqlitedb.db'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createFunction</span><span style="color: #007700">(</span><span style="color: #DD0000">'my_udf_md5'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'my_udf_md5'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">querySingle</span><span style="color: #007700">(</span><span style="color: #DD0000">'SELECT&nbsp;my_udf_md5("test")'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+string(32) &quot;098f6bcd4621d373cade4e832627b4f6&quot;
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

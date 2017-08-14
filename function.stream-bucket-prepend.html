@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Prepend bucket to brigade</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.stream.html">Streams</a></li>
+  <li class="header up"><a href="ref.stream.html">Stream Functions</a></li>
+  <li><a href="function.set-socket-blocking.html">set_socket_blocking</a></li>
+  <li><a href="function.stream-bucket-append.html">stream_bucket_append</a></li>
+  <li><a href="function.stream-bucket-make-writeable.html">stream_bucket_make_writeable</a></li>
+  <li><a href="function.stream-bucket-new.html">stream_bucket_new</a></li>
+  <li class="active"><a href="function.stream-bucket-prepend.html">stream_bucket_prepend</a></li>
+  <li><a href="function.stream-context-create.html">stream_context_create</a></li>
+  <li><a href="function.stream-context-get-default.html">stream_context_get_default</a></li>
+  <li><a href="function.stream-context-get-options.html">stream_context_get_options</a></li>
+  <li><a href="function.stream-context-get-params.html">stream_context_get_params</a></li>
+  <li><a href="function.stream-context-set-default.html">stream_context_set_default</a></li>
+  <li><a href="function.stream-context-set-option.html">stream_context_set_option</a></li>
+  <li><a href="function.stream-context-set-params.html">stream_context_set_params</a></li>
+  <li><a href="function.stream-copy-to-stream.html">stream_copy_to_stream</a></li>
+  <li><a href="function.stream-encoding.html">stream_encoding</a></li>
+  <li><a href="function.stream-filter-append.html">stream_filter_append</a></li>
+  <li><a href="function.stream-filter-prepend.html">stream_filter_prepend</a></li>
+  <li><a href="function.stream-filter-register.html">stream_filter_register</a></li>
+  <li><a href="function.stream-filter-remove.html">stream_filter_remove</a></li>
+  <li><a href="function.stream-get-contents.html">stream_get_contents</a></li>
+  <li><a href="function.stream-get-filters.html">stream_get_filters</a></li>
+  <li><a href="function.stream-get-line.html">stream_get_line</a></li>
+  <li><a href="function.stream-get-meta-data.html">stream_get_meta_data</a></li>
+  <li><a href="function.stream-get-transports.html">stream_get_transports</a></li>
+  <li><a href="function.stream-get-wrappers.html">stream_get_wrappers</a></li>
+  <li><a href="function.stream-is-local.html">stream_is_local</a></li>
+  <li><a href="function.stream-notification-callback.html">stream_notification_callback</a></li>
+  <li><a href="function.stream-register-wrapper.html">stream_register_wrapper</a></li>
+  <li><a href="function.stream-resolve-include-path.html">stream_resolve_include_path</a></li>
+  <li><a href="function.stream-select.html">stream_select</a></li>
+  <li><a href="function.stream-set-blocking.html">stream_set_blocking</a></li>
+  <li><a href="function.stream-set-chunk-size.html">stream_set_chunk_size</a></li>
+  <li><a href="function.stream-set-read-buffer.html">stream_set_read_buffer</a></li>
+  <li><a href="function.stream-set-timeout.html">stream_set_timeout</a></li>
+  <li><a href="function.stream-set-write-buffer.html">stream_set_write_buffer</a></li>
+  <li><a href="function.stream-socket-accept.html">stream_socket_accept</a></li>
+  <li><a href="function.stream-socket-client.html">stream_socket_client</a></li>
+  <li><a href="function.stream-socket-enable-crypto.html">stream_socket_enable_crypto</a></li>
+  <li><a href="function.stream-socket-get-name.html">stream_socket_get_name</a></li>
+  <li><a href="function.stream-socket-pair.html">stream_socket_pair</a></li>
+  <li><a href="function.stream-socket-recvfrom.html">stream_socket_recvfrom</a></li>
+  <li><a href="function.stream-socket-sendto.html">stream_socket_sendto</a></li>
+  <li><a href="function.stream-socket-server.html">stream_socket_server</a></li>
+  <li><a href="function.stream-socket-shutdown.html">stream_socket_shutdown</a></li>
+  <li><a href="function.stream-supports-lock.html">stream_supports_lock</a></li>
+  <li><a href="function.stream-wrapper-register.html">stream_wrapper_register</a></li>
+  <li><a href="function.stream-wrapper-restore.html">stream_wrapper_restore</a></li>
+  <li><a href="function.stream-wrapper-unregister.html">stream_wrapper_unregister</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.stream-bucket-new.html">stream_bucket_new</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.stream-context-create.html">stream_context_create</a></div>
+                <div class="up"><a href="ref.stream.html">Stream Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.stream-bucket-prepend" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">stream_bucket_prepend</h1>
+  <p class="refpurpose">
+   Prepend bucket to brigade
+  </p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.stream-bucket-prepend-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname">stream_bucket_prepend</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$brigade</code></span>
+   , <span class="methodparam"><span class="type">object</span> <code class="parameter">$bucket</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+    This function can be called to prepend a bucket to a bucket brigade. It
+    is typically called from  <span class="methodname">php_user_filter::filter</span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.stream-bucket-prepend-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">brigade</code></dt>
+
+    <dd>
+
+     <p class="para">
+      <code class="parameter">brigade</code> is a resource pointing to a <em>bucket brigade</em>
+      which contains one or more <em>bucket</em> objects.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">bucket</code></dt>
+
+    <dd>
+
+     <p class="para">
+      A bucket object.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.stream-bucket-prepend-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   No value is returned.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.stream-bucket-prepend-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4599">
+    <p><strong>Example #1 <span class="function">stream_bucket_prepend</span> examples</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">php_user_filter&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;protected&nbsp;</span><span style="color: #0000BB">$calls&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">filter</span><span style="color: #007700">(</span><span style="color: #0000BB">$in</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$out</span><span style="color: #007700">,&nbsp;&amp;</span><span style="color: #0000BB">$consumed</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$closing</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(</span><span style="color: #0000BB">$bucket&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">stream_bucket_make_writeable</span><span style="color: #007700">(</span><span style="color: #0000BB">$in</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$consumed&nbsp;</span><span style="color: #007700">+=&nbsp;</span><span style="color: #0000BB">$bucket</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">datalen</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">calls</span><span style="color: #007700">++&nbsp;==&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;This&nbsp;bucket&nbsp;will&nbsp;appear&nbsp;again&nbsp;before&nbsp;any&nbsp;other&nbsp;bucket.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">stream_bucket_prepend</span><span style="color: #007700">(</span><span style="color: #0000BB">$in</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$bucket</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">PSFS_FEED_ME</span><span style="color: #007700">;<br />&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">stream_filter_register</span><span style="color: #007700">(</span><span style="color: #DD0000">'test'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">);<br />print&nbsp;&nbsp;</span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'php://filter/read=test/resource=foo'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

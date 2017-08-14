@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Inserts values at a given index.</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.vartype.html">Variable and Type Related Extensions</a></li>
+  <li class="header up"><a href="book.ds.html">Data Structures</a></li>
+  <li class="header up"><a href="class.ds-deque.html">Deque</a></li>
+  <li><a href="ds-deque.allocate.html">Ds\Deque::allocate</a></li>
+  <li><a href="ds-deque.apply.html">Ds\Deque::apply</a></li>
+  <li><a href="ds-deque.capacity.html">Ds\Deque::capacity</a></li>
+  <li><a href="ds-deque.clear.html">Ds\Deque::clear</a></li>
+  <li><a href="ds-deque.construct.html">Ds\Deque::__construct</a></li>
+  <li><a href="ds-deque.contains.html">Ds\Deque::contains</a></li>
+  <li><a href="ds-deque.copy.html">Ds\Deque::copy</a></li>
+  <li><a href="ds-deque.count.html">Ds\Deque::count</a></li>
+  <li><a href="ds-deque.filter.html">Ds\Deque::filter</a></li>
+  <li><a href="ds-deque.find.html">Ds\Deque::find</a></li>
+  <li><a href="ds-deque.first.html">Ds\Deque::first</a></li>
+  <li><a href="ds-deque.get.html">Ds\Deque::get</a></li>
+  <li class="active"><a href="ds-deque.insert.html">Ds\Deque::insert</a></li>
+  <li><a href="ds-deque.isempty.html">Ds\Deque::isEmpty</a></li>
+  <li><a href="ds-deque.join.html">Ds\Deque::join</a></li>
+  <li><a href="ds-deque.jsonserialize.html">Ds\Deque::jsonSerialize</a></li>
+  <li><a href="ds-deque.last.html">Ds\Deque::last</a></li>
+  <li><a href="ds-deque.map.html">Ds\Deque::map</a></li>
+  <li><a href="ds-deque.merge.html">Ds\Deque::merge</a></li>
+  <li><a href="ds-deque.pop.html">Ds\Deque::pop</a></li>
+  <li><a href="ds-deque.push.html">Ds\Deque::push</a></li>
+  <li><a href="ds-deque.reduce.html">Ds\Deque::reduce</a></li>
+  <li><a href="ds-deque.remove.html">Ds\Deque::remove</a></li>
+  <li><a href="ds-deque.reverse.html">Ds\Deque::reverse</a></li>
+  <li><a href="ds-deque.reversed.html">Ds\Deque::reversed</a></li>
+  <li><a href="ds-deque.rotate.html">Ds\Deque::rotate</a></li>
+  <li><a href="ds-deque.set.html">Ds\Deque::set</a></li>
+  <li><a href="ds-deque.shift.html">Ds\Deque::shift</a></li>
+  <li><a href="ds-deque.slice.html">Ds\Deque::slice</a></li>
+  <li><a href="ds-deque.sort.html">Ds\Deque::sort</a></li>
+  <li><a href="ds-deque.sorted.html">Ds\Deque::sorted</a></li>
+  <li><a href="ds-deque.sum.html">Ds\Deque::sum</a></li>
+  <li><a href="ds-deque.toarray.html">Ds\Deque::toArray</a></li>
+  <li><a href="ds-deque.unshift.html">Ds\Deque::unshift</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="ds-deque.get.html">Ds\Deque::get</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="ds-deque.isempty.html">Ds\Deque::isEmpty</a></div>
+                <div class="up"><a href="class.ds-deque.html">Deque</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="ds-deque.insert" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Ds\Deque::insert</h1>
+  <p class="refpurpose">Inserts values at a given index.</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-ds-deque.insert-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">Ds\Deque::insert</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$...values</code></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+    Inserts values into the deque at a given index.
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-ds-deque.insert-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">index</code></dt>
+
+    <dd>
+
+     <p class="para">
+        The index at which to insert. <code class="code">0 &lt;= index &lt;= count</code>
+     </p>
+     <blockquote class="note"><p><strong class="note">Note</strong>: 
+        <p class="para">
+            You can insert at the index equal to the number of values.
+        </p>
+     </p></blockquote>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">values</code></dt>
+
+    <dd>
+
+     <p class="para">
+        The value or values to insert.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-ds-deque.insert-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+    No value is returned.
+  </p>
+ </div>
+
+
+<div class="refsect1 errors" id="refsect1-ds-deque.insert-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   <span class="classname">OutOfRangeException</span> if the index is not valid.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-ds-deque.insert-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-5803">
+   <p><strong>Example #1 <span class="function">Ds\Deque::insert</span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$deque&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Ds</span><span style="color: #007700">\</span><span style="color: #0000BB">Deque</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$deque</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">insert</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"e"</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;[e]<br /></span><span style="color: #0000BB">$deque</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">insert</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"f"</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;[e,&nbsp;f]<br /></span><span style="color: #0000BB">$deque</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">insert</span><span style="color: #007700">(</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"g"</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;[e,&nbsp;f,&nbsp;g]<br /></span><span style="color: #0000BB">$deque</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">insert</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"a"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"b"</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;[a,&nbsp;b,&nbsp;e,&nbsp;f,&nbsp;g]<br /></span><span style="color: #0000BB">$deque</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">insert</span><span style="color: #007700">(</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;...[</span><span style="color: #DD0000">"c"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"d"</span><span style="color: #007700">]);&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;[a,&nbsp;b,&nbsp;c,&nbsp;d,&nbsp;e,&nbsp;f,&nbsp;g]<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$deque</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+object(Ds\Deque)#1 (7) {
+  [0]=&gt;
+  string(1) &quot;a&quot;
+  [1]=&gt;
+  string(1) &quot;b&quot;
+  [2]=&gt;
+  string(1) &quot;c&quot;
+  [3]=&gt;
+  string(1) &quot;d&quot;
+  [4]=&gt;
+  string(1) &quot;e&quot;
+  [5]=&gt;
+  string(1) &quot;f&quot;
+  [6]=&gt;
+  string(1) &quot;g&quot;
+}
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

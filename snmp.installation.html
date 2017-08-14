@@ -1,0 +1,109 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Installation</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li class="header up"><a href="book.snmp.html">SNMP</a></li>
+  <li class="header up"><a href="snmp.setup.html">Installing/Configuring</a></li>
+  <li><a href="snmp.requirements.html">Requirements</a></li>
+  <li class="active"><a href="snmp.installation.html">Installation</a></li>
+  <li><a href="snmp.configuration.html">Runtime Configuration</a></li>
+  <li><a href="snmp.resources.html">Resource Types</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="snmp.requirements.html">Requirements</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="snmp.configuration.html">Runtime Configuration</a></div>
+                <div class="up"><a href="snmp.setup.html">Installing/Configuring</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="snmp.installation" class="section">
+ <h2 class="title">Installation</h2>
+ <p class="para">
+  PHP 5.3.0, 5.3.1 and 5.3.2 do not have SNMP support. SNMP support has been restored in PHP 5.3.3.
+ </p>
+ <p class="para">
+  The Windows distribution of Net-SNMP contains support files for SNMP in the
+  <var class="filename">mibs</var> directory. This directory
+  should added to Windows&#039; environment variables, as MIBDIRS, with the
+  value being the full path to the <var class="filename">mibs</var> directory:
+  e.g. <var class="filename">c:\usr\mibs</var>.
+ </p>
+
+ <p class="para">
+  Important notes for PHP prior to 5.4.0: In order to use the UCD <acronym class="acronym">SNMP</acronym> package, you need to define
+  <em>NO_ZEROLENGTH_COMMUNITY</em> to <em>1</em> before 
+  compiling it. After configuring UCD <acronym class="acronym">SNMP</acronym>, edit <var class="filename">config.h</var> 
+  or <var class="filename">acconfig.h</var> and search for
+  <em>NO_ZEROLENGTH_COMMUNITY</em>. Uncomment the <em>#define</em> line. It 
+  should look like this afterwards:
+  <div class="example-contents">
+<div class="ccode"><pre class="ccode">#define NO_ZEROLENGTH_COMMUNITY 1</pre>
+</div>
+  </div>
+
+  Now compile PHP <strong class="option configure">--with-snmp[=DIR]</strong>
+.
+ </p>
+ <p class="para">
+  If you see strange segmentation faults in combination with <acronym class="acronym">SNMP</acronym> commands,
+  you did not follow the above instructions. If you do not want to recompile
+  UCD <acronym class="acronym">SNMP</acronym>, you can compile PHP with the 
+  <strong class="option configure">--enable-ucd-snmp-hack</strong>
+ switch which
+  will work around the misfeature.
+ </p>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

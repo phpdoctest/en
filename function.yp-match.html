@@ -1,0 +1,190 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Returns the matched line</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li class="header up"><a href="book.nis.html">YP/NIS</a></li>
+  <li class="header up"><a href="ref.nis.html">YP/NIS Functions</a></li>
+  <li><a href="function.yp-all.html">yp_all</a></li>
+  <li><a href="function.yp-cat.html">yp_cat</a></li>
+  <li><a href="function.yp-err-string.html">yp_err_string</a></li>
+  <li><a href="function.yp-errno.html">yp_errno</a></li>
+  <li><a href="function.yp-first.html">yp_first</a></li>
+  <li><a href="function.yp-get-default-domain.html">yp_get_default_domain</a></li>
+  <li><a href="function.yp-master.html">yp_master</a></li>
+  <li class="active"><a href="function.yp-match.html">yp_match</a></li>
+  <li><a href="function.yp-next.html">yp_next</a></li>
+  <li><a href="function.yp-order.html">yp_order</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.yp-master.html">yp_master</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.yp-next.html">yp_next</a></div>
+                <div class="up"><a href="ref.nis.html">YP/NIS Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.yp-match" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">yp_match</h1>
+  <p class="refpurpose">Returns the matched line</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.yp-match-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname">yp_match</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$domain</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$map</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$key</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Returns the value associated with the passed <code class="parameter">key</code>
+   out of the specified <code class="parameter">map</code>. 
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.yp-match-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">domain</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The NIS domain name.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">map</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The NIS map.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">key</code></dt>
+
+     <dd>
+
+      <p class="para">
+       This key must be exact.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.yp-match-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the value, or <strong><code>FALSE</code></strong> on errors.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.yp-match-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-5247">
+    <p><strong>Example #1 Example for NIS match</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$entry&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">yp_match</span><span style="color: #007700">(</span><span style="color: #0000BB">$domain</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"passwd.byname"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"joe"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"Matched&nbsp;entry&nbsp;is:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$entry</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+joe:##joe:11111:100:Joe User:/home/j/joe:/usr/local/bin/bash
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.yp-match-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">yp_get_default_domain</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

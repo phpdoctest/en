@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: ob_start callback function to gzip output buffer</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.php.html">Affecting PHP's Behaviour</a></li>
+  <li class="header up"><a href="book.outcontrol.html">Output Control</a></li>
+  <li class="header up"><a href="ref.outcontrol.html">Output Control Functions</a></li>
+  <li><a href="function.flush.html">flush</a></li>
+  <li><a href="function.ob-clean.html">ob_clean</a></li>
+  <li><a href="function.ob-end-clean.html">ob_end_clean</a></li>
+  <li><a href="function.ob-end-flush.html">ob_end_flush</a></li>
+  <li><a href="function.ob-flush.html">ob_flush</a></li>
+  <li><a href="function.ob-get-clean.html">ob_get_clean</a></li>
+  <li><a href="function.ob-get-contents.html">ob_get_contents</a></li>
+  <li><a href="function.ob-get-flush.html">ob_get_flush</a></li>
+  <li><a href="function.ob-get-length.html">ob_get_length</a></li>
+  <li><a href="function.ob-get-level.html">ob_get_level</a></li>
+  <li><a href="function.ob-get-status.html">ob_get_status</a></li>
+  <li class="active"><a href="function.ob-gzhandler.html">ob_gzhandler</a></li>
+  <li><a href="function.ob-implicit-flush.html">ob_implicit_flush</a></li>
+  <li><a href="function.ob-list-handlers.html">ob_list_handlers</a></li>
+  <li><a href="function.ob-start.html">ob_start</a></li>
+  <li><a href="function.output-add-rewrite-var.html">output_add_rewrite_var</a></li>
+  <li><a href="function.output-reset-rewrite-vars.html">output_reset_rewrite_vars</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.ob-get-status.html">ob_get_status</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.ob-implicit-flush.html">ob_implicit_flush</a></div>
+                <div class="up"><a href="ref.outcontrol.html">Output Control Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.ob-gzhandler" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ob_gzhandler</h1>
+  <p class="refpurpose">ob_start callback function to gzip output buffer</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.ob-gzhandler-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname">ob_gzhandler</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$buffer</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function">ob_gzhandler</span> is intended to be used as a callback
+   function for <span class="function">ob_start</span> to help facilitate sending
+   gz-encoded data to web browsers that support compressed web pages.  
+   Before <span class="function">ob_gzhandler</span> actually sends compressed data,
+   it determines what type of content encoding the browser will accept
+   (&quot;gzip&quot;, &quot;deflate&quot; or none at all) and will return its output accordingly.
+   All browsers are supported since it&#039;s up to the browser to send the
+   correct header saying that it accepts compressed web pages. If a browser
+   doesn&#039;t support compressed pages this function returns <strong><code>FALSE</code></strong>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.ob-gzhandler-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">buffer</code></dt>
+
+     <dd>
+
+      <p class="para">
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">mode</code></dt>
+
+     <dd>
+
+      <p class="para">
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.ob-gzhandler-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.ob-gzhandler-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-512">
+    <p><strong>Example #1 <span class="function">ob_gzhandler</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />ob_start</span><span style="color: #007700">(</span><span style="color: #DD0000">"ob_gzhandler"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;<br /></span>&lt;html&gt;<br />&lt;body&gt;<br />&lt;p&gt;This&nbsp;should&nbsp;be&nbsp;a&nbsp;compressed&nbsp;page.&lt;/p&gt;<br />&lt;/body&gt;<br />&lt;/html&gt;</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.ob-gzhandler-notes">
+  <h3 class="title">Notes</h3>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    <span class="function">ob_gzhandler</span> requires the <a href="ref.zlib.html" class="link">zlib</a> extension.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    You cannot use both <span class="function">ob_gzhandler</span> and <a href="zlib.configuration.html#ini.zlib.output-compression" class="link">zlib.output_compression</a>.
+    Also note that using <a href="zlib.configuration.html#ini.zlib.output-compression" class="link">
+    zlib.output_compression</a> is preferred over
+    <span class="function">ob_gzhandler</span>.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.ob-gzhandler-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">ob_start</span></li>
+    <li class="member"><span class="function">ob_end_flush</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

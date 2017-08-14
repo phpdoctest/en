@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Returns an array of cursors to iterator over a full collection in parallel</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.mongo.html">Mongo</a></li>
+  <li class="header up"><a href="mongo.core.html">Core Classes</a></li>
+  <li class="header up"><a href="class.mongocollection.html">MongoCollection</a></li>
+  <li><a href="mongocollection.aggregate.html">MongoCollection::aggregate</a></li>
+  <li><a href="mongocollection.aggregatecursor.html">MongoCollection::aggregateCursor</a></li>
+  <li><a href="mongocollection.batchinsert.html">MongoCollection::batchInsert</a></li>
+  <li><a href="mongocollection.construct.html">MongoCollection::__construct</a></li>
+  <li><a href="mongocollection.count.html">MongoCollection::count</a></li>
+  <li><a href="mongocollection.createdbref.html">MongoCollection::createDBRef</a></li>
+  <li><a href="mongocollection.createindex.html">MongoCollection::createIndex</a></li>
+  <li><a href="mongocollection.deleteindex.html">MongoCollection::deleteIndex</a></li>
+  <li><a href="mongocollection.deleteindexes.html">MongoCollection::deleteIndexes</a></li>
+  <li><a href="mongocollection.distinct.html">MongoCollection::distinct</a></li>
+  <li><a href="mongocollection.drop.html">MongoCollection::drop</a></li>
+  <li><a href="mongocollection.ensureindex.html">MongoCollection::ensureIndex</a></li>
+  <li><a href="mongocollection.find.html">MongoCollection::find</a></li>
+  <li><a href="mongocollection.findandmodify.html">MongoCollection::findAndModify</a></li>
+  <li><a href="mongocollection.findone.html">MongoCollection::findOne</a></li>
+  <li><a href="mongocollection.get.html">MongoCollection::__get</a></li>
+  <li><a href="mongocollection.getdbref.html">MongoCollection::getDBRef</a></li>
+  <li><a href="mongocollection.getindexinfo.html">MongoCollection::getIndexInfo</a></li>
+  <li><a href="mongocollection.getname.html">MongoCollection::getName</a></li>
+  <li><a href="mongocollection.getreadpreference.html">MongoCollection::getReadPreference</a></li>
+  <li><a href="mongocollection.getslaveokay.html">MongoCollection::getSlaveOkay</a></li>
+  <li><a href="mongocollection.getwriteconcern.html">MongoCollection::getWriteConcern</a></li>
+  <li><a href="mongocollection.group.html">MongoCollection::group</a></li>
+  <li><a href="mongocollection.insert.html">MongoCollection::insert</a></li>
+  <li class="active"><a href="mongocollection.parallelcollectionscan.html">MongoCollection::parallelCollectionScan</a></li>
+  <li><a href="mongocollection.remove.html">MongoCollection::remove</a></li>
+  <li><a href="mongocollection.save.html">MongoCollection::save</a></li>
+  <li><a href="mongocollection.setreadpreference.html">MongoCollection::setReadPreference</a></li>
+  <li><a href="mongocollection.setslaveokay.html">MongoCollection::setSlaveOkay</a></li>
+  <li><a href="mongocollection.setwriteconcern.html">MongoCollection::setWriteConcern</a></li>
+  <li><a href="mongocollection.toindexstring.html">MongoCollection::toIndexString</a></li>
+  <li><a href="mongocollection.--tostring.html">MongoCollection::__toString</a></li>
+  <li><a href="mongocollection.update.html">MongoCollection::update</a></li>
+  <li><a href="mongocollection.validate.html">MongoCollection::validate</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mongocollection.insert.html">MongoCollection::insert</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mongocollection.remove.html">MongoCollection::remove</a></div>
+                <div class="up"><a href="class.mongocollection.html">MongoCollection</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mongocollection.parallelcollectionscan" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">MongoCollection::parallelCollectionScan</h1>
+  <p class="refpurpose">Returns an array of cursors to iterator over a full collection in parallel</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-mongocollection.parallelcollectionscan-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array[MongoCommandCursor]</span> <span class="methodname">MongoCollection::parallelCollectionScan</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$num_cursors</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   This method returns an array of a maximum of <em>num_cursors</em>
+   cursors. An iteration over one of the returned cursors results in a partial
+   set of documents for a collection. Iteration over all the returned cursors
+   results in getting every document back from the collection.
+  </p>
+  <p class="para">
+   This method is a wrapper for the <em>parallelCollectionScan</em>
+   MongoDB command.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mongocollection.parallelcollectionscan-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+
+      <code class="parameter">num_cursors</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       The number of cursors to request from the server. Please note, that the
+       server can return less cursors than you requested.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-mongocollection.parallelcollectionscan-returnvalues">
+  <h3 class="title">Return Values</h3>  
+  <p class="para">
+   Returns an array of <span class="classname">MongoCommandCursor</span> objects.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-mongocollection.parallelcollectionscan-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-1569">
+   <p><strong>Example #1 <span class="function">MongoCollection::parallelCollectionScan</span> example</strong></p>
+   <div class="example-contents"><p>
+    Returning all documents in a collection by using multiple cursors.
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$m&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoClient</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">demo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">cities</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">/*&nbsp;Request&nbsp;three&nbsp;cursors&nbsp;*/<br /></span><span style="color: #0000BB">$cursors&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$c</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">parallelCollectionScan</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">3&nbsp;</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;Add&nbsp;all&nbsp;the&nbsp;cursors&nbsp;to&nbsp;the&nbsp;MultipleIterator&nbsp;*/<br /></span><span style="color: #0000BB">$mi&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MultipleIterator</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">MultipleIterator</span><span style="color: #007700">::</span><span style="color: #0000BB">MIT_NEED_ANY&nbsp;</span><span style="color: #007700">);<br />foreach&nbsp;(&nbsp;</span><span style="color: #0000BB">$cursors&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$cursor&nbsp;</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$mi</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">attachIterator</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$cursor&nbsp;</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">/*&nbsp;Iterate&nbsp;over&nbsp;all&nbsp;the&nbsp;associated&nbsp;cursors&nbsp;*/<br /></span><span style="color: #007700">foreach&nbsp;(&nbsp;</span><span style="color: #0000BB">$mi&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$items&nbsp;</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(&nbsp;</span><span style="color: #0000BB">$items&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$item&nbsp;</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(&nbsp;</span><span style="color: #0000BB">$item&nbsp;</span><span style="color: #007700">!==&nbsp;</span><span style="color: #0000BB">NULL&nbsp;</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$item</span><span style="color: #007700">[</span><span style="color: #DD0000">'name'</span><span style="color: #007700">],&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-mongocollection.parallelcollectionscan-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="classname">MultipleIterator</span></li>
+    <li class="member"><span class="classname">MongoCommandCursor</span></li>
+    <li class="member"> <span class="methodname">MongoDB::command</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

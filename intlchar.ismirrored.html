@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Check if code point has the Bidi_Mirrored property</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.international.html">Human Language and Character Encoding Support</a></li>
+  <li class="header up"><a href="book.intl.html">intl</a></li>
+  <li class="header up"><a href="class.intlchar.html">IntlChar</a></li>
+  <li><a href="intlchar.charage.html">IntlChar::charAge</a></li>
+  <li><a href="intlchar.chardigitvalue.html">IntlChar::charDigitValue</a></li>
+  <li><a href="intlchar.chardirection.html">IntlChar::charDirection</a></li>
+  <li><a href="intlchar.charfromname.html">IntlChar::charFromName</a></li>
+  <li><a href="intlchar.charmirror.html">IntlChar::charMirror</a></li>
+  <li><a href="intlchar.charname.html">IntlChar::charName</a></li>
+  <li><a href="intlchar.chartype.html">IntlChar::charType</a></li>
+  <li><a href="intlchar.chr.html">IntlChar::chr</a></li>
+  <li><a href="intlchar.digit.html">IntlChar::digit</a></li>
+  <li><a href="intlchar.enumcharnames.html">IntlChar::enumCharNames</a></li>
+  <li><a href="intlchar.enumchartypes.html">IntlChar::enumCharTypes</a></li>
+  <li><a href="intlchar.foldcase.html">IntlChar::foldCase</a></li>
+  <li><a href="intlchar.fordigit.html">IntlChar::forDigit</a></li>
+  <li><a href="intlchar.getbidipairedbracket.html">IntlChar::getBidiPairedBracket</a></li>
+  <li><a href="intlchar.getblockcode.html">IntlChar::getBlockCode</a></li>
+  <li><a href="intlchar.getcombiningclass.html">IntlChar::getCombiningClass</a></li>
+  <li><a href="intlchar.getfc-nfkc-closure.html">IntlChar::getFC_NFKC_Closure</a></li>
+  <li><a href="intlchar.getintpropertymaxvalue.html">IntlChar::getIntPropertyMaxValue</a></li>
+  <li><a href="intlchar.getintpropertyminvalue.html">IntlChar::getIntPropertyMinValue</a></li>
+  <li><a href="intlchar.getintpropertyvalue.html">IntlChar::getIntPropertyValue</a></li>
+  <li><a href="intlchar.getnumericvalue.html">IntlChar::getNumericValue</a></li>
+  <li><a href="intlchar.getpropertyenum.html">IntlChar::getPropertyEnum</a></li>
+  <li><a href="intlchar.getpropertyname.html">IntlChar::getPropertyName</a></li>
+  <li><a href="intlchar.getpropertyvalueenum.html">IntlChar::getPropertyValueEnum</a></li>
+  <li><a href="intlchar.getpropertyvaluename.html">IntlChar::getPropertyValueName</a></li>
+  <li><a href="intlchar.getunicodeversion.html">IntlChar::getUnicodeVersion</a></li>
+  <li><a href="intlchar.hasbinaryproperty.html">IntlChar::hasBinaryProperty</a></li>
+  <li><a href="intlchar.isalnum.html">IntlChar::isalnum</a></li>
+  <li><a href="intlchar.isalpha.html">IntlChar::isalpha</a></li>
+  <li><a href="intlchar.isbase.html">IntlChar::isbase</a></li>
+  <li><a href="intlchar.isblank.html">IntlChar::isblank</a></li>
+  <li><a href="intlchar.iscntrl.html">IntlChar::iscntrl</a></li>
+  <li><a href="intlchar.isdefined.html">IntlChar::isdefined</a></li>
+  <li><a href="intlchar.isdigit.html">IntlChar::isdigit</a></li>
+  <li><a href="intlchar.isgraph.html">IntlChar::isgraph</a></li>
+  <li><a href="intlchar.isidignorable.html">IntlChar::isIDIgnorable</a></li>
+  <li><a href="intlchar.isidpart.html">IntlChar::isIDPart</a></li>
+  <li><a href="intlchar.isidstart.html">IntlChar::isIDStart</a></li>
+  <li><a href="intlchar.isisocontrol.html">IntlChar::isISOControl</a></li>
+  <li><a href="intlchar.isjavaidpart.html">IntlChar::isJavaIDPart</a></li>
+  <li><a href="intlchar.isjavaidstart.html">IntlChar::isJavaIDStart</a></li>
+  <li><a href="intlchar.isjavaspacechar.html">IntlChar::isJavaSpaceChar</a></li>
+  <li><a href="intlchar.islower.html">IntlChar::islower</a></li>
+  <li class="active"><a href="intlchar.ismirrored.html">IntlChar::isMirrored</a></li>
+  <li><a href="intlchar.isprint.html">IntlChar::isprint</a></li>
+  <li><a href="intlchar.ispunct.html">IntlChar::ispunct</a></li>
+  <li><a href="intlchar.isspace.html">IntlChar::isspace</a></li>
+  <li><a href="intlchar.istitle.html">IntlChar::istitle</a></li>
+  <li><a href="intlchar.isualphabetic.html">IntlChar::isUAlphabetic</a></li>
+  <li><a href="intlchar.isulowercase.html">IntlChar::isULowercase</a></li>
+  <li><a href="intlchar.isupper.html">IntlChar::isupper</a></li>
+  <li><a href="intlchar.isuuppercase.html">IntlChar::isUUppercase</a></li>
+  <li><a href="intlchar.isuwhitespace.html">IntlChar::isUWhiteSpace</a></li>
+  <li><a href="intlchar.iswhitespace.html">IntlChar::isWhitespace</a></li>
+  <li><a href="intlchar.isxdigit.html">IntlChar::isxdigit</a></li>
+  <li><a href="intlchar.ord.html">IntlChar::ord</a></li>
+  <li><a href="intlchar.tolower.html">IntlChar::tolower</a></li>
+  <li><a href="intlchar.totitle.html">IntlChar::totitle</a></li>
+  <li><a href="intlchar.toupper.html">IntlChar::toupper</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="intlchar.islower.html">IntlChar::islower</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="intlchar.isprint.html">IntlChar::isprint</a></div>
+                <div class="up"><a href="class.intlchar.html">IntlChar</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="intlchar.ismirrored" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">IntlChar::isMirrored</h1>
+  <p class="refpurpose">Check if code point has the Bidi_Mirrored property</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-intlchar.ismirrored-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">bool</span> <span class="methodname">IntlChar::isMirrored</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$codepoint</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Determines whether the code point has the Bidi_Mirrored property.
+  </p>
+  <p class="para">
+   This property is set for characters that are commonly used in Right-To-Left contexts and need to be displayed with a &quot;mirrored&quot; glyph.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-intlchar.ismirrored-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">codepoint</code></dt>
+
+    <dd>
+
+     <p class="para">The <span class="type">integer</span> codepoint value (e.g. <em>0x2603</em> for <em class="emphasis">U+2603 SNOWMAN</em>), or the character encoded as a UTF-8 <span class="type">string</span> (e.g. <em>&quot;\u{2603}&quot;</em>)</p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-intlchar.ismirrored-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> if
+   <code class="parameter">codepoint</code> has the Bidi_Mirrored property, <strong><code>FALSE</code></strong> if not.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-intlchar.ismirrored-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-2990">
+   <p><strong>Example #1 Testing different code points</strong></p>
+   <div class="example-contents">
+    <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">isMirrored</span><span style="color: #007700">(</span><span style="color: #DD0000">"A"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">isMirrored</span><span style="color: #007700">(</span><span style="color: #DD0000">"&lt;"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">isMirrored</span><span style="color: #007700">(</span><span style="color: #DD0000">"("</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output:</p></div>
+   <div class="example-contents screen">
+    <div class="cdata"><pre>
+bool(false)
+bool(true)
+bool(true)
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-intlchar.ismirrored-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">IntlChar::charMirror</span></li>
+    <li class="member"><strong><code>IntlChar::PROPERTY_BIDI_MIRRORED</code></strong></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

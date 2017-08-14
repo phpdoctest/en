@@ -1,0 +1,323 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: COM Functions</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.utilspec.windows.html">Windows Only Extensions</a></li>
+  <li class="header up"><a href="book.com.html">COM</a></li>
+  <li><a href="intro.com.html">Introduction</a></li>
+  <li><a href="com.setup.html">Installing/Configuring</a></li>
+  <li><a href="com.constants.html">Predefined Constants</a></li>
+  <li><a href="com.error-handling.html">Errors and error handling</a></li>
+  <li><a href="com.examples.html">Examples</a></li>
+  <li><a href="class.com.html">COM</a></li>
+  <li><a href="class.dotnet.html">DOTNET</a></li>
+  <li><a href="class.variant.html">VARIANT</a></li>
+  <li class="active"><a href="ref.com.html">COM Functions</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="class.variant.html">VARIANT</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.com-create-guid.html">com_create_guid</a></div>
+                <div class="up"><a href="book.com.html">COM</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="ref.com" class="reference"> 
+ <h1 class="title">COM Functions</h1> 
+   
+ <div class="partintro">
+  <div class="section" id="com.seealso">
+   <h2 class="title">See Also</h2>
+   <p class="para">
+    For further information on COM read the <a href="http://www.microsoft.com/Com/resources/comdocs.asp" class="link external">&raquo;&nbsp;COM
+    specification</a>.
+    You might find some additional useful information in our FAQ for <a href="faq.com.html" class="xref">PHP and COM</a>.
+    If you&#039;re thinking of using MS Office applications on the server side,
+    you should read the information here: <a href="http://support.microsoft.com/kb/257757" class="link external">&raquo;&nbsp;Considerations for Server-Side Automation
+    of Office</a>.
+   </p> 
+  </div>
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<strong>Table of Contents</strong><ul class="chunklist chunklist_reference">
+<li><a href="function.com-create-guid.html">com_create_guid</a> — Generate a globally unique identifier (GUID)</li>
+<li><a href="function.com-event-sink.html">com_event_sink</a> — Connect events from a COM object to a PHP object</li>
+<li><a href="function.com-get-active-object.html">com_get_active_object</a> — Returns a handle to an already running instance of a COM object</li>
+<li><a href="function.com-load-typelib.html">com_load_typelib</a> — Loads a Typelib</li>
+<li><a href="function.com-message-pump.html">com_message_pump</a> — Process COM messages, sleeping for up to timeoutms milliseconds</li>
+<li><a href="function.com-print-typeinfo.html">com_print_typeinfo</a> — Print out a PHP class definition for a dispatchable interface</li>
+<li><a href="function.variant-abs.html">variant_abs</a> — Returns the absolute value of a variant</li>
+<li><a href="function.variant-add.html">variant_add</a> — &quot;Adds&quot; two variant values together and returns the result</li>
+<li><a href="function.variant-and.html">variant_and</a> — Performs a bitwise AND operation between two variants</li>
+<li><a href="function.variant-cast.html">variant_cast</a> — Convert a variant into a new variant object of another type</li>
+<li><a href="function.variant-cat.html">variant_cat</a> — concatenates two variant values together and returns the result</li>
+<li><a href="function.variant-cmp.html">variant_cmp</a> — Compares two variants</li>
+<li><a href="function.variant-date-from-timestamp.html">variant_date_from_timestamp</a> — Returns a variant date representation of a Unix timestamp</li>
+<li><a href="function.variant-date-to-timestamp.html">variant_date_to_timestamp</a> — Converts a variant date/time value to Unix timestamp</li>
+<li><a href="function.variant-div.html">variant_div</a> — Returns the result from dividing two variants</li>
+<li><a href="function.variant-eqv.html">variant_eqv</a> — Performs a bitwise equivalence on two variants</li>
+<li><a href="function.variant-fix.html">variant_fix</a> — Returns the integer portion of a variant</li>
+<li><a href="function.variant-get-type.html">variant_get_type</a> — Returns the type of a variant object</li>
+<li><a href="function.variant-idiv.html">variant_idiv</a> — Converts variants to integers and then returns the result from dividing them</li>
+<li><a href="function.variant-imp.html">variant_imp</a> — Performs a bitwise implication on two variants</li>
+<li><a href="function.variant-int.html">variant_int</a> — Returns the integer portion of a variant</li>
+<li><a href="function.variant-mod.html">variant_mod</a> — Divides two variants and returns only the remainder</li>
+<li><a href="function.variant-mul.html">variant_mul</a> — Multiplies the values of the two variants</li>
+<li><a href="function.variant-neg.html">variant_neg</a> — Performs logical negation on a variant</li>
+<li><a href="function.variant-not.html">variant_not</a> — Performs bitwise not negation on a variant</li>
+<li><a href="function.variant-or.html">variant_or</a> — Performs a logical disjunction on two variants</li>
+<li><a href="function.variant-pow.html">variant_pow</a> — Returns the result of performing the power function with two variants</li>
+<li><a href="function.variant-round.html">variant_round</a> — Rounds a variant to the specified number of decimal places</li>
+<li><a href="function.variant-set-type.html">variant_set_type</a> — Convert a variant into another type &quot;in-place&quot;</li>
+<li><a href="function.variant-set.html">variant_set</a> — Assigns a new value for a variant object</li>
+<li><a href="function.variant-sub.html">variant_sub</a> — Subtracts the value of the right variant from the left variant value</li>
+<li><a href="function.variant-xor.html">variant_xor</a> — Performs a logical exclusion on two variants</li>
+</ul>
+</ol>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

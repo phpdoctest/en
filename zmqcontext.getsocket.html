@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Create a new socket</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li class="header up"><a href="book.zmq.html">0MQ messaging</a></li>
+  <li class="header up"><a href="class.zmqcontext.html">ZMQContext</a></li>
+  <li><a href="zmqcontext.construct.html">ZMQContext::__construct</a></li>
+  <li><a href="zmqcontext.getopt.html">ZMQContext::getOpt</a></li>
+  <li class="active"><a href="zmqcontext.getsocket.html">ZMQContext::getSocket</a></li>
+  <li><a href="zmqcontext.ispersistent.html">ZMQContext::isPersistent</a></li>
+  <li><a href="zmqcontext.setopt.html">ZMQContext::setOpt</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="zmqcontext.getopt.html">ZMQContext::getOpt</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="zmqcontext.ispersistent.html">ZMQContext::isPersistent</a></div>
+                <div class="up"><a href="class.zmqcontext.html">ZMQContext</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="zmqcontext.getsocket" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ZMQContext::getSocket</h1>
+  <p class="refpurpose">Create a new socket</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-zmqcontext.getsocket-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">ZMQSocket</span> <span class="methodname">ZMQContext::getSocket</span>
+    ( <span class="methodparam"><span class="type">integer</span> <code class="parameter">$type</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$persistent_id</code><span class="initializer"> = null</span></span>
+   [, <span class="methodparam"><span class="type">callback</span> <code class="parameter">$on_new_socket</code><span class="initializer"> = null</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Shortcut for creating new sockets from the context. If the context is not persistent the <code class="parameter">persistent_id</code> 
+   parameter is ignored and the socket falls back to being non-persistent. The <code class="parameter">on_new_socket</code> is called only
+   when a new underlying socket structure is created.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-zmqcontext.getsocket-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">type</code></dt>
+
+     <dd>
+
+      <p class="para">
+       <strong><code>ZMQ::SOCKET_*</code></strong> constant to specify socket type.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">persistent_id</code></dt>
+
+     <dd>
+
+      <p class="para">
+       If <code class="parameter">persistent_id</code> is specified the socket will be persisted over multiple requests.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">on_new_socket</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Callback function, which is executed when a new socket structure is created. This function does not get invoked
+       if the underlying persistent connection is re-used. The callback takes ZMQSocket and persistent_id as two arguments.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-zmqcontext.getsocket-examples">
+ <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-5251">
+    <p><strong>Example #1 A <span class="function">ZMQContext</span> example</strong></p>
+    <div class="example-contents"><p>
+     Basic usage
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;Allocate&nbsp;a&nbsp;new&nbsp;context&nbsp;*/<br /></span><span style="color: #0000BB">$context&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">ZMQContext</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">/*&nbsp;Create&nbsp;a&nbsp;new&nbsp;socket&nbsp;*/<br /></span><span style="color: #0000BB">$socket&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$context</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getSocket</span><span style="color: #007700">(</span><span style="color: #0000BB">ZMQ</span><span style="color: #007700">::</span><span style="color: #0000BB">SOCKET_REQ</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'my&nbsp;sock'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;Connect&nbsp;the&nbsp;socket&nbsp;*/<br /></span><span style="color: #0000BB">$socket</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"tcp://example.com:1234"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;Send&nbsp;a&nbsp;request&nbsp;*/<br /></span><span style="color: #0000BB">$socket</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">send</span><span style="color: #007700">(</span><span style="color: #DD0000">"Hello&nbsp;there"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;Receive&nbsp;back&nbsp;the&nbsp;response&nbsp;*/<br /></span><span style="color: #0000BB">$message&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$socket</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">recv</span><span style="color: #007700">();<br />echo&nbsp;</span><span style="color: #DD0000">"Received&nbsp;message:&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$message</span><span style="color: #007700">}</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-zmqcontext.getsocket-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns a ZMQSocket object on success. Throws ZMQSocketException on error.
+  </p>
+ </div>
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

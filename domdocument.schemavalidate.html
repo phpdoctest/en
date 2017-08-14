@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Validates a document based on a schema</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.xml.html">XML Manipulation</a></li>
+  <li class="header up"><a href="book.dom.html">DOM</a></li>
+  <li class="header up"><a href="class.domdocument.html">DOMDocument</a></li>
+  <li><a href="domdocument.construct.html">DOMDocument::__construct</a></li>
+  <li><a href="domdocument.createattribute.html">DOMDocument::createAttribute</a></li>
+  <li><a href="domdocument.createattributens.html">DOMDocument::createAttributeNS</a></li>
+  <li><a href="domdocument.createcdatasection.html">DOMDocument::createCDATASection</a></li>
+  <li><a href="domdocument.createcomment.html">DOMDocument::createComment</a></li>
+  <li><a href="domdocument.createdocumentfragment.html">DOMDocument::createDocumentFragment</a></li>
+  <li><a href="domdocument.createelement.html">DOMDocument::createElement</a></li>
+  <li><a href="domdocument.createelementns.html">DOMDocument::createElementNS</a></li>
+  <li><a href="domdocument.createentityreference.html">DOMDocument::createEntityReference</a></li>
+  <li><a href="domdocument.createprocessinginstruction.html">DOMDocument::createProcessingInstruction</a></li>
+  <li><a href="domdocument.createtextnode.html">DOMDocument::createTextNode</a></li>
+  <li><a href="domdocument.getelementbyid.html">DOMDocument::getElementById</a></li>
+  <li><a href="domdocument.getelementsbytagname.html">DOMDocument::getElementsByTagName</a></li>
+  <li><a href="domdocument.getelementsbytagnamens.html">DOMDocument::getElementsByTagNameNS</a></li>
+  <li><a href="domdocument.importnode.html">DOMDocument::importNode</a></li>
+  <li><a href="domdocument.load.html">DOMDocument::load</a></li>
+  <li><a href="domdocument.loadhtml.html">DOMDocument::loadHTML</a></li>
+  <li><a href="domdocument.loadhtmlfile.html">DOMDocument::loadHTMLFile</a></li>
+  <li><a href="domdocument.loadxml.html">DOMDocument::loadXML</a></li>
+  <li><a href="domdocument.normalizedocument.html">DOMDocument::normalizeDocument</a></li>
+  <li><a href="domdocument.registernodeclass.html">DOMDocument::registerNodeClass</a></li>
+  <li><a href="domdocument.relaxngvalidate.html">DOMDocument::relaxNGValidate</a></li>
+  <li><a href="domdocument.relaxngvalidatesource.html">DOMDocument::relaxNGValidateSource</a></li>
+  <li><a href="domdocument.save.html">DOMDocument::save</a></li>
+  <li><a href="domdocument.savehtml.html">DOMDocument::saveHTML</a></li>
+  <li><a href="domdocument.savehtmlfile.html">DOMDocument::saveHTMLFile</a></li>
+  <li><a href="domdocument.savexml.html">DOMDocument::saveXML</a></li>
+  <li class="active"><a href="domdocument.schemavalidate.html">DOMDocument::schemaValidate</a></li>
+  <li><a href="domdocument.schemavalidatesource.html">DOMDocument::schemaValidateSource</a></li>
+  <li><a href="domdocument.validate.html">DOMDocument::validate</a></li>
+  <li><a href="domdocument.xinclude.html">DOMDocument::xinclude</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="domdocument.savexml.html">DOMDocument::saveXML</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="domdocument.schemavalidatesource.html">DOMDocument::schemaValidateSource</a></div>
+                <div class="up"><a href="class.domdocument.html">DOMDocument</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="domdocument.schemavalidate" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DOMDocument::schemaValidate</h1>
+  <p class="refpurpose">
+   Validates a document based on a schema
+  </p>
+ </div>
+ <div class="refsect1 description" id="refsect1-domdocument.schemavalidate-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DOMDocument::schemaValidate</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Validates a document based on the given schema file. 
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-domdocument.schemavalidate-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">filename</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The path to the schema.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">flags</code></dt>
+
+     <dd>
+
+      <p class="para">
+       A bitmask of Libxml schema validation flags. Currently the only supported value is <a href="libxml.constants.html" class="link">LIBXML_SCHEMA_CREATE</a>. Available since PHP 5.5.2 and Libxml 2.6.14.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-domdocument.schemavalidate-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> on success or <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+ <div class="refsect1 changelog" id="refsect1-domdocument.schemavalidate-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.5.2</td>
+       <td>
+        Added the <code class="parameter">flags</code> parameter
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-domdocument.schemavalidate-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"> <span class="methodname">DOMDocument::schemaValidateSource</span></li>
+    <li class="member"> <span class="methodname">DOMDocument::relaxNGValidate</span></li>
+    <li class="member"> <span class="methodname">DOMDocument::relaxNGValidateSource</span></li>
+    <li class="member"> <span class="methodname">DOMDocument::validate</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

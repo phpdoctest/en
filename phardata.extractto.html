@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Extract the contents of a tar/zip archive to a directory</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.compression.html">Compression and Archive Extensions</a></li>
+  <li class="header up"><a href="book.phar.html">Phar</a></li>
+  <li class="header up"><a href="class.phardata.html">PharData</a></li>
+  <li><a href="phardata.addemptydir.html">PharData::addEmptyDir</a></li>
+  <li><a href="phardata.addfile.html">PharData::addFile</a></li>
+  <li><a href="phardata.addfromstring.html">PharData::addFromString</a></li>
+  <li><a href="phardata.buildfromdirectory.html">PharData::buildFromDirectory</a></li>
+  <li><a href="phardata.buildfromiterator.html">PharData::buildFromIterator</a></li>
+  <li><a href="phardata.compress.html">PharData::compress</a></li>
+  <li><a href="phardata.compressfiles.html">PharData::compressFiles</a></li>
+  <li><a href="phardata.construct.html">PharData::__construct</a></li>
+  <li><a href="phardata.converttodata.html">PharData::convertToData</a></li>
+  <li><a href="phardata.converttoexecutable.html">PharData::convertToExecutable</a></li>
+  <li><a href="phardata.copy.html">PharData::copy</a></li>
+  <li><a href="phardata.decompress.html">PharData::decompress</a></li>
+  <li><a href="phardata.decompressfiles.html">PharData::decompressFiles</a></li>
+  <li><a href="phardata.delmetadata.html">PharData::delMetadata</a></li>
+  <li><a href="phardata.delete.html">PharData::delete</a></li>
+  <li class="active"><a href="phardata.extractto.html">PharData::extractTo</a></li>
+  <li><a href="phardata.iswritable.html">PharData::isWritable</a></li>
+  <li><a href="phardata.offsetset.html">PharData::offsetSet</a></li>
+  <li><a href="phardata.offsetunset.html">PharData::offsetUnset</a></li>
+  <li><a href="phardata.setalias.html">PharData::setAlias</a></li>
+  <li><a href="phardata.setdefaultstub.html">PharData::setDefaultStub</a></li>
+  <li><a href="phardata.setmetadata.html">Phar::setMetadata</a></li>
+  <li><a href="phardata.setsignaturealgorithm.html">Phar::setSignatureAlgorithm</a></li>
+  <li><a href="phardata.setstub.html">PharData::setStub</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="phardata.delete.html">PharData::delete</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="phardata.iswritable.html">PharData::isWritable</a></div>
+                <div class="up"><a href="class.phardata.html">PharData</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="phardata.extractto" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">PharData::extractTo</h1>
+  <p class="refpurpose">Extract the contents of a tar/zip archive to a directory</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-phardata.extractto-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">PharData::extractTo</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$pathto</code></span>
+   [, <span class="methodparam"><span class="type">string|array</span> <code class="parameter">$files</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$overwrite</code><span class="initializer"> = false</span></span>
+  ]] )</div>
+
+
+  <p class="para rdfs-comment">
+   Extract all files within a tar/zip archive to disk.  Extracted files and directories preserve
+   permissions as stored in the archive.  The optional parameters allow optional control over
+   which files are extracted, and whether existing files on disk can be overwritten.
+   The second parameter <em>files</em> can be either the name of a file or
+   directory to extract, or an array of names of files and directories to extract.  By
+   default, this method will not overwrite existing files, the third parameter can be
+   set to true to enable overwriting of files.
+   This method is similar to <span class="function">ZipArchive::extractTo</span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-phardata.extractto-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">pathto</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Path to extract the given <em>files</em> to
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">files</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The name of a file or directory to extract, or an array of files/directories to extract
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">overwrite</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Set to <strong><code>TRUE</code></strong> to enable overwriting existing files
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-phardata.extractto-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   returns <strong><code>TRUE</code></strong> on success, but it is better to check for thrown exception,
+   and assume success if none is thrown.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-phardata.extractto-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   Throws <span class="classname">PharException</span> if errors occur while flushing
+   changes to disk.
+  </p>
+ </div>
+
+
+
+ <div class="refsect1 examples" id="refsect1-phardata.extractto-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-784">
+    <p><strong>Example #1 A <span class="function">PharData::extractTo</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$phar&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">PharData</span><span style="color: #007700">(</span><span style="color: #DD0000">'myphar.tar'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$phar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">extractTo</span><span style="color: #007700">(</span><span style="color: #DD0000">'/full/path'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;extract&nbsp;all&nbsp;files<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$phar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">extractTo</span><span style="color: #007700">(</span><span style="color: #DD0000">'/another/path'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'file.txt'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;extract&nbsp;only&nbsp;file.txt<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$phar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">extractTo</span><span style="color: #007700">(</span><span style="color: #DD0000">'/this/path'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(</span><span style="color: #DD0000">'file1.txt'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'file2.txt'</span><span style="color: #007700">));&nbsp;</span><span style="color: #FF8000">//&nbsp;extract&nbsp;2&nbsp;files&nbsp;only<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$phar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">extractTo</span><span style="color: #007700">(</span><span style="color: #DD0000">'/third/path'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;extract&nbsp;all&nbsp;files,&nbsp;and&nbsp;overwrite<br /></span><span style="color: #007700">}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">Exception&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;handle&nbsp;errors<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-phardata.extractto-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">Phar::extractTo</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

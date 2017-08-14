@@ -1,0 +1,138 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Writes this file to the filesystem</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.mongo.html">Mongo</a></li>
+  <li class="header up"><a href="mongo.gridfs.html">GridFS Classes</a></li>
+  <li class="header up"><a href="class.mongogridfsfile.html">MongoGridFSFile</a></li>
+  <li><a href="mongogridfsfile.construct.html">MongoGridfsFile::__construct</a></li>
+  <li><a href="mongogridfsfile.getbytes.html">MongoGridFSFile::getBytes</a></li>
+  <li><a href="mongogridfsfile.getfilename.html">MongoGridFSFile::getFilename</a></li>
+  <li><a href="mongogridfsfile.getresource.html">MongoGridFSFile::getResource</a></li>
+  <li><a href="mongogridfsfile.getsize.html">MongoGridFSFile::getSize</a></li>
+  <li class="active"><a href="mongogridfsfile.write.html">MongoGridFSFile::write</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mongogridfsfile.getsize.html">MongoGridFSFile::getSize</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="class.mongogridfscursor.html">MongoGridFSCursor</a></div>
+                <div class="up"><a href="class.mongogridfsfile.html">MongoGridFSFile</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mongogridfsfile.write" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">MongoGridFSFile::write</h1>
+  <p class="refpurpose">Writes this file to the filesystem</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-mongogridfsfile.write-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">MongoGridFSFile::write</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code><span class="initializer"> = <strong><code>NULL</code></strong></span></span>
+  ] )</div>
+
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-mongogridfsfile.write-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+
+      <code class="parameter">filename</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       The location to which to write the file.  If none is given,
+       the stored filename will be used.
+      </p>
+     </dd>
+
+       
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-mongogridfsfile.write-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the number of bytes written.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-mongogridfsfile.write-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-1630">
+   <p><strong>Example #1  <span class="methodname">MongoGridFSFile::write</span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$images&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">my_db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getGridFS</span><span style="color: #007700">(</span><span style="color: #DD0000">'images'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$image&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$images</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">findOne</span><span style="color: #007700">(</span><span style="color: #DD0000">'jwage.png'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$image</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">write</span><span style="color: #007700">(</span><span style="color: #DD0000">'/path/to/write/jwage.png'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

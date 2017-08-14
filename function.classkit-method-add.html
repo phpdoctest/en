@@ -1,0 +1,221 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Dynamically adds a new method to a given class</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.vartype.html">Variable and Type Related Extensions</a></li>
+  <li class="header up"><a href="book.classkit.html">Classkit</a></li>
+  <li class="header up"><a href="ref.classkit.html">Classkit Functions</a></li>
+  <li><a href="function.classkit-import.html">classkit_import</a></li>
+  <li class="active"><a href="function.classkit-method-add.html">classkit_method_add</a></li>
+  <li><a href="function.classkit-method-copy.html">classkit_method_copy</a></li>
+  <li><a href="function.classkit-method-redefine.html">classkit_method_redefine</a></li>
+  <li><a href="function.classkit-method-remove.html">classkit_method_remove</a></li>
+  <li><a href="function.classkit-method-rename.html">classkit_method_rename</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.classkit-import.html">classkit_import</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.classkit-method-copy.html">classkit_method_copy</a></div>
+                <div class="up"><a href="ref.classkit.html">Classkit Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.classkit-method-add" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">classkit_method_add</h1>
+  <p class="refpurpose">Dynamically adds a new method to a given class</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.classkit-method-add-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">classkit_method_add</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$classname</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$methodname</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$args</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$code</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = CLASSKIT_ACC_PUBLIC</span></span>
+  ] )</div>
+
+  <div class="warning"><strong class="warning">Warning</strong><p class="simpara">This function is
+<em class="emphasis">EXPERIMENTAL</em>. The behaviour of this function, its name, and
+surrounding documentation may change without notice in a future release of PHP.
+This function should be used at your own risk.
+</p></div>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.classkit-method-add-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">classname</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The class to which this method will be added
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">methodname</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The name of the method to add
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">args</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Comma-delimited list of arguments for the newly-created method
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">code</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The code to be evaluated when <code class="parameter">methodname</code>
+       is called
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">flags</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The type of method to create, can be
+       <strong><code>CLASSKIT_ACC_PUBLIC</code></strong>,
+       <strong><code>CLASSKIT_ACC_PROTECTED</code></strong> or
+       <strong><code>CLASSKIT_ACC_PRIVATE</code></strong>
+      </p>
+      <blockquote class="note"><p><strong class="note">Note</strong>: 
+       <p class="para">
+        This parameter is only used as of PHP 5, because, prior to this,
+        all methods were public.
+       </p>
+      </p></blockquote>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.classkit-method-add-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> on success or <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.classkit-method-add-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-5691">
+    <p><strong>Example #1 <span class="function">classkit_method_add</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">Example&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"foo!\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;create&nbsp;an&nbsp;Example&nbsp;object<br /></span><span style="color: #0000BB">$e&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Example</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;Add&nbsp;a&nbsp;new&nbsp;public&nbsp;method<br /></span><span style="color: #0000BB">classkit_method_add</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'Example'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'add'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'$num1,&nbsp;$num2'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'return&nbsp;$num1&nbsp;+&nbsp;$num2;'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">CLASSKIT_ACC_PUBLIC<br /></span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;add&nbsp;12&nbsp;+&nbsp;4<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #0000BB">12</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+16
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.classkit-method-add-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">classkit_method_copy</span></li>
+    <li class="member"><span class="function">classkit_method_redefine</span></li>
+    <li class="member"><span class="function">classkit_method_remove</span></li>
+    <li class="member"><span class="function">classkit_method_rename</span></li>
+    <li class="member"><span class="function">create_function</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

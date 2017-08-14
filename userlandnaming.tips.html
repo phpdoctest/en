@@ -1,0 +1,110 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Tips</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="appendices.html">Appendices</a></li>
+  <li class="header up"><a href="userlandnaming.html">Userland Naming Guide</a></li>
+  <li><a href="userlandnaming.globalnamespace.html">Global Namespace</a></li>
+  <li><a href="userlandnaming.rules.html">Rules</a></li>
+  <li class="active"><a href="userlandnaming.tips.html">Tips</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="userlandnaming.rules.html">Rules</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="about.html">About the manual</a></div>
+                <div class="up"><a href="userlandnaming.html">Userland Naming Guide</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="userlandnaming.tips" class="section">
+  <h2 class="title">Tips</h2>
+  <p class="para">
+   In order to write future-proof code, it is recommended that you don&#039;t
+   place many variables, functions or classes in the global namespace. This will
+   prevent naming conflicts with 3rd party code as well as possible
+   future additions to the language.
+  </p>
+  <p class="para">
+   One common way to prevent naming conflicts of functions and classes is to
+   add them to their own dedicated
+   <a href="language.namespaces.html" class="link">namespace</a>.
+  </p>
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">namespace&nbsp;</span><span style="color: #0000BB">MyProject</span><span style="color: #007700">;<br /><br />function&nbsp;</span><span style="color: #0000BB">my_function</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br />}<br /><br />\</span><span style="color: #0000BB">MyProject</span><span style="color: #007700">\</span><span style="color: #0000BB">my_function</span><span style="color: #007700">();</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+  <p class="para">
+   This still needs you to keep track of already used namespaces, but once you
+   have decided on a namespace you will be using you can add all functions and
+   classes to it without having to think about conflicts again.
+  </p>
+  <p class="para">
+   It is considered best practice to limit the number of variables added to
+   the global scope in order to prevent naming conflicts with 3rd party
+   code.
+  </p>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <strong>Variable scoping</strong><br />
+   <p class="para">
+    Because of PHP&#039;s <a href="language.variables.scope.html" class="link">scoping rules</a>
+    variables defined inside functions and methods are not in the global scope
+    and as such cannot conflict with other variables defined in the global scope.
+   </p>
+  </p></blockquote>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Generate a random token</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.webservice.html">Web Services</a></li>
+  <li class="header up"><a href="book.oauth.html">OAuth</a></li>
+  <li class="header up"><a href="class.oauthprovider.html">OAuthProvider</a></li>
+  <li><a href="oauthprovider.addrequiredparameter.html">OAuthProvider::addRequiredParameter</a></li>
+  <li><a href="oauthprovider.callconsumerhandler.html">OAuthProvider::callconsumerHandler</a></li>
+  <li><a href="oauthprovider.calltimestampnoncehandler.html">OAuthProvider::callTimestampNonceHandler</a></li>
+  <li><a href="oauthprovider.calltokenhandler.html">OAuthProvider::calltokenHandler</a></li>
+  <li><a href="oauthprovider.checkoauthrequest.html">OAuthProvider::checkOAuthRequest</a></li>
+  <li><a href="oauthprovider.construct.html">OAuthProvider::__construct</a></li>
+  <li><a href="oauthprovider.consumerhandler.html">OAuthProvider::consumerHandler</a></li>
+  <li class="active"><a href="oauthprovider.generatetoken.html">OAuthProvider::generateToken</a></li>
+  <li><a href="oauthprovider.is2leggedendpoint.html">OAuthProvider::is2LeggedEndpoint</a></li>
+  <li><a href="oauthprovider.isrequesttokenendpoint.html">OAuthProvider::isRequestTokenEndpoint</a></li>
+  <li><a href="oauthprovider.removerequiredparameter.html">OAuthProvider::removeRequiredParameter</a></li>
+  <li><a href="oauthprovider.reportproblem.html">OAuthProvider::reportProblem</a></li>
+  <li><a href="oauthprovider.setparam.html">OAuthProvider::setParam</a></li>
+  <li><a href="oauthprovider.setrequesttokenpath.html">OAuthProvider::setRequestTokenPath</a></li>
+  <li><a href="oauthprovider.timestampnoncehandler.html">OAuthProvider::timestampNonceHandler</a></li>
+  <li><a href="oauthprovider.tokenhandler.html">OAuthProvider::tokenHandler</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="oauthprovider.consumerhandler.html">OAuthProvider::consumerHandler</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="oauthprovider.is2leggedendpoint.html">OAuthProvider::is2LeggedEndpoint</a></div>
+                <div class="up"><a href="class.oauthprovider.html">OAuthProvider</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="oauthprovider.generatetoken" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">OAuthProvider::generateToken</h1>
+  <p class="refpurpose">Generate a random token</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-oauthprovider.generatetoken-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">string</span> <span class="methodname">OAuthProvider::generateToken</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$size</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$strong</code><span class="initializer"> = false</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Generates a <span class="type">string</span> of pseudo-random bytes.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-oauthprovider.generatetoken-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">size</code></dt>
+
+    <dd>
+
+     <p class="para">
+      The desired token length, in terms of bytes.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">strong</code></dt>
+
+    <dd>
+
+     <p class="para">
+      Setting to <strong><code>TRUE</code></strong> means <em>/dev/random</em> will be used for
+      entropy, as otherwise the non-blocking <em>/dev/urandom</em> is used.
+      This parameter is ignored on Windows.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-oauthprovider.generatetoken-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   The generated token, as a <span class="type">string</span> of bytes.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-oauthprovider.generatetoken-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   If the <code class="parameter">strong</code> parameter is <strong><code>TRUE</code></strong>, then an
+   <strong><code>E_WARNING</code></strong> level error will be emitted when the
+   fallback <span class="function">rand</span> implementation is used to fill
+   the remaining random bytes (e.g., when not enough random data was found,
+   initially).
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-oauthprovider.generatetoken-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-6170">
+   <p><strong>Example #1 <span class="function">OAuthProvider::generateToken</span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$p&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">OAuthProvider</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$t&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$p</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">generateToken</span><span style="color: #007700">(</span><span style="color: #0000BB">4</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$t</span><span style="color: #007700">),&nbsp;&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">bin2hex</span><span style="color: #007700">(</span><span style="color: #0000BB">$t</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+4
+b6a82c27
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-oauthprovider.generatetoken-notes">
+  <h3 class="title">Notes</h3>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    When not enough random data is available to the system, this function will
+    fill the remaining random bytes using the internal PHP <span class="function">rand</span>
+    implementation.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-oauthprovider.generatetoken-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li class="member"><span class="function">openssl_random_pseudo_bytes</span></li>
+   <li class="member"><span class="function">mcrypt_create_iv</span></li>
+  </ul>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,1655 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Exceptions</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.mongo.html">Mongo</a></li>
+  <li><a href="mongo.setup.html">Installing/Configuring</a></li>
+  <li><a href="mongo.constants.html">Predefined Constants</a></li>
+  <li><a href="mongo.manual.html">Manual</a></li>
+  <li><a href="mongo.core.html">Core Classes</a></li>
+  <li><a href="mongo.types.html">Types</a></li>
+  <li><a href="mongo.gridfs.html">GridFS Classes</a></li>
+  <li><a href="mongo.batch.html">Batch Classes</a></li>
+  <li><a href="mongo.miscellaneous.html">Miscellaneous</a></li>
+  <li><a href="ref.mongo.html">Mongo Functions</a></li>
+  <li class="active"><a href="mongo.exceptions.html">Exceptions</a></li>
+  <li><a href="changelog.mongo.html">Changelog</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.bson-encode.html">bson_encode</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="class.mongoexception.html">MongoException</a></div>
+                <div class="up"><a href="book.mongo.html">Mongo</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mongo.exceptions" class="part">
+
+ <h1>Exceptions</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="class.mongoexception.html">MongoException</a> — The MongoException class</li>
+<li><a href="class.mongoresultexception.html">MongoResultException</a> — The MongoResultException class<ul class="chunklist chunklist_title">
+<li><a href="mongoresultexception.getdocument.html">MongoResultException::getDocument</a> — Retrieve the full result document</li>
+</ul>
+</li>
+<li><a href="class.mongocursorexception.html">MongoCursorException</a> — The MongoCursorException class<ul class="chunklist chunklist_title">
+<li><a href="mongocursorexception.gethost.html">MongoCursorException::getHost</a> — The hostname of the server that encountered the error</li>
+</ul>
+</li>
+<li><a href="class.mongocursortimeoutexception.html">MongoCursorTimeoutException</a> — The MongoCursorTimeoutException class</li>
+<li><a href="class.mongoconnectionexception.html">MongoConnectionException</a> — The MongoConnectionException class</li>
+<li><a href="class.mongogridfsexception.html">MongoGridFSException</a> — The MongoGridFSException class</li>
+<li><a href="class.mongoduplicatekeyexception.html">MongoDuplicateKeyException</a> — The MongoDuplicateKeyException class</li>
+<li><a href="class.mongoprotocolexception.html">MongoProtocolException</a> — The MongoProtocolException class</li>
+<li><a href="class.mongoexecutiontimeoutexception.html">MongoExecutionTimeoutException</a> — The MongoExecutionTimeoutException class</li>
+<li><a href="class.mongowriteconcernexception.html">MongoWriteConcernException</a> — The MongoWriteConcernException class<ul class="chunklist chunklist_title">
+<li><a href="mongowriteconcernexception.getdocument.html">MongoWriteConcernException::getDocument</a> — Get the error document</li>
+</ul>
+</li>
+</ul>
+
+
+ <div class="partintro">
+  <div class="section">
+   <h2 class="title">VMWare Oddities</h2>
+   <p class="para">
+    If you are running VMWare on Windows and are using CIFS, pausing the VM will 
+    cause CIFS to go out of sync and cause weird errors on un-pausing it (&quot;The 
+    Mongo object has not been correctly initialized by its constructor&quot;).  
+    Permanently mounting the Windows shares will fix this and you&#039;ll be able to
+    pause and unpause at will.
+   </p>
+   <p class="para">
+    To permanently mount the Windows shares, run:
+   </p>
+   <div class="example-contents">
+    <div class="shellcode"><pre class="shellcode">$ sudo update-rc.d -f umountnfs.sh remove
+$ sudo update-rc.d umountnfs.sh stop 15 0 6 .</pre>
+</div>
+   </div>
+
+   <p class="para">
+    See <a href="https://help.ubuntu.com/community/MountWindowsSharesPermanently" class="link external">&raquo;&nbsp;the Ubuntu docs</a> for the most
+    up-to-date instructions.
+   </p>
+  </div>
+ </div>
+
+ 
+
+
+
+
+ <h1 class="title">The MongoException class</h1>
+ 
+
+ <div class="partintro">
+
+  
+  <div class="section" id="mongoexception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Default Mongo exception.
+   </p>
+
+   <p class="para">
+    This covers a bunch of different error conditions that may eventually be
+    moved to more specific exceptions, but will always extend 
+    <span class="classname">MongoException</span>.
+   </p>
+
+   <ul class="itemizedlist">
+
+    <li class="listitem">
+     <p class="para">
+      <em>The MongoSomething object has not been correctly initialized by its constructor</em>
+     </p>
+     <p class="para">
+      Code: 0
+     </p>
+     <p class="para">
+      Probably your Mongo object is not connected to a database server.
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>zero-length keys are not allowed, did you use $ with double quotes?</em>
+     </p>
+     <p class="para">
+      Code: 1
+     </p>
+     <p class="para">
+      You tried to save &quot;&quot; as a key.  You generally should not do this.  &quot;&quot; can 
+      mess up subobject access and is used by MongoDB internally.  However, if 
+      you really want, you can set 
+      <a href="mongo.configuration.html#ini.mongo.allow-empty-keys" class="link">mongo.allow_empty_keys</a> 
+      to true in your php.ini file to override this sanity check.  If you 
+      override this, it is highly recommended that you set error checking to 
+      strict to avoid string interpolation errors.
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>&#039;.&#039; not allowed in key: &lt;key&gt;</em>
+     </p>
+     <p class="para">
+      Code: 2
+     </p>
+     <p class="para">
+      You attempted to write a key with &#039;.&#039; in it, which is prohibited.
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>insert too large: &lt;size&gt;, max: &lt;max&gt;</em>
+     </p>
+     <p class="para">
+      Code: 3
+     </p>
+     <p class="para">
+      You&#039;re attempting to send too much data to the database at once: the
+      database will only accept inserts up to a certain size (currently 16 MB).
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>no elements in doc</em>
+     </p>
+     <p class="para">
+      Code: 4
+     </p>
+     <p class="para">
+      You&#039;re attempting to save a document with no fields.
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>size of BSON doc is &lt;size&gt; bytes, max &lt;max&gt;MB</em>
+     </p>
+     <p class="para">
+      Code: 5
+     </p>
+     <p class="para">
+      You&#039;re attempting to save a document that is larger than MongoDB can save.
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>no documents given</em>
+     </p>
+     <p class="para">
+      Code: 6
+     </p>
+     <p class="para">
+      You&#039;re attempting to batch insert an empty array of documents.
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>MongoCollection::group takes an array, object, or MongoCode key</em>
+     </p>
+     <p class="para">
+      Code: 7
+     </p>
+     <p class="para">
+      Wrong type parameter send to <span class="function">MongoCollection::group</span>.
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>field names must be strings</em>
+     </p>
+     <p class="para">
+      Code: 8
+     </p>
+     <p class="para">
+      You should format field selectors as 
+      <em>array(&quot;field1&quot; =&gt; 1, &quot;field2&quot; =&gt; 1, ..., &quot;fieldN&quot; =&gt; 1)</em>.
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>invalid regex</em>
+     </p>
+     <p class="para">
+      Code: 9
+     </p>
+     <p class="para">
+      The regex passed to <span class="classname">MongoRegex</span> is not of the 
+      correct form.
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>MongoDBRef::get: $ref field must be a string</em>
+     </p>
+     <p class="para">
+      Code: 10
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>MongoDBRef::get: $db field must be a string</em>
+     </p>
+     <p class="para">
+      Code: 11
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>non-utf8 string: &lt;str&gt;</em>
+     </p>
+     <p class="para">
+      Code: 12
+     </p>
+     <p class="para">
+      This error occurs if you attempt to send a non-utf8 string to the 
+      database.  All strings going into the database should be UTF8. See php.ini
+      options for the transition option of quieting this exception.
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>mutex error: &lt;err&gt;</em>
+     </p>
+     <p class="para">
+      Code: 13
+     </p>
+     <p class="para">
+      The driver uses mutexes for synchronizing requests and responses in 
+      multithreaded environments.  This is a fairly serious error and may not
+      have a stack trace.  It&#039;s unusual and should be reported to maintainers
+      with any system information and steps to reproduce that you can provide.
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>index name too long: &lt;len&gt;, max &lt;max&gt; characters</em>
+     </p>
+     <p class="para">
+      Code: 14
+     </p>
+     <p class="para">
+      Indexes with names longer than 128 characters cannot be created.  If you
+      get this error, you should use 
+      <span class="function">MongoCollection::ensureIndex</span>&#039;s &quot;name&quot; option to 
+      create a shorter name for your index.
+     </p>
+    </li>
+
+   </ul>
+  </div>
+  
+
+  <div class="section" id="mongoexception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+   
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoException</strong></div>
+
+    
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">MongoException</strong>
+     </span>
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> Exception</strong>
+     </span>
+     {</div>
+    
+    
+   }</div>
+   
+
+  </div>
+
+ </div>
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The MongoResultException class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongoresultexception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The MongoResultException is thrown by several command helpers (such as
+     <span class="methodname">MongoCollection::findAndModify</span>) in the event of
+    failure. The original result document is available through
+     <span class="methodname">MongoResultException::getDocument</span>.
+   </p>
+  </div>
+
+
+  <div class="section" id="mongoresultexception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoResultException</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">MongoResultException</strong>
+     </span>
+     
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> MongoException</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$document</var>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$message</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$code</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$file</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$line</var>
+    ;</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getDocument</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+    
+   }</div>
+
+
+  </div>
+
+  
+
+  <div class="section" id="mongoresultexception.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="mongoresultexception.props.document"><var class="varname">document</var></dt>
+
+     <dd>
+
+      <p class="para">The raw result document as an array.</p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The MongoCursorException class</h1>
+ 
+
+ <div class="partintro">
+
+  
+  <div class="section" id="mongocursorexception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Caused by accessing a cursor incorrectly or a error receiving a reply. Note
+    that this can be thrown by any database request that receives a reply, not
+    just queries.  Writes, commands, and any other operation that sends
+    information to the database and waits for a response can throw a
+    <span class="classname">MongoCursorException</span>.  The only exception is
+    <em>new MongoClient()</em> (creating a new connection), which will
+    only throw <span class="classname">MongoConnectionException</span>s.
+   </p>
+
+   <p class="para">
+    This returns a specific error message to help diagnose the problem and a
+    numeric error code associated with the cause of the exception.
+   </p>
+
+   <p class="para">
+    For example, suppose you tried to insert two documents with the same _id:
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$collection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">insert</span><span style="color: #007700">(array(</span><span style="color: #DD0000">"_id"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">),&nbsp;array(</span><span style="color: #DD0000">"w"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$collection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">insert</span><span style="color: #007700">(array(</span><span style="color: #DD0000">"_id"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">),&nbsp;array(</span><span style="color: #DD0000">"w"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">));<br />}<br />catch&nbsp;(</span><span style="color: #0000BB">MongoCursorException&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"error&nbsp;message:&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">().</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"error&nbsp;code:&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getCode</span><span style="color: #007700">().</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    This would produce output like:
+    <div class="example-contents">
+<div class="txtcode"><pre class="txtcode">error message: E11000 duplicate key error index: foo.bar.$_id_  dup key: { : 1 }
+error code: 11000</pre>
+</div>
+    </div>
+
+    Note that the MongoDB error code (11000) is used for the PHP error code. The
+    PHP driver uses the &quot;native&quot; error code wherever possible.
+   </p>
+
+   <p class="para">
+    The following is a list of common errors, codes, and causes.  Exact errors
+    are in italics, errors where the message can vary are described in obliques.
+   </p>
+
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <p class="para">
+      <em>cannot modify cursor after beginning iteration</em>
+     </p>
+     <p class="para">
+      Code: 0
+     </p>
+     <p class="para">
+      You are calling a method that sets up the query after executing the query.
+      Reset the cursor and try again.
+     </p>
+     <p class="para">
+      An example:
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$cursor&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$collection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">find</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$cursor</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getNext</span><span style="color: #007700">());<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;getNext()&nbsp;queried&nbsp;the&nbsp;database,&nbsp;it's&nbsp;too&nbsp;late&nbsp;to&nbsp;set&nbsp;a&nbsp;limit<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$cursor</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">limit</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br />}<br />catch&nbsp;(</span><span style="color: #0000BB">MongoCursorException&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"error&nbsp;message:&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">().</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"error&nbsp;code:&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getCode</span><span style="color: #007700">().</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;this&nbsp;will&nbsp;work,&nbsp;though:<br /></span><span style="color: #0000BB">$cursor</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getNext</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$cursor</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">reset</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$cursor</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">limit</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      Get next batch send errors
+     </p>
+     <p class="para">
+      Code: 1
+     </p>
+     <p class="para">
+      Could not send the query to the database.  Make sure the database is
+      still up and the network is okay.
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>cursor not found</em>
+     </p>
+     <p class="para">
+      Code: 2
+     </p>
+     <p class="para">
+      The driver was trying to fetch more results from the database, but the
+      database did not have a record of the query.  This usually means that the
+      cursor timed out on the server side: after a few minutes of inactivity,
+      the database will kill a cursor (see
+      <span class="function">MongoCursor::immortal</span> for information on preventing
+      this).
+     </p>
+     <p class="para">
+      An example:
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$cursor&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$collection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">find</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$cursor</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getNext</span><span style="color: #007700">();<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;sleep&nbsp;for&nbsp;15&nbsp;minutes<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">sleep</span><span style="color: #007700">(</span><span style="color: #0000BB">60</span><span style="color: #007700">*</span><span style="color: #0000BB">15</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;while&nbsp;(</span><span style="color: #0000BB">$cursor</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">hasNext</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$cursor</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getNext</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br />catch&nbsp;(</span><span style="color: #0000BB">MongoCursorException&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"error&nbsp;message:&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">().</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"error&nbsp;code:&nbsp;"</span><span style="color: #007700">.</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getCode</span><span style="color: #007700">().</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>cursor-&gt;buf.pos is null</em>
+     </p>
+     <p class="para">
+      Code: 3
+     </p>
+     <p class="para">
+      This may indicate you are out of RAM or some other extraordinary
+      circumstance.
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>couldn&#039;t get response header</em>
+     </p>
+     <p class="para">
+      Code: 4
+     </p>
+     <p class="para">
+      A common error if the database or network goes down. This means that the
+      driver couldn&#039;t get a response from the connection.
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>no db response</em>
+     </p>
+     <p class="para">
+      Code: 5
+     </p>
+     <p class="para">
+      This may not even be an error, for example, the database command
+      &quot;shutdown&quot; returns no response.  However, if you were expecting a
+      response, this means the database didn&#039;t give one.
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>bad response length: %d, did the db assert?</em>
+     </p>
+     <p class="para">
+      Code: 6
+     </p>
+     <p class="para">
+      This means that the database said that its response was less than 0.  This
+      error probably indicates a network error or database corruption.
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>incomplete header</em>
+     </p>
+     <p class="para">
+      Code: 7
+     </p>
+     <p class="para">
+      Highly unusual.  Occurs if the database response started out correctly,
+      but broke off in the middle.  Probably indicates a network problem.
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>incomplete response</em>
+     </p>
+     <p class="para">
+      Code: 8
+     </p>
+     <p class="para">
+      Highly unusual.  Occurs if the database response started out correctly,
+      but broke off in the middle.  Probably indicates a network problem.
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>couldn&#039;t find a response</em>
+     </p>
+     <p class="para">
+      Code: 9
+     </p>
+     <p class="para">
+      If the response was cached and now cannot be located.
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>error getting socket</em>
+     </p>
+     <p class="para">
+      Code: 10
+     </p>
+     <p class="para">
+      The socket was closed or encountered an error.  The driver should
+      automatically reconnect (if possible) on the next operation.
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>couldn&#039;t find reply, please try again</em>
+     </p>
+     <p class="para">
+      Code: 11
+     </p>
+     <p class="para">
+      The driver saves any database responses it cannot immediately match with a
+      request. This exception occurs if the driver has already passed your
+      request&#039;s response and cannot find your response in its cache.
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>error getting database response: errstr</em>
+     </p>
+     <p class="para">
+      <em>WSA error getting database response: errstr</em>
+     </p>
+     <p class="para">
+      &quot;errstr&quot; is an io error reported directly from the C socket
+      subsystem.  On Windows, the error message is prefixed with &quot;WSA&quot;.
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>Timeout error</em>
+     </p>
+     <p class="para">
+      Code: 13
+     </p>
+     <p class="para">
+      If there was an error while waiting for a query to complete.
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>couldn&#039;t send query: &lt;various&gt;</em>
+     </p>
+     <p class="para">
+      Code: 14
+     </p>
+     <p class="para">
+      C socket error on send.
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>max number of retries exhausted, couldn&#039;t send query</em>
+     </p>
+     <p class="para">
+      Code: 19
+     </p>
+     <p class="para">
+      The driver will automatically retry &quot;plain&quot; queries (not commands) a
+      couple of times if the first attempt failed for certain reasons.  This is
+      to cause fewer exceptions during replica set failover (although you will
+      probably still have to deal with some) and gloss over transient network
+      issues.
+     </p>
+     <p class="para">
+      This can also be caused by the driver not being able to reconnect at all
+      to the database (if, for example, the database is unreachable).
+     </p>
+     <p class="para">
+      Version 1.2.2+.
+     </p>
+    </li>
+   </ul>
+  </div>
+
+
+  <div class="section">
+   <h2 class="title">Errors passed through by the database</h2>
+   <p class="para">
+    Database errors should always trigger
+    <span class="classname">MongoCursorExceptions</span> on queries.
+    Error messages and codes are sent directly from the database and you should
+    be able to see matching errors in the database log.
+   </p>
+
+   <p class="para">
+    A few common database errors are listed below:
+   </p>
+
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <p class="para">
+      <em>E11000 duplicate key error index: foo.bar.$X  dup key: { /* ... */ }</em>
+     </p>
+     <p class="para">
+      Code: 11000
+     </p>
+     <p class="para">
+      Database error for duplicate keys.
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>not master</em>
+     </p>
+     <p class="para">
+      Codes: 10107, 13435, and 10058
+     </p>
+     <p class="para">
+      Not master errors, piped through by the database.  ach of these will
+      cause the driver to disconnect and attempt to find a new primary. The
+      actual error you get on failover may not be a &quot;not master&quot; error,
+      depending on when the change in primary occurs.
+     </p>
+    </li>
+   </ul>
+
+  </div>
+  
+
+  <div class="section" id="mongocursorexception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+   
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoCursorException</strong></div>
+
+    
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">MongoCursorException</strong>
+     </span>
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> MongoException</strong>
+     </span>
+     {</div>
+    
+
+   }</div>
+   
+
+  </div>
+
+ </div>
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The MongoCursorTimeoutException class</h1>
+ 
+
+ <div class="partintro">
+
+  
+  <div class="section" id="mongocursortimeoutexception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Caused by a query timing out.  You can set the length of time to wait before
+    this exception is thrown by calling 
+    <span class="function">MongoCursor::timeout</span> on the cursor or setting
+    <em>MongoCursor::$timeout</em>.  The static variable is useful for
+    queries such as database commands and 
+    <span class="function">MongoCollection::findOne</span>, both of which implicitly use 
+    cursors.
+   </p>
+  </div>
+  
+
+  <div class="section" id="mongocursortimeoutexception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+   
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoCursorTimeoutException</strong></div>
+
+    
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">MongoCursorTimeoutException</strong>
+     </span>
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> MongoCursorException</strong>
+     </span>
+     {</div>
+    
+    
+   }</div>
+   
+
+  </div>
+
+ </div>
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The MongoConnectionException class</h1>
+ 
+
+ <div class="partintro">
+
+  
+  <div class="section" id="mongoconnectionexception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Thrown when the driver fails to connect to the database.
+   </p>
+
+   <p class="para">
+    There are a number of possible error messages to help you diagnose the 
+    connection problem.  These are:
+   </p>
+
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <p class="para">
+      <em>No candidate servers found</em>
+     </p>
+     <p class="para">
+     Thrown when the driver cannot establish a connection to MongoDB
+     (fulfilling the ReadPreferences, if specified).
+     </p>
+    </li>
+
+    <li class="listitem">
+     <p class="para">
+      <em>No server name given.</em>
+     </p>
+     <p class="para">
+      This error occurs if you pass in &quot;&quot; as the server name, 
+      probably because of an typo with string interpolation, 
+      e.g., &quot;$servr&quot; instead of &quot;$server&quot;.
+     </p>
+    </li>
+    <li class="listitem">
+     <p class="para">
+      <em>
+       failed to get host [hostname] or port [portnum] 
+       from [server].
+      </em>
+     </p>
+     <p class="para">
+       This indicated that the server string was malformed.  
+       &quot;[hostname]&quot; and &quot;[portnum]&quot; will be as much as the 
+       driver could dicipher of it.
+     </p>
+    </li>
+    <li class="listitem">
+     <p class="para">
+      <em>Operation in progress</em>
+     </p>
+     <p class="para">
+      Connecting to the database timed out.
+     </p>
+    </li>
+    <li class="listitem">
+     <p class="para">
+      <em>Transport endpoint is not connected</em>
+     </p>
+     <p class="para">
+      Generally means that the connection string isn&#039;t correct, the driver
+      couldn&#039;t even find the database server.
+     </p>
+    </li>
+    <li class="listitem">
+     <p class="para">
+      <em>couldn&#039;t determine master</em>
+     </p>
+     <p class="para">
+      No server in a replica set connection was identified as the primary.
+     </p>
+    </li>
+    <li class="listitem">
+     <p class="para">
+      <em>couldn&#039;t get host info for [server]</em>
+     </p>
+     <p class="para">
+      This indicated that DNS could not resolve the server address 
+      you gave.  This could easily be caused by a typo, for example, 
+      &quot;server&quot; instead of &quot;$server&quot;.
+     </p>
+    </li>
+    <li class="listitem">
+     <p class="para">
+      <em>Invalid Argument</em>
+     </p>
+     <p class="para">
+      This can be caused by attempting to connect to a machine that is up but
+      that the database isn&#039;t actually running on.  Make sure that you&#039;ve
+      started the database server before connecting.      
+     </p>
+    </li>
+    <li class="listitem">
+     <p class="para">
+      <em>Permission denied</em>
+     </p>
+     <p class="para">
+      This means that the socket could not be opened due to permissions issues.
+      On Red Hat variants, this can be caused by a default setting that does not
+      allow Apache to create network connections.  You can override this setting
+      by running:
+      <div class="example-contents">
+<div class="shellcode"><pre class="shellcode">$ /usr/sbin/setsebool -P httpd_can_network_connect 1</pre>
+</div>
+      </div>
+
+      then restarting Apache.
+     </p>
+    </li>
+   </ul>
+
+   <p class="para">  
+    If the error message is not listed above, it is probably an error 
+    from the C socket, and you can search the web for its usual cause.
+   </p>
+  </div>
+  
+
+  <div class="section" id="mongoconnectionexception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+   
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoConnectionException</strong></div>
+
+    
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">MongoConnectionException</strong>
+     </span>
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> MongoException</strong>
+     </span>
+     {</div>
+    
+    
+   }</div>
+   
+
+  </div>
+
+ </div>
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The MongoGridFSException class</h1>
+ 
+
+ <div class="partintro">
+
+  
+  <div class="section" id="mongogridfsexception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Thrown when there are errors reading or writing files
+    to or from the database.
+   </p>
+  </div>
+  
+
+  <div class="section" id="mongogridfsexception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+   
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoGridFSException</strong></div>
+
+    
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">MongoGridFSException</strong>
+     </span>
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> MongoException</strong>
+     </span>
+     {</div>
+    
+    
+   }</div>
+   
+
+  </div>
+
+  <div class="section" id="mongogridfsexception.error-codes">
+  <h2 class="title">Error codes</h2>
+  <p class="para">
+   <table class="doctable table">
+    <caption><strong><span class="classname">MongoGridFSException</span> error codes</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>Code</th>
+       <th>Message</th>
+       <th>Reason</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>3</td>
+       <td>Could not open file <var class="varname">$filename</var></td>
+       <td>Attempting to store an invalid file, such as directory</td>
+      </tr>
+
+      <tr>
+       <td>4</td>
+       <td>File <var class="varname">$filename</var> is too large: <var class="varname">$filesize</var> bytes</td>
+       <td>Maximum filesize in GridFS is 4GB</td>
+      </tr>
+
+      <tr>
+       <td>5</td>
+       <td>could not find filehandle</td>
+       <td>Resource doesn&#039;t have a filehandle</td>
+      </tr>
+
+      <tr>
+       <td>6</td>
+       <td>no file is associate with this filehandle</td>
+       <td>Resource isn&#039;t a file resource</td>
+      </tr>
+
+      <tr>
+       <td>7</td>
+       <td>error setting up file: <var class="varname">$filename</var>s</td>
+       <td>Could not open file for reading</td>
+      </tr>
+
+      <tr>
+       <td>9</td>
+       <td>error reading file <var class="varname">$filename</var>s</td>
+       <td>Failed reading file</td>
+      </tr>
+
+      <tr>
+       <td>10</td>
+       <td>error reading filehandle</td>
+       <td>Failed reading from a resource</td>
+      </tr>
+
+      <tr>
+       <td>11</td>
+       <td>could not find uploaded file %s</td>
+       <td>Filename doesn&#039;t seem to be uploaded file</td>
+      </tr>
+
+      <tr>
+       <td>12</td>
+       <td>Couldn&#039;t find tmp_name in the $_FILES array. Are you sure the upload worked?</td>
+       <td>Uploaded filename probably failed</td>
+      </tr>
+
+      <tr>
+       <td>13</td>
+       <td>tmp_name was not a string or an array</td>
+       <td>Invalid filename given</td>
+      </tr>
+
+      <tr>
+       <td>14</td>
+       <td>couldn&#039;t find file size</td>
+       <td>The <var class="varname">length</var> property is missing</td>
+      </tr>
+
+      <tr>
+       <td>15</td>
+       <td>Cannot find filename</td>
+       <td>No filename provided, and no <var class="varname">filename</var> property set</td>
+      </tr>
+
+      <tr>
+       <td>16</td>
+       <td>could not open destination file %s</td>
+       <td>Destination filename not writable</td>
+      </tr>
+
+      <tr>
+       <td>17</td>
+       <td>error reading chunk of file</td>
+       <td>Chunk corruption</td>
+      </tr>
+
+      <tr>
+       <td>18</td>
+       <td>couldn&#039;t create a php_stream</td>
+       <td>Couldn&#039;t create a stream resource</td>
+      </tr>
+
+      <tr>
+       <td>19</td>
+       <td>couldn&#039;t find <var class="varname">property</var></td>
+       <td>Chunk corruption</td>
+      </tr>
+
+      <tr>
+       <td>20</td>
+       <td>chunk <var class="varname">number</var> has wrong size (<var class="varname">size</var>) when the max is <var class="varname">maxchunksize</var></td>
+       <td>Chunk larger then expected</td>
+      </tr>
+
+      <tr>
+       <td>21</td>
+       <td>chunk has wrong format</td>
+       <td>Chunk corruption</td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+   </p>
+  </div>
+
+ </div>
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The MongoDuplicateKeyException class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongoduplicatekeyexception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Thrown when attempting to insert a document into a collection which already contains the same values for the <a href="mongocollection.ensureindex.html" class="link">unique keys</a>.
+   </p>
+  </div>
+
+
+  <div class="section" id="mongoduplicatekeyexception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoDuplicateKeyException</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">MongoDuplicateKeyException</strong>
+     </span>
+     
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> MongoWriteConcernException</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$message</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$code</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$file</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$line</var>
+    ;</div>
+
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">MongoWriteConcernException::getDocument</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+   }</div>
+
+
+  </div>
+
+  <div class="section" id="mongoduplicatekeyexception.examples">
+   <h2 class="title">Examples</h2>
+   <div class="example" id="example-1644">
+    <p><strong>Example #1 Catching MongoDuplicateKeyException</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$mc&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoClient</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$mc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">selectCollection</span><span style="color: #007700">(</span><span style="color: #DD0000">"test"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"test"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$c</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">insert</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'_id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">));<br />try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$c</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">insert</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'_id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">));<br />}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">MongoWriteConcernException&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">(),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above examples will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+localhost:27017: insertDocument :: caused by :: 11000 E11000 duplicate key error index: test.test.$_id_  dup key: { : 1 }
+</pre></div>
+    </div>
+   </div>
+  </div>
+
+ </div>
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The MongoProtocolException class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongoprotocolexception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    When talking to MongoDB 2.6.0, and later, certain operations (such as writes) may throw MongoProtocolException when the response
+    from the server did not make sense - for example during network failure (we could read the entire response) or data corruption.
+   </p>
+   <p class="para">
+    This exception is also thrown when attempting to talk newer protocols then the server supports, for example using the
+    <span class="classname">MongoWriteBatch</span> when talking to a MongoDB server prior to 2.6.0.
+   </p>
+  </div>
+
+
+  <div class="section" id="mongoprotocolexception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoProtocolException</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">MongoProtocolException</strong>
+     </span>
+     
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> MongoException</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$message</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$code</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$file</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$line</var>
+    ;</div>
+
+
+   }</div>
+
+
+  </div>
+
+  <div class="section" id="mongoprotocolexception.examples">
+   <h2 class="title">Examples</h2>
+   <div class="example" id="example-1645">
+    <p><strong>Example #2 Catching MongoProtocolException</strong></p>
+    <div class="example-contents"><p>
+     Running the following example against MongoDB prior to 2.6.0 will throw an MongoProtocolException
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$mc&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoClient</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$mc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">selectCollection</span><span style="color: #007700">(</span><span style="color: #DD0000">"test"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"test"</span><span style="color: #007700">);<br /><br />try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$batch&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoInsertBatch</span><span style="color: #007700">(</span><span style="color: #0000BB">$c</span><span style="color: #007700">);<br />}&nbsp;catch(</span><span style="color: #0000BB">MongoProtocolException&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">();<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above examples will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Current primary does not have a Write API
+</pre></div>
+    </div>
+   </div>
+  </div>
+
+
+ </div>
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The MongoExecutionTimeoutException class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongoexecutiontimeoutexception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Thrown when a operation times out server side (i.e. in MongoDB).
+   </p>
+   <p class="para">
+    To configure the operation timeout threshold, use
+     <span class="methodname">MongoCursor::maxTimeMS</span> or the
+    <em>&quot;maxTimeMS&quot;</em> command option.
+   </p>
+  </div>
+
+
+  <div class="section" id="mongoexecutiontimeoutexception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoExecutionTimeoutException</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">MongoExecutionTimeoutException</strong>
+     </span>
+     
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> MongoException</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$message</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$code</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$file</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$line</var>
+    ;</div>
+
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The MongoWriteConcernException class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongowriteconcernexception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    MongoWriteConcernException is thrown when a write fails. See <a href="mongo.writeconcerns.html" class="xref">Write Concerns</a> for how to set failure thresholds.
+   </p>
+   <p class="para">
+    Prior to MongoDB 2.6.0, the <a href="https://docs.mongodb.com/manual/reference/command/getLastError" class="link external">&raquo;&nbsp;getLastError</a> command would determine whether a write failed.
+   </p>
+  </div>
+
+
+  <div class="section" id="mongowriteconcernexception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoWriteConcernException</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">MongoWriteConcernException</strong>
+     </span>
+     
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> MongoCursorException</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$message</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$code</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$file</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$line</var>
+    ;</div>
+
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getDocument</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">MongoCursorException::getHost</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,207 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: The mysqli Extension and Persistent Connections</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="set.mysqlinfo.html">MySQL</a></li>
+  <li class="header up"><a href="book.mysqli.html">MySQLi</a></li>
+  <li><a href="intro.mysqli.html">Introduction</a></li>
+  <li><a href="mysqli.overview.html">Overview</a></li>
+  <li><a href="mysqli.quickstart.html">Quick start guide</a></li>
+  <li><a href="mysqli.setup.html">Installing/Configuring</a></li>
+  <li class="active"><a href="mysqli.persistconns.html">The mysqli Extension and Persistent Connections</a></li>
+  <li><a href="mysqli.constants.html">Predefined Constants</a></li>
+  <li><a href="mysqli.notes.html">Notes</a></li>
+  <li><a href="mysqli.summary.html">The MySQLi Extension Function Summary</a></li>
+  <li><a href="mysqli.examples.html">Examples</a></li>
+  <li><a href="class.mysqli.html">mysqli</a></li>
+  <li><a href="class.mysqli-stmt.html">mysqli_stmt</a></li>
+  <li><a href="class.mysqli-result.html">mysqli_result</a></li>
+  <li><a href="class.mysqli-driver.html">mysqli_driver</a></li>
+  <li><a href="class.mysqli-warning.html">mysqli_warning</a></li>
+  <li><a href="class.mysqli-sql-exception.html">mysqli_sql_exception</a></li>
+  <li><a href="ref.mysqli.html">Aliases and deprecated Mysqli Functions</a></li>
+  <li><a href="changelog.mysqli.html">Changelog</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mysqli.resources.html">Resource Types</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mysqli.constants.html">Predefined Constants</a></div>
+                <div class="up"><a href="book.mysqli.html">MySQLi</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mysqli.persistconns" class="chapter">
+
+ <h1>The mysqli Extension and Persistent Connections</h1>
+
+ <p class="para">
+  Persistent connection support was introduced in PHP 5.3 for the
+  <em>mysqli</em> extension. Support was already present in
+  PDO MYSQL and ext/mysql. The idea behind persistent connections is
+  that a connection between a client process and a database can be
+  reused by a client process, rather than being created and destroyed
+  multiple times. This reduces the overhead of creating fresh
+  connections every time one is required, as unused connections are
+  cached and ready to be reused.
+ </p>
+ 
+ <p class="para">
+  Unlike the mysql extension, mysqli does not provide a separate function
+  for opening persistent connections. To open a persistent connection you
+  must prepend <em>p:</em> to the hostname when connecting.
+ </p>
+
+ <p class="para">
+  The problem with persistent connections is that they can be left in
+  unpredictable states by clients. For example, a table lock might be
+  activated before a client terminates unexpectedly. A new client
+  process reusing this persistent connection will get the connection
+  <q class="quote">as is</q>. Any cleanup would need to be done by the new
+  client process before it could make good use of the persistent
+  connection, increasing the burden on the programmer.
+ </p>
+
+ <p class="para">
+  The persistent connection of the <em>mysqli</em> extension
+  however provides built-in cleanup handling code. The cleanup carried
+  out by <em>mysqli</em> includes:
+ </p>
+
+ <ul class="itemizedlist">
+
+  <li class="listitem">
+   <p class="para">
+    Rollback active transactions
+   </p>
+  </li>
+
+  <li class="listitem">
+   <p class="para">
+    Close and drop temporary tables
+   </p>
+  </li>
+
+  <li class="listitem">
+   <p class="para">
+    Unlock tables
+   </p>
+  </li>
+
+  <li class="listitem">
+   <p class="para">
+    Reset session variables
+   </p>
+  </li>
+
+  <li class="listitem">
+   <p class="para">
+    Close prepared statements (always happens with PHP)
+   </p>
+  </li>
+
+  <li class="listitem">
+   <p class="para">
+    Close handler
+   </p>
+  </li>
+
+  <li class="listitem">
+   <p class="para">
+    Release locks acquired with <span class="function">GET_LOCK</span>
+   </p>
+  </li>
+
+ </ul>
+
+ <p class="para">
+  This ensures that persistent connections are in a clean state on
+  return from the connection pool, before the client process uses them.
+ </p>
+
+ <p class="para">
+  The <em>mysqli</em> extension does this cleanup by
+  automatically calling the C-API function
+  <em>mysql_change_user()</em>.
+ </p>
+
+ <p class="para">
+  The automatic cleanup feature has advantages and disadvantages though.
+  The advantage is that the programmer no longer needs to worry about
+  adding cleanup code, as it is called automatically. However, the
+  disadvantage is that the code could <em class="emphasis">potentially</em>
+  be a little slower, as the code to perform the cleanup needs to run
+  each time a connection is returned from the connection pool.
+ </p>
+
+ <p class="para">
+  It is possible to switch off the automatic cleanup code, by compiling
+  PHP with
+
+  <strong><code>MYSQLI_NO_CHANGE_USER_ON_PCONNECT</code></strong>
+
+  defined.
+ </p>
+
+ <blockquote class="note"><p><strong class="note">Note</strong>: 
+  <p class="para">
+   The <em>mysqli</em> extension supports persistent
+   connections when using either MySQL Native Driver or MySQL Client
+   Library.
+  </p>
+ </p></blockquote>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

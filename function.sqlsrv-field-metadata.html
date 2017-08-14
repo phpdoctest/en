@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Retrieves metadata for the fields of a statement prepared by 
+  sqlsrv_prepare or sqlsrv_query</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.sqlsrv.html">SQLSRV</a></li>
+  <li class="header up"><a href="ref.sqlsrv.html">SQLSRV Functions</a></li>
+  <li><a href="function.sqlsrv-begin-transaction.html">sqlsrv_begin_transaction</a></li>
+  <li><a href="function.sqlsrv-cancel.html">sqlsrv_cancel</a></li>
+  <li><a href="function.sqlsrv-client-info.html">sqlsrv_client_info</a></li>
+  <li><a href="function.sqlsrv-close.html">sqlsrv_close</a></li>
+  <li><a href="function.sqlsrv-commit.html">sqlsrv_commit</a></li>
+  <li><a href="function.sqlsrv-configure.html">sqlsrv_configure</a></li>
+  <li><a href="function.sqlsrv-connect.html">sqlsrv_connect</a></li>
+  <li><a href="function.sqlsrv-errors.html">sqlsrv_errors</a></li>
+  <li><a href="function.sqlsrv-execute.html">sqlsrv_execute</a></li>
+  <li><a href="function.sqlsrv-fetch-array.html">sqlsrv_fetch_array</a></li>
+  <li><a href="function.sqlsrv-fetch-object.html">sqlsrv_fetch_object</a></li>
+  <li><a href="function.sqlsrv-fetch.html">sqlsrv_fetch</a></li>
+  <li class="active"><a href="function.sqlsrv-field-metadata.html">sqlsrv_field_metadata</a></li>
+  <li><a href="function.sqlsrv-free-stmt.html">sqlsrv_free_stmt</a></li>
+  <li><a href="function.sqlsrv-get-config.html">sqlsrv_get_config</a></li>
+  <li><a href="function.sqlsrv-get-field.html">sqlsrv_get_field</a></li>
+  <li><a href="function.sqlsrv-has-rows.html">sqlsrv_has_rows</a></li>
+  <li><a href="function.sqlsrv-next-result.html">sqlsrv_next_result</a></li>
+  <li><a href="function.sqlsrv-num-fields.html">sqlsrv_num_fields</a></li>
+  <li><a href="function.sqlsrv-num-rows.html">sqlsrv_num_rows</a></li>
+  <li><a href="function.sqlsrv-prepare.html">sqlsrv_prepare</a></li>
+  <li><a href="function.sqlsrv-query.html">sqlsrv_query</a></li>
+  <li><a href="function.sqlsrv-rollback.html">sqlsrv_rollback</a></li>
+  <li><a href="function.sqlsrv-rows-affected.html">sqlsrv_rows_affected</a></li>
+  <li><a href="function.sqlsrv-send-stream-data.html">sqlsrv_send_stream_data</a></li>
+  <li><a href="function.sqlsrv-server-info.html">sqlsrv_server_info</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.sqlsrv-fetch.html">sqlsrv_fetch</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.sqlsrv-free-stmt.html">sqlsrv_free_stmt</a></div>
+                <div class="up"><a href="ref.sqlsrv.html">SQLSRV Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.sqlsrv-field-metadata" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">sqlsrv_field_metadata</h1>
+  <p class="refpurpose">Retrieves metadata for the fields of a statement prepared by 
+  <span class="function">sqlsrv_prepare</span> or <span class="function">sqlsrv_query</span>
+  </p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.sqlsrv-field-metadata-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname">sqlsrv_field_metadata</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$stmt</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Retrieves metadata for the fields of a statement prepared by 
+   <span class="function">sqlsrv_prepare</span> or <span class="function">sqlsrv_query</span>. 
+   <span class="function">sqlsrv_field_metadata</span> can be called on a statement before 
+   or after statement execution.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.sqlsrv-field-metadata-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">stmt</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The statment resource for which metadata is returned.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.sqlsrv-field-metadata-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns an array of arrays is returned on success. Otherwise, <strong><code>FALSE</code></strong> is returned. 
+   Each returned array is described by the following table:
+   <table class="doctable table">
+   <caption><strong>Array returned by sqlsrv_field_metadata</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>Key</th>
+      <th>Description</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>Name</td>
+      <td>The name of the field.</td>
+     </tr>
+
+     <tr>
+      <td>Type</td>
+      <td>The numeric value for the SQL type.</td>
+     </tr>
+
+     <tr>
+      <td>Size</td>
+      <td>The number of characters for fields of character type, the number of 
+      bytes for fields of binary type, or <strong><code>NULL</code></strong> for other types.</td>
+     </tr>
+
+     <tr>
+      <td>Precision</td>
+      <td>The precision for types of variable precision, <strong><code>NULL</code></strong> for other types.</td>
+     </tr>
+
+     <tr>
+      <td>Scale</td>
+      <td>The scale for types of variable scale, <strong><code>NULL</code></strong> for other types.</td>
+     </tr>
+
+     <tr>
+      <td>Nullable</td>
+      <td>An enumeration indicating whether the column is nullable, not nullable, 
+      or if it is not known.</td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+  For more information, see <a href="http://msdn.microsoft.com/en-us/library/cc296197.aspx" class="link external">&raquo;&nbsp;sqlsrv_field_metadata</a> 
+  in the Microsoft SQLSRV documentation.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.sqlsrv-field-metadata-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-2426">
+    <p><strong>Example #1 <span class="function">sqlsrv_field_metadata</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$serverName&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"serverName\sqlexpress"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$connectionInfo&nbsp;</span><span style="color: #007700">=&nbsp;array(&nbsp;</span><span style="color: #DD0000">"Database"</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"AdventureWorks"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"UID"</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"username"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"PWD"</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sqlsrv_connect</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$serverName</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$connectionInfo</span><span style="color: #007700">);<br />if(&nbsp;</span><span style="color: #0000BB">$conn&nbsp;</span><span style="color: #007700">===&nbsp;</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;die(&nbsp;</span><span style="color: #0000BB">print_r</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">sqlsrv_errors</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">));<br />}<br /><br /></span><span style="color: #0000BB">$sql&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;*&nbsp;FROM&nbsp;Table_1"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sqlsrv_prepare</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$sql&nbsp;</span><span style="color: #007700">);<br /><br />foreach(&nbsp;</span><span style="color: #0000BB">sqlsrv_field_metadata</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">)&nbsp;as&nbsp;</span><span style="color: #0000BB">$fieldMetadata&nbsp;</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach(&nbsp;</span><span style="color: #0000BB">$fieldMetadata&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$name&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$name</span><span style="color: #DD0000">:&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #DD0000">&lt;br&nbsp;/&gt;"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&lt;br&nbsp;/&gt;"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.sqlsrv-field-metadata-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">sqlsrv_client_info</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

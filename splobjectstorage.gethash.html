@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Calculate a unique identifier for the contained objects</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.spl.html">SPL</a></li>
+  <li class="header up"><a href="spl.datastructures.html">Datastructures</a></li>
+  <li class="header up"><a href="class.splobjectstorage.html">SplObjectStorage</a></li>
+  <li><a href="splobjectstorage.addall.html">SplObjectStorage::addAll</a></li>
+  <li><a href="splobjectstorage.attach.html">SplObjectStorage::attach</a></li>
+  <li><a href="splobjectstorage.contains.html">SplObjectStorage::contains</a></li>
+  <li><a href="splobjectstorage.count.html">SplObjectStorage::count</a></li>
+  <li><a href="splobjectstorage.current.html">SplObjectStorage::current</a></li>
+  <li><a href="splobjectstorage.detach.html">SplObjectStorage::detach</a></li>
+  <li class="active"><a href="splobjectstorage.gethash.html">SplObjectStorage::getHash</a></li>
+  <li><a href="splobjectstorage.getinfo.html">SplObjectStorage::getInfo</a></li>
+  <li><a href="splobjectstorage.key.html">SplObjectStorage::key</a></li>
+  <li><a href="splobjectstorage.next.html">SplObjectStorage::next</a></li>
+  <li><a href="splobjectstorage.offsetexists.html">SplObjectStorage::offsetExists</a></li>
+  <li><a href="splobjectstorage.offsetget.html">SplObjectStorage::offsetGet</a></li>
+  <li><a href="splobjectstorage.offsetset.html">SplObjectStorage::offsetSet</a></li>
+  <li><a href="splobjectstorage.offsetunset.html">SplObjectStorage::offsetUnset</a></li>
+  <li><a href="splobjectstorage.removeall.html">SplObjectStorage::removeAll</a></li>
+  <li><a href="splobjectstorage.removeallexcept.html">SplObjectStorage::removeAllExcept</a></li>
+  <li><a href="splobjectstorage.rewind.html">SplObjectStorage::rewind</a></li>
+  <li><a href="splobjectstorage.serialize.html">SplObjectStorage::serialize</a></li>
+  <li><a href="splobjectstorage.setinfo.html">SplObjectStorage::setInfo</a></li>
+  <li><a href="splobjectstorage.unserialize.html">SplObjectStorage::unserialize</a></li>
+  <li><a href="splobjectstorage.valid.html">SplObjectStorage::valid</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="splobjectstorage.detach.html">SplObjectStorage::detach</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="splobjectstorage.getinfo.html">SplObjectStorage::getInfo</a></div>
+                <div class="up"><a href="class.splobjectstorage.html">SplObjectStorage</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="splobjectstorage.gethash" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SplObjectStorage::getHash</h1>
+  <p class="refpurpose">
+   Calculate a unique identifier for the contained objects
+  </p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-splobjectstorage.gethash-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">SplObjectStorage::getHash</span>
+    ( <span class="methodparam"><span class="type">object</span> <code class="parameter">$object</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   This method calculates an identifier for the objects added to an
+   <span class="classname">SplObjectStorage</span> object.
+  </p>
+  <p class="para">
+   The implementation in <span class="classname">SplObjectStorage</span> returns
+   the same value as <span class="function">spl_object_hash</span>.
+  </p>
+  <p class="para">
+   The storage object will never contain more than one object with the same identifier.
+   As such, it can be used to implement a set (a collection of unique values)
+   where the quality of an object being unique is determined by the value
+   returned by this function being unique.
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-splobjectstorage.gethash-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">object</code></dt>
+
+    <dd>
+
+     <p class="para">
+      The object whose identifier is to be calculated.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-splobjectstorage.gethash-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   A <span class="type">string</span> with the calculated identifier.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-splobjectstorage.gethash-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   A <span class="classname">RuntimeException</span> is thrown when the returned
+   value is not a <span class="type">string</span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-splobjectstorage.gethash-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4401">
+    <p><strong>Example #1 <span class="function">SplObjectStorage::getHash</span> example</strong></p>
+<div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">OneSpecimenPerClassStorage&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">SplObjectStorage&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">getHash</span><span style="color: #007700">(</span><span style="color: #0000BB">$o</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">$o</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br />class&nbsp;</span><span style="color: #0000BB">A&nbsp;</span><span style="color: #007700">{}<br /><br /></span><span style="color: #0000BB">$s&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">OneSpecimenPerClassStorage</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$o1&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">stdClass</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$o2&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">stdClass</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$o3&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$s</span><span style="color: #007700">[</span><span style="color: #0000BB">$o1</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//$o2&nbsp;is&nbsp;considered&nbsp;equal&nbsp;to&nbsp;$o1&nbsp;so&nbsp;the&nbsp;value&nbsp;is&nbsp;replaced<br /></span><span style="color: #0000BB">$s</span><span style="color: #007700">[</span><span style="color: #0000BB">$o2</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$s</span><span style="color: #007700">[</span><span style="color: #0000BB">$o3</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//these&nbsp;are&nbsp;considered&nbsp;equal&nbsp;to&nbsp;the&nbsp;objects&nbsp;before<br />//so&nbsp;they&nbsp;can&nbsp;be&nbsp;used&nbsp;to&nbsp;access&nbsp;the&nbsp;values&nbsp;stored&nbsp;under&nbsp;them<br /></span><span style="color: #0000BB">$p1&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">stdClass</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$p2&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$s</span><span style="color: #007700">[</span><span style="color: #0000BB">$p1</span><span style="color: #007700">],&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #0000BB">$s</span><span style="color: #007700">[</span><span style="color: #0000BB">$p2</span><span style="color: #007700">],&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+2
+3
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-splobjectstorage.gethash-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">spl_object_hash</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Sets whether this cursor will be left open after fetching the last results</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.mongo.html">Mongo</a></li>
+  <li class="header up"><a href="mongo.core.html">Core Classes</a></li>
+  <li class="header up"><a href="class.mongocursor.html">MongoCursor</a></li>
+  <li><a href="mongocursor.addoption.html">MongoCursor::addOption</a></li>
+  <li><a href="mongocursor.awaitdata.html">MongoCursor::awaitData</a></li>
+  <li><a href="mongocursor.batchsize.html">MongoCursor::batchSize</a></li>
+  <li><a href="mongocursor.construct.html">MongoCursor::__construct</a></li>
+  <li><a href="mongocursor.count.html">MongoCursor::count</a></li>
+  <li><a href="mongocursor.current.html">MongoCursor::current</a></li>
+  <li><a href="mongocursor.dead.html">MongoCursor::dead</a></li>
+  <li><a href="mongocursor.doquery.html">MongoCursor::doQuery</a></li>
+  <li><a href="mongocursor.explain.html">MongoCursor::explain</a></li>
+  <li><a href="mongocursor.fields.html">MongoCursor::fields</a></li>
+  <li><a href="mongocursor.getnext.html">MongoCursor::getNext</a></li>
+  <li><a href="mongocursor.getreadpreference.html">MongoCursor::getReadPreference</a></li>
+  <li><a href="mongocursor.hasnext.html">MongoCursor::hasNext</a></li>
+  <li><a href="mongocursor.hint.html">MongoCursor::hint</a></li>
+  <li><a href="mongocursor.immortal.html">MongoCursor::immortal</a></li>
+  <li><a href="mongocursor.info.html">MongoCursor::info</a></li>
+  <li><a href="mongocursor.key.html">MongoCursor::key</a></li>
+  <li><a href="mongocursor.limit.html">MongoCursor::limit</a></li>
+  <li><a href="mongocursor.maxtimems.html">MongoCursor::maxTimeMS</a></li>
+  <li><a href="mongocursor.next.html">MongoCursor::next</a></li>
+  <li><a href="mongocursor.partial.html">MongoCursor::partial</a></li>
+  <li><a href="mongocursor.reset.html">MongoCursor::reset</a></li>
+  <li><a href="mongocursor.rewind.html">MongoCursor::rewind</a></li>
+  <li><a href="mongocursor.setflag.html">MongoCursor::setFlag</a></li>
+  <li><a href="mongocursor.setreadpreference.html">MongoCursor::setReadPreference</a></li>
+  <li><a href="mongocursor.skip.html">MongoCursor::skip</a></li>
+  <li><a href="mongocursor.slaveokay.html">MongoCursor::slaveOkay</a></li>
+  <li><a href="mongocursor.snapshot.html">MongoCursor::snapshot</a></li>
+  <li><a href="mongocursor.sort.html">MongoCursor::sort</a></li>
+  <li class="active"><a href="mongocursor.tailable.html">MongoCursor::tailable</a></li>
+  <li><a href="mongocursor.timeout.html">MongoCursor::timeout</a></li>
+  <li><a href="mongocursor.valid.html">MongoCursor::valid</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mongocursor.sort.html">MongoCursor::sort</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mongocursor.timeout.html">MongoCursor::timeout</a></div>
+                <div class="up"><a href="class.mongocursor.html">MongoCursor</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mongocursor.tailable" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">MongoCursor::tailable</h1>
+  <p class="refpurpose">Sets whether this cursor will be left open after fetching the last results</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mongocursor.tailable-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">MongoCursor</span> <span class="methodname">MongoCursor::tailable</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$tail</code><span class="initializer"> = true</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Mongo has a feature known as tailable cursors which are similar to the Unix 
+   &quot;tail -f&quot; command.
+  </p>
+  <p class="para">
+   Tailable means cursor is not closed when the last data is retrieved.  Rather,
+   the cursor marks the final object&#039;s position.  you can resume using the 
+   cursor later, from where it was located, if more data were received.
+  </p>
+  <p class="para">
+   Like any &quot;latent cursor&quot;, the cursor may become invalid at some point -- for 
+   example if that final object it references were deleted.  Thus, you should be
+   prepared to requery if the cursor is <span class="function">MongoCursor::dead</span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mongocursor.tailable-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+
+      <code class="parameter">tail</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       If the cursor should be tailable.
+      </p>
+     </dd>
+
+       
+   </dl>
+
+  </p>
+ </div>
+ 
+
+ <div class="refsect1 returnvalues" id="refsect1-mongocursor.tailable-returnvalues">
+  <h3 class="title">Return Values</h3>  
+  <p class="para">
+   Returns this cursor.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-mongocursor.tailable-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   Throws <span class="classname">MongoCursorException</span> if this cursor has started iterating.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-mongocursor.tailable-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="mongocursor.stages.adding-options">
+   <p><strong>Example #1 <span class="function">MongoCursor::tailable</span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$cursor&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$collection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">find</span><span style="color: #007700">()-&gt;</span><span style="color: #0000BB">tailable</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$results&nbsp;</span><span style="color: #007700">=&nbsp;array();<br /><br />while&nbsp;(</span><span style="color: #0000BB">1</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">$cursor</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">hasNext</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;we've&nbsp;read&nbsp;all&nbsp;the&nbsp;results,&nbsp;exit<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$cursor</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">dead</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;read&nbsp;all&nbsp;results&nbsp;so&nbsp;far,&nbsp;wait&nbsp;for&nbsp;more<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">sleep</span><span style="color: #007700">(</span><span style="color: #0000BB">10</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$results</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #0000BB">$cursor</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getNext</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-mongocursor.tailable-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   MongoDB core docs on <a href="https://docs.mongodb.com/manual/tutorial/create-tailable-cursor/" class="link external">&raquo;&nbsp;tailable cursors</a>.
+  </p>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">MongoCursor::awaitData</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

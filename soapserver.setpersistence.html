@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Sets SoapServer persistence mode</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.webservice.html">Web Services</a></li>
+  <li class="header up"><a href="book.soap.html">SOAP</a></li>
+  <li class="header up"><a href="class.soapserver.html">SoapServer</a></li>
+  <li><a href="soapserver.addfunction.html">SoapServer::addFunction</a></li>
+  <li><a href="soapserver.addsoapheader.html">SoapServer::addSoapHeader</a></li>
+  <li><a href="soapserver.construct.html">SoapServer::__construct</a></li>
+  <li><a href="soapserver.fault.html">SoapServer::fault</a></li>
+  <li><a href="soapserver.getfunctions.html">SoapServer::getFunctions</a></li>
+  <li><a href="soapserver.handle.html">SoapServer::handle</a></li>
+  <li><a href="soapserver.setclass.html">SoapServer::setClass</a></li>
+  <li><a href="soapserver.setobject.html">SoapServer::setObject</a></li>
+  <li class="active"><a href="soapserver.setpersistence.html">SoapServer::setPersistence</a></li>
+  <li><a href="soapserver.soapserver.html">SoapServer::SoapServer</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="soapserver.setobject.html">SoapServer::setObject</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="soapserver.soapserver.html">SoapServer::SoapServer</a></div>
+                <div class="up"><a href="class.soapserver.html">SoapServer</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="soapserver.setpersistence" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SoapServer::setPersistence</h1>
+  <p class="refpurpose">Sets SoapServer persistence mode</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-soapserver.setpersistence-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SoapServer::setPersistence</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code></span>
+   )</div>
+
+  <p class="para rdfs-comment"> 
+   This function allows changing the persistence state of a SoapServer object between
+   requests. This function allows saving data between requests utilizing PHP sessions.  This method
+   only has an affect on a SoapServer after it has exported functions utilizing  <span class="methodname">SoapServer::setClass</span>. 
+  </p>
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <p class="para"> 
+     The persistence of <strong><code>SOAP_PERSISTENCE_SESSION</code></strong> makes only
+     objects of the given class persistent, but not the class static data. In this 
+     case, use <var class="varname">$this-&gt;bar</var> instead of self::$bar. 
+    </p>
+   </p></blockquote>
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <p class="para">
+     <strong><code>SOAP_PERSISTENCE_SESSION</code></strong> serializes data on the class object between requests. In order to properly utilize resources (e.g. <span class="classname">PDO</span>), <a href="language.oop5.magic.html#object.wakeup" class="link">__wakeup()</a> and <a href="language.oop5.magic.html#object.sleep" class="link">__sleep()</a> magic methods should be utilized. 
+    </p>  
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-soapserver.setpersistence-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">mode</code></dt>
+
+     <dd>
+
+      <p class="para">
+       One of the <em>SOAP_PERSISTENCE_XXX</em> constants.
+      </p>
+      <p class="para">
+       <strong><code>SOAP_PERSISTENCE_REQUEST</code></strong> - SoapServer data does not persist between
+       requests. This is the <em class="emphasis">default</em> behavior of any SoapServer
+       object after setClass is called. 
+      </p>
+      <p class="para">
+       <strong><code>SOAP_PERSISTENCE_SESSION</code></strong> - SoapServer data persists between requests.
+       This is accomplished by serializing the SoapServer class data into
+       <var class="varname">$_SESSION[&#039;_bogus_session_name&#039;]</var>, because of this 
+       <span class="function">session_start</span> must be called before this persistence mode is set. 
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-soapserver.setpersistence-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   No value is returned.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-soapserver.setpersistence-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-6206">
+    <p><strong>Example #1 <span class="function">SoapServer::setPersistence</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;</span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyFirstPersistentSoapServer&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$resource</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;(Such&nbsp;as&nbsp;PDO,&nbsp;mysqli,&nbsp;etc..)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">public&nbsp;</span><span style="color: #0000BB">$myvar1</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$myvar2</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">__wakeup</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;We're&nbsp;calling&nbsp;our&nbsp;wakeup&nbsp;to&nbsp;handle&nbsp;starting&nbsp;our&nbsp;resource<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__wakeup</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">resource&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">CodeToStartOurResourceUp</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__sleep</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;We&nbsp;make&nbsp;sure&nbsp;to&nbsp;leave&nbsp;out&nbsp;$resource&nbsp;here,&nbsp;so&nbsp;our&nbsp;session&nbsp;data&nbsp;remains&nbsp;persistent<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;Failure&nbsp;to&nbsp;do&nbsp;so&nbsp;will&nbsp;result&nbsp;in&nbsp;the&nbsp;failure&nbsp;during&nbsp;the&nbsp;unserialization&nbsp;of&nbsp;data<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;on&nbsp;the&nbsp;next&nbsp;request;&nbsp;thus,&nbsp;our&nbsp;SoapObject&nbsp;would&nbsp;not&nbsp;be&nbsp;persistent&nbsp;across&nbsp;requests.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">return&nbsp;array(</span><span style="color: #DD0000">'myvar1'</span><span style="color: #007700">,</span><span style="color: #DD0000">'myvar2'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;}<br /><br />&nbsp;try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">session_start</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$server&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SoapServer</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">'uri'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">'REQUEST_URI'</span><span style="color: #007700">]));<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$server</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setClass</span><span style="color: #007700">(</span><span style="color: #DD0000">'MyFirstPersistentSoapServer'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;setPersistence&nbsp;MUST&nbsp;be&nbsp;called&nbsp;after&nbsp;setClass,&nbsp;because&nbsp;setClass's<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;behavior&nbsp;sets&nbsp;SESSION_PERSISTENCE_REQUEST&nbsp;upon&nbsp;enacting&nbsp;the&nbsp;method.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$server</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setPersistence</span><span style="color: #007700">(</span><span style="color: #0000BB">SOAP_PERSISTENCE_SESSION</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$server</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">handle</span><span style="color: #007700">();<br />&nbsp;}&nbsp;catch(</span><span style="color: #0000BB">SoapFault&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">error_log</span><span style="color: #007700">(</span><span style="color: #DD0000">"SOAP&nbsp;ERROR:&nbsp;"</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">());<br />&nbsp;}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-soapserver.setpersistence-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"> <span class="methodname">SoapServer::setClass</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

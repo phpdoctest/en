@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Construct a new V8Js object</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.v8js.html">V8js</a></li>
+  <li class="header up"><a href="class.v8js.html">V8Js</a></li>
+  <li class="active"><a href="v8js.construct.html">V8Js::__construct</a></li>
+  <li><a href="v8js.executestring.html">V8Js::executeString</a></li>
+  <li><a href="v8js.getextensions.html">V8Js::getExtensions</a></li>
+  <li><a href="v8js.getpendingexception.html">V8Js::getPendingException</a></li>
+  <li><a href="v8js.registerextension.html">V8Js::registerExtension</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="class.v8js.html">V8Js</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="v8js.executestring.html">V8Js::executeString</a></div>
+                <div class="up"><a href="class.v8js.html">V8Js</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="v8js.construct" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">V8Js::__construct</h1>
+  <p class="refpurpose">Construct a new <span class="classname">V8Js</span> object</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-v8js.construct-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">V8Js::__construct</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$object_name</code><span class="initializer"> = &quot;PHP&quot;</span></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$variables</code><span class="initializer"> = array()</span></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$extensions</code><span class="initializer"> = array()</span></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$report_uncaught_exceptions</code><span class="initializer"> = <strong><code>TRUE</code></strong></span></span>
+  ]]]] )</div>
+
+  <p class="para rdfs-comment">
+   Constructs a new <span class="classname">V8Js</span> object.
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-v8js.construct-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">object_name</code></dt>
+
+    <dd>
+
+     <p class="para">
+      The name of the object passed to Javascript.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">variables</code></dt>
+
+    <dd>
+
+     <p class="para">
+      Map of PHP variables that will be available in Javascript. Must be an associative <span class="type">array</span>
+      in format <em>array(&quot;name-for-js&quot; =&gt; &quot;name-of-php-variable&quot;)</em>. Defaults to empty array.
+     </p> 
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">extensions</code></dt>
+
+    <dd>
+
+     <p class="para">
+      List of extensions registered using <span class="function">V8Js::registerExtension</span> which should be available 
+      in the Javascript context of the created <span class="classname">V8Js</span> object.
+      <blockquote class="note"><p><strong class="note">Note</strong>: 
+       <p class="para">
+        Extensions registered to be enabled automatically do not need to be listed in this array.
+        Also if an extension has dependencies, those dependencies can be omitted as well. Defaults to empty array.
+       </p>
+      </p></blockquote>
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">report_uncaught_exceptions</code></dt>
+
+    <dd>
+
+     <p class="para">
+      Controls whether uncaught Javascript exceptions are reported immediately or not. Defaults to <strong><code>TRUE</code></strong>. If set to <strong><code>FALSE</code></strong>
+      the uncaught exception can be accessed using <span class="function">V8Js::getPendingException</span>.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-v8js.construct-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns a new V8Js context object.
+  </p>
+ </div>
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

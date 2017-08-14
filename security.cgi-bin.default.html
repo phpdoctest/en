@@ -1,0 +1,91 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Case 1: only public files served</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="security.html">Security</a></li>
+  <li class="header up"><a href="security.cgi-bin.html">Installed as CGI binary</a></li>
+  <li><a href="security.cgi-bin.attacks.html">Possible attacks</a></li>
+  <li class="active"><a href="security.cgi-bin.default.html">Case 1: only public files served</a></li>
+  <li><a href="security.cgi-bin.force-redirect.html">Case 2: using cgi.force_redirect</a></li>
+  <li><a href="security.cgi-bin.doc-root.html">Case 3: setting doc_root or user_dir</a></li>
+  <li><a href="security.cgi-bin.shell.html">Case 4: PHP parser outside of web tree</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="security.cgi-bin.attacks.html">Possible attacks</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="security.cgi-bin.force-redirect.html">Case 2: using cgi.force_redirect</a></div>
+                <div class="up"><a href="security.cgi-bin.html">Installed as CGI binary</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="security.cgi-bin.default" class="sect1">
+    <h2 class="title">Case 1: only public files served</h2>
+
+    <p class="simpara">
+     If your server does not have any content that is not restricted
+     by password or ip based access control, there is no need for
+     these configuration options.  If your web server does not allow
+     you to do redirects, or the server does not have a way to
+     communicate to the PHP binary that the request is a safely
+     redirected request, you can specify the option <a href="configure.about.html#configure.enable-force-cgi-redirect" class="link">--enable-force-cgi-redirect</a>
+     to the configure script.  You still have to make sure your PHP
+     scripts do not rely on one or another way of calling the script,
+     neither by directly <var class="filename">http://my.host/cgi-bin/php/dir/script.php</var>
+     nor by redirection <var class="filename">http://my.host/dir/script.php</var>.
+    </p>
+    <p class="simpara">
+     Redirection can be configured in Apache by using AddHandler and
+     Action directives (see below).
+    </p>
+   </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

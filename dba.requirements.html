@@ -1,0 +1,232 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Requirements</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.abstract.html">Abstraction Layers</a></li>
+  <li class="header up"><a href="book.dba.html">DBA</a></li>
+  <li class="header up"><a href="dba.setup.html">Installing/Configuring</a></li>
+  <li class="active"><a href="dba.requirements.html">Requirements</a></li>
+  <li><a href="dba.installation.html">Installation</a></li>
+  <li><a href="dba.configuration.html">Runtime Configuration</a></li>
+  <li><a href="dba.resources.html">Resource Types</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="dba.setup.html">Installing/Configuring</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="dba.installation.html">Installation</a></div>
+                <div class="up"><a href="dba.setup.html">Installing/Configuring</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="dba.requirements" class="section">
+  <h2 class="title">Requirements</h2>
+  <p class="para">
+   The behaviour of various aspects depends on the implementation of the
+   underlying database. Functions such as <span class="function">dba_optimize</span>
+   and <span class="function">dba_sync</span> will do what they promise for one
+   database and will do nothing for others. You have to download and install
+   supported dba-Handlers.
+   <table class="doctable table">
+    <caption><strong>List of DBA handlers</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>Handler</th>
+       <th>Notes</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td><em>dbm</em></td>
+       <td>
+        Dbm is the oldest (original) type of Berkeley DB style
+        databases. You should avoid it, if possible. We do not support
+        the compatibility functions built into DB2 and gdbm, because
+        they are only compatible on the source code level, but cannot
+        handle the original dbm format.
+       </td>
+      </tr>
+
+      
+      <tr>
+       <td><em>ndbm</em></td>
+       <td>
+        Ndbm is a newer type and more flexible than dbm. It still has
+        most of the arbitrary limits of dbm (therefore it is
+        deprecated).
+       </td>
+      </tr>
+
+      
+      <tr>
+       <td><em>gdbm</em></td>
+       <td>
+        Gdbm is the <a href="ftp://ftp.gnu.org/pub/gnu/gdbm/" class="link external">&raquo;&nbsp;GNU database
+        manager</a>.
+       </td>
+      </tr>
+
+      
+      <tr>
+       <td><em>db2</em></td>
+       <td>
+        DB2 is for <a href="http://www.sleepycat.com/" class="link external">&raquo;&nbsp;Oracle Berkeley
+        DB 2</a>. It is described as &quot;a programmatic toolkit that
+        provides high-performance built-in database support for both
+        standalone and client/server applications.
+       </td>
+      </tr>
+
+      
+      <tr>
+       <td><em>db3</em></td>
+       <td>
+        DB3 is for <a href="http://www.sleepycat.com/" class="link external">&raquo;&nbsp;Oracle Berkeley DB
+        3</a>.
+       </td>
+      </tr>
+
+      
+      <tr>
+       <td><em>db4</em></td>
+       <td>
+        DB4 is for <a href="http://www.sleepycat.com/" class="link external">&raquo;&nbsp;Oracle Berkeley DB
+        4 or 5</a>. This option is available from PHP 4.3.2.  It can
+        be used with BDB 5 from PHP 5.3.3.
+       </td>
+      </tr>
+
+      
+      <tr>
+       <td><em>cdb</em></td>
+       <td>
+        Cdb is &quot;a fast, reliable, lightweight package for creating and
+        reading constant databases.&quot; It is from the author of qmail and
+        can be found at <a href="http://cr.yp.to/cdb.html" class="link external">&raquo;&nbsp;http://cr.yp.to/cdb.html</a>. Since it is
+        constant, we support only reading operations. And since PHP 4.3.0
+        we support writing (not updating) through the internal cdb library.
+       </td>
+      </tr>
+
+      
+      <tr>
+       <td><em>cdb_make</em></td>
+       <td>
+        Since PHP 4.3.0 we support creation (not updating) of cdb files 
+        when the bundled cdb library is used.
+       </td>
+      </tr>
+
+      
+      <tr>
+       <td><em>flatfile</em></td>
+       <td>
+        This is available since PHP 4.3.0 for compatibility with the deprecated
+        <em>dbm</em> extension only and should be avoided. 
+        However you may use this where files were created in this format. That
+        happens when configure could not find any external library.
+       </td>
+      </tr>
+
+      
+      <tr>
+       <td><em>inifile</em></td>
+       <td>
+        This is available since PHP 4.3.3 to be able to modify php.ini files 
+        from within PHP scripts. When working with ini files you can pass arrays 
+        of the form array(0=&gt;group,1=&gt;value_name) or strings of the form 
+        &quot;[group]value_name&quot; where group is optional. As the functions 
+        <span class="function">dba_firstkey</span> and <span class="function">dba_nextkey</span>
+        return string representations of the key there is a new function
+        <span class="function">dba_key_split</span> available since PHP 5 which allows
+        to convert the string keys into array keys without loosing <strong><code>FALSE</code></strong>.
+       </td>
+      </tr>
+
+      
+      <tr>
+       <td><em>qdbm</em></td>
+       <td>
+        This is available since PHP 5.0.0. The qdbm library can be loaded from
+        <a href="http://fallabs.com/qdbm/index.html" class="link external">&raquo;&nbsp;http://fallabs.com/qdbm/index.html</a>.
+       </td>
+      </tr>
+
+
+      <tr>
+       <td><em>tcadb</em></td>
+       <td>
+        This is available since PHP 5.4.0. The Tokyo Cabinet library can be loaded from
+        <a href="http://fallabs.com/tokyocabinet/" class="link external">&raquo;&nbsp;http://fallabs.com/tokyocabinet/</a>.
+       </td>
+      </tr>
+
+      
+     </tbody>
+    
+   </table>
+
+  </p>
+  <p class="para">
+   When invoking the <span class="function">dba_open</span> or
+   <span class="function">dba_popen</span> functions, one of the
+   handler names must be supplied as an argument. The actually
+   available list of handlers is displayed by invoking
+   <span class="function">phpinfo</span> or <span class="function">dba_handlers</span>.
+  </p>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

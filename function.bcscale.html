@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Set default scale parameter for all bc math functions</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.math.html">Mathematical Extensions</a></li>
+  <li class="header up"><a href="book.bc.html">BC Math</a></li>
+  <li class="header up"><a href="ref.bc.html">BC Math Functions</a></li>
+  <li><a href="function.bcadd.html">bcadd</a></li>
+  <li><a href="function.bccomp.html">bccomp</a></li>
+  <li><a href="function.bcdiv.html">bcdiv</a></li>
+  <li><a href="function.bcmod.html">bcmod</a></li>
+  <li><a href="function.bcmul.html">bcmul</a></li>
+  <li><a href="function.bcpow.html">bcpow</a></li>
+  <li><a href="function.bcpowmod.html">bcpowmod</a></li>
+  <li class="active"><a href="function.bcscale.html">bcscale</a></li>
+  <li><a href="function.bcsqrt.html">bcsqrt</a></li>
+  <li><a href="function.bcsub.html">bcsub</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.bcpowmod.html">bcpowmod</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.bcsqrt.html">bcsqrt</a></div>
+                <div class="up"><a href="ref.bc.html">BC Math Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.bcscale" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">bcscale</h1>
+  <p class="refpurpose">Set default scale parameter for all bc math functions</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.bcscale-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">bcscale</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$scale</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Sets the default scale parameter for all subsequent calls to bc math functions that
+   do not explicitly specify a scale parameter.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.bcscale-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">scale</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The scale factor.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.bcscale-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> on success or <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.bcscale-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-3941">
+    <p><strong>Example #1 <span class="function">bcscale</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;default&nbsp;scale&nbsp;:&nbsp;3<br /></span><span style="color: #0000BB">bcscale</span><span style="color: #007700">(</span><span style="color: #0000BB">3</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">bcdiv</span><span style="color: #007700">(</span><span style="color: #DD0000">'105'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'6.55957'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;16.007<br /><br />//&nbsp;this&nbsp;is&nbsp;the&nbsp;same&nbsp;without&nbsp;bcscale()<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">bcdiv</span><span style="color: #007700">(</span><span style="color: #DD0000">'105'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'6.55957'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;16.007<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Return current Unix timestamp with microseconds</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.calendar.html">Date and Time Related Extensions</a></li>
+  <li class="header up"><a href="book.datetime.html">Date/Time</a></li>
+  <li class="header up"><a href="ref.datetime.html">Date/Time Functions</a></li>
+  <li><a href="function.checkdate.html">checkdate</a></li>
+  <li><a href="function.date-add.html">date_add</a></li>
+  <li><a href="function.date-create-from-format.html">date_create_from_format</a></li>
+  <li><a href="function.date-create-immutable-from-format.html">date_create_immutable_from_format</a></li>
+  <li><a href="function.date-create-immutable.html">date_create_immutable</a></li>
+  <li><a href="function.date-create.html">date_create</a></li>
+  <li><a href="function.date-date-set.html">date_date_set</a></li>
+  <li><a href="function.date-default-timezone-get.html">date_default_timezone_get</a></li>
+  <li><a href="function.date-default-timezone-set.html">date_default_timezone_set</a></li>
+  <li><a href="function.date-diff.html">date_diff</a></li>
+  <li><a href="function.date-format.html">date_format</a></li>
+  <li><a href="function.date-get-last-errors.html">date_get_last_errors</a></li>
+  <li><a href="function.date-interval-create-from-date-string.html">date_interval_create_from_date_string</a></li>
+  <li><a href="function.date-interval-format.html">date_interval_format</a></li>
+  <li><a href="function.date-isodate-set.html">date_isodate_set</a></li>
+  <li><a href="function.date-modify.html">date_modify</a></li>
+  <li><a href="function.date-offset-get.html">date_offset_get</a></li>
+  <li><a href="function.date-parse-from-format.html">date_parse_from_format</a></li>
+  <li><a href="function.date-parse.html">date_parse</a></li>
+  <li><a href="function.date-sub.html">date_sub</a></li>
+  <li><a href="function.date-sun-info.html">date_sun_info</a></li>
+  <li><a href="function.date-sunrise.html">date_sunrise</a></li>
+  <li><a href="function.date-sunset.html">date_sunset</a></li>
+  <li><a href="function.date-time-set.html">date_time_set</a></li>
+  <li><a href="function.date-timestamp-get.html">date_timestamp_get</a></li>
+  <li><a href="function.date-timestamp-set.html">date_timestamp_set</a></li>
+  <li><a href="function.date-timezone-get.html">date_timezone_get</a></li>
+  <li><a href="function.date-timezone-set.html">date_timezone_set</a></li>
+  <li><a href="function.date.html">date</a></li>
+  <li><a href="function.getdate.html">getdate</a></li>
+  <li><a href="function.gettimeofday.html">gettimeofday</a></li>
+  <li><a href="function.gmdate.html">gmdate</a></li>
+  <li><a href="function.gmmktime.html">gmmktime</a></li>
+  <li><a href="function.gmstrftime.html">gmstrftime</a></li>
+  <li><a href="function.idate.html">idate</a></li>
+  <li><a href="function.localtime.html">localtime</a></li>
+  <li class="active"><a href="function.microtime.html">microtime</a></li>
+  <li><a href="function.mktime.html">mktime</a></li>
+  <li><a href="function.strftime.html">strftime</a></li>
+  <li><a href="function.strptime.html">strptime</a></li>
+  <li><a href="function.strtotime.html">strtotime</a></li>
+  <li><a href="function.time.html">time</a></li>
+  <li><a href="function.timezone-abbreviations-list.html">timezone_abbreviations_list</a></li>
+  <li><a href="function.timezone-identifiers-list.html">timezone_identifiers_list</a></li>
+  <li><a href="function.timezone-location-get.html">timezone_location_get</a></li>
+  <li><a href="function.timezone-name-from-abbr.html">timezone_name_from_abbr</a></li>
+  <li><a href="function.timezone-name-get.html">timezone_name_get</a></li>
+  <li><a href="function.timezone-offset-get.html">timezone_offset_get</a></li>
+  <li><a href="function.timezone-open.html">timezone_open</a></li>
+  <li><a href="function.timezone-transitions-get.html">timezone_transitions_get</a></li>
+  <li><a href="function.timezone-version-get.html">timezone_version_get</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.localtime.html">localtime</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.mktime.html">mktime</a></div>
+                <div class="up"><a href="ref.datetime.html">Date/Time Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.microtime" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">microtime</h1>
+  <p class="refpurpose">Return current Unix timestamp with microseconds</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.microtime-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname">microtime</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$get_as_float</code><span class="initializer"> = false</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function">microtime</span> returns the current Unix timestamp with
+   microseconds. This function is only available on operating systems that
+   support the gettimeofday() system call.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.microtime-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">get_as_float</code></dt>
+
+     <dd>
+
+      <p class="para">
+       If used and set to <strong><code>TRUE</code></strong>, <span class="function">microtime</span> will return a
+       <span class="type">float</span> instead of a <span class="type">string</span>, as described in
+       the return values section below.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.microtime-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   By default, <span class="function">microtime</span> returns a <span class="type">string</span> in
+   the form &quot;msec sec&quot;, where <em>sec</em> is the number of seconds 
+   since the Unix epoch (0:00:00 January 1,1970 GMT), and <em>msec</em> 
+   measures microseconds that have elapsed since <em>sec</em> 
+   and is also expressed in seconds.
+  </p>
+  <p class="para">
+   If <code class="parameter">get_as_float</code> is set to <strong><code>TRUE</code></strong>, then
+   <span class="function">microtime</span> returns a <span class="type">float</span>, which
+   represents the current time in seconds since the Unix epoch accurate to the
+   nearest microsecond.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.microtime-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-2567">
+    <p><strong>Example #1 Timing script execution with <span class="function">microtime</span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/**<br />&nbsp;*&nbsp;Simple&nbsp;function&nbsp;to&nbsp;replicate&nbsp;PHP&nbsp;5&nbsp;behaviour<br />&nbsp;*/<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">microtime_float</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;list(</span><span style="color: #0000BB">$usec</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$sec</span><span style="color: #007700">)&nbsp;=&nbsp;</span><span style="color: #0000BB">explode</span><span style="color: #007700">(</span><span style="color: #DD0000">"&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">microtime</span><span style="color: #007700">());<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;((float)</span><span style="color: #0000BB">$usec&nbsp;</span><span style="color: #007700">+&nbsp;(float)</span><span style="color: #0000BB">$sec</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$time_start&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">microtime_float</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;Sleep&nbsp;for&nbsp;a&nbsp;while<br /></span><span style="color: #0000BB">usleep</span><span style="color: #007700">(</span><span style="color: #0000BB">100</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$time_end&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">microtime_float</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$time&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$time_end&nbsp;</span><span style="color: #007700">-&nbsp;</span><span style="color: #0000BB">$time_start</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Did&nbsp;nothing&nbsp;in&nbsp;</span><span style="color: #0000BB">$time</span><span style="color: #DD0000">&nbsp;seconds\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <div class="example" id="example-2568">
+    <p><strong>Example #2 Timing script execution in PHP 5</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$time_start&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">microtime</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Sleep&nbsp;for&nbsp;a&nbsp;while<br /></span><span style="color: #0000BB">usleep</span><span style="color: #007700">(</span><span style="color: #0000BB">100</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$time_end&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">microtime</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$time&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$time_end&nbsp;</span><span style="color: #007700">-&nbsp;</span><span style="color: #0000BB">$time_start</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Did&nbsp;nothing&nbsp;in&nbsp;</span><span style="color: #0000BB">$time</span><span style="color: #DD0000">&nbsp;seconds\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <div class="example" id="example-2569">
+    <p><strong>Example #3 <span class="function">microtime</span> and <em>REQUEST_TIME_FLOAT</em> (as of PHP 5.4.0)</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Randomize&nbsp;sleeping&nbsp;time<br /></span><span style="color: #0000BB">usleep</span><span style="color: #007700">(</span><span style="color: #0000BB">mt_rand</span><span style="color: #007700">(</span><span style="color: #0000BB">100</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10000</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;As&nbsp;of&nbsp;PHP&nbsp;5.4.0,&nbsp;REQUEST_TIME_FLOAT&nbsp;is&nbsp;available&nbsp;in&nbsp;the&nbsp;$_SERVER&nbsp;superglobal&nbsp;array.<br />//&nbsp;It&nbsp;contains&nbsp;the&nbsp;timestamp&nbsp;of&nbsp;the&nbsp;start&nbsp;of&nbsp;the&nbsp;request&nbsp;with&nbsp;microsecond&nbsp;precision.<br /></span><span style="color: #0000BB">$time&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">microtime</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">)&nbsp;-&nbsp;</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">"REQUEST_TIME_FLOAT"</span><span style="color: #007700">];<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Did&nbsp;nothing&nbsp;in&nbsp;</span><span style="color: #0000BB">$time</span><span style="color: #DD0000">&nbsp;seconds\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.microtime-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">time</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

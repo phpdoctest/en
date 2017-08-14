@@ -1,0 +1,161 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Installation</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.judy.html">Judy</a></li>
+  <li class="header up"><a href="judy.setup.html">Installing/Configuring</a></li>
+  <li><a href="judy.requirements.html">Requirements</a></li>
+  <li class="active"><a href="judy.installation.html">Installation</a></li>
+  <li><a href="judy.configuration.html">Runtime Configuration</a></li>
+  <li><a href="judy.resources.html">Resource Types</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="judy.requirements.html">Requirements</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="judy.configuration.html">Runtime Configuration</a></div>
+                <div class="up"><a href="judy.setup.html">Installing/Configuring</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="judy.installation" class="section">
+ <h2 class="title">Installation</h2>
+
+ <p class="para">
+  This <a href="http://pecl.php.net/" class="link external">&raquo;&nbsp;PECL</a> extension
+is not bundled with PHP.
+ </p>
+
+ <p class="para" id="judy.pecl">
+  Information for installing this PECL extension may be
+found in the manual chapter titled <a href="install.pecl.html" class="link">Installation
+of PECL extensions</a>. Additional information such as new releases,
+downloads, source files, maintainer information, and a CHANGELOG, can be
+located here: 
+  <a href="http://pecl.php.net/package/judy" class="link external">&raquo;&nbsp;http://pecl.php.net/package/judy</a>
+ </p>
+
+ <div class="section" id="judy.install.linux">
+  <h2 class="title">Installation on Linux Systems</h2>
+  <div class="section">
+   <h2 class="title">From sources</h2>
+   <p class="para">
+    Download and install <a href="http://judy.sourceforge.net" class="link external">&raquo;&nbsp;libJudy</a>, then :
+    <div class="example-contents"><div class="cdata"><pre>
+     phpize
+     ./configure --with-judy[=DIR]
+     make
+     make test
+     make install
+    </pre></div></div>
+
+   </p>
+  </div>
+  <div class="section">
+   <h2 class="title">Ubuntu/Debian</h2>
+   <p class="para">
+    libJudy can be installed with apt-get :
+    <div class="example-contents"><div class="cdata"><pre>
+    apt-get install libjudydebian1 libjudy-dev
+    </pre></div></div>
+
+    Then by installing the Judy extension from PECL or from the sources. 
+   </p>
+  </div>
+ </div>
+
+ <div class="section" id="judy.install.windows">
+  <h2 class="title">Installation on Windows Systems</h2>
+  <p class="para">
+   Download <a href="http://judy.sourceforge.net" class="link external">&raquo;&nbsp;libJudy</a>, then 
+   extract the sources and open the Visual Studio command prompt and navigate to 
+   the source directory. Then execute :
+   <div class="example-contents"><div class="cdata"><pre>build</pre></div></div>
+
+   This creates &quot;Judy.lib&quot;, copy this into the php-sdk library folder and name it 
+   &quot;libJudy.lib&quot; Then copy the include file &quot;judy.h&quot; into the php-sdk includes folder.
+  </p>
+  <p class="para">
+   Next, the PHP Judy extension can be installed from PECL or from the sources by 
+   extracting the pecl/judy into your build folder where the build scripts will be 
+   able to pick it up, e.g.:
+   <div class="example-contents"><div class="cdata"><pre>
+    C:\php\pecl\judy\
+   </pre></div></div>
+
+   If your source of PHP is located in:
+   <div class="example-contents"><div class="cdata"><pre>
+    C:\php\src\
+   </pre></div></div>
+
+   The rest of the steps is pretty straight forward, like any other external extension:
+   <div class="example-contents"><div class="cdata"><pre>
+    buildconf
+    configure --with-judy=shared
+    nmake
+   </pre></div></div>
+
+  </p>
+ </div>
+
+ <div class="section" id="judy.install.macos">
+  <h2 class="title">Installation on Mac OS X</h2>
+  <p class="para">
+   Download and install <a href="http://judy.sourceforge.net" class="link external">&raquo;&nbsp;libJudy</a>. 
+   Then install the Judy extension from PECL or from the sources.
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

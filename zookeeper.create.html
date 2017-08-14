@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Create a node synchronously.</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li class="header up"><a href="book.zookeeper.html">ZooKeeper</a></li>
+  <li class="header up"><a href="class.zookeeper.html">ZooKeeper</a></li>
+  <li><a href="zookeeper.addauth.html">Zookeeper::addAuth</a></li>
+  <li><a href="zookeeper.connect.html">Zookeeper::connect</a></li>
+  <li><a href="zookeeper.construct.html">Zookeeper::__construct</a></li>
+  <li class="active"><a href="zookeeper.create.html">Zookeeper::create</a></li>
+  <li><a href="zookeeper.delete.html">Zookeeper::delete</a></li>
+  <li><a href="zookeeper.exists.html">Zookeeper::exists</a></li>
+  <li><a href="zookeeper.get.html">Zookeeper::get</a></li>
+  <li><a href="zookeeper.getacl.html">Zookeeper::getAcl</a></li>
+  <li><a href="zookeeper.getclientid.html">Zookeeper::getClientId</a></li>
+  <li><a href="zookeeper.getrecvtimeout.html">Zookeeper::getRecvTimeout</a></li>
+  <li><a href="zookeeper.getstate.html">Zookeeper::getState</a></li>
+  <li><a href="zookeeper.isrecoverable.html">Zookeeper::isRecoverable</a></li>
+  <li><a href="zookeeper.set.html">Zookeeper::set</a></li>
+  <li><a href="zookeeper.setacl.html">Zookeeper::setAcl</a></li>
+  <li><a href="zookeeper.setdebuglevel.html">Zookeeper::setDebugLevel</a></li>
+  <li><a href="zookeeper.setdeterministicconnorder.html">Zookeeper::setDeterministicConnOrder</a></li>
+  <li><a href="zookeeper.setlogstream.html">Zookeeper::setLogStream</a></li>
+  <li><a href="zookeeper.setwatcher.html">Zookeeper::setWatcher</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="zookeeper.construct.html">Zookeeper::__construct</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="zookeeper.delete.html">Zookeeper::delete</a></div>
+                <div class="up"><a href="class.zookeeper.html">ZooKeeper</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="zookeeper.create" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Zookeeper::create</h1>
+  <p class="refpurpose">Create a node synchronously.</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-zookeeper.create-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">string</span> <span class="methodname">Zookeeper::create</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$path</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$value</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$acls</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = null</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   This method will create a node in ZooKeeper. A node can only be created if it does not already exists. The Create Flags affect the creation of nodes. If ZOO_EPHEMERAL flag is set, the node will automatically get removed if the client session goes away. If the ZOO_SEQUENCE flag is set, a unique monotonically increasing sequence number is appended to the path name.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-zookeeper.create-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">path</code></dt>
+
+    <dd>
+
+     <p class="para">
+      The name of the node. Expressed as a file name with slashes separating ancestors of the node.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">value</code></dt>
+
+    <dd>
+
+     <p class="para">
+      The data to be stored in the node.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">acls</code></dt>
+
+    <dd>
+
+     <p class="para">
+      The initial ACL of the node. The ACL must not be null or empty.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">flags</code></dt>
+
+    <dd>
+
+     <p class="para">
+      this parameter can be set to 0 for normal create or an OR of the Create Flags
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-zookeeper.create-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the path of the new node (this might be different than the supplied path because of the ZOO_SEQUENCE flag) on success, and false on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-zookeeper.create-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   This method emits PHP error/warning when parameters count or types are wrong or fail to create node.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-zookeeper.create-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-5257">
+   <p><strong>Example #1  <span class="methodname">Zookeeper::create</span> example</strong></p>
+   <div class="example-contents"><p>
+     Create a new node.
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$zookeeper&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Zookeeper</span><span style="color: #007700">(</span><span style="color: #DD0000">'locahost:2181'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$aclArray&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'perms'&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">Zookeeper</span><span style="color: #007700">::</span><span style="color: #0000BB">PERM_ALL</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'scheme'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'world'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'id'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'anyone'</span><span style="color: #007700">,<br />&nbsp;&nbsp;)<br />);<br /></span><span style="color: #0000BB">$path&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'/path/to/newnode'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$realPath&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$zookeeper</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">create</span><span style="color: #007700">(</span><span style="color: #0000BB">$path</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$aclArray</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">$realPath</span><span style="color: #007700">)<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$realPath</span><span style="color: #007700">;<br />else<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'ERR'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+/path/to/newnode
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-zookeeper.create-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li class="member"> <span class="methodname">Zookeeper::delete</span></li>
+   <li class="member"><a href="class.zookeeper.html#zookeeper.class.constants.perms" class="link">ZooKeeper Permissions</a></li>
+  </ul>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

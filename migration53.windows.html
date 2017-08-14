@@ -1,0 +1,271 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Changes made to Windows support</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="appendices.html">Appendices</a></li>
+  <li class="header up"><a href="migration53.html">Migrating from PHP 5.2.x to PHP 5.3.x</a></li>
+  <li><a href="migration53.changes.html">What has changed in PHP 5.3.x</a></li>
+  <li><a href="migration53.incompatible.html">Backward Incompatible Changes</a></li>
+  <li><a href="migration53.new-features.html">New features</a></li>
+  <li class="active"><a href="migration53.windows.html">Changes made to Windows support</a></li>
+  <li><a href="migration53.sapi.html">Changes in SAPI modules</a></li>
+  <li><a href="migration53.deprecated.html">Deprecated features in PHP 5.3.x</a></li>
+  <li><a href="migration53.undeprecated.html">Undeprecated features in PHP 5.3.x</a></li>
+  <li><a href="migration53.parameters.html">New Parameters</a></li>
+  <li><a href="migration53.functions.html">New Functions</a></li>
+  <li><a href="migration53.new-stream-wrappers.html">New stream wrappers</a></li>
+  <li><a href="migration53.new-stream-filters.html">New stream filters</a></li>
+  <li><a href="migration53.class-constants.html">New Class Constants</a></li>
+  <li><a href="migration53.methods.html">New Methods</a></li>
+  <li><a href="migration53.new-extensions.html">New Extensions</a></li>
+  <li><a href="migration53.removed-extensions.html">Removed Extensions</a></li>
+  <li><a href="migration53.extensions-other.html">Other changes to extensions</a></li>
+  <li><a href="migration53.classes.html">New Classes</a></li>
+  <li><a href="migration53.global-constants.html">New Global Constants</a></li>
+  <li><a href="migration53.ini.html">Changes to INI file handling</a></li>
+  <li><a href="migration53.other.html">Other changes</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="migration53.new-features.html">New features</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="migration53.sapi.html">Changes in SAPI modules</a></div>
+                <div class="up"><a href="migration53.html">Migrating from PHP 5.2.x to PHP 5.3.x</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="migration53.windows" class="section">
+  <h2 class="title">Changes made to Windows support</h2>
+  <p class="simpara">
+   Changes to the Windows releases:
+  </p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     The minimum Windows version is now Windows XP SP3; Windows 98, ME, 2000 and NT4
+     are no longer supported.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Windows binaries now target i586 and later. i386 and i486 are not
+     supported.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     There is now experimental support for x64 versions of PHP on Windows.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     There is now compiler support for Visual C++ 9 (VC9), using Visual Studio
+     2008. Snapshots and releases will now also be available for VC9. Old
+     binaries using VC6 are still supported and released in the line with VC9.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The <a href="ref.pdo-oci.html" class="link">PDO_OCI</a>
+     <em>php_pdo_oci8.dll</em> library (for use with Oracle version 8
+     client libraries) is no longer being built. Instead, use
+     <em>php_pdo_oci.dll</em> (note no &#039;8&#039;) with Oracle 10 or 11
+     client libraries. Connection to other database versions is still supported.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     For the <a href="book.oci8.html" class="link">OCI8</a> extension, a new library 
+     <em>php_oci8_11g.dll</em> is available in addition to
+     <em>php_oci8.dll</em>. Only one can be enabled at any time. Use
+     <em>php_oci8.dll</em> with Oracle 10.2 client libraries. Use
+     <em>php_oci8_11g.dll</em> with Oracle 11 or later client libraries.
+     Connection to other database versions is still supported.
+    </span>
+   </li>
+  </ul>
+  <p class="simpara">
+   Windows support has been added for the following functions:
+  </p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">checkdnsrr</span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">dns_get_record</span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">fnmatch</span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">getmxrr</span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">getopt</span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">imagecolorclosesthwb</span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">inet_ntop</span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">inet_pton</span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">link</span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">linkinfo</span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">mcrypt_create_iv</span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">readlink</span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">socket_create_pair</span>
+     - This function was previously available on Windows, but was disabled as of
+     PHP 4.3.0 due to a bug.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">stream_socket_pair</span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">symlink</span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">time_nanosleep</span>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">time_sleep_until</span>
+    </span>
+   </li>
+  </ul>
+  <p class="simpara">
+   Other changes:
+  </p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     Improved portability of the <span class="function">stat</span>,
+     <span class="function">touch</span>, <span class="function">filemtime</span>,
+     <span class="function">filesize</span> functions, and other related functions (100%
+     portable for the available data).
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     It is now possible to create hard links on Windows using the
+     <span class="function">link</span> function, and symbolic links using the
+     <span class="function">symlink</span> function. Hard links are available as of
+     Windows 2000, and symbolic links as of Windows Vista.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     The Windows version of PHP now exposes a set of constants prefixed 
+     <em>PHP_WINDOWS_*</em>. A list of these constants and their usage
+     can be found at <a href="info.constants.html" class="xref">Predefined Constants</a>.
+    </span>
+   </li>
+  </ul>
+  <div class="warning"><strong class="warning">Warning</strong>
+   <p class="simpara">
+    Support for the ISAPI module has been dropped. Use the improved FastCGI SAPI
+    module instead.
+   </p>
+  </div>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <span class="simpara">
+    A new dedicated site for PHP on Windows is now available, including
+    downloads, release candidates, and snapshots in various flavors
+    (thread-safe/not-thread-safe, VC6/VC9, x86/x64). The URL of this site is
+    <a href="http://windows.php.net/" class="link external">&raquo;&nbsp;http://windows.php.net/</a>.
+   </span>
+  </p></blockquote>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

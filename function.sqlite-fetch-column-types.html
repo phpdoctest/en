@@ -1,0 +1,272 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Return an array of column types from a particular table</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.sqlite.html">SQLite</a></li>
+  <li class="header up"><a href="ref.sqlite.html">SQLite Functions</a></li>
+  <li><a href="function.sqlite-array-query.html">sqlite_array_query</a></li>
+  <li><a href="function.sqlite-busy-timeout.html">sqlite_busy_timeout</a></li>
+  <li><a href="function.sqlite-changes.html">sqlite_changes</a></li>
+  <li><a href="function.sqlite-close.html">sqlite_close</a></li>
+  <li><a href="function.sqlite-column.html">sqlite_column</a></li>
+  <li><a href="function.sqlite-create-aggregate.html">sqlite_create_aggregate</a></li>
+  <li><a href="function.sqlite-create-function.html">sqlite_create_function</a></li>
+  <li><a href="function.sqlite-current.html">sqlite_current</a></li>
+  <li><a href="function.sqlite-error-string.html">sqlite_error_string</a></li>
+  <li><a href="function.sqlite-escape-string.html">sqlite_escape_string</a></li>
+  <li><a href="function.sqlite-exec.html">sqlite_exec</a></li>
+  <li><a href="function.sqlite-factory.html">sqlite_factory</a></li>
+  <li><a href="function.sqlite-fetch-all.html">sqlite_fetch_all</a></li>
+  <li><a href="function.sqlite-fetch-array.html">sqlite_fetch_array</a></li>
+  <li class="active"><a href="function.sqlite-fetch-column-types.html">sqlite_fetch_column_types</a></li>
+  <li><a href="function.sqlite-fetch-object.html">sqlite_fetch_object</a></li>
+  <li><a href="function.sqlite-fetch-single.html">sqlite_fetch_single</a></li>
+  <li><a href="function.sqlite-fetch-string.html">sqlite_fetch_string</a></li>
+  <li><a href="function.sqlite-field-name.html">sqlite_field_name</a></li>
+  <li><a href="function.sqlite-has-more.html">sqlite_has_more</a></li>
+  <li><a href="function.sqlite-has-prev.html">sqlite_has_prev</a></li>
+  <li><a href="function.sqlite-key.html">sqlite_key</a></li>
+  <li><a href="function.sqlite-last-error.html">sqlite_last_error</a></li>
+  <li><a href="function.sqlite-last-insert-rowid.html">sqlite_last_insert_rowid</a></li>
+  <li><a href="function.sqlite-libencoding.html">sqlite_libencoding</a></li>
+  <li><a href="function.sqlite-libversion.html">sqlite_libversion</a></li>
+  <li><a href="function.sqlite-next.html">sqlite_next</a></li>
+  <li><a href="function.sqlite-num-fields.html">sqlite_num_fields</a></li>
+  <li><a href="function.sqlite-num-rows.html">sqlite_num_rows</a></li>
+  <li><a href="function.sqlite-open.html">sqlite_open</a></li>
+  <li><a href="function.sqlite-popen.html">sqlite_popen</a></li>
+  <li><a href="function.sqlite-prev.html">sqlite_prev</a></li>
+  <li><a href="function.sqlite-query.html">sqlite_query</a></li>
+  <li><a href="function.sqlite-rewind.html">sqlite_rewind</a></li>
+  <li><a href="function.sqlite-seek.html">sqlite_seek</a></li>
+  <li><a href="function.sqlite-single-query.html">sqlite_single_query</a></li>
+  <li><a href="function.sqlite-udf-decode-binary.html">sqlite_udf_decode_binary</a></li>
+  <li><a href="function.sqlite-udf-encode-binary.html">sqlite_udf_encode_binary</a></li>
+  <li><a href="function.sqlite-unbuffered-query.html">sqlite_unbuffered_query</a></li>
+  <li><a href="function.sqlite-valid.html">sqlite_valid</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.sqlite-fetch-array.html">sqlite_fetch_array</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.sqlite-fetch-object.html">sqlite_fetch_object</a></div>
+                <div class="up"><a href="ref.sqlite.html">SQLite Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.sqlite-fetch-column-types" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">sqlite_fetch_column_types</h1>
+  <h1 class="refname">SQLiteDatabase::fetchColumnTypes</h1>
+  <p class="refpurpose">
+   Return an array of column types from a particular table
+  </p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.sqlite-fetch-column-types-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname">sqlite_fetch_column_types</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$table_name</code></span>
+   , <span class="methodparam"><span class="type">resource</span> <code class="parameter">$dbhandle</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$result_type</code><span class="initializer"> = SQLITE_ASSOC</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">Object oriented style (method):</p>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">SQLiteDatabase::fetchColumnTypes</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$table_name</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$result_type</code><span class="initializer"> = SQLITE_ASSOC</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function">sqlite_fetch_column_types</span> returns an array of column
+   data types from the specified <code class="parameter">table_name</code> table.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.sqlite-fetch-column-types-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">table_name</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The table name to query.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">dbhandle</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The SQLite Database resource; returned from <span class="function">sqlite_open</span>
+       when used procedurally.  This parameter is not required
+       when using the object-oriented method.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">result_type</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The optional <code class="parameter">result_type</code> parameter accepts a
+       constant and determines how the returned array will be indexed. Using
+       <strong><code>SQLITE_ASSOC</code></strong> will return only associative indices
+       (named fields) while <strong><code>SQLITE_NUM</code></strong> will return only
+       numerical indices (ordinal field numbers).
+       <strong><code>SQLITE_ASSOC</code></strong> is the default for
+       this function.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.sqlite-fetch-column-types-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns an array of column data types; <strong><code>FALSE</code></strong> on error.
+  </p>
+  <p class="para">The column names returned by
+<strong><code>SQLITE_ASSOC</code></strong> and <strong><code>SQLITE_BOTH</code></strong> will be
+case-folded according to the value of the
+<a href="sqlite.configuration.html#ini.sqlite.assoc-case" class="link">sqlite.assoc_case</a> configuration
+option.</p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.sqlite-fetch-column-types-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.1.0</td>
+       <td>Added <code class="parameter">result_type</code></td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.sqlite-fetch-column-types-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-2390">
+    <p><strong>Example #1 Procedural example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$db&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sqlite_open</span><span style="color: #007700">(</span><span style="color: #DD0000">'mysqlitedb'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">sqlite_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'CREATE&nbsp;TABLE&nbsp;foo&nbsp;(bar&nbsp;varchar(10),&nbsp;arf&nbsp;text)'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cols&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">sqlite_fetch_column_types</span><span style="color: #007700">(</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$db</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">SQLITE_ASSOC</span><span style="color: #007700">);<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$cols&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$column&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$type</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Column:&nbsp;</span><span style="color: #0000BB">$column</span><span style="color: #DD0000">&nbsp;&nbsp;Type:&nbsp;</span><span style="color: #0000BB">$type</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-2391">
+    <p><strong>Example #2 Object-oriented example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$db&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SQLiteDatabase</span><span style="color: #007700">(</span><span style="color: #DD0000">'mysqlitedb'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">'CREATE&nbsp;TABLE&nbsp;foo&nbsp;(bar&nbsp;varchar(10),&nbsp;arf&nbsp;text)'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cols&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetchColumnTypes</span><span style="color: #007700">(</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">SQLITE_ASSOC</span><span style="color: #007700">);<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$cols&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$column&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$type</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Column:&nbsp;</span><span style="color: #0000BB">$column</span><span style="color: #DD0000">&nbsp;&nbsp;Type:&nbsp;</span><span style="color: #0000BB">$type</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Column: bar  Type: VARCHAR
+Column: arf  Type: TEXT
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

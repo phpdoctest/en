@@ -1,0 +1,185 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: URL encodes the given string</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li class="header up"><a href="book.curl.html">cURL</a></li>
+  <li class="header up"><a href="ref.curl.html">cURL Functions</a></li>
+  <li><a href="function.curl-close.html">curl_close</a></li>
+  <li><a href="function.curl-copy-handle.html">curl_copy_handle</a></li>
+  <li><a href="function.curl-errno.html">curl_errno</a></li>
+  <li><a href="function.curl-error.html">curl_error</a></li>
+  <li class="active"><a href="function.curl-escape.html">curl_escape</a></li>
+  <li><a href="function.curl-exec.html">curl_exec</a></li>
+  <li><a href="function.curl-file-create.html">curl_file_create</a></li>
+  <li><a href="function.curl-getinfo.html">curl_getinfo</a></li>
+  <li><a href="function.curl-init.html">curl_init</a></li>
+  <li><a href="function.curl-multi-add-handle.html">curl_multi_add_handle</a></li>
+  <li><a href="function.curl-multi-close.html">curl_multi_close</a></li>
+  <li><a href="function.curl-multi-exec.html">curl_multi_exec</a></li>
+  <li><a href="function.curl-multi-getcontent.html">curl_multi_getcontent</a></li>
+  <li><a href="function.curl-multi-info-read.html">curl_multi_info_read</a></li>
+  <li><a href="function.curl-multi-init.html">curl_multi_init</a></li>
+  <li><a href="function.curl-multi-remove-handle.html">curl_multi_remove_handle</a></li>
+  <li><a href="function.curl-multi-select.html">curl_multi_select</a></li>
+  <li><a href="function.curl-multi-setopt.html">curl_multi_setopt</a></li>
+  <li><a href="function.curl-multi-strerror.html">curl_multi_strerror</a></li>
+  <li><a href="function.curl-pause.html">curl_pause</a></li>
+  <li><a href="function.curl-reset.html">curl_reset</a></li>
+  <li><a href="function.curl-setopt-array.html">curl_setopt_array</a></li>
+  <li><a href="function.curl-setopt.html">curl_setopt</a></li>
+  <li><a href="function.curl-share-close.html">curl_share_close</a></li>
+  <li><a href="function.curl-share-init.html">curl_share_init</a></li>
+  <li><a href="function.curl-share-setopt.html">curl_share_setopt</a></li>
+  <li><a href="function.curl-strerror.html">curl_strerror</a></li>
+  <li><a href="function.curl-unescape.html">curl_unescape</a></li>
+  <li><a href="function.curl-version.html">curl_version</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.curl-error.html">curl_error</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.curl-exec.html">curl_exec</a></div>
+                <div class="up"><a href="ref.curl.html">cURL Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.curl-escape" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">curl_escape</h1>
+  <p class="refpurpose">URL encodes the given string</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.curl-escape-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname">curl_escape</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$ch</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$str</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   This function URL encodes the given string according to <a href="http://www.faqs.org/rfcs/rfc3986" class="link external">&raquo;&nbsp;RFC 3986</a>.
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.curl-escape-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   <dt>
+<code class="parameter">ch</code>
+</dt>
+<dd>
+<p class="para">A cURL handle returned by
+<span class="function">curl_init</span>.</p></dd>
+
+   
+    <dt>
+<code class="parameter">str</code></dt>
+
+    <dd>
+
+     <p class="para">
+      The string to be encoded.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.curl-escape-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns escaped string or <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.curl-escape-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4793">
+    <p><strong>Example #1 <span class="function">curl_escape</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Create&nbsp;a&nbsp;curl&nbsp;handle<br /></span><span style="color: #0000BB">$ch&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">curl_init</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;Escape&nbsp;a&nbsp;string&nbsp;used&nbsp;as&nbsp;a&nbsp;GET&nbsp;parameter<br /></span><span style="color: #0000BB">$location&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">curl_escape</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Hofbräuhaus&nbsp;/&nbsp;München'</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;Result:&nbsp;Hofbr%C3%A4uhaus%20%2F%20M%C3%BCnchen<br /><br />//&nbsp;Compose&nbsp;an&nbsp;URL&nbsp;with&nbsp;the&nbsp;escaped&nbsp;string<br /></span><span style="color: #0000BB">$url&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"http://example.com/add_location.php?location=</span><span style="color: #007700">{</span><span style="color: #0000BB">$location</span><span style="color: #007700">}</span><span style="color: #DD0000">"</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;Result:&nbsp;http://example.com/add_location.php?location=Hofbr%C3%A4uhaus%20%2F%20M%C3%BCnchen<br /><br />//&nbsp;Send&nbsp;HTTP&nbsp;request&nbsp;and&nbsp;close&nbsp;the&nbsp;handle<br /></span><span style="color: #0000BB">curl_setopt</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">CURLOPT_URL</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$url</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">curl_setopt</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">CURLOPT_RETURNTRANSFER</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">curl_exec</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">curl_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$ch</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.curl-escape-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">curl_unescape</span></li>
+    <li class="member"><span class="function">urlencode</span></li>
+    <li class="member"><span class="function">rawurlencode</span></li>
+    <li class="member"><a href="http://www.faqs.org/rfcs/rfc3986" class="link external">&raquo;&nbsp;RFC 3986</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

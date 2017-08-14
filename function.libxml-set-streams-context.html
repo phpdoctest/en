@@ -1,0 +1,154 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Set the streams context for the next libxml document load or write</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.xml.html">XML Manipulation</a></li>
+  <li class="header up"><a href="book.libxml.html">libxml</a></li>
+  <li class="header up"><a href="ref.libxml.html">libxml Functions</a></li>
+  <li><a href="function.libxml-clear-errors.html">libxml_clear_errors</a></li>
+  <li><a href="function.libxml-disable-entity-loader.html">libxml_disable_entity_loader</a></li>
+  <li><a href="function.libxml-get-errors.html">libxml_get_errors</a></li>
+  <li><a href="function.libxml-get-last-error.html">libxml_get_last_error</a></li>
+  <li><a href="function.libxml-set-external-entity-loader.html">libxml_set_external_entity_loader</a></li>
+  <li class="active"><a href="function.libxml-set-streams-context.html">libxml_set_streams_context</a></li>
+  <li><a href="function.libxml-use-internal-errors.html">libxml_use_internal_errors</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.libxml-set-external-entity-loader.html">libxml_set_external_entity_loader</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.libxml-use-internal-errors.html">libxml_use_internal_errors</a></div>
+                <div class="up"><a href="ref.libxml.html">libxml Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.libxml-set-streams-context" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">libxml_set_streams_context</h1>
+  <p class="refpurpose">
+   Set the streams context for the next libxml document load or write
+  </p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.libxml-set-streams-context-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname">libxml_set_streams_context</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$streams_context</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Sets the streams context for the next libxml document load or write.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.libxml-set-streams-context-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">streams_context</code></dt>
+
+      <dd>
+
+       <p class="para">
+        The stream context resource (created with
+        <span class="function">stream_context_create</span>)
+       </p>
+      </dd>
+
+     
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.libxml-set-streams-context-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   No value is returned.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.libxml-set-streams-context-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-6295">
+    <p><strong>Example #1 A <span class="function">libxml_set_streams_context</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$opts&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'http'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'user_agent'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'PHP&nbsp;libxml&nbsp;agent'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;)<br />);<br /><br /></span><span style="color: #0000BB">$context&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">stream_context_create</span><span style="color: #007700">(</span><span style="color: #0000BB">$opts</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">libxml_set_streams_context</span><span style="color: #007700">(</span><span style="color: #0000BB">$context</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;request&nbsp;a&nbsp;file&nbsp;through&nbsp;HTTP<br /></span><span style="color: #0000BB">$doc&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">DOMDocument</span><span style="color: #007700">::</span><span style="color: #0000BB">load</span><span style="color: #007700">(</span><span style="color: #DD0000">'http://www.example.com/file.xml'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.libxml-set-streams-context-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">stream_context_create</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

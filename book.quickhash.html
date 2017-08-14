@@ -1,0 +1,1281 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Quickhash</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.vartype.html">Variable and Type Related Extensions</a></li>
+  <li><a href="book.array.html">Arrays</a></li>
+  <li><a href="book.classobj.html">Classes/Objects</a></li>
+  <li><a href="book.classkit.html">Classkit</a></li>
+  <li><a href="book.ctype.html">Ctype</a></li>
+  <li><a href="book.ds.html">Data Structures</a></li>
+  <li><a href="book.filter.html">Filter</a></li>
+  <li><a href="book.funchand.html">Function Handling</a></li>
+  <li class="active"><a href="book.quickhash.html">Quickhash</a></li>
+  <li><a href="book.reflection.html">Reflection</a></li>
+  <li><a href="book.var.html">Variable handling</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.unregister-tick-function.html">unregister_tick_function</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="intro.quickhash.html">Introduction</a></div>
+                <div class="up"><a href="refs.basic.vartype.html">Variable and Type Related Extensions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="book.quickhash" class="book">
+ <h1>Quickhash</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="intro.quickhash.html">Introduction</a></li>
+<li><a href="quickhash.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_title">
+<li><a href="quickhash.requirements.html">Requirements</a></li>
+<li><a href="quickhash.installation.html">Installation</a></li>
+<li><a href="quickhash.configuration.html">Runtime Configuration</a></li>
+</ul>
+</li>
+<li><a href="quickhash.constants.html">Predefined Constants</a></li>
+<li><a href="quickhash.examples.html">Examples</a></li>
+<li><a href="class.quickhashintset.html">QuickHashIntSet</a> — The QuickHashIntSet class<ul class="chunklist chunklist_title">
+<li><a href="quickhashintset.add.html">QuickHashIntSet::add</a> — This method adds a new entry to the set</li>
+<li><a href="quickhashintset.construct.html">QuickHashIntSet::__construct</a> — Creates a new QuickHashIntSet object</li>
+<li><a href="quickhashintset.delete.html">QuickHashIntSet::delete</a> — This method deletes an entry from the set</li>
+<li><a href="quickhashintset.exists.html">QuickHashIntSet::exists</a> — This method checks whether a key is part of the set</li>
+<li><a href="quickhashintset.getsize.html">QuickHashIntSet::getSize</a> — Returns the number of elements in the set</li>
+<li><a href="quickhashintset.loadfromfile.html">QuickHashIntSet::loadFromFile</a> — This factory method creates a set from a file</li>
+<li><a href="quickhashintset.loadfromstring.html">QuickHashIntSet::loadFromString</a> — This factory method creates a set from a string</li>
+<li><a href="quickhashintset.savetofile.html">QuickHashIntSet::saveToFile</a> — This method stores an in-memory set to disk</li>
+<li><a href="quickhashintset.savetostring.html">QuickHashIntSet::saveToString</a> — This method returns a serialized version of the set</li>
+</ul>
+</li>
+<li><a href="class.quickhashinthash.html">QuickHashIntHash</a> — The QuickHashIntHash class<ul class="chunklist chunklist_title">
+<li><a href="quickhashinthash.add.html">QuickHashIntHash::add</a> — This method adds a new entry to the hash</li>
+<li><a href="quickhashinthash.construct.html">QuickHashIntHash::__construct</a> — Creates a new QuickHashIntHash object</li>
+<li><a href="quickhashinthash.delete.html">QuickHashIntHash::delete</a> — This method deletes am entry from the hash</li>
+<li><a href="quickhashinthash.exists.html">QuickHashIntHash::exists</a> — This method checks whether a key is part of the hash</li>
+<li><a href="quickhashinthash.get.html">QuickHashIntHash::get</a> — This method retrieves a value from the hash by its key</li>
+<li><a href="quickhashinthash.getsize.html">QuickHashIntHash::getSize</a> — Returns the number of elements in the hash</li>
+<li><a href="quickhashinthash.loadfromfile.html">QuickHashIntHash::loadFromFile</a> — This factory method creates a hash from a file</li>
+<li><a href="quickhashinthash.loadfromstring.html">QuickHashIntHash::loadFromString</a> — This factory method creates a hash from a string</li>
+<li><a href="quickhashinthash.savetofile.html">QuickHashIntHash::saveToFile</a> — This method stores an in-memory hash to disk</li>
+<li><a href="quickhashinthash.savetostring.html">QuickHashIntHash::saveToString</a> — This method returns a serialized version of the hash</li>
+<li><a href="quickhashinthash.set.html">QuickHashIntHash::set</a> — This method updates an entry in the hash with a new value, or
+  adds a new one if the entry doesn't exist</li>
+<li><a href="quickhashinthash.update.html">QuickHashIntHash::update</a> — This method updates an entry in the hash with a new value</li>
+</ul>
+</li>
+<li><a href="class.quickhashstringinthash.html">QuickHashStringIntHash</a> — The QuickHashStringIntHash class<ul class="chunklist chunklist_title">
+<li><a href="quickhashstringinthash.add.html">QuickHashStringIntHash::add</a> — This method adds a new entry to the hash</li>
+<li><a href="quickhashstringinthash.construct.html">QuickHashStringIntHash::__construct</a> — Creates a new QuickHashStringIntHash object</li>
+<li><a href="quickhashstringinthash.delete.html">QuickHashStringIntHash::delete</a> — This method deletes am entry from the hash</li>
+<li><a href="quickhashstringinthash.exists.html">QuickHashStringIntHash::exists</a> — This method checks whether a key is part of the hash</li>
+<li><a href="quickhashstringinthash.get.html">QuickHashStringIntHash::get</a> — This method retrieves a value from the hash by its key</li>
+<li><a href="quickhashstringinthash.getsize.html">QuickHashStringIntHash::getSize</a> — Returns the number of elements in the hash</li>
+<li><a href="quickhashstringinthash.loadfromfile.html">QuickHashStringIntHash::loadFromFile</a> — This factory method creates a hash from a file</li>
+<li><a href="quickhashstringinthash.loadfromstring.html">QuickHashStringIntHash::loadFromString</a> — This factory method creates a hash from a string</li>
+<li><a href="quickhashstringinthash.savetofile.html">QuickHashStringIntHash::saveToFile</a> — This method stores an in-memory hash to disk</li>
+<li><a href="quickhashstringinthash.savetostring.html">QuickHashStringIntHash::saveToString</a> — This method returns a serialized version of the hash</li>
+<li><a href="quickhashstringinthash.set.html">QuickHashStringIntHash::set</a> — This method updates an entry in the hash with a new value, or
+  adds a new one if the entry doesn't exist</li>
+<li><a href="quickhashstringinthash.update.html">QuickHashStringIntHash::update</a> — This method updates an entry in the hash with a new value</li>
+</ul>
+</li>
+<li><a href="class.quickhashintstringhash.html">QuickHashIntStringHash</a> — The QuickHashIntStringHash class<ul class="chunklist chunklist_title">
+<li><a href="quickhashintstringhash.add.html">QuickHashIntStringHash::add</a> — This method adds a new entry to the hash</li>
+<li><a href="quickhashintstringhash.construct.html">QuickHashIntStringHash::__construct</a> — Creates a new QuickHashIntStringHash object</li>
+<li><a href="quickhashintstringhash.delete.html">QuickHashIntStringHash::delete</a> — This method deletes am entry from the hash</li>
+<li><a href="quickhashintstringhash.exists.html">QuickHashIntStringHash::exists</a> — This method checks whether a key is part of the hash</li>
+<li><a href="quickhashintstringhash.get.html">QuickHashIntStringHash::get</a> — This method retrieves a value from the hash by its key</li>
+<li><a href="quickhashintstringhash.getsize.html">QuickHashIntStringHash::getSize</a> — Returns the number of elements in the hash</li>
+<li><a href="quickhashintstringhash.loadfromfile.html">QuickHashIntStringHash::loadFromFile</a> — This factory method creates a hash from a file</li>
+<li><a href="quickhashintstringhash.loadfromstring.html">QuickHashIntStringHash::loadFromString</a> — This factory method creates a hash from a string</li>
+<li><a href="quickhashintstringhash.savetofile.html">QuickHashIntStringHash::saveToFile</a> — This method stores an in-memory hash to disk</li>
+<li><a href="quickhashintstringhash.savetostring.html">QuickHashIntStringHash::saveToString</a> — This method returns a serialized version of the hash</li>
+<li><a href="quickhashintstringhash.set.html">QuickHashIntStringHash::set</a> — This method updates an entry in the hash with a new value, or
+  adds a new one if the entry doesn't exist</li>
+<li><a href="quickhashintstringhash.update.html">QuickHashIntStringHash::update</a> — This method updates an entry in the hash with a new value</li>
+</ul>
+</li>
+</ul>
+
+ 
+
+ 
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The QuickHashIntSet class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="quickhashintset.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    This class wraps around a set containing integer numbers.
+   </p>
+   <p class="para">
+    Sets can also be iterated over with foreach as the Iterator interface is
+    implemented as well. The order of which elements are returned in is not
+    guaranteed.
+   </p>
+  </div>
+
+
+  <div class="section" id="quickhashintset.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">QuickHashIntSet</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">QuickHashIntSet</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">QuickHashIntSet::CHECK_FOR_DUPES</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">QuickHashIntSet::DO_NOT_USE_ZEND_ALLOC</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">QuickHashIntSet::HASHER_NO_HASH</var>
+     <span class="initializer"> = 256</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">QuickHashIntSet::HASHER_JENKINS1</var>
+     <span class="initializer"> = 512</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">QuickHashIntSet::HASHER_JENKINS2</var>
+     <span class="initializer"> = 1024</span>
+    ;</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">add</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$key</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$size</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">delete</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$key</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">exists</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$key</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span><span class="type">int</span> <span class="methodname">getSize</span> ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">QuickHashIntSet</span> <span class="methodname">loadFromFile</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$size</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">QuickHashIntSet</span> <span class="methodname">loadFromString</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$contents</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$size</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">saveToFile</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">saveToString</span> ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+  
+
+  <div class="section" id="quickhashintset.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <dl>
+
+
+    
+     <dt id="quickhashintset.constants.check-for-dupes"><strong><code>QuickHashIntSet::CHECK_FOR_DUPES</code></strong></dt>
+
+     <dd>
+
+      <p class="para">If enabled, adding duplicate elements to a set (through either add() or
+      loadFromFile()) will result in those elements to be dropped from the
+      set. This will take up extra time, so only used when it is required.</p>
+     </dd>
+
+    
+
+    
+     <dt id="quickhashintset.constants.do-not-use-zend-alloc"><strong><code>QuickHashIntSet::DO_NOT_USE_ZEND_ALLOC</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Disables the use of PHP&#039;s internal memory manager for internal
+      set structures. With this option enabled, internal allocations will not
+      count towards the memory_limit settings.</p>
+     </dd>
+
+    
+
+    
+     <dt id="quickhashintset.constants.hasher-no-hash"><strong><code>QuickHashIntSet::HASHER_NO_HASH</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Selects to not use a hashing function, but merely use a modulo to
+      find the bucket list index. This is not faster than normal hashing, and
+      gives more collisions.</p>
+     </dd>
+
+    
+
+    
+     <dt id="quickhashintset.constants.hasher-jenkins1"><strong><code>QuickHashIntSet::HASHER_JENKINS1</code></strong></dt>
+
+     <dd>
+
+      <p class="para">This is the default hashing function to turn the integer hashes
+      into bucket list indexes.</p>
+     </dd>
+
+    
+
+    
+     <dt id="quickhashintset.constants.hasher-jenkins2"><strong><code>QuickHashIntSet::HASHER_JENKINS2</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Selects a variant hashing algorithm.</p>
+     </dd>
+
+    
+
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The QuickHashIntHash class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="quickhashinthash.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    This class wraps around a hash containing integer numbers, where the
+    values are also integer numbers. Hashes are also available as
+    implementation of the ArrayAccess interface.
+   </p>
+   <p class="para">
+    Hashes can also be iterated over with foreach as the Iterator interface is
+    implemented as well. The order of which elements are returned in is not
+    guaranteed.
+   </p>
+  </div>
+
+
+  <div class="section" id="quickhashinthash.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">QuickHashIntHash</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">QuickHashIntHash</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">QuickHashIntHash::CHECK_FOR_DUPES</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">QuickHashIntHash::DO_NOT_USE_ZEND_ALLOC</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">QuickHashIntHash::HASHER_NO_HASH</var>
+     <span class="initializer"> = 256</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">QuickHashIntHash::HASHER_JENKINS1</var>
+     <span class="initializer"> = 512</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">QuickHashIntHash::HASHER_JENKINS2</var>
+     <span class="initializer"> = 1024</span>
+    ;</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">add</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$key</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$value</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$size</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">delete</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$key</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">exists</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$key</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">get</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$key</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getSize</span> ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">QuickHashIntHash</span> <span class="methodname">loadFromFile</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">QuickHashIntHash</span> <span class="methodname">loadFromString</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$contents</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">saveToFile</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">saveToString</span> ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">set</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$key</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">update</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$key</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$value</code></span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+  
+
+  <div class="section" id="quickhashinthash.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <dl>
+
+
+    
+     <dt id="quickhashinthash.constants.check-for-dupes"><strong><code>QuickHashIntHash::CHECK_FOR_DUPES</code></strong></dt>
+
+     <dd>
+
+      <p class="para">If enabled, adding duplicate elements to a set (through either add() or
+      loadFromFile()) will result in those elements to be dropped from the
+      set. This will take up extra time, so only used when it is required.</p>
+     </dd>
+
+    
+
+    
+     <dt id="quickhashinthash.constants.do-not-use-zend-alloc"><strong><code>QuickHashIntHash::DO_NOT_USE_ZEND_ALLOC</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Disables the use of PHP&#039;s internal memory manager for internal
+      set structures. With this option enabled, internal allocations will not
+      count towards the memory_limit settings.</p>
+     </dd>
+
+    
+
+    
+     <dt id="quickhashinthash.constants.hasher-no-hash"><strong><code>QuickHashIntHash::HASHER_NO_HASH</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Selects to not use a hashing function, but merely use a modulo to
+      find the bucket list index. This is not faster than normal hashing, and
+      gives more collisions.</p>
+     </dd>
+
+    
+
+    
+     <dt id="quickhashinthash.constants.hasher-jenkins1"><strong><code>QuickHashIntHash::HASHER_JENKINS1</code></strong></dt>
+
+     <dd>
+
+      <p class="para">This is the default hashing function to turn the integer hashes
+      into bucket list indexes.</p>
+     </dd>
+
+    
+
+    
+     <dt id="quickhashinthash.constants.hasher-jenkins2"><strong><code>QuickHashIntHash::HASHER_JENKINS2</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Selects a variant hashing algorithm.</p>
+     </dd>
+
+    
+
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The QuickHashStringIntHash class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="quickhashstringinthash.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    This class wraps around a hash containing strings, where the
+    values are integer numbers. Hashes are also available as
+    implementation of the ArrayAccess interface.
+   </p>
+   <p class="para">
+    Hashes can also be iterated over with foreach as the Iterator interface is
+    implemented as well. The order of which elements are returned in is not
+    guaranteed.
+   </p>
+  </div>
+
+
+  <div class="section" id="quickhashstringinthash.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">QuickHashStringIntHash</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">QuickHashStringIntHash</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">QuickHashStringIntHash::CHECK_FOR_DUPES</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">QuickHashStringIntHash::DO_NOT_USE_ZEND_ALLOC</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">add</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$key</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$size</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code><span class="initializer"> = 0</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">delete</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$key</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">exists</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$key</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">get</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$key</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getSize</span> ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">QuickHashStringIntHash</span> <span class="methodname">loadFromFile</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$size</code><span class="initializer"> = 0</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code><span class="initializer"> = 0</span></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">QuickHashStringIntHash</span> <span class="methodname">loadFromString</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$contents</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$size</code><span class="initializer"> = 0</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code><span class="initializer"> = 0</span></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">saveToFile</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">saveToString</span> ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">set</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$key</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">update</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$key</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$value</code></span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+  
+
+  <div class="section" id="quickhashstringinthash.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <dl>
+
+
+    
+     <dt id="quickhashstringinthash.constants.check-for-dupes"><strong><code>QuickHashStringIntHash::CHECK_FOR_DUPES</code></strong></dt>
+
+     <dd>
+
+      <p class="para">If enabled, adding duplicate elements to a set (through either add() or
+      loadFromFile()) will result in those elements to be dropped from the
+      set. This will take up extra time, so only used when it is required.</p>
+     </dd>
+
+    
+
+    
+     <dt id="quickhashstringinthash.constants.do-not-use-zend-alloc"><strong><code>QuickHashStringIntHash::DO_NOT_USE_ZEND_ALLOC</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Disables the use of PHP&#039;s internal memory manager for internal
+      set structures. With this option enabled, internal allocations will not
+      count towards the memory_limit settings.</p>
+     </dd>
+
+    
+
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The QuickHashIntStringHash class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="quickhashintstringhash.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    This class wraps around a hash containing integer numbers, where the
+    values are strings. Hashes are also available as implementation of the
+    ArrayAccess interface.
+   </p>
+   <p class="para">
+    Hashes can also be iterated over with foreach as the Iterator interface is
+    implemented as well. The order of which elements are returned in is not
+    guaranteed.
+   </p>
+  </div>
+
+
+  <div class="section" id="quickhashintstringhash.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">QuickHashIntStringHash</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">QuickHashIntStringHash</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">QuickHashIntStringHash::CHECK_FOR_DUPES</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">QuickHashIntStringHash::DO_NOT_USE_ZEND_ALLOC</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">QuickHashIntStringHash::HASHER_NO_HASH</var>
+     <span class="initializer"> = 256</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">QuickHashIntStringHash::HASHER_JENKINS1</var>
+     <span class="initializer"> = 512</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">QuickHashIntStringHash::HASHER_JENKINS2</var>
+     <span class="initializer"> = 1024</span>
+    ;</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">add</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$key</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$size</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code><span class="initializer"> = 0</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">delete</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$key</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">exists</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$key</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">get</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$key</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getSize</span> ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">QuickHashIntStringHash</span> <span class="methodname">loadFromFile</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$size</code><span class="initializer"> = 0</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code><span class="initializer"> = 0</span></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">QuickHashIntStringHash</span> <span class="methodname">loadFromString</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$contents</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$size</code><span class="initializer"> = 0</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code><span class="initializer"> = 0</span></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">saveToFile</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">saveToString</span> ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">set</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$key</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">update</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$key</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$value</code></span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+  
+
+  <div class="section" id="quickhashintstringhash.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <dl>
+
+
+    
+     <dt id="quickhashintstringhash.constants.check-for-dupes"><strong><code>QuickHashIntStringHash::CHECK_FOR_DUPES</code></strong></dt>
+
+     <dd>
+
+      <p class="para">If enabled, adding duplicate elements to a set (through either add() or
+      loadFromFile()) will result in those elements to be dropped from the
+      set. This will take up extra time, so only used when it is required.</p>
+     </dd>
+
+    
+
+    
+     <dt id="quickhashintstringhash.constants.do-not-use-zend-alloc"><strong><code>QuickHashIntStringHash::DO_NOT_USE_ZEND_ALLOC</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Disables the use of PHP&#039;s internal memory manager for internal
+      set structures. With this option enabled, internal allocations will not
+      count towards the memory_limit settings.</p>
+     </dd>
+
+    
+
+    
+     <dt id="quickhashintstringhash.constants.hasher-no-hash"><strong><code>QuickHashIntStringHash::HASHER_NO_HASH</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Selects to not use a hashing function, but merely use a modulo to
+      find the bucket list index. This is not faster than normal hashing, and
+      gives more collisions.</p>
+     </dd>
+
+    
+
+    
+     <dt id="quickhashintstringhash.constants.hasher-jenkins1"><strong><code>QuickHashIntStringHash::HASHER_JENKINS1</code></strong></dt>
+
+     <dd>
+
+      <p class="para">This is the default hashing function to turn the integer hashes
+      into bucket list indexes.</p>
+     </dd>
+
+    
+
+    
+     <dt id="quickhashintstringhash.constants.hasher-jenkins2"><strong><code>QuickHashIntStringHash::HASHER_JENKINS2</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Selects a variant hashing algorithm.</p>
+     </dd>
+
+    
+
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

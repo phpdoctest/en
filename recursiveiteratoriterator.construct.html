@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Construct a RecursiveIteratorIterator</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.spl.html">SPL</a></li>
+  <li class="header up"><a href="spl.iterators.html">Iterators</a></li>
+  <li class="header up"><a href="class.recursiveiteratoriterator.html">RecursiveIteratorIterator</a></li>
+  <li><a href="recursiveiteratoriterator.beginchildren.html">RecursiveIteratorIterator::beginChildren</a></li>
+  <li><a href="recursiveiteratoriterator.beginiteration.html">RecursiveIteratorIterator::beginIteration</a></li>
+  <li><a href="recursiveiteratoriterator.callgetchildren.html">RecursiveIteratorIterator::callGetChildren</a></li>
+  <li><a href="recursiveiteratoriterator.callhaschildren.html">RecursiveIteratorIterator::callHasChildren</a></li>
+  <li class="active"><a href="recursiveiteratoriterator.construct.html">RecursiveIteratorIterator::__construct</a></li>
+  <li><a href="recursiveiteratoriterator.current.html">RecursiveIteratorIterator::current</a></li>
+  <li><a href="recursiveiteratoriterator.endchildren.html">RecursiveIteratorIterator::endChildren</a></li>
+  <li><a href="recursiveiteratoriterator.enditeration.html">RecursiveIteratorIterator::endIteration</a></li>
+  <li><a href="recursiveiteratoriterator.getdepth.html">RecursiveIteratorIterator::getDepth</a></li>
+  <li><a href="recursiveiteratoriterator.getinneriterator.html">RecursiveIteratorIterator::getInnerIterator</a></li>
+  <li><a href="recursiveiteratoriterator.getmaxdepth.html">RecursiveIteratorIterator::getMaxDepth</a></li>
+  <li><a href="recursiveiteratoriterator.getsubiterator.html">RecursiveIteratorIterator::getSubIterator</a></li>
+  <li><a href="recursiveiteratoriterator.key.html">RecursiveIteratorIterator::key</a></li>
+  <li><a href="recursiveiteratoriterator.next.html">RecursiveIteratorIterator::next</a></li>
+  <li><a href="recursiveiteratoriterator.nextelement.html">RecursiveIteratorIterator::nextElement</a></li>
+  <li><a href="recursiveiteratoriterator.rewind.html">RecursiveIteratorIterator::rewind</a></li>
+  <li><a href="recursiveiteratoriterator.setmaxdepth.html">RecursiveIteratorIterator::setMaxDepth</a></li>
+  <li><a href="recursiveiteratoriterator.valid.html">RecursiveIteratorIterator::valid</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="recursiveiteratoriterator.callhaschildren.html">RecursiveIteratorIterator::callHasChildren</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="recursiveiteratoriterator.current.html">RecursiveIteratorIterator::current</a></div>
+                <div class="up"><a href="class.recursiveiteratoriterator.html">RecursiveIteratorIterator</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="recursiveiteratoriterator.construct" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">RecursiveIteratorIterator::__construct</h1>
+  <p class="refpurpose">Construct a RecursiveIteratorIterator</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-recursiveiteratoriterator.construct-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">RecursiveIteratorIterator::__construct</span>
+    ( <span class="methodparam"><span class="type">Traversable</span> <code class="parameter">$iterator</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code><span class="initializer"> = RecursiveIteratorIterator::LEAVES_ONLY</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = 0</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Creates a <span class="classname">RecursiveIteratorIterator</span> from a <span class="classname">RecursiveIterator</span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-recursiveiteratoriterator.construct-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">iterator</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The iterator being constructed from. Either a
+       <span class="classname">RecursiveIterator</span> or <span class="classname">IteratorAggregate</span>.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">mode</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Optional mode. Possible values are
+       <ul class="simplelist">
+        <li class="member">
+         <strong><code>RecursiveIteratorIterator::LEAVES_ONLY</code></strong>
+         - The default. Lists only leaves in iteration.
+        </li>
+        <li class="member">
+         <strong><code>RecursiveIteratorIterator::SELF_FIRST</code></strong>
+         - Lists leaves and parents in iteration with parents coming first.
+        </li>
+        <li class="member">
+         <strong><code>RecursiveIteratorIterator::CHILD_FIRST</code></strong>
+         - Lists leaves and parents in iteration with leaves coming first.
+        </li>
+       </ul>
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">flags</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Optional flag. Possible values are <strong><code>RecursiveIteratorIterator::CATCH_GET_CHILD</code></strong>
+       which will then ignore exceptions thrown in calls to  <span class="methodname">RecursiveIteratorIterator::getChildren</span>.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-recursiveiteratoriterator.construct-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   No value is returned.
+  </p>
+ </div>
+
+
+
+ <div class="refsect1 examples" id="refsect1-recursiveiteratoriterator.construct-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4484">
+    <p><strong>Example #1 Iterating a RecursiveIteratorIterator</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$array&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'leaf-0-0-0-0'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'leaf-0-0-0-1'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'leaf-0-0-0'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'leaf-0-1-0-0'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'leaf-0-1-0-1'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'leaf-0-1-0'<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'leaf-0-0'<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">)<br />);<br /><br /></span><span style="color: #0000BB">$iterator&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">RecursiveIteratorIterator</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;</span><span style="color: #0000BB">RecursiveArrayIterator</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$mode<br /></span><span style="color: #007700">);<br />foreach&nbsp;(</span><span style="color: #0000BB">$iterator&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$leaf</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$key</span><span style="color: #DD0000">&nbsp;=&gt;&nbsp;</span><span style="color: #0000BB">$leaf</span><span style="color: #DD0000">"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>
+     Output with <em>$mode = RecursiveIteratorIterator::LEAVES_ONLY</em>
+    </p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+0 =&gt; leaf-0-0-0-0
+1 =&gt; leaf-0-0-0-1
+0 =&gt; leaf-0-0-0
+0 =&gt; leaf-0-1-0-0
+1 =&gt; leaf-0-1-0-1
+0 =&gt; leaf-0-1-0
+0 =&gt; leaf-0-0
+</pre></div>
+    </div>
+    <div class="example-contents"><p>
+     Output with <em>$mode = RecursiveIteratorIterator::SELF_FIRST</em>
+    </p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+0 =&gt; Array
+0 =&gt; Array
+0 =&gt; Array
+0 =&gt; leaf-0-0-0-0
+1 =&gt; leaf-0-0-0-1
+1 =&gt; leaf-0-0-0
+1 =&gt; Array
+0 =&gt; Array
+0 =&gt; leaf-0-1-0-0
+1 =&gt; leaf-0-1-0-1
+1 =&gt; leaf-0-1-0
+2 =&gt; leaf-0-0
+</pre></div>
+    </div>
+    <div class="example-contents"><p>
+     Output with <em>$mode = RecursiveIteratorIterator::CHILD_FIRST</em>
+    </p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+0 =&gt; leaf-0-0-0-0
+1 =&gt; leaf-0-0-0-1
+0 =&gt; Array
+1 =&gt; leaf-0-0-0
+0 =&gt; Array
+0 =&gt; leaf-0-1-0-0
+1 =&gt; leaf-0-1-0-1
+0 =&gt; Array
+1 =&gt; leaf-0-1-0
+1 =&gt; Array
+2 =&gt; leaf-0-0
+0 =&gt; Array
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,184 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Throw an exception into the generator</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="langref.html">Language Reference</a></li>
+  <li class="header up"><a href="reserved.interfaces.html">Predefined Interfaces and Classes</a></li>
+  <li class="header up"><a href="class.generator.html">Generator</a></li>
+  <li><a href="generator.current.html">Generator::current</a></li>
+  <li><a href="generator.getreturn.html">Generator::getReturn</a></li>
+  <li><a href="generator.key.html">Generator::key</a></li>
+  <li><a href="generator.next.html">Generator::next</a></li>
+  <li><a href="generator.rewind.html">Generator::rewind</a></li>
+  <li><a href="generator.send.html">Generator::send</a></li>
+  <li class="active"><a href="generator.throw.html">Generator::throw</a></li>
+  <li><a href="generator.valid.html">Generator::valid</a></li>
+  <li><a href="generator.wakeup.html">Generator::__wakeup</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="generator.send.html">Generator::send</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="generator.valid.html">Generator::valid</a></div>
+                <div class="up"><a href="class.generator.html">Generator</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="generator.throw" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Generator::throw</h1>
+  <p class="refpurpose">Throw an exception into the generator</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-generator.throw-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">Generator::throw</span>
+    ( <span class="methodparam"><span class="type">Throwable</span> <code class="parameter">$exception</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Throws an exception into the generator and resumes execution of the generator.
+   The behavior will be the same as if the current <a href="language.generators.syntax.html#control-structures.yield" class="link">yield</a> expression was replaced with
+   a <em>throw $exception</em> statement.
+  </p>
+  <p class="para">
+   If the generator is already closed when this method is invoked, the exception will
+   be thrown in the caller&#039;s context instead.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-generator.throw-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">exception</code></dt>
+
+    <dd>
+
+     <p class="para">
+      Exception to throw into the generator.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-generator.throw-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the yielded value.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 changelog" id="refsect1-generator.throw-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>7.0.0</td>
+       <td>
+        The <code class="parameter">exception</code> parameter also accepts <span class="classname">Throwable</span> now.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-generator.throw-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-333">
+    <p><strong>Example #1 Throwing an exception into a generator</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">gen</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Foo\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yield;<br />&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">Exception&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Exception:&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">()}</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Bar\n"</span><span style="color: #007700">;<br />}<br />&nbsp;<br /></span><span style="color: #0000BB">$gen&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">gen</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$gen</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">rewind</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$gen</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">throw</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">Exception</span><span style="color: #007700">(</span><span style="color: #DD0000">'Test'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Foo
+Exception: Test
+Bar
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

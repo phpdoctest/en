@@ -1,0 +1,310 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Built-in web server</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="features.html">Features</a></li>
+  <li class="header up"><a href="features.commandline.html">Command line usage</a></li>
+  <li><a href="features.commandline.introduction.html">Introduction</a></li>
+  <li><a href="features.commandline.differences.html">Differences to other SAPIs</a></li>
+  <li><a href="features.commandline.options.html">Options</a></li>
+  <li><a href="features.commandline.usage.html">Usage</a></li>
+  <li><a href="features.commandline.io-streams.html">I/O streams</a></li>
+  <li><a href="features.commandline.interactive.html">Interactive shell</a></li>
+  <li class="active"><a href="features.commandline.webserver.html">Built-in web server</a></li>
+  <li><a href="features.commandline.ini.html">INI settings</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="features.commandline.interactive.html">Interactive shell</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="features.commandline.ini.html">INI settings</a></div>
+                <div class="up"><a href="features.commandline.html">Command line usage</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="features.commandline.webserver" class="section">
+  <h2 class="title">Built-in web server</h2>
+
+  <div class="warning"><strong class="warning">Warning</strong>
+   <p class="para">
+    This web server was designed to aid application development.  It may also
+    be useful for testing purposes or for application demonstrations that are
+    run in controlled environments. It is not intended to be a full-featured
+    web server. It should not be used on a public network.
+   </p>
+  </div>
+
+  <p class="para">
+   As of PHP 5.4.0, the <acronym class="acronym">CLI</acronym> <acronym class="acronym">SAPI</acronym> provides a built-in web server.
+  </p>
+
+  <p class="para">
+   The web server runs a only one single-threaded process, so
+   PHP applications will stall if a request is blocked.
+  </p>
+
+  <p class="para">
+    URI requests are served from the current working directory where
+    PHP was started, unless the -t option is used to specify an
+    explicit document root.  If a URI request does not specify a file,
+    then either index.php or index.html in the given directory are
+    returned.  If neither file exists, the lookup for index.php and index.html
+    will be continued in the parent directory and so on until one is found or
+    the document root has been reached. If an index.php or index.html is found,
+    it is returned and $_SERVER[&#039;PATH_INFO&#039;] is set to the trailing part of
+    the URI. Otherwise a 404 response code is returned.
+  </p>
+
+  <p class="para">
+    If a PHP file is given on the command line when the web server is
+    started it is treated as a &quot;router&quot; script.  The script is run at
+    the start of each HTTP request.  If this script returns <strong><code>FALSE</code></strong>,
+    then the requested resource is returned as-is.  Otherwise the
+    script&#039;s output is returned to the browser.
+  </p>
+
+  <p class="para">
+    Standard MIME types are returned for files with extensions: .3gp,
+    .apk, .avi, .bmp, .css, .csv, .doc, .docx, .flac, .gif, .gz,
+    .gzip, .htm, .html, .ics, .jpe, .jpeg, .jpg, .js, .kml, .kmz,
+    .m4a, .mov, .mp3, .mp4, .mpeg, .mpg, .odp, .ods, .odt, .oga, .ogg,
+    .ogv, .pdf, .pdf, .png, .pps, .pptx, .qt, .svg, .swf, .tar, .text,
+    .tif, .txt, .wav, .webm, .wmv, .xls, .xlsx, .xml, .xsl, .xsd, and .zip.
+  </p>
+
+
+  <table class="doctable table">
+   <caption><strong>Changelog: Supported MIME Types (file extensions)</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>Version</th>
+      <th>Description</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>5.5.12</td>
+      <td>
+       .xml, .xsl, and .xsd
+      </td>
+     </tr>
+
+     <tr>
+      <td>5.5.7</td>
+      <td>
+       .3gp, .apk, .avi, .bmp, .csv, .doc, .docx, .flac, .gz, .gzip,
+       .ics, .kml, .kmz, .m4a, .mp3, .mp4, .mpg, .mpeg, .mov, .odp, .ods,
+       .odt, .oga, .pdf, .pptx, .pps, .qt, .swf, .tar, .text, .tif, .wav,
+       .wmv, .xls, .xlsx, and .zip
+      </td>
+     </tr>
+
+     <tr>
+      <td>5.5.5</td>
+      <td>
+       .pdf
+      </td>
+     </tr>
+
+     <tr>
+      <td>5.4.11</td>
+      <td>
+       .ogg, .ogv, and .webm
+      </td>
+     </tr>
+
+     <tr>
+      <td>5.4.4</td>
+      <td>
+        .htm and .svg
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+
+  <div class="example" id="example-407">
+   <p><strong>Example #1 Starting the web server</strong></p> 
+   <div class="example-contents">
+<div class="shellcode"><pre class="shellcode">$ cd ~/public_html
+$ php -S localhost:8000</pre>
+</div>
+   </div>
+
+   <div class="example-contents"><p>
+     The terminal will show:
+   </p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+PHP 5.4.0 Development Server started at Thu Jul 21 10:43:28 2011
+Listening on localhost:8000
+Document root is /home/me/public_html
+Press Ctrl-C to quit
+</pre></div>
+   </div>
+   <div class="example-contents"><p>
+     After URI requests for http://localhost:8000/ and
+     http://localhost:8000/myscript.html the terminal will show
+     something similar to:
+   </p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+PHP 5.4.0 Development Server started at Thu Jul 21 10:43:28 2011
+Listening on localhost:8000
+Document root is /home/me/public_html
+Press Ctrl-C to quit.
+[Thu Jul 21 10:48:48 2011] ::1:39144 GET /favicon.ico - Request read
+[Thu Jul 21 10:48:50 2011] ::1:39146 GET / - Request read
+[Thu Jul 21 10:48:50 2011] ::1:39147 GET /favicon.ico - Request read
+[Thu Jul 21 10:48:52 2011] ::1:39148 GET /myscript.html - Request read
+[Thu Jul 21 10:48:52 2011] ::1:39149 GET /favicon.ico - Request read
+</pre></div>
+   </div>
+  </div>
+
+  <div class="example" id="example-408">
+   <p><strong>Example #2 Starting with a specific document root directory</strong></p> 
+   <div class="example-contents">
+<div class="shellcode"><pre class="shellcode">$ cd ~/public_html
+$ php -S localhost:8000 -t foo/</pre>
+</div>
+   </div>
+
+   <div class="example-contents"><p>
+     The terminal will show:
+   </p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+PHP 5.4.0 Development Server started at Thu Jul 21 10:50:26 2011
+Listening on localhost:8000
+Document root is /home/me/public_html/foo
+Press Ctrl-C to quit
+</pre></div>
+   </div>
+  </div>
+
+  <div class="example" id="example-409">
+   <p><strong>Example #3 Using a Router Script</strong></p> 
+<div class="example-contents"><p>
+  In this example, requests for images will display them, but requests for HTML files will display &quot;Welcome to PHP&quot;:
+</p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;router.php<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">preg_match</span><span style="color: #007700">(</span><span style="color: #DD0000">'/\.(?:png|jpg|jpeg|gif)$/'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">"REQUEST_URI"</span><span style="color: #007700">]))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;serve&nbsp;the&nbsp;requested&nbsp;resource&nbsp;as-is.<br /></span><span style="color: #007700">}&nbsp;else&nbsp;{&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&lt;p&gt;Welcome&nbsp;to&nbsp;PHP&lt;/p&gt;"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents">
+<div class="shellcode"><pre class="shellcode">$ php -S localhost:8000 router.php</pre>
+</div>
+   </div>
+
+  </div>
+
+  <div class="example" id="example-410">
+   <p><strong>Example #4 Checking for CLI Web Server Use</strong></p> 
+<div class="example-contents"><p>
+  To reuse a framework router script during development with the CLI web server and later also with a production web server:
+</p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;router.php<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">php_sapi_name</span><span style="color: #007700">()&nbsp;==&nbsp;</span><span style="color: #DD0000">'cli-server'</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;route&nbsp;static&nbsp;assets&nbsp;and&nbsp;return&nbsp;false&nbsp;*/<br /></span><span style="color: #007700">}<br /></span><span style="color: #FF8000">/*&nbsp;go&nbsp;on&nbsp;with&nbsp;normal&nbsp;index.php&nbsp;operations&nbsp;*/<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents">
+<div class="shellcode"><pre class="shellcode">$ php -S localhost:8000 router.php</pre>
+</div>
+   </div>
+
+  </div>
+
+  <div class="example" id="example-411">
+   <p><strong>Example #5 Handling Unsupported File Types</strong></p> 
+<div class="example-contents"><p>
+  If you need to serve a static resource whose MIME type is not handled by the CLI web server, use:
+</p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;router.php<br /></span><span style="color: #0000BB">$path&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">pathinfo</span><span style="color: #007700">(</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">"SCRIPT_FILENAME"</span><span style="color: #007700">]);<br />if&nbsp;(</span><span style="color: #0000BB">$path</span><span style="color: #007700">[</span><span style="color: #DD0000">"extension"</span><span style="color: #007700">]&nbsp;==&nbsp;</span><span style="color: #DD0000">"el"</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">"Content-Type:&nbsp;text/x-script.elisp"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">readfile</span><span style="color: #007700">(</span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">"SCRIPT_FILENAME"</span><span style="color: #007700">]);<br />}<br />else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">FALSE</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents">
+<div class="shellcode"><pre class="shellcode">$ php -S localhost:8000 router.php</pre>
+</div>
+   </div>
+
+  </div>
+
+  <div class="example" id="example-412">
+   <p><strong>Example #6 Accessing the CLI Web Server From Remote Machines</strong></p> 
+<div class="example-contents"><p>
+  You can make the web server accessible on port 8000 to any interface with:
+</p></div>
+   <div class="example-contents">
+<div class="shellcode"><pre class="shellcode">$ php -S 0.0.0.0:8000</pre>
+</div>
+   </div>
+
+  </div>
+
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

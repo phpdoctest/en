@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Connecting to PostgreSQL databases</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.abstract.html">Abstraction Layers</a></li>
+  <li class="header up"><a href="book.pdo.html">PDO</a></li>
+  <li class="header up"><a href="pdo.drivers.html">PDO Drivers</a></li>
+  <li class="header up"><a href="ref.pdo-pgsql.html">PostgreSQL (PDO)</a></li>
+  <li class="active"><a href="ref.pdo-pgsql.connection.html">PDO_PGSQL DSN</a></li>
+  <li><a href="pdo.pgsqlcopyfromarray.html">PDO::pgsqlCopyFromArray</a></li>
+  <li><a href="pdo.pgsqlcopyfromfile.html">PDO::pgsqlCopyFromFile</a></li>
+  <li><a href="pdo.pgsqlcopytoarray.html">PDO::pgsqlCopyToArray</a></li>
+  <li><a href="pdo.pgsqlcopytofile.html">PDO::pgsqlCopyToFile</a></li>
+  <li><a href="pdo.pgsqlgetnotify.html">PDO::pgsqlGetNotify</a></li>
+  <li><a href="pdo.pgsqlgetpid.html">PDO::pgsqlGetPid</a></li>
+  <li><a href="pdo.pgsqllobcreate.html">PDO::pgsqlLOBCreate</a></li>
+  <li><a href="pdo.pgsqllobopen.html">PDO::pgsqlLOBOpen</a></li>
+  <li><a href="pdo.pgsqllobunlink.html">PDO::pgsqlLOBUnlink</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="ref.pdo-pgsql.html">PostgreSQL (PDO)</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="pdo.pgsqlcopyfromarray.html">PDO::pgsqlCopyFromArray</a></div>
+                <div class="up"><a href="ref.pdo-pgsql.html">PostgreSQL (PDO)</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="ref.pdo-pgsql.connection" class="refentry">
+   <div class="refnamediv">
+    <h1 class="refname">PDO_PGSQL DSN</h1>
+    <p class="refpurpose">Connecting to PostgreSQL databases</p>
+   </div>
+
+   <div class="refsect1 description" id="refsect1-ref.pdo-pgsql.connection-description">
+    <h3 class="title">Description</h3>
+    <p class="para">
+     The PDO_PGSQL Data Source Name (DSN) is composed of the following elements, delimited by spaces or semicolons:
+     <dl>
+
+      
+       <dt>
+DSN prefix</dt>
+
+       <dd>
+
+        <p class="para">
+        The DSN prefix is <strong class="userinput"><code>pgsql:</code></strong>.
+        </p>
+       </dd>
+
+      
+      
+       <dt>
+<em>host</em></dt>
+
+       <dd>
+
+        <p class="para">
+         The hostname on which the database server resides.
+        </p>
+       </dd>
+
+      
+      
+       <dt>
+<em>port</em></dt>
+
+       <dd>
+
+        <p class="para">
+         The port on which the database server is running.
+        </p>
+       </dd>
+
+      
+      
+       <dt>
+<em>dbname</em></dt>
+
+       <dd>
+
+        <p class="para">
+         The name of the database.
+        </p>
+       </dd>
+
+      
+      
+       <dt>
+<em>user</em></dt>
+
+       <dd>
+
+        <p class="para">
+         The name of the user for the connection. If you specify the user name
+         in the DSN, PDO ignores the value of the user name argument in the
+         PDO constructor.
+        </p>
+       </dd>
+
+      
+      
+       <dt>
+<em>password</em></dt>
+
+       <dd>
+
+        <p class="para">
+         The password of the user for the connection. If you specify the
+         password in the DSN, PDO ignores the value of the password argument
+         in the PDO constructor.
+        </p>
+       </dd>
+
+      
+
+     </dl>
+
+    </p>
+    <blockquote class="note"><p><strong class="note">Note</strong>: 
+     <p class="para">
+      The <em>bytea</em> fields are returned as streams.
+     </p>
+    </p></blockquote>
+   </div>
+
+   <div class="refsect1 examples" id="refsect1-ref.pdo-pgsql.connection-examples">
+    <h3 class="title">Examples</h3>
+    <p class="para">
+     <div class="example" id="example-1073">
+      <p><strong>Example #1 PDO_PGSQL DSN examples</strong></p>
+      <div class="example-contents"><p>
+       The following example shows a PDO_PGSQL DSN for connecting to
+       a PostgreSQL database:
+       <div class="example-contents"><div class="cdata"><pre>
+pgsql:host=localhost;port=5432;dbname=testdb;user=bruce;password=mypass
+</pre></div>
+       </div>
+
+      </p></div>
+     </div>
+    </p>
+   </div>
+
+  </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

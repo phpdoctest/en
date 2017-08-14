@@ -1,0 +1,140 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Checks if the cursor is reading a valid result.</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.mongo.html">Mongo</a></li>
+  <li class="header up"><a href="mongo.core.html">Core Classes</a></li>
+  <li class="header up"><a href="class.mongocursor.html">MongoCursor</a></li>
+  <li><a href="mongocursor.addoption.html">MongoCursor::addOption</a></li>
+  <li><a href="mongocursor.awaitdata.html">MongoCursor::awaitData</a></li>
+  <li><a href="mongocursor.batchsize.html">MongoCursor::batchSize</a></li>
+  <li><a href="mongocursor.construct.html">MongoCursor::__construct</a></li>
+  <li><a href="mongocursor.count.html">MongoCursor::count</a></li>
+  <li><a href="mongocursor.current.html">MongoCursor::current</a></li>
+  <li><a href="mongocursor.dead.html">MongoCursor::dead</a></li>
+  <li><a href="mongocursor.doquery.html">MongoCursor::doQuery</a></li>
+  <li><a href="mongocursor.explain.html">MongoCursor::explain</a></li>
+  <li><a href="mongocursor.fields.html">MongoCursor::fields</a></li>
+  <li><a href="mongocursor.getnext.html">MongoCursor::getNext</a></li>
+  <li><a href="mongocursor.getreadpreference.html">MongoCursor::getReadPreference</a></li>
+  <li><a href="mongocursor.hasnext.html">MongoCursor::hasNext</a></li>
+  <li><a href="mongocursor.hint.html">MongoCursor::hint</a></li>
+  <li><a href="mongocursor.immortal.html">MongoCursor::immortal</a></li>
+  <li><a href="mongocursor.info.html">MongoCursor::info</a></li>
+  <li><a href="mongocursor.key.html">MongoCursor::key</a></li>
+  <li><a href="mongocursor.limit.html">MongoCursor::limit</a></li>
+  <li><a href="mongocursor.maxtimems.html">MongoCursor::maxTimeMS</a></li>
+  <li><a href="mongocursor.next.html">MongoCursor::next</a></li>
+  <li><a href="mongocursor.partial.html">MongoCursor::partial</a></li>
+  <li><a href="mongocursor.reset.html">MongoCursor::reset</a></li>
+  <li><a href="mongocursor.rewind.html">MongoCursor::rewind</a></li>
+  <li><a href="mongocursor.setflag.html">MongoCursor::setFlag</a></li>
+  <li><a href="mongocursor.setreadpreference.html">MongoCursor::setReadPreference</a></li>
+  <li><a href="mongocursor.skip.html">MongoCursor::skip</a></li>
+  <li><a href="mongocursor.slaveokay.html">MongoCursor::slaveOkay</a></li>
+  <li><a href="mongocursor.snapshot.html">MongoCursor::snapshot</a></li>
+  <li><a href="mongocursor.sort.html">MongoCursor::sort</a></li>
+  <li><a href="mongocursor.tailable.html">MongoCursor::tailable</a></li>
+  <li><a href="mongocursor.timeout.html">MongoCursor::timeout</a></li>
+  <li class="active"><a href="mongocursor.valid.html">MongoCursor::valid</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mongocursor.timeout.html">MongoCursor::timeout</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="class.mongocursorinterface.html">MongoCursorInterface</a></div>
+                <div class="up"><a href="class.mongocursor.html">MongoCursor</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mongocursor.valid" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">MongoCursor::valid</h1>
+  <p class="refpurpose">Checks if the cursor is reading a valid result.</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mongocursor.valid-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">MongoCursor::valid</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mongocursor.valid-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">This function has no parameters.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-mongocursor.valid-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   <strong><code>TRUE</code></strong> if the current result is not null, and <strong><code>FALSE</code></strong> otherwise.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-mongocursor.valid-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li class="member"> <span class="methodname">Iterator::valid</span></li>
+  </ul>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

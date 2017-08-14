@@ -1,0 +1,334 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Get the local time</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.calendar.html">Date and Time Related Extensions</a></li>
+  <li class="header up"><a href="book.datetime.html">Date/Time</a></li>
+  <li class="header up"><a href="ref.datetime.html">Date/Time Functions</a></li>
+  <li><a href="function.checkdate.html">checkdate</a></li>
+  <li><a href="function.date-add.html">date_add</a></li>
+  <li><a href="function.date-create-from-format.html">date_create_from_format</a></li>
+  <li><a href="function.date-create-immutable-from-format.html">date_create_immutable_from_format</a></li>
+  <li><a href="function.date-create-immutable.html">date_create_immutable</a></li>
+  <li><a href="function.date-create.html">date_create</a></li>
+  <li><a href="function.date-date-set.html">date_date_set</a></li>
+  <li><a href="function.date-default-timezone-get.html">date_default_timezone_get</a></li>
+  <li><a href="function.date-default-timezone-set.html">date_default_timezone_set</a></li>
+  <li><a href="function.date-diff.html">date_diff</a></li>
+  <li><a href="function.date-format.html">date_format</a></li>
+  <li><a href="function.date-get-last-errors.html">date_get_last_errors</a></li>
+  <li><a href="function.date-interval-create-from-date-string.html">date_interval_create_from_date_string</a></li>
+  <li><a href="function.date-interval-format.html">date_interval_format</a></li>
+  <li><a href="function.date-isodate-set.html">date_isodate_set</a></li>
+  <li><a href="function.date-modify.html">date_modify</a></li>
+  <li><a href="function.date-offset-get.html">date_offset_get</a></li>
+  <li><a href="function.date-parse-from-format.html">date_parse_from_format</a></li>
+  <li><a href="function.date-parse.html">date_parse</a></li>
+  <li><a href="function.date-sub.html">date_sub</a></li>
+  <li><a href="function.date-sun-info.html">date_sun_info</a></li>
+  <li><a href="function.date-sunrise.html">date_sunrise</a></li>
+  <li><a href="function.date-sunset.html">date_sunset</a></li>
+  <li><a href="function.date-time-set.html">date_time_set</a></li>
+  <li><a href="function.date-timestamp-get.html">date_timestamp_get</a></li>
+  <li><a href="function.date-timestamp-set.html">date_timestamp_set</a></li>
+  <li><a href="function.date-timezone-get.html">date_timezone_get</a></li>
+  <li><a href="function.date-timezone-set.html">date_timezone_set</a></li>
+  <li><a href="function.date.html">date</a></li>
+  <li><a href="function.getdate.html">getdate</a></li>
+  <li><a href="function.gettimeofday.html">gettimeofday</a></li>
+  <li><a href="function.gmdate.html">gmdate</a></li>
+  <li><a href="function.gmmktime.html">gmmktime</a></li>
+  <li><a href="function.gmstrftime.html">gmstrftime</a></li>
+  <li><a href="function.idate.html">idate</a></li>
+  <li class="active"><a href="function.localtime.html">localtime</a></li>
+  <li><a href="function.microtime.html">microtime</a></li>
+  <li><a href="function.mktime.html">mktime</a></li>
+  <li><a href="function.strftime.html">strftime</a></li>
+  <li><a href="function.strptime.html">strptime</a></li>
+  <li><a href="function.strtotime.html">strtotime</a></li>
+  <li><a href="function.time.html">time</a></li>
+  <li><a href="function.timezone-abbreviations-list.html">timezone_abbreviations_list</a></li>
+  <li><a href="function.timezone-identifiers-list.html">timezone_identifiers_list</a></li>
+  <li><a href="function.timezone-location-get.html">timezone_location_get</a></li>
+  <li><a href="function.timezone-name-from-abbr.html">timezone_name_from_abbr</a></li>
+  <li><a href="function.timezone-name-get.html">timezone_name_get</a></li>
+  <li><a href="function.timezone-offset-get.html">timezone_offset_get</a></li>
+  <li><a href="function.timezone-open.html">timezone_open</a></li>
+  <li><a href="function.timezone-transitions-get.html">timezone_transitions_get</a></li>
+  <li><a href="function.timezone-version-get.html">timezone_version_get</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.idate.html">idate</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.microtime.html">microtime</a></div>
+                <div class="up"><a href="ref.datetime.html">Date/Time Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.localtime" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">localtime</h1>
+  <p class="refpurpose">Get the local time</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.localtime-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname">localtime</span>
+    ([ <span class="methodparam"><span class="type">int</span> <code class="parameter">$timestamp</code><span class="initializer"> = time()</span></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$is_associative</code><span class="initializer"> = false</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   The <span class="function">localtime</span> function returns an array
+   identical to that of the structure returned by the C function
+   call.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-function.localtime-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+    
+<dt>
+<code class="parameter">timestamp</code></dt>
+<dd>
+<p class="para">
+The optional <code class="parameter">timestamp</code> parameter is an
+<span class="type">integer</span> Unix timestamp that defaults to the current
+local time if a <code class="parameter">timestamp</code> is not given. In other
+words, it defaults to the value of <span class="function">time</span>.
+</p></dd>
+
+   
+    
+     <dt>
+<code class="parameter">is_associative</code></dt>
+
+     <dd>
+
+      <p class="para">
+       If set to <strong><code>FALSE</code></strong> or not supplied then the array is returned as a regular, 
+       numerically indexed array.  If the argument is set to <strong><code>TRUE</code></strong> then
+       <span class="function">localtime</span> returns an associative array containing
+       all the different elements of the structure returned by the C
+       function call to localtime.  The names of the different keys of
+       the associative array are as follows:
+      </p>
+      <p class="para">
+       <ul class="itemizedlist">
+        <li class="listitem">
+         <span class="simpara">
+          &quot;tm_sec&quot; - seconds, <em>0</em> to <em>59</em>
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          &quot;tm_min&quot; - minutes, <em>0</em> to <em>59</em>
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          &quot;tm_hour&quot; - hours, <em>0</em> to <em>23</em>
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          &quot;tm_mday&quot; - day of the month, <em>1</em> to <em>31</em>
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          &quot;tm_mon&quot; - month of the year, <em>0</em> (Jan) to <em>11</em> (Dec)
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          &quot;tm_year&quot; - years since 1900
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          &quot;tm_wday&quot; - day of the week, <em>0</em> (Sun) to <em>6</em> (Sat)
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          &quot;tm_yday&quot; - day of the year, <em>0</em> to <em>365</em>
+         </span>
+        </li>
+        <li class="listitem">
+         <span class="simpara">
+          &quot;tm_isdst&quot; - is daylight savings time in effect? 
+         </span>
+         <span class="simpara">
+          Positive if yes, <em>0</em> if not, negative if unknown.
+         </span>
+        </li>
+       </ul>
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-function.localtime-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+   
+   <p class="para">
+Every call to a date/time function will generate a <strong><code>E_NOTICE</code></strong>
+if the time zone is not valid, and/or a <strong><code>E_STRICT</code></strong>
+or <strong><code>E_WARNING</code></strong> message
+if using the system settings or the <var class="varname">TZ</var> environment
+variable. See also <span class="function">date_default_timezone_set</span></p>
+ 
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.localtime-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      
+      <tr><td>5.1.0</td><td><p class="para">
+Now issues the <strong><code>E_STRICT</code></strong> and <strong><code>E_NOTICE</code></strong>
+time zone errors.</p></td></tr>
+
+     
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.localtime-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-2566">
+    <p><strong>Example #1 <span class="function">localtime</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$localtime&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">localtime</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$localtime_assoc&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">localtime</span><span style="color: #007700">(</span><span style="color: #0000BB">time</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$localtime</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$localtime_assoc</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [0] =&gt; 24
+    [1] =&gt; 3
+    [2] =&gt; 19
+    [3] =&gt; 3
+    [4] =&gt; 3
+    [5] =&gt; 105
+    [6] =&gt; 0
+    [7] =&gt; 92
+    [8] =&gt; 1
+)
+
+Array
+(
+    [tm_sec] =&gt; 24
+    [tm_min] =&gt; 3
+    [tm_hour] =&gt; 19
+    [tm_mday] =&gt; 3
+    [tm_mon] =&gt; 3
+    [tm_year] =&gt; 105
+    [tm_wday] =&gt; 0
+    [tm_yday] =&gt; 92
+    [tm_isdst] =&gt; 1
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.localtime-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">getdate</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

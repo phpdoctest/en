@@ -1,0 +1,145 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: do-while</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="langref.html">Language Reference</a></li>
+  <li class="header up"><a href="language.control-structures.html">Control Structures</a></li>
+  <li><a href="control-structures.intro.html">Introduction</a></li>
+  <li><a href="control-structures.if.html">if</a></li>
+  <li><a href="control-structures.else.html">else</a></li>
+  <li><a href="control-structures.elseif.html">elseif/else if</a></li>
+  <li><a href="control-structures.alternative-syntax.html">Alternative syntax for control structures</a></li>
+  <li><a href="control-structures.while.html">while</a></li>
+  <li class="active"><a href="control-structures.do.while.html">do-while</a></li>
+  <li><a href="control-structures.for.html">for</a></li>
+  <li><a href="control-structures.foreach.html">foreach</a></li>
+  <li><a href="control-structures.break.html">break</a></li>
+  <li><a href="control-structures.continue.html">continue</a></li>
+  <li><a href="control-structures.switch.html">switch</a></li>
+  <li><a href="control-structures.declare.html">declare</a></li>
+  <li><a href="function.return.html">return</a></li>
+  <li><a href="function.require.html">require</a></li>
+  <li><a href="function.include.html">include</a></li>
+  <li><a href="function.require-once.html">require_once</a></li>
+  <li><a href="function.include-once.html">include_once</a></li>
+  <li><a href="control-structures.goto.html">goto</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="control-structures.while.html">while</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="control-structures.for.html">for</a></div>
+                <div class="up"><a href="language.control-structures.html">Control Structures</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="control-structures.do.while" class="sect1">
+ <h2 class="title"><em>do-while</em></h2>
+ 
+ <p class="simpara">
+  <em>do-while</em> loops are very similar to
+  <em>while</em> loops, except the truth expression is
+  checked at the end of each iteration instead of in the beginning.
+  The main difference from regular <em>while</em> loops is
+  that the first iteration of a <em>do-while</em> loop is
+  guaranteed to run (the truth expression is only checked at the end
+  of the iteration), whereas it may not necessarily run with a
+  regular <em>while</em> loop (the truth expression is
+  checked at the beginning of each iteration, if it evaluates to
+  <strong><code>FALSE</code></strong> right from the beginning, the loop
+  execution would end immediately).
+ </p>
+ <p class="para">
+  There is just one syntax for <em>do-while</em> loops:
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />do&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">;<br />}&nbsp;while&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&gt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="simpara">
+   The above loop would run one time exactly, since after the first
+   iteration, when truth expression is checked, it evaluates to
+   <strong><code>FALSE</code></strong> (<var class="varname">$i</var> is not bigger than 0) and the loop
+   execution ends.
+ </p>
+ <p class="para">
+  Advanced C users may be familiar with a different usage of the
+  <em>do-while</em> loop, to allow stopping execution in
+  the middle of code blocks, by encapsulating them with
+  <em>do-while</em> (0), and using the <a href="control-structures.break.html" class="link"><em>break</em></a>
+  statement.  The following code fragment demonstrates this:
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">do&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"i&nbsp;is&nbsp;not&nbsp;big&nbsp;enough"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">*=&nbsp;</span><span style="color: #0000BB">$factor</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">$minimum_limit</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"i&nbsp;is&nbsp;ok"</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;process&nbsp;i&nbsp;*/<br /><br /></span><span style="color: #007700">}&nbsp;while&nbsp;(</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="simpara">
+  Don&#039;t worry if you don&#039;t understand this right away or at all.
+  You can code scripts and even powerful scripts without using this
+  &#039;feature&#039;.
+  Since PHP 5.3.0, it is possible to use
+  <a href="control-structures.goto.html" class="link"><em>goto</em></a>
+  operator instead of this hack.
+ </p>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

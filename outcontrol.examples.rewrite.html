@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Ouput rewrite usage</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.php.html">Affecting PHP's Behaviour</a></li>
+  <li class="header up"><a href="book.outcontrol.html">Output Control</a></li>
+  <li class="header up"><a href="outcontrol.examples.html">Examples</a></li>
+  <li><a href="outcontrol.examples.basic.html">Basic usage</a></li>
+  <li class="active"><a href="outcontrol.examples.rewrite.html">Ouput rewrite usage</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="outcontrol.examples.basic.html">Basic usage</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="ref.outcontrol.html">Output Control Functions</a></div>
+                <div class="up"><a href="outcontrol.examples.html">Examples</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="outcontrol.examples.rewrite" class="section">
+  <h2 class="title">Ouput rewrite usage</h2>
+  <p class="para">
+   Since PHP 7.1.0, <span class="function">output_add_rewrite_var</span>, <span class="function">output_reset_rewrite_vars</span> use dedicated output buffer. i.e. It does not use <a href="session.configuration.html#ini.session.use-trans-sid" class="link">trans sid</a> output buffer. 
+  </p>
+  <p class="para">
+   <div class="example" id="example-505">
+    <p><strong>Example #1 Output rewrite example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;This&nbsp;code&nbsp;works&nbsp;with&nbsp;PHP&nbsp;7.1.0,&nbsp;7.0.10,&nbsp;5.6.25&nbsp;and&nbsp;up.<br /><br />//&nbsp;HTTP_HOST&nbsp;is&nbsp;default&nbsp;target&nbsp;host.&nbsp;Set&nbsp;manually&nbsp;to&nbsp;make&nbsp;sample&nbsp;code&nbsp;works.<br /></span><span style="color: #0000BB">$_SERVER</span><span style="color: #007700">[</span><span style="color: #DD0000">'HTTP_HOST'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'php.net'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Output&nbsp;rewriter&nbsp;only&nbsp;rewrite&nbsp;form.&nbsp;Add&nbsp;a=href.<br />//&nbsp;Tags&nbsp;can&nbsp;be&nbsp;specified&nbsp;tag_name=url_attr,&nbsp;e.g.&nbsp;img=src,iframe=src<br />//&nbsp;No&nbsp;space&nbsp;allowed&nbsp;between&nbsp;settings.<br />//&nbsp;Form&nbsp;tag&nbsp;is&nbsp;special&nbsp;tag&nbsp;that&nbsp;add&nbsp;hidden&nbsp;input.<br /></span><span style="color: #0000BB">ini_set</span><span style="color: #007700">(</span><span style="color: #DD0000">'url_rewriter.tags'</span><span style="color: #007700">,</span><span style="color: #DD0000">'a=href,form='</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">ini_get</span><span style="color: #007700">(</span><span style="color: #DD0000">'url_rewriter.tags'</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;This&nbsp;is&nbsp;added&nbsp;to&nbsp;URL&nbsp;and&nbsp;form<br /></span><span style="color: #0000BB">output_add_rewrite_var</span><span style="color: #007700">(</span><span style="color: #DD0000">'test'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'value'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;<br /></span>&lt;a&nbsp;href="//php.net/index.php?bug=1234"&gt;bug1234&lt;/a&gt;<br />&lt;form&nbsp;action="https://php.net/?bug=1234&amp;edit=1"&nbsp;action="post"&gt;<br />&nbsp;&lt;input&nbsp;type="text"&nbsp;name="title"&nbsp;/&gt;<br />&lt;/form&gt;</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+&lt;a href=&quot;//php.net/?bug=1234&amp;test=value&quot;&gt;bug1234&lt;/a&gt;
+&lt;form action=&quot;https://php.net/?bug=1234&amp;edit=1&quot; method=&quot;post&quot;&gt;&lt;input type=&quot;hidden&quot; name=&quot;test&quot; value=&quot;value&quot; /&gt;
+ &lt;input type=&quot;text&quot; name=&quot;title&quot; /&gt;
+&lt;/form&gt;
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   Since PHP 7.1.0, output rewrite functions have it&#039;s own INI settings, <a href="outcontrol.configuration.html#ini.url-rewriter.tags" class="link">url_rewriter.tags</a> and <a href="outcontrol.configuration.html#ini.url-rewriter.hosts" class="link">url_rewriter.hosts</a>. 
+  </p>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

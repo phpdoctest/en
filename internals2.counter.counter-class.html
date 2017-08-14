@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: The Counter class</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="internals2.html">PHP at the Core: A Hacker's Guide</a></li>
+  <li class="header up"><a href="internals2.counter.html">The &quot;counter&quot; Extension - A Continuing Example</a></li>
+  <li><a href="internals2.counter.setup.html">Installing/Configuring</a></li>
+  <li><a href="internals2.counter.constants.html">Predefined Constants</a></li>
+  <li><a href="internals2.counter.examples.html">Examples</a></li>
+  <li class="active"><a href="internals2.counter.counter-class.html">Counter</a></li>
+  <li><a href="internals2.counter.basic-interface.html">Basic</a></li>
+  <li><a href="internals2.counter.extended-interface.html">Extended</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="internals2.counter.examples.objective.html">Objective interface</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="internals2.counter.counter-class.construct.html">Counter::__construct</a></div>
+                <div class="up"><a href="internals2.counter.html">The &quot;counter&quot; Extension - A Continuing Example</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="internals2.counter.counter-class" class="reference">
+   <h1 class="title">The Counter class</h1>
+   
+   
+   <div class="partintro">
+    <div class="section" id="internals2.counter.counter-class.intro">
+     <h2 class="title">Introduction</h2>
+     <p class="simpara">
+      Represents a single counter object.
+     </p>
+    </div>
+   
+    <div class="section" id="internals2.counter.counter-class.synopsis">
+     <h2 class="title">Class synopsis</h2>
+     
+     <div class="classsynopsis">
+      <div class="ooclass"><strong class="classname">Counter</strong></div>
+     
+      <div class="classsynopsisinfo">
+       <span class="ooclass"> class <strong class="classname">Counter</strong></span>
+       {</div>
+ 
+      <div class="constructorsynopsis dc-description">
+       <span class="methodname">__construct</span>
+       ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+      [, <span class="methodparam"><span class="type">integer</span> <code class="parameter">$initial_value</code></span>
+      [, <span class="methodparam"><span class="type">integer</span> <code class="parameter">$flags</code></span>
+     ]] )</div>
+
+      <div class="methodsynopsis dc-description">
+      <span class="type">integer</span> <span class="methodname">getValue</span>
+       ( <span class="methodparam">void</span>
+      )</div>
+<div class="methodsynopsis dc-description">
+       <span class="methodname">bumpValue</span>
+       ( <span class="methodparam"><span class="type">integer</span> <code class="parameter">$offset</code></span>
+      )</div>
+<div class="methodsynopsis dc-description">
+      <span class="type"><span class="type void">void</span></span> <span class="methodname">resetValue</span>
+       ( <span class="methodparam">void</span>
+      )</div>
+<div class="methodsynopsis dc-description">
+      <span class="type">mixed</span> <span class="methodname">getMeta</span>
+       ( <span class="methodparam"><span class="type">integer</span> <code class="parameter">$attribute</code></span>
+      )</div>
+<div class="methodsynopsis dc-description">
+      <span class="modifier">static</span>
+      <span class="type">Counter</span> <span class="methodname">getNamed</span>
+       ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+      )</div>
+<div class="methodsynopsis dc-description">
+      <span class="modifier">static</span>
+      <span class="type"><span class="type void">void</span></span> <span class="methodname">setCounterClass</span>
+       ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+      )</div>
+
+     }</div>
+    </div>
+   </div>
+   
+   
+
+   
+
+   
+
+   
+   
+   
+   
+   
+
+   
+
+  <strong>Table of Contents</strong><ul class="chunklist chunklist_reference">
+<li><a href="internals2.counter.counter-class.construct.html">Counter::__construct</a> — Creates an instance of a Counter which maintains a single numeric value.</li>
+<li><a href="internals2.counter.counter-class.getvalue.html">Counter::getValue</a> — Get the current value of a counter.</li>
+<li><a href="internals2.counter.counter-class.bumpvalue.html">Counter::bumpValue</a> — Change the current value of a counter.</li>
+<li><a href="internals2.counter.counter-class.resetvalue.html">Counter::resetValue</a> — Reset the current value of a counter.</li>
+<li><a href="internals2.counter.counter-class.getmeta.html">Counter::getMeta</a> — Return a piece of metainformation about a counter.</li>
+<li><a href="internals2.counter.counter-class.getnamed.html">Counter::getNamed</a> — Retrieve an existing named counter.</li>
+<li><a href="internals2.counter.counter-class.setcounterclass.html">Counter::setCounterClass</a> — Set the class returned by Counter::getNamed.</li>
+</ul>
+</ol>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

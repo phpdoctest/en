@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Other changes</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="appendices.html">Appendices</a></li>
+  <li class="header up"><a href="migration54.html">Migrating from PHP 5.3.x to PHP 5.4.x</a></li>
+  <li><a href="migration54.changes.html">What has changed in PHP 5.4.x</a></li>
+  <li><a href="migration54.incompatible.html">Backward Incompatible Changes</a></li>
+  <li><a href="migration54.new-features.html">New features</a></li>
+  <li><a href="migration54.sapi.html">Changes in SAPI modules</a></li>
+  <li><a href="migration54.deprecated.html">Deprecated features in PHP 5.4.x</a></li>
+  <li><a href="migration54.parameters.html">Changed Functions</a></li>
+  <li><a href="migration54.functions.html">New Functions</a></li>
+  <li><a href="migration54.classes.html">New Classes and Interfaces</a></li>
+  <li><a href="migration54.methods.html">New Methods</a></li>
+  <li><a href="migration54.removed-extensions.html">Removed Extensions</a></li>
+  <li><a href="migration54.extensions-other.html">Other changes to extensions</a></li>
+  <li><a href="migration54.global-constants.html">New Global Constants</a></li>
+  <li><a href="migration54.ini.html">Changes to INI file handling</a></li>
+  <li class="active"><a href="migration54.other.html">Other changes</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="migration54.ini.html">Changes to INI file handling</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="migration53.html">Migrating from PHP 5.2.x to PHP 5.3.x</a></div>
+                <div class="up"><a href="migration54.html">Migrating from PHP 5.3.x to PHP 5.4.x</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="migration54.other" class="section">
+  <h2 class="title">Other changes</h2>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     The default character set for <span class="function">htmlspecialchars</span> 
+     and <span class="function">htmlentities</span> is now <em>UTF-8</em>,
+     instead of <em>ISO-8859-1</em>.  Note that changing your output
+     charset via the <a href="ini.core.html#ini.default-charset" class="link">default_charset</a>
+     configuration setting does not affect htmlspecialchars/htmlentities unless
+     you are passing &quot;&quot; (an empty string) as the encoding parameter to your 
+     <span class="function">htmlspecialchars</span>/<span class="function">htmlentities</span> calls.
+     Generally we do not recommend doing this because you should be able to
+     change your output charset without affecting the runtime charset used by
+     these functions. The safest approach is to explicitly set the charset on
+     each call to <span class="function">htmlspecialchars</span> and 
+     <span class="function">htmlentities</span>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <strong><code>E_ALL</code></strong> now includes <strong><code>E_STRICT</code></strong> level
+     errors in the <a href="errorfunc.configuration.html#ini.error-reporting" class="link">error_reporting</a> configuration directive.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="book.snmp.html" class="link">SNMP</a> now has an OOP API.
+    </span>
+    <span class="simpara">
+      Functions now return <strong><code>FALSE</code></strong> on every error condition including SNMP-related
+      (no such instance, end of MIB, etc). Thus, in particular, breaks previous behavior
+      of get/walk functions returning an empty string on SNMP-related errors.
+    </span>
+    <span class="simpara">
+      Multi OID get/getnext/set queries are now supported.
+    </span>
+    <span class="simpara">
+     Dropped UCD-SNMP compatibility code, consider upgrading to net-snmp v5.3+, Net-SNMP v5.4+ is
+     required for Windows version.
+    </span>
+    <span class="simpara">
+     In sake of adding support for IPv6 DNS name resolution of
+     remote SNMP agent (peer) is done by extension now, not by Net-SNMP library anymore.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="book.openssl.html" class="link">OpenSSL</a> now supports AES.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="features.commandline.html" class="link">CLI SAPI</a> doesn&#039;t terminate any
+     more on fatal errors when using interactive mode with readline support.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <a href="language.variables.superglobals.html" class="link">$_SERVER[&#039;REQUEST_TIME_FLOAT&#039;]</a>
+     has been added to include microsecond precision.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Added new hash algorithms: fnv132, fnv164, joaat
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Chained string offsets - e.g. $a[0][0] where $a is a string - now work.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     Arrays cast from <span class="type">SimpleXMLElement</span> now <em class="emphasis">always</em> contain all nodes instead of
+     just the first matching node. All <span class="type">SimpleXMLElement</span> children are now <em class="emphasis">always</em>
+     printed when using <span class="function">var_dump</span>, <span class="function">var_export</span> and
+     <span class="function">print_r</span>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     It&#039;s now possible to enforce the class&#039; <a href="language.oop5.decon.html" class="link">__construct</a> arguments in an abstract
+     constructor in the base class.
+    </span>
+   </li>
+  </ul>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Creates a chdb file</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li class="header up"><a href="book.chdb.html">chdb</a></li>
+  <li class="header up"><a href="ref.chdb.html">chdb Functions</a></li>
+  <li class="active"><a href="function.chdb-create.html">chdb_create</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="ref.chdb.html">chdb Functions</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="book.curl.html">cURL</a></div>
+                <div class="up"><a href="ref.chdb.html">chdb Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.chdb-create" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">chdb_create</h1>
+  <p class="refpurpose">Creates a chdb file</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.chdb-create-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">chdb_create</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$pathname</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$data</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function">chdb_create</span> creates a chdb file containing the
+   specified key-value pairs.
+  </p>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    chdb files are not portable across little-endian and big-endian
+    environments. Except for that, they are portable across different
+    architectures. Also compatibility across different versions of chdb is not
+    guaranteed.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.chdb-create-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">pathname</code></dt>
+
+    <dd>
+
+     <p class="para">
+      The name of the file to create.
+     </p>
+     <p class="para">
+       If a file with the same name already exists, it is overwritten.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">data</code></dt>
+
+    <dd>
+
+     <p class="para">
+      An array containing the key-value pairs to store in the chdb file.
+     </p>
+     <p class="para">
+      Keys and values are converted to strings before being written to the file,
+      as chdb only support the string type. Note that binary strings are
+      supported as well, both as keys and values.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.chdb-create-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> on success or <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-function.chdb-create-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   Throws an exception in case the chdb file hasn&#039;t been successfully created.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.chdb-create-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-4787">
+   <p><strong>Example #1 <span class="function">chdb_create</span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$data&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'key1'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'value1'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'key2'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'value2'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;...<br /></span><span style="color: #007700">);<br /></span><span style="color: #0000BB">chdb_create</span><span style="color: #007700">(</span><span style="color: #DD0000">'data.chdb'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>
+    The above example will generate a chdb file named
+    <em>data.chdb</em> and containing the key-value pairs defined in
+    <var class="varname">$data</var>.
+   </p></div>
+  </div>
+ </div>
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

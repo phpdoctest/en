@@ -1,0 +1,228 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Parse string to a field-based time value</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.international.html">Human Language and Character Encoding Support</a></li>
+  <li class="header up"><a href="book.intl.html">intl</a></li>
+  <li class="header up"><a href="class.intldateformatter.html">IntlDateFormatter</a></li>
+  <li><a href="intldateformatter.create.html">IntlDateFormatter::create</a></li>
+  <li><a href="intldateformatter.format.html">IntlDateFormatter::format</a></li>
+  <li><a href="intldateformatter.formatobject.html">IntlDateFormatter::formatObject</a></li>
+  <li><a href="intldateformatter.getcalendar.html">IntlDateFormatter::getCalendar</a></li>
+  <li><a href="intldateformatter.getdatetype.html">IntlDateFormatter::getDateType</a></li>
+  <li><a href="intldateformatter.geterrorcode.html">IntlDateFormatter::getErrorCode</a></li>
+  <li><a href="intldateformatter.geterrormessage.html">IntlDateFormatter::getErrorMessage</a></li>
+  <li><a href="intldateformatter.getlocale.html">IntlDateFormatter::getLocale</a></li>
+  <li><a href="intldateformatter.getpattern.html">IntlDateFormatter::getPattern</a></li>
+  <li><a href="intldateformatter.gettimetype.html">IntlDateFormatter::getTimeType</a></li>
+  <li><a href="intldateformatter.gettimezoneid.html">IntlDateFormatter::getTimeZoneId</a></li>
+  <li><a href="intldateformatter.getcalendarobject.html">IntlDateFormatter::getCalendarObject</a></li>
+  <li><a href="intldateformatter.gettimezone.html">IntlDateFormatter::getTimeZone</a></li>
+  <li><a href="intldateformatter.islenient.html">IntlDateFormatter::isLenient</a></li>
+  <li class="active"><a href="intldateformatter.localtime.html">IntlDateFormatter::localtime</a></li>
+  <li><a href="intldateformatter.parse.html">IntlDateFormatter::parse</a></li>
+  <li><a href="intldateformatter.setcalendar.html">IntlDateFormatter::setCalendar</a></li>
+  <li><a href="intldateformatter.setlenient.html">IntlDateFormatter::setLenient</a></li>
+  <li><a href="intldateformatter.setpattern.html">IntlDateFormatter::setPattern</a></li>
+  <li><a href="intldateformatter.settimezoneid.html">IntlDateFormatter::setTimeZoneId</a></li>
+  <li><a href="intldateformatter.settimezone.html">IntlDateFormatter::setTimeZone</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="intldateformatter.islenient.html">IntlDateFormatter::isLenient</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="intldateformatter.parse.html">IntlDateFormatter::parse</a></div>
+                <div class="up"><a href="class.intldateformatter.html">IntlDateFormatter</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="intldateformatter.localtime" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">IntlDateFormatter::localtime</h1>
+  <h1 class="refname">datefmt_localtime</h1>
+  <p class="refpurpose">Parse string to a field-based time value</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-intldateformatter.localtime-description">
+  <h3 class="title">Description</h3>
+  <p class="para">
+   Object oriented style
+  </p>
+   <div class="methodsynopsis dc-description">
+    <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">IntlDateFormatter::localtime</span>
+     ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$value</code></span>
+    [, <span class="methodparam"><span class="type">int</span> <code class="parameter reference">&$position</code></span>
+   ] )</div>
+
+  <p class="para rdfs-comment">
+   Procedural style
+  </p>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname">datefmt_localtime</span>
+   ( <span class="methodparam"><span class="type">IntlDateFormatter</span> <code class="parameter">$fmt</code></span>
+  , <span class="methodparam"><span class="type">string</span> <code class="parameter">$value</code></span>
+  [, <span class="methodparam"><span class="type">int</span> <code class="parameter reference">&$position</code></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Converts string $value to a field-based time value ( an array of various fields), starting at
+$parse_pos and consuming as much of the input value as possible.
+  </p> 
+  </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-intldateformatter.localtime-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">fmt</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The formatter resource      
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">value</code></dt>
+
+     <dd>
+
+      <p class="para">
+       string to convert to a time      
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">position</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Position at which to start the parsing in $value (zero-based).
+       If no error occurs before $value is consumed, $parse_pos will contain -1
+       otherwise it will contain the position at which parsing ended .
+       If $parse_pos &gt; strlen($value), the parse fails immediately.  
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+   
+ 
+ <div class="refsect1 returnvalues" id="refsect1-intldateformatter.localtime-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Localtime compatible array of integers  : contains 24 hour clock value in tm_hour field
+   </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-intldateformatter.localtime-examples">
+  <h3 class="title">Examples</h3>
+   <div class="example" id="example-2908">
+    <p><strong>Example #1 <span class="function">datefmt_localtime</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$fmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">datefmt_create</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'en_US'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">FULL</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">FULL</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'America/Los_Angeles'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">GREGORIAN<br /></span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$arr&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">datefmt_localtime</span><span style="color: #007700">(</span><span style="color: #0000BB">$fmt</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Wednesday,&nbsp;December&nbsp;31,&nbsp;1969&nbsp;4:00:00&nbsp;PM&nbsp;PT'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">'First&nbsp;parsed&nbsp;output&nbsp;is&nbsp;'</span><span style="color: #007700">;<br />if&nbsp;(</span><span style="color: #0000BB">$arr</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">$arr&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$key</span><span style="color: #DD0000">&nbsp;:&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #DD0000">&nbsp;,&nbsp;"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <div class="example" id="example-2909">
+    <p><strong>Example #2 OO example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$fmt&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'en_US'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">FULL</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">FULL</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'America/Los_Angeles'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">IntlDateFormatter</span><span style="color: #007700">::</span><span style="color: #0000BB">GREGORIAN<br /></span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$arr&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$fmt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">localtime</span><span style="color: #007700">(</span><span style="color: #DD0000">'Wednesday,&nbsp;December&nbsp;31,&nbsp;1969&nbsp;4:00:00&nbsp;PM&nbsp;PT'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">'First&nbsp;parsed&nbsp;output&nbsp;is&nbsp;'</span><span style="color: #007700">;<br />if&nbsp;(</span><span style="color: #0000BB">$arr</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">$arr&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$key</span><span style="color: #DD0000">&nbsp;:&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #DD0000">&nbsp;,&nbsp;"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+     <p class="para">The above example will output:</p>
+     <div class="example-contents screen">
+         <div class="cdata"><pre>
+First parsed output is tm_sec : 0 , tm_min : 0 , tm_hour : 16 , tm_year : 1969 , 
+tm_mday : 31 , tm_wday : 4 , tm_yday : 365 , tm_mon : 11 , tm_isdst : 0 , 
+</pre></div>
+     </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-intldateformatter.localtime-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+    <ul class="simplelist">
+    <li class="member"><span class="function">datefmt_create</span></li>
+    <li class="member"><span class="function">datefmt_format</span></li>
+    <li class="member"><span class="function">datefmt_parse</span></li>
+    <li class="member"><span class="function">datefmt_get_error_code</span></li>
+    <li class="member"><span class="function">datefmt_get_error_message</span></li>
+    </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

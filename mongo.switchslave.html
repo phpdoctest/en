@@ -1,0 +1,180 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Choose a new secondary for slaveOkay reads</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.mongo.html">Mongo</a></li>
+  <li class="header up"><a href="mongo.miscellaneous.html">Miscellaneous</a></li>
+  <li class="header up"><a href="class.mongo.html">Mongo</a></li>
+  <li><a href="mongo.connectutil.html">Mongo::connectUtil</a></li>
+  <li><a href="mongo.construct.html">Mongo::__construct</a></li>
+  <li><a href="mongo.getpoolsize.html">Mongo::getPoolSize</a></li>
+  <li><a href="mongo.getslave.html">Mongo::getSlave</a></li>
+  <li><a href="mongo.getslaveokay.html">Mongo::getSlaveOkay</a></li>
+  <li><a href="mongo.pooldebug.html">Mongo::poolDebug</a></li>
+  <li><a href="mongo.setpoolsize.html">Mongo::setPoolSize</a></li>
+  <li><a href="mongo.setslaveokay.html">Mongo::setSlaveOkay</a></li>
+  <li class="active"><a href="mongo.switchslave.html">Mongo::switchSlave</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mongo.setslaveokay.html">Mongo::setSlaveOkay</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="ref.mongo.html">Mongo Functions</a></div>
+                <div class="up"><a href="class.mongo.html">Mongo</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mongo.switchslave" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Mongo::switchSlave</h1>
+  <p class="refpurpose">Choose a new secondary for slaveOkay reads</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mongo.switchslave-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Mongo::switchSlave</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+  <p class="para rdfs-comment">
+   This choses a random secondary for a connection to read from.  It is called
+   automatically by the driver and should not need to be used.  It calls
+   <span class="function">MongoClient::getHosts</span> (to refresh the status of hosts)
+   and <span class="function">Mongo::getSlave</span> (to get the return value).
+  </p>
+
+  <p class="para">
+   See <a href="mongo.queries.html" class="link">the query section</a> of this manual for
+   information on distributing reads to secondaries.
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mongo.switchslave-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">This function has no parameters.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-mongo.switchslave-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   The address of the secondary this connection is using for reads. This may be
+   the same as the previous address as addresses are randomly chosen. It may
+   return only one address if only one secondary (or only the primary) is
+   available.
+  </p>
+  <p class="para">
+   For example, if we had a three member replica set with a primary, secondary,
+   and arbiter this method would always return the address of the secondary.
+   If the secondary became unavailable, this method would always return the
+   address of the primary.  If the primary also became unavailable, this method
+   would throw an exception, as an arbiter cannot handle reads.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-mongo.switchslave-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   Throws a <span class="classname">MongoException</span> (error code 15) if it is 
+   called on a non-replica-set connection.  It will also throw 
+   <span class="classname">MongoException</span>s if it cannot find anyone (primary or
+   secondary) to read from (error code 16).
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-mongo.switchslave-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>1.2.11</td>
+       <td>Emits <strong><code>E_DEPRECATED</code></strong> when used.</td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-mongo.switchslave-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li class="member"><a href="mongo.readpreferences.html" class="xref">Read Preferences</a></li>
+  </ul>
+ </div>
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

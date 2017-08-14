@@ -1,0 +1,218 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Changed functions</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="appendices.html">Appendices</a></li>
+  <li class="header up"><a href="migration71.html">Migrating from PHP 7.0.x to PHP 7.1.x</a></li>
+  <li><a href="migration71.new-features.html">New features</a></li>
+  <li><a href="migration71.new-functions.html">New functions</a></li>
+  <li><a href="migration71.constants.html">New global constants</a></li>
+  <li><a href="migration71.incompatible.html">Backward incompatible changes</a></li>
+  <li><a href="migration71.deprecated.html">Deprecated features in PHP 7.1.x</a></li>
+  <li class="active"><a href="migration71.changed-functions.html">Changed functions</a></li>
+  <li><a href="migration71.other-changes.html">Other changes</a></li>
+  <li><a href="migration71.windows-support.html">Windows Support</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="migration71.deprecated.html">Deprecated features in PHP 7.1.x</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="migration71.other-changes.html">Other changes</a></div>
+                <div class="up"><a href="migration71.html">Migrating from PHP 7.0.x to PHP 7.1.x</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="migration71.changed-functions" class="sect1">
+ <h2 class="title">Changed functions</h2>
+
+ <div class="sect2" id="migration71.changed-functions.core">
+  <h3 class="title">PHP Core</h3>
+  
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">getopt</span> has an optional third parameter that exposes
+     the index of the next element in the argument vector list to be processed.
+     This is done via a by-ref parameter.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">getenv</span> no longer requires its parameter. If the
+     parameter is omitted, then the current environment variables will be
+     returned as an associative array.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">get_headers</span> now has an additional parameter to enable
+     for the passing of custom stream contexts.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">long2ip</span> now also accepts an integer as a parameter.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">output_reset_rewrite_vars</span> no longer resets session
+     URL rewrite variables.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">parse_url</span> is now more restrictive and supports
+     RFC3986.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">unpack</span> now accepts an optional third parameter to
+     specify the offset to begin unpacking from.
+    </span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration71.changed-functions.filesystem">
+  <h3 class="title">File System</h3>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">file_get_contents</span> now accepts a negative seek offset
+     if the stream is seekable.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">tempnam</span> now emits a notice when falling back to the
+     system&#039;s temp directory.
+    </span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration71.changed-functions.json">
+  <h3 class="title">JSON</h3>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">json_encode</span> now accepts a new option,
+     <strong><code>JSON_UNESCAPED_LINE_TERMINATORS</code></strong>, to disable the
+     escaping of U+2028 and U+2029 characters when
+     <strong><code>JSON_UNESCAPED_UNICODE</code></strong> is supplied.
+    </span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration71.changed-functions.mbstring">
+  <h3 class="title">Multibyte String</h3>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">mb_ereg</span> now rejects illegal byte sequences.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">mb_ereg_replace</span> now rejects illegal byte sequences.
+    </span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration71.changed-functions.pdo">
+  <h3 class="title">PDO</h3>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+      <span class="methodname">PDO::lastInsertId</span> for PostgreSQL will now trigger an error
+     when <em>nextval</em> has not been called for the current
+     session (the postgres connection).
+    </span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration71.changed-functions.pgsql">
+  <h3 class="title">PostgreSQL</h3>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">pg_last_notice</span> now accepts an optional parameter to
+     specify an operation. This can be done with one of the following new
+     constants: <strong><code>PGSQL_NOTICE_LAST</code></strong>,
+     <strong><code>PGSQL_NOTICE_ALL</code></strong>, or
+     <strong><code>PGSQL_NOTICE_CLEAR</code></strong>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">pg_fetch_all</span> now accepts an optional second parameter
+     to specify the result type (similar to the third parameter of
+     <span class="function">pg_fetch_array</span>).
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">pg_select</span> now accepts an optional fourth parameter to
+     specify the result type (similar to the third parameter of
+     <span class="function">pg_fetch_array</span>).
+    </span>
+   </li>
+  </ul>
+ </div>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

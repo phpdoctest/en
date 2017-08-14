@@ -1,0 +1,195 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Returns the number of rows affected by the last SQL statement</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.abstract.html">Abstraction Layers</a></li>
+  <li class="header up"><a href="book.pdo.html">PDO</a></li>
+  <li class="header up"><a href="class.pdostatement.html">PDOStatement</a></li>
+  <li><a href="pdostatement.bindcolumn.html">PDOStatement::bindColumn</a></li>
+  <li><a href="pdostatement.bindparam.html">PDOStatement::bindParam</a></li>
+  <li><a href="pdostatement.bindvalue.html">PDOStatement::bindValue</a></li>
+  <li><a href="pdostatement.closecursor.html">PDOStatement::closeCursor</a></li>
+  <li><a href="pdostatement.columncount.html">PDOStatement::columnCount</a></li>
+  <li><a href="pdostatement.debugdumpparams.html">PDOStatement::debugDumpParams</a></li>
+  <li><a href="pdostatement.errorcode.html">PDOStatement::errorCode</a></li>
+  <li><a href="pdostatement.errorinfo.html">PDOStatement::errorInfo</a></li>
+  <li><a href="pdostatement.execute.html">PDOStatement::execute</a></li>
+  <li><a href="pdostatement.fetch.html">PDOStatement::fetch</a></li>
+  <li><a href="pdostatement.fetchall.html">PDOStatement::fetchAll</a></li>
+  <li><a href="pdostatement.fetchcolumn.html">PDOStatement::fetchColumn</a></li>
+  <li><a href="pdostatement.fetchobject.html">PDOStatement::fetchObject</a></li>
+  <li><a href="pdostatement.getattribute.html">PDOStatement::getAttribute</a></li>
+  <li><a href="pdostatement.getcolumnmeta.html">PDOStatement::getColumnMeta</a></li>
+  <li><a href="pdostatement.nextrowset.html">PDOStatement::nextRowset</a></li>
+  <li class="active"><a href="pdostatement.rowcount.html">PDOStatement::rowCount</a></li>
+  <li><a href="pdostatement.setattribute.html">PDOStatement::setAttribute</a></li>
+  <li><a href="pdostatement.setfetchmode.html">PDOStatement::setFetchMode</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="pdostatement.nextrowset.html">PDOStatement::nextRowset</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="pdostatement.setattribute.html">PDOStatement::setAttribute</a></div>
+                <div class="up"><a href="class.pdostatement.html">PDOStatement</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="pdostatement.rowcount" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">PDOStatement::rowCount</h1>
+  <p class="refpurpose">
+   Returns the number of rows affected by the last SQL statement
+  </p>
+ </div>
+ <div class="refsect1 description" id="refsect1-pdostatement.rowcount-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">PDOStatement::rowCount</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+  <p class="para rdfs-comment">
+   <span class="function">PDOStatement::rowCount</span> returns the number of
+   rows affected by the last DELETE, INSERT, or UPDATE statement
+   executed by the corresponding <em>PDOStatement</em> object. 
+  </p>
+  <p class="para">
+   If the last SQL statement executed by the associated 
+   <em>PDOStatement</em> was a SELECT statement, some databases
+   may return the number of rows returned by that statement. However, this
+   behaviour is not guaranteed for all databases and should not be relied
+   on for portable applications.
+  </p>
+ </div>
+
+ 
+  <div class="refsect1 returnvalues" id="refsect1-pdostatement.rowcount-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the number of rows.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-pdostatement.rowcount-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-1048">
+    <p><strong>Example #1 Return the number of deleted rows</strong></p>
+    <div class="example-contents"><p>
+     <span class="function">PDOStatement::rowCount</span> returns the number of
+     rows affected by a DELETE, INSERT, or UPDATE statement.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;Delete&nbsp;all&nbsp;rows&nbsp;from&nbsp;the&nbsp;FRUIT&nbsp;table&nbsp;*/<br /></span><span style="color: #0000BB">$del&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #DD0000">'DELETE&nbsp;FROM&nbsp;fruit'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$del</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">/*&nbsp;Return&nbsp;number&nbsp;of&nbsp;rows&nbsp;that&nbsp;were&nbsp;deleted&nbsp;*/<br /></span><span style="color: #007700">print(</span><span style="color: #DD0000">"Return&nbsp;number&nbsp;of&nbsp;rows&nbsp;that&nbsp;were&nbsp;deleted:\n"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$count&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$del</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">rowCount</span><span style="color: #007700">();<br />print(</span><span style="color: #DD0000">"Deleted&nbsp;</span><span style="color: #0000BB">$count</span><span style="color: #DD0000">&nbsp;rows.\n"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Return number of rows that were deleted:
+Deleted 9 rows.
+</pre></div>
+    </div>
+   </div>
+   <div class="example" id="example-1049">
+    <p><strong>Example #2 Counting rows returned by a SELECT statement</strong></p>
+    <div class="example-contents"><p>
+     For most databases, <span class="function">PDOStatement::rowCount</span> does not
+     return the number of rows affected by a SELECT statement. Instead, use
+     <span class="function">PDO::query</span> to issue a SELECT COUNT(*) statement
+     with the same predicates as your intended SELECT statement, then use
+     <span class="function">PDOStatement::fetchColumn</span> to retrieve the number
+     of rows that will be returned. Your application can then perform the
+     correct action.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$sql&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;COUNT(*)&nbsp;FROM&nbsp;fruit&nbsp;WHERE&nbsp;calories&nbsp;&gt;&nbsp;100"</span><span style="color: #007700">;<br />if&nbsp;(</span><span style="color: #0000BB">$res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$conn</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">))&nbsp;{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;Check&nbsp;the&nbsp;number&nbsp;of&nbsp;rows&nbsp;that&nbsp;match&nbsp;the&nbsp;SELECT&nbsp;statement&nbsp;*/<br />&nbsp;&nbsp;</span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$res</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetchColumn</span><span style="color: #007700">()&nbsp;&gt;&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;Issue&nbsp;the&nbsp;real&nbsp;SELECT&nbsp;statement&nbsp;and&nbsp;work&nbsp;with&nbsp;the&nbsp;results&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sql&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;name&nbsp;FROM&nbsp;fruit&nbsp;WHERE&nbsp;calories&nbsp;&gt;&nbsp;100"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">)&nbsp;as&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #DD0000">"Name:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'NAME'</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;No&nbsp;rows&nbsp;matched&nbsp;--&nbsp;do&nbsp;something&nbsp;else&nbsp;*/<br />&nbsp;&nbsp;</span><span style="color: #007700">else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #DD0000">"No&nbsp;rows&nbsp;matched&nbsp;the&nbsp;query."</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+apple
+banana
+orange
+pear
+</pre></div>
+    </div>
+   </div>
+
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-pdostatement.rowcount-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">PDOStatement::columnCount</span></li>
+    <li class="member"><span class="function">PDOStatement::fetchColumn</span></li>
+    <li class="member"><span class="function">PDO::query</span></li>
+   </ul>
+  </p>
+
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

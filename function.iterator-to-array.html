@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Copy the iterator into an array</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.spl.html">SPL</a></li>
+  <li class="header up"><a href="ref.spl.html">SPL Functions</a></li>
+  <li><a href="function.class-implements.html">class_implements</a></li>
+  <li><a href="function.class-parents.html">class_parents</a></li>
+  <li><a href="function.class-uses.html">class_uses</a></li>
+  <li><a href="function.iterator-apply.html">iterator_apply</a></li>
+  <li><a href="function.iterator-count.html">iterator_count</a></li>
+  <li class="active"><a href="function.iterator-to-array.html">iterator_to_array</a></li>
+  <li><a href="function.spl-autoload-call.html">spl_autoload_call</a></li>
+  <li><a href="function.spl-autoload-extensions.html">spl_autoload_extensions</a></li>
+  <li><a href="function.spl-autoload-functions.html">spl_autoload_functions</a></li>
+  <li><a href="function.spl-autoload-register.html">spl_autoload_register</a></li>
+  <li><a href="function.spl-autoload-unregister.html">spl_autoload_unregister</a></li>
+  <li><a href="function.spl-autoload.html">spl_autoload</a></li>
+  <li><a href="function.spl-classes.html">spl_classes</a></li>
+  <li><a href="function.spl-object-hash.html">spl_object_hash</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.iterator-count.html">iterator_count</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.spl-autoload-call.html">spl_autoload_call</a></div>
+                <div class="up"><a href="ref.spl.html">SPL Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.iterator-to-array" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">iterator_to_array</h1>
+  <p class="refpurpose">Copy the iterator into an array</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.iterator-to-array-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname">iterator_to_array</span>
+    ( <span class="methodparam"><span class="type">Traversable</span> <code class="parameter">$iterator</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$use_keys</code><span class="initializer"> = true</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Copy the elements of an iterator into an array.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.iterator-to-array-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">iterator</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The iterator being copied.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">use_keys</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Whether to use the iterator element keys as index.
+      </p>
+      <p class="para">
+       In PHP 5.5 and later, if a key is an <span class="type">array</span> or
+       <span class="type">object</span>, a warning will be generated. <strong><code>NULL</code></strong> keys will be
+       converted to an empty string, <span class="type">double</span> keys will be
+       truncated to their <span class="type">integer</span> counterpart,
+       <span class="type">resource</span> keys will generate a warning and be converted to
+       their resource ID, and <span class="type">boolean</span> keys will be converted to
+       integers.
+      </p>
+      <blockquote class="note"><p><strong class="note">Note</strong>: 
+       <p class="para">
+        If this parameter is not set or set to <strong><code>TRUE</code></strong>, duplicate keys will be
+        overwritten. The last value with a given key will be in the returned
+        <span class="type">array</span>. Set this paramater to <strong><code>FALSE</code></strong> to get all the values
+        in any case.
+       </p>
+      </p></blockquote>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.iterator-to-array-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   An <span class="type">array</span> containing the elements of the <code class="parameter">iterator</code>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.iterator-to-array-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.5.0</td>
+       <td>
+        <span class="function">iterator_to_array</span> gained support for key types
+        other than <span class="type">integer</span> and <span class="type">string</span> when the
+        <code class="parameter">use_keys</code> parameter is enabled.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.2.1</td>
+       <td>
+        The <code class="parameter">use_keys</code> parameter was added.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.iterator-to-array-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="regexiterator.getmode.example.basic">
+    <p><strong>Example #1 <span class="function">iterator_to_array</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$iterator&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">ArrayIterator</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'recipe'</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">'pancakes'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'egg'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'milk'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'flour'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">iterator_to_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$iterator</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">iterator_to_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$iterator</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+array(4) {
+  [&quot;recipe&quot;]=&gt;
+  string(8) &quot;pancakes&quot;
+  [0]=&gt;
+  string(3) &quot;egg&quot;
+  [1]=&gt;
+  string(4) &quot;milk&quot;
+  [2]=&gt;
+  string(5) &quot;flour&quot;
+}
+array(4) {
+  [0]=&gt;
+  string(8) &quot;pancakes&quot;
+  [1]=&gt;
+  string(3) &quot;egg&quot;
+  [2]=&gt;
+  string(4) &quot;milk&quot;
+  [3]=&gt;
+  string(5) &quot;flour&quot;
+}
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

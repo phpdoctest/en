@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Examples</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.webservice.html">Web Services</a></li>
+  <li class="header up"><a href="book.sca.html">SCA</a></li>
+  <li><a href="intro.sca.html">Introduction</a></li>
+  <li><a href="sca.setup.html">Installing/Configuring</a></li>
+  <li><a href="sca.constants.html">Predefined Constants</a></li>
+  <li class="active"><a href="sca.examples.html">Examples</a></li>
+  <li><a href="ref.sca.html">SCA Functions</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="sca.constants.html">Predefined Constants</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="sca.examples.structure.html">The structure of a Service Component</a></div>
+                <div class="up"><a href="book.sca.html">SCA</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="sca.examples" class="chapter">
+ <h1>Examples</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="sca.examples.structure.html">The structure of a Service Component</a></li>
+<li><a href="sca.examples.proxies.html">Obtaining a proxy for another Service Component</a></li>
+<li><a href="sca.examples.calling.html">Calling another Service Component</a></li>
+<li><a href="sca.examples.nonscascript.html">Locating and calling services from a script which is not an
+   SCA Component</a></li>
+<li><a href="sca.examples.exposing-webservice.html">Exposing a Service Component as a Web service</a></li>
+<li><a href="sca.examples.deploy.html">Deploying an SCA component</a></li>
+<li><a href="sca.examples.obtaining-wsdl.html">Obtaining the WSDL for an SCA component offering a Service as
+   a Web service</a></li>
+<li><a href="sca.examples.understanding-wsdl.html">Understanding how the WSDL is generated</a></li>
+<li><a href="sca.examples.structures.html">Working with Data Structures</a></li>
+<li><a href="sca.examples.errorhandling.html">Error handling</a></li>
+</ul>
+
+ <p class="para"> 
+  The examples in the subsequent sections illustrate the
+  following aspects of PHP for SCA: 
+ </p>
+ 
+ 
+ <ul class="itemizedlist">
+  <li class="listitem">
+   <p class="para">
+    How PHP annotations are used to define PHP classes as SCA
+    components, and how annotations are used to define the
+    services.
+   </p>
+  </li>
+  <li class="listitem">
+   <p class="para">
+    How an SCA component can be exposed as a Web service
+   </p>
+  </li>
+  <li class="listitem">
+   <p class="para">
+    How an SCA component can consume a Web service, whether
+    provided by another SCA component or by some other service which
+    knows nothing of SCA 
+   </p>
+  </li>
+  <li class="listitem">
+   <p class="para">
+    How an SCA component can call another SCA component locally
+    (within the same process and on the same call stack)
+   </p>
+  </li>
+  <li class="listitem">
+   <p class="para">
+    How a client script which is not an SCA component can use the
+    getService call to obtain a proxy for an SCA component.
+   </p>
+  </li>
+  <li class="listitem">
+   <p class="para">
+    How data structures such as Addresses, or Puchase Orders,
+    are represented as Service Data Objects, and handled. 
+   </p>
+  </li>
+  <li class="listitem">
+   <p class="para">
+    How SCA components are deployed, and in particular how and
+    when WSDL is generated for a service. 
+   </p>
+  </li>
+  <li class="listitem">
+   <p class="para">
+    How parameters are always passed by value (and not by
+    reference) between components, even when the calls are local.
+    This ensures that the semantics of a call do not change depending on
+    the location of a component. 
+   </p>
+  </li>
+  <li class="listitem">
+   <p class="para">
+    How positional parameters to a service are supported, even
+    when the underlying WSDL is document literal wrapped, and
+    naturally supports only named parameters. 
+   </p>
+  </li>
+  <li class="listitem">
+   <p class="para">
+    How business and runtime exceptions are handled.
+   </p>
+  </li>
+  
+ </ul>
+ 
+   
+ 
+ 
+ 
+   
+ 
+ 
+ 
+   
+ 
+ 
+ 
+   
+ 
+ 
+ 
+   
+ 
+ 
+ 
+   
+ 
+ 
+ 
+
+ 
+ 
+ 
+   
+ 
+ 
+ 
+   
+ 
+ 
+   
+ 
+ 
+   
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

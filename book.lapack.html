@@ -1,0 +1,362 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Lapack</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.math.html">Mathematical Extensions</a></li>
+  <li><a href="book.bc.html">BC Math</a></li>
+  <li><a href="book.gmp.html">GMP</a></li>
+  <li class="active"><a href="book.lapack.html">Lapack</a></li>
+  <li><a href="book.math.html">Math</a></li>
+  <li><a href="book.stats.html">Statistics</a></li>
+  <li><a href="book.trader.html">Trader</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="class.gmp.html">GMP</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="intro.lapack.html">Introduction</a></div>
+                <div class="up"><a href="refs.math.html">Mathematical Extensions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="book.lapack" class="book">
+ <h1>Lapack</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="intro.lapack.html">Introduction</a></li>
+<li><a href="lapack.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_title">
+<li><a href="lapack.requirements.html">Requirements</a></li>
+<li><a href="lapack.installation.html">Installation</a></li>
+<li><a href="lapack.configuration.html">Runtime Configuration</a></li>
+<li><a href="lapack.resources.html">Resource Types</a></li>
+</ul>
+</li>
+<li><a href="lapack.constants.html">Predefined Constants</a></li>
+<li><a href="class.lapack.html">Lapack</a> — The Lapack class<ul class="chunklist chunklist_title">
+<li><a href="lapack.eigenvalues.html">Lapack::eigenValues</a> — This function returns the eigenvalues for a given square matrix</li>
+<li><a href="lapack.identity.html">Lapack::identity</a> — Return an identity matrix</li>
+<li><a href="lapack.leastsquaresbyfactorisation.html">Lapack::leastSquaresByFactorisation</a> — Calculate the linear least squares solution of a matrix using QR factorisation</li>
+<li><a href="lapack.leastsquaresbysvd.html">Lapack::leastSquaresBySVD</a> — Solve the linear least squares problem, using SVD</li>
+<li><a href="lapack.pseudoinverse.html">Lapack::pseudoInverse</a> — Calculate the inverse of a matrix</li>
+<li><a href="lapack.singularvalues.html">Lapack::singularValues</a> — Calculated the singular values of a matrix</li>
+<li><a href="lapack.solvelinearequation.html">Lapack::solveLinearEquation</a> — Solve a system of linear equations</li>
+</ul>
+</li>
+<li><a href="class.lapackexception.html">LapackException</a> — The LapackException class</li>
+</ul>
+
+ 
+
+ 
+
+ 
+ 
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+ 
+ 
+ 
+
+
+
+ <h1 class="title">The Lapack class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="lapack.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+     LAPACK is written in Fortran 90 and provides routines for solving systems of simultaneous linear equations, least-squares solutions of linear systems of equations, eigenvalue problems, and singular value problems. This extension wraps the LAPACKE C bindings to allow access to several processes exposed by the library. Most functions work with arrays of arrays, representing rectangular matrices in row major order - so a two by two matrix [1 2; 3 4] would be array(array(1, 2), array(3, 4)). 
+   </p>
+   <p class="para">All of the functions are called statically, for example $eig = Lapack::eigenvalues($a);</p>
+  </div>
+
+
+  <div class="section" id="lapack.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">Lapack</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">Lapack</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">array</span> <span class="methodname">eigenValues</span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$a</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$left</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$right</code></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">array</span> <span class="methodname">identity</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$n</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">array</span> <span class="methodname">leastSquaresByFactorisation</span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$a</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$b</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">array</span> <span class="methodname">leastSquaresBySVD</span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$a</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$b</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">array</span> <span class="methodname">pseudoInverse</span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$a</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">array</span> <span class="methodname">singularValues</span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$a</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">array</span> <span class="methodname">solveLinearEquation</span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$a</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$b</code></span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+ <h1 class="title">The LapackException class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="lapackexception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Exception thrown when an error is caught in the LAPACK functions
+   </p>
+  </div>
+
+
+  <div class="section" id="lapackexception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">lapackexception</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">lapackexception</strong>
+     </span>
+     
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> Exception</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$message</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$code</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$file</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$line</var>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">Throwable</span> <span class="methodname">Exception::getPrevious</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">Exception::getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getFile</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">Exception::getLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">Exception::getTrace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getTraceAsString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span>  <span class="methodname">Exception::__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">Exception::__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+   }</div>
+
+
+  </div>
+
+  
+ </div>
+
+
+
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

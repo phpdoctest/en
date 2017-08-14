@@ -1,0 +1,928 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: SNMP</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li><a href="book.chdb.html">chdb</a></li>
+  <li><a href="book.curl.html">cURL</a></li>
+  <li><a href="book.event.html">Event</a></li>
+  <li><a href="book.fam.html">FAM</a></li>
+  <li><a href="book.ftp.html">FTP</a></li>
+  <li><a href="book.gearman.html">Gearman</a></li>
+  <li><a href="book.net-gopher.html">Gopher</a></li>
+  <li><a href="book.gupnp.html">Gupnp</a></li>
+  <li><a href="book.hwapi.html">Hyperwave API</a></li>
+  <li><a href="book.ldap.html">LDAP</a></li>
+  <li><a href="book.memcache.html">Memcache</a></li>
+  <li><a href="book.memcached.html">Memcached</a></li>
+  <li><a href="book.mqseries.html">mqseries</a></li>
+  <li><a href="book.network.html">Network</a></li>
+  <li><a href="book.rrd.html">RRD</a></li>
+  <li><a href="book.sam.html">SAM</a></li>
+  <li class="active"><a href="book.snmp.html">SNMP</a></li>
+  <li><a href="book.sockets.html">Sockets</a></li>
+  <li><a href="book.ssh2.html">SSH2</a></li>
+  <li><a href="book.stomp.html">Stomp</a></li>
+  <li><a href="book.svm.html">SVM</a></li>
+  <li><a href="book.svn.html">SVN</a></li>
+  <li><a href="book.tcpwrap.html">TCP</a></li>
+  <li><a href="book.varnish.html">Varnish</a></li>
+  <li><a href="book.yaz.html">YAZ</a></li>
+  <li><a href="book.nis.html">YP/NIS</a></li>
+  <li><a href="book.zmq.html">0MQ messaging</a></li>
+  <li><a href="book.zookeeper.html">ZooKeeper</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="sammessage.header.html">SAMMessage::header</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="intro.snmp.html">Introduction</a></div>
+                <div class="up"><a href="refs.remote.other.html">Other Services</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="book.snmp" class="book">
+ 
+ <h1>SNMP</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="intro.snmp.html">Introduction</a></li>
+<li><a href="snmp.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_title">
+<li><a href="snmp.requirements.html">Requirements</a></li>
+<li><a href="snmp.installation.html">Installation</a></li>
+<li><a href="snmp.configuration.html">Runtime Configuration</a></li>
+<li><a href="snmp.resources.html">Resource Types</a></li>
+</ul>
+</li>
+<li><a href="snmp.constants.html">Predefined Constants</a></li>
+<li><a href="ref.snmp.html">SNMP Functions</a><ul class="chunklist chunklist_title">
+<li><a href="function.snmp-get-quick-print.html">snmp_get_quick_print</a> — Fetches the current value of the UCD library's quick_print setting</li>
+<li><a href="function.snmp-get-valueretrieval.html">snmp_get_valueretrieval</a> — Return the method how the SNMP values will be returned</li>
+<li><a href="function.snmp-read-mib.html">snmp_read_mib</a> — Reads and parses a MIB file into the active MIB tree</li>
+<li><a href="function.snmp-set-enum-print.html">snmp_set_enum_print</a> — Return all values that are enums with their enum value instead of the raw integer</li>
+<li><a href="function.snmp-set-oid-numeric-print.html">snmp_set_oid_numeric_print</a> — Set the OID output format</li>
+<li><a href="function.snmp-set-oid-output-format.html">snmp_set_oid_output_format</a> — Set the OID output format</li>
+<li><a href="function.snmp-set-quick-print.html">snmp_set_quick_print</a> — Set the value of quick_print within the UCD SNMP library</li>
+<li><a href="function.snmp-set-valueretrieval.html">snmp_set_valueretrieval</a> — Specify the method how the SNMP values will be returned</li>
+<li><a href="function.snmp2-get.html">snmp2_get</a> — Fetch an SNMP object</li>
+<li><a href="function.snmp2-getnext.html">snmp2_getnext</a> — Fetch the SNMP object which follows the given object id</li>
+<li><a href="function.snmp2-real-walk.html">snmp2_real_walk</a> — Return all objects including their respective object ID within the specified one</li>
+<li><a href="function.snmp2-set.html">snmp2_set</a> — Set the value of an SNMP object</li>
+<li><a href="function.snmp2-walk.html">snmp2_walk</a> — Fetch all the SNMP objects from an agent</li>
+<li><a href="function.snmp3-get.html">snmp3_get</a> — Fetch an SNMP object</li>
+<li><a href="function.snmp3-getnext.html">snmp3_getnext</a> — Fetch the SNMP object which follows the given object id</li>
+<li><a href="function.snmp3-real-walk.html">snmp3_real_walk</a> — Return all objects including their respective object ID within the specified one</li>
+<li><a href="function.snmp3-set.html">snmp3_set</a> — Set the value of an SNMP object</li>
+<li><a href="function.snmp3-walk.html">snmp3_walk</a> — Fetch all the SNMP objects from an agent</li>
+<li><a href="function.snmpget.html">snmpget</a> — Fetch an SNMP object</li>
+<li><a href="function.snmpgetnext.html">snmpgetnext</a> — Fetch the SNMP object which follows the given object id</li>
+<li><a href="function.snmprealwalk.html">snmprealwalk</a> — Return all objects including their respective object ID within the specified one</li>
+<li><a href="function.snmpset.html">snmpset</a> — Set the value of an SNMP object</li>
+<li><a href="function.snmpwalk.html">snmpwalk</a> — Fetch all the SNMP objects from an agent</li>
+<li><a href="function.snmpwalkoid.html">snmpwalkoid</a> — Query for a tree of information about a network entity</li>
+</ul>
+</li>
+<li><a href="class.snmp.html">SNMP</a> — The SNMP class<ul class="chunklist chunklist_title">
+<li><a href="snmp.close.html">SNMP::close</a> — Close SNMP session</li>
+<li><a href="snmp.construct.html">SNMP::__construct</a> — Creates SNMP instance representing session to remote SNMP agent</li>
+<li><a href="snmp.get.html">SNMP::get</a> — Fetch an SNMP object</li>
+<li><a href="snmp.geterrno.html">SNMP::getErrno</a> — Get last error code</li>
+<li><a href="snmp.geterror.html">SNMP::getError</a> — Get last error message</li>
+<li><a href="snmp.getnext.html">SNMP::getnext</a> — Fetch an SNMP object which
+  follows the given object id</li>
+<li><a href="snmp.set.html">SNMP::set</a> — Set the value of an SNMP object</li>
+<li><a href="snmp.setsecurity.html">SNMP::setSecurity</a> — Configures security-related SNMPv3 session parameters</li>
+<li><a href="snmp.walk.html">SNMP::walk</a> — Fetch SNMP object subtree</li>
+</ul>
+</li>
+<li><a href="class.snmpexception.html">SNMPException</a> — The SNMPException class</li>
+</ul>
+
+ 
+ 
+ 
+ 
+ 
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ <h1 class="title">The SNMP class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="snmp.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Represents <acronym class="acronym">SNMP</acronym> session.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="snmp.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">SNMP</strong></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">SNMP</strong>
+     </span>
+     {</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">int</span>
+     <var class="varname">$max_oids</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">int</span>
+     <var class="varname">$valueretrieval</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">bool</span>
+     <var class="varname">$quick_print</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">bool</span>
+     <var class="varname">$enum_print</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">int</span>
+     <var class="varname">$oid_output_format</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">bool</span>
+     <var class="varname">$oid_increasing_check</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">int</span>
+     <var class="varname">$exceptions_enabled</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">array</span>
+     <var class="varname">$info</var>
+    ;</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$version</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$hostname</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$community</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$timeout</code><span class="initializer"> = 1000000</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$retries</code><span class="initializer"> = 5</span></span>
+  ]] )</div>
+
+    
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">close</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">get</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$object_id</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$preserve_keys</code><span class="initializer"> = false</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getErrno</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getError</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">getnext</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$object_id</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">set</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$object_id</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$type</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setSecurity</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$sec_level</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$auth_protocol</code><span class="initializer"> = </span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$auth_passphrase</code><span class="initializer"> = </span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$priv_protocol</code><span class="initializer"> = </span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$priv_passphrase</code><span class="initializer"> = </span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$contextName</code><span class="initializer"> = </span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$contextEngineID</code><span class="initializer"> = </span>
+  ]]]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">walk</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$object_id</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$suffix_as_key</code><span class="initializer"> = <strong><code>FALSE</code></strong></span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$max_repetitions</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$non_repeaters</code></span>
+  ]]] )</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SNMP::ERRNO_NOERROR</var>
+     <span class="initializer"> = 0</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SNMP::ERRNO_GENERIC</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SNMP::ERRNO_TIMEOUT</var>
+     <span class="initializer"> = 4</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SNMP::ERRNO_ERROR_IN_REPLY</var>
+     <span class="initializer"> = 8</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SNMP::ERRNO_OID_NOT_INCREASING</var>
+     <span class="initializer"> = 16</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SNMP::ERRNO_OID_PARSING_ERROR</var>
+     <span class="initializer"> = 32</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SNMP::ERRNO_MULTIPLE_SET_QUERIES</var>
+     <span class="initializer"> = 64</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SNMP::ERRNO_ANY</var>
+     <span class="initializer"> = 126</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SNMP::VERSION_1</var>
+     <span class="initializer"> = 0</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SNMP::VERSION_2C</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SNMP::VERSION_2c</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">SNMP::VERSION_3</var>
+     <span class="initializer"> = 3</span>
+    ;</div>
+
+
+
+
+    }</div>
+ 
+  </div>
+ 
+
+  <div class="section" id="snmp.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="snmp.props.max-oids"><var class="varname">max_oids</var></dt>
+
+     <dd>
+
+      <p class="para">Maximum OID per GET/SET/GETBULK request</p>
+     </dd>
+
+    
+    
+     <dt id="snmp.props.valueretrieval"><var class="varname">valueretrieval</var></dt>
+
+     <dd>
+
+      <p class="para">Controls the method how the SNMP values will be returned</p>
+      <table class="doctable table">
+       
+       
+        <tbody class="tbody">
+         <tr><td><strong><code>SNMP_VALUE_LIBRARY</code></strong></td><td>The return values will be as returned by the Net-SNMP library.</td></tr>
+
+         <tr><td><strong><code>SNMP_VALUE_PLAIN</code></strong></td><td>The return values will be the plain value without the SNMP type hint.</td></tr>
+
+         <tr>
+          <td><strong><code>SNMP_VALUE_OBJECT</code></strong></td><td>
+           The return values will be objects with the properties &quot;value&quot; and &quot;type&quot;, where the latter
+           is one of the SNMP_OCTET_STR, SNMP_COUNTER etc. constants. The
+           way &quot;value&quot; is returned is based on which one of <strong><code>SNMP_VALUE_LIBRARY</code></strong>,
+           <strong><code>SNMP_VALUE_PLAIN</code></strong> is set
+          </td>
+         </tr>
+
+        </tbody>
+       
+      </table>
+
+
+     </dd>
+
+    
+    
+     <dt id="snmp.props.quick-print"><var class="varname">quick_print</var></dt>
+
+     <dd>
+
+      <p class="para">Value of <code class="parameter">quick_print</code> within the NET-<acronym class="acronym">SNMP</acronym> library</p>
+      <p class="para">
+       Sets the value of <code class="parameter">quick_print</code> within the NET-<acronym class="acronym">SNMP</acronym> library.  When this
+       is set (1), the <acronym class="acronym">SNMP</acronym> library will return &#039;quick printed&#039; values.  This
+       means that just the value will be printed.  When <code class="parameter">quick_print</code> is not
+       enabled (default) the UCD <acronym class="acronym">SNMP</acronym> library prints extra information
+       including the type of the value (i.e. IpAddress or OID).  Additionally,
+       if quick_print is not enabled, the library prints additional hex values
+       for all strings of three characters or less.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="snmp.props.enum-print"><var class="varname">enum_print</var></dt>
+
+     <dd>
+
+      <p class="para">Controls the way enum values are printed</p>
+      <p class="para">
+       Parameter toggles if walk/get etc. should automatically lookup enum values
+       in the MIB and return them together with their human readable string.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="snmp.props.oid-output-format"><var class="varname">oid_output_format</var></dt>
+
+     <dd>
+
+      <p class="para">Controls OID output format</p>
+      <table class="doctable table">
+       <caption><strong>OID .1.3.6.1.2.1.1.3.0 representation for various
+       <var class="varname">oid_output_format</var> values</strong></caption>
+       
+        <tbody class="tbody">
+         <tr><td><strong><code>SNMP_OID_OUTPUT_FULL</code></strong></td><td>.iso.org.dod.internet.mgmt.mib-2.system.sysUpTime.sysUpTimeInstance</td></tr>
+
+         <tr><td><strong><code>SNMP_OID_OUTPUT_NUMERIC</code></strong></td><td>.1.3.6.1.2.1.1.3.0</td> </tr>
+
+         <tr><td><strong><code>SNMP_OID_OUTPUT_MODULE</code></strong></td><td>DISMAN-EVENT-MIB::sysUpTimeInstance</td></tr>
+
+         <tr><td><strong><code>SNMP_OID_OUTPUT_SUFFIX</code></strong></td><td>sysUpTimeInstance</td></tr>
+
+         <tr><td><strong><code>SNMP_OID_OUTPUT_UCD</code></strong></td><td>system.sysUpTime.sysUpTimeInstance</td></tr>
+
+         <tr><td><strong><code>SNMP_OID_OUTPUT_NONE</code></strong></td><td>Undefined</td></tr>
+
+        </tbody>
+       
+      </table>
+
+     </dd>
+
+    
+    
+     <dt id="snmp.props.oid-increasing-check"><var class="varname">oid_increasing_check</var></dt>
+
+     <dd>
+
+      <p class="para">Controls disabling check for increasing OID while walking OID tree</p>
+      <p class="para">
+       Some <acronym class="acronym">SNMP</acronym> agents are known for returning OIDs out
+       of order but can complete the walk anyway. Other agents return OIDs
+       that are out of order and can cause  <span class="methodname">SNMP::walk</span>
+       to loop indefinitely until memory limit will be reached.
+       PHP SNMP library by default performs OID increasing check and stops
+       walking on OID tree when it detects possible loop with issuing warning
+       about non-increasing OID faced.
+       Set <var class="varname">oid_increasing_check</var> to <strong><code>FALSE</code></strong> to disable this
+       check.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="snmp.props.exceptions-enabled"><var class="varname">exceptions_enabled</var></dt>
+
+     <dd>
+
+      <p class="para">
+       Controls which failures will raise SNMPException instead of
+       warning. Use bitwise OR&#039;ed <strong><code>SNMP::ERRNO_*</code></strong> constants.
+       By default all SNMP exceptions are disabled.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="snmp.props.info"><var class="varname">info</var></dt>
+
+     <dd>
+
+      <p class="para">Read-only property with remote agent configuration: hostname,
+      port, default timeout, default retries count</p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+  
+  <div class="section" id="snmp.class.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <div class="section" id="snmp.class.constants.error-types">
+    <h2 class="title"><acronym class="acronym">SNMP</acronym> Error Types</h2>
+    <dl>
+
+
+     
+      <dt id="snmp.class.constants.errno-noerror"><strong><code>SNMP::ERRNO_NOERROR</code></strong></dt>
+
+      <dd>
+
+       <p class="para">No <acronym class="acronym">SNMP</acronym>-specific error occurred.</p>
+      </dd>
+
+     
+
+     
+      <dt id="snmp.class.constants.errno-generic"><strong><code>SNMP::ERRNO_GENERIC</code></strong></dt>
+
+      <dd>
+
+       <p class="para">A generic <acronym class="acronym">SNMP</acronym> error occurred.</p>
+      </dd>
+
+     
+
+     
+      <dt id="snmp.class.constants.errno-timeout"><strong><code>SNMP::ERRNO_TIMEOUT</code></strong></dt>
+
+      <dd>
+
+       <p class="para">Request to <acronym class="acronym">SNMP</acronym> agent timed out.</p>
+      </dd>
+
+     
+
+     
+      <dt id="snmp.class.constants.errno-error-in-reply"><strong><code>SNMP::ERRNO_ERROR_IN_REPLY</code></strong></dt>
+
+      <dd>
+
+       <p class="para"><acronym class="acronym">SNMP</acronym> agent returned an error in reply.</p>
+      </dd>
+
+     
+
+     
+      <dt id="snmp.class.constants.errno-oid-not-increasing"><strong><code>SNMP::ERRNO_OID_NOT_INCREASING</code></strong></dt>
+
+      <dd>
+
+       <p class="para">
+        <acronym class="acronym">SNMP</acronym> agent faced OID cycling reporning
+        non-increasing OID while executing (BULK)WALK command.
+        This indicates bogus remote <acronym class="acronym">SNMP</acronym> agent.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="snmp.class.constants.errno-oid-parsing-error"><strong><code>SNMP::ERRNO_OID_PARSING_ERROR</code></strong></dt>
+
+      <dd>
+
+       <p class="para">
+        Library failed while parsing OID (and/or type for SET command).
+        No queries has been made.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="snmp.class.constants.errno-multiple-set-queries"><strong><code>SNMP::ERRNO_MULTIPLE_SET_QUERIES</code></strong></dt>
+
+      <dd>
+
+       <p class="para">
+        Library will use multiple queries for SET operation requested.
+        That means that operation will be performed in a non-transaction manner 
+        and second or subsequent chunks may fail if a type or value failure
+        will be faced.
+       </p>
+      </dd>
+
+     
+
+     
+      <dt id="snmp.class.constants.errno-any"><strong><code>SNMP::ERRNO_ANY</code></strong></dt>
+
+      <dd>
+
+       <p class="para">
+ All SNMP::ERRNO_* codes bitwise OR&#039;ed.
+       </p>
+      </dd>
+
+     
+
+    </dl>
+
+   </div>
+   <div class="section" id="snmp.class.constants.protocols">
+    <h2 class="title"><acronym class="acronym">SNMP</acronym> Protocol Versions</h2>
+    <dl>
+
+
+     
+      <dt id="snmp.class.constants.version-1"><strong><code>SNMP::VERSION_1</code></strong></dt>
+
+      <dd>
+
+       <p class="para"/>
+      </dd>
+
+     
+
+     
+      <dt id="snmp.class.constants.version-2c"><strong><code>SNMP::VERSION_2C</code></strong>, <strong><code>SNMP::VERSION_2c</code></strong></dt>
+
+      <dd>
+
+       <p class="para"/>
+      </dd>
+
+     
+
+     
+      <dt id="snmp.class.constants.version-3"><strong><code>SNMP::VERSION_3</code></strong></dt>
+
+      <dd>
+
+       <p class="para"/>
+      </dd>
+
+     
+
+    </dl>
+
+   </div>
+  </div>
+  
+
+ 
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+ 
+
+
+
+ 
+
+
+
+ <h1 class="title">The SNMPException class</h1>
+ 
+ 
+ <div class="partintro">
+ 
+
+  <div class="section" id="snmpexception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Represents an error raised by SNMP.  You should not throw a 
+    <span class="classname">SNMPException</span> from your own code.
+    See <a href="language.exceptions.html" class="link">Exceptions</a> for more
+    information about Exceptions in PHP.
+   </p>
+  </div>
+
+ 
+  <div class="section" id="snmpexception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+ 
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">SNMPException</strong></div>
+ 
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">SNMPException</strong>
+     </span>
+ 
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> RuntimeException</strong>
+     </span>
+ 
+     {</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$code</var>
+    ;</div>
+
+ 
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$message</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$code</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">string</span>
+     <var class="varname">$file</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <span class="type">int</span>
+     <var class="varname">$line</var>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">Throwable</span> <span class="methodname">Exception::getPrevious</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">Exception::getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getFile</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">Exception::getLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">Exception::getTrace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getTraceAsString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span>  <span class="methodname">Exception::__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">Exception::__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+ 
+   }</div>
+
+ 
+  </div>
+ 
+
+  <div class="section" id="snmpexception.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="snmpexception.props.code"><var class="varname">code</var></dt>
+
+     <dd>
+
+      <p class="para">
+       <em>SNMP</em>library error code. Use <span class="function">Exception::getCode</span> to access it.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+ 
+ </div>
+ 
+
+ 
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

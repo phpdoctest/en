@@ -1,0 +1,386 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Filters elements of an array using a callback function</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.vartype.html">Variable and Type Related Extensions</a></li>
+  <li class="header up"><a href="book.array.html">Arrays</a></li>
+  <li class="header up"><a href="ref.array.html">Array Functions</a></li>
+  <li><a href="function.array-change-key-case.html">array_change_key_case</a></li>
+  <li><a href="function.array-chunk.html">array_chunk</a></li>
+  <li><a href="function.array-column.html">array_column</a></li>
+  <li><a href="function.array-combine.html">array_combine</a></li>
+  <li><a href="function.array-count-values.html">array_count_values</a></li>
+  <li><a href="function.array-diff-assoc.html">array_diff_assoc</a></li>
+  <li><a href="function.array-diff-key.html">array_diff_key</a></li>
+  <li><a href="function.array-diff-uassoc.html">array_diff_uassoc</a></li>
+  <li><a href="function.array-diff-ukey.html">array_diff_ukey</a></li>
+  <li><a href="function.array-diff.html">array_diff</a></li>
+  <li><a href="function.array-fill-keys.html">array_fill_keys</a></li>
+  <li><a href="function.array-fill.html">array_fill</a></li>
+  <li class="active"><a href="function.array-filter.html">array_filter</a></li>
+  <li><a href="function.array-flip.html">array_flip</a></li>
+  <li><a href="function.array-intersect-assoc.html">array_intersect_assoc</a></li>
+  <li><a href="function.array-intersect-key.html">array_intersect_key</a></li>
+  <li><a href="function.array-intersect-uassoc.html">array_intersect_uassoc</a></li>
+  <li><a href="function.array-intersect-ukey.html">array_intersect_ukey</a></li>
+  <li><a href="function.array-intersect.html">array_intersect</a></li>
+  <li><a href="function.array-key-exists.html">array_key_exists</a></li>
+  <li><a href="function.array-keys.html">array_keys</a></li>
+  <li><a href="function.array-map.html">array_map</a></li>
+  <li><a href="function.array-merge-recursive.html">array_merge_recursive</a></li>
+  <li><a href="function.array-merge.html">array_merge</a></li>
+  <li><a href="function.array-multisort.html">array_multisort</a></li>
+  <li><a href="function.array-pad.html">array_pad</a></li>
+  <li><a href="function.array-pop.html">array_pop</a></li>
+  <li><a href="function.array-product.html">array_product</a></li>
+  <li><a href="function.array-push.html">array_push</a></li>
+  <li><a href="function.array-rand.html">array_rand</a></li>
+  <li><a href="function.array-reduce.html">array_reduce</a></li>
+  <li><a href="function.array-replace-recursive.html">array_replace_recursive</a></li>
+  <li><a href="function.array-replace.html">array_replace</a></li>
+  <li><a href="function.array-reverse.html">array_reverse</a></li>
+  <li><a href="function.array-search.html">array_search</a></li>
+  <li><a href="function.array-shift.html">array_shift</a></li>
+  <li><a href="function.array-slice.html">array_slice</a></li>
+  <li><a href="function.array-splice.html">array_splice</a></li>
+  <li><a href="function.array-sum.html">array_sum</a></li>
+  <li><a href="function.array-udiff-assoc.html">array_udiff_assoc</a></li>
+  <li><a href="function.array-udiff-uassoc.html">array_udiff_uassoc</a></li>
+  <li><a href="function.array-udiff.html">array_udiff</a></li>
+  <li><a href="function.array-uintersect-assoc.html">array_uintersect_assoc</a></li>
+  <li><a href="function.array-uintersect-uassoc.html">array_uintersect_uassoc</a></li>
+  <li><a href="function.array-uintersect.html">array_uintersect</a></li>
+  <li><a href="function.array-unique.html">array_unique</a></li>
+  <li><a href="function.array-unshift.html">array_unshift</a></li>
+  <li><a href="function.array-values.html">array_values</a></li>
+  <li><a href="function.array-walk-recursive.html">array_walk_recursive</a></li>
+  <li><a href="function.array-walk.html">array_walk</a></li>
+  <li><a href="function.array.html">array</a></li>
+  <li><a href="function.arsort.html">arsort</a></li>
+  <li><a href="function.asort.html">asort</a></li>
+  <li><a href="function.compact.html">compact</a></li>
+  <li><a href="function.count.html">count</a></li>
+  <li><a href="function.current.html">current</a></li>
+  <li><a href="function.each.html">each</a></li>
+  <li><a href="function.end.html">end</a></li>
+  <li><a href="function.extract.html">extract</a></li>
+  <li><a href="function.in-array.html">in_array</a></li>
+  <li><a href="function.key-exists.html">key_exists</a></li>
+  <li><a href="function.key.html">key</a></li>
+  <li><a href="function.krsort.html">krsort</a></li>
+  <li><a href="function.ksort.html">ksort</a></li>
+  <li><a href="function.list.html">list</a></li>
+  <li><a href="function.natcasesort.html">natcasesort</a></li>
+  <li><a href="function.natsort.html">natsort</a></li>
+  <li><a href="function.next.html">next</a></li>
+  <li><a href="function.pos.html">pos</a></li>
+  <li><a href="function.prev.html">prev</a></li>
+  <li><a href="function.range.html">range</a></li>
+  <li><a href="function.reset.html">reset</a></li>
+  <li><a href="function.rsort.html">rsort</a></li>
+  <li><a href="function.shuffle.html">shuffle</a></li>
+  <li><a href="function.sizeof.html">sizeof</a></li>
+  <li><a href="function.sort.html">sort</a></li>
+  <li><a href="function.uasort.html">uasort</a></li>
+  <li><a href="function.uksort.html">uksort</a></li>
+  <li><a href="function.usort.html">usort</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.array-fill.html">array_fill</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.array-flip.html">array_flip</a></div>
+                <div class="up"><a href="ref.array.html">Array Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.array-filter" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">array_filter</h1>
+  <p class="refpurpose">Filters elements of an array using a callback function</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.array-filter-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname">array_filter</span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$array</code></span>
+   [, <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flag</code><span class="initializer"> = 0</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Iterates over each value in the <code class="parameter">array</code>
+   passing them to the <code class="parameter">callback</code> function.
+   If the <code class="parameter">callback</code> function returns true, the
+   current value from <code class="parameter">array</code> is returned into
+   the result array. Array keys are preserved.
+  </p>
+</div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.array-filter-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+
+    
+     <dt>
+<code class="parameter">array</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The array to iterate over
+      </p>
+     </dd>
+
+    
+
+    
+     <dt>
+<code class="parameter">callback</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The callback function to use
+      </p>
+      <p class="para">
+       If no <code class="parameter">callback</code> is supplied, all entries of
+       <code class="parameter">array</code> equal to <strong><code>FALSE</code></strong> (see
+       <a href="language.types.boolean.html#language.types.boolean.casting" class="link">converting to
+        boolean</a>) will be removed.
+      </p>
+     </dd>
+
+    
+
+    
+     <dt>
+<code class="parameter">flag</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Flag determining what arguments are sent to <code class="parameter">callback</code>:
+       <ul class="itemizedlist">
+        <li class="listitem">
+         <span class="simpara"><strong><code>ARRAY_FILTER_USE_KEY</code></strong> - pass key as the only argument
+         to <code class="parameter">callback</code> instead of the value</span>
+        </li>
+        <li class="listitem">
+         <span class="simpara"><strong><code>ARRAY_FILTER_USE_BOTH</code></strong> - pass both value and key as
+         arguments to <code class="parameter">callback</code> instead of the value</span>
+        </li>
+       </ul>
+      </p>
+     </dd>
+
+    
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.array-filter-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the filtered array.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.array-filter-changelog">
+  <h3 class="title">Changelog</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>Version</th>
+      <th>Description</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>5.6.0</td>
+      <td>
+       Added optional <code class="parameter">flag</code> parameter and constants 
+       <strong><code>ARRAY_FILTER_USE_KEY</code></strong> and 
+       <strong><code>ARRAY_FILTER_USE_BOTH</code></strong>
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+
+
+ <div class="refsect1 examples" id="refsect1-function.array-filter-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-5567">
+    <p><strong>Example #1 <span class="function">array_filter</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">odd</span><span style="color: #007700">(</span><span style="color: #0000BB">$var</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;returns&nbsp;whether&nbsp;the&nbsp;input&nbsp;integer&nbsp;is&nbsp;odd<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">return(</span><span style="color: #0000BB">$var&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br />}<br /><br />function&nbsp;</span><span style="color: #0000BB">even</span><span style="color: #007700">(</span><span style="color: #0000BB">$var</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;returns&nbsp;whether&nbsp;the&nbsp;input&nbsp;integer&nbsp;is&nbsp;even<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">return(!(</span><span style="color: #0000BB">$var&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">));<br />}<br /><br /></span><span style="color: #0000BB">$array1&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"a"</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"b"</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"c"</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"d"</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"e"</span><span style="color: #007700">=&gt;</span><span style="color: #0000BB">5</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$array2&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">6</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">7</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">8</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">9</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">11</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">12</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Odd&nbsp;:\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">array_filter</span><span style="color: #007700">(</span><span style="color: #0000BB">$array1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"odd"</span><span style="color: #007700">));<br />echo&nbsp;</span><span style="color: #DD0000">"Even:\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">array_filter</span><span style="color: #007700">(</span><span style="color: #0000BB">$array2</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"even"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Odd :
+Array
+(
+    [a] =&gt; 1
+    [c] =&gt; 3
+    [e] =&gt; 5
+)
+Even:
+Array
+(
+    [0] =&gt; 6
+    [2] =&gt; 8
+    [4] =&gt; 10
+    [6] =&gt; 12
+)
+</pre></div>
+    </div>
+   </div>
+   <div class="example" id="example-5568">
+    <p><strong>Example #2 <span class="function">array_filter</span> without
+    <code class="parameter">callback</code></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$entry&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">0&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">2&nbsp;</span><span style="color: #007700">=&gt;&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">3&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">4&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">''<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">array_filter</span><span style="color: #007700">(</span><span style="color: #0000BB">$entry</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [0] =&gt; foo
+    [2] =&gt; -1
+)
+</pre></div>
+    </div>
+   </div>
+   <div class="example" id="example-5569">
+    <p><strong>Example #3 <span class="function">array_filter</span> with 
+    <code class="parameter">flag</code></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$arr&nbsp;</span><span style="color: #007700">=&nbsp;[</span><span style="color: #DD0000">'a'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'b'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'c'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'d'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">];<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">array_filter</span><span style="color: #007700">(</span><span style="color: #0000BB">$arr</span><span style="color: #007700">,&nbsp;function(</span><span style="color: #0000BB">$k</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$k&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #DD0000">'b'</span><span style="color: #007700">;<br />},&nbsp;</span><span style="color: #0000BB">ARRAY_FILTER_USE_KEY</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">array_filter</span><span style="color: #007700">(</span><span style="color: #0000BB">$arr</span><span style="color: #007700">,&nbsp;function(</span><span style="color: #0000BB">$v</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$k</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$k&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #DD0000">'b'&nbsp;</span><span style="color: #007700">||&nbsp;</span><span style="color: #0000BB">$v&nbsp;</span><span style="color: #007700">==&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">;<br />},&nbsp;</span><span style="color: #0000BB">ARRAY_FILTER_USE_BOTH</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+array(1) {
+  [&quot;b&quot;]=&gt;
+  int(2)
+}
+array(2) {
+  [&quot;b&quot;]=&gt;
+  int(2)
+  [&quot;d&quot;]=&gt;
+  int(4)
+}
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.array-filter-notes">
+  <h3 class="title">Notes</h3>
+  <div class="caution"><strong class="caution">Caution</strong>
+   <p class="para">
+    If the array is changed from the callback function (e.g. element
+    added, deleted or unset) the behavior of this function is undefined.
+   </p>
+  </div>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.array-filter-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">array_map</span></li>
+    <li class="member"><span class="function">array_reduce</span></li>
+    <li class="member"><span class="function">array_walk</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

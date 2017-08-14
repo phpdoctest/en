@@ -1,0 +1,219 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Returns a sorted copy.</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.vartype.html">Variable and Type Related Extensions</a></li>
+  <li class="header up"><a href="book.ds.html">Data Structures</a></li>
+  <li class="header up"><a href="class.ds-deque.html">Deque</a></li>
+  <li><a href="ds-deque.allocate.html">Ds\Deque::allocate</a></li>
+  <li><a href="ds-deque.apply.html">Ds\Deque::apply</a></li>
+  <li><a href="ds-deque.capacity.html">Ds\Deque::capacity</a></li>
+  <li><a href="ds-deque.clear.html">Ds\Deque::clear</a></li>
+  <li><a href="ds-deque.construct.html">Ds\Deque::__construct</a></li>
+  <li><a href="ds-deque.contains.html">Ds\Deque::contains</a></li>
+  <li><a href="ds-deque.copy.html">Ds\Deque::copy</a></li>
+  <li><a href="ds-deque.count.html">Ds\Deque::count</a></li>
+  <li><a href="ds-deque.filter.html">Ds\Deque::filter</a></li>
+  <li><a href="ds-deque.find.html">Ds\Deque::find</a></li>
+  <li><a href="ds-deque.first.html">Ds\Deque::first</a></li>
+  <li><a href="ds-deque.get.html">Ds\Deque::get</a></li>
+  <li><a href="ds-deque.insert.html">Ds\Deque::insert</a></li>
+  <li><a href="ds-deque.isempty.html">Ds\Deque::isEmpty</a></li>
+  <li><a href="ds-deque.join.html">Ds\Deque::join</a></li>
+  <li><a href="ds-deque.jsonserialize.html">Ds\Deque::jsonSerialize</a></li>
+  <li><a href="ds-deque.last.html">Ds\Deque::last</a></li>
+  <li><a href="ds-deque.map.html">Ds\Deque::map</a></li>
+  <li><a href="ds-deque.merge.html">Ds\Deque::merge</a></li>
+  <li><a href="ds-deque.pop.html">Ds\Deque::pop</a></li>
+  <li><a href="ds-deque.push.html">Ds\Deque::push</a></li>
+  <li><a href="ds-deque.reduce.html">Ds\Deque::reduce</a></li>
+  <li><a href="ds-deque.remove.html">Ds\Deque::remove</a></li>
+  <li><a href="ds-deque.reverse.html">Ds\Deque::reverse</a></li>
+  <li><a href="ds-deque.reversed.html">Ds\Deque::reversed</a></li>
+  <li><a href="ds-deque.rotate.html">Ds\Deque::rotate</a></li>
+  <li><a href="ds-deque.set.html">Ds\Deque::set</a></li>
+  <li><a href="ds-deque.shift.html">Ds\Deque::shift</a></li>
+  <li><a href="ds-deque.slice.html">Ds\Deque::slice</a></li>
+  <li><a href="ds-deque.sort.html">Ds\Deque::sort</a></li>
+  <li class="active"><a href="ds-deque.sorted.html">Ds\Deque::sorted</a></li>
+  <li><a href="ds-deque.sum.html">Ds\Deque::sum</a></li>
+  <li><a href="ds-deque.toarray.html">Ds\Deque::toArray</a></li>
+  <li><a href="ds-deque.unshift.html">Ds\Deque::unshift</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="ds-deque.sort.html">Ds\Deque::sort</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="ds-deque.sum.html">Ds\Deque::sum</a></div>
+                <div class="up"><a href="class.ds-deque.html">Deque</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="ds-deque.sorted" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Ds\Deque::sorted</h1>
+  <p class="refpurpose">Returns a sorted copy.</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-ds-deque.sorted-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Deque</span> <span class="methodname">Ds\Deque::sorted</span>
+    ([ <span class="methodparam"><span class="type">callable</span> <code class="parameter">$comparator</code></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+    Returns a sorted copy, using an optional <code class="parameter">comparator</code> function.
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-ds-deque.sorted-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+     <dt>
+<code class="parameter">comparator</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The comparison function must return an integer less than, equal to, or greater than zero if the first argument is considered to be respectively less than, equal to, or greater than the second.
+Note that before PHP 7.0.0 this integer had to be in the range from -2147483648 to 2147483647.
+      </p>
+       <div class="methodsynopsis dc-description"><span class="type">int</span> <span class="methodname"><span class="replaceable">callback</span></span> ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$a</code></span>, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$b</code></span> )</div>
+
+      <div class="caution"><strong class="caution">Caution</strong>
+       <p class="para">
+        Returning <em class="emphasis">non-integer</em> values from the comparison
+        function, such as <span class="type">float</span>, will result in an internal cast to
+        <span class="type">integer</span> of the callback&#039;s return value. So values such as
+        0.99 and 0.1 will both be cast to an integer value of 0, which will
+        compare such values as equal.
+       </p>
+      </div>
+     </dd>
+
+    
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-ds-deque.sorted-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+    Returns a sorted copy of the deque.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-ds-deque.sorted-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-5824">
+   <p><strong>Example #1 <span class="function">Ds\Deque::sorted</span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$deque&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Ds</span><span style="color: #007700">\</span><span style="color: #0000BB">Deque</span><span style="color: #007700">([</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">]);<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$deque</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">sorted</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Ds\Deque Object
+(
+    [0] =&gt; 1
+    [1] =&gt; 2
+    [2] =&gt; 3
+    [3] =&gt; 4
+    [4] =&gt; 5
+)
+</pre></div>
+   </div>
+  </div>
+  <div class="example" id="example-5825">
+   <p><strong>Example #2 <span class="function">Ds\Deque::sorted</span> example using a comparator</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$deque&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Ds</span><span style="color: #007700">\</span><span style="color: #0000BB">Deque</span><span style="color: #007700">([</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">]);<br /><br /></span><span style="color: #0000BB">$sorted&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$deque</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">sorted</span><span style="color: #007700">(function(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">&lt;=&gt;&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">;<br />});<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$sorted</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Ds\Deque Object
+(
+    [0] =&gt; 5
+    [1] =&gt; 4
+    [2] =&gt; 3
+    [3] =&gt; 2
+    [4] =&gt; 1
+)
+</pre></div>
+   </div>
+  </div>
+
+ </div>
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

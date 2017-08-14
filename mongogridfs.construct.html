@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Creates new file collections</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.mongo.html">Mongo</a></li>
+  <li class="header up"><a href="mongo.gridfs.html">GridFS Classes</a></li>
+  <li class="header up"><a href="class.mongogridfs.html">MongoGridFS</a></li>
+  <li class="active"><a href="mongogridfs.construct.html">MongoGridFS::__construct</a></li>
+  <li><a href="mongogridfs.delete.html">MongoGridFS::delete</a></li>
+  <li><a href="mongogridfs.drop.html">MongoGridFS::drop</a></li>
+  <li><a href="mongogridfs.find.html">MongoGridFS::find</a></li>
+  <li><a href="mongogridfs.findone.html">MongoGridFS::findOne</a></li>
+  <li><a href="mongogridfs.get.html">MongoGridFS::get</a></li>
+  <li><a href="mongogridfs.put.html">MongoGridFS::put</a></li>
+  <li><a href="mongogridfs.remove.html">MongoGridFS::remove</a></li>
+  <li><a href="mongogridfs.storebytes.html">MongoGridFS::storeBytes</a></li>
+  <li><a href="mongogridfs.storefile.html">MongoGridFS::storeFile</a></li>
+  <li><a href="mongogridfs.storeupload.html">MongoGridFS::storeUpload</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="class.mongogridfs.html">MongoGridFS</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mongogridfs.delete.html">MongoGridFS::delete</a></div>
+                <div class="up"><a href="class.mongogridfs.html">MongoGridFS</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mongogridfs.construct" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">MongoGridFS::__construct</h1>
+  <p class="refpurpose">Creates new file collections</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-mongogridfs.construct-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">MongoGridFS::__construct</span>
+    ( <span class="methodparam"><span class="type">MongoDB</span> <code class="parameter">$db</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$prefix</code><span class="initializer"> = &quot;fs&quot;</span></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$chunks</code><span class="initializer"> = &quot;fs&quot;</span></span>
+  ]] )</div>
+
+
+  <p class="para rdfs-comment">
+   Files as stored across two collections, the first containing file meta information, the
+   second containing chunks of the actual file. By default, fs.files and fs.chunks are the
+   collection names used.
+  </p>
+  <p class="para">
+   Use one argument to specify a prefix other than &quot;fs&quot;:
+<div class="descriptioncode"><pre class="descriptioncode">$fs = new MongoGridFS($db, &quot;myfiles&quot;);</pre>
+</div>
+   uses myfiles.files and myfiles.chunks collections.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mongogridfs.construct-parameters">
+  <h3 class="title">Parameters</h3>  
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+
+      <code class="parameter">db</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Database.
+      </p>
+     </dd>
+
+       
+    
+     <dt>
+
+      <code class="parameter">files</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Optional collection name prefix.
+      </p>
+     </dd>
+
+       
+   </dl>
+
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

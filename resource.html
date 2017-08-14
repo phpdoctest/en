@@ -1,0 +1,2827 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: List of Resource Types</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="appendices.html">Appendices</a></li>
+  <li><a href="history.html">History of PHP and Related Projects</a></li>
+  <li><a href="migration71.html">Migrating from PHP 7.0.x to PHP 7.1.x</a></li>
+  <li><a href="migration70.html">Migrating from PHP 5.6.x to PHP 7.0.x</a></li>
+  <li><a href="migration56.html">Migrating from PHP 5.5.x to PHP 5.6.x</a></li>
+  <li><a href="migration55.html">Migrating from PHP 5.4.x to PHP 5.5.x</a></li>
+  <li><a href="migration54.html">Migrating from PHP 5.3.x to PHP 5.4.x</a></li>
+  <li><a href="migration53.html">Migrating from PHP 5.2.x to PHP 5.3.x</a></li>
+  <li><a href="migration52.html">Migrating from PHP 5.1.x to PHP 5.2.x</a></li>
+  <li><a href="migration51.html">Migrating from PHP 5.0.x to PHP 5.1.x</a></li>
+  <li><a href="migration5.html">Migrating from PHP 4 to PHP 5.0.x</a></li>
+  <li><a href="debugger.html">Debugging in PHP</a></li>
+  <li><a href="configure.html">Configure options</a></li>
+  <li><a href="ini.html">php.ini directives</a></li>
+  <li><a href="extensions.html">Extension List/Categorization</a></li>
+  <li><a href="aliases.html">List of Function Aliases</a></li>
+  <li><a href="reserved.html">List of Reserved Words</a></li>
+  <li class="active"><a href="resource.html">List of Resource Types</a></li>
+  <li><a href="filters.html">List of Available Filters</a></li>
+  <li><a href="transports.html">List of Supported Socket Transports</a></li>
+  <li><a href="types.comparisons.html">PHP type comparison tables</a></li>
+  <li><a href="tokens.html">List of Parser Tokens</a></li>
+  <li><a href="userlandnaming.html">Userland Naming Guide</a></li>
+  <li><a href="about.html">About the manual</a></li>
+  <li><a href="cc.license.html">Creative Commons Attribution 3.0</a></li>
+  <li><a href="indexes.html">Index listing</a></li>
+  <li><a href="doc.changelog.html">Changelog</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="reserved.other-reserved-words.html">List of other reserved words</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="filters.html">List of Available Filters</a></div>
+                <div class="up"><a href="appendices.html">Appendices</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="resource" class="appendix">
+ <h1>List of Resource Types</h1>
+ <p class="para">
+  The following is a list of functions which create, use or destroy
+  PHP resources.  The function <span class="function">is_resource</span> can be
+  used to determine if a variable is a resource and
+  <span class="function">get_resource_type</span> will return the type of
+  resource it is.
+  <table class="doctable table">
+   <caption><strong>Resource Types</strong></caption>
+   
+     <col width="1*" />
+     <col width="1*" />
+     <col style="width: 1.4*;" />
+     <col width="1*" />
+     <col width="1*" />
+     <thead>
+      <tr>
+       <th>Resource Type Name</th>
+       <th>Created By</th>
+       <th>Used By</th>
+       <th>Destroyed By</th>
+       <th>Definition</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+   <tr>
+    <td>aspell</td>
+    <td>
+     <span class="function">aspell_new</span>
+    </td>
+    <td>
+     <span class="function">aspell_check</span>,
+     <span class="function">aspell_check_raw</span>,
+     <span class="function">aspell_suggest</span>
+    </td>
+    <td>
+     None
+    </td>
+    <td>Aspell dictionary</td>
+   </tr>
+
+   <tr>
+   <td>bzip2</td>
+    <td>
+     <span class="function">bzopen</span>
+    </td>
+    <td>
+     <span class="function">bzerrno</span>,
+     <span class="function">bzerror</span>,
+     <span class="function">bzerrstr</span>,
+     <span class="function">bzflush</span>,
+     <span class="function">bzread</span>,
+     <span class="function">bzwrite</span>
+    </td>
+    <td>
+     <span class="function">bzclose</span>
+    </td>
+    <td>Bzip2 file</td>
+   </tr>
+
+   <tr>
+    <td>COM</td>
+    <td>
+     <span class="function">com_load</span>
+    </td>
+    <td>
+     <span class="function">com_invoke</span>,
+     <span class="function">com_propget</span>,
+     <span class="function">com_get</span>,
+     <span class="function">com_propput</span>,
+     <span class="function">com_set</span>,
+     <span class="function">com_propput</span>
+    </td>
+    <td>
+     None
+    </td>
+    <td>COM object reference</td>
+   </tr>
+
+   <tr>
+     <td>VARIANT</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+    <td>cpdf</td>
+    <td>
+     <span class="function">cpdf_open</span>
+    </td>
+    <td>
+     <span class="function">cpdf_page_init</span>,
+     <span class="function">cpdf_finalize_page</span>,
+     <span class="function">cpdf_finalize</span>,
+     <span class="function">cpdf_output_buffer</span>,
+     <span class="function">cpdf_save_to_file</span>,
+     <span class="function">cpdf_set_current_page</span>,
+     <span class="function">cpdf_begin_text</span>,
+     <span class="function">cpdf_end_text</span>,
+     <span class="function">cpdf_show</span>,
+     <span class="function">cpdf_show_xy</span>,
+     <span class="function">cpdf_text</span>,
+     <span class="function">cpdf_set_font</span>,
+     <span class="function">cpdf_set_leading</span>,
+     <span class="function">cpdf_set_text_rendering</span>,
+     <span class="function">cpdf_set_horiz_scaling</span>,
+     <span class="function">cpdf_set_text_rise</span>,
+     <span class="function">cpdf_set_text_matrix</span>,
+     <span class="function">cpdf_set_text_pos</span>,
+     <span class="function">cpdf_set_text_pos</span>,
+     <span class="function">cpdf_set_word_spacing</span>,
+     <span class="function">cpdf_continue_text</span>,
+     <span class="function">cpdf_stringwidth</span>,
+     <span class="function">cpdf_save</span>,
+     <span class="function">cpdf_translate</span>,
+     <span class="function">cpdf_restore</span>,
+     <span class="function">cpdf_scale</span>,
+     <span class="function">cpdf_rotate</span>,
+     <span class="function">cpdf_setflat</span>,
+     <span class="function">cpdf_setlinejoin</span>,
+     <span class="function">cpdf_setlinecap</span>,
+     <span class="function">cpdf_setmiterlimit</span>,
+     <span class="function">cpdf_setlinewidth</span>,
+     <span class="function">cpdf_setdash</span>,
+     <span class="function">cpdf_moveto</span>,
+     <span class="function">cpdf_rmoveto</span>,
+     <span class="function">cpdf_curveto</span>,
+     <span class="function">cpdf_lineto</span>,
+     <span class="function">cpdf_rlineto</span>,
+     <span class="function">cpdf_circle</span>,
+     <span class="function">cpdf_arc</span>,
+     <span class="function">cpdf_rect</span>,
+     <span class="function">cpdf_closepath</span>,
+     <span class="function">cpdf_stroke</span>,
+     <span class="function">cpdf_closepath_fill_stroke</span>,
+     <span class="function">cpdf_fill_stroke</span>,
+     <span class="function">cpdf_clip</span>,
+     <span class="function">cpdf_fill</span>,
+     <span class="function">cpdf_setgray_fill</span>,
+     <span class="function">cpdf_setgray_stroke</span>,
+     <span class="function">cpdf_setgray</span>,
+     <span class="function">cpdf_setrgbcolor_fill</span>,
+     <span class="function">cpdf_setrgbcolor_stroke</span>,
+     <span class="function">cpdf_setrgbcolor</span>,
+     <span class="function">cpdf_add_outline</span>,
+     <span class="function">cpdf_set_page_animation</span>,
+     <span class="function">cpdf_import_jpeg</span>,
+     <span class="function">cpdf_place_inline_image</span>,
+     <span class="function">cpdf_add_annotation</span>
+    </td>
+    <td>
+     <span class="function">cpdf_close</span>
+    </td>
+    <td>PDF document with CPDF lib</td>
+   </tr>
+
+   <tr>
+     <td>cpdf outline</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+    <td>cubrid connection</td>
+    <td>
+     <span class="function">cubrid_connect</span>
+     <span class="function">cubrid_connect_with_url</span>
+    </td>
+    <td>
+     <span class="function">cubrid_col_get</span>
+     <span class="function">cubrid_col_size</span>
+     <span class="function">cubrid_commit</span>
+     <span class="function">cubrid_drop</span>
+     <span class="function">cubrid_execute</span>
+     <span class="function">cubrid_get_autocommit</span>
+     <span class="function">cubrid_get_charset</span>
+     <span class="function">cubrid_get_class_name</span>
+     <span class="function">cubrid_get_db_parameter</span>
+     <span class="function">cubrid_get_server_info</span>
+     <span class="function">cubrid_get</span>
+     <span class="function">cubrid_insert_id</span>
+     <span class="function">cubrid_is_instance</span>
+     <span class="function">cubrid_lob_export</span>
+     <span class="function">cubrid_lob_get</span>
+     <span class="function">cubrid_lob_send</span>
+     <span class="function">cubrid_lock_read</span>
+     <span class="function">cubrid_lock_write</span>
+     <span class="function">cubrid_prepare</span>
+     <span class="function">cubrid_put</span>
+     <span class="function">cubrid_rollback</span>
+     <span class="function">cubrid_schema</span>
+     <span class="function">cubrid_seq_drop</span>
+     <span class="function">cubrid_seq_insert</span>
+     <span class="function">cubrid_seq_put</span>
+     <span class="function">cubrid_set_add</span>
+     <span class="function">cubrid_set_autocommit</span>
+     <span class="function">cubrid_set_db_parameter</span>
+     <span class="function">cubrid_set_drop</span>
+     <span class="function">cubrid_affected_rows</span>
+     <span class="function">cubrid_client_encoding</span>
+     <span class="function">cubrid_errno</span>
+     <span class="function">cubrid_error</span>
+     <span class="function">cubrid_list_dbs</span>
+     <span class="function">cubrid_ping</span>
+     <span class="function">cubrid_query</span>
+     <span class="function">cubrid_real_escape_string</span>
+    </td>
+    <td>
+     <span class="function">cubrid_close</span>
+     <span class="function">cubrid_disconnect</span>
+    </td>
+    <td>Connection to CUBRID database</td>
+   </tr>
+
+   <tr>
+    <td>persistent cubrid connection</td>
+    <td>
+     <span class="function">cubrid_pconnect</span>
+     <span class="function">cubrid_pconnect_with_url</span>
+    </td>
+    <td>
+     <span class="function">cubrid_col_get</span>
+     <span class="function">cubrid_col_size</span>
+     <span class="function">cubrid_commit</span>
+     <span class="function">cubrid_drop</span>
+     <span class="function">cubrid_execute</span>
+     <span class="function">cubrid_get_autocommit</span>
+     <span class="function">cubrid_get_charset</span>
+     <span class="function">cubrid_get_class_name</span>
+     <span class="function">cubrid_get_db_parameter</span>
+     <span class="function">cubrid_get_server_info</span>
+     <span class="function">cubrid_get</span>
+     <span class="function">cubrid_insert_id</span>
+     <span class="function">cubrid_is_instance</span>
+     <span class="function">cubrid_lob_export</span>
+     <span class="function">cubrid_lob_get</span>
+     <span class="function">cubrid_lob_send</span>
+     <span class="function">cubrid_lock_read</span>
+     <span class="function">cubrid_lock_write</span>
+     <span class="function">cubrid_prepare</span>
+     <span class="function">cubrid_put</span>
+     <span class="function">cubrid_rollback</span>
+     <span class="function">cubrid_schema</span>
+     <span class="function">cubrid_seq_drop</span>
+     <span class="function">cubrid_seq_insert</span>
+     <span class="function">cubrid_seq_put</span>
+     <span class="function">cubrid_set_add</span>
+     <span class="function">cubrid_set_autocommit</span>
+     <span class="function">cubrid_set_db_parameter</span>
+     <span class="function">cubrid_set_drop</span>
+     <span class="function">cubrid_affected_rows</span>
+     <span class="function">cubrid_client_encoding</span>
+     <span class="function">cubrid_errno</span>
+     <span class="function">cubrid_error</span>
+     <span class="function">cubrid_list_dbs</span>
+     <span class="function">cubrid_ping</span>
+     <span class="function">cubrid_query</span>
+     <span class="function">cubrid_real_escape_string</span>
+     <span class="function">cubrid_lob2_new</span>
+    </td>
+    <td> </td>
+    <td>Persistent connection to CUBRID database</td>
+    </tr>
+
+    <tr>
+     <td>cubrid request</td>
+     <td>
+      <span class="function">cubrid_prepare</span>
+      <span class="function">cubrid_execute</span>
+      <span class="function">cubrid_query</span>
+      <span class="function">cubrid_unbuffered_query</span>
+     </td>
+     <td>
+      <span class="function">cubrid_bind</span>
+      <span class="function">cubrid_column_names</span>
+      <span class="function">cubrid_column_types</span>
+      <span class="function">cubrid_current_oid</span>
+      <span class="function">cubrid_execute</span>
+      <span class="function">cubrid_free_result</span>
+      <span class="function">cubrid_get_query_timeout</span>
+      <span class="function">cubrid_move_cursor</span>
+      <span class="function">cubrid_next_result</span>
+      <span class="function">cubrid_num_cols</span>
+      <span class="function">cubrid_num_rows</span>
+      <span class="function">cubrid_set_query_timeout</span>
+      <span class="function">cubrid_data_seek</span>
+      <span class="function">cubrid_fetch_array</span>
+      <span class="function">cubrid_fetch_assoc</span>
+      <span class="function">cubrid_fetch_field</span>
+      <span class="function">cubrid_fetch_lengths</span>
+      <span class="function">cubrid_fetch_object</span>
+      <span class="function">cubrid_fetch_row</span>
+      <span class="function">cubrid_field_flags</span>
+      <span class="function">cubrid_field_len</span>
+      <span class="function">cubrid_field_name</span>
+      <span class="function">cubrid_field_seek</span>
+      <span class="function">cubrid_field_table</span>
+      <span class="function">cubrid_field_type</span>
+      <span class="function">cubrid_num_fields</span>
+      <span class="function">cubrid_result</span>
+      <span class="function">cubrid_lob2_bind</span>
+     </td>
+     <td>
+      <span class="function">cubrid_close_prepare</span>
+      <span class="function">cubrid_close_request</span>
+     </td>
+     <td>CUBRID request</td>
+    </tr>
+
+    <tr>
+     <td>cubrid lob</td>
+     <td>
+      <span class="function">cubrid_lob_get</span>
+     </td>
+     <td>
+      <span class="function">cubrid_lob_export</span>
+      <span class="function">cubrid_lob_send</span>
+      <span class="function">cubrid_lob_size</span>
+     </td>
+     <td>
+      <span class="function">cubrid_lob_close</span>
+     </td>
+     <td>
+      None
+     </td>
+    </tr>
+
+    <tr>
+     <td>cubrid lob2</td>
+     <td>
+      <span class="function">cubrid_lob2_new</span>
+      <span class="function">cubrid_fetch</span>
+      <span class="function">cubrid_fetch_row</span>
+      <span class="function">cubrid_fetch_array</span>
+      <span class="function">cubrid_fetch_assoc</span>
+      <span class="function">cubrid_fetch_object</span>
+     </td>
+     <td>
+      <span class="function">cubrid_lob2_export</span>
+      <span class="function">cubrid_lob2_import</span>
+      <span class="function">cubrid_lob2_read</span>
+      <span class="function">cubrid_lob2_write</span>
+      <span class="function">cubrid_lob2_tell</span>
+      <span class="function">cubrid_lob2_tell64</span>
+      <span class="function">cubrid_lob2_seek</span>
+      <span class="function">cubrid_lob2_seek64</span>
+      <span class="function">cubrid_lob2_size</span>
+      <span class="function">cubrid_lob2_size64</span>
+     </td>
+     <td>
+      <span class="function">cubrid_lob2_close</span>
+     </td>
+     <td>
+      None
+     </td>
+    </tr>
+
+   <tr>
+    <td>curl</td>
+    <td>
+     <span class="function">curl_copy_handle</span>,
+     <span class="function">curl_init</span>
+    </td>
+    <td>
+     <span class="function">curl_copy_handle</span>,
+     <span class="function">curl_errno</span>,
+     <span class="function">curl_error</span>,
+     <span class="function">curl_exec</span>,
+     <span class="function">curl_getinfo</span>,
+     <span class="function">curl_setopt</span>
+    </td>
+    <td>
+     <span class="function">curl_close</span>
+    </td>
+    <td>Curl session</td>
+   </tr>
+
+   <tr>
+    <td>dbm</td>
+    <td>
+     <span class="function">dbmopen</span>
+    </td>
+    <td>
+     <span class="function">dbmexists</span>,
+     <span class="function">dbmfetch</span>,
+     <span class="function">dbminsert</span>,
+     <span class="function">dbmreplace</span>,
+     <span class="function">dbmdelete</span>,
+     <span class="function">dbmfirstkey</span>,
+     <span class="function">dbmnextkey</span>
+    </td>
+    <td>
+     <span class="function">dbmclose</span>
+    </td>
+    <td>Link to DBM database</td>
+   </tr>
+
+   <tr>
+    <td>dba</td>
+    <td>
+     <span class="function">dba_open</span>
+    </td>
+    <td>
+     <span class="function">dba_delete</span>,
+     <span class="function">dba_exists</span>,
+     <span class="function">dba_fetch</span>,
+     <span class="function">dba_firstkey</span>,
+     <span class="function">dba_insert</span>,
+     <span class="function">dba_nextkey</span>,
+     <span class="function">dba_optimize</span>,
+     <span class="function">dba_replace</span>,
+     <span class="function">dba_sync</span>
+    </td>
+    <td>
+     <span class="function">dba_close</span>
+    </td>
+    <td>Link to DBA database</td>
+   </tr>
+
+   <tr>
+    <td>dba persistent</td>
+    <td>
+     <span class="function">dba_popen</span>
+    </td>
+    <td>
+     <span class="function">dba_delete</span>,
+     <span class="function">dba_exists</span>,
+     <span class="function">dba_fetch</span>,
+     <span class="function">dba_firstkey</span>,
+     <span class="function">dba_insert</span>,
+     <span class="function">dba_nextkey</span>,
+     <span class="function">dba_optimize</span>,
+     <span class="function">dba_replace</span>,
+     <span class="function">dba_sync</span>
+    </td>
+    <td>
+     None
+    </td>
+    <td>Persistent link to DBA database</td>
+   </tr>
+
+   <tr>
+    <td>dbase</td>
+    <td>
+     <span class="function">dbase_open</span>
+    </td>
+    <td>
+     <span class="function">dbase_pack</span>,
+     <span class="function">dbase_add_record</span>,
+     <span class="function">dbase_replace_record</span>,
+     <span class="function">dbase_delete_record</span>,
+     <span class="function">dbase_get_record</span>,
+     <span class="function">dbase_get_record_with_names</span>,
+     <span class="function">dbase_numfields</span>,
+     <span class="function">dbase_numrecords</span>
+    </td>
+    <td>
+     <span class="function">dbase_close</span>
+    </td>
+    <td>Link to Dbase database</td>
+   </tr>
+
+   <tr>
+    <td>dbx_link_object</td>
+    <td>
+     <span class="function">dbx_connect</span>
+    </td>
+    <td>
+     <span class="function">dbx_query</span>
+    </td>
+    <td>
+     <span class="function">dbx_close</span>
+    </td>
+    <td>dbx connection</td>
+   </tr>
+
+   <tr>
+    <td>dbx_result_object</td>
+    <td>
+     <span class="function">dbx_query</span>
+    </td>
+    <td>
+    </td>
+    <td>
+     None
+    </td>
+    <td>dbx result</td>
+   </tr>
+
+   <tr>
+     <td>xpath context</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+     <td>xpath object</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+    <td>fbsql link</td>
+    <td>
+     <span class="function">fbsql_change_user</span>,
+     <span class="function">fbsql_connect</span>
+    </td>
+    <td>
+     <span class="function">fbsql_autocommit</span>,
+     <span class="function">fbsql_blob_size</span>,
+     <span class="function">fbsql_clob_size</span>,
+     <span class="function">fbsql_commit</span>,
+     <span class="function">fbsql_change_user</span>,
+     <span class="function">fbsql_create_blob</span>,
+     <span class="function">fbsql_create_db</span>,
+     <span class="function">fbsql_create_clob</span>,
+     <span class="function">fbsql_data_seek</span>,
+     <span class="function">fbsql_database_password</span>,
+     <span class="function">fbsql_database</span>,
+     <span class="function">fbsql_db_query</span>,
+     <span class="function">fbsql_db_status</span>,
+     <span class="function">fbsql_drop_db</span>,
+     <span class="function">fbsql_errno</span>,
+     <span class="function">fbsql_error</span>,
+     <span class="function">fbsql_get_autostart_info</span>,
+     <span class="function">fbsql_hostname</span>,
+     <span class="function">fbsql_insert_id</span>,
+     <span class="function">fbsql_list_dbs</span>,
+     <span class="function">fbsql_password</span>,
+     <span class="function">fbsql_read_blob</span>,
+     <span class="function">fbsql_read_clob</span>,
+     <span class="function">fbsql_rollback</span>,
+     <span class="function">fbsql_select_db</span>,
+     <span class="function">fbsql_set_password</span>,
+     <span class="function">fbsql_set_transaction</span>,
+     <span class="function">fbsql_start_db</span>,
+     <span class="function">fbsql_stop_db</span>,
+     <span class="function">fbsql_username</span>
+    </td>
+    <td>
+     <span class="function">fbsql_close</span>
+    </td>
+    <td>Link to fbsql database</td>
+   </tr>
+
+   <tr>
+    <td>fbsql plink</td>
+    <td>
+     <span class="function">fbsql_change_user</span>,
+     <span class="function">fbsql_pconnect</span>
+    </td>
+    <td>
+     <span class="function">fbsql_autocommit</span>,
+     <span class="function">fbsql_change_user</span>,
+     <span class="function">fbsql_create_db</span>,
+     <span class="function">fbsql_data_seek</span>,
+     <span class="function">fbsql_db_query</span>,
+     <span class="function">fbsql_drop_db</span>,
+     <span class="function">fbsql_select_db</span>,
+     <span class="function">fbsql_errno</span>,
+     <span class="function">fbsql_error</span>,
+     <span class="function">fbsql_insert_id</span>,
+     <span class="function">fbsql_list_dbs</span>
+    </td>
+    <td>
+     None
+    </td>
+    <td>Persistent link to fbsql database</td>
+   </tr>
+
+   <tr>
+    <td>fbsql result</td>
+    <td>
+     <span class="function">fbsql_db_query</span>,
+     <span class="function">fbsql_list_dbs</span>,
+     <span class="function">fbsql_query</span>,
+     <span class="function">fbsql_list_fields</span>,
+     <span class="function">fbsql_list_tables</span>,
+     <span class="function">fbsql_tablename</span>
+    </td>
+    <td>
+     <span class="function">fbsql_affected_rows</span>,
+     <span class="function">fbsql_fetch_array</span>,
+     <span class="function">fbsql_fetch_assoc</span>,
+     <span class="function">fbsql_fetch_field</span>,
+     <span class="function">fbsql_fetch_lengths</span>,
+     <span class="function">fbsql_fetch_object</span>,
+     <span class="function">fbsql_fetch_row</span>,
+     <span class="function">fbsql_field_flags</span>,
+     <span class="function">fbsql_field_name</span>,
+     <span class="function">fbsql_field_len</span>,
+     <span class="function">fbsql_field_seek</span>,
+     <span class="function">fbsql_field_table</span>,
+     <span class="function">fbsql_field_type</span>,
+     <span class="function">fbsql_next_result</span>,
+     <span class="function">fbsql_num_fields</span>,
+     <span class="function">fbsql_num_rows</span>,
+     <span class="function">fbsql_result</span>,
+     <span class="function">fbsql_num_rows</span>
+    </td>
+    <td>
+     <span class="function">fbsql_free_result</span>
+    </td>
+    <td>fbsql result</td>
+   </tr>
+
+   <tr>
+    <td>fdf</td>
+    <td>
+     <span class="function">fdf_open</span>
+    </td>
+    <td>
+     <span class="function">fdf_create</span>,
+     <span class="function">fdf_save</span>,
+     <span class="function">fdf_get_value</span>,
+     <span class="function">fdf_set_value</span>,
+     <span class="function">fdf_next_field_name</span>,
+     <span class="function">fdf_set_ap</span>,
+     <span class="function">fdf_set_status</span>,
+     <span class="function">fdf_get_status</span>,
+     <span class="function">fdf_set_file</span>,
+     <span class="function">fdf_get_file</span>,
+     <span class="function">fdf_set_flags</span>,
+     <span class="function">fdf_set_opt</span>,
+     <span class="function">fdf_set_submit_form_action</span>,
+     <span class="function">fdf_set_javascript_action</span>
+    </td>
+    <td>
+     <span class="function">fdf_close</span>
+    </td>
+    <td>FDF File</td>
+   </tr>
+
+   <tr>
+    <td>ftp</td>
+    <td>
+     <span class="function">ftp_connect</span>,
+     <span class="function">ftp_ssl_connect</span>
+    </td>
+    <td>
+     <span class="function">ftp_login</span>,
+     <span class="function">ftp_pwd</span>,
+     <span class="function">ftp_cdup</span>,
+     <span class="function">ftp_chdir</span>,
+     <span class="function">ftp_mkdir</span>,
+     <span class="function">ftp_rmdir</span>,
+     <span class="function">ftp_nlist</span>,
+     <span class="function">ftp_rawlist</span>,
+     <span class="function">ftp_systype</span>,
+     <span class="function">ftp_pasv</span>,
+     <span class="function">ftp_get</span>,
+     <span class="function">ftp_fget</span>,
+     <span class="function">ftp_put</span>,
+     <span class="function">ftp_fput</span>,
+     <span class="function">ftp_size</span>,
+     <span class="function">ftp_mdtm</span>,
+     <span class="function">ftp_rename</span>,
+     <span class="function">ftp_delete</span>,
+     <span class="function">ftp_site</span>,
+     <span class="function">ftp_alloc</span>,
+     <span class="function">ftp_chmod</span>,
+     <span class="function">ftp_exec</span>,
+     <span class="function">ftp_get_option</span>,
+     <span class="function">ftp_nb_continue</span>,
+     <span class="function">ftp_nb_fget</span>,
+     <span class="function">ftp_nb_fput</span>,
+     <span class="function">ftp_nb_get</span>,
+     <span class="function">ftp_nb_put</span>,
+     <span class="function">ftp_raw</span>,
+     <span class="function">ftp_set_option</span>
+    </td>
+    <td>
+     <span class="function">ftp_close</span>
+    </td>
+    <td>FTP stream</td>
+   </tr>
+
+   <tr>
+    <td>gd</td>
+    <td>
+     <span class="function">imagecreate</span>,
+     <span class="function">imagecreatefromgd</span>,
+     <span class="function">imagecreatefromgd2</span>,
+     <span class="function">imagecreatefromgd2part</span>,
+     <span class="function">imagecreatefromgif</span>,
+     <span class="function">imagecreatefromjpeg</span>,
+     <span class="function">imagecreatefrompng</span>,
+     <span class="function">imagecreatefromwbmp</span>,
+     <span class="function">imagecreatefromstring</span>,
+     <span class="function">imagecreatefromxbm</span>,
+     <span class="function">imagecreatefromxpm</span>,
+     <span class="function">imagecreatetruecolor</span>,
+     <span class="function">imagerotate</span>
+    </td>
+    <td>
+     <span class="function">imagearc</span>,
+     <span class="function">imagechar</span>,
+     <span class="function">imagecharup</span>,
+     <span class="function">imagecolorallocate</span>,
+     <span class="function">imagecolorat</span>,
+     <span class="function">imagecolorclosest</span>,
+     <span class="function">imagecolorexact</span>,
+     <span class="function">imagecolorresolve</span>,
+     <span class="function">imagegammacorrect</span>,
+     <span class="function">imagegammacorrect</span>,
+     <span class="function">imagecolorset</span>,
+     <span class="function">imagecolorsforindex</span>,
+     <span class="function">imagecolorstotal</span>,
+     <span class="function">imagecolortransparent</span>,
+     <span class="function">imagecopy</span>,
+     <span class="function">imagecopyresized</span>,
+     <span class="function">imagedashedline</span>,
+     <span class="function">imagefill</span>,
+     <span class="function">imagefilledpolygon</span>,
+     <span class="function">imagefilledrectangle</span>,
+     <span class="function">imagefilltoborder</span>,
+     <span class="function">imagegif</span>,
+     <span class="function">imagepng</span>,
+     <span class="function">imagejpeg</span>,
+     <span class="function">imagewbmp</span>,
+     <span class="function">imageinterlace</span>,
+     <span class="function">imageline</span>,
+     <span class="function">imagepolygon</span>,
+     <span class="function">imagepstext</span>,
+     <span class="function">imagerectangle</span>,
+     <span class="function">imagerotate</span>,
+     <span class="function">imagesetpixel</span>,
+     <span class="function">imagestring</span>,
+     <span class="function">imagestringup</span>,
+     <span class="function">imagesx</span>,
+     <span class="function">imagesy</span>,
+     <span class="function">imagettftext</span>,
+     <span class="function">imagefilledarc</span>,
+     <span class="function">imageellipse</span>,
+     <span class="function">imagefilledellipse</span>,
+     <span class="function">imagecolorclosestalpha</span>,
+     <span class="function">imagecolorexactalpha</span>,
+     <span class="function">imagecolorresolvealpha</span>,
+     <span class="function">imagecopymerge</span>,
+     <span class="function">imagecopymergegray</span>,
+     <span class="function">imagecopyresampled</span>,
+     <span class="function">imagetruecolortopalette</span>,
+     <span class="function">imagesetbrush</span>,
+     <span class="function">imagesettile</span>,
+     <span class="function">imagesetthickness</span>,
+     <span class="function">image2wbmp</span>,
+     <span class="function">imagealphablending</span>,
+     <span class="function">imageantialias</span>,
+     <span class="function">imagecolorallocatealpha</span>,
+     <span class="function">imagecolorclosesthwb</span>,
+     <span class="function">imagecolordeallocate</span>,
+     <span class="function">imagecolormatch</span>,
+     <span class="function">imagefilter</span>,
+     <span class="function">imagefttext</span>,
+     <span class="function">imagegd</span>,
+     <span class="function">imagegd2</span>,
+     <span class="function">imageistruecolor</span>,
+     <span class="function">imagelayereffect</span>,
+     <span class="function">imagepalettecopy</span>,
+     <span class="function">imagesavealpha</span>,
+     <span class="function">imagesetstyle</span>,
+     <span class="function">imagexbm</span>
+    </td>
+    <td>
+     <span class="function">imagedestroy</span>
+    </td>
+    <td>GD Image</td>
+   </tr>
+
+   <tr>
+    <td>gd font</td>
+    <td>
+     <span class="function">imageloadfont</span>
+    </td>
+    <td>
+     <span class="function">imagechar</span>,
+     <span class="function">imagecharup</span>,
+     <span class="function">imagefontheight</span>
+    </td>
+    <td>
+     None
+    </td>
+    <td>Font for GD</td>
+   </tr>
+
+   <tr>
+     <td>gd PS encoding</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+    <td>gd PS font</td>
+    <td>
+     <span class="function">imagepsloadfont</span>
+    </td>
+    <td>
+     <span class="function">imagepstext</span>,
+     <span class="function">imagepsslantfont</span>,
+     <span class="function">imagepsextendfont</span>,
+     <span class="function">imagepsencodefont</span>,
+     <span class="function">imagepsbbox</span>
+    </td>
+    <td>
+     <span class="function">imagepsfreefont</span>
+    </td>
+    <td>PS font for GD</td>
+   </tr>
+
+   <tr>
+    <td>GMP integer</td>
+    <td>
+     <span class="function">gmp_init</span>
+    </td>
+    <td>
+     <span class="function">gmp_intval</span>,
+     <span class="function">gmp_strval</span>,
+     <span class="function">gmp_add</span>,
+     <span class="function">gmp_sub</span>,
+     <span class="function">gmp_mul</span>,
+     <span class="function">gmp_div_q</span>,
+     <span class="function">gmp_div_r</span>,
+     <span class="function">gmp_div_qr</span>,
+     <span class="function">gmp_div</span>,
+     <span class="function">gmp_mod</span>,
+     <span class="function">gmp_divexact</span>,
+     <span class="function">gmp_cmp</span>,
+     <span class="function">gmp_neg</span>,
+     <span class="function">gmp_abs</span>,
+     <span class="function">gmp_sign</span>,
+     <span class="function">gmp_fact</span>,
+     <span class="function">gmp_sqrt</span>,
+     <span class="function">gmp_sqrtrm</span>,
+     <span class="function">gmp_perfect_square</span>,
+     <span class="function">gmp_pow</span>,
+     <span class="function">gmp_powm</span>,
+     <span class="function">gmp_prob_prime</span>,
+     <span class="function">gmp_gcd</span>,
+     <span class="function">gmp_gcdext</span>,
+     <span class="function">gmp_invert</span>,
+     <span class="function">gmp_legendre</span>,
+     <span class="function">gmp_jacobi</span>,
+     <span class="function">gmp_random</span>,
+     <span class="function">gmp_and</span>,
+     <span class="function">gmp_or</span>,
+     <span class="function">gmp_xor</span>,
+     <span class="function">gmp_setbit</span>,
+     <span class="function">gmp_clrbit</span>,
+     <span class="function">gmp_scan0</span>,
+     <span class="function">gmp_scan1</span>,
+     <span class="function">gmp_popcount</span>,
+     <span class="function">gmp_hamdist</span>
+    </td>
+    <td>
+     None
+    </td>
+    <td>GMP Number</td>
+   </tr>
+
+   <tr>
+    <td>hyperwave document</td>
+    <td>
+     <span class="function">hw_cp</span>,
+     <span class="function">hw_docbyanchor</span>,
+     <span class="function">hw_getremote</span>,
+     <span class="function">hw_getremotechildren</span>
+    </td>
+    <td>
+     <span class="function">hw_children</span>,
+     <span class="function">hw_childrenobj</span>,
+     <span class="function">hw_getparents</span>,
+     <span class="function">hw_getparentsobj</span>,
+     <span class="function">hw_getchildcoll</span>,
+     <span class="function">hw_getchildcollobj</span>,
+     <span class="function">hw_getremote</span>,
+     <span class="function">hw_getsrcbydestobj</span>,
+     <span class="function">hw_getandlock</span>,
+     <span class="function">hw_gettext</span>,
+     <span class="function">hw_getobjectbyquerycoll</span>,
+     <span class="function">hw_getobjectbyquerycollobj</span>,
+     <span class="function">hw_getchilddoccoll</span>,
+     <span class="function">hw_getchilddoccollobj</span>,
+     <span class="function">hw_getanchors</span>,
+     <span class="function">hw_getanchorsobj</span>,
+     <span class="function">hw_inscoll</span>,
+     <span class="function">hw_pipedocument</span>,
+     <span class="function">hw_unlock</span>
+    </td>
+    <td>
+     <span class="function">hw_deleteobject</span>
+    </td>
+    <td>Hyperwave object</td>
+   </tr>
+
+   <tr>
+    <td>hyperwave link</td>
+    <td>
+     <span class="function">hw_connect</span>
+    </td>
+    <td>
+     <span class="function">hw_children</span>,
+     <span class="function">hw_childrenobj</span>,
+     <span class="function">hw_cp</span>,
+     <span class="function">hw_deleteobject</span>,
+     <span class="function">hw_docbyanchor</span>,
+     <span class="function">hw_docbyanchorobj</span>,
+     <span class="function">hw_errormsg</span>,
+     <span class="function">hw_edittext</span>,
+     <span class="function">hw_error</span>,
+     <span class="function">hw_getparents</span>,
+     <span class="function">hw_getparentsobj</span>,
+     <span class="function">hw_getchildcoll</span>,
+     <span class="function">hw_getchildcollobj</span>,
+     <span class="function">hw_getremote</span>,
+     <span class="function">hw_getremotechildren</span>,
+     <span class="function">hw_getsrcbydestobj</span>,
+     <span class="function">hw_getobject</span>,
+     <span class="function">hw_getandlock</span>,
+     <span class="function">hw_gettext</span>,
+     <span class="function">hw_getobjectbyquery</span>,
+     <span class="function">hw_getobjectbyqueryobj</span>,
+     <span class="function">hw_getobjectbyquerycoll</span>,
+     <span class="function">hw_getobjectbyquerycollobj</span>,
+     <span class="function">hw_getchilddoccoll</span>,
+     <span class="function">hw_getchilddoccollobj</span>,
+     <span class="function">hw_getanchors</span>,
+     <span class="function">hw_getanchorsobj</span>,
+     <span class="function">hw_mv</span>,
+     <span class="function">hw_incollections</span>,
+     <span class="function">hw_info</span>,
+     <span class="function">hw_inscoll</span>,
+     <span class="function">hw_insdoc</span>,
+     <span class="function">hw_insertdocument</span>,
+     <span class="function">hw_insertobject</span>,
+     <span class="function">hw_mapid</span>,
+     <span class="function">hw_modifyobject</span>,
+     <span class="function">hw_pipedocument</span>,
+     <span class="function">hw_unlock</span>,
+     <span class="function">hw_who</span>,
+     <span class="function">hw_getusername</span>
+    </td>
+    <td>
+     <span class="function">hw_close</span>,
+     <span class="function">hw_free_document</span>
+    </td>
+    <td>Link to Hyperwave server</td>
+   </tr>
+
+   <tr>
+    <td>hyperwave link persistent</td>
+    <td>
+     <span class="function">hw_pconnect</span>
+    </td>
+    <td>
+     <span class="function">hw_children</span>,
+     <span class="function">hw_childrenobj</span>,
+     <span class="function">hw_cp</span>,
+     <span class="function">hw_deleteobject</span>,
+     <span class="function">hw_docbyanchor</span>,
+     <span class="function">hw_docbyanchorobj</span>,
+     <span class="function">hw_errormsg</span>,
+     <span class="function">hw_edittext</span>,
+     <span class="function">hw_error</span>,
+     <span class="function">hw_getparents</span>,
+     <span class="function">hw_getparentsobj</span>,
+     <span class="function">hw_getchildcoll</span>,
+     <span class="function">hw_getchildcollobj</span>,
+     <span class="function">hw_getremote</span>,
+     <span class="function">hw_getremotechildren</span>,
+     <span class="function">hw_getsrcbydestobj</span>,
+     <span class="function">hw_getobject</span>,
+     <span class="function">hw_getandlock</span>,
+     <span class="function">hw_gettext</span>,
+     <span class="function">hw_getobjectbyquery</span>,
+     <span class="function">hw_getobjectbyqueryobj</span>,
+     <span class="function">hw_getobjectbyquerycoll</span>,
+     <span class="function">hw_getobjectbyquerycollobj</span>,
+     <span class="function">hw_getchilddoccoll</span>,
+     <span class="function">hw_getchilddoccollobj</span>,
+     <span class="function">hw_getanchors</span>,
+     <span class="function">hw_getanchorsobj</span>,
+     <span class="function">hw_mv</span>,
+     <span class="function">hw_incollections</span>,
+     <span class="function">hw_info</span>,
+     <span class="function">hw_inscoll</span>,
+     <span class="function">hw_insdoc</span>,
+     <span class="function">hw_insertdocument</span>,
+     <span class="function">hw_insertobject</span>,
+     <span class="function">hw_mapid</span>,
+     <span class="function">hw_modifyobject</span>,
+     <span class="function">hw_pipedocument</span>,
+     <span class="function">hw_unlock</span>,
+     <span class="function">hw_who</span>,
+     <span class="function">hw_getusername</span>
+    </td>
+    <td>
+     None
+    </td>
+    <td>Persistent link to Hyperwave server</td>
+   </tr>
+
+   <tr>
+    <td>icap</td>
+    <td>
+     <span class="function">icap_open</span>
+    </td>
+    <td>
+     <span class="function">icap_fetch_event</span>,
+     <span class="function">icap_list_events</span>,
+     <span class="function">icap_store_event</span>,
+     <span class="function">icap_snooze</span>,
+     <span class="function">icap_list_alarms</span>,
+     <span class="function">icap_delete_event</span>
+    </td>
+    <td>
+     <span class="function">icap_close</span>
+    </td>
+    <td>Link to icap server</td>
+   </tr>
+
+   <tr>
+    <td>imap</td>
+    <td>
+     <span class="function">imap_open</span>
+    </td>
+    <td>
+     <span class="function">imap_append</span>,
+     <span class="function">imap_body</span>,
+     <span class="function">imap_check</span>,
+     <span class="function">imap_createmailbox</span>,
+     <span class="function">imap_delete</span>,
+     <span class="function">imap_deletemailbox</span>,
+     <span class="function">imap_expunge</span>,
+     <span class="function">imap_fetchbody</span>,
+     <span class="function">imap_fetchstructure</span>,
+     <span class="function">imap_headerinfo</span>,
+     <span class="function">imap_header</span>,
+     <span class="function">imap_headers</span>,
+     <span class="function">imap_listmailbox</span>,
+     <span class="function">imap_getmailboxes</span>,
+     <span class="function">imap_get_quota</span>,
+     <span class="function">imap_status</span>,
+     <span class="function">imap_listsubscribed</span>,
+     <span class="function">imap_set_quota</span>,
+     <span class="function">imap_set_quota</span>,
+     <span class="function">imap_getsubscribed</span>,
+     <span class="function">imap_mail_copy</span>,
+     <span class="function">imap_mail_move</span>,
+     <span class="function">imap_num_msg</span>,
+     <span class="function">imap_num_recent</span>,
+     <span class="function">imap_ping</span>,
+     <span class="function">imap_renamemailbox</span>,
+     <span class="function">imap_reopen</span>,
+     <span class="function">imap_subscribe</span>,
+     <span class="function">imap_undelete</span>,
+     <span class="function">imap_unsubscribe</span>,
+     <span class="function">imap_scanmailbox</span>,
+     <span class="function">imap_mailboxmsginfo</span>,
+     <span class="function">imap_fetchheader</span>,
+     <span class="function">imap_uid</span>,
+     <span class="function">imap_msgno</span>,
+     <span class="function">imap_search</span>,
+     <span class="function">imap_fetch_overview</span>
+    </td>
+    <td>
+     <span class="function">imap_close</span>
+    </td>
+    <td>Link to IMAP, POP3 server</td>
+   </tr>
+
+   <tr>
+     <td>imap chain persistent</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+     <td>imap persistent</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+    <td>ingres</td>
+    <td>
+     <span class="function">ingres_connect</span>
+    </td>
+    <td>
+     <span class="function">ingres_query</span>,
+     <span class="function">ingres_num_rows</span>,
+     <span class="function">ingres_num_fields</span>,
+     <span class="function">ingres_field_name</span>,
+     <span class="function">ingres_field_type</span>,
+     <span class="function">ingres_field_nullable</span>,
+     <span class="function">ingres_field_length</span>,
+     <span class="function">ingres_field_precision</span>,
+     <span class="function">ingres_field_scale</span>,
+     <span class="function">ingres_fetch_array</span>,
+     <span class="function">ingres_fetch_row</span>,
+     <span class="function">ingres_fetch_object</span>,
+     <span class="function">ingres_rollback</span>,
+     <span class="function">ingres_commit</span>,
+     <span class="function">ingres_autocommit</span>
+    </td>
+    <td>
+     <span class="function">ingres_close</span>
+    </td>
+    <td>Link to ingresII base</td>
+   </tr>
+
+   <tr>
+    <td>ingres persistent</td>
+    <td>
+     <span class="function">ingres_pconnect</span>
+    </td>
+    <td>
+     <span class="function">ingres_query</span>,
+     <span class="function">ingres_num_rows</span>,
+     <span class="function">ingres_num_fields</span>,
+     <span class="function">ingres_field_name</span>,
+     <span class="function">ingres_field_type</span>,
+     <span class="function">ingres_field_nullable</span>,
+     <span class="function">ingres_field_length</span>,
+     <span class="function">ingres_field_precision</span>,
+     <span class="function">ingres_field_scale</span>,
+     <span class="function">ingres_fetch_array</span>,
+     <span class="function">ingres_fetch_row</span>,
+     <span class="function">ingres_fetch_object</span>,
+     <span class="function">ingres_rollback</span>,
+     <span class="function">ingres_commit</span>,
+     <span class="function">ingres_autocommit</span>
+    </td>
+    <td>
+     None
+    </td>
+    <td>Persistent link to ingresII base</td>
+   </tr>
+
+   <tr>
+     <td>interbase blob</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+    <td>interbase link</td>
+    <td>
+     <span class="function">ibase_connect</span>
+    </td>
+    <td>
+     <span class="function">ibase_query</span>,
+     <span class="function">ibase_prepare</span>,
+     <span class="function">ibase_trans</span>
+    </td>
+    <td>
+     <span class="function">ibase_close</span>
+    </td>
+    <td>Link to Interbase database</td>
+   </tr>
+
+   <tr>
+    <td>interbase link persistent</td>
+    <td>
+     <span class="function">ibase_pconnect</span>
+    </td>
+    <td>
+     <span class="function">ibase_query</span>,
+     <span class="function">ibase_prepare</span>,
+     <span class="function">ibase_trans</span>
+    </td>
+    <td>
+     None
+    </td>
+    <td>Persistent link to Interbase database</td>
+   </tr>
+
+   <tr>
+    <td>interbase query</td>
+    <td>
+     <span class="function">ibase_prepare</span>
+    </td>
+    <td>
+     <span class="function">ibase_execute</span>
+    </td>
+    <td>
+     <span class="function">ibase_free_query</span>
+    </td>
+    <td>Interbase query</td>
+   </tr>
+
+   <tr>
+    <td>interbase result</td>
+    <td>
+     <span class="function">ibase_query</span>
+    </td>
+    <td>
+     <span class="function">ibase_fetch_row</span>,
+     <span class="function">ibase_fetch_object</span>,
+     <span class="function">ibase_field_info</span>,
+     <span class="function">ibase_num_fields</span>
+    </td>
+    <td>
+     <span class="function">ibase_free_result</span>
+    </td>
+    <td>Interbase Result</td>
+   </tr>
+
+   <tr>
+    <td>interbase transaction</td>
+    <td>
+     <span class="function">ibase_trans</span>
+    </td>
+    <td>
+     <span class="function">ibase_commit</span>
+    </td>
+    <td>
+     <span class="function">ibase_rollback</span>
+    </td>
+    <td>Interbase transaction</td>
+   </tr>
+
+   <tr>
+     <td>java</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+    <td>ldap link</td>
+    <td>
+     <span class="function">ldap_connect</span>,
+     <span class="function">ldap_search</span>
+    </td>
+    <td>
+     <span class="function">ldap_count_entries</span>,
+     <span class="function">ldap_first_attribute</span>,
+     <span class="function">ldap_first_entry</span>,
+     <span class="function">ldap_get_attributes</span>,
+     <span class="function">ldap_get_dn</span>,
+     <span class="function">ldap_get_entries</span>,
+     <span class="function">ldap_get_values</span>,
+     <span class="function">ldap_get_values_len</span>,
+     <span class="function">ldap_next_attribute</span>,
+     <span class="function">ldap_next_entry</span>
+    </td>
+    <td>
+     <span class="function">ldap_close</span>
+    </td>
+    <td>ldap connection</td>
+   </tr>
+
+   <tr>
+    <td>ldap result</td>
+    <td>
+     <span class="function">ldap_read</span>
+    </td>
+    <td>
+     <span class="function">ldap_add</span>,
+     <span class="function">ldap_compare</span>,
+     <span class="function">ldap_bind</span>,
+     <span class="function">ldap_count_entries</span>,
+     <span class="function">ldap_delete</span>,
+     <span class="function">ldap_errno</span>,
+     <span class="function">ldap_error</span>,
+     <span class="function">ldap_first_attribute</span>,
+     <span class="function">ldap_first_entry</span>,
+     <span class="function">ldap_get_attributes</span>,
+     <span class="function">ldap_get_dn</span>,
+     <span class="function">ldap_get_entries</span>,
+     <span class="function">ldap_get_values</span>,
+     <span class="function">ldap_get_values_len</span>,
+     <span class="function">ldap_get_option</span>,
+     <span class="function">ldap_list</span>,
+     <span class="function">ldap_modify</span>,
+     <span class="function">ldap_mod_add</span>,
+     <span class="function">ldap_mod_replace</span>,
+     <span class="function">ldap_next_attribute</span>,
+     <span class="function">ldap_next_entry</span>,
+     <span class="function">ldap_mod_del</span>,
+     <span class="function">ldap_set_option</span>,
+     <span class="function">ldap_unbind</span>
+    </td>
+    <td>
+     <span class="function">ldap_free_result</span>
+    </td>
+    <td>ldap search result</td>
+   </tr>
+
+   <tr>
+     <td>ldap result entry</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+    <td>mcal</td>
+    <td>
+     <span class="function">mcal_open</span>,
+     <span class="function">mcal_popen</span>
+    </td>
+    <td>
+     <span class="function">mcal_create_calendar</span>,
+     <span class="function">mcal_rename_calendar</span>,
+     <span class="function">mcal_rename_calendar</span>,
+     <span class="function">mcal_delete_calendar</span>,
+     <span class="function">mcal_fetch_event</span>,
+     <span class="function">mcal_list_events</span>,
+     <span class="function">mcal_append_event</span>,
+     <span class="function">mcal_store_event</span>,
+     <span class="function">mcal_delete_event</span>,
+     <span class="function">mcal_list_alarms</span>,
+     <span class="function">mcal_event_init</span>,
+     <span class="function">mcal_event_set_category</span>,
+     <span class="function">mcal_event_set_title</span>,
+     <span class="function">mcal_event_set_description</span>,
+     <span class="function">mcal_event_set_start</span>,
+     <span class="function">mcal_event_set_end</span>,
+     <span class="function">mcal_event_set_alarm</span>,
+     <span class="function">mcal_event_set_class</span>,
+     <span class="function">mcal_next_recurrence</span>,
+     <span class="function">mcal_event_set_recur_none</span>,
+     <span class="function">mcal_event_set_recur_daily</span>,
+     <span class="function">mcal_event_set_recur_weekly</span>,
+     <span class="function">mcal_event_set_recur_monthly_mday</span>,
+     <span class="function">mcal_event_set_recur_monthly_wday</span>,
+     <span class="function">mcal_event_set_recur_yearly</span>,
+     <span class="function">mcal_fetch_current_stream_event</span>,
+     <span class="function">mcal_event_add_attribute</span>,
+     <span class="function">mcal_expunge</span>
+    </td>
+    <td>
+     <span class="function">mcal_close</span>
+    </td>
+    <td>Link to calendar server</td>
+   </tr>
+
+   <tr>
+     <td>SWFAction</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+     <td>SWFBitmap</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+     <td>SWFButton</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+     <td>SWFDisplayItem</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+     <td>SWFFill</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+     <td>SWFFont</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+     <td>SWFGradient</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+     <td>SWFMorph</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+     <td>SWFMovie</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+     <td>SWFShape</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+     <td>SWFSprite</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+     <td>SWFText</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+     <td>SWFTextField</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+     <td>mnogosearch agent</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+     <td>mnogosearch result</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+    <td>msql link</td>
+    <td>
+     <span class="function">msql_connect</span>
+    </td>
+    <td>
+     <span class="function">msql</span>,
+     <span class="function">msql_create_db</span>,
+     <span class="function">msql_createdb</span>,
+     <span class="function">msql_drop_db</span>,
+     <span class="function">msql_drop_db</span>,
+     <span class="function">msql_select_db</span>,
+     <span class="function">msql_select_db</span>
+    </td>
+    <td>
+     <span class="function">msql_close</span>
+    </td>
+    <td>Link to mSQL database</td>
+   </tr>
+
+   <tr>
+    <td>msql link persistent</td>
+    <td>
+     <span class="function">msql_pconnect</span>
+    </td>
+    <td>
+     <span class="function">msql</span>,
+     <span class="function">msql_create_db</span>,
+     <span class="function">msql_createdb</span>,
+     <span class="function">msql_drop_db</span>,
+     <span class="function">msql_drop_db</span>,
+     <span class="function">msql_select_db</span>,
+     <span class="function">msql_select_db</span>
+    </td>
+    <td>
+     None
+    </td>
+    <td>Persistent link to mSQL</td>
+   </tr>
+
+   <tr>
+    <td>msql query</td>
+    <td>
+     <span class="function">msql_db_query</span>,
+     <span class="function">msql_list_dbs</span>,
+     <span class="function">msql_list_fields</span>,
+     <span class="function">msql_list_tables</span>,
+     <span class="function">msql_query</span>
+    </td>
+    <td>
+     <span class="function">msql</span>,
+     <span class="function">msql_affected_rows</span>,
+     <span class="function">msql_data_seek</span>,
+     <span class="function">msql_dbname</span>,
+     <span class="function">msql_fetch_array</span>,
+     <span class="function">msql_fetch_field</span>,
+     <span class="function">msql_fetch_object</span>,
+     <span class="function">msql_fetch_row</span>,
+     <span class="function">msql_field_seek</span>,
+     <span class="function">msql_field_table</span>,
+     <span class="function">msql_field_flags</span>,
+     <span class="function">msql_field_len</span>,
+     <span class="function">msql_field_name</span>,
+     <span class="function">msql_field_type</span>,
+     <span class="function">msql_num_fields</span>,
+     <span class="function">msql_num_rows</span>,
+     <span class="function">msql_numfields</span>,
+     <span class="function">msql_numrows</span>,
+     <span class="function">msql_result</span>
+    </td>
+    <td>
+     <span class="function">msql_free_result</span>,
+     <span class="function">msql_free_result</span>
+    </td>
+    <td>mSQL result</td>
+   </tr>
+
+   <tr>
+    <td>mssql link</td>
+    <td>
+     <span class="function">mssql_connect</span>
+    </td>
+    <td>
+     <span class="function">mssql_query</span>,
+     <span class="function">mssql_select_db</span>
+    </td>
+    <td>
+     <span class="function">mssql_close</span>
+    </td>
+    <td>Link to Microsoft SQL Server database</td>
+   </tr>
+
+   <tr>
+    <td>mssql link persistent</td>
+    <td>
+     <span class="function">mssql_pconnect</span>
+    </td>
+    <td>
+     <span class="function">mssql_query</span>,
+     <span class="function">mssql_select_db</span>
+    </td>
+    <td>
+     None
+    </td>
+    <td>Persistent link to Microsoft SQL Server</td>
+   </tr>
+
+   <tr>
+    <td>mssql result</td>
+    <td>
+     <span class="function">mssql_query</span>
+    </td>
+    <td>
+     <span class="function">mssql_data_seek</span>,
+     <span class="function">mssql_fetch_array</span>,
+     <span class="function">mssql_fetch_field</span>,
+     <span class="function">mssql_fetch_object</span>,
+     <span class="function">mssql_fetch_row</span>,
+     <span class="function">mssql_field_length</span>,
+     <span class="function">mssql_field_name</span>,
+     <span class="function">mssql_field_seek</span>,
+     <span class="function">mssql_field_type</span>,
+     <span class="function">mssql_num_fields</span>,
+     <span class="function">mssql_num_rows</span>,
+     <span class="function">mssql_result</span>
+    </td>
+    <td>
+     <span class="function">mssql_free_result</span>
+    </td>
+    <td>Microsoft SQL Server result</td>
+   </tr>
+
+   <tr>
+    <td>mysql link</td>
+    <td>
+     <span class="function">mysql_connect</span>
+    </td>
+    <td>
+     <span class="function">mysql_affected_rows</span>,
+     <span class="function">mysql_change_user</span>,
+     <span class="function">mysql_create_db</span>,
+     <span class="function">mysql_data_seek</span>,
+     <span class="function">mysql_db_name</span>,
+     <span class="function">mysql_db_query</span>,
+     <span class="function">mysql_drop_db</span>,
+     <span class="function">mysql_errno</span>,
+     <span class="function">mysql_error</span>,
+     <span class="function">mysql_insert_id</span>,
+     <span class="function">mysql_list_dbs</span>,
+     <span class="function">mysql_list_fields</span>,
+     <span class="function">mysql_list_tables</span>,
+     <span class="function">mysql_query</span>,
+     <span class="function">mysql_result</span>,
+     <span class="function">mysql_select_db</span>,
+     <span class="function">mysql_tablename</span>,
+     <span class="function">mysql_get_host_info</span>,
+     <span class="function">mysql_get_proto_info</span>,
+     <span class="function">mysql_get_server_info</span>
+    </td>
+    <td>
+     <span class="function">mysql_close</span>
+    </td>
+    <td>Link to MySQL database</td>
+   </tr>
+
+   <tr>
+    <td>mysql link persistent</td>
+    <td>
+     <span class="function">mysql_pconnect</span>
+    </td>
+    <td>
+     <span class="function">mysql_affected_rows</span>,
+     <span class="function">mysql_change_user</span>,
+     <span class="function">mysql_create_db</span>,
+     <span class="function">mysql_data_seek</span>,
+     <span class="function">mysql_db_name</span>,
+     <span class="function">mysql_db_query</span>,
+     <span class="function">mysql_drop_db</span>,
+     <span class="function">mysql_errno</span>,
+     <span class="function">mysql_error</span>,
+     <span class="function">mysql_insert_id</span>,
+     <span class="function">mysql_list_dbs</span>,
+     <span class="function">mysql_list_fields</span>,
+     <span class="function">mysql_list_tables</span>,
+     <span class="function">mysql_query</span>,
+     <span class="function">mysql_result</span>,
+     <span class="function">mysql_select_db</span>,
+     <span class="function">mysql_tablename</span>,
+     <span class="function">mysql_get_host_info</span>,
+     <span class="function">mysql_get_proto_info</span>,
+     <span class="function">mysql_get_server_info</span>
+    </td>
+    <td>
+     None
+    </td>
+    <td>Persistent link to MySQL database</td>
+   </tr>
+
+   <tr>
+    <td>mysql result</td>
+    <td>
+     <span class="function">mysql_db_query</span>,
+     <span class="function">mysql_list_dbs</span>,
+     <span class="function">mysql_list_fields</span>,
+     <span class="function">mysql_list_processes</span>,
+     <span class="function">mysql_list_tables</span>,
+     <span class="function">mysql_query</span>,
+     <span class="function">mysql_unbuffered_query</span>
+    </td>
+    <td>
+     <span class="function">mysql_data_seek</span>,
+     <span class="function">mysql_db_name</span>,
+     <span class="function">mysql_fetch_array</span>,
+     <span class="function">mysql_fetch_assoc</span>,
+     <span class="function">mysql_fetch_field</span>,
+     <span class="function">mysql_fetch_lengths</span>,
+     <span class="function">mysql_fetch_object</span>,
+     <span class="function">mysql_fetch_row</span>,
+     <span class="function">mysql_fetch_row</span>,
+     <span class="function">mysql_field_flags</span>,
+     <span class="function">mysql_field_name</span>,
+     <span class="function">mysql_field_len</span>,
+     <span class="function">mysql_field_seek</span>,
+     <span class="function">mysql_field_table</span>,
+     <span class="function">mysql_field_type</span>,
+     <span class="function">mysql_num_fields</span>,
+     <span class="function">mysql_num_rows</span>,
+     <span class="function">mysql_result</span>,
+     <span class="function">mysql_tablename</span>
+    </td>
+    <td>
+     <span class="function">mysql_free_result</span>
+    </td>
+    <td>MySQL result</td>
+   </tr>
+
+   <tr>
+     <td>oci8 collection</td>
+     <td>
+       <span class="function">oci_new_collection</span>
+     </td>
+     <td>
+       <span class="function">OCI-Collection::append</span>,
+       <span class="function">OCI-Collection::assign</span>,
+       <span class="function">OCI-Collection::assignElem</span>,
+       <span class="function">OCI-Collection::getElem</span>,
+       <span class="function">OCI-Collection::max</span>,
+       <span class="function">OCI-Collection::size</span>,
+       <span class="function">OCI-Collection::trim</span>
+     </td>
+     <td>
+       <span class="function">OCI-Collection::free</span>
+     </td>
+     <td>Oracle Collection</td>
+   </tr>
+
+   <tr>
+    <td>oci8 connection</td>
+    <td>
+     <span class="function">oci_connect</span>,
+     <span class="function">oci_pconnect</span>,
+     <span class="function">oci_new_connect</span>
+    </td>
+    <td>
+     <span class="function">oci_commit</span>,
+     <span class="function">oci_error</span>,
+     <span class="function">oci_new_cursor</span>,
+     <span class="function">oci_parse</span>,
+     <span class="function">oci_password_change</span>,
+     <span class="function">oci_rollback</span>,
+     <span class="function">oci_server_version</span>,
+     <span class="function">oci_set_action</span>,
+     <span class="function">oci_set_client_identifier</span>,
+     <span class="function">oci_set_client_info</span>,
+     <span class="function">oci_set_module_name</span>
+    </td>
+    <td>
+     <span class="function">oci_close</span>
+    </td>
+    <td>Connection to Oracle Database</td>
+   </tr>
+
+   <tr>
+     <td>oci8 lob</td>
+     <td>
+       <span class="function">oci_new_descriptor</span>
+     </td>
+     <td>
+       <span class="function">OCI-Lob::append</span>,
+       <span class="function">OCI-Lob::close</span>,
+       <span class="function">OCI-Lob::eof</span>,
+       <span class="function">OCI-Lob::erase</span>,
+       <span class="function">OCI-Lob::export</span>,
+       <span class="function">OCI-Lob::flush</span>,
+       <span class="function">OCI-Lob::getBuffering</span>,
+       <span class="function">OCI-Lob::import</span>,
+       <span class="function">OCI-Lob::load</span>,
+       <span class="function">OCI-Lob::read</span>,
+       <span class="function">OCI-Lob::rewind</span>,
+       <span class="function">OCI-Lob::save</span>,
+       <span class="function">OCI-Lob::saveFile</span>,
+       <span class="function">OCI-Lob::seek</span>,
+       <span class="function">OCI-Lob::setBuffering</span>,
+       <span class="function">OCI-Lob::size</span>,
+       <span class="function">OCI-Lob::tell</span>,
+       <span class="function">OCI-Lob::truncate</span>,
+       <span class="function">OCI-Lob::write</span>,
+       <span class="function">OCI-Lob::writeTemporary</span>,
+       <span class="function">OCI-Lob::writeToFile</span>,
+       <span class="function">oci_lob_copy</span>,
+       <span class="function">oci_lob_is_equal</span>
+     </td>
+     <td>
+       <span class="function">OCI-Lob::free</span>
+     </td>
+     <td>Oracle large objects</td>
+   </tr>
+
+   <tr>
+    <td>oci8 statement</td>
+    <td>
+     <span class="function">oci_parse</span>,
+     <span class="function">oci_new_cursor</span>
+    </td>
+    <td>
+     <span class="function">oci_bind_array_by_name</span>,
+     <span class="function">oci_bind_by_name</span>,
+     <span class="function">oci_cancel</span>,
+     <span class="function">oci_define_by_name</span>,
+     <span class="function">oci_error</span>
+     <span class="function">oci_execute</span>,
+     <span class="function">oci_fetch_all</span>,
+     <span class="function">oci_fetch_array</span>,
+     <span class="function">oci_fetch_assoc</span>,
+     <span class="function">oci_fetch_object</span>,
+     <span class="function">oci_fetch_row</span>,
+     <span class="function">oci_fetch</span>,
+     <span class="function">oci_field_is_null</span>,
+     <span class="function">oci_field_name</span>,
+     <span class="function">oci_field_precision</span>,
+     <span class="function">oci_field_scale</span>,
+     <span class="function">oci_field_size</span>,
+     <span class="function">oci_field_type_raw</span>,
+     <span class="function">oci_field_type</span>,
+     <span class="function">oci_num_fields</span>,
+     <span class="function">oci_num_rows</span>,
+     <span class="function">oci_result</span>,
+     <span class="function">oci_set_prefetch</span>,
+     <span class="function">oci_statement_type</span>
+    </td>
+    <td>
+     <span class="function">oci_free_statement</span>
+    </td>
+    <td>Oracle cursor</td>
+   </tr>
+
+   <tr>
+    <td>odbc link</td>
+    <td>
+     <span class="function">odbc_connect</span>
+    </td>
+    <td>
+     <span class="function">odbc_autocommit</span>,
+     <span class="function">odbc_commit</span>,
+     <span class="function">odbc_error</span>,
+     <span class="function">odbc_errormsg</span>,
+     <span class="function">odbc_exec</span>,
+     <span class="function">odbc_tables</span>,
+     <span class="function">odbc_tableprivileges</span>,
+     <span class="function">odbc_do</span>,
+     <span class="function">odbc_prepare</span>,
+     <span class="function">odbc_columns</span>,
+     <span class="function">odbc_columnprivileges</span>,
+     <span class="function">odbc_procedurecolumns</span>,
+     <span class="function">odbc_specialcolumns</span>,
+     <span class="function">odbc_rollback</span>,
+     <span class="function">odbc_setoption</span>,
+     <span class="function">odbc_gettypeinfo</span>,
+     <span class="function">odbc_primarykeys</span>,
+     <span class="function">odbc_foreignkeys</span>,
+     <span class="function">odbc_procedures</span>,
+     <span class="function">odbc_statistics</span>
+    </td>
+    <td>
+     <span class="function">odbc_close</span>
+    </td>
+    <td>Link to ODBC database</td>
+   </tr>
+
+   <tr>
+    <td>odbc link persistent</td>
+    <td>
+     <span class="function">odbc_pconnect</span>
+    </td>
+    <td>
+     <span class="function">odbc_autocommit</span>,
+     <span class="function">odbc_commit</span>,
+     <span class="function">odbc_error</span>,
+     <span class="function">odbc_errormsg</span>,
+     <span class="function">odbc_exec</span>,
+     <span class="function">odbc_tables</span>,
+     <span class="function">odbc_tableprivileges</span>,
+     <span class="function">odbc_do</span>,
+     <span class="function">odbc_prepare</span>,
+     <span class="function">odbc_columns</span>,
+     <span class="function">odbc_columnprivileges</span>,
+     <span class="function">odbc_procedurecolumns</span>,
+     <span class="function">odbc_specialcolumns</span>,
+     <span class="function">odbc_rollback</span>,
+     <span class="function">odbc_setoption</span>,
+     <span class="function">odbc_gettypeinfo</span>,
+     <span class="function">odbc_primarykeys</span>,
+     <span class="function">odbc_foreignkeys</span>,
+     <span class="function">odbc_procedures</span>,
+     <span class="function">odbc_statistics</span>
+    </td>
+    <td>
+     None
+    </td>
+    <td>Persistent link to ODBC database</td>
+   </tr>
+
+   <tr>
+    <td>odbc result</td>
+    <td>
+     <span class="function">odbc_prepare</span>
+    </td>
+    <td>
+     <span class="function">odbc_binmode</span>,
+     <span class="function">odbc_cursor</span>,
+     <span class="function">odbc_execute</span>,
+     <span class="function">odbc_fetch_into</span>,
+     <span class="function">odbc_fetch_row</span>,
+     <span class="function">odbc_field_name</span>,
+     <span class="function">odbc_field_num</span>,
+     <span class="function">odbc_field_type</span>,
+     <span class="function">odbc_field_len</span>,
+     <span class="function">odbc_field_precision</span>,
+     <span class="function">odbc_field_scale</span>,
+     <span class="function">odbc_longreadlen</span>,
+     <span class="function">odbc_num_fields</span>,
+     <span class="function">odbc_num_rows</span>,
+     <span class="function">odbc_result</span>,
+     <span class="function">odbc_result_all</span>,
+     <span class="function">odbc_setoption</span>
+    </td>
+    <td>
+     <span class="function">odbc_free_result</span>
+    </td>
+    <td>ODBC result</td>
+   </tr>
+
+   <tr>
+     <td>birdstep link</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+     <td>birdstep result</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+    <td>OpenSSL key</td>
+    <td>
+     <span class="function">openssl_get_privatekey</span>,
+     <span class="function">openssl_get_publickey</span>
+    </td>
+    <td>
+     <span class="function">openssl_sign</span>,
+     <span class="function">openssl_seal</span>,
+     <span class="function">openssl_open</span>,
+     <span class="function">openssl_verify</span>
+    </td>
+    <td>
+     <span class="function">openssl_free_key</span>
+    </td>
+    <td>OpenSSL key</td>
+   </tr>
+
+   <tr>
+    <td>OpenSSL X.509</td>
+    <td>
+     <span class="function">openssl_x509_read</span>
+    </td>
+    <td>
+     <span class="function">openssl_x509_parse</span>,
+     <span class="function">openssl_x509_checkpurpose</span>
+    </td>
+    <td>
+     <span class="function">openssl_x509_free</span>
+    </td>
+    <td>Public Key</td>
+   </tr>
+
+   <tr>
+    <td>pdf document</td>
+    <td>
+     <span class="function">pdf_new</span>
+    </td>
+    <td>
+     <span class="function">pdf_add_bookmark</span>,
+     <span class="function">pdf_add_launchlink</span>,
+     <span class="function">pdf_add_locallink</span>,
+     <span class="function">pdf_add_note</span>,
+     <span class="function">pdf_add_pdflink</span>,
+     <span class="function">pdf_add_weblink</span>,
+     <span class="function">pdf_arc</span>,
+     <span class="function">pdf_attach_file</span>,
+     <span class="function">pdf_begin_page</span>,
+     <span class="function">pdf_circle</span>,
+     <span class="function">pdf_clip</span>,
+     <span class="function">pdf_closepath</span>,
+     <span class="function">pdf_closepath_fill_stroke</span>,
+     <span class="function">pdf_closepath_stroke</span>,
+     <span class="function">pdf_concat</span>,
+     <span class="function">pdf_continue_text</span>,
+     <span class="function">pdf_curveto</span>,
+     <span class="function">pdf_end_page</span>,
+     <span class="function">pdf_endpath</span>,
+     <span class="function">pdf_fill</span>,
+     <span class="function">pdf_fill_stroke</span>,
+     <span class="function">pdf_findfont</span>,
+     <span class="function">pdf_get_buffer</span>,
+     <span class="function">pdf_get_image_height</span>,
+     <span class="function">pdf_get_image_width</span>,
+     <span class="function">pdf_get_parameter</span>,
+     <span class="function">pdf_get_value</span>,
+     <span class="function">pdf_lineto</span>,
+     <span class="function">pdf_moveto</span>,
+     <span class="function">pdf_open_ccitt</span>,
+     <span class="function">pdf_open_file</span>,
+     <span class="function">pdf_open_image_file</span>,
+     <span class="function">pdf_place_image</span>,
+     <span class="function">pdf_rect</span>,
+     <span class="function">pdf_restore</span>,
+     <span class="function">pdf_rotate</span>,
+     <span class="function">pdf_save</span>,
+     <span class="function">pdf_scale</span>,
+     <span class="function">pdf_setdash</span>,
+     <span class="function">pdf_setflat</span>,
+     <span class="function">pdf_setfont</span>,
+     <span class="function">pdf_setgray</span>,
+     <span class="function">pdf_setgray_fill</span>,
+     <span class="function">pdf_setgray_stroke</span>,
+     <span class="function">pdf_setlinecap</span>,
+     <span class="function">pdf_setlinejoin</span>,
+     <span class="function">pdf_setlinewidth</span>,
+     <span class="function">pdf_setmiterlimit</span>,
+     <span class="function">pdf_setpolydash</span>,
+     <span class="function">pdf_setrgbcolor</span>,
+     <span class="function">pdf_setrgbcolor_fill</span>,
+     <span class="function">pdf_setrgbcolor_stroke</span>,
+     <span class="function">pdf_set_border_color</span>,
+     <span class="function">pdf_set_border_dash</span>,
+     <span class="function">pdf_set_border_style</span>,
+     <span class="function">pdf_set_char_spacing</span>,
+     <span class="function">pdf_set_duration</span>,
+     <span class="function">pdf_set_font</span>,
+     <span class="function">pdf_set_horiz_scaling</span>,
+     <span class="function">pdf_set_parameter</span>,
+     <span class="function">pdf_set_text_pos</span>,
+     <span class="function">pdf_set_text_rendering</span>,
+     <span class="function">pdf_set_value</span>,
+     <span class="function">pdf_set_word_spacing</span>,
+     <span class="function">pdf_show</span>,
+     <span class="function">pdf_show_boxed</span>,
+     <span class="function">pdf_show_xy</span>,
+     <span class="function">pdf_skew</span>,
+     <span class="function">pdf_stringwidth</span>,
+     <span class="function">pdf_stroke</span>,
+     <span class="function">pdf_translate</span>,
+     <span class="function">pdf_add_thumbnail</span>,
+     <span class="function">pdf_arcn</span>,
+     <span class="function">pdf_begin_pattern</span>,
+     <span class="function">pdf_begin_template</span>,
+     <span class="function">pdf_end_pattern</span>,
+     <span class="function">pdf_end_template</span>,
+     <span class="function">pdf_initgraphics</span>,
+     <span class="function">pdf_makespotcolor</span>,
+     <span class="function">pdf_set_info</span>,
+     <span class="function">pdf_setcolor</span>,
+     <span class="function">pdf_setmatrix</span>,
+     <span class="function">pdf_open_memory_image</span>
+    </td>
+    <td>
+     <span class="function">pdf_close</span>,
+     <span class="function">pdf_delete</span>
+    </td>
+    <td>PDF document</td>
+   </tr>
+
+   <tr>
+    <td>pdf image</td>
+    <td>
+     <span class="function">pdf_open_image</span>,
+     <span class="function">pdf_open_image_file</span>,
+     <span class="function">pdf_open_memory_image</span>
+    </td>
+    <td>
+     <span class="function">pdf_get_image_height</span>,
+     <span class="function">pdf_get_image_width</span>,
+     <span class="function">pdf_open_CCITT</span>,
+     <span class="function">pdf_place_image</span>
+    </td>
+    <td>
+     <span class="function">pdf_close_image</span>
+    </td>
+    <td>Image in PDF file</td>
+   </tr>
+
+   <tr>
+     <td>pdf object</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+     <td>pdf outline</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+    <td>pgsql large object</td>
+    <td>
+     <span class="function">pg_lo_open</span>
+    </td>
+    <td>
+     <span class="function">pg_lo_open</span>,
+     <span class="function">pg_lo_create</span>,
+     <span class="function">pg_lo_read</span>,
+     <span class="function">pg_lo_read_all</span>,
+     <span class="function">pg_lo_seek</span>,
+     <span class="function">pg_lo_tell</span>,
+     <span class="function">pg_lo_unlink</span>,
+     <span class="function">pg_lo_write</span>
+    </td>
+    <td>
+     <span class="function">pg_lo_close</span>
+    </td>
+    <td>PostgreSQL Large Object</td>
+   </tr>
+
+   <tr>
+    <td>pgsql link</td>
+    <td>
+     <span class="function">pg_connect</span>
+    </td>
+    <td>
+     <span class="function">pg_affected_rows</span>,
+     <span class="function">pg_query</span>,
+     <span class="function">pg_send_query</span>,
+     <span class="function">pg_get_result</span>,
+     <span class="function">pg_connection_busy</span>,
+     <span class="function">pg_connection_reset</span>,
+     <span class="function">pg_connection_status</span>,
+     <span class="function">pg_last_error</span>,
+     <span class="function">pg_last_notice</span>,
+     <span class="function">pg_lo_create</span>,
+     <span class="function">pg_lo_export</span>,
+     <span class="function">pg_lo_import</span>,
+     <span class="function">pg_lo_open</span>,
+     <span class="function">pg_lo_unlink</span>,
+     <span class="function">pg_host</span>,
+     <span class="function">pg_port</span>,
+     <span class="function">pg_dbname</span>,
+     <span class="function">pg_options</span>,
+     <span class="function">pg_copy_from</span>,
+     <span class="function">pg_copy_to</span>,
+     <span class="function">pg_end_copy</span>,
+     <span class="function">pg_put_line</span>,
+     <span class="function">pg_tty</span>,
+     <span class="function">pg_trace</span>,
+     <span class="function">pg_untrace</span>,
+     <span class="function">pg_set_client_encoding</span>,
+     <span class="function">pg_client_encoding</span>,
+     <span class="function">pg_metadata</span>,
+     <span class="function">pg_convert</span>,
+     <span class="function">pg_insert</span>,
+     <span class="function">pg_select</span>,
+     <span class="function">pg_delete</span>,
+     <span class="function">pg_update</span>
+    </td>
+    <td>
+     <span class="function">pg_close</span>
+    </td>
+    <td>Link to PostgreSQL database</td>
+   </tr>
+
+   <tr>
+    <td>pgsql link persistent</td>
+    <td>
+     <span class="function">pg_pconnect</span>
+    </td>
+    <td>
+     <span class="function">pg_affected_rows</span>,
+     <span class="function">pg_query</span>,
+     <span class="function">pg_send_query</span>,
+     <span class="function">pg_get_result</span>,
+     <span class="function">pg_connection_busy</span>,
+     <span class="function">pg_connection_reset</span>,
+     <span class="function">pg_connection_status</span>,
+     <span class="function">pg_last_error</span>,
+     <span class="function">pg_last_notice</span>,
+     <span class="function">pg_lo_create</span>,
+     <span class="function">pg_lo_export</span>,
+     <span class="function">pg_lo_import</span>,
+     <span class="function">pg_lo_open</span>,
+     <span class="function">pg_lo_unlink</span>,
+     <span class="function">pg_host</span>,
+     <span class="function">pg_port</span>,
+     <span class="function">pg_dbname</span>,
+     <span class="function">pg_options</span>,
+     <span class="function">pg_copy_from</span>,
+     <span class="function">pg_copy_to</span>,
+     <span class="function">pg_end_copy</span>,
+     <span class="function">pg_put_line</span>,
+     <span class="function">pg_tty</span>,
+     <span class="function">pg_trace</span>,
+     <span class="function">pg_untrace</span>,
+     <span class="function">pg_set_client_encoding</span>,
+     <span class="function">pg_client_encoding</span>,
+     <span class="function">pg_metadata</span>,
+     <span class="function">pg_convert</span>,
+     <span class="function">pg_insert</span>,
+     <span class="function">pg_select</span>,
+     <span class="function">pg_delete</span>,
+     <span class="function">pg_update</span>
+    </td>
+    <td>
+     None
+    </td>
+    <td>Persistent link to PostgreSQL database</td>
+   </tr>
+
+   <tr>
+    <td>pgsql result</td>
+    <td>
+     <span class="function">pg_execute</span>,
+     <span class="function">pg_query</span>,
+     <span class="function">pg_query_params</span>,
+     <span class="function">pg_get_result</span>
+    </td>
+    <td>
+     <span class="function">pg_fetch_array</span>,
+     <span class="function">pg_fetch_object</span>,
+     <span class="function">pg_fetch_result</span>,
+     <span class="function">pg_fetch_row</span>,
+     <span class="function">pg_field_is_null</span>,
+     <span class="function">pg_field_name</span>,
+     <span class="function">pg_field_num</span>,
+     <span class="function">pg_field_prtlen</span>,
+     <span class="function">pg_field_size</span>,
+     <span class="function">pg_field_type</span>,
+     <span class="function">pg_last_oid</span>,
+     <span class="function">pg_num_fields</span>,
+     <span class="function">pg_num_rows</span>,
+     <span class="function">pg_result_error</span>,
+     <span class="function">pg_result_status</span>
+    </td>
+    <td>
+     <span class="function">pg_free_result</span>
+    </td>
+    <td>PostgreSQL result</td>
+   </tr>
+
+   <tr>
+     <td>pgsql string</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+     <td>printer</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+     <td>printer brush</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+     <td>printer font</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+     <td>printer pen</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+    <td>pspell</td>
+    <td>
+     <span class="function">pspell_new</span>,
+     <span class="function">pspell_new_config</span>,
+     <span class="function">pspell_new_personal</span>
+    </td>
+    <td>
+     <span class="function">pspell_add_to_personal</span>,
+     <span class="function">pspell_add_to_session</span>,
+     <span class="function">pspell_check</span>,
+     <span class="function">pspell_clear_session</span>,
+     <span class="function">pspell_config_ignore</span>,
+     <span class="function">pspell_config_mode</span>,
+     <span class="function">pspell_config_personal</span>,
+     <span class="function">pspell_config_repl</span>,
+     <span class="function">pspell_config_runtogether</span>,
+     <span class="function">pspell_config_save_repl</span>,
+     <span class="function">pspell_save_wordlist</span>,
+     <span class="function">pspell_store_replacement</span>,
+     <span class="function">pspell_suggest</span>
+    </td>
+    <td>
+     None
+    </td>
+    <td>pspell dictionary</td>
+   </tr>
+
+   <tr>
+    <td>pspell config</td>
+    <td>
+     <span class="function">pspell_config_create</span>
+    </td>
+    <td>
+     <span class="function">pspell_new_config</span>
+    </td>
+    <td>
+     None
+    </td>
+    <td>pspell configuration </td>
+   </tr>
+
+   <tr>
+    <td>Sablotron XSLT</td>
+    <td>
+     <span class="function">xslt_create</span>
+    </td>
+    <td>
+     <span class="function">xslt_closelog</span>,
+     <span class="function">xslt_openlog</span>,
+     <span class="function">xslt_run</span>,
+     <span class="function">xslt_set_sax_handler</span>,
+     <span class="function">xslt_errno</span>,
+     <span class="function">xslt_error</span>,
+     <span class="function">xslt_fetch_result</span>,
+     <span class="function">xslt_free</span>
+    </td>
+    <td>
+     <span class="function">xslt_free</span>
+    </td>
+    <td>XSLT parser</td>
+   </tr>
+
+   <tr>
+    <td>shmop</td>
+    <td>
+     <span class="function">shmop_open</span>
+    </td>
+    <td>
+     <span class="function">shmop_read</span>,
+     <span class="function">shmop_write</span>,
+     <span class="function">shmop_size</span>,
+     <span class="function">shmop_delete</span>
+    </td>
+    <td>
+     <span class="function">shmop_close</span>
+    </td>
+    <td>Shared memory block handle (as of PHP 7.0.0)</td>
+   </tr>
+
+   <tr>
+    <td>sockets file descriptor set</td>
+    <td>
+     <span class="function">socket</span>
+    </td>
+    <td>
+     <span class="function">accept_connect</span>,
+     <span class="function">bind</span>,
+     <span class="function">connect</span>,
+     <span class="function">listen</span>,
+     <span class="function">read</span>,
+     <span class="function">write</span>
+    </td>
+    <td>
+     <span class="function">close</span>
+    </td>
+    <td>Socket</td>
+   </tr>
+
+   <tr>
+     <td>sockets i/o vector</td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+     <td> </td>
+    </tr>
+
+   <tr>
+    <td>stream</td>
+    <td>
+     <span class="function">opendir</span>
+    </td>
+    <td>
+     <span class="function">readdir</span>,
+     <span class="function">rewinddir</span>
+    </td>
+    <td>
+     <span class="function">closedir</span>
+    </td>
+    <td>Dir handle</td>
+   </tr>
+
+   <tr>
+    <td>stream</td>
+    <td>
+     <span class="function">fopen</span>,
+     <span class="function">tmpfile</span>
+    </td>
+    <td>
+     <span class="function">feof</span>,
+     <span class="function">fflush</span>,
+     <span class="function">fgetc</span>,
+     <span class="function">fgetcsv</span>,
+     <span class="function">fgets</span>,
+     <span class="function">fgetss</span>,
+     <span class="function">flock</span>,
+     <span class="function">fpassthru</span>,
+     <span class="function">fputs</span>,
+     <span class="function">fwrite</span>,
+     <span class="function">fread</span>,
+     <span class="function">fseek</span>,
+     <span class="function">ftell</span>,
+     <span class="function">fstat</span>,
+     <span class="function">ftruncate</span>,
+     <span class="function">set_file_buffer</span>,
+     <span class="function">rewind</span>
+    </td>
+    <td>
+     <span class="function">fclose</span>
+    </td>
+    <td>File handle</td>
+   </tr>
+
+   <tr>
+    <td>stream</td>
+    <td>
+     <span class="function">popen</span>,
+     <span class="function">fsockopen</span>,
+     <span class="function">pfsockopen</span>
+    </td>
+    <td>
+     <span class="function">feof</span>,
+     <span class="function">fflush</span>,
+     <span class="function">fgetc</span>,
+     <span class="function">fgetcsv</span>,
+     <span class="function">fgets</span>,
+     <span class="function">fgetss</span>,
+     <span class="function">fpassthru</span>,
+     <span class="function">fputs</span>,
+     <span class="function">fwrite</span>,
+     <span class="function">fread</span>
+    </td>
+    <td>
+     <span class="function">pclose</span>
+    </td>
+    <td>Process handle</td>
+   </tr>
+
+   <tr>
+    <td>socket</td>
+    <td>
+    </td>
+    <td>
+     <span class="function">fflush</span>,
+     <span class="function">fgetc</span>,
+     <span class="function">fgetcsv</span>,
+     <span class="function">fgets</span>,
+     <span class="function">fgetss</span>,
+     <span class="function">fpassthru</span>,
+     <span class="function">fputs</span>,
+     <span class="function">fwrite</span>,
+     <span class="function">fread</span>
+    </td>
+    <td>
+     <span class="function">fclose</span>
+    </td>
+    <td>Socket handle</td>
+   </tr>
+
+   <tr>
+    <td>sybase-db link</td>
+    <td>
+     <span class="function">sybase_connect</span>
+    </td>
+    <td>
+     <span class="function">sybase_query</span>,
+     <span class="function">sybase_select_db</span>
+    </td>
+    <td>
+     <span class="function">sybase_close</span>
+    </td>
+    <td>Link to Sybase database using DB library</td>
+   </tr>
+
+   <tr>
+    <td>sybase-db link persistent</td>
+    <td>
+     <span class="function">sybase_pconnect</span>
+    </td>
+    <td>
+     <span class="function">sybase_query</span>,
+     <span class="function">sybase_select_db</span>
+    </td>
+    <td>
+     None
+    </td>
+    <td>Persistent link to Sybase database using DB library</td>
+   </tr>
+
+   <tr>
+    <td>sybase-db result</td>
+    <td>
+     <span class="function">sybase_query</span>,
+     <span class="function">sybase_unbuffered_query</span>
+    </td>
+    <td>
+     <span class="function">sybase_data_seek</span>,
+     <span class="function">sybase_fetch_array</span>,
+     <span class="function">sybase_fetch_field</span>,
+     <span class="function">sybase_fetch_object</span>,
+     <span class="function">sybase_fetch_row</span>,
+     <span class="function">sybase_field_seek</span>,
+     <span class="function">sybase_num_fields</span>,
+     <span class="function">sybase_num_rows</span>,
+     <span class="function">sybase_result</span>
+    </td>
+    <td>
+     <span class="function">sybase_free_result</span>
+    </td>
+    <td>Sybase result using DB library</td>
+   </tr>
+
+   <tr>
+    <td>sybase-ct link</td>
+    <td>
+     <span class="function">sybase_connect</span>
+    </td>
+    <td>
+     <span class="function">sybase_affected_rows</span>,
+     <span class="function">sybase_query</span>,
+     <span class="function">sybase_select_db</span>
+    </td>
+    <td>
+     <span class="function">sybase_close</span>
+    </td>
+    <td>Link to Sybase database using CT library</td>
+   </tr>
+
+   <tr>
+    <td>sybase-ct link persistent</td>
+    <td>
+     <span class="function">sybase_pconnect</span>
+    </td>
+    <td>
+     <span class="function">sybase_affected_rows</span>,
+     <span class="function">sybase_query</span>,
+     <span class="function">sybase_select_db</span>
+    </td>
+    <td>
+     None
+    </td>
+    <td>Persistent link to Sybase database using CT library</td>
+   </tr>
+
+   <tr>
+    <td>sybase-ct result</td>
+    <td>
+     <span class="function">sybase_query</span>
+    </td>
+    <td>
+     <span class="function">sybase_data_seek</span>,
+     <span class="function">sybase_fetch_array</span>,
+     <span class="function">sybase_fetch_field</span>,
+     <span class="function">sybase_fetch_object</span>,
+     <span class="function">sybase_fetch_row</span>,
+     <span class="function">sybase_field_seek</span>,
+     <span class="function">sybase_num_fields</span>,
+     <span class="function">sybase_num_rows</span>,
+     <span class="function">sybase_result</span>
+    </td>
+    <td>
+     <span class="function">sybase_free_result</span>
+    </td>
+    <td>Sybase result using CT library</td>
+   </tr>
+
+   <tr>
+    <td>sysvsem</td>
+    <td>
+     <span class="function">sem_get</span>
+    </td>
+    <td>
+     <span class="function">sem_acquire</span>
+    </td>
+    <td>
+     <span class="function">sem_release</span>
+    </td>
+    <td>System V Semaphore</td>
+   </tr>
+
+   <tr>
+    <td>sysvshm</td>
+    <td>
+     <span class="function">shm_attach</span>
+    </td>
+    <td>
+     <span class="function">shm_remove</span>,
+     <span class="function">shm_put_var</span>,
+     <span class="function">shm_get_var</span>,
+     <span class="function">shm_remove_var</span>
+    </td>
+    <td>
+     <span class="function">shm_detach</span>
+    </td>
+    <td>System V Shared Memory</td>
+   </tr>
+
+   <tr>
+    <td>wddx</td>
+    <td>
+     <span class="function">wddx_packet_start</span>
+    </td>
+    <td>
+     <span class="function">wddx_add_vars</span>
+    </td>
+    <td>
+     <span class="function">wddx_packet_end</span>
+    </td>
+    <td>WDDX packet</td>
+   </tr>
+
+   <tr>
+    <td>xml</td>
+    <td>
+     <span class="function">xml_parser_create</span>,
+     <span class="function">xml_parser_create_ns</span>
+    </td>
+    <td>
+     <span class="function">xml_set_object</span>,
+     <span class="function">xml_set_element_handler</span>,
+     <span class="function">xml_set_character_data_handler</span>,
+     <span class="function">xml_set_processing_instruction_handler</span>,
+     <span class="function">xml_set_default_handler</span>,
+     <span class="function">xml_set_unparsed_entity_decl_handler</span>,
+     <span class="function">xml_set_notation_decl_handler</span>,
+     <span class="function">xml_set_external_entity_ref_handler</span>,
+     <span class="function">xml_parse</span>,
+     <span class="function">xml_get_error_code</span>,
+     <span class="function">xml_error_string</span>,
+     <span class="function">xml_get_current_line_number</span>,
+     <span class="function">xml_get_current_column_number</span>,
+     <span class="function">xml_get_current_byte_index</span>,
+     <span class="function">xml_parse_into_struct</span>,
+     <span class="function">xml_parser_set_option</span>,
+     <span class="function">xml_parser_get_option</span>
+    </td>
+    <td>
+     <span class="function">xml_parser_free</span>
+    </td>
+    <td>XML parser</td>
+   </tr>
+
+   <tr>
+    <td>zlib</td>
+    <td>
+     <span class="function">gzopen</span>
+    </td>
+    <td>
+     <span class="function">gzeof</span>,
+     <span class="function">gzgetc</span>,
+     <span class="function">gzgets</span>,
+     <span class="function">gzgetss</span>,
+     <span class="function">gzpassthru</span>,
+     <span class="function">gzputs</span>,
+     <span class="function">gzread</span>,
+     <span class="function">gzrewind</span>,
+     <span class="function">gzseek</span>,
+     <span class="function">gztell</span>,
+     <span class="function">gzwrite</span>
+    </td>
+    <td>
+     <span class="function">gzclose</span>
+    </td>
+    <td>gz-compressed file</td>
+   </tr>
+
+   <tr>
+    <td>zlib.deflate</td>
+    <td>
+     <span class="function">deflate_init</span>
+    </td>
+    <td>
+     <span class="function">deflate_add</span>
+    </td>
+    <td>
+     <span class="function">None</span>
+    </td>
+    <td>incremental deflate context</td>
+   </tr>
+
+   <tr>
+    <td>zlib.inflate</td>
+    <td>
+     <span class="function">inflate_init</span>
+    </td>
+    <td>
+     <span class="function">inflate_add</span>
+    </td>
+    <td>
+     <span class="function">None</span>
+    </td>
+    <td>incremental inflate context</td>
+   </tr>
+
+       </tbody>
+   
+  </table>
+
+ </p>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

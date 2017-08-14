@@ -1,0 +1,348 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Returns time of sunrise for a given day and location</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.calendar.html">Date and Time Related Extensions</a></li>
+  <li class="header up"><a href="book.datetime.html">Date/Time</a></li>
+  <li class="header up"><a href="ref.datetime.html">Date/Time Functions</a></li>
+  <li><a href="function.checkdate.html">checkdate</a></li>
+  <li><a href="function.date-add.html">date_add</a></li>
+  <li><a href="function.date-create-from-format.html">date_create_from_format</a></li>
+  <li><a href="function.date-create-immutable-from-format.html">date_create_immutable_from_format</a></li>
+  <li><a href="function.date-create-immutable.html">date_create_immutable</a></li>
+  <li><a href="function.date-create.html">date_create</a></li>
+  <li><a href="function.date-date-set.html">date_date_set</a></li>
+  <li><a href="function.date-default-timezone-get.html">date_default_timezone_get</a></li>
+  <li><a href="function.date-default-timezone-set.html">date_default_timezone_set</a></li>
+  <li><a href="function.date-diff.html">date_diff</a></li>
+  <li><a href="function.date-format.html">date_format</a></li>
+  <li><a href="function.date-get-last-errors.html">date_get_last_errors</a></li>
+  <li><a href="function.date-interval-create-from-date-string.html">date_interval_create_from_date_string</a></li>
+  <li><a href="function.date-interval-format.html">date_interval_format</a></li>
+  <li><a href="function.date-isodate-set.html">date_isodate_set</a></li>
+  <li><a href="function.date-modify.html">date_modify</a></li>
+  <li><a href="function.date-offset-get.html">date_offset_get</a></li>
+  <li><a href="function.date-parse-from-format.html">date_parse_from_format</a></li>
+  <li><a href="function.date-parse.html">date_parse</a></li>
+  <li><a href="function.date-sub.html">date_sub</a></li>
+  <li><a href="function.date-sun-info.html">date_sun_info</a></li>
+  <li class="active"><a href="function.date-sunrise.html">date_sunrise</a></li>
+  <li><a href="function.date-sunset.html">date_sunset</a></li>
+  <li><a href="function.date-time-set.html">date_time_set</a></li>
+  <li><a href="function.date-timestamp-get.html">date_timestamp_get</a></li>
+  <li><a href="function.date-timestamp-set.html">date_timestamp_set</a></li>
+  <li><a href="function.date-timezone-get.html">date_timezone_get</a></li>
+  <li><a href="function.date-timezone-set.html">date_timezone_set</a></li>
+  <li><a href="function.date.html">date</a></li>
+  <li><a href="function.getdate.html">getdate</a></li>
+  <li><a href="function.gettimeofday.html">gettimeofday</a></li>
+  <li><a href="function.gmdate.html">gmdate</a></li>
+  <li><a href="function.gmmktime.html">gmmktime</a></li>
+  <li><a href="function.gmstrftime.html">gmstrftime</a></li>
+  <li><a href="function.idate.html">idate</a></li>
+  <li><a href="function.localtime.html">localtime</a></li>
+  <li><a href="function.microtime.html">microtime</a></li>
+  <li><a href="function.mktime.html">mktime</a></li>
+  <li><a href="function.strftime.html">strftime</a></li>
+  <li><a href="function.strptime.html">strptime</a></li>
+  <li><a href="function.strtotime.html">strtotime</a></li>
+  <li><a href="function.time.html">time</a></li>
+  <li><a href="function.timezone-abbreviations-list.html">timezone_abbreviations_list</a></li>
+  <li><a href="function.timezone-identifiers-list.html">timezone_identifiers_list</a></li>
+  <li><a href="function.timezone-location-get.html">timezone_location_get</a></li>
+  <li><a href="function.timezone-name-from-abbr.html">timezone_name_from_abbr</a></li>
+  <li><a href="function.timezone-name-get.html">timezone_name_get</a></li>
+  <li><a href="function.timezone-offset-get.html">timezone_offset_get</a></li>
+  <li><a href="function.timezone-open.html">timezone_open</a></li>
+  <li><a href="function.timezone-transitions-get.html">timezone_transitions_get</a></li>
+  <li><a href="function.timezone-version-get.html">timezone_version_get</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.date-sun-info.html">date_sun_info</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.date-sunset.html">date_sunset</a></div>
+                <div class="up"><a href="ref.datetime.html">Date/Time Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.date-sunrise" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">date_sunrise</h1>
+  <p class="refpurpose">Returns time of sunrise for a given day and location</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.date-sunrise-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname">date_sunrise</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$timestamp</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$format</code><span class="initializer"> = SUNFUNCS_RET_STRING</span></span>
+   [, <span class="methodparam"><span class="type">float</span> <code class="parameter">$latitude</code><span class="initializer"> = ini_get(&quot;date.default_latitude&quot;)</span></span>
+   [, <span class="methodparam"><span class="type">float</span> <code class="parameter">$longitude</code><span class="initializer"> = ini_get(&quot;date.default_longitude&quot;)</span></span>
+   [, <span class="methodparam"><span class="type">float</span> <code class="parameter">$zenith</code><span class="initializer"> = ini_get(&quot;date.sunrise_zenith&quot;)</span></span>
+   [, <span class="methodparam"><span class="type">float</span> <code class="parameter">$gmt_offset</code><span class="initializer"> = 0</span></span>
+  ]]]]] )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function">date_sunrise</span> returns the sunrise time for a given
+   day (specified as a <code class="parameter">timestamp</code>) and location.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.date-sunrise-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">timestamp</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The <code class="parameter">timestamp</code> of the day from which the sunrise
+       time is taken.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">format</code></dt>
+
+     <dd>
+
+      <p class="para">
+       <table class="doctable table">
+        <caption><strong><code class="parameter">format</code> constants</strong></caption>
+        
+         <thead>
+          <tr>
+           <th>constant</th>
+           <th>description</th>
+           <th>example</th>
+          </tr>
+
+         </thead>
+
+         <tbody class="tbody">
+          <tr>
+           <td>SUNFUNCS_RET_STRING</td>
+           <td>returns the result as <span class="type">string</span></td>
+           <td>16:46</td>
+          </tr>
+
+          <tr>
+           <td>SUNFUNCS_RET_DOUBLE</td>
+           <td>returns the result as <span class="type">float</span></td>
+           <td>16.78243132</td>
+          </tr>
+
+          <tr>
+           <td>SUNFUNCS_RET_TIMESTAMP</td>
+           <td>returns the result as <span class="type">integer</span> (timestamp)</td>
+           <td>1095034606</td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">latitude</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Defaults to North, pass in a negative value for South.
+       See also: <em>date.default_latitude</em>
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">longitude</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Defaults to East, pass in a negative value for West.
+       See also: <em>date.default_longitude</em>
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">zenith</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Default: <em>date.sunrise_zenith</em>
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">gmtoffset</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Specified in hours.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.date-sunrise-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the sunrise time in a specified <code class="parameter">format</code> on
+   success or <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-function.date-sunrise-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+   
+   <p class="para">
+Every call to a date/time function will generate a <strong><code>E_NOTICE</code></strong>
+if the time zone is not valid, and/or a <strong><code>E_STRICT</code></strong>
+or <strong><code>E_WARNING</code></strong> message
+if using the system settings or the <var class="varname">TZ</var> environment
+variable. See also <span class="function">date_default_timezone_set</span></p>
+ 
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.date-sunrise-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      
+      <tr><td>5.1.0</td><td><p class="para">
+Now issues the <strong><code>E_STRICT</code></strong> and <strong><code>E_NOTICE</code></strong>
+time zone errors.</p></td></tr>
+
+     
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.date-sunrise-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-2554">
+    <p><strong>Example #1 <span class="function">date_sunrise</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">/*&nbsp;calculate&nbsp;the&nbsp;sunrise&nbsp;time&nbsp;for&nbsp;Lisbon,&nbsp;Portugal<br />Latitude:&nbsp;38.4&nbsp;North<br />Longitude:&nbsp;9&nbsp;West<br />Zenith&nbsp;~=&nbsp;90<br />offset:&nbsp;+1&nbsp;GMT<br />*/<br /><br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">date</span><span style="color: #007700">(</span><span style="color: #DD0000">"D&nbsp;M&nbsp;d&nbsp;Y"</span><span style="color: #007700">).&nbsp;</span><span style="color: #DD0000">',&nbsp;sunrise&nbsp;time&nbsp;:&nbsp;'&nbsp;</span><span style="color: #007700">.</span><span style="color: #0000BB">date_sunrise</span><span style="color: #007700">(</span><span style="color: #0000BB">time</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">SUNFUNCS_RET_STRING</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">38.4</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">9</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">90</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Mon Dec 20 2004, sunrise time : 08:54
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.date-sunrise-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">date_sunset</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

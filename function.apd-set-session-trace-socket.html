@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Starts the remote session debugging</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.php.html">Affecting PHP's Behaviour</a></li>
+  <li class="header up"><a href="book.apd.html">APD</a></li>
+  <li class="header up"><a href="ref.apd.html">APD Functions</a></li>
+  <li><a href="function.apd-breakpoint.html">apd_breakpoint</a></li>
+  <li><a href="function.apd-callstack.html">apd_callstack</a></li>
+  <li><a href="function.apd-clunk.html">apd_clunk</a></li>
+  <li><a href="function.apd-continue.html">apd_continue</a></li>
+  <li><a href="function.apd-croak.html">apd_croak</a></li>
+  <li><a href="function.apd-dump-function-table.html">apd_dump_function_table</a></li>
+  <li><a href="function.apd-dump-persistent-resources.html">apd_dump_persistent_resources</a></li>
+  <li><a href="function.apd-dump-regular-resources.html">apd_dump_regular_resources</a></li>
+  <li><a href="function.apd-echo.html">apd_echo</a></li>
+  <li><a href="function.apd-get-active-symbols.html">apd_get_active_symbols</a></li>
+  <li><a href="function.apd-set-pprof-trace.html">apd_set_pprof_trace</a></li>
+  <li class="active"><a href="function.apd-set-session-trace-socket.html">apd_set_session_trace_socket</a></li>
+  <li><a href="function.apd-set-session-trace.html">apd_set_session_trace</a></li>
+  <li><a href="function.apd-set-session.html">apd_set_session</a></li>
+  <li><a href="function.override-function.html">override_function</a></li>
+  <li><a href="function.rename-function.html">rename_function</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.apd-set-pprof-trace.html">apd_set_pprof_trace</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.apd-set-session-trace.html">apd_set_session_trace</a></div>
+                <div class="up"><a href="ref.apd.html">APD Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.apd-set-session-trace-socket" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">apd_set_session_trace_socket</h1>
+  <p class="refpurpose">Starts the remote session debugging</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.apd-set-session-trace-socket-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">apd_set_session_trace_socket</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$tcp_server</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$socket_type</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$port</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$debug_level</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Connects to the specified <code class="parameter">tcp_server</code> (eg. <em>tcplisten</em>)
+   and sends debugging data to the socket. 
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.apd-set-session-trace-socket-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">tcp_server</code></dt>
+
+     <dd>
+
+      <p class="para">
+       IP or Unix Domain socket (like a file) of the TCP server.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">socket_type</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Can be <strong><code>AF_UNIX</code></strong> for file based sockets or 
+       <strong><code>APD_AF_INET</code></strong> for standard tcp/ip.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">port</code></dt>
+
+     <dd>
+
+      <p class="para">
+       You can use any port, but higher numbers are better as most of the
+       lower numbers may be used by other system services.
+      </p>
+     </dd>
+
+    
+    <dt>
+<code class="parameter">
+debug_level</code></dt>
+<dd>
+<p class="para">An integer which is formed by adding
+together the <em>XXX_TRACE</em> constants.</p><p class="para">It is not recommended
+to use <strong><code>MEMORY_TRACE</code></strong>. It is very slow and does not appear to be accurate.
+<strong><code>ASSIGNMENT_TRACE</code></strong> is not implemented yet.</p><p class="para">To turn on all
+functional traces (TIMING, FUNCTIONS, ARGS SUMMARY (like strace -c)) use the value 99</p>
+</dd>
+
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.apd-set-session-trace-socket-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> on success or <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.apd-set-session-trace-socket-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-469">
+    <p><strong>Example #1 <span class="function">apd_set_session_trace_socket</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;apd_set_session_trace_socket</span><span style="color: #007700">(</span><span style="color: #DD0000">"127.0.0.1"</span><span style="color: #007700">,</span><span style="color: #0000BB">APD_AF_INET</span><span style="color: #007700">,</span><span style="color: #0000BB">7112</span><span style="color: #007700">,</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

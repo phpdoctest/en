@@ -1,0 +1,212 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Constructs an APCIterator iterator object</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.php.html">Affecting PHP's Behaviour</a></li>
+  <li class="header up"><a href="book.apc.html">APC</a></li>
+  <li class="header up"><a href="class.apciterator.html">APCIterator</a></li>
+  <li class="active"><a href="apciterator.construct.html">APCIterator::__construct</a></li>
+  <li><a href="apciterator.current.html">APCIterator::current</a></li>
+  <li><a href="apciterator.gettotalcount.html">APCIterator::getTotalCount</a></li>
+  <li><a href="apciterator.gettotalhits.html">APCIterator::getTotalHits</a></li>
+  <li><a href="apciterator.gettotalsize.html">APCIterator::getTotalSize</a></li>
+  <li><a href="apciterator.key.html">APCIterator::key</a></li>
+  <li><a href="apciterator.next.html">APCIterator::next</a></li>
+  <li><a href="apciterator.rewind.html">APCIterator::rewind</a></li>
+  <li><a href="apciterator.valid.html">APCIterator::valid</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="class.apciterator.html">APCIterator</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="apciterator.current.html">APCIterator::current</a></div>
+                <div class="up"><a href="class.apciterator.html">APCIterator</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="apciterator.construct" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">APCIterator::__construct</h1>
+  <p class="refpurpose">Constructs an APCIterator iterator object</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-apciterator.construct-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">APCIterator::__construct</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$cache</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$search</code><span class="initializer"> = null</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$format</code><span class="initializer"> = APC_ITER_ALL</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$chunk_size</code><span class="initializer"> = 100</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$list</code><span class="initializer"> = APC_LIST_ACTIVE</span></span>
+  ]]]] )</div>
+
+  <p class="para rdfs-comment">
+   Constructs an <span class="classname">APCIterator</span> <span class="type">object</span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-apciterator.construct-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">cache</code></dt>
+
+    <dd>
+
+     <p class="para">
+      The cache type, which will be <em>user</em> or
+      <em>file</em>.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">search</code></dt>
+
+    <dd>
+
+     <p class="para">
+      A <a href="book.pcre.html" class="link">PCRE</a> regular expression that
+      matches against APC key names, either as a <span class="type">string</span> for
+      a single regular expression, or as an <span class="type">array</span> of regular
+      expressions. Or, optionally pass in <strong><code>NULL</code></strong> to skip the search.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">format</code></dt>
+
+    <dd>
+
+     <p class="para">
+      The desired format, as configured with one or more of the
+      <a href="apc.constants.html" class="link">APC_ITER_*</a> constants.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">chunk_size</code></dt>
+
+    <dd>
+
+     <p class="para">
+      The chunk size. Must be a value greater than 0. The default
+      value is 100.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">list</code></dt>
+
+    <dd>
+
+     <p class="para">
+      The type to list. Either pass in <strong><code>APC_LIST_ACTIVE</code></strong>
+      or <strong><code>APC_LIST_DELETED</code></strong>.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-apciterator.construct-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   An <span class="classname">APCIterator</span> <span class="type">object</span> on success,
+   or <strong><code>NULL</code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-apciterator.construct-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-444">
+    <p><strong>Example #1 A <span class="function">APCIterator::__construct</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">foreach&nbsp;(new&nbsp;</span><span style="color: #0000BB">APCIterator</span><span style="color: #007700">(</span><span style="color: #DD0000">'user'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'/^counter\./'</span><span style="color: #007700">)&nbsp;as&nbsp;</span><span style="color: #0000BB">$counter</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$counter</span><span style="color: #007700">[</span><span style="color: #0000BB">key</span><span style="color: #007700">]</span><span style="color: #DD0000">:&nbsp;</span><span style="color: #0000BB">$counter</span><span style="color: #007700">[</span><span style="color: #0000BB">value</span><span style="color: #007700">]</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">apc_dec</span><span style="color: #007700">(</span><span style="color: #0000BB">$counter</span><span style="color: #007700">[</span><span style="color: #DD0000">'key'</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$counter</span><span style="color: #007700">[</span><span style="color: #DD0000">'value'</span><span style="color: #007700">]);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-apciterator.construct-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li class="member"><span class="function">apc_exists</span></li>
+   <li class="member"><span class="function">apc_cache_info</span></li>
+  </ul>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

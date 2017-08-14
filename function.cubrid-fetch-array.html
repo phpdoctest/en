@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Fetch a result row as an associative array, a numeric array, or both</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.cubrid.html">CUBRID</a></li>
+  <li class="header up"><a href="cubridmysql.cubrid.html">CUBRID MySQL Compatibility Functions</a></li>
+  <li><a href="function.cubrid-affected-rows.html">cubrid_affected_rows</a></li>
+  <li><a href="function.cubrid-client-encoding.html">cubrid_client_encoding</a></li>
+  <li><a href="function.cubrid-close.html">cubrid_close</a></li>
+  <li><a href="function.cubrid-data-seek.html">cubrid_data_seek</a></li>
+  <li><a href="function.cubrid-db-name.html">cubrid_db_name</a></li>
+  <li><a href="function.cubrid-errno.html">cubrid_errno</a></li>
+  <li><a href="function.cubrid-error.html">cubrid_error</a></li>
+  <li class="active"><a href="function.cubrid-fetch-array.html">cubrid_fetch_array</a></li>
+  <li><a href="function.cubrid-fetch-assoc.html">cubrid_fetch_assoc</a></li>
+  <li><a href="function.cubrid-fetch-field.html">cubrid_fetch_field</a></li>
+  <li><a href="function.cubrid-fetch-lengths.html">cubrid_fetch_lengths</a></li>
+  <li><a href="function.cubrid-fetch-object.html">cubrid_fetch_object</a></li>
+  <li><a href="function.cubrid-fetch-row.html">cubrid_fetch_row</a></li>
+  <li><a href="function.cubrid-field-flags.html">cubrid_field_flags</a></li>
+  <li><a href="function.cubrid-field-len.html">cubrid_field_len</a></li>
+  <li><a href="function.cubrid-field-name.html">cubrid_field_name</a></li>
+  <li><a href="function.cubrid-field-seek.html">cubrid_field_seek</a></li>
+  <li><a href="function.cubrid-field-table.html">cubrid_field_table</a></li>
+  <li><a href="function.cubrid-field-type.html">cubrid_field_type</a></li>
+  <li><a href="function.cubrid-list-dbs.html">cubrid_list_dbs</a></li>
+  <li><a href="function.cubrid-num-fields.html">cubrid_num_fields</a></li>
+  <li><a href="function.cubrid-ping.html">cubrid_ping</a></li>
+  <li><a href="function.cubrid-query.html">cubrid_query</a></li>
+  <li><a href="function.cubrid-real-escape-string.html">cubrid_real_escape_string</a></li>
+  <li><a href="function.cubrid-result.html">cubrid_result</a></li>
+  <li><a href="function.cubrid-unbuffered-query.html">cubrid_unbuffered_query</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.cubrid-error.html">cubrid_error</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.cubrid-fetch-assoc.html">cubrid_fetch_assoc</a></div>
+                <div class="up"><a href="cubridmysql.cubrid.html">CUBRID MySQL Compatibility Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.cubrid-fetch-array" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">cubrid_fetch_array</h1>
+  <p class="refpurpose">Fetch a result row as an associative array, a numeric array, or both</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.cubrid-fetch-array-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname">cubrid_fetch_array</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$result</code></span>  
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$type</code><span class="initializer"> = CUBRID_BOTH</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+    The <span class="function">cubrid_fetch_array</span> function is used to get a
+    single row from the query result and returns an array. The cursor
+    automatically moves to the next row after getting the result.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.cubrid-fetch-array-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+  <dl>
+
+   
+    <dt>
+<code class="parameter">result</code></dt>
+
+    <dd>
+<p class="para"><code class="parameter">Result</code> comes from a call to <span class="function">cubrid_execute</span></p></dd>
+
+   
+   
+    <dt>
+<code class="parameter">type</code></dt>
+
+    <dd>
+<p class="para">Array type of the fetched result CUBRID_NUM, CUBRID_ASSOC,
+      CUBRID_BOTH. If you need to operate the lob object, you can use CUBRID_LOB.</p></dd>
+
+   
+  </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.cubrid-fetch-array-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">Returns an array of strings that corresponds to the fetched row, when process is successful.</p>
+  <p class="para"><strong><code>FALSE</code></strong>, when there are no more rows; NULL, when process is unsuccessful.</p>
+  <p class="para">The type of returned array depends on how type is defined. By using CUBRID_BOTH (default), you&#039;ll get an array with both associative and number indices, and you can decide which data type to use by setting the <code class="parameter">type</code> argument. The <code class="parameter">type</code> variable can be set to one of the following values:</p>
+    <ul class="simplelist">
+        <li class="member">CUBRID_NUM : Numerical array (0-based)</li>
+        <li class="member">CUBRID_ASSOC : Associative array</li>
+        <li class="member">CUBRID_BOTH : Numerical &amp; Associative array (default)</li>
+    </ul>  
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.cubrid-fetch-array-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-1159">
+   <p><strong>Example #1 <span class="function">cubrid_fetch_array</span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">33000</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"demodb"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$req&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;name,area,seats,address&nbsp;FROM&nbsp;stadium&nbsp;WHERE&nbsp;nation_code='GRE'&nbsp;AND&nbsp;seats&nbsp;&gt;&nbsp;10000"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%-40s&nbsp;%-10s&nbsp;%-6s&nbsp;%-20s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"name"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"area"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"seats"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"address"</span><span style="color: #007700">);<br />while&nbsp;(</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">cubrid_fetch_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">CUBRID_NUM</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%-40s&nbsp;%-10s&nbsp;%-6s&nbsp;%-20s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">],&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #0000BB">3</span><span style="color: #007700">]);<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;if&nbsp;you&nbsp;want&nbsp;to&nbsp;operate&nbsp;LOB&nbsp;object,&nbsp;you&nbsp;can&nbsp;use&nbsp;cubrid_fetch_array($req,&nbsp;CUBRID_NUM&nbsp;|&nbsp;CUBRID_LOB)<br /><br /></span><span style="color: #0000BB">cubrid_close_request</span><span style="color: #007700">(</span><span style="color: #0000BB">$req</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">cubrid_disconnect</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+name                                     area       seats  address             
+Panathinaiko Stadium                     86300.00   50000  Athens, Greece      
+Olympic Stadium                          54700.00   13000  Athens, Greece      
+Olympic Indoor Hall                      34100.00   18800  Athens, Greece      
+Olympic Hall                             52400.00   21000  Athens, Greece      
+Olympic Aquatic Centre                   42500.00   11500  Athens, Greece      
+Markopoulo Olympic Equestrian Centre     64000.00   15000  Markopoulo, Athens, Greece
+Faliro Coastal Zone Olympic Complex      34650.00   12171  Faliro, Athens, Greece
+Athens Olympic Stadium                   120400.00  71030  Maroussi, Athens, Greece 
+Ano Liossia                              34000.00   12000  Ano Liosia, Athens, Greece
+</pre></div>
+   </div>
+
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.cubrid-fetch-array-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+   <li class="member"><span class="function">cubrid_execute</span></li>
+   <li class="member"><span class="function">cubrid_fetch</span></li>
+   <li class="member"><span class="function">cubrid_fetch_row</span></li>
+   <li class="member"><span class="function">cubrid_fetch_assoc</span></li>
+   <li class="member"><span class="function">cubrid_fetch_object</span></li>
+   </ul>
+  </p>
+  </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,229 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Seed the random number generator</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.math.html">Mathematical Extensions</a></li>
+  <li class="header up"><a href="book.math.html">Math</a></li>
+  <li class="header up"><a href="ref.math.html">Math Functions</a></li>
+  <li><a href="function.abs.html">abs</a></li>
+  <li><a href="function.acos.html">acos</a></li>
+  <li><a href="function.acosh.html">acosh</a></li>
+  <li><a href="function.asin.html">asin</a></li>
+  <li><a href="function.asinh.html">asinh</a></li>
+  <li><a href="function.atan2.html">atan2</a></li>
+  <li><a href="function.atan.html">atan</a></li>
+  <li><a href="function.atanh.html">atanh</a></li>
+  <li><a href="function.base-convert.html">base_convert</a></li>
+  <li><a href="function.bindec.html">bindec</a></li>
+  <li><a href="function.ceil.html">ceil</a></li>
+  <li><a href="function.cos.html">cos</a></li>
+  <li><a href="function.cosh.html">cosh</a></li>
+  <li><a href="function.decbin.html">decbin</a></li>
+  <li><a href="function.dechex.html">dechex</a></li>
+  <li><a href="function.decoct.html">decoct</a></li>
+  <li><a href="function.deg2rad.html">deg2rad</a></li>
+  <li><a href="function.exp.html">exp</a></li>
+  <li><a href="function.expm1.html">expm1</a></li>
+  <li><a href="function.floor.html">floor</a></li>
+  <li><a href="function.fmod.html">fmod</a></li>
+  <li><a href="function.getrandmax.html">getrandmax</a></li>
+  <li><a href="function.hexdec.html">hexdec</a></li>
+  <li><a href="function.hypot.html">hypot</a></li>
+  <li><a href="function.intdiv.html">intdiv</a></li>
+  <li><a href="function.is-finite.html">is_finite</a></li>
+  <li><a href="function.is-infinite.html">is_infinite</a></li>
+  <li><a href="function.is-nan.html">is_nan</a></li>
+  <li><a href="function.lcg-value.html">lcg_value</a></li>
+  <li><a href="function.log10.html">log10</a></li>
+  <li><a href="function.log1p.html">log1p</a></li>
+  <li><a href="function.log.html">log</a></li>
+  <li><a href="function.max.html">max</a></li>
+  <li><a href="function.min.html">min</a></li>
+  <li><a href="function.mt-getrandmax.html">mt_getrandmax</a></li>
+  <li><a href="function.mt-rand.html">mt_rand</a></li>
+  <li><a href="function.mt-srand.html">mt_srand</a></li>
+  <li><a href="function.octdec.html">octdec</a></li>
+  <li><a href="function.pi.html">pi</a></li>
+  <li><a href="function.pow.html">pow</a></li>
+  <li><a href="function.rad2deg.html">rad2deg</a></li>
+  <li><a href="function.rand.html">rand</a></li>
+  <li><a href="function.round.html">round</a></li>
+  <li><a href="function.sin.html">sin</a></li>
+  <li><a href="function.sinh.html">sinh</a></li>
+  <li><a href="function.sqrt.html">sqrt</a></li>
+  <li class="active"><a href="function.srand.html">srand</a></li>
+  <li><a href="function.tan.html">tan</a></li>
+  <li><a href="function.tanh.html">tanh</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.sqrt.html">sqrt</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.tan.html">tan</a></div>
+                <div class="up"><a href="ref.math.html">Math Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.srand" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">srand</h1>
+  <p class="refpurpose">Seed the random number generator</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.srand-description">
+  <h3 class="title">Description</h3>
+   <div class="methodsynopsis dc-description">
+    <span class="type">void</span> <span class="methodname">srand</span>
+     ([ <span class="methodparam"><span class="type">int</span> <code class="parameter">$seed</code></span>
+   ] )</div>
+
+  <p class="para rdfs-comment">
+   Seeds the random number generator with <code class="parameter">seed</code>
+   or with a random value if no <code class="parameter">seed</code> is given.
+  </p>
+
+  <blockquote class="note"><p><strong class="note">Note</strong>: <span class="simpara">There is no need
+to seed the random number generator with <span class="function">srand</span> or
+<span class="function">mt_srand</span> as this is done automatically.
+</span></p></blockquote>
+  <blockquote class="note"><p><strong class="note">Note</strong>: <span class="simpara">As of PHP 7.1.0, <span class="function">srand</span> has been made
+   an alias of <span class="function">mt_srand</span>.</span>
+  </p></blockquote>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.srand-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">seed</code></dt>
+
+     <dd>
+
+      <p class="para">
+       An arbitrary <span class="type">integer</span> seed value.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.srand-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   No value is returned.
+  </p>
+ </div>
+
+ <div class="refsect1 changelog" id="refsect1-function.srand-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>7.1.0</td>
+       <td>
+        <a href="migration71.incompatible.html#migration71.incompatible.rand-srand-aliases" class="link"><span class="function">srand</span> has been made an alias of <span class="function">mt_srand</span>.</a>
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.srand-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4030">
+    <p><strong>Example #1 <span class="function">srand</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;seed&nbsp;with&nbsp;microseconds<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">make_seed</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;list(</span><span style="color: #0000BB">$usec</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$sec</span><span style="color: #007700">)&nbsp;=&nbsp;</span><span style="color: #0000BB">explode</span><span style="color: #007700">(</span><span style="color: #DD0000">'&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">microtime</span><span style="color: #007700">());<br />&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$sec&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #0000BB">$usec&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">1000000</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">srand</span><span style="color: #007700">(</span><span style="color: #0000BB">make_seed</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">$randval&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">rand</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.srand-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">rand</span></li>
+    <li class="member"><span class="function">getrandmax</span></li>
+    <li class="member"><span class="function">mt_srand</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

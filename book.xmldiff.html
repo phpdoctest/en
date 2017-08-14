@@ -1,0 +1,497 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: XML diff and merge</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.xml.html">XML Manipulation</a></li>
+  <li><a href="book.dom.html">DOM</a></li>
+  <li><a href="book.libxml.html">libxml</a></li>
+  <li><a href="book.sdo.html">SDO</a></li>
+  <li><a href="book.sdodasrel.html">SDO-DAS-Relational</a></li>
+  <li><a href="book.sdo-das-xml.html">SDO DAS XML</a></li>
+  <li><a href="book.simplexml.html">SimpleXML</a></li>
+  <li><a href="book.wddx.html">WDDX</a></li>
+  <li class="active"><a href="book.xmldiff.html">XMLDiff</a></li>
+  <li><a href="book.xml.html">XML Parser</a></li>
+  <li><a href="book.xmlreader.html">XMLReader</a></li>
+  <li><a href="book.xmlwriter.html">XMLWriter</a></li>
+  <li><a href="book.xsl.html">XSL</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.wddx-serialize-vars.html">wddx_serialize_vars</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="intro.xmldiff.html">Introduction</a></div>
+                <div class="up"><a href="refs.xml.html">XML Manipulation</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="book.xmldiff" class="book">
+ <h1>XML diff and merge</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="intro.xmldiff.html">Introduction</a></li>
+<li><a href="xmldiff.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_title">
+<li><a href="xmldiff.requirements.html">Requirements</a></li>
+<li><a href="xmldiff.installation.html">Installation</a></li>
+</ul>
+</li>
+<li><a href="class.xmldiff-base.html">XMLDiff\Base</a> — The XMLDiff\Base class<ul class="chunklist chunklist_title">
+<li><a href="xmldiff-base.construct.html">XMLDiff\Base::__construct</a> — Constructor</li>
+<li><a href="xmldiff-base.diff.html">XMLDiff\Base::diff</a> — Produce diff of two XML documents</li>
+<li><a href="xmldiff-base.merge.html">XMLDiff\Base::merge</a> — Produce new XML document based on diff</li>
+</ul>
+</li>
+<li><a href="class.xmldiff-dom.html">XMLDiff\DOM</a> — The XMLDiff\DOM class<ul class="chunklist chunklist_title">
+<li><a href="xmldiff-dom.diff.html">XMLDiff\DOM::diff</a> — Diff two DOMDocument objects</li>
+<li><a href="xmldiff-dom.merge.html">XMLDiff\DOM::merge</a> — Produce merged DOMDocument</li>
+</ul>
+</li>
+<li><a href="class.xmldiff-memory.html">XMLDiff\Memory</a> — The XMLDiff\Memory class<ul class="chunklist chunklist_title">
+<li><a href="xmldiff-memory.diff.html">XMLDiff\Memory::diff</a> — Diff two XML documents</li>
+<li><a href="xmldiff-memory.merge.html">XMLDiff\Memory::merge</a> — Produce merged XML document</li>
+</ul>
+</li>
+<li><a href="class.xmldiff-file.html">XMLDiff\File</a> — The XMLDiff\File class<ul class="chunklist chunklist_title">
+<li><a href="xmldiff-file.diff.html">XMLDiff\File::diff</a> — Diff two XML files</li>
+<li><a href="xmldiff-file.merge.html">XMLDiff\File::merge</a> — Produce merged XML document</li>
+</ul>
+</li>
+</ul>
+
+ 
+
+ 
+
+ 
+
+
+
+
+
+
+ 
+ 
+ 
+ 
+
+
+
+
+ <h1 class="title">The XMLDiff\Base class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="xmldiff-base.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Base abstract class for all the comparsion classes in the extension.
+   </p>
+  </div>
+
+
+  <div class="section" id="xmldiff-base.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">XMLDiff\Base</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">XMLDiff\Base</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$nsname</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">diff</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$from</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$to</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">merge</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$src</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$diff</code></span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The XMLDiff\DOM class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="xmldiff-dom.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+
+   </p>
+  </div>
+
+
+  <div class="section" id="xmldiff-dom.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">XMLDiff\DOM</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">XMLDiff\DOM</strong>
+     </span>
+     
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> XMLDiff\Base</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMDocument</span> <span class="methodname">diff</span>
+    ( <span class="methodparam"><span class="type">DOMDocument</span> <code class="parameter">$from</code></span>
+   , <span class="methodparam"><span class="type">DOMDocument</span> <code class="parameter">$to</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">DOMDocument</span> <span class="methodname">merge</span>
+    ( <span class="methodparam"><span class="type">DOMDocument</span> <code class="parameter">$src</code></span>
+   , <span class="methodparam"><span class="type">DOMDocument</span> <code class="parameter">$diff</code></span>
+   )</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">XMLDiff\Base::__construct</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$nsname</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">XMLDiff\Base::diff</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$from</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$to</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">XMLDiff\Base::merge</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$src</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$diff</code></span>
+   )</div>
+
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The XMLDiff\Memory class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="xmldiff-memory.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+
+   </p>
+  </div>
+
+
+  <div class="section" id="xmldiff-memory.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">XMLDiff\Memory</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">XMLDiff\Memory</strong>
+     </span>
+     
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> XMLDiff\Base</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">diff</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$from</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$to</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">merge</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$src</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$diff</code></span>
+   )</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">XMLDiff\Base::__construct</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$nsname</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">XMLDiff\Base::diff</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$from</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$to</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">XMLDiff\Base::merge</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$src</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$diff</code></span>
+   )</div>
+
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The XMLDiff\File class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="xmldiff-file.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+
+   </p>
+  </div>
+
+
+  <div class="section" id="xmldiff-file.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">XMLDiff\File</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">XMLDiff\File</strong>
+     </span>
+     
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> XMLDiff\Base</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">diff</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$from</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$to</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">merge</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$src</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$diff</code></span>
+   )</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">XMLDiff\Base::__construct</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$nsname</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">XMLDiff\Base::diff</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$from</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$to</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">XMLDiff\Base::merge</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$src</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$diff</code></span>
+   )</div>
+
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

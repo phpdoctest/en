@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Basic usage</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.session.html">Session Extensions</a></li>
+  <li class="header up"><a href="book.session.html">Sessions</a></li>
+  <li class="header up"><a href="session.examples.html">Examples</a></li>
+  <li class="active"><a href="session.examples.basic.html">Basic usage</a></li>
+  <li><a href="session.idpassing.html">Passing the Session ID</a></li>
+  <li><a href="session.customhandler.html">Custom Session Handlers</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="session.examples.html">Examples</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="session.idpassing.html">Passing the Session ID</a></div>
+                <div class="up"><a href="session.examples.html">Examples</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="session.examples.basic" class="section">
+  <h2 class="title">Basic usage</h2>
+   <p class="para">
+    Sessions are a simple way to store data for individual users against a unique session ID.
+    This can be used to persist state information between page requests.  Session IDs are normally
+    sent to the browser via session cookies and the ID is used to retrieve existing session data.
+    The absence of an ID or session cookie lets PHP know to create a new session, and generate a new
+    session ID.
+   </p>
+   <p class="para">
+    Sessions follow a simple workflow.  When a session is started, PHP will either retrieve an
+    existing session using the ID passed (usually from a session cookie) or if no session is passed
+    it will create a new session.  PHP will populate the <var class="varname">$_SESSION</var> superglobal
+    with any session data after the session has started.  When PHP shuts down, it will automatically
+    take the contents of the <var class="varname">$_SESSION</var> superglobal, serialize it, and send it
+    for storage using the session save handler.
+   </p>
+   <p class="para">
+    By default, PHP uses the internal <code class="parameter">files</code> save handler which
+    is set by <a href="session.configuration.html#ini.session.save-handler" class="link">session.save_handler</a>.
+    This saves session data on the server at the location specified by the
+    <a href="session.configuration.html#ini.session.save-path" class="link">session.save_path</a> configuration directive.
+   </p>
+   <p class="para">
+    Sessions can be started manually using the <span class="function">session_start</span> function.
+    If the <a href="session.configuration.html#ini.session.auto-start" class="link">session.auto_start</a> directive is set
+    to <code class="parameter">1</code>, a session will automatically start on request startup.
+   </p>
+   <p class="para">
+    Sessions normally shutdown automatically when PHP is finished executing a script, but can be
+    manually shutdown using the <span class="function">session_write_close</span> function.
+   </p>
+  <p class="para">
+   <div class="example" id="example-5369">
+    <p><strong>Example #1 
+     Registering a variable with <var class="varname">$_SESSION</var>.
+    </strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />session_start</span><span style="color: #007700">();<br />if&nbsp;(!isset(</span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">[</span><span style="color: #DD0000">'count'</span><span style="color: #007700">]))&nbsp;{<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">[</span><span style="color: #DD0000">'count'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">[</span><span style="color: #DD0000">'count'</span><span style="color: #007700">]++;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <div class="example" id="example-5370">
+    <p><strong>Example #2 
+     Unregistering a variable with <var class="varname">$_SESSION</var>.
+    </strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />session_start</span><span style="color: #007700">();<br />unset(</span><span style="color: #0000BB">$_SESSION</span><span style="color: #007700">[</span><span style="color: #DD0000">'count'</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="caution"><strong class="caution">Caution</strong>
+    <p class="para">
+     Do NOT unset the whole <var class="varname">$_SESSION</var> with
+     <em>unset($_SESSION)</em> as this will disable the
+     registering of session variables through the
+     <var class="varname">$_SESSION</var> superglobal.
+    </p>
+   </div>
+  </p>
+  <div class="warning"><strong class="warning">Warning</strong>
+   <p class="para">
+    You can&#039;t use references in session variables as there is no feasible way
+    to restore a reference to another variable.
+   </p>
+  </div>
+  <div class="warning"><strong class="warning">Warning</strong>
+   <p class="para">
+    register_globals will overwrite variables in the global scope whose names are shared with session variables. Please see <a href="security.globals.html" class="link">Using Register Globals</a> for details.
+   </p>
+  </div>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    File based sessions (the default in PHP) lock the session file once a
+    session is opened via <span class="function">session_start</span> or implicitly via
+    <a href="session.configuration.html#ini.session.auto-start" class="link">session.auto_start</a>. Once
+    locked, no other script can access the same session file until it has been
+    closed by the first script terminating or calling
+    <span class="function">session_write_close</span>.
+   </p>
+   <p class="para">
+    This is most likely to be an issue on Web sites that use AJAX heavily and
+    have multiple concurrent requests. The easiest way to deal with it is to
+    call <span class="function">session_write_close</span> as soon as any required
+    changes to the session have been made, preferably early in the script.
+    Alternatively, a different session backend that does support concurrency
+    could be used.
+   </p>
+  </p></blockquote>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

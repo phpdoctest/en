@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: SCA Functions</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.webservice.html">Web Services</a></li>
+  <li class="header up"><a href="book.sca.html">SCA</a></li>
+  <li><a href="intro.sca.html">Introduction</a></li>
+  <li><a href="sca.setup.html">Installing/Configuring</a></li>
+  <li><a href="sca.constants.html">Predefined Constants</a></li>
+  <li><a href="sca.examples.html">Examples</a></li>
+  <li class="active"><a href="ref.sca.html">SCA Functions</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="sca.examples.errorhandling.html">Error handling</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="sca.createdataobject.html">SCA::createDataObject</a></div>
+                <div class="up"><a href="book.sca.html">SCA</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="ref.sca" class="reference">
+ <h1 class="title">SCA Functions</h1>
+ 
+ <div class="partintro">
+  
+  
+  <div class="section" id="sca.classes">
+   <h2 class="title">Predefined Classes</h2>
+   <p class="para"> 
+    Most of the interface to SCA is through the annotations within
+    SCA components so there are few public classes and methods. The only
+    SCA classes that scripts or components can call are the <span class="classname">SCA</span>
+    class itself, and the proxy classes <span class="classname">SCA_LocalProxy</span>
+    and <span class="classname">SCA_SoapProxy</span>.
+   </p>
+   
+   <div class="section" id="class.sca">
+    <h2 class="title"><span class="classname">SCA</span></h2>
+    <p class="para">
+     Much of the work of the SCA class is performed when the file
+     <var class="filename">SCA.php</var> is included within an SCA component.
+     However, a PHP script may include
+     <var class="filename">SCA.php</var> and call the
+     <span class="function">getService</span> method on the SCA class in order
+     to obtain a proxy for a service. A component will not need to do this as
+     proxies are obtained instead by defining an instance variable with
+     the @reference annotation.
+    </p>
+    <p class="para"> 
+     Components that need to create an SDO to return to a caller will
+     need a data factory to call. For this purpose the SCA class supports
+     the
+     <span class="function">createDataObject</span> method, which will
+     create an SDO according to the model defined by the component&#039;s
+     @types annotations. The arguments to
+     <span class="function">createDataObject</span> are the same as those to
+     SDO&#039;s XML Data Access Service. 
+    </p>
+    
+    <div class="section">
+     <h2 class="title">Methods</h2>
+     <ul class="itemizedlist">
+      <li class="listitem">
+       <p class="para">
+        <a href="sca.getservice.html" class="link">
+         getService</a> - obtain a proxy for a service 
+       </p>
+      </li>
+      <li class="listitem">
+       <p class="para">
+        <a href="sca.createdataobject.html" class="link">
+         createDataObject</a> - create an SDO 
+       </p>
+      </li>
+     </ul>
+    </div> 
+   </div>
+   
+   <div class="section" id="class.sca-localproxy">
+    <h2 class="title">
+     <span class="classname">SCA_LocalProxy</span>
+    </h2>
+    <p class="para">
+     When
+     <span class="function">getService</span> is called with the target of a
+     local PHP component, a local proxy is returned. A local proxy is also
+     injected into the instance variables of a component that are
+     defined with an @reference and an @binding.php anotation. When the
+     script or component makes calls on the local proxy, they are passed
+     on to the target component itself. 
+    </p>
+    <p class="para"> 
+     Components that need to create an SDO to pass to a component
+     will need a data factory to call. For this purpose the
+     SCA_LocalProxy class supports the <span class="function">createDataObject</span> method,
+     which will create an SDO according to the model defined by the
+     components&#039; @types annotations. The arguments to the
+     <span class="function">createDataObject</span> are the same as those to SDO&#039;s XML Data Access
+     Service. 
+    </p>
+    
+    <div class="section">
+     <h2 class="title">Methods</h2>
+     <ul class="itemizedlist">
+      <li class="listitem">
+       <p class="para">
+        <a href="sca-localproxy.createdataobject.html" class="link">
+         createDataObject</a> - create an SDO 
+       </p>
+      </li>
+     </ul>
+    </div>
+   </div>
+   
+   <div class="section" id="class.sca-soapproxy">
+    <h2 class="title">
+     <span class="classname">SCA_SoapProxy</span>
+    </h2>
+    <p class="para">
+     When
+     <span class="function">getService</span> is called with the target of a
+     WSDL file, a SOAP proxy is returned. A SOAP proxy is also injected
+     into the instance variables of a component that are defined with an
+     @reference and an @binding.soap anotations. When the script or
+     component makes calls on the SOAP proxy, they are formed into Web
+     service SOAP requests and passed on to the target component, with
+     the help of the PHP Soap extension. 
+    </p>
+    <p class="para"> 
+     Components that need to create an SDO to pass to a component
+     will need a data factory to call. For this purpose the
+     <span class="classname">SCA_SoapProxy</span> class supports the
+     <span class="function">createDataObject</span> method, which will create an
+     SDO according to the model defined within the target WSDL. The
+     arguments to the <span class="function">createDataObject</span> are the same
+     as those to SDO&#039;s XML Data Access Service. 
+    </p>
+    
+    <div class="section">
+     <h2 class="title">Methods</h2>
+     <ul class="itemizedlist">
+      <li class="listitem">
+       <p class="para">
+        <a href="sca-soapproxy.createdataobject.html" class="link">
+         createDataObject</a> - create an SDO 
+       </p>
+      </li>
+     </ul>
+    </div>
+   </div>
+  </div>
+  
+
+ </div>
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+<strong>Table of Contents</strong><ul class="chunklist chunklist_reference">
+<li><a href="sca.createdataobject.html">SCA::createDataObject</a> — create an SDO</li>
+<li><a href="sca.getservice.html">SCA::getService</a> — Obtain a proxy for a service</li>
+<li><a href="sca-localproxy.createdataobject.html">SCA_LocalProxy::createDataObject</a> — create an SDO</li>
+<li><a href="sca-soapproxy.createdataobject.html">SCA_SoapProxy::createDataObject</a> — create an SDO</li>
+</ul>
+</ol>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,137 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Rules</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="appendices.html">Appendices</a></li>
+  <li class="header up"><a href="userlandnaming.html">Userland Naming Guide</a></li>
+  <li><a href="userlandnaming.globalnamespace.html">Global Namespace</a></li>
+  <li class="active"><a href="userlandnaming.rules.html">Rules</a></li>
+  <li><a href="userlandnaming.tips.html">Tips</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="userlandnaming.globalnamespace.html">Global Namespace</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="userlandnaming.tips.html">Tips</a></div>
+                <div class="up"><a href="userlandnaming.html">Userland Naming Guide</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="userlandnaming.rules" class="section">
+  <h2 class="title">Rules</h2>
+  <p class="para">
+   The following list gives an overview of which rights the PHP project
+   reserves for itself, when choosing names for new internal identifiers.
+   The definitive guide is the official
+   <a href="http://git.php.net/?p=php-src.git;a=blob_plain;f=CODING_STANDARDS;hb=HEAD" class="link external">&raquo;&nbsp;CODING STANDARDS</a>:
+  </p>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <p class="para">
+     PHP owns the top-level namespace but tries to find decent descriptive
+     names and avoid any obvious clashes.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     Function names use underscores between words, while class names use
+     both the <em>camelCase</em> and <em>PascalCase</em>
+     rules.
+    </p>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     PHP will prefix any global symbols of an extension with the name of
+     the extension. (In the past, there have been numerous
+     exceptions to this rule.) Examples:
+    </p>
+
+    <ul class="itemizedlist">
+     <li class="listitem"><p class="para"><span class="function">curl_close</span></p></li>
+     <li class="listitem"><p class="para"><span class="function">mysql_query</span></p></li>
+     <li class="listitem"><p class="para">PREG_SPLIT_DELIM_CAPTURE</p></li>
+     <li class="listitem"><p class="para">new DOMDocument()</p></li>
+     <li class="listitem">
+      <p class="para">
+       <span class="function">strpos</span> (example of a past mistake)
+      </p>
+     </li>
+     <li class="listitem"><p class="para">new SplFileObject()</p></li>
+    </ul>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     Iterators and Exceptions are however simply postfixed with
+     &quot;<em>Iterator</em>&quot; and &quot;<em>Exception</em>.&quot;
+     Examples:
+    </p>
+    <ul class="itemizedlist">
+     <li class="listitem"><p class="para"><span class="classname">ArrayIterator</span></p></li>
+     <li class="listitem"><p class="para"><span class="classname">LogicException</span></p></li>
+    </ul>
+   </li>
+   <li class="listitem">
+    <p class="para">
+     PHP reserves all symbols starting with <em>__</em>
+     as magical. It is recommended that you do not create symbols starting
+     with <em>__</em> in PHP unless
+     you want to use documented magical functionality. Examples:
+    </p>
+    <ul class="itemizedlist">
+     <li class="listitem"><p class="para"><a href="language.oop5.overloading.html#object.get" class="link">__get()</a></p></li>
+     <li class="listitem"><p class="para"><span class="function">__autoload</span></p></li>
+    </ul>
+   </li>
+  </ul>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

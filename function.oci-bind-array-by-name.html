@@ -1,0 +1,313 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Binds a PHP array to an Oracle PL/SQL array parameter</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.oci8.html">OCI8</a></li>
+  <li class="header up"><a href="ref.oci8.html">OCI8 Functions</a></li>
+  <li class="active"><a href="function.oci-bind-array-by-name.html">oci_bind_array_by_name</a></li>
+  <li><a href="function.oci-bind-by-name.html">oci_bind_by_name</a></li>
+  <li><a href="function.oci-cancel.html">oci_cancel</a></li>
+  <li><a href="function.oci-client-version.html">oci_client_version</a></li>
+  <li><a href="function.oci-close.html">oci_close</a></li>
+  <li><a href="function.oci-commit.html">oci_commit</a></li>
+  <li><a href="function.oci-connect.html">oci_connect</a></li>
+  <li><a href="function.oci-define-by-name.html">oci_define_by_name</a></li>
+  <li><a href="function.oci-error.html">oci_error</a></li>
+  <li><a href="function.oci-execute.html">oci_execute</a></li>
+  <li><a href="function.oci-fetch-all.html">oci_fetch_all</a></li>
+  <li><a href="function.oci-fetch-array.html">oci_fetch_array</a></li>
+  <li><a href="function.oci-fetch-assoc.html">oci_fetch_assoc</a></li>
+  <li><a href="function.oci-fetch-object.html">oci_fetch_object</a></li>
+  <li><a href="function.oci-fetch-row.html">oci_fetch_row</a></li>
+  <li><a href="function.oci-fetch.html">oci_fetch</a></li>
+  <li><a href="function.oci-field-is-null.html">oci_field_is_null</a></li>
+  <li><a href="function.oci-field-name.html">oci_field_name</a></li>
+  <li><a href="function.oci-field-precision.html">oci_field_precision</a></li>
+  <li><a href="function.oci-field-scale.html">oci_field_scale</a></li>
+  <li><a href="function.oci-field-size.html">oci_field_size</a></li>
+  <li><a href="function.oci-field-type-raw.html">oci_field_type_raw</a></li>
+  <li><a href="function.oci-field-type.html">oci_field_type</a></li>
+  <li><a href="function.oci-free-descriptor.html">oci_free_descriptor</a></li>
+  <li><a href="function.oci-free-statement.html">oci_free_statement</a></li>
+  <li><a href="function.oci-get-implicit-resultset.html">oci_get_implicit_resultset</a></li>
+  <li><a href="function.oci-internal-debug.html">oci_internal_debug</a></li>
+  <li><a href="function.oci-lob-copy.html">oci_lob_copy</a></li>
+  <li><a href="function.oci-lob-is-equal.html">oci_lob_is_equal</a></li>
+  <li><a href="function.oci-new-collection.html">oci_new_collection</a></li>
+  <li><a href="function.oci-new-connect.html">oci_new_connect</a></li>
+  <li><a href="function.oci-new-cursor.html">oci_new_cursor</a></li>
+  <li><a href="function.oci-new-descriptor.html">oci_new_descriptor</a></li>
+  <li><a href="function.oci-num-fields.html">oci_num_fields</a></li>
+  <li><a href="function.oci-num-rows.html">oci_num_rows</a></li>
+  <li><a href="function.oci-parse.html">oci_parse</a></li>
+  <li><a href="function.oci-password-change.html">oci_password_change</a></li>
+  <li><a href="function.oci-pconnect.html">oci_pconnect</a></li>
+  <li><a href="function.oci-result.html">oci_result</a></li>
+  <li><a href="function.oci-rollback.html">oci_rollback</a></li>
+  <li><a href="function.oci-server-version.html">oci_server_version</a></li>
+  <li><a href="function.oci-set-action.html">oci_set_action</a></li>
+  <li><a href="function.oci-set-client-identifier.html">oci_set_client_identifier</a></li>
+  <li><a href="function.oci-set-client-info.html">oci_set_client_info</a></li>
+  <li><a href="function.oci-set-edition.html">oci_set_edition</a></li>
+  <li><a href="function.oci-set-module-name.html">oci_set_module_name</a></li>
+  <li><a href="function.oci-set-prefetch.html">oci_set_prefetch</a></li>
+  <li><a href="function.oci-statement-type.html">oci_statement_type</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="ref.oci8.html">OCI8 Functions</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.oci-bind-by-name.html">oci_bind_by_name</a></div>
+                <div class="up"><a href="ref.oci8.html">OCI8 Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.oci-bind-array-by-name" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">oci_bind_array_by_name</h1>
+  <p class="refpurpose">Binds a PHP array to an Oracle PL/SQL array parameter</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.oci-bind-array-by-name-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">oci_bind_array_by_name</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$statement</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter reference">&$var_array</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$max_table_length</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$max_item_length</code><span class="initializer"> = -1</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$type</code><span class="initializer"> = SQLT_AFC</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Binds the PHP array <code class="parameter">var_array</code> to the Oracle
+   placeholder <code class="parameter">name</code>, which points to an Oracle PL/SQL
+   array. Whether it will be used for input or output will be determined at
+   run-time. 
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.oci-bind-array-by-name-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">statement</code></dt>
+
+     <dd>
+
+      <p class="para">
+       A valid OCI statement identifier.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">name</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The Oracle placeholder.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">var_array</code></dt>
+
+     <dd>
+
+      <p class="para">
+       An array.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">max_table_length</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Sets the maximum length both for incoming and result arrays.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">max_item_length</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Sets maximum length for array items. If not specified or equals to -1,
+       <span class="function">oci_bind_array_by_name</span> will find the longest
+       element in the incoming array and will use it as the maximum length.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">type</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Should be used to set the type of PL/SQL array items. See list of
+       available types below:
+      </p>
+      <p class="para">
+       <ul class="itemizedlist">
+        <li class="listitem">
+         <p class="para">
+          <strong><code>SQLT_NUM</code></strong> - for arrays of NUMBER.
+         </p>
+        </li>
+        <li class="listitem">
+         <p class="para">
+          <strong><code>SQLT_INT</code></strong> - for arrays of INTEGER (Note: INTEGER
+          it is actually a synonym for NUMBER(38), but
+          <strong><code>SQLT_NUM</code></strong> type won&#039;t work in this case even
+          though they are synonyms).
+         </p>
+        </li>
+        <li class="listitem">
+         <p class="para">
+          <strong><code>SQLT_FLT</code></strong> - for arrays of FLOAT.
+         </p>
+        </li>
+        <li class="listitem">
+         <p class="para">
+          <strong><code>SQLT_AFC</code></strong> - for arrays of CHAR.
+         </p>
+        </li>
+        <li class="listitem">
+         <p class="para">
+          <strong><code>SQLT_CHR</code></strong> - for arrays of VARCHAR2.
+         </p>
+        </li>
+        <li class="listitem">
+         <p class="para">
+          <strong><code>SQLT_VCS</code></strong> - for arrays of VARCHAR.
+         </p>
+        </li>
+        <li class="listitem">
+         <p class="para">
+          <strong><code>SQLT_AVC</code></strong> - for arrays of CHARZ.
+         </p>
+        </li>
+        <li class="listitem">
+         <p class="para">
+          <strong><code>SQLT_STR</code></strong> - for arrays of STRING.
+         </p>
+        </li>
+        <li class="listitem">
+         <p class="para">
+          <strong><code>SQLT_LVC</code></strong> - for arrays of LONG VARCHAR.
+         </p>
+        </li>
+       <li class="listitem">
+         <p class="para">
+          <strong><code>SQLT_ODT</code></strong> - for arrays of DATE.
+         </p>
+        </li>
+       </ul>
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.oci-bind-array-by-name-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> on success or <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.oci-bind-array-by-name-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-2188">
+    <p><strong>Example #1 <span class="function">oci_bind_array_by_name</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$conn&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"hr"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"hrpwd"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"localhost/XE"</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$conn</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$m&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_error</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">trigger_error</span><span style="color: #007700">(</span><span style="color: #0000BB">htmlentities</span><span style="color: #007700">(</span><span style="color: #0000BB">$m</span><span style="color: #007700">[</span><span style="color: #DD0000">'message'</span><span style="color: #007700">]),&nbsp;</span><span style="color: #0000BB">E_USER_ERROR</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$create&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"CREATE&nbsp;TABLE&nbsp;bind_example(name&nbsp;VARCHAR(20))"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$stid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$create</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$create_pkg&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"<br />CREATE&nbsp;OR&nbsp;REPLACE&nbsp;PACKAGE&nbsp;ARRAYBINDPKG1&nbsp;AS<br />&nbsp;&nbsp;TYPE&nbsp;ARRTYPE&nbsp;IS&nbsp;TABLE&nbsp;OF&nbsp;VARCHAR(20)&nbsp;INDEX&nbsp;BY&nbsp;BINARY_INTEGER;<br />&nbsp;&nbsp;PROCEDURE&nbsp;iobind(c1&nbsp;IN&nbsp;OUT&nbsp;ARRTYPE);<br />END&nbsp;ARRAYBINDPKG1;"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$stid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$create_pkg</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$create_pkg_body&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"<br />CREATE&nbsp;OR&nbsp;REPLACE&nbsp;PACKAGE&nbsp;BODY&nbsp;ARRAYBINDPKG1&nbsp;AS<br />&nbsp;&nbsp;CURSOR&nbsp;CUR&nbsp;IS&nbsp;SELECT&nbsp;name&nbsp;FROM&nbsp;bind_example;<br />&nbsp;&nbsp;PROCEDURE&nbsp;iobind(c1&nbsp;IN&nbsp;OUT&nbsp;ARRTYPE)&nbsp;IS<br />&nbsp;&nbsp;&nbsp;&nbsp;BEGIN<br />&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;Bulk&nbsp;Insert<br />&nbsp;&nbsp;&nbsp;&nbsp;FORALL&nbsp;i&nbsp;IN&nbsp;INDICES&nbsp;OF&nbsp;c1<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;INSERT&nbsp;INTO&nbsp;bind_example&nbsp;VALUES&nbsp;(c1(i));<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;--&nbsp;Fetch&nbsp;and&nbsp;reverse<br />&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;NOT&nbsp;CUR%ISOPEN&nbsp;THEN<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;OPEN&nbsp;CUR;<br />&nbsp;&nbsp;&nbsp;&nbsp;END&nbsp;IF;<br />&nbsp;&nbsp;&nbsp;&nbsp;FOR&nbsp;i&nbsp;IN&nbsp;REVERSE&nbsp;1..5&nbsp;LOOP<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;FETCH&nbsp;CUR&nbsp;INTO&nbsp;c1(i);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;IF&nbsp;CUR%NOTFOUND&nbsp;THEN<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;CLOSE&nbsp;CUR;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;EXIT;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;END&nbsp;IF;<br />&nbsp;&nbsp;&nbsp;&nbsp;END&nbsp;LOOP;<br />&nbsp;&nbsp;END&nbsp;iobind;<br />END&nbsp;ARRAYBINDPKG1;"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$stid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$create_pkg_body</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$stid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">oci_parse</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"BEGIN&nbsp;arraybindpkg1.iobind(:c1);&nbsp;END;"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$array&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"one"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"two"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"three"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"four"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"five"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_bind_array_by_name</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">":c1"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$array</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">SQLT_CHR</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">oci_execute</span><span style="color: #007700">(</span><span style="color: #0000BB">$stid</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$array</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

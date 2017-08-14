@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Returns the number of columns in the result set</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.abstract.html">Abstraction Layers</a></li>
+  <li class="header up"><a href="book.pdo.html">PDO</a></li>
+  <li class="header up"><a href="class.pdostatement.html">PDOStatement</a></li>
+  <li><a href="pdostatement.bindcolumn.html">PDOStatement::bindColumn</a></li>
+  <li><a href="pdostatement.bindparam.html">PDOStatement::bindParam</a></li>
+  <li><a href="pdostatement.bindvalue.html">PDOStatement::bindValue</a></li>
+  <li><a href="pdostatement.closecursor.html">PDOStatement::closeCursor</a></li>
+  <li class="active"><a href="pdostatement.columncount.html">PDOStatement::columnCount</a></li>
+  <li><a href="pdostatement.debugdumpparams.html">PDOStatement::debugDumpParams</a></li>
+  <li><a href="pdostatement.errorcode.html">PDOStatement::errorCode</a></li>
+  <li><a href="pdostatement.errorinfo.html">PDOStatement::errorInfo</a></li>
+  <li><a href="pdostatement.execute.html">PDOStatement::execute</a></li>
+  <li><a href="pdostatement.fetch.html">PDOStatement::fetch</a></li>
+  <li><a href="pdostatement.fetchall.html">PDOStatement::fetchAll</a></li>
+  <li><a href="pdostatement.fetchcolumn.html">PDOStatement::fetchColumn</a></li>
+  <li><a href="pdostatement.fetchobject.html">PDOStatement::fetchObject</a></li>
+  <li><a href="pdostatement.getattribute.html">PDOStatement::getAttribute</a></li>
+  <li><a href="pdostatement.getcolumnmeta.html">PDOStatement::getColumnMeta</a></li>
+  <li><a href="pdostatement.nextrowset.html">PDOStatement::nextRowset</a></li>
+  <li><a href="pdostatement.rowcount.html">PDOStatement::rowCount</a></li>
+  <li><a href="pdostatement.setattribute.html">PDOStatement::setAttribute</a></li>
+  <li><a href="pdostatement.setfetchmode.html">PDOStatement::setFetchMode</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="pdostatement.closecursor.html">PDOStatement::closeCursor</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="pdostatement.debugdumpparams.html">PDOStatement::debugDumpParams</a></div>
+                <div class="up"><a href="class.pdostatement.html">PDOStatement</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="pdostatement.columncount" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">PDOStatement::columnCount</h1>
+  <p class="refpurpose">
+   Returns the number of columns in the result set
+  </p>
+ </div>
+ <div class="refsect1 description" id="refsect1-pdostatement.columncount-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">PDOStatement::columnCount</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+  <p class="para rdfs-comment">
+   Use <span class="function">PDOStatement::columnCount</span> to return the number
+   of columns in the result set represented by the PDOStatement object.
+  </p>
+  <p class="para">
+   If the PDOStatement object was returned from <span class="function">PDO::query</span>,
+   the column count is immediately available.
+  </p>
+  <p class="para">
+   If the PDOStatement object was returned from
+   <span class="function">PDO::prepare</span>, an accurate column count will not be
+   available until you invoke <span class="function">PDOStatement::execute</span>.
+  </p>
+
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-pdostatement.columncount-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the number of columns in the result set represented by the
+   PDOStatement object, even if the result set is empty. If there is no result set,
+   <span class="function">PDOStatement::columnCount</span> returns <em>0</em>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-pdostatement.columncount-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-1027">
+    <p><strong>Example #1 Counting columns</strong></p>
+    <div class="example-contents"><p>
+     This example demonstrates how <span class="function">PDOStatement::columnCount</span>
+     operates with and without a result set.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$dbh&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">(</span><span style="color: #DD0000">'odbc:sample'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'db2inst1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'ibmdb2'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$sth&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;name,&nbsp;colour&nbsp;FROM&nbsp;fruit"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;Count&nbsp;the&nbsp;number&nbsp;of&nbsp;columns&nbsp;in&nbsp;the&nbsp;(non-existent)&nbsp;result&nbsp;set&nbsp;*/<br /></span><span style="color: #0000BB">$colcount&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">columnCount</span><span style="color: #007700">();<br />print(</span><span style="color: #DD0000">"Before&nbsp;execute(),&nbsp;result&nbsp;set&nbsp;has&nbsp;</span><span style="color: #0000BB">$colcount</span><span style="color: #DD0000">&nbsp;columns&nbsp;(should&nbsp;be&nbsp;0)\n"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">/*&nbsp;Count&nbsp;the&nbsp;number&nbsp;of&nbsp;columns&nbsp;in&nbsp;the&nbsp;result&nbsp;set&nbsp;*/<br /></span><span style="color: #0000BB">$colcount&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">columnCount</span><span style="color: #007700">();<br />print(</span><span style="color: #DD0000">"After&nbsp;execute(),&nbsp;result&nbsp;set&nbsp;has&nbsp;</span><span style="color: #0000BB">$colcount</span><span style="color: #DD0000">&nbsp;columns&nbsp;(should&nbsp;be&nbsp;2)\n"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Before execute(), result set has 0 columns (should be 0)
+After execute(), result set has 2 columns (should be 2)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+
+ <div class="refsect1 seealso" id="refsect1-pdostatement.columncount-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">PDO::prepare</span></li>
+    <li class="member"><span class="function">PDOStatement::execute</span></li>
+    <li class="member"><span class="function">PDOStatement::rowCount</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

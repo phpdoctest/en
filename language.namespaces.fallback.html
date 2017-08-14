@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Using namespaces: fallback to global function/constant</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="langref.html">Language Reference</a></li>
+  <li class="header up"><a href="language.namespaces.html">Namespaces</a></li>
+  <li><a href="language.namespaces.rationale.html">Namespaces overview</a></li>
+  <li><a href="language.namespaces.definition.html">Defining namespaces</a></li>
+  <li><a href="language.namespaces.nested.html">Declaring sub-namespaces</a></li>
+  <li><a href="language.namespaces.definitionmultiple.html">Defining multiple namespaces in the same file</a></li>
+  <li><a href="language.namespaces.basics.html">Using namespaces: Basics</a></li>
+  <li><a href="language.namespaces.dynamic.html">Namespaces and dynamic language features</a></li>
+  <li><a href="language.namespaces.nsconstants.html">namespace keyword and __NAMESPACE__ constant</a></li>
+  <li><a href="language.namespaces.importing.html">Using namespaces: Aliasing/Importing</a></li>
+  <li><a href="language.namespaces.global.html">Global space</a></li>
+  <li class="active"><a href="language.namespaces.fallback.html">Using namespaces: fallback to global function/constant</a></li>
+  <li><a href="language.namespaces.rules.html">Name resolution rules</a></li>
+  <li><a href="language.namespaces.faq.html">FAQ: things you need to know about namespaces</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="language.namespaces.global.html">Global space</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="language.namespaces.rules.html">Name resolution rules</a></div>
+                <div class="up"><a href="language.namespaces.html">Namespaces</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="language.namespaces.fallback" class="sect1">
+  <h2 class="title">Using namespaces: fallback to global function/constant</h2>
+  
+  <p class="para">
+   Inside a namespace, when PHP encounters an unqualified Name in a class name, function or
+   constant context, it resolves these with different priorities.  Class names always
+   resolve to the current namespace name.  Thus to access internal or non-namespaced
+   user classes, one must refer to them with their fully qualified Name as in:
+   <div class="example" id="example-264">
+    <p><strong>Example #1 Accessing global classes inside a namespace</strong></p>
+    <div class="example-contents">
+     <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">namespace&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">\</span><span style="color: #0000BB">B</span><span style="color: #007700">\</span><span style="color: #0000BB">C</span><span style="color: #007700">;<br />class&nbsp;</span><span style="color: #0000BB">Exception&nbsp;</span><span style="color: #007700">extends&nbsp;\</span><span style="color: #0000BB">Exception&nbsp;</span><span style="color: #007700">{}<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Exception</span><span style="color: #007700">(</span><span style="color: #DD0000">'hi'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;$a&nbsp;is&nbsp;an&nbsp;object&nbsp;of&nbsp;class&nbsp;A\B\C\Exception<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Exception</span><span style="color: #007700">(</span><span style="color: #DD0000">'hi'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;$b&nbsp;is&nbsp;an&nbsp;object&nbsp;of&nbsp;class&nbsp;Exception<br /><br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">ArrayObject</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;fatal&nbsp;error,&nbsp;class&nbsp;A\B\C\ArrayObject&nbsp;not&nbsp;found<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   For functions and constants, PHP will fall back to global functions or constants
+   if a namespaced function or constant does not exist.
+   <div class="example" id="example-265">
+    <p><strong>Example #2 global functions/constants fallback inside a namespace</strong></p>
+    <div class="example-contents">
+     <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">namespace&nbsp;</span><span style="color: #0000BB">A</span><span style="color: #007700">\</span><span style="color: #0000BB">B</span><span style="color: #007700">\</span><span style="color: #0000BB">C</span><span style="color: #007700">;<br /><br />const&nbsp;</span><span style="color: #0000BB">E_ERROR&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">45</span><span style="color: #007700">;<br />function&nbsp;</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;\</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$str</span><span style="color: #007700">)&nbsp;-&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />}<br /><br />echo&nbsp;</span><span style="color: #0000BB">E_ERROR</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;prints&nbsp;"45"<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">INI_ALL</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;prints&nbsp;"7"&nbsp;-&nbsp;falls&nbsp;back&nbsp;to&nbsp;global&nbsp;INI_ALL<br /><br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #DD0000">'hi'</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;prints&nbsp;"1"<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">is_array</span><span style="color: #007700">(</span><span style="color: #DD0000">'hi'</span><span style="color: #007700">))&nbsp;{&nbsp;</span><span style="color: #FF8000">//&nbsp;prints&nbsp;"is&nbsp;not&nbsp;array"<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"is&nbsp;array\n"</span><span style="color: #007700">;<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"is&nbsp;not&nbsp;array\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

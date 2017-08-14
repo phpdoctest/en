@@ -1,0 +1,222 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Checks if or where headers have been sent</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li class="header up"><a href="book.network.html">Network</a></li>
+  <li class="header up"><a href="ref.network.html">Network Functions</a></li>
+  <li><a href="function.checkdnsrr.html">checkdnsrr</a></li>
+  <li><a href="function.closelog.html">closelog</a></li>
+  <li><a href="function.define-syslog-variables.html">define_syslog_variables</a></li>
+  <li><a href="function.dns-check-record.html">dns_check_record</a></li>
+  <li><a href="function.dns-get-mx.html">dns_get_mx</a></li>
+  <li><a href="function.dns-get-record.html">dns_get_record</a></li>
+  <li><a href="function.fsockopen.html">fsockopen</a></li>
+  <li><a href="function.gethostbyaddr.html">gethostbyaddr</a></li>
+  <li><a href="function.gethostbyname.html">gethostbyname</a></li>
+  <li><a href="function.gethostbynamel.html">gethostbynamel</a></li>
+  <li><a href="function.gethostname.html">gethostname</a></li>
+  <li><a href="function.getmxrr.html">getmxrr</a></li>
+  <li><a href="function.getprotobyname.html">getprotobyname</a></li>
+  <li><a href="function.getprotobynumber.html">getprotobynumber</a></li>
+  <li><a href="function.getservbyname.html">getservbyname</a></li>
+  <li><a href="function.getservbyport.html">getservbyport</a></li>
+  <li><a href="function.header-register-callback.html">header_register_callback</a></li>
+  <li><a href="function.header-remove.html">header_remove</a></li>
+  <li><a href="function.header.html">header</a></li>
+  <li><a href="function.headers-list.html">headers_list</a></li>
+  <li class="active"><a href="function.headers-sent.html">headers_sent</a></li>
+  <li><a href="function.http-response-code.html">http_response_code</a></li>
+  <li><a href="function.inet-ntop.html">inet_ntop</a></li>
+  <li><a href="function.inet-pton.html">inet_pton</a></li>
+  <li><a href="function.ip2long.html">ip2long</a></li>
+  <li><a href="function.long2ip.html">long2ip</a></li>
+  <li><a href="function.openlog.html">openlog</a></li>
+  <li><a href="function.pfsockopen.html">pfsockopen</a></li>
+  <li><a href="function.setcookie.html">setcookie</a></li>
+  <li><a href="function.setrawcookie.html">setrawcookie</a></li>
+  <li><a href="function.socket-get-status.html">socket_get_status</a></li>
+  <li><a href="function.socket-set-blocking.html">socket_set_blocking</a></li>
+  <li><a href="function.socket-set-timeout.html">socket_set_timeout</a></li>
+  <li><a href="function.syslog.html">syslog</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.headers-list.html">headers_list</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.http-response-code.html">http_response_code</a></div>
+                <div class="up"><a href="ref.network.html">Network Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.headers-sent" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">headers_sent</h1>
+  <p class="refpurpose">Checks if or where headers have been sent</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.headers-sent-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">headers_sent</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter reference">&$file</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter reference">&$line</code></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Checks if or where headers have been sent.
+  </p>
+  <p class="para">
+   You can&#039;t add any more header lines using the <span class="function">header</span>
+   function once the header block has already been sent. Using this function
+   you can at least prevent getting HTTP header related error messages.
+   Another option is to use <a href="ref.outcontrol.html" class="link">Output Buffering</a>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.headers-sent-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">file</code></dt>
+
+     <dd>
+
+      <p class="para">
+       If the optional <code class="parameter">file</code> and
+       <code class="parameter">line</code> parameters are set, 
+       <span class="function">headers_sent</span> will put the PHP source file name
+       and line number where output started in the <code class="parameter">file</code>
+       and <code class="parameter">line</code> variables.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">line</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The line number where the output started.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.headers-sent-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   <span class="function">headers_sent</span> will return <strong><code>FALSE</code></strong> if no HTTP headers
+   have already been sent or <strong><code>TRUE</code></strong> otherwise.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.headers-sent-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-5041">
+    <p><strong>Example #1 Examples using <span class="function">headers_sent</span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;If&nbsp;no&nbsp;headers&nbsp;are&nbsp;sent,&nbsp;send&nbsp;one<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">headers_sent</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Location:&nbsp;http://www.example.com/'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;An&nbsp;example&nbsp;using&nbsp;the&nbsp;optional&nbsp;file&nbsp;and&nbsp;line&nbsp;parameters<br />//&nbsp;Note&nbsp;that&nbsp;$filename&nbsp;and&nbsp;$linenum&nbsp;are&nbsp;passed&nbsp;in&nbsp;for&nbsp;later&nbsp;use.<br />//&nbsp;Do&nbsp;not&nbsp;assign&nbsp;them&nbsp;values&nbsp;beforehand.<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">headers_sent</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$linenum</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Location:&nbsp;http://www.example.com/'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br /><br /></span><span style="color: #FF8000">//&nbsp;You&nbsp;would&nbsp;most&nbsp;likely&nbsp;trigger&nbsp;an&nbsp;error&nbsp;here.<br /></span><span style="color: #007700">}&nbsp;else&nbsp;{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Headers&nbsp;already&nbsp;sent&nbsp;in&nbsp;</span><span style="color: #0000BB">$filename</span><span style="color: #DD0000">&nbsp;on&nbsp;line&nbsp;</span><span style="color: #0000BB">$linenum</span><span style="color: #DD0000">\n"&nbsp;</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"Cannot&nbsp;redirect,&nbsp;for&nbsp;now&nbsp;please&nbsp;click&nbsp;this&nbsp;&lt;a&nbsp;"&nbsp;</span><span style="color: #007700">.<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"href=\"http://www.example.com\"&gt;link&lt;/a&gt;&nbsp;instead\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-function.headers-sent-notes">
+  <h3 class="title">Notes</h3>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    Headers will only be accessible and output when a SAPI that supports them
+    is in use.
+   </p>
+  </p></blockquote>
+
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.headers-sent-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">ob_start</span></li>
+    <li class="member"><span class="function">trigger_error</span></li>
+    <li class="member"><span class="function">headers_list</span></li>
+    <li class="member">
+     <span class="function">header</span> for a more detailed discussion of the
+     matters involved.
+    </li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

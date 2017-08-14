@@ -1,0 +1,620 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Sphinx Client</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.search.html">Search Engine Extensions</a></li>
+  <li><a href="book.mnogosearch.html">mnoGoSearch</a></li>
+  <li><a href="book.solr.html">Solr</a></li>
+  <li class="active"><a href="book.sphinx.html">Sphinx</a></li>
+  <li><a href="book.swish.html">Swish</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="class.solrmissingmandatoryparameterexception.html">SolrMissingMandatoryParameterException</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="intro.sphinx.html">Introduction</a></div>
+                <div class="up"><a href="refs.search.html">Search Engine Extensions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="book.sphinx" class="book">
+ <h1>Sphinx Client</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="intro.sphinx.html">Introduction</a></li>
+<li><a href="sphinx.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_title">
+<li><a href="sphinx.requirements.html">Requirements</a></li>
+<li><a href="sphinx.installation.html">Installation</a></li>
+<li><a href="sphinx.configuration.html">Runtime Configuration</a></li>
+<li><a href="sphinx.resources.html">Resource Types</a></li>
+</ul>
+</li>
+<li><a href="sphinx.constants.html">Predefined Constants</a></li>
+<li><a href="sphinx.examples.html">Examples</a></li>
+<li><a href="class.sphinxclient.html">SphinxClient</a> — The SphinxClient class<ul class="chunklist chunklist_title">
+<li><a href="sphinxclient.addquery.html">SphinxClient::addQuery</a> — Add query to multi-query batch</li>
+<li><a href="sphinxclient.buildexcerpts.html">SphinxClient::buildExcerpts</a> — Build text snippets</li>
+<li><a href="sphinxclient.buildkeywords.html">SphinxClient::buildKeywords</a> — Extract keywords from query</li>
+<li><a href="sphinxclient.close.html">SphinxClient::close</a> — Closes previously opened persistent connection</li>
+<li><a href="sphinxclient.construct.html">SphinxClient::__construct</a> — Create a new SphinxClient object</li>
+<li><a href="sphinxclient.escapestring.html">SphinxClient::escapeString</a> — Escape special characters</li>
+<li><a href="sphinxclient.getlasterror.html">SphinxClient::getLastError</a> — Get the last error message</li>
+<li><a href="sphinxclient.getlastwarning.html">SphinxClient::getLastWarning</a> — Get the last warning</li>
+<li><a href="sphinxclient.open.html">SphinxClient::open</a> — Opens persistent connection to the server</li>
+<li><a href="sphinxclient.query.html">SphinxClient::query</a> — Execute search query</li>
+<li><a href="sphinxclient.resetfilters.html">SphinxClient::resetFilters</a> — Clear all filters</li>
+<li><a href="sphinxclient.resetgroupby.html">SphinxClient::resetGroupBy</a> — Clear all group-by settings</li>
+<li><a href="sphinxclient.runqueries.html">SphinxClient::runQueries</a> — Run a batch of search queries</li>
+<li><a href="sphinxclient.setarrayresult.html">SphinxClient::setArrayResult</a> — Change the format of result set array</li>
+<li><a href="sphinxclient.setconnecttimeout.html">SphinxClient::setConnectTimeout</a> — Set connection timeout</li>
+<li><a href="sphinxclient.setfieldweights.html">SphinxClient::setFieldWeights</a> — Set field weights</li>
+<li><a href="sphinxclient.setfilter.html">SphinxClient::setFilter</a> — Add new integer values set filter</li>
+<li><a href="sphinxclient.setfilterfloatrange.html">SphinxClient::setFilterFloatRange</a> — Add new float range filter</li>
+<li><a href="sphinxclient.setfilterrange.html">SphinxClient::setFilterRange</a> — Add new integer range filter</li>
+<li><a href="sphinxclient.setgeoanchor.html">SphinxClient::setGeoAnchor</a> — Set anchor point for a geosphere distance calculations</li>
+<li><a href="sphinxclient.setgroupby.html">SphinxClient::setGroupBy</a> — Set grouping attribute</li>
+<li><a href="sphinxclient.setgroupdistinct.html">SphinxClient::setGroupDistinct</a> — Set attribute name for per-group distinct values count calculations</li>
+<li><a href="sphinxclient.setidrange.html">SphinxClient::setIDRange</a> — Set a range of accepted document IDs</li>
+<li><a href="sphinxclient.setindexweights.html">SphinxClient::setIndexWeights</a> — Set per-index weights</li>
+<li><a href="sphinxclient.setlimits.html">SphinxClient::setLimits</a> — Set offset and limit of the result set</li>
+<li><a href="sphinxclient.setmatchmode.html">SphinxClient::setMatchMode</a> — Set full-text query matching mode</li>
+<li><a href="sphinxclient.setmaxquerytime.html">SphinxClient::setMaxQueryTime</a> — Set maximum query time</li>
+<li><a href="sphinxclient.setoverride.html">SphinxClient::setOverride</a> — Sets temporary per-document attribute value
+   overrides</li>
+<li><a href="sphinxclient.setrankingmode.html">SphinxClient::setRankingMode</a> — Set ranking mode</li>
+<li><a href="sphinxclient.setretries.html">SphinxClient::setRetries</a> — Set retry count and delay</li>
+<li><a href="sphinxclient.setselect.html">SphinxClient::setSelect</a> — Set select clause</li>
+<li><a href="sphinxclient.setserver.html">SphinxClient::setServer</a> — Set searchd host and port</li>
+<li><a href="sphinxclient.setsortmode.html">SphinxClient::setSortMode</a> — Set matches sorting mode</li>
+<li><a href="sphinxclient.status.html">SphinxClient::status</a> — Queries searchd status</li>
+<li><a href="sphinxclient.updateattributes.html">SphinxClient::updateAttributes</a> — Update document attributes</li>
+</ul>
+</li>
+</ul>
+
+ 
+
+ 
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+ <h1 class="title">The SphinxClient class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="sphinxclient.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The SphinxClient class provides object-oriented interface to Sphinx.
+   </p>
+  </div>
+
+
+  <div class="section" id="sphinxclient.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">SphinxClient</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">SphinxClient</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">addQuery</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$query</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$index</code><span class="initializer"> = &quot;*&quot;</span></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$comment</code><span class="initializer"> = &quot;&quot;</span></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">buildExcerpts</span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$docs</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$index</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$words</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$opts</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">buildKeywords</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$query</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$index</code></span>
+   , <span class="methodparam"><span class="type">bool</span> <code class="parameter">$hits</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">close</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">escapeString</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$string</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getLastError</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getLastWarning</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">open</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">query</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$query</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$index</code><span class="initializer"> = &quot;*&quot;</span></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$comment</code><span class="initializer"> = &quot;&quot;</span></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">resetFilters</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">resetGroupBy</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">runQueries</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setArrayResult</span>
+    ( <span class="methodparam"><span class="type">bool</span> <code class="parameter">$array_result</code><span class="initializer"> = false</span></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setConnectTimeout</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$timeout</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setFieldWeights</span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$weights</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setFilter</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$attribute</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$values</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclude</code><span class="initializer"> = false</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setFilterFloatRange</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$attribute</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$min</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$max</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclude</code><span class="initializer"> = false</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setFilterRange</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$attribute</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$min</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$max</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$exclude</code><span class="initializer"> = false</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setGeoAnchor</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$attrlat</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$attrlong</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$latitude</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$longitude</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setGroupBy</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$attribute</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$func</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$groupsort</code><span class="initializer"> = &quot;@group desc&quot;</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setGroupDistinct</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$attribute</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setIDRange</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$min</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$max</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setIndexWeights</span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$weights</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setLimits</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$offset</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$limit</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$max_matches</code><span class="initializer"> = 0</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$cutoff</code><span class="initializer"> = 0</span></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setMatchMode</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setMaxQueryTime</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$qtime</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setOverride</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$attribute</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$type</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$values</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setRankingMode</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$ranker</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setRetries</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$count</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$delay</code><span class="initializer"> = 0</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setSelect</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$clause</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setServer</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$server</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$port</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">setSortMode</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$sortby</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">status</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">updateAttributes</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$index</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$attributes</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$values</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$mva</code><span class="initializer"> = false</span></span>
+  ] )</div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

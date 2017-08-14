@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Once-only subpatterns</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.text.html">Text Processing</a></li>
+  <li class="header up"><a href="book.pcre.html">PCRE</a></li>
+  <li class="header up"><a href="pcre.pattern.html">PCRE Patterns</a></li>
+  <li class="header up"><a href="reference.pcre.pattern.syntax.html">PCRE regex syntax</a></li>
+  <li><a href="regexp.introduction.html">Introduction</a></li>
+  <li><a href="regexp.reference.delimiters.html">Delimiters</a></li>
+  <li><a href="regexp.reference.meta.html">Meta-characters</a></li>
+  <li><a href="regexp.reference.escape.html">Escape sequences</a></li>
+  <li><a href="regexp.reference.unicode.html">Unicode character properties</a></li>
+  <li><a href="regexp.reference.anchors.html">Anchors</a></li>
+  <li><a href="regexp.reference.dot.html">Dot</a></li>
+  <li><a href="regexp.reference.character-classes.html">Character classes</a></li>
+  <li><a href="regexp.reference.alternation.html">Alternation</a></li>
+  <li><a href="regexp.reference.internal-options.html">Internal option setting</a></li>
+  <li><a href="regexp.reference.subpatterns.html">Subpatterns</a></li>
+  <li><a href="regexp.reference.repetition.html">Repetition</a></li>
+  <li><a href="regexp.reference.back-references.html">Back references</a></li>
+  <li><a href="regexp.reference.assertions.html">Assertions</a></li>
+  <li class="active"><a href="regexp.reference.onlyonce.html">Once-only subpatterns</a></li>
+  <li><a href="regexp.reference.conditional.html">Conditional subpatterns</a></li>
+  <li><a href="regexp.reference.comments.html">Comments</a></li>
+  <li><a href="regexp.reference.recursive.html">Recursive patterns</a></li>
+  <li><a href="regexp.reference.performance.html">Performance</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="regexp.reference.assertions.html">Assertions</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="regexp.reference.conditional.html">Conditional subpatterns</a></div>
+                <div class="up"><a href="reference.pcre.pattern.syntax.html">PCRE regex syntax</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="regexp.reference.onlyonce" class="section">
+  <h2 class="title">Once-only subpatterns</h2>
+  <p class="para">
+   With both maximizing and minimizing repetition,  failure  of
+   what  follows  normally  causes  the repeated item to be
+   re-evaluated to see if a different number of repeats allows the
+   rest  of  the  pattern  to  match. Sometimes it is useful to
+   prevent this, either to change the nature of the  match,  or
+   to  cause  it fail earlier than it otherwise might, when the
+   author of the pattern knows there is no  point  in  carrying
+   on.
+  </p>
+  <p class="para">
+   Consider, for example, the pattern \d+foo  when  applied  to
+   the subject line
+
+   <em>123456bar</em>
+  </p>
+  <p class="para">
+   After matching all 6 digits and then failing to match &quot;foo&quot;,
+   the normal action of the matcher is to try again with only 5
+   digits matching the \d+ item, and then with 4,  and  so  on,
+   before ultimately failing. Once-only subpatterns provide the
+   means for specifying that once a portion of the pattern  has
+   matched,  it  is  not to be re-evaluated in this way, so the
+   matcher would give up immediately on failing to match  &quot;foo&quot;
+   the  first  time.  The  notation  is another kind of special
+   parenthesis, starting with (?&gt; as in this example:
+
+   <em>(?&gt;\d+)bar</em>
+  </p>
+  <p class="para">
+   This kind of parenthesis &quot;locks up&quot; the  part of the pattern
+   it  contains once it has matched, and a failure further into
+   the pattern is prevented from backtracking  into  it.
+   Backtracking  past  it to previous items, however, works as normal.
+  </p>
+  <p class="para">
+   An alternative description is that a subpattern of this type
+   matches  the  string  of  characters that an identical standalone
+   pattern would match, if anchored at the current point
+   in the subject string.
+  </p>
+  <p class="para">
+   Once-only subpatterns are not capturing subpatterns.  Simple
+   cases  such as the above example can be thought of as a maximizing
+   repeat that must  swallow  everything  it  can.  So,
+   while both \d+ and \d+? are prepared to adjust the number of
+   digits they match in order to make the rest of  the  pattern
+   match, (?&gt;\d+) can only match an entire sequence of digits.
+  </p>
+  <p class="para">
+   This construction can of course contain arbitrarily  complicated
+   subpatterns, and it can be nested.
+  </p>
+  <p class="para">
+   Once-only subpatterns can be used in conjunction with
+   lookbehind assertions  to specify efficient matching at the end
+   of the subject string. Consider a simple pattern such as
+
+   <em>abcd$</em>
+
+   when applied to a long string which does not match.  Because
+   matching  proceeds  from  left  to right, PCRE will look for
+   each &quot;a&quot; in the subject and then see if what follows matches
+   the rest of the pattern. If the pattern is specified as
+
+   <em>^.*abcd$</em>
+
+   then the initial .* matches the entire string at first,  but
+   when  this  fails  (because  there  is no following &quot;a&quot;), it
+   backtracks to match all but the last character, then all but
+   the  last  two  characters, and so on. Once again the search
+   for &quot;a&quot; covers the entire string, from right to left, so  we
+   are no better off. However, if the pattern is written as
+
+   <em>^(?&gt;.*)(?&lt;=abcd)</em>
+
+   then there can be no backtracking for the .*  item;  it  can
+   match  only  the  entire  string.  The subsequent lookbehind
+   assertion does a single test on the last four characters. If
+   it  fails,  the  match  fails immediately. For long strings,
+   this approach makes a significant difference to the processing time.
+  </p>
+  <p class="para">
+   When a pattern contains an unlimited repeat inside a subpattern
+   that can itself be repeated an unlimited number of
+   times, the use of a once-only subpattern is the only way  to
+   avoid  some  failing matches taking a very long time indeed.
+   The pattern
+
+   <em>(\D+|&lt;\d+&gt;)*[!?]</em>
+
+   matches an unlimited number of substrings that  either  consist
+   of  non-digits,  or digits enclosed in &lt;&gt;, followed by
+   either ! or ?. When it matches, it runs quickly. However, if
+   it is applied to
+
+   <em>aaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaaa</em>
+
+   it takes a long  time  before  reporting  failure.  This  is
+   because the string can be divided between the two repeats in
+   a large number of ways, and all have to be tried. (The example
+   used  [!?]  rather  than a single character at the end,
+   because both PCRE and Perl have an optimization that  allows
+   for  fast  failure  when  a  single  character is used. They
+   remember the last single character that is  required  for  a
+   match,  and  fail early if it is not present in the string.)
+   If the pattern is changed to
+
+   <em>((?&gt;\D+)|&lt;\d+&gt;)*[!?]</em>
+
+   sequences of non-digits cannot be broken, and  failure  happens quickly.
+  </p>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

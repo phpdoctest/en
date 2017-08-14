@@ -1,0 +1,474 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Applies the callback to the elements of the given arrays</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.vartype.html">Variable and Type Related Extensions</a></li>
+  <li class="header up"><a href="book.array.html">Arrays</a></li>
+  <li class="header up"><a href="ref.array.html">Array Functions</a></li>
+  <li><a href="function.array-change-key-case.html">array_change_key_case</a></li>
+  <li><a href="function.array-chunk.html">array_chunk</a></li>
+  <li><a href="function.array-column.html">array_column</a></li>
+  <li><a href="function.array-combine.html">array_combine</a></li>
+  <li><a href="function.array-count-values.html">array_count_values</a></li>
+  <li><a href="function.array-diff-assoc.html">array_diff_assoc</a></li>
+  <li><a href="function.array-diff-key.html">array_diff_key</a></li>
+  <li><a href="function.array-diff-uassoc.html">array_diff_uassoc</a></li>
+  <li><a href="function.array-diff-ukey.html">array_diff_ukey</a></li>
+  <li><a href="function.array-diff.html">array_diff</a></li>
+  <li><a href="function.array-fill-keys.html">array_fill_keys</a></li>
+  <li><a href="function.array-fill.html">array_fill</a></li>
+  <li><a href="function.array-filter.html">array_filter</a></li>
+  <li><a href="function.array-flip.html">array_flip</a></li>
+  <li><a href="function.array-intersect-assoc.html">array_intersect_assoc</a></li>
+  <li><a href="function.array-intersect-key.html">array_intersect_key</a></li>
+  <li><a href="function.array-intersect-uassoc.html">array_intersect_uassoc</a></li>
+  <li><a href="function.array-intersect-ukey.html">array_intersect_ukey</a></li>
+  <li><a href="function.array-intersect.html">array_intersect</a></li>
+  <li><a href="function.array-key-exists.html">array_key_exists</a></li>
+  <li><a href="function.array-keys.html">array_keys</a></li>
+  <li class="active"><a href="function.array-map.html">array_map</a></li>
+  <li><a href="function.array-merge-recursive.html">array_merge_recursive</a></li>
+  <li><a href="function.array-merge.html">array_merge</a></li>
+  <li><a href="function.array-multisort.html">array_multisort</a></li>
+  <li><a href="function.array-pad.html">array_pad</a></li>
+  <li><a href="function.array-pop.html">array_pop</a></li>
+  <li><a href="function.array-product.html">array_product</a></li>
+  <li><a href="function.array-push.html">array_push</a></li>
+  <li><a href="function.array-rand.html">array_rand</a></li>
+  <li><a href="function.array-reduce.html">array_reduce</a></li>
+  <li><a href="function.array-replace-recursive.html">array_replace_recursive</a></li>
+  <li><a href="function.array-replace.html">array_replace</a></li>
+  <li><a href="function.array-reverse.html">array_reverse</a></li>
+  <li><a href="function.array-search.html">array_search</a></li>
+  <li><a href="function.array-shift.html">array_shift</a></li>
+  <li><a href="function.array-slice.html">array_slice</a></li>
+  <li><a href="function.array-splice.html">array_splice</a></li>
+  <li><a href="function.array-sum.html">array_sum</a></li>
+  <li><a href="function.array-udiff-assoc.html">array_udiff_assoc</a></li>
+  <li><a href="function.array-udiff-uassoc.html">array_udiff_uassoc</a></li>
+  <li><a href="function.array-udiff.html">array_udiff</a></li>
+  <li><a href="function.array-uintersect-assoc.html">array_uintersect_assoc</a></li>
+  <li><a href="function.array-uintersect-uassoc.html">array_uintersect_uassoc</a></li>
+  <li><a href="function.array-uintersect.html">array_uintersect</a></li>
+  <li><a href="function.array-unique.html">array_unique</a></li>
+  <li><a href="function.array-unshift.html">array_unshift</a></li>
+  <li><a href="function.array-values.html">array_values</a></li>
+  <li><a href="function.array-walk-recursive.html">array_walk_recursive</a></li>
+  <li><a href="function.array-walk.html">array_walk</a></li>
+  <li><a href="function.array.html">array</a></li>
+  <li><a href="function.arsort.html">arsort</a></li>
+  <li><a href="function.asort.html">asort</a></li>
+  <li><a href="function.compact.html">compact</a></li>
+  <li><a href="function.count.html">count</a></li>
+  <li><a href="function.current.html">current</a></li>
+  <li><a href="function.each.html">each</a></li>
+  <li><a href="function.end.html">end</a></li>
+  <li><a href="function.extract.html">extract</a></li>
+  <li><a href="function.in-array.html">in_array</a></li>
+  <li><a href="function.key-exists.html">key_exists</a></li>
+  <li><a href="function.key.html">key</a></li>
+  <li><a href="function.krsort.html">krsort</a></li>
+  <li><a href="function.ksort.html">ksort</a></li>
+  <li><a href="function.list.html">list</a></li>
+  <li><a href="function.natcasesort.html">natcasesort</a></li>
+  <li><a href="function.natsort.html">natsort</a></li>
+  <li><a href="function.next.html">next</a></li>
+  <li><a href="function.pos.html">pos</a></li>
+  <li><a href="function.prev.html">prev</a></li>
+  <li><a href="function.range.html">range</a></li>
+  <li><a href="function.reset.html">reset</a></li>
+  <li><a href="function.rsort.html">rsort</a></li>
+  <li><a href="function.shuffle.html">shuffle</a></li>
+  <li><a href="function.sizeof.html">sizeof</a></li>
+  <li><a href="function.sort.html">sort</a></li>
+  <li><a href="function.uasort.html">uasort</a></li>
+  <li><a href="function.uksort.html">uksort</a></li>
+  <li><a href="function.usort.html">usort</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.array-keys.html">array_keys</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.array-merge-recursive.html">array_merge_recursive</a></div>
+                <div class="up"><a href="ref.array.html">Array Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.array-map" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">array_map</h1>
+  <p class="refpurpose">Applies the callback to the elements of the given arrays</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.array-map-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname">array_map</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$array1</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$...</code></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function">array_map</span> returns an array containing all
+   the elements of <code class="parameter">array1</code> after applying the
+   <code class="parameter">callback</code> function to each one.
+   The number of parameters that the <code class="parameter">callback</code>
+   function accepts
+   should match the number of arrays
+   passed to the <span class="function">array_map</span>
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.array-map-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">callback</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Callback function to run for each element in each array.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">array1</code></dt>
+
+     <dd>
+
+      <p class="para">
+       An array to run through the <code class="parameter">callback</code> function.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">...</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Variable list of array arguments to run through the
+       <code class="parameter">callback</code> function.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.array-map-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns an array containing all the elements of <code class="parameter">array1</code>
+   after applying the <code class="parameter">callback</code> function to each one.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.array-map-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-5580">
+    <p><strong>Example #1 <span class="function">array_map</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">cube</span><span style="color: #007700">(</span><span style="color: #0000BB">$n</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return(</span><span style="color: #0000BB">$n&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">$n&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">$n</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_map</span><span style="color: #007700">(</span><span style="color: #DD0000">"cube"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$b</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>
+     This makes <var class="varname">$b</var> have:
+    </p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [0] =&gt; 1
+    [1] =&gt; 8
+    [2] =&gt; 27
+    [3] =&gt; 64
+    [4] =&gt; 125
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="function.array-fill.example.basic">
+    <p><strong>Example #2 <span class="function">array_map</span> using a lambda function (as of PHP 5.3.0)</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$func&nbsp;</span><span style="color: #007700">=&nbsp;function(</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$value&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;<br />};<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">array_map</span><span style="color: #007700">(</span><span style="color: #0000BB">$func</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">range</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">)));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [0] =&gt; 2
+    [1] =&gt; 4
+    [2] =&gt; 6
+    [3] =&gt; 8
+    [4] =&gt; 10
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-5582">
+    <p><strong>Example #3 <span class="function">array_map</span> - using more arrays</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">show_Spanish</span><span style="color: #007700">(</span><span style="color: #0000BB">$n</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$m</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return(</span><span style="color: #DD0000">"The&nbsp;number&nbsp;</span><span style="color: #0000BB">$n</span><span style="color: #DD0000">&nbsp;is&nbsp;called&nbsp;</span><span style="color: #0000BB">$m</span><span style="color: #DD0000">&nbsp;in&nbsp;Spanish"</span><span style="color: #007700">);<br />}<br /><br />function&nbsp;</span><span style="color: #0000BB">map_Spanish</span><span style="color: #007700">(</span><span style="color: #0000BB">$n</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$m</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return(array(</span><span style="color: #0000BB">$n&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$m</span><span style="color: #007700">));<br />}<br /><br /></span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"uno"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"dos"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"tres"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"cuatro"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"cinco"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_map</span><span style="color: #007700">(</span><span style="color: #DD0000">"show_Spanish"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$c</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$d&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_map</span><span style="color: #007700">(</span><span style="color: #DD0000">"map_Spanish"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$d</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+// printout of $c
+Array
+(
+    [0] =&gt; The number 1 is called uno in Spanish
+    [1] =&gt; The number 2 is called dos in Spanish
+    [2] =&gt; The number 3 is called tres in Spanish
+    [3] =&gt; The number 4 is called cuatro in Spanish
+    [4] =&gt; The number 5 is called cinco in Spanish
+)
+
+// printout of $d
+Array
+(
+    [0] =&gt; Array
+        (
+            [1] =&gt; uno
+        )
+
+    [1] =&gt; Array
+        (
+            [2] =&gt; dos
+        )
+
+    [2] =&gt; Array
+        (
+            [3] =&gt; tres
+        )
+
+    [3] =&gt; Array
+        (
+            [4] =&gt; cuatro
+        )
+
+    [4] =&gt; Array
+        (
+            [5] =&gt; cinco
+        )
+
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   Usually when using two or more arrays, they should be of equal length
+   because the callback function is applied in parallel to the corresponding
+   elements.
+   If the arrays are of unequal length, shorter ones will be extended with empty
+   elements to match the length of the longest.
+  </p>
+  <p class="para">
+   An interesting use of this function is to construct an array of arrays,
+   which can be easily performed by using <strong><code>NULL</code></strong>
+   as the name of the callback function
+  </p>
+  <p class="para">
+   <div class="example" id="example-5583">
+    <p><strong>Example #4 Creating an array of arrays</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$a&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$b&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"one"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"two"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"three"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"four"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"five"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$c&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"uno"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"dos"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"tres"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"cuatro"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"cinco"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$d&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_map</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$c</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$d</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [0] =&gt; Array
+        (
+            [0] =&gt; 1
+            [1] =&gt; one
+            [2] =&gt; uno
+        )
+
+    [1] =&gt; Array
+        (
+            [0] =&gt; 2
+            [1] =&gt; two
+            [2] =&gt; dos
+        )
+
+    [2] =&gt; Array
+        (
+            [0] =&gt; 3
+            [1] =&gt; three
+            [2] =&gt; tres
+        )
+
+    [3] =&gt; Array
+        (
+            [0] =&gt; 4
+            [1] =&gt; four
+            [2] =&gt; cuatro
+        )
+
+    [4] =&gt; Array
+        (
+            [0] =&gt; 5
+            [1] =&gt; five
+            [2] =&gt; cinco
+        )
+
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   The returned array will preserve the keys of the array argument if and only
+   if exactly one array is passed. If more than one array is passed, the
+   returned array will have sequential integer keys.
+  </p>
+  <p class="para">
+   <div class="example" id="example-5584">
+    <p><strong>Example #5 <span class="function">array_map</span> - with string keys</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$arr&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"stringkey"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"value"</span><span style="color: #007700">);<br />function&nbsp;</span><span style="color: #0000BB">cb1</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;array&nbsp;(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br />}<br />function&nbsp;</span><span style="color: #0000BB">cb2</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;array&nbsp;(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">array_map</span><span style="color: #007700">(</span><span style="color: #DD0000">"cb1"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">array_map</span><span style="color: #007700">(</span><span style="color: #DD0000">"cb2"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">array_map</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">array_map</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$arr</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+array(1) {
+  [&quot;stringkey&quot;]=&gt;
+  array(1) {
+    [0]=&gt;
+    string(5) &quot;value&quot;
+  }
+}
+array(1) {
+  [0]=&gt;
+  array(2) {
+    [0]=&gt;
+    string(5) &quot;value&quot;
+    [1]=&gt;
+    string(5) &quot;value&quot;
+  }
+}
+array(1) {
+  [&quot;stringkey&quot;]=&gt;
+  string(5) &quot;value&quot;
+}
+array(1) {
+  [0]=&gt;
+  array(2) {
+    [0]=&gt;
+    string(5) &quot;value&quot;
+    [1]=&gt;
+    string(5) &quot;value&quot;
+  }
+}
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.array-map-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">array_filter</span></li>
+    <li class="member"><span class="function">array_reduce</span></li>
+    <li class="member"><span class="function">array_walk</span></li>
+    <li class="member">information about the <a href="language.pseudo-types.html#language.types.callback" class="link">callback</a> type</li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

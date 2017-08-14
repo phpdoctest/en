@@ -1,0 +1,197 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Returns whether phar has global meta-data</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.compression.html">Compression and Archive Extensions</a></li>
+  <li class="header up"><a href="book.phar.html">Phar</a></li>
+  <li class="header up"><a href="class.phar.html">Phar</a></li>
+  <li><a href="phar.addemptydir.html">Phar::addEmptyDir</a></li>
+  <li><a href="phar.addfile.html">Phar::addFile</a></li>
+  <li><a href="phar.addfromstring.html">Phar::addFromString</a></li>
+  <li><a href="phar.apiversion.html">Phar::apiVersion</a></li>
+  <li><a href="phar.buildfromdirectory.html">Phar::buildFromDirectory</a></li>
+  <li><a href="phar.buildfromiterator.html">Phar::buildFromIterator</a></li>
+  <li><a href="phar.cancompress.html">Phar::canCompress</a></li>
+  <li><a href="phar.canwrite.html">Phar::canWrite</a></li>
+  <li><a href="phar.compress.html">Phar::compress</a></li>
+  <li><a href="phar.compressallfilesbzip2.html">Phar::compressAllFilesBZIP2</a></li>
+  <li><a href="phar.compressallfilesgz.html">Phar::compressAllFilesGZ</a></li>
+  <li><a href="phar.compressfiles.html">Phar::compressFiles</a></li>
+  <li><a href="phar.construct.html">Phar::__construct</a></li>
+  <li><a href="phar.converttodata.html">Phar::convertToData</a></li>
+  <li><a href="phar.converttoexecutable.html">Phar::convertToExecutable</a></li>
+  <li><a href="phar.copy.html">Phar::copy</a></li>
+  <li><a href="phar.count.html">Phar::count</a></li>
+  <li><a href="phar.createdefaultstub.html">Phar::createDefaultStub</a></li>
+  <li><a href="phar.decompress.html">Phar::decompress</a></li>
+  <li><a href="phar.decompressfiles.html">Phar::decompressFiles</a></li>
+  <li><a href="phar.delmetadata.html">Phar::delMetadata</a></li>
+  <li><a href="phar.delete.html">Phar::delete</a></li>
+  <li><a href="phar.extractto.html">Phar::extractTo</a></li>
+  <li><a href="phar.getmetadata.html">Phar::getMetadata</a></li>
+  <li><a href="phar.getmodified.html">Phar::getModified</a></li>
+  <li><a href="phar.getsignature.html">Phar::getSignature</a></li>
+  <li><a href="phar.getstub.html">Phar::getStub</a></li>
+  <li><a href="phar.getsupportedcompression.html">Phar::getSupportedCompression</a></li>
+  <li><a href="phar.getsupportedsignatures.html">Phar::getSupportedSignatures</a></li>
+  <li><a href="phar.getversion.html">Phar::getVersion</a></li>
+  <li class="active"><a href="phar.hasmetadata.html">Phar::hasMetadata</a></li>
+  <li><a href="phar.interceptfilefuncs.html">Phar::interceptFileFuncs</a></li>
+  <li><a href="phar.isbuffering.html">Phar::isBuffering</a></li>
+  <li><a href="phar.iscompressed.html">Phar::isCompressed</a></li>
+  <li><a href="phar.isfileformat.html">Phar::isFileFormat</a></li>
+  <li><a href="phar.isvalidpharfilename.html">Phar::isValidPharFilename</a></li>
+  <li><a href="phar.iswritable.html">Phar::isWritable</a></li>
+  <li><a href="phar.loadphar.html">Phar::loadPhar</a></li>
+  <li><a href="phar.mapphar.html">Phar::mapPhar</a></li>
+  <li><a href="phar.mount.html">Phar::mount</a></li>
+  <li><a href="phar.mungserver.html">Phar::mungServer</a></li>
+  <li><a href="phar.offsetexists.html">Phar::offsetExists</a></li>
+  <li><a href="phar.offsetget.html">Phar::offsetGet</a></li>
+  <li><a href="phar.offsetset.html">Phar::offsetSet</a></li>
+  <li><a href="phar.offsetunset.html">Phar::offsetUnset</a></li>
+  <li><a href="phar.running.html">Phar::running</a></li>
+  <li><a href="phar.setalias.html">Phar::setAlias</a></li>
+  <li><a href="phar.setdefaultstub.html">Phar::setDefaultStub</a></li>
+  <li><a href="phar.setmetadata.html">Phar::setMetadata</a></li>
+  <li><a href="phar.setsignaturealgorithm.html">Phar::setSignatureAlgorithm</a></li>
+  <li><a href="phar.setstub.html">Phar::setStub</a></li>
+  <li><a href="phar.startbuffering.html">Phar::startBuffering</a></li>
+  <li><a href="phar.stopbuffering.html">Phar::stopBuffering</a></li>
+  <li><a href="phar.uncompressallfiles.html">Phar::uncompressAllFiles</a></li>
+  <li><a href="phar.unlinkarchive.html">Phar::unlinkArchive</a></li>
+  <li><a href="phar.webphar.html">Phar::webPhar</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="phar.getversion.html">Phar::getVersion</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="phar.interceptfilefuncs.html">Phar::interceptFileFuncs</a></div>
+                <div class="up"><a href="class.phar.html">Phar</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="phar.hasmetadata" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Phar::hasMetadata</h1>
+  <p class="refpurpose">Returns whether phar has global meta-data</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-phar.hasmetadata-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">Phar::hasMetadata</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Returns whether phar has global meta-data set.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-phar.hasmetadata-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   No parameters.
+  </p>
+
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-phar.hasmetadata-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> if meta-data has been set, and <strong><code>FALSE</code></strong> if not.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-phar.hasmetadata-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-745">
+    <p><strong>Example #1 A <span class="function">Phar::hasMetadata</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$phar&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Phar</span><span style="color: #007700">(</span><span style="color: #DD0000">'myphar.phar'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$phar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">hasMetadata</span><span style="color: #007700">());<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$phar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setMetadata</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'thing'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'hi'</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$phar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">hasMetadata</span><span style="color: #007700">());<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$phar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">delMetadata</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$phar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">hasMetadata</span><span style="color: #007700">());<br />}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">Exception&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;handle&nbsp;error<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+bool(false)
+bool(true)
+bool(false)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-phar.hasmetadata-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">Phar::getMetadata</span></li>
+    <li class="member"><span class="function">Phar::setMetadata</span></li>
+    <li class="member"><span class="function">Phar::delMetadata</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

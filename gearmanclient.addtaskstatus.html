@@ -1,0 +1,241 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Add a task to get status</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li class="header up"><a href="book.gearman.html">Gearman</a></li>
+  <li class="header up"><a href="class.gearmanclient.html">GearmanClient</a></li>
+  <li><a href="gearmanclient.addoptions.html">GearmanClient::addOptions</a></li>
+  <li><a href="gearmanclient.addserver.html">GearmanClient::addServer</a></li>
+  <li><a href="gearmanclient.addservers.html">GearmanClient::addServers</a></li>
+  <li><a href="gearmanclient.addtask.html">GearmanClient::addTask</a></li>
+  <li><a href="gearmanclient.addtaskbackground.html">GearmanClient::addTaskBackground</a></li>
+  <li><a href="gearmanclient.addtaskhigh.html">GearmanClient::addTaskHigh</a></li>
+  <li><a href="gearmanclient.addtaskhighbackground.html">GearmanClient::addTaskHighBackground</a></li>
+  <li><a href="gearmanclient.addtasklow.html">GearmanClient::addTaskLow</a></li>
+  <li><a href="gearmanclient.addtasklowbackground.html">GearmanClient::addTaskLowBackground</a></li>
+  <li class="active"><a href="gearmanclient.addtaskstatus.html">GearmanClient::addTaskStatus</a></li>
+  <li><a href="gearmanclient.clearcallbacks.html">GearmanClient::clearCallbacks</a></li>
+  <li><a href="gearmanclient.clone.html">GearmanClient::clone</a></li>
+  <li><a href="gearmanclient.construct.html">GearmanClient::__construct</a></li>
+  <li><a href="gearmanclient.context.html">GearmanClient::context</a></li>
+  <li><a href="gearmanclient.data.html">GearmanClient::data</a></li>
+  <li><a href="gearmanclient.do.html">GearmanClient::do</a></li>
+  <li><a href="gearmanclient.dobackground.html">GearmanClient::doBackground</a></li>
+  <li><a href="gearmanclient.dohigh.html">GearmanClient::doHigh</a></li>
+  <li><a href="gearmanclient.dohighbackground.html">GearmanClient::doHighBackground</a></li>
+  <li><a href="gearmanclient.dojobhandle.html">GearmanClient::doJobHandle</a></li>
+  <li><a href="gearmanclient.dolow.html">GearmanClient::doLow</a></li>
+  <li><a href="gearmanclient.dolowbackground.html">GearmanClient::doLowBackground</a></li>
+  <li><a href="gearmanclient.donormal.html">GearmanClient::doNormal</a></li>
+  <li><a href="gearmanclient.dostatus.html">GearmanClient::doStatus</a></li>
+  <li><a href="gearmanclient.echo.html">GearmanClient::echo</a></li>
+  <li><a href="gearmanclient.error.html">GearmanClient::error</a></li>
+  <li><a href="gearmanclient.geterrno.html">GearmanClient::getErrno</a></li>
+  <li><a href="gearmanclient.jobstatus.html">GearmanClient::jobStatus</a></li>
+  <li><a href="gearmanclient.ping.html">GearmanClient::ping</a></li>
+  <li><a href="gearmanclient.removeoptions.html">GearmanClient::removeOptions</a></li>
+  <li><a href="gearmanclient.returncode.html">GearmanClient::returnCode</a></li>
+  <li><a href="gearmanclient.runtasks.html">GearmanClient::runTasks</a></li>
+  <li><a href="gearmanclient.setclientcallback.html">GearmanClient::setClientCallback</a></li>
+  <li><a href="gearmanclient.setcompletecallback.html">GearmanClient::setCompleteCallback</a></li>
+  <li><a href="gearmanclient.setcontext.html">GearmanClient::setContext</a></li>
+  <li><a href="gearmanclient.setcreatedcallback.html">GearmanClient::setCreatedCallback</a></li>
+  <li><a href="gearmanclient.setdata.html">GearmanClient::setData</a></li>
+  <li><a href="gearmanclient.setdatacallback.html">GearmanClient::setDataCallback</a></li>
+  <li><a href="gearmanclient.setexceptioncallback.html">GearmanClient::setExceptionCallback</a></li>
+  <li><a href="gearmanclient.setfailcallback.html">GearmanClient::setFailCallback</a></li>
+  <li><a href="gearmanclient.setoptions.html">GearmanClient::setOptions</a></li>
+  <li><a href="gearmanclient.setstatuscallback.html">GearmanClient::setStatusCallback</a></li>
+  <li><a href="gearmanclient.settimeout.html">GearmanClient::setTimeout</a></li>
+  <li><a href="gearmanclient.setwarningcallback.html">GearmanClient::setWarningCallback</a></li>
+  <li><a href="gearmanclient.setworkloadcallback.html">GearmanClient::setWorkloadCallback</a></li>
+  <li><a href="gearmanclient.timeout.html">GearmanClient::timeout</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="gearmanclient.addtasklowbackground.html">GearmanClient::addTaskLowBackground</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="gearmanclient.clearcallbacks.html">GearmanClient::clearCallbacks</a></div>
+                <div class="up"><a href="class.gearmanclient.html">GearmanClient</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="gearmanclient.addtaskstatus" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">GearmanClient::addTaskStatus</h1>
+  <p class="refpurpose">Add a task to get status</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-gearmanclient.addtaskstatus-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GearmanTask</span> <span class="methodname">GearmanClient::addTaskStatus</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$job_handle</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter reference">&$context</code></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Used to request status information from the Gearman server, which will call the specified
+   status callback (set using  <span class="methodname">GearmanClient::setStatusCallback</span>).
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-gearmanclient.addtaskstatus-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">job_handle</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The job handle for the task to get status for
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">context</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Data to be passed to the status callback, generally a reference to an array or object
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-gearmanclient.addtaskstatus-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   A <span class="classname">GearmanTask</span> object.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-gearmanclient.addtaskstatus-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4904">
+    <p><strong>Example #1 Monitor completion of multiple background tasks</strong></p>
+    <div class="example-contents"><p>
+     An artificial delay is introduced in the worker in this example to simulate
+     a long running process. There is only one worker running for this example.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">/*&nbsp;create&nbsp;our&nbsp;object&nbsp;*/<br /></span><span style="color: #0000BB">$gmclient</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">GearmanClient</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">/*&nbsp;add&nbsp;the&nbsp;default&nbsp;server&nbsp;*/<br /></span><span style="color: #0000BB">$gmclient</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addServer</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">/*&nbsp;start&nbsp;some&nbsp;background&nbsp;jobs&nbsp;and&nbsp;save&nbsp;the&nbsp;handles&nbsp;*/<br /></span><span style="color: #0000BB">$handles&nbsp;</span><span style="color: #007700">=&nbsp;array();<br /></span><span style="color: #0000BB">$handles</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">$gmclient</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">doBackground</span><span style="color: #007700">(</span><span style="color: #DD0000">"reverse"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;World!"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$handles</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">$gmclient</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">doBackground</span><span style="color: #007700">(</span><span style="color: #DD0000">"reverse"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"!dlroW&nbsp;olleH"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$gmclient</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setStatusCallback</span><span style="color: #007700">(</span><span style="color: #DD0000">"reverse_status"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;Poll&nbsp;the&nbsp;server&nbsp;to&nbsp;see&nbsp;when&nbsp;those&nbsp;background&nbsp;jobs&nbsp;finish;&nbsp;*/<br />/*&nbsp;a&nbsp;better&nbsp;method&nbsp;would&nbsp;be&nbsp;to&nbsp;use&nbsp;event&nbsp;callbacks&nbsp;*/<br /></span><span style="color: #007700">do<br />{<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;Use&nbsp;the&nbsp;context&nbsp;variable&nbsp;to&nbsp;track&nbsp;how&nbsp;many&nbsp;tasks&nbsp;have&nbsp;completed&nbsp;*/<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$done&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$gmclient</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addTaskStatus</span><span style="color: #007700">(</span><span style="color: #0000BB">$handles</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">],&nbsp;&amp;</span><span style="color: #0000BB">$done</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$gmclient</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addTaskStatus</span><span style="color: #007700">(</span><span style="color: #0000BB">$handles</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">],&nbsp;&amp;</span><span style="color: #0000BB">$done</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$gmclient</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">runTasks</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Done:&nbsp;</span><span style="color: #0000BB">$done</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">sleep</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br />}<br />while&nbsp;(</span><span style="color: #0000BB">$done&nbsp;</span><span style="color: #007700">!=&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);<br /><br />function&nbsp;</span><span style="color: #0000BB">reverse_status</span><span style="color: #007700">(</span><span style="color: #0000BB">$task</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$done</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">$task</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isKnown</span><span style="color: #007700">())<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$done</span><span style="color: #007700">++;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Done: 0
+Done: 0
+Done: 0
+Done: 0
+Done: 0
+Done: 0
+Done: 0
+Done: 0
+Done: 0
+Done: 0
+Done: 0
+Done: 0
+Done: 1
+Done: 1
+Done: 1
+Done: 1
+Done: 1
+Done: 1
+Done: 1
+Done: 1
+Done: 1
+Done: 1
+Done: 1
+Done: 1
+Done: 2
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-gearmanclient.addtaskstatus-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"> <span class="methodname">GearmanClient::setStatusCallback</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,141 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Close directory handle</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.fileprocess.file.html">File System Related Extensions</a></li>
+  <li class="header up"><a href="book.dir.html">Directories</a></li>
+  <li class="header up"><a href="ref.dir.html">Directory Functions</a></li>
+  <li><a href="function.chdir.html">chdir</a></li>
+  <li><a href="function.chroot.html">chroot</a></li>
+  <li class="active"><a href="function.closedir.html">closedir</a></li>
+  <li><a href="function.dir.html">dir</a></li>
+  <li><a href="function.getcwd.html">getcwd</a></li>
+  <li><a href="function.opendir.html">opendir</a></li>
+  <li><a href="function.readdir.html">readdir</a></li>
+  <li><a href="function.rewinddir.html">rewinddir</a></li>
+  <li><a href="function.scandir.html">scandir</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.chroot.html">chroot</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.dir.html">dir</a></div>
+                <div class="up"><a href="ref.dir.html">Directory Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.closedir" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">closedir</h1>
+  <p class="refpurpose">Close directory handle</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.closedir-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname">closedir</span>
+    ([ <span class="methodparam"><span class="type">resource</span> <code class="parameter">$dir_handle</code></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Closes the directory stream indicated by
+   <code class="parameter">dir_handle</code>. The stream must have previously
+   been opened by <span class="function">opendir</span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.closedir-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">dir_handle</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The directory handle <span class="type">resource</span> previously opened
+       with <span class="function">opendir</span>. If the directory handle is 
+       not specified, the last link opened by <span class="function">opendir</span> 
+       is assumed.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.closedir-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-2591">
+    <p><strong>Example #1 <span class="function">closedir</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$dir&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"/etc/php5/"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Open&nbsp;a&nbsp;known&nbsp;directory,&nbsp;read&nbsp;directory&nbsp;into&nbsp;variable&nbsp;and&nbsp;then&nbsp;close<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">is_dir</span><span style="color: #007700">(</span><span style="color: #0000BB">$dir</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$dh&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">opendir</span><span style="color: #007700">(</span><span style="color: #0000BB">$dir</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$directory&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">readdir</span><span style="color: #007700">(</span><span style="color: #0000BB">$dh</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">closedir</span><span style="color: #007700">(</span><span style="color: #0000BB">$dh</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Create a new Command</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="set.mongodb.html">MongoDB</a></li>
+  <li class="header up"><a href="book.mongodb.html">MongoDB\Driver</a></li>
+  <li class="header up"><a href="class.mongodb-driver-command.html">MongoDB\Driver\Command</a></li>
+  <li class="active"><a href="mongodb-driver-command.construct.html">MongoDB\Driver\Command::__construct</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="class.mongodb-driver-command.html">MongoDB\Driver\Command</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="class.mongodb-driver-query.html">MongoDB\Driver\Query</a></div>
+                <div class="up"><a href="class.mongodb-driver-command.html">MongoDB\Driver\Command</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mongodb-driver-command.construct" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">MongoDB\Driver\Command::__construct</h1>
+  <p class="refpurpose">Create a new Command</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mongodb-driver-command.construct-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span>  <span class="methodname">MongoDB\Driver\Command::__construct</span>
+    ( <span class="methodparam"><span class="type">array|object</span> <code class="parameter">$document</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mongodb-driver-command.construct-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">document</code></dt>
+
+    <dd>
+
+     <p class="para">
+      The complete command to construct
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-mongodb-driver-command.construct-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <ul class="simplelist">
+   <li class="member">Throws <span class="classname">MongoDB\Driver\Exception\InvalidArgumentException</span> on argument parsing errors.</li>
+  </ul>
+ </div>
+
+
+
+ <div class="refsect1 examples" id="refsect1-mongodb-driver-command.construct-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="mongo.setpoolsize.example.basic">
+   <p><strong>Example #1 <span class="function">MongoDB\Driver\Command::__construct</span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$manager&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Manager</span><span style="color: #007700">(</span><span style="color: #DD0000">"mongodb://localhost:27017"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$command&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Command</span><span style="color: #007700">(array(</span><span style="color: #DD0000">"buildinfo"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">));<br /><br />try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$cursor&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$manager</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">executeCommand</span><span style="color: #007700">(</span><span style="color: #DD0000">"admin"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$command</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$response&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$cursor</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">toArray</span><span style="color: #007700">()[</span><span style="color: #0000BB">0</span><span style="color: #007700">];<br />}&nbsp;catch(</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Exception&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">(),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$response</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+
+array(13) {
+  [&quot;version&quot;]=&gt;
+  string(14) &quot;2.8.0-rc2-pre-&quot;
+  [&quot;gitVersion&quot;]=&gt;
+  string(62) &quot;b743d7158f7642f4da6b7eac8320374b3b88dc2e modules: subscription&quot;
+  [&quot;OpenSSLVersion&quot;]=&gt;
+  string(25) &quot;OpenSSL 1.0.1f 6 Jan 2014&quot;
+  [&quot;sysInfo&quot;]=&gt;
+  string(104) &quot;Linux infant 3.16.0-24-generic #32-Ubuntu SMP Tue Oct 28 13:07:32 UTC 2014 x86_64 BOOST_LIB_VERSION=1_49&quot;
+  [&quot;loaderFlags&quot;]=&gt;
+  string(91) &quot;-fPIC -pthread -Wl,-z,now -rdynamic -Wl,-Bsymbolic-functions -Wl,-z,relro -Wl,-z,now -Wl,-E&quot;
+  [&quot;compilerFlags&quot;]=&gt;
+  string(301) &quot;-Wnon-virtual-dtor -Woverloaded-virtual -std=c++11 -fPIC -fno-strict-aliasing -ggdb -pthread -Wall -Wsign-compare -Wno-unknown-pragmas -Winvalid-pch -pipe -Werror -O3 -Wno-unused-local-typedefs -Wno-unused-function -Wno-deprecated-declarations -Wno-unused-but-set-variable -fno-builtin-memcmp -std=c99&quot;
+  [&quot;allocator&quot;]=&gt;
+  string(8) &quot;tcmalloc&quot;
+  [&quot;versionArray&quot;]=&gt;
+  array(4) {
+    [0]=&gt;
+    int(2)
+    [1]=&gt;
+    int(8)
+    [2]=&gt;
+    int(0)
+    [3]=&gt;
+    int(-8)
+  }
+  [&quot;javascriptEngine&quot;]=&gt;
+  string(2) &quot;V8&quot;
+  [&quot;bits&quot;]=&gt;
+  int(64)
+  [&quot;debug&quot;]=&gt;
+  bool(false)
+  [&quot;maxBsonObjectSize&quot;]=&gt;
+  int(16777216)
+  [&quot;ok&quot;]=&gt;
+  float(1)
+}
+
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+
+ <div class="refsect1 seealso" id="refsect1-mongodb-driver-command.construct-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li class="member"> <span class="methodname">MongoDB\Driver\Manager::executeCommand</span></li>
+   <li class="member"><span class="classname">MongoDB\Driver\Cursor</span></li>
+  </ul>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

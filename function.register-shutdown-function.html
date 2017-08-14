@@ -1,0 +1,227 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Register a function for execution on shutdown</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.vartype.html">Variable and Type Related Extensions</a></li>
+  <li class="header up"><a href="book.funchand.html">Function Handling</a></li>
+  <li class="header up"><a href="ref.funchand.html">Function handling Functions</a></li>
+  <li><a href="function.call-user-func-array.html">call_user_func_array</a></li>
+  <li><a href="function.call-user-func.html">call_user_func</a></li>
+  <li><a href="function.create-function.html">create_function</a></li>
+  <li><a href="function.forward-static-call-array.html">forward_static_call_array</a></li>
+  <li><a href="function.forward-static-call.html">forward_static_call</a></li>
+  <li><a href="function.func-get-arg.html">func_get_arg</a></li>
+  <li><a href="function.func-get-args.html">func_get_args</a></li>
+  <li><a href="function.func-num-args.html">func_num_args</a></li>
+  <li><a href="function.function-exists.html">function_exists</a></li>
+  <li><a href="function.get-defined-functions.html">get_defined_functions</a></li>
+  <li class="active"><a href="function.register-shutdown-function.html">register_shutdown_function</a></li>
+  <li><a href="function.register-tick-function.html">register_tick_function</a></li>
+  <li><a href="function.unregister-tick-function.html">unregister_tick_function</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.get-defined-functions.html">get_defined_functions</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.register-tick-function.html">register_tick_function</a></div>
+                <div class="up"><a href="ref.funchand.html">Function handling Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.register-shutdown-function" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">register_shutdown_function</h1>
+  <p class="refpurpose">Register a function for execution on shutdown</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.register-shutdown-function-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname">register_shutdown_function</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$parameter</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$...</code></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Registers a <code class="parameter">callback</code> to be executed after script
+   execution finishes or <span class="function">exit</span> is called.
+  </p>
+  <p class="para">
+   Multiple calls to <span class="function">register_shutdown_function</span> can be
+   made, and each will be called in the same order as they were registered.
+   If you call <span class="function">exit</span> within one registered shutdown
+   function, processing will stop completely and no other registered
+   shutdown functions will be called.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.register-shutdown-function-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">callback</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The shutdown callback to register.
+      </p>
+      <p class="para">
+       The shutdown callbacks are executed as the part of the request, so
+       it&#039;s possible to send output from them and access output buffers.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">parameter</code></dt>
+
+     <dd>
+
+      <p class="para">
+       It is possible to pass parameters to the shutdown function by passing
+       additional parameters.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">...</code></dt>
+
+     <dd>
+
+      <p class="para">
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.register-shutdown-function-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   No value is returned.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 errors" id="refsect1-function.register-shutdown-function-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   If the passed callback is not callable a <strong><code>E_WARNING</code></strong>
+   level error will be generated.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.register-shutdown-function-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-5978">
+    <p><strong>Example #1 <span class="function">register_shutdown_function</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">shutdown</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;This&nbsp;is&nbsp;our&nbsp;shutdown&nbsp;function,&nbsp;in&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;here&nbsp;we&nbsp;can&nbsp;do&nbsp;any&nbsp;last&nbsp;operations<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;before&nbsp;the&nbsp;script&nbsp;is&nbsp;complete.<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">'Script&nbsp;executed&nbsp;with&nbsp;success'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">register_shutdown_function</span><span style="color: #007700">(</span><span style="color: #DD0000">'shutdown'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.register-shutdown-function-notes">
+  <h3 class="title">Notes</h3>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    Working directory of the script can change inside the shutdown function
+    under some web servers, e.g. Apache.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    Shutdown functions will not be executed if the process is killed with a SIGTERM
+    or SIGKILL signal. While you cannot intercept a SIGKILL, you can use <span class="function">pcntl_signal</span>
+    to install a handler for a SIGTERM which uses <span class="function">exit</span> to
+    end cleanly.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.register-shutdown-function-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="ini.core.html#ini.auto-append-file" class="link">auto_append_file</a></li>
+    <li class="member"><span class="function">exit</span></li>
+    <li class="member">The section on <a href="features.connection-handling.html" class="link">connection handling</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Offset to retrieve</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="langref.html">Language Reference</a></li>
+  <li class="header up"><a href="reserved.interfaces.html">Predefined Interfaces and Classes</a></li>
+  <li class="header up"><a href="class.arrayaccess.html">ArrayAccess</a></li>
+  <li><a href="arrayaccess.offsetexists.html">ArrayAccess::offsetExists</a></li>
+  <li class="active"><a href="arrayaccess.offsetget.html">ArrayAccess::offsetGet</a></li>
+  <li><a href="arrayaccess.offsetset.html">ArrayAccess::offsetSet</a></li>
+  <li><a href="arrayaccess.offsetunset.html">ArrayAccess::offsetUnset</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="arrayaccess.offsetexists.html">ArrayAccess::offsetExists</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="arrayaccess.offsetset.html">ArrayAccess::offsetSet</a></div>
+                <div class="up"><a href="class.arrayaccess.html">ArrayAccess</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="arrayaccess.offsetget" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ArrayAccess::offsetGet</h1>
+  <p class="refpurpose">Offset to retrieve</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-arrayaccess.offsetget-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">ArrayAccess::offsetGet</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$offset</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Returns the value at specified offset.
+  </p>
+  <p class="para">
+   This method is executed when checking if offset is <span class="function">empty</span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-arrayaccess.offsetget-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">offset</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The offset to retrieve.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+
+ </div>
+
+ 
+ <div class="refsect1 notes" id="refsect1-arrayaccess.offsetget-notes">
+  <h3 class="title">Notes</h3>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <p class="para">
+      Starting with PHP 5.3.4, the prototype checks were relaxed and it&#039;s
+      possible for implementations of this method to return by reference.
+      This makes indirect modifications to the overloaded array dimensions of
+      <span class="classname">ArrayAccess</span> objects possible.
+    </p>
+    <p class="para">
+      A direct modification is one that replaces completely the value of
+      the array dimension, as in <em>$obj[6] = 7</em>. An
+      indirect modification, on the other hand, only changes part of the
+      dimension, or attempts to assign the dimension by reference to
+      another variable, as in <em>$obj[6][7] = 7</em> or
+      <em>$var =&amp; $obj[6]</em>. Increments with
+      <em>++</em> and decrements with <em>--</em>
+      are also implemented in a way that requires indirect modification.
+    </p>
+    <p class="para">
+      While direct modification triggers a call to
+      <span class="function">ArrayAccess::offsetSet</span>, indirect modification
+      triggers a call to <span class="function">ArrayAccess::offsetGet</span>.
+      In that case, the implementation of
+      <span class="function">ArrayAccess::offsetGet</span> must be able to return by
+      reference, otherwise an <strong><code>E_NOTICE</code></strong> message is raised.
+    </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-arrayaccess.offsetget-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Can return all value types.
+  </p>
+ </div>
+
+
+
+
+ <div class="refsect1 seealso" id="refsect1-arrayaccess.offsetget-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"> <span class="methodname">ArrayAccess::offsetExists</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

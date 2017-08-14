@@ -1,0 +1,299 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Set callback function for LOAD DATA LOCAL INFILE command</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="set.mysqlinfo.html">MySQL</a></li>
+  <li class="header up"><a href="book.mysqli.html">MySQLi</a></li>
+  <li class="header up"><a href="class.mysqli.html">mysqli</a></li>
+  <li><a href="mysqli.affected-rows.html">mysqli::$affected_rows</a></li>
+  <li><a href="mysqli.autocommit.html">mysqli::autocommit</a></li>
+  <li><a href="mysqli.begin-transaction.html">mysqli::begin_transaction</a></li>
+  <li><a href="mysqli.change-user.html">mysqli::change_user</a></li>
+  <li><a href="mysqli.character-set-name.html">mysqli::character_set_name</a></li>
+  <li><a href="mysqli.client-info.html">mysqli::$client_info</a></li>
+  <li><a href="mysqli.client-version.html">mysqli::$client_version</a></li>
+  <li><a href="mysqli.close.html">mysqli::close</a></li>
+  <li><a href="mysqli.commit.html">mysqli::commit</a></li>
+  <li><a href="mysqli.connect-errno.html">mysqli::$connect_errno</a></li>
+  <li><a href="mysqli.connect-error.html">mysqli::$connect_error</a></li>
+  <li><a href="mysqli.construct.html">mysqli::__construct</a></li>
+  <li><a href="mysqli.debug.html">mysqli::debug</a></li>
+  <li><a href="mysqli.dump-debug-info.html">mysqli::dump_debug_info</a></li>
+  <li><a href="mysqli.errno.html">mysqli::$errno</a></li>
+  <li><a href="mysqli.error-list.html">mysqli::$error_list</a></li>
+  <li><a href="mysqli.error.html">mysqli::$error</a></li>
+  <li><a href="mysqli.field-count.html">mysqli::$field_count</a></li>
+  <li><a href="mysqli.get-charset.html">mysqli::get_charset</a></li>
+  <li><a href="mysqli.get-client-info.html">mysqli::get_client_info</a></li>
+  <li><a href="mysqli.get-client-stats.html">mysqli_get_client_stats</a></li>
+  <li><a href="mysqli.get-client-version.html">mysqli_get_client_version</a></li>
+  <li><a href="mysqli.get-connection-stats.html">mysqli::get_connection_stats</a></li>
+  <li><a href="mysqli.get-host-info.html">mysqli::$host_info</a></li>
+  <li><a href="mysqli.get-proto-info.html">mysqli::$protocol_version</a></li>
+  <li><a href="mysqli.get-server-info.html">mysqli::$server_info</a></li>
+  <li><a href="mysqli.get-server-version.html">mysqli::$server_version</a></li>
+  <li><a href="mysqli.get-warnings.html">mysqli::get_warnings</a></li>
+  <li><a href="mysqli.info.html">mysqli::$info</a></li>
+  <li><a href="mysqli.init.html">mysqli::init</a></li>
+  <li><a href="mysqli.insert-id.html">mysqli::$insert_id</a></li>
+  <li><a href="mysqli.kill.html">mysqli::kill</a></li>
+  <li><a href="mysqli.more-results.html">mysqli::more_results</a></li>
+  <li><a href="mysqli.multi-query.html">mysqli::multi_query</a></li>
+  <li><a href="mysqli.next-result.html">mysqli::next_result</a></li>
+  <li><a href="mysqli.options.html">mysqli::options</a></li>
+  <li><a href="mysqli.ping.html">mysqli::ping</a></li>
+  <li><a href="mysqli.poll.html">mysqli::poll</a></li>
+  <li><a href="mysqli.prepare.html">mysqli::prepare</a></li>
+  <li><a href="mysqli.query.html">mysqli::query</a></li>
+  <li><a href="mysqli.real-connect.html">mysqli::real_connect</a></li>
+  <li><a href="mysqli.real-escape-string.html">mysqli::real_escape_string</a></li>
+  <li><a href="mysqli.real-query.html">mysqli::real_query</a></li>
+  <li><a href="mysqli.reap-async-query.html">mysqli::reap_async_query</a></li>
+  <li><a href="mysqli.refresh.html">mysqli::refresh</a></li>
+  <li><a href="mysqli.release-savepoint.html">mysqli::release_savepoint</a></li>
+  <li><a href="mysqli.rollback.html">mysqli::rollback</a></li>
+  <li><a href="mysqli.rpl-query-type.html">mysqli::rpl_query_type</a></li>
+  <li><a href="mysqli.savepoint.html">mysqli::savepoint</a></li>
+  <li><a href="mysqli.select-db.html">mysqli::select_db</a></li>
+  <li><a href="mysqli.send-query.html">mysqli::send_query</a></li>
+  <li><a href="mysqli.set-charset.html">mysqli::set_charset</a></li>
+  <li><a href="mysqli.set-local-infile-default.html">mysqli::set_local_infile_default</a></li>
+  <li class="active"><a href="mysqli.set-local-infile-handler.html">mysqli::set_local_infile_handler</a></li>
+  <li><a href="mysqli.sqlstate.html">mysqli::$sqlstate</a></li>
+  <li><a href="mysqli.ssl-set.html">mysqli::ssl_set</a></li>
+  <li><a href="mysqli.stat.html">mysqli::stat</a></li>
+  <li><a href="mysqli.stmt-init.html">mysqli::stmt_init</a></li>
+  <li><a href="mysqli.store-result.html">mysqli::store_result</a></li>
+  <li><a href="mysqli.thread-id.html">mysqli::$thread_id</a></li>
+  <li><a href="mysqli.thread-safe.html">mysqli::thread_safe</a></li>
+  <li><a href="mysqli.use-result.html">mysqli::use_result</a></li>
+  <li><a href="mysqli.warning-count.html">mysqli::$warning_count</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mysqli.set-local-infile-default.html">mysqli::set_local_infile_default</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mysqli.sqlstate.html">mysqli::$sqlstate</a></div>
+                <div class="up"><a href="class.mysqli.html">mysqli</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mysqli.set-local-infile-handler" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mysqli::set_local_infile_handler</h1>
+  <h1 class="refname">mysqli_set_local_infile_handler</h1>
+  <p class="refpurpose">Set callback function for LOAD DATA LOCAL INFILE command</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mysqli.set-local-infile-handler-description">
+  <h3 class="title">Description</h3>
+  <p class="para">Object oriented style</p>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">mysqli::set_local_infile_handler</span>
+    ( <span class="methodparam"><span class="type">mysqli</span> <code class="parameter">$link</code></span>
+   , <span class="methodparam"><span class="type">callable</span> <code class="parameter">$read_func</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">Procedural style</p>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">mysqli_set_local_infile_handler</span>
+    ( <span class="methodparam"><span class="type">mysqli</span> <code class="parameter">$link</code></span>
+   , <span class="methodparam"><span class="type">callable</span> <code class="parameter">$read_func</code></span>
+   )</div>
+
+  
+  <p class="para rdfs-comment">Set callback function for LOAD DATA LOCAL INFILE command</p>
+
+  <p class="para">
+   The callbacks task is to read input from the file specified in the 
+   <em>LOAD DATA LOCAL INFILE</em> and to reformat it into
+   the format understood by <em>LOAD DATA INFILE</em>.
+  </p>
+
+  <p class="para">
+   The returned data needs to match the format specified in the
+   <em>LOAD DATA</em> 
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mysqli.set-local-infile-handler-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+<code class="parameter">
+link</code></dt>
+<dd>
+<p class="para">Procedural style only: A link identifier
+returned by <span class="function">mysqli_connect</span> or <span class="function">mysqli_init</span>
+</p></dd>
+
+    
+     <dt>
+<code class="parameter">read_func</code></dt>
+
+     <dd>
+
+      <p class="para">
+       A callback function or object method taking the following parameters:
+      </p>
+      <dl>
+
+       
+        <dt>
+<code class="parameter">stream</code></dt>
+
+        <dd>
+<p class="para">A PHP stream associated with the SQL commands INFILE</p></dd>
+
+       
+       
+        <dt>
+<code class="parameter">&amp;buffer</code></dt>
+
+        <dd>
+<p class="para">A string buffer to store the rewritten input into</p></dd>
+
+       
+       
+        <dt>
+<code class="parameter">buflen</code></dt>
+
+        <dd>
+<p class="para">The maximum number of characters to be stored in the buffer</p></dd>
+
+       
+       
+        <dt>
+<code class="parameter">&amp;errormsg</code></dt>
+
+        <dd>
+<p class="para">If an error occurs you can store an error message in here</p></dd>
+
+       
+      </dl>
+
+     </dd>
+
+    
+   </dl>
+
+  </p>
+  <p class="para">
+   The callback function should return the number of characters stored
+   in the <code class="parameter">buffer</code> or a negative value if an error
+   occurred.
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-mysqli.set-local-infile-handler-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> on success or <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-mysqli.set-local-infile-handler-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-1859">
+   <p><strong>Example #1  <span class="methodname">mysqli::set_local_infile_handler</span> example</strong></p>
+   <div class="example-contents"><p>Object oriented style</p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;$db&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysqli_init</span><span style="color: #007700">();<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">real_connect</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,</span><span style="color: #DD0000">"root"</span><span style="color: #007700">,</span><span style="color: #DD0000">""</span><span style="color: #007700">,</span><span style="color: #DD0000">"test"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">callme</span><span style="color: #007700">(</span><span style="color: #0000BB">$stream</span><span style="color: #007700">,&nbsp;&amp;</span><span style="color: #0000BB">$buffer</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$buflen</span><span style="color: #007700">,&nbsp;&amp;</span><span style="color: #0000BB">$errmsg</span><span style="color: #007700">)<br />&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$buffer&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fgets</span><span style="color: #007700">(</span><span style="color: #0000BB">$stream</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$buffer</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;convert&nbsp;to&nbsp;upper&nbsp;case&nbsp;and&nbsp;replace&nbsp;","&nbsp;delimiter&nbsp;with&nbsp;[TAB]<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$buffer&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">strtoupper</span><span style="color: #007700">(</span><span style="color: #0000BB">str_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">","</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"\t"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$buffer</span><span style="color: #007700">));<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$buffer</span><span style="color: #007700">);<br />&nbsp;&nbsp;}<br /><br /><br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Input:\n"</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">set_local_infile_handler</span><span style="color: #007700">(</span><span style="color: #DD0000">"callme"</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"LOAD&nbsp;DATA&nbsp;LOCAL&nbsp;INFILE&nbsp;'input.txt'&nbsp;INTO&nbsp;TABLE&nbsp;t1"</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">set_local_infile_default</span><span style="color: #007700">();<br /><br />&nbsp;&nbsp;</span><span style="color: #0000BB">$res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;*&nbsp;FROM&nbsp;t1"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"\nResult:\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;while&nbsp;(</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$res</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetch_assoc</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">join</span><span style="color: #007700">(</span><span style="color: #DD0000">","</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">).</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>Procedural style</p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />&nbsp;&nbsp;$db&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysqli_init</span><span style="color: #007700">();<br />&nbsp;&nbsp;</span><span style="color: #0000BB">mysqli_real_connect</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,</span><span style="color: #DD0000">"root"</span><span style="color: #007700">,</span><span style="color: #DD0000">""</span><span style="color: #007700">,</span><span style="color: #DD0000">"test"</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">callme</span><span style="color: #007700">(</span><span style="color: #0000BB">$stream</span><span style="color: #007700">,&nbsp;&amp;</span><span style="color: #0000BB">$buffer</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$buflen</span><span style="color: #007700">,&nbsp;&amp;</span><span style="color: #0000BB">$errmsg</span><span style="color: #007700">)<br />&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$buffer&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fgets</span><span style="color: #007700">(</span><span style="color: #0000BB">$stream</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$buffer</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;convert&nbsp;to&nbsp;upper&nbsp;case&nbsp;and&nbsp;replace&nbsp;","&nbsp;delimiter&nbsp;with&nbsp;[TAB]<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$buffer&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">strtoupper</span><span style="color: #007700">(</span><span style="color: #0000BB">str_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">","</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"\t"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$buffer</span><span style="color: #007700">));<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">$buffer</span><span style="color: #007700">);<br />&nbsp;&nbsp;}<br /><br /><br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Input:\n"</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;</span><span style="color: #0000BB">mysqli_set_local_infile_handler</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"callme"</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">mysqli_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"LOAD&nbsp;DATA&nbsp;LOCAL&nbsp;INFILE&nbsp;'input.txt'&nbsp;INTO&nbsp;TABLE&nbsp;t1"</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">mysqli_set_local_infile_default</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;</span><span style="color: #0000BB">$res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysqli_query</span><span style="color: #007700">(</span><span style="color: #0000BB">$db</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"SELECT&nbsp;*&nbsp;FROM&nbsp;t1"</span><span style="color: #007700">);<br /><br /><br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"\nResult:\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;while&nbsp;(</span><span style="color: #0000BB">$row&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">mysqli_fetch_assoc</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">join</span><span style="color: #007700">(</span><span style="color: #DD0000">","</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">).</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above examples will output:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Input:
+23,foo
+42,bar
+
+Output:
+23,FOO
+42,BAR
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-mysqli.set-local-infile-handler-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">mysqli_set_local_infile_default</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

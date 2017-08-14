@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Repairs and compacts this database</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.mongo.html">Mongo</a></li>
+  <li class="header up"><a href="mongo.core.html">Core Classes</a></li>
+  <li class="header up"><a href="class.mongodb.html">MongoDB</a></li>
+  <li><a href="mongodb.authenticate.html">MongoDB::authenticate</a></li>
+  <li><a href="mongodb.command.html">MongoDB::command</a></li>
+  <li><a href="mongodb.construct.html">MongoDB::__construct</a></li>
+  <li><a href="mongodb.createcollection.html">MongoDB::createCollection</a></li>
+  <li><a href="mongodb.createdbref.html">MongoDB::createDBRef</a></li>
+  <li><a href="mongodb.drop.html">MongoDB::drop</a></li>
+  <li><a href="mongodb.dropcollection.html">MongoDB::dropCollection</a></li>
+  <li><a href="mongodb.execute.html">MongoDB::execute</a></li>
+  <li><a href="mongodb.forceerror.html">MongoDB::forceError</a></li>
+  <li><a href="mongodb.get.html">MongoDB::__get</a></li>
+  <li><a href="mongodb.getcollectioninfo.html">MongoDB::getCollectionInfo</a></li>
+  <li><a href="mongodb.getcollectionnames.html">MongoDB::getCollectionNames</a></li>
+  <li><a href="mongodb.getdbref.html">MongoDB::getDBRef</a></li>
+  <li><a href="mongodb.getgridfs.html">MongoDB::getGridFS</a></li>
+  <li><a href="mongodb.getprofilinglevel.html">MongoDB::getProfilingLevel</a></li>
+  <li><a href="mongodb.getreadpreference.html">MongoDB::getReadPreference</a></li>
+  <li><a href="mongodb.getslaveokay.html">MongoDB::getSlaveOkay</a></li>
+  <li><a href="mongodb.getwriteconcern.html">MongoDB::getWriteConcern</a></li>
+  <li><a href="mongodb.lasterror.html">MongoDB::lastError</a></li>
+  <li><a href="mongodb.listcollections.html">MongoDB::listCollections</a></li>
+  <li><a href="mongodb.preverror.html">MongoDB::prevError</a></li>
+  <li class="active"><a href="mongodb.repair.html">MongoDB::repair</a></li>
+  <li><a href="mongodb.reseterror.html">MongoDB::resetError</a></li>
+  <li><a href="mongodb.selectcollection.html">MongoDB::selectCollection</a></li>
+  <li><a href="mongodb.setprofilinglevel.html">MongoDB::setProfilingLevel</a></li>
+  <li><a href="mongodb.setreadpreference.html">MongoDB::setReadPreference</a></li>
+  <li><a href="mongodb.setslaveokay.html">MongoDB::setSlaveOkay</a></li>
+  <li><a href="mongodb.setwriteconcern.html">MongoDB::setWriteConcern</a></li>
+  <li><a href="mongodb.--tostring.html">MongoDB::__toString</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mongodb.preverror.html">MongoDB::prevError</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mongodb.reseterror.html">MongoDB::resetError</a></div>
+                <div class="up"><a href="class.mongodb.html">MongoDB</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mongodb.repair" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">MongoDB::repair</h1>
+  <p class="refpurpose">Repairs and compacts this database</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mongodb.repair-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">MongoDB::repair</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$preserve_cloned_files</code><span class="initializer"> = <strong><code>FALSE</code></strong></span></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$backup_original_files</code><span class="initializer"> = <strong><code>FALSE</code></strong></span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   This creates a fresh copy of all database data.  It will remove any corrupt 
+   data and compact and large stretches of free space it finds.  This is a very
+   slow operation on a large database.
+  </p>
+  <p class="para">
+   This is usually run from the shell or the command line, not the driver.
+  </p>
+  <p class="para">  
+   It is equivalent to the function:
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">public&nbsp;function&nbsp;</span><span style="color: #0000BB">repair</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">command</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'repairDatabase'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">));<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mongodb.repair-parameters">
+  <h3 class="title">Parameters</h3>    
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+
+      <code class="parameter">preserve_cloned_files</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       If cloned files should be kept if the repair fails.
+      </p>
+     </dd>
+
+       
+    
+     <dt>
+
+      <code class="parameter">backup_original_files</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       If original files should be backed up.
+      </p>
+     </dd>
+
+       
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-mongodb.repair-returnvalues">
+  <h3 class="title">Return Values</h3>  
+  <p class="para">
+   Returns db response.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-mongodb.repair-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   MongoDB core docs on <a href="https://docs.mongodb.com/manual/reference/command/repairDatabase" class="link external">&raquo;&nbsp;repairDatabase</a>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-mongodb.repair-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-1526">
+   <p><strong>Example #1 <span class="function">MongoDB::repair</span> example</strong></p>
+   <div class="example-contents"><p>This example demonstrates how to repare and compact a database.</p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$db&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$mongo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">foo</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$response&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">repair</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$response</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [ok] =&gt; 1
+)
+</pre></div>
+   </div>
+  </div>  
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

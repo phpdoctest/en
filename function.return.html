@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: return</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="langref.html">Language Reference</a></li>
+  <li class="header up"><a href="language.control-structures.html">Control Structures</a></li>
+  <li><a href="control-structures.intro.html">Introduction</a></li>
+  <li><a href="control-structures.if.html">if</a></li>
+  <li><a href="control-structures.else.html">else</a></li>
+  <li><a href="control-structures.elseif.html">elseif/else if</a></li>
+  <li><a href="control-structures.alternative-syntax.html">Alternative syntax for control structures</a></li>
+  <li><a href="control-structures.while.html">while</a></li>
+  <li><a href="control-structures.do.while.html">do-while</a></li>
+  <li><a href="control-structures.for.html">for</a></li>
+  <li><a href="control-structures.foreach.html">foreach</a></li>
+  <li><a href="control-structures.break.html">break</a></li>
+  <li><a href="control-structures.continue.html">continue</a></li>
+  <li><a href="control-structures.switch.html">switch</a></li>
+  <li><a href="control-structures.declare.html">declare</a></li>
+  <li class="active"><a href="function.return.html">return</a></li>
+  <li><a href="function.require.html">require</a></li>
+  <li><a href="function.include.html">include</a></li>
+  <li><a href="function.require-once.html">require_once</a></li>
+  <li><a href="function.include-once.html">include_once</a></li>
+  <li><a href="control-structures.goto.html">goto</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="control-structures.declare.html">declare</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.require.html">require</a></div>
+                <div class="up"><a href="language.control-structures.html">Control Structures</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.return" class="sect1">
+ <h2 class="title">return</h2>
+ 
+ <p class="simpara">
+  <em>return</em> returns program control to the calling module.
+  Execution resumes at the expression following the called module&#039;s invocation.
+ </p>
+ <p class="simpara">
+  If called from within a function, the <em>return</em>
+  statement immediately ends execution of the current function, and
+  returns its argument as the value of the function
+  call. <em>return</em> also ends the execution of
+  an <span class="function">eval</span> statement or script file.
+ </p>
+ <p class="simpara">
+  If called from the global scope, then execution of the current
+  script file is ended. If the current script file was
+  <span class="function">include</span>d or <span class="function">require</span>d,
+  then control is passed back to the calling file. Furthermore, if
+  the current script file was <span class="function">include</span>d, then
+  the value given to <em>return</em> will be returned as
+  the value of the <span class="function">include</span> call. If
+  <em>return</em> is called from within the main script
+  file, then script execution ends. If the current script file was
+  named by the <a href="ini.core.html#ini.auto-prepend-file" class="link">auto_prepend_file</a> or <a href="ini.core.html#ini.auto-append-file" class="link">auto_append_file</a>
+  configuration options in <var class="filename">php.ini</var>,
+  then that script file&#039;s execution is ended.
+ </p>
+ <p class="simpara">For more information, see <a href="functions.returning-values.html" class="link">Returning values</a>.
+ </p>
+ <p class="para">
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <span class="simpara">
+    Note that since <em>return</em> is a language
+    construct and not a function, the parentheses surrounding its
+    arguments are not required. It is common to leave them out, and you
+    actually should do so as PHP has less work to do in this case.
+   </span>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <span class="simpara">
+    If no parameter is supplied, then the parentheses must be omitted
+    and <strong><code>NULL</code></strong> will be
+    returned. Calling <em>return</em> with parentheses but
+    with no arguments will result in a parse error.
+   </span>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <span class="simpara">
+    You should <em class="emphasis">never</em> use parentheses around your return
+    variable when returning by reference, as this will not work. You can
+    only return variables by reference, not the result of a statement. If
+    you use <em>return ($a);</em> then you&#039;re not returning a
+    variable, but the result of the expression <em>($a)</em>
+    (which is, of course, the value of <var class="varname">$a</var>).
+    </span>
+   </p></blockquote>
+ </p>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

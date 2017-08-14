@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Installs a signal handler</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.fileprocess.process.html">Process Control Extensions</a></li>
+  <li class="header up"><a href="book.pcntl.html">PCNTL</a></li>
+  <li class="header up"><a href="ref.pcntl.html">PCNTL Functions</a></li>
+  <li><a href="function.pcntl-alarm.html">pcntl_alarm</a></li>
+  <li><a href="function.pcntl-errno.html">pcntl_errno</a></li>
+  <li><a href="function.pcntl-exec.html">pcntl_exec</a></li>
+  <li><a href="function.pcntl-fork.html">pcntl_fork</a></li>
+  <li><a href="function.pcntl-get-last-error.html">pcntl_get_last_error</a></li>
+  <li><a href="function.pcntl-getpriority.html">pcntl_getpriority</a></li>
+  <li><a href="function.pcntl-setpriority.html">pcntl_setpriority</a></li>
+  <li><a href="function.pcntl-signal-dispatch.html">pcntl_signal_dispatch</a></li>
+  <li><a href="function.pcntl-signal-get-handler.html">pcntl_signal_get_handler</a></li>
+  <li class="active"><a href="function.pcntl-signal.html">pcntl_signal</a></li>
+  <li><a href="function.pcntl-sigprocmask.html">pcntl_sigprocmask</a></li>
+  <li><a href="function.pcntl-sigtimedwait.html">pcntl_sigtimedwait</a></li>
+  <li><a href="function.pcntl-sigwaitinfo.html">pcntl_sigwaitinfo</a></li>
+  <li><a href="function.pcntl-strerror.html">pcntl_strerror</a></li>
+  <li><a href="function.pcntl-wait.html">pcntl_wait</a></li>
+  <li><a href="function.pcntl-waitpid.html">pcntl_waitpid</a></li>
+  <li><a href="function.pcntl-wexitstatus.html">pcntl_wexitstatus</a></li>
+  <li><a href="function.pcntl-wifexited.html">pcntl_wifexited</a></li>
+  <li><a href="function.pcntl-wifsignaled.html">pcntl_wifsignaled</a></li>
+  <li><a href="function.pcntl-wifstopped.html">pcntl_wifstopped</a></li>
+  <li><a href="function.pcntl-wstopsig.html">pcntl_wstopsig</a></li>
+  <li><a href="function.pcntl-wtermsig.html">pcntl_wtermsig</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.pcntl-signal-get-handler.html">pcntl_signal_get_handler</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.pcntl-sigprocmask.html">pcntl_sigprocmask</a></div>
+                <div class="up"><a href="ref.pcntl.html">PCNTL Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.pcntl-signal" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">pcntl_signal</h1>
+  <p class="refpurpose">Installs a signal handler</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.pcntl-signal-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">pcntl_signal</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$signo</code></span>
+   , <span class="methodparam"><span class="type">callable|int</span> <code class="parameter">$handler</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$restart_syscalls</code><span class="initializer"> = true</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   The <span class="function">pcntl_signal</span> function installs a new
+   signal handler or replaces the current signal handler for the signal indicated by <code class="parameter">signo</code>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.pcntl-signal-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">signo</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The signal number.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">handler</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The signal handler. This may be either a <span class="type">callable</span>, which
+       will be invoked to handle the signal, or either of the two global
+       constants <strong><code>SIG_IGN</code></strong> or <strong><code>SIG_DFL</code></strong>,
+       which will ignore the signal or restore the default signal handler
+       respectively. 
+      </p>
+      <p class="para">
+       If a <span class="type">callable</span> is given, it must implement the following
+       signature:
+      </p>
+      <p class="para">
+       <div class="methodsynopsis dc-description">
+        <span class="type">void</span> <span class="methodname"><span class="replaceable">handler</span></span>
+         ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$signo</code></span>
+        , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$signinfo</code></span>
+        )</div>
+
+       <dl>
+
+        
+         <dt>
+<code class="parameter">signo</code></dt>
+
+         <dd>
+
+          <span class="simpara">
+           The signal being handled.
+          </span>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">siginfo</code></dt>
+
+         <dd>
+
+          <span class="simpara">
+           If operating systems supports siginfo_t structures, this will be an array of signal information dependent on the signal.
+          </span>
+         </dd>
+
+        
+       </dl>
+
+      </p>
+      <blockquote class="note"><p><strong class="note">Note</strong>: 
+       <p class="para">
+        Note that when you set a handler to an object method, that object&#039;s
+        reference count is increased which makes it persist until you either
+        change the handler to something else, or your script ends.
+       </p>
+      </p></blockquote>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">restart_syscalls</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Specifies whether system call restarting should be used when this
+       signal arrives.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.pcntl-signal-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> on success or <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.pcntl-signal-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>4.3.0</td>
+       <td>
+        As of PHP 4.3.0 PCNTL uses ticks as the signal handle callback
+        mechanism, which is much faster than the previous mechanism. This
+        change follows the same semantics as using
+        &quot;<a href="control-structures.declare.html#control-structures.declare.ticks" class="link">user ticks</a>&quot;.
+        You must use the <a href="control-structures.declare.html" class="link">declare()</a> statement to
+        specify the locations in your program where callbacks are allowed to
+        occur for the signal handler to function properly (as used in the
+        example below).
+       </td>
+      </tr>
+
+      <tr>
+       <td>7.1.0</td>
+       <td>
+        As of PHP 7.1.0 the handler callback is given a second argument
+        containing the signinfo of the specific signal.  This data is only
+        supplied if the operating system has the signinfo_t structure.
+        If the OS does not implement siginfo_t NULL is supplied.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.pcntl-signal-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4193">
+    <p><strong>Example #1 <span class="function">pcntl_signal</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;tick&nbsp;use&nbsp;required&nbsp;as&nbsp;of&nbsp;PHP&nbsp;4.3.0<br /></span><span style="color: #007700">declare(</span><span style="color: #0000BB">ticks&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;signal&nbsp;handler&nbsp;function<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">sig_handler</span><span style="color: #007700">(</span><span style="color: #0000BB">$signo</span><span style="color: #007700">)<br />{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;switch&nbsp;(</span><span style="color: #0000BB">$signo</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">SIGTERM</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;handle&nbsp;shutdown&nbsp;tasks<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">exit;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">SIGHUP</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;handle&nbsp;restart&nbsp;tasks<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">break;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">SIGUSR1</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Caught&nbsp;SIGUSR1...\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;default:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;handle&nbsp;all&nbsp;other&nbsp;signals<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">}<br /><br />}<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Installing&nbsp;signal&nbsp;handler...\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;setup&nbsp;signal&nbsp;handlers<br /></span><span style="color: #0000BB">pcntl_signal</span><span style="color: #007700">(</span><span style="color: #0000BB">SIGTERM</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"sig_handler"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">pcntl_signal</span><span style="color: #007700">(</span><span style="color: #0000BB">SIGHUP</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #DD0000">"sig_handler"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">pcntl_signal</span><span style="color: #007700">(</span><span style="color: #0000BB">SIGUSR1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"sig_handler"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;or&nbsp;use&nbsp;an&nbsp;object,&nbsp;available&nbsp;as&nbsp;of&nbsp;PHP&nbsp;4.3.0<br />//&nbsp;pcntl_signal(SIGUSR1,&nbsp;array($obj,&nbsp;"do_something"));<br /><br /></span><span style="color: #007700">echo</span><span style="color: #DD0000">"Generating&nbsp;signal&nbsp;SIGUSR1&nbsp;to&nbsp;self...\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;send&nbsp;SIGUSR1&nbsp;to&nbsp;current&nbsp;process&nbsp;id<br />//&nbsp;posix_*&nbsp;functions&nbsp;require&nbsp;the&nbsp;posix&nbsp;extension<br /></span><span style="color: #0000BB">posix_kill</span><span style="color: #007700">(</span><span style="color: #0000BB">posix_getpid</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">SIGUSR1</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Done\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.pcntl-signal-notes">
+  <h3 class="title">Notes</h3>
+  <p class="para">
+   <span class="function">pcntl_signal</span> doesn&#039;t stack the signal handlers, but replaces them.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.pcntl-signal-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">pcntl_fork</span></li>
+    <li class="member"><span class="function">pcntl_waitpid</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

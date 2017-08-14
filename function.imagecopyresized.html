@@ -1,0 +1,420 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Copy and resize part of an image</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.utilspec.image.html">Image Processing and Generation</a></li>
+  <li class="header up"><a href="book.image.html">GD</a></li>
+  <li class="header up"><a href="ref.image.html">GD and Image Functions</a></li>
+  <li><a href="function.gd-info.html">gd_info</a></li>
+  <li><a href="function.getimagesize.html">getimagesize</a></li>
+  <li><a href="function.getimagesizefromstring.html">getimagesizefromstring</a></li>
+  <li><a href="function.image-type-to-extension.html">image_type_to_extension</a></li>
+  <li><a href="function.image-type-to-mime-type.html">image_type_to_mime_type</a></li>
+  <li><a href="function.image2wbmp.html">image2wbmp</a></li>
+  <li><a href="function.imageaffine.html">imageaffine</a></li>
+  <li><a href="function.imageaffinematrixconcat.html">imageaffinematrixconcat</a></li>
+  <li><a href="function.imageaffinematrixget.html">imageaffinematrixget</a></li>
+  <li><a href="function.imagealphablending.html">imagealphablending</a></li>
+  <li><a href="function.imageantialias.html">imageantialias</a></li>
+  <li><a href="function.imagearc.html">imagearc</a></li>
+  <li><a href="function.imagebmp.html">imagebmp</a></li>
+  <li><a href="function.imagechar.html">imagechar</a></li>
+  <li><a href="function.imagecharup.html">imagecharup</a></li>
+  <li><a href="function.imagecolorallocate.html">imagecolorallocate</a></li>
+  <li><a href="function.imagecolorallocatealpha.html">imagecolorallocatealpha</a></li>
+  <li><a href="function.imagecolorat.html">imagecolorat</a></li>
+  <li><a href="function.imagecolorclosest.html">imagecolorclosest</a></li>
+  <li><a href="function.imagecolorclosestalpha.html">imagecolorclosestalpha</a></li>
+  <li><a href="function.imagecolorclosesthwb.html">imagecolorclosesthwb</a></li>
+  <li><a href="function.imagecolordeallocate.html">imagecolordeallocate</a></li>
+  <li><a href="function.imagecolorexact.html">imagecolorexact</a></li>
+  <li><a href="function.imagecolorexactalpha.html">imagecolorexactalpha</a></li>
+  <li><a href="function.imagecolormatch.html">imagecolormatch</a></li>
+  <li><a href="function.imagecolorresolve.html">imagecolorresolve</a></li>
+  <li><a href="function.imagecolorresolvealpha.html">imagecolorresolvealpha</a></li>
+  <li><a href="function.imagecolorset.html">imagecolorset</a></li>
+  <li><a href="function.imagecolorsforindex.html">imagecolorsforindex</a></li>
+  <li><a href="function.imagecolorstotal.html">imagecolorstotal</a></li>
+  <li><a href="function.imagecolortransparent.html">imagecolortransparent</a></li>
+  <li><a href="function.imageconvolution.html">imageconvolution</a></li>
+  <li><a href="function.imagecopy.html">imagecopy</a></li>
+  <li><a href="function.imagecopymerge.html">imagecopymerge</a></li>
+  <li><a href="function.imagecopymergegray.html">imagecopymergegray</a></li>
+  <li><a href="function.imagecopyresampled.html">imagecopyresampled</a></li>
+  <li class="active"><a href="function.imagecopyresized.html">imagecopyresized</a></li>
+  <li><a href="function.imagecreate.html">imagecreate</a></li>
+  <li><a href="function.imagecreatefrombmp.html">imagecreatefrombmp</a></li>
+  <li><a href="function.imagecreatefromgd2.html">imagecreatefromgd2</a></li>
+  <li><a href="function.imagecreatefromgd2part.html">imagecreatefromgd2part</a></li>
+  <li><a href="function.imagecreatefromgd.html">imagecreatefromgd</a></li>
+  <li><a href="function.imagecreatefromgif.html">imagecreatefromgif</a></li>
+  <li><a href="function.imagecreatefromjpeg.html">imagecreatefromjpeg</a></li>
+  <li><a href="function.imagecreatefrompng.html">imagecreatefrompng</a></li>
+  <li><a href="function.imagecreatefromstring.html">imagecreatefromstring</a></li>
+  <li><a href="function.imagecreatefromwbmp.html">imagecreatefromwbmp</a></li>
+  <li><a href="function.imagecreatefromwebp.html">imagecreatefromwebp</a></li>
+  <li><a href="function.imagecreatefromxbm.html">imagecreatefromxbm</a></li>
+  <li><a href="function.imagecreatefromxpm.html">imagecreatefromxpm</a></li>
+  <li><a href="function.imagecreatetruecolor.html">imagecreatetruecolor</a></li>
+  <li><a href="function.imagecrop.html">imagecrop</a></li>
+  <li><a href="function.imagecropauto.html">imagecropauto</a></li>
+  <li><a href="function.imagedashedline.html">imagedashedline</a></li>
+  <li><a href="function.imagedestroy.html">imagedestroy</a></li>
+  <li><a href="function.imageellipse.html">imageellipse</a></li>
+  <li><a href="function.imagefill.html">imagefill</a></li>
+  <li><a href="function.imagefilledarc.html">imagefilledarc</a></li>
+  <li><a href="function.imagefilledellipse.html">imagefilledellipse</a></li>
+  <li><a href="function.imagefilledpolygon.html">imagefilledpolygon</a></li>
+  <li><a href="function.imagefilledrectangle.html">imagefilledrectangle</a></li>
+  <li><a href="function.imagefilltoborder.html">imagefilltoborder</a></li>
+  <li><a href="function.imagefilter.html">imagefilter</a></li>
+  <li><a href="function.imageflip.html">imageflip</a></li>
+  <li><a href="function.imagefontheight.html">imagefontheight</a></li>
+  <li><a href="function.imagefontwidth.html">imagefontwidth</a></li>
+  <li><a href="function.imageftbbox.html">imageftbbox</a></li>
+  <li><a href="function.imagefttext.html">imagefttext</a></li>
+  <li><a href="function.imagegammacorrect.html">imagegammacorrect</a></li>
+  <li><a href="function.imagegd2.html">imagegd2</a></li>
+  <li><a href="function.imagegd.html">imagegd</a></li>
+  <li><a href="function.imagegetclip.html">imagegetclip</a></li>
+  <li><a href="function.imagegif.html">imagegif</a></li>
+  <li><a href="function.imagegrabscreen.html">imagegrabscreen</a></li>
+  <li><a href="function.imagegrabwindow.html">imagegrabwindow</a></li>
+  <li><a href="function.imageinterlace.html">imageinterlace</a></li>
+  <li><a href="function.imageistruecolor.html">imageistruecolor</a></li>
+  <li><a href="function.imagejpeg.html">imagejpeg</a></li>
+  <li><a href="function.imagelayereffect.html">imagelayereffect</a></li>
+  <li><a href="function.imageline.html">imageline</a></li>
+  <li><a href="function.imageloadfont.html">imageloadfont</a></li>
+  <li><a href="function.imageopenpolygon.html">imageopenpolygon</a></li>
+  <li><a href="function.imagepalettecopy.html">imagepalettecopy</a></li>
+  <li><a href="function.imagepalettetotruecolor.html">imagepalettetotruecolor</a></li>
+  <li><a href="function.imagepng.html">imagepng</a></li>
+  <li><a href="function.imagepolygon.html">imagepolygon</a></li>
+  <li><a href="function.imagepsbbox.html">imagepsbbox</a></li>
+  <li><a href="function.imagepsencodefont.html">imagepsencodefont</a></li>
+  <li><a href="function.imagepsextendfont.html">imagepsextendfont</a></li>
+  <li><a href="function.imagepsfreefont.html">imagepsfreefont</a></li>
+  <li><a href="function.imagepsloadfont.html">imagepsloadfont</a></li>
+  <li><a href="function.imagepsslantfont.html">imagepsslantfont</a></li>
+  <li><a href="function.imagepstext.html">imagepstext</a></li>
+  <li><a href="function.imagerectangle.html">imagerectangle</a></li>
+  <li><a href="function.imageresolution.html">imageresolution</a></li>
+  <li><a href="function.imagerotate.html">imagerotate</a></li>
+  <li><a href="function.imagesavealpha.html">imagesavealpha</a></li>
+  <li><a href="function.imagescale.html">imagescale</a></li>
+  <li><a href="function.imagesetbrush.html">imagesetbrush</a></li>
+  <li><a href="function.imagesetclip.html">imagesetclip</a></li>
+  <li><a href="function.imagesetinterpolation.html">imagesetinterpolation</a></li>
+  <li><a href="function.imagesetpixel.html">imagesetpixel</a></li>
+  <li><a href="function.imagesetstyle.html">imagesetstyle</a></li>
+  <li><a href="function.imagesetthickness.html">imagesetthickness</a></li>
+  <li><a href="function.imagesettile.html">imagesettile</a></li>
+  <li><a href="function.imagestring.html">imagestring</a></li>
+  <li><a href="function.imagestringup.html">imagestringup</a></li>
+  <li><a href="function.imagesx.html">imagesx</a></li>
+  <li><a href="function.imagesy.html">imagesy</a></li>
+  <li><a href="function.imagetruecolortopalette.html">imagetruecolortopalette</a></li>
+  <li><a href="function.imagettfbbox.html">imagettfbbox</a></li>
+  <li><a href="function.imagettftext.html">imagettftext</a></li>
+  <li><a href="function.imagetypes.html">imagetypes</a></li>
+  <li><a href="function.imagewbmp.html">imagewbmp</a></li>
+  <li><a href="function.imagewebp.html">imagewebp</a></li>
+  <li><a href="function.imagexbm.html">imagexbm</a></li>
+  <li><a href="function.iptcembed.html">iptcembed</a></li>
+  <li><a href="function.iptcparse.html">iptcparse</a></li>
+  <li><a href="function.jpeg2wbmp.html">jpeg2wbmp</a></li>
+  <li><a href="function.png2wbmp.html">png2wbmp</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.imagecopyresampled.html">imagecopyresampled</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.imagecreate.html">imagecreate</a></div>
+                <div class="up"><a href="ref.image.html">GD and Image Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.imagecopyresized" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">imagecopyresized</h1>
+  <p class="refpurpose">Copy and resize part of an image</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.imagecopyresized-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">imagecopyresized</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$dst_image</code></span>
+   , <span class="methodparam"><span class="type">resource</span> <code class="parameter">$src_image</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$dst_x</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$dst_y</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$src_x</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$src_y</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$dst_w</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$dst_h</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$src_w</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$src_h</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function">imagecopyresized</span> copies a rectangular
+   portion of one image to another image.
+   <code class="parameter">dst_image</code> is the destination image,
+   <code class="parameter">src_image</code> is the source image identifier.
+  </p>
+  <p class="para">
+   In other words, <span class="function">imagecopyresized</span> will take a 
+   rectangular area from <code class="parameter">src_image</code> of width 
+   <code class="parameter">src_w</code> and height <code class="parameter">src_h</code> at 
+   position (<code class="parameter">src_x</code>,<code class="parameter">src_y</code>) 
+   and place it in a rectangular area of <code class="parameter">dst_image</code> 
+   of width <code class="parameter">dst_w</code> and height <code class="parameter">dst_h</code>
+   at position (<code class="parameter">dst_x</code>,<code class="parameter">dst_y</code>).
+  </p>
+  <p class="para">
+   If the source and destination coordinates and width and heights
+   differ, appropriate stretching or shrinking of the image fragment
+   will be performed. The coordinates refer to the upper left
+   corner. This function can be used to copy regions within the
+   same image (if <code class="parameter">dst_image</code> is the same as
+   <code class="parameter">src_image</code>) but if the regions overlap the
+   results will be unpredictable.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.imagecopyresized-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">dst_image</code></dt>
+
+     <dd>
+
+      <p class="para">Destination image link resource.</p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">src_image</code></dt>
+
+     <dd>
+
+      <p class="para">Source image link resource.</p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">dst_x</code></dt>
+
+     <dd>
+
+      <p class="para">
+       x-coordinate of destination point.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">dst_y</code></dt>
+
+     <dd>
+
+      <p class="para">
+       y-coordinate of destination point.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">src_x</code></dt>
+
+     <dd>
+
+      <p class="para">
+       x-coordinate of source point.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">src_y</code></dt>
+
+     <dd>
+
+      <p class="para">
+       y-coordinate of source point.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">dst_w</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Destination width.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">dst_h</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Destination height.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">src_w</code></dt>
+
+     <dd>
+
+      <p class="para">Source width.</p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">src_h</code></dt>
+
+     <dd>
+
+      <p class="para">Source height.</p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.imagecopyresized-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> on success or <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.imagecopyresized-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-3528">
+    <p><strong>Example #1 Resizing an image</strong></p>
+    <div class="example-contents"><p>
+     This example will display the image at half size.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;File&nbsp;and&nbsp;new&nbsp;size<br /></span><span style="color: #0000BB">$filename&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'test.jpg'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$percent&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0.5</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Content&nbsp;type<br /></span><span style="color: #0000BB">header</span><span style="color: #007700">(</span><span style="color: #DD0000">'Content-Type:&nbsp;image/jpeg'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Get&nbsp;new&nbsp;sizes<br /></span><span style="color: #007700">list(</span><span style="color: #0000BB">$width</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$height</span><span style="color: #007700">)&nbsp;=&nbsp;</span><span style="color: #0000BB">getimagesize</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$newwidth&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$width&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">$percent</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$newheight&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$height&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">$percent</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Load<br /></span><span style="color: #0000BB">$thumb&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatetruecolor</span><span style="color: #007700">(</span><span style="color: #0000BB">$newwidth</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$newheight</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$source&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatefromjpeg</span><span style="color: #007700">(</span><span style="color: #0000BB">$filename</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Resize<br /></span><span style="color: #0000BB">imagecopyresized</span><span style="color: #007700">(</span><span style="color: #0000BB">$thumb</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$source</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$newwidth</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$newheight</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$width</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$height</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Output<br /></span><span style="color: #0000BB">imagejpeg</span><span style="color: #007700">(</span><span style="color: #0000BB">$thumb</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="mediaobject">
+     
+     <div class="imageobject">
+      <img src="images/21009b70229598c6a80eef8b45bf282b-imagecopyresized.jpg" alt="Output of example : Resizing an image" width="47" height="25" />
+     </div>
+    </div>
+    <div class="example-contents"><p>
+     The image will be output at half size, though better
+     quality could be obtained using <span class="function">imagecopyresampled</span>.
+    </p></div>
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 notes" id="refsect1-function.imagecopyresized-notes">
+  <h3 class="title">Notes</h3>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    There is a problem due to palette image limitations (255+1 colors).
+    Resampling or filtering an image commonly needs more colors than 255, a
+    kind of approximation is used to calculate the new resampled pixel and its
+    color.  With a palette image we try to allocate a new color, if that
+    failed, we choose the closest (in theory) computed color.  This is
+    not always the closest visual color. That may produce a weird result, like
+    blank (or visually blank) images.  To skip this problem, please use a
+    truecolor image as a destination image, such as one created by
+    <span class="function">imagecreatetruecolor</span>.
+   </p>
+  </p></blockquote>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.imagecopyresized-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <span class="function">imagecopyresampled</span>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

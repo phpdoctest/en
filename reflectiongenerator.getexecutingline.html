@@ -1,0 +1,144 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Gets the currently executing line of the generator</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.vartype.html">Variable and Type Related Extensions</a></li>
+  <li class="header up"><a href="book.reflection.html">Reflection</a></li>
+  <li class="header up"><a href="class.reflectiongenerator.html">ReflectionGenerator</a></li>
+  <li><a href="reflectiongenerator.construct.html">ReflectionGenerator::__construct</a></li>
+  <li><a href="reflectiongenerator.getexecutingfile.html">ReflectionGenerator::getExecutingFile</a></li>
+  <li><a href="reflectiongenerator.getexecutinggenerator.html">ReflectionGenerator::getExecutingGenerator</a></li>
+  <li class="active"><a href="reflectiongenerator.getexecutingline.html">ReflectionGenerator::getExecutingLine</a></li>
+  <li><a href="reflectiongenerator.getfunction.html">ReflectionGenerator::getFunction</a></li>
+  <li><a href="reflectiongenerator.getthis.html">ReflectionGenerator::getThis</a></li>
+  <li><a href="reflectiongenerator.gettrace.html">ReflectionGenerator::getTrace</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="reflectiongenerator.getexecutinggenerator.html">ReflectionGenerator::getExecutingGenerator</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="reflectiongenerator.getfunction.html">ReflectionGenerator::getFunction</a></div>
+                <div class="up"><a href="class.reflectiongenerator.html">ReflectionGenerator</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="reflectiongenerator.getexecutingline" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ReflectionGenerator::getExecutingLine</h1>
+  <p class="refpurpose">Gets the currently executing line of the generator</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-reflectiongenerator.getexecutingline-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">ReflectionGenerator::getExecutingLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Get the currently executing line number of the generator.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-reflectiongenerator.getexecutingline-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">This function has no parameters.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-reflectiongenerator.getexecutingline-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the line number of the currently executing statement in the generator.
+  </p>
+ </div>
+
+
+  <div class="refsect1 examples" id="refsect1-reflectiongenerator.getexecutingline-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-6116">
+    <p><strong>Example #1  <span class="methodname">ReflectionGenerator::getExecutingLine</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">GenExample<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">gen</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;yield&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$gen&nbsp;</span><span style="color: #007700">=&nbsp;(new&nbsp;</span><span style="color: #0000BB">GenExample</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">gen</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$reflectionGen&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">ReflectionGenerator</span><span style="color: #007700">(</span><span style="color: #0000BB">$gen</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Line:&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$reflectionGen</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getExecutingLine</span><span style="color: #007700">()}</span><span style="color: #DD0000">"</span><span style="color: #007700">;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Line: 7
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-reflectiongenerator.getexecutingline-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"> <span class="methodname">ReflectionGenerator::getExecutingGenerator</span></li>
+    <li class="member"> <span class="methodname">ReflectionGenerator::getExecutingFile</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

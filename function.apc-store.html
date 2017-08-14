@@ -1,0 +1,234 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Cache a variable in the data store</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.php.html">Affecting PHP's Behaviour</a></li>
+  <li class="header up"><a href="book.apc.html">APC</a></li>
+  <li class="header up"><a href="ref.apc.html">APC Functions</a></li>
+  <li><a href="function.apc-add.html">apc_add</a></li>
+  <li><a href="function.apc-bin-dump.html">apc_bin_dump</a></li>
+  <li><a href="function.apc-bin-dumpfile.html">apc_bin_dumpfile</a></li>
+  <li><a href="function.apc-bin-load.html">apc_bin_load</a></li>
+  <li><a href="function.apc-bin-loadfile.html">apc_bin_loadfile</a></li>
+  <li><a href="function.apc-cache-info.html">apc_cache_info</a></li>
+  <li><a href="function.apc-cas.html">apc_cas</a></li>
+  <li><a href="function.apc-clear-cache.html">apc_clear_cache</a></li>
+  <li><a href="function.apc-compile-file.html">apc_compile_file</a></li>
+  <li><a href="function.apc-dec.html">apc_dec</a></li>
+  <li><a href="function.apc-define-constants.html">apc_define_constants</a></li>
+  <li><a href="function.apc-delete-file.html">apc_delete_file</a></li>
+  <li><a href="function.apc-delete.html">apc_delete</a></li>
+  <li><a href="function.apc-exists.html">apc_exists</a></li>
+  <li><a href="function.apc-fetch.html">apc_fetch</a></li>
+  <li><a href="function.apc-inc.html">apc_inc</a></li>
+  <li><a href="function.apc-load-constants.html">apc_load_constants</a></li>
+  <li><a href="function.apc-sma-info.html">apc_sma_info</a></li>
+  <li class="active"><a href="function.apc-store.html">apc_store</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.apc-sma-info.html">apc_sma_info</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="class.apciterator.html">APCIterator</a></div>
+                <div class="up"><a href="ref.apc.html">APC Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.apc-store" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">apc_store</h1>
+  <p class="refpurpose">
+   Cache a variable in the data store
+  </p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.apc-store-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">apc_store</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$key</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$var</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$ttl</code><span class="initializer"> = 0</span></span>
+  ] )</div>
+
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname">apc_store</span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$values</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$unused</code><span class="initializer"> = NULL</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$ttl</code><span class="initializer"> = 0</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Cache a variable in the data store.
+  </p>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <span class="simpara">
+    Unlike many other mechanisms in PHP, variables stored using
+    <span class="function">apc_store</span> will persist between requests (until the
+    value is removed from the cache).
+   </span>
+  </p></blockquote>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.apc-store-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">key</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Store the variable using this name. <code class="parameter">key</code>s are
+       cache-unique, so storing a second value with the same
+       <code class="parameter">key</code> will overwrite the original value.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">var</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The variable to store
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">ttl</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Time To Live; store <code class="parameter">var</code> in the cache for
+       <code class="parameter">ttl</code> seconds. After the
+       <code class="parameter">ttl</code> has passed, the stored variable will be
+       expunged from the cache (on the next request). If no <code class="parameter">ttl</code>
+       is supplied (or if the <code class="parameter">ttl</code> is
+       <em>0</em>), the value will persist until it is removed from
+       the cache manually, or otherwise fails to exist in the cache (clear,
+       restart, etc.).
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">values</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Names in key, variables in value.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.apc-store-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> on success or <strong><code>FALSE</code></strong> on failure.
+   Second syntax returns array with error keys.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.apc-store-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-443">
+    <p><strong>Example #1 A <span class="function">apc_store</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$bar&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'BAR'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">apc_store</span><span style="color: #007700">(</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$bar</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">apc_fetch</span><span style="color: #007700">(</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+string(3) &quot;BAR&quot;
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.apc-store-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">apc_add</span></li>
+    <li class="member"><span class="function">apc_fetch</span></li>
+    <li class="member"><span class="function">apc_delete</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

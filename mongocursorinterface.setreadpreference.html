@@ -1,0 +1,132 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Set the read preference for this query</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.mongo.html">Mongo</a></li>
+  <li class="header up"><a href="mongo.core.html">Core Classes</a></li>
+  <li class="header up"><a href="class.mongocursorinterface.html">MongoCursorInterface</a></li>
+  <li><a href="mongocursorinterface.batchsize.html">MongoCursorInterface::batchSize</a></li>
+  <li><a href="mongocursorinterface.dead.html">MongoCursorInterface::dead</a></li>
+  <li><a href="mongocursorinterface.getreadpreference.html">MongoCursorInterface::getReadPreference</a></li>
+  <li><a href="mongocursorinterface.info.html">MongoCursorInterface::info</a></li>
+  <li class="active"><a href="mongocursorinterface.setreadpreference.html">MongoCursorInterface::setReadPreference</a></li>
+  <li><a href="mongocursorinterface.timeout.html">MongoCursorInterface::timeout</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mongocursorinterface.info.html">MongoCursorInterface::info</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mongocursorinterface.timeout.html">MongoCursorInterface::timeout</a></div>
+                <div class="up"><a href="class.mongocursorinterface.html">MongoCursorInterface</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mongocursorinterface.setreadpreference" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">MongoCursorInterface::setReadPreference</h1>
+  <p class="refpurpose">Set the read preference for this query</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mongocursorinterface.setreadpreference-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">MongoCursorInterface</span> <span class="methodname">MongoCursorInterface::setReadPreference</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$read_preference</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$tags</code></span>
+  ] )</div>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mongocursorinterface.setreadpreference-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+<dt>
+<code class="parameter">read_preference</code></dt>
+<dd>
+<p class="para">The read preference mode: <strong><code>MongoClient::RP_PRIMARY</code></strong>, <strong><code>MongoClient::RP_PRIMARY_PREFERRED</code></strong>, <strong><code>MongoClient::RP_SECONDARY</code></strong>, <strong><code>MongoClient::RP_SECONDARY_PREFERRED</code></strong>, or <strong><code>MongoClient::RP_NEAREST</code></strong>.</p></dd>
+<dt>
+<code class="parameter">tags</code></dt>
+<dd>
+<p class="para">An array of zero or more tag sets, where each tag set is itself an array of criteria used to match tags on replica set members.</p></dd>
+</dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-mongocursorinterface.setreadpreference-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns this cursor.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-mongocursorinterface.setreadpreference-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">Emits <strong><code>E_WARNING</code></strong> if either parameter is invalid, or if one or more tag sets are provided with the <strong><code>MongoClient::RP_PRIMARY</code></strong> read preference mode.</p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-mongocursorinterface.setreadpreference-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li class="member">The <a href="mongo.readpreferences.html" class="link">read preferences</a> documentation.</li>
+   <li class="member"><span class="function">MongoCursorInterface::getReadPreference</span></li>
+  </ul>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

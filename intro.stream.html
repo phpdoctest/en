@@ -1,0 +1,135 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Introduction</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.stream.html">Streams</a></li>
+  <li class="active"><a href="intro.stream.html">Introduction</a></li>
+  <li><a href="stream.setup.html">Installing/Configuring</a></li>
+  <li><a href="stream.constants.html">Predefined Constants</a></li>
+  <li><a href="stream.filters.html">Stream Filters</a></li>
+  <li><a href="stream.contexts.html">Stream Contexts</a></li>
+  <li><a href="stream.errors.html">Stream Errors</a></li>
+  <li><a href="stream.examples.html">Examples</a></li>
+  <li><a href="class.php-user-filter.html">php_user_filter</a></li>
+  <li><a href="class.streamwrapper.html">streamWrapper</a></li>
+  <li><a href="ref.stream.html">Stream Functions</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="book.stream.html">Streams</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="stream.setup.html">Installing/Configuring</a></div>
+                <div class="up"><a href="book.stream.html">Streams</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="intro.stream" class="preface">
+   <h1 class="title">Introduction</h1>
+   <p class="simpara">
+    Streams are
+    the way of generalizing file, network, data compression, and other
+    operations which share a common set of functions and uses.  In
+    its simplest definition, a <em>stream</em> is a 
+    <em>resource</em> object which exhibits streamable 
+    behavior.  That is, it can be read from or written to in a linear 
+    fashion, and may be able to <span class="function">fseek</span> to an
+    arbitrary locations within the stream.
+   </p>
+   <p class="simpara">
+    A <em>wrapper</em> is additional code which tells the stream how to handle
+    specific protocols/encodings.  For example, the <em>http</em>
+    wrapper knows how to translate a URL into an <em>HTTP/1.0</em>
+    request for a file on a remote server.  There are many wrappers
+    built into PHP by default (See <a href="wrappers.html" class="xref">Supported Protocols and Wrappers</a>),
+    and additional, custom wrappers may be added either within a
+    PHP script using <span class="function">stream_wrapper_register</span>,
+    or directly from an extension using the API Reference in <a href="internals2.streams.html" class="xref">Working with streams</a>.
+    Because any variety of wrapper may be added to PHP, 
+    there is no set limit on what can be done with them.  To access the list
+    of currently registered wrappers, use <span class="function">stream_get_wrappers</span>.
+   </p>
+   <p class="para">
+    A stream is referenced as: <code class="parameter">scheme</code>://<code class="parameter">target</code>
+    <ul class="itemizedlist">
+     <li class="listitem">
+      <span class="simpara">
+       <code class="parameter">scheme</code>(string) -
+       The name of the wrapper to be used.  Examples include: file, 
+       http, https, ftp, ftps, compress.zlib, compress.bz2, and php.  See 
+       <a href="wrappers.html" class="xref">Supported Protocols and Wrappers</a> for a list of PHP built-in wrappers.  If
+       no wrapper is specified, the function default is used (typically
+       <em>file</em>://).
+      </span>
+     </li>
+     <li class="listitem">
+      <span class="simpara">
+       <code class="parameter">target</code> - 
+       Depends on the wrapper used.  For filesystem related streams this is
+       typically a path and filename of the desired file.  For network related 
+       streams this is typically a hostname, often with a path appended.  Again, see
+       <a href="wrappers.html" class="xref">Supported Protocols and Wrappers</a> for a description of targets for built-in streams.
+      </span>
+     </li>
+    </ul>
+   </p>
+   <p class="para">
+    <blockquote class="note"><p><strong class="note">Note</strong>: 
+     <p class="para">
+      Information on using streams within the PHP source code can be found in the
+      <a href="internals2.ze1.streams.html" class="link">Streams API for PHP Extension Authors reference</a>.
+     </p>
+    </p></blockquote>
+   </p>
+  </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

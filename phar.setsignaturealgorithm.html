@@ -1,0 +1,237 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: set the signature algorithm for a phar and apply it.</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.compression.html">Compression and Archive Extensions</a></li>
+  <li class="header up"><a href="book.phar.html">Phar</a></li>
+  <li class="header up"><a href="class.phar.html">Phar</a></li>
+  <li><a href="phar.addemptydir.html">Phar::addEmptyDir</a></li>
+  <li><a href="phar.addfile.html">Phar::addFile</a></li>
+  <li><a href="phar.addfromstring.html">Phar::addFromString</a></li>
+  <li><a href="phar.apiversion.html">Phar::apiVersion</a></li>
+  <li><a href="phar.buildfromdirectory.html">Phar::buildFromDirectory</a></li>
+  <li><a href="phar.buildfromiterator.html">Phar::buildFromIterator</a></li>
+  <li><a href="phar.cancompress.html">Phar::canCompress</a></li>
+  <li><a href="phar.canwrite.html">Phar::canWrite</a></li>
+  <li><a href="phar.compress.html">Phar::compress</a></li>
+  <li><a href="phar.compressallfilesbzip2.html">Phar::compressAllFilesBZIP2</a></li>
+  <li><a href="phar.compressallfilesgz.html">Phar::compressAllFilesGZ</a></li>
+  <li><a href="phar.compressfiles.html">Phar::compressFiles</a></li>
+  <li><a href="phar.construct.html">Phar::__construct</a></li>
+  <li><a href="phar.converttodata.html">Phar::convertToData</a></li>
+  <li><a href="phar.converttoexecutable.html">Phar::convertToExecutable</a></li>
+  <li><a href="phar.copy.html">Phar::copy</a></li>
+  <li><a href="phar.count.html">Phar::count</a></li>
+  <li><a href="phar.createdefaultstub.html">Phar::createDefaultStub</a></li>
+  <li><a href="phar.decompress.html">Phar::decompress</a></li>
+  <li><a href="phar.decompressfiles.html">Phar::decompressFiles</a></li>
+  <li><a href="phar.delmetadata.html">Phar::delMetadata</a></li>
+  <li><a href="phar.delete.html">Phar::delete</a></li>
+  <li><a href="phar.extractto.html">Phar::extractTo</a></li>
+  <li><a href="phar.getmetadata.html">Phar::getMetadata</a></li>
+  <li><a href="phar.getmodified.html">Phar::getModified</a></li>
+  <li><a href="phar.getsignature.html">Phar::getSignature</a></li>
+  <li><a href="phar.getstub.html">Phar::getStub</a></li>
+  <li><a href="phar.getsupportedcompression.html">Phar::getSupportedCompression</a></li>
+  <li><a href="phar.getsupportedsignatures.html">Phar::getSupportedSignatures</a></li>
+  <li><a href="phar.getversion.html">Phar::getVersion</a></li>
+  <li><a href="phar.hasmetadata.html">Phar::hasMetadata</a></li>
+  <li><a href="phar.interceptfilefuncs.html">Phar::interceptFileFuncs</a></li>
+  <li><a href="phar.isbuffering.html">Phar::isBuffering</a></li>
+  <li><a href="phar.iscompressed.html">Phar::isCompressed</a></li>
+  <li><a href="phar.isfileformat.html">Phar::isFileFormat</a></li>
+  <li><a href="phar.isvalidpharfilename.html">Phar::isValidPharFilename</a></li>
+  <li><a href="phar.iswritable.html">Phar::isWritable</a></li>
+  <li><a href="phar.loadphar.html">Phar::loadPhar</a></li>
+  <li><a href="phar.mapphar.html">Phar::mapPhar</a></li>
+  <li><a href="phar.mount.html">Phar::mount</a></li>
+  <li><a href="phar.mungserver.html">Phar::mungServer</a></li>
+  <li><a href="phar.offsetexists.html">Phar::offsetExists</a></li>
+  <li><a href="phar.offsetget.html">Phar::offsetGet</a></li>
+  <li><a href="phar.offsetset.html">Phar::offsetSet</a></li>
+  <li><a href="phar.offsetunset.html">Phar::offsetUnset</a></li>
+  <li><a href="phar.running.html">Phar::running</a></li>
+  <li><a href="phar.setalias.html">Phar::setAlias</a></li>
+  <li><a href="phar.setdefaultstub.html">Phar::setDefaultStub</a></li>
+  <li><a href="phar.setmetadata.html">Phar::setMetadata</a></li>
+  <li class="active"><a href="phar.setsignaturealgorithm.html">Phar::setSignatureAlgorithm</a></li>
+  <li><a href="phar.setstub.html">Phar::setStub</a></li>
+  <li><a href="phar.startbuffering.html">Phar::startBuffering</a></li>
+  <li><a href="phar.stopbuffering.html">Phar::stopBuffering</a></li>
+  <li><a href="phar.uncompressallfiles.html">Phar::uncompressAllFiles</a></li>
+  <li><a href="phar.unlinkarchive.html">Phar::unlinkArchive</a></li>
+  <li><a href="phar.webphar.html">Phar::webPhar</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="phar.setmetadata.html">Phar::setMetadata</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="phar.setstub.html">Phar::setStub</a></div>
+                <div class="up"><a href="class.phar.html">Phar</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="phar.setsignaturealgorithm" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Phar::setSignatureAlgorithm</h1>
+  <p class="refpurpose">set the signature algorithm for a phar and apply it.</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-phar.setsignaturealgorithm-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">Phar::setSignatureAlgorithm</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$sigtype</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$privatekey</code></span>
+  ] )</div>
+
+  <blockquote class="note"><p><strong class="note">Note</strong>: <p class="para">This
+method requires the <var class="filename">php.ini</var> setting <em>phar.readonly</em> to be
+set to <em>0</em> in order to work for <span class="classname">Phar</span>
+objects.  Otherwise, a <span class="classname">PharException</span> will be thrown.</p></p></blockquote>
+
+  <p class="para">
+   set the signature algorithm for a phar and apply it.  The
+   signature algorithm must be one of <em>Phar::MD5</em>,
+   <em>Phar::SHA1</em>, <em>Phar::SHA256</em>,
+   <em>Phar::SHA512</em>, or <em>Phar::OPENSSL</em>.
+  </p>
+  <p class="para">
+   Note that all executable phar archives have a signature created
+   automatically, <em>SHA1</em> by default.  data tar- or zip-based archives
+   (archives created with the <span class="classname">PharData</span> class) must have
+   their signature created and set explicitly via
+   <span class="function">Phar::setSignatureAlgorithm</span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-phar.setsignaturealgorithm-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">sigtype</code></dt>
+
+     <dd>
+
+      <p class="para">
+       One of <em>Phar::MD5</em>,
+   <em>Phar::SHA1</em>, <em>Phar::SHA256</em>,
+   <em>Phar::SHA512</em>, or <em>Phar::OPENSSL</em>
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">privatekey</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The contents of an OpenSSL private key, as extracted from a certificate or
+       OpenSSL key file:
+       <div class="example-contents">
+        <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$private&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">openssl_get_privatekey</span><span style="color: #007700">(</span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'private.pem'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">$pkey&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">''</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">openssl_pkey_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$private</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$p</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setSignatureAlgorithm</span><span style="color: #007700">(</span><span style="color: #0000BB">Phar</span><span style="color: #007700">::</span><span style="color: #0000BB">OPENSSL</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$pkey</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+       </div>
+
+       See <a href="phar.using.html" class="link">phar introduction</a> for instructions on
+       naming and placement of the public key file.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-phar.setsignaturealgorithm-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   No value is returned.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 errors" id="refsect1-phar.setsignaturealgorithm-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   Throws <span class="classname">UnexpectedValueException</span> for many errors,
+   and a <span class="classname">PharException</span>
+   if any problems occur flushing changes to disk.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-phar.setsignaturealgorithm-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">Phar::getSupportedSignatures</span></li>
+    <li class="member"><span class="function">Phar::getSignature</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

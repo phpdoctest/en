@@ -1,0 +1,128 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Persistent Connections</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="set.mysqlinfo.html">MySQL</a></li>
+  <li class="header up"><a href="book.mysqlnd.html">Mysqlnd</a></li>
+  <li><a href="intro.mysqlnd.html">Introduction</a></li>
+  <li><a href="mysqlnd.overview.html">Overview</a></li>
+  <li><a href="mysqlnd.install.html">Installation</a></li>
+  <li><a href="mysqlnd.config.html">Runtime Configuration</a></li>
+  <li><a href="mysqlnd.incompatibilities.html">Incompatibilities</a></li>
+  <li class="active"><a href="mysqlnd.persist.html">Persistent Connections</a></li>
+  <li><a href="mysqlnd.stats.html">Statistics</a></li>
+  <li><a href="mysqlnd.notes.html">Notes</a></li>
+  <li><a href="mysqlnd.memory.html">Memory management</a></li>
+  <li><a href="mysqlnd.plugin.html">MySQL Native Driver Plugin API</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mysqlnd.incompatibilities.html">Incompatibilities</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mysqlnd.stats.html">Statistics</a></div>
+                <div class="up"><a href="book.mysqlnd.html">Mysqlnd</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mysqlnd.persist" class="chapter">
+ <h1>Persistent Connections</h1>
+ <p class="para">
+  <em class="emphasis">Using Persistent Connections</em>
+ </p>
+ <p class="para">
+  If <em>mysqli</em> is used with <em>mysqlnd</em>,
+  when a persistent connection is created it generates a
+  <em>COM_CHANGE_USER</em>
+  (<em>mysql_change_user()</em>) call on the server. This
+  ensures that re-authentication of the connection takes place.
+ </p>
+ <p class="para">
+  As there is some overhead associated with the
+  <em>COM_CHANGE_USER</em> call, it is possible to switch this
+  off at compile time. Reusing a persistent connection will then
+  generate a <em>COM_PING</em> (<em>mysql_ping</em>)
+  call to simply test the connection is reusable.
+ </p>
+ <p class="para">
+  Generation of <em>COM_CHANGE_USER</em> can be switched off
+  with the compile flag
+  <em>MYSQLI_NO_CHANGE_USER_ON_PCONNECT</em>. For example:
+ </p>
+<div class="example-contents">
+<div class="cdata"><pre>
+shell# CFLAGS=&quot;-DMYSQLI_NO_CHANGE_USER_ON_PCONNECT&quot; ./configure --with-mysql=/usr/local/mysql/ --with-mysqli=/usr/local/mysql/bin/mysql_config --with-pdo-mysql=/usr/local/mysql/bin/mysql_config --enable-debug &amp;&amp; make clean &amp;&amp; make -j6
+</pre></div>
+</div>
+
+ <p class="para">
+  Or alternatively:
+ </p>
+<div class="example-contents">
+<div class="cdata"><pre>
+shell# export CFLAGS=&quot;-DMYSQLI_NO_CHANGE_USER_ON_PCONNECT&quot;
+shell# configure --whatever-option
+shell# make clean
+shell# make
+</pre></div>
+</div>
+
+ <p class="para">
+  Note that only <em>mysqli</em> on <em>mysqlnd</em>
+  uses <em>COM_CHANGE_USER</em>. Other extension-driver
+  combinations use <em>COM_PING</em> on initial use of a
+  persistent connection.
+ </p>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

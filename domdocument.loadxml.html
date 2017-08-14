@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Load XML from a string</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.xml.html">XML Manipulation</a></li>
+  <li class="header up"><a href="book.dom.html">DOM</a></li>
+  <li class="header up"><a href="class.domdocument.html">DOMDocument</a></li>
+  <li><a href="domdocument.construct.html">DOMDocument::__construct</a></li>
+  <li><a href="domdocument.createattribute.html">DOMDocument::createAttribute</a></li>
+  <li><a href="domdocument.createattributens.html">DOMDocument::createAttributeNS</a></li>
+  <li><a href="domdocument.createcdatasection.html">DOMDocument::createCDATASection</a></li>
+  <li><a href="domdocument.createcomment.html">DOMDocument::createComment</a></li>
+  <li><a href="domdocument.createdocumentfragment.html">DOMDocument::createDocumentFragment</a></li>
+  <li><a href="domdocument.createelement.html">DOMDocument::createElement</a></li>
+  <li><a href="domdocument.createelementns.html">DOMDocument::createElementNS</a></li>
+  <li><a href="domdocument.createentityreference.html">DOMDocument::createEntityReference</a></li>
+  <li><a href="domdocument.createprocessinginstruction.html">DOMDocument::createProcessingInstruction</a></li>
+  <li><a href="domdocument.createtextnode.html">DOMDocument::createTextNode</a></li>
+  <li><a href="domdocument.getelementbyid.html">DOMDocument::getElementById</a></li>
+  <li><a href="domdocument.getelementsbytagname.html">DOMDocument::getElementsByTagName</a></li>
+  <li><a href="domdocument.getelementsbytagnamens.html">DOMDocument::getElementsByTagNameNS</a></li>
+  <li><a href="domdocument.importnode.html">DOMDocument::importNode</a></li>
+  <li><a href="domdocument.load.html">DOMDocument::load</a></li>
+  <li><a href="domdocument.loadhtml.html">DOMDocument::loadHTML</a></li>
+  <li><a href="domdocument.loadhtmlfile.html">DOMDocument::loadHTMLFile</a></li>
+  <li class="active"><a href="domdocument.loadxml.html">DOMDocument::loadXML</a></li>
+  <li><a href="domdocument.normalizedocument.html">DOMDocument::normalizeDocument</a></li>
+  <li><a href="domdocument.registernodeclass.html">DOMDocument::registerNodeClass</a></li>
+  <li><a href="domdocument.relaxngvalidate.html">DOMDocument::relaxNGValidate</a></li>
+  <li><a href="domdocument.relaxngvalidatesource.html">DOMDocument::relaxNGValidateSource</a></li>
+  <li><a href="domdocument.save.html">DOMDocument::save</a></li>
+  <li><a href="domdocument.savehtml.html">DOMDocument::saveHTML</a></li>
+  <li><a href="domdocument.savehtmlfile.html">DOMDocument::saveHTMLFile</a></li>
+  <li><a href="domdocument.savexml.html">DOMDocument::saveXML</a></li>
+  <li><a href="domdocument.schemavalidate.html">DOMDocument::schemaValidate</a></li>
+  <li><a href="domdocument.schemavalidatesource.html">DOMDocument::schemaValidateSource</a></li>
+  <li><a href="domdocument.validate.html">DOMDocument::validate</a></li>
+  <li><a href="domdocument.xinclude.html">DOMDocument::xinclude</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="domdocument.loadhtmlfile.html">DOMDocument::loadHTMLFile</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="domdocument.normalizedocument.html">DOMDocument::normalizeDocument</a></div>
+                <div class="up"><a href="class.domdocument.html">DOMDocument</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="domdocument.loadxml" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DOMDocument::loadXML</h1>
+  <p class="refpurpose">
+   Load XML from a string
+  </p>
+ </div>
+ <div class="refsect1 description" id="refsect1-domdocument.loadxml-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">DOMDocument::loadXML</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$source</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code><span class="initializer"> = 0</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Loads an XML document from a string. 
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-domdocument.loadxml-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">source</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The string containing the XML.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">options</code></dt>
+
+     <dd>
+
+      <p class="para">
+       <a href="language.operators.bitwise.html" class="link">Bitwise <em>OR</em></a>
+       of the <a href="libxml.constants.html" class="link">libxml option constants</a>.
+      </p>
+     </dd>
+
+    
+
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-domdocument.loadxml-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> on success or <strong><code>FALSE</code></strong> on failure. If called statically, returns a
+   <span class="classname">DOMDocument</span> or <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+ <div class="refsect1 errors" id="refsect1-domdocument.loadxml-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   If an empty string is passed as the <code class="parameter">source</code>,
+   a warning will be generated. This warning is not generated by libxml
+   and cannot be handled using libxml&#039;s error handling functions.
+  </p>
+  <p class="para">This method <em class="emphasis">may</em> be called statically, but will issue an <strong><code>E_STRICT</code></strong> error.</p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-domdocument.loadxml-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-6263">
+    <p><strong>Example #1 Creating a Document</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$doc&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DOMDocument</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">loadXML</span><span style="color: #007700">(</span><span style="color: #DD0000">'&lt;root&gt;&lt;node/&gt;&lt;/root&gt;'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">saveXML</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="domcdatasection.construct.examples.basic">
+    <p><strong>Example #2 Static invocation of <em>loadXML</em></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Issues&nbsp;an&nbsp;E_STRICT&nbsp;error<br /></span><span style="color: #0000BB">$doc&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">DOMDocument</span><span style="color: #007700">::</span><span style="color: #0000BB">loadXML</span><span style="color: #007700">(</span><span style="color: #DD0000">'&lt;root&gt;&lt;node/&gt;&lt;/root&gt;'</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">saveXML</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-domdocument.loadxml-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"> <span class="methodname">DOMDocument::load</span></li>
+    <li class="member"> <span class="methodname">DOMDocument::save</span></li>
+    <li class="member"> <span class="methodname">DOMDocument::saveXML</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

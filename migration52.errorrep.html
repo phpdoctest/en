@@ -1,0 +1,113 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Error Reporting</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="appendices.html">Appendices</a></li>
+  <li class="header up"><a href="migration52.html">Migrating from PHP 5.1.x to PHP 5.2.x</a></li>
+  <li><a href="migration52.changes.html">What has changed in PHP 5.2.x</a></li>
+  <li><a href="migration52.incompatible.html">Backward Incompatible Changes</a></li>
+  <li><a href="migration52.error-messages.html">New Error Messages</a></li>
+  <li><a href="migration52.datetime.html">Changes in PHP datetime
+   support</a></li>
+  <li><a href="migration52.parameters.html">New Parameters</a></li>
+  <li><a href="migration52.functions.html">New Functions</a></li>
+  <li><a href="migration52.methods.html">New Methods</a></li>
+  <li><a href="migration52.removed-extensions.html">Removed Extensions</a></li>
+  <li><a href="migration52.new-extensions.html">New Extensions</a></li>
+  <li><a href="migration52.classes.html">New Classes</a></li>
+  <li><a href="migration52.global-constants.html">New Global Constants</a></li>
+  <li><a href="migration52.class-constants.html">New Class Constants</a></li>
+  <li><a href="migration52.newconf.html">New INI Configuration Directives</a></li>
+  <li class="active"><a href="migration52.errorrep.html">Error Reporting</a></li>
+  <li><a href="migration52.other.html">Other Enhancements</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="migration52.newconf.html">New INI Configuration Directives</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="migration52.other.html">Other Enhancements</a></div>
+                <div class="up"><a href="migration52.html">Migrating from PHP 5.1.x to PHP 5.2.x</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="migration52.errorrep" class="section">
+  <h2 class="title">Error Reporting</h2>
+  <p class="para">
+   Some of the existing <strong><code>E_ERROR</code></strong> conditions have been
+   converted to something that can be caught with a user-defined error
+   handler.  If an <a href="errorfunc.constants.html" class="link"><strong><code>E_RECOVERABLE_ERROR</code></strong></a>
+   is not handled, it will behave in the same way as
+   <strong><code>E_ERROR</code></strong> behaves in all versions of PHP.  Errors of
+   this type are logged as <em>Catchable fatal error</em>.
+  </p>
+  <p class="para">
+   This change means that the value of the <strong><code>E_ALL</code></strong>
+   <a href="errorfunc.configuration.html#ini.error-reporting" class="link">error_reporting</a> constant is 
+   now 6143, where the previous value was 2047. Because PHP constants have 
+   no meaning outside of PHP, in some cases the integer value is used 
+   instead so these will need to be adjusted. So for example by
+   setting the error_reporting mode from either the
+   <a href="apache.configuration.html" class="link">httpd.conf</a> or the
+   <var class="filename">.htaccess</var> files, the value has to be changed
+   accordingly.  The same applies when the numeric values are used
+   rather than the constants in PHP scripts.
+  </p>
+  <p class="para">
+   As a side-effect of a change made to prevent duplicate error messages when
+   <a href="errorfunc.configuration.html#ini.track-errors" class="link">track_errors</a> is
+   <em>On</em>, it is now necessary to return <strong><code>FALSE</code></strong> from
+   user defined error handlers in order to populate
+   <var class="varname">$php_errormsg</var>.  This
+   provides a fine-grain control over the levels of messages stored.
+  </p>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

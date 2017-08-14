@@ -1,0 +1,857 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Yet Another RPC Framework</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.webservice.html">Web Services</a></li>
+  <li><a href="book.oauth.html">OAuth</a></li>
+  <li><a href="book.sca.html">SCA</a></li>
+  <li><a href="book.soap.html">SOAP</a></li>
+  <li class="active"><a href="book.yar.html">Yar</a></li>
+  <li><a href="book.xmlrpc.html">XML-RPC</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="soapvar.soapvar.html">SoapVar::SoapVar</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="intro.yar.html">Introduction</a></div>
+                <div class="up"><a href="refs.webservice.html">Web Services</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="book.yar" class="book">
+ <h1>Yet Another RPC Framework</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="intro.yar.html">Introduction</a></li>
+<li><a href="yar.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_title">
+<li><a href="yar.requirements.html">Requirements</a></li>
+<li><a href="yar.installation.html">Installation</a></li>
+<li><a href="yar.configuration.html">Runtime Configuration</a></li>
+<li><a href="yar.resources.html">Resource Types</a></li>
+</ul>
+</li>
+<li><a href="yar.constants.html">Predefined Constants</a></li>
+<li><a href="yar.examples.html">Examples</a></li>
+<li><a href="class.yar-server.html">Yar_Server</a> — The Yar_Server class<ul class="chunklist chunklist_title">
+<li><a href="yar-server.construct.html">Yar_Server::__construct</a> — Register a server</li>
+<li><a href="yar-server.handle.html">Yar_Server::handle</a> — Start RPC Server</li>
+</ul>
+</li>
+<li><a href="class.yar-client.html">Yar_Client</a> — The Yar_Client class<ul class="chunklist chunklist_title">
+<li><a href="yar-client.call.html">Yar_Client::__call</a> — Call service</li>
+<li><a href="yar-client.construct.html">Yar_Client::__construct</a> — Create a client</li>
+<li><a href="yar-client.setopt.html">Yar_Client::setOpt</a> — Set calling contexts</li>
+</ul>
+</li>
+<li><a href="class.yar-concurrent-client.html">Yar_Concurrent_Client</a> — The Yar_Concurrent_Client class<ul class="chunklist chunklist_title">
+<li><a href="yar-concurrent-client.call.html">Yar_Concurrent_Client::call</a> — Register a concurrent call</li>
+<li><a href="yar-concurrent-client.loop.html">Yar_Concurrent_Client::loop</a> — Send all calls</li>
+<li><a href="yar-concurrent-client.reset.html">Yar_Concurrent_Client::reset</a> — Clean all registered calls</li>
+</ul>
+</li>
+<li><a href="class.yar-server-exception.html">Yar_Server_Exception</a> — The Yar_Server_Exception class<ul class="chunklist chunklist_title">
+<li><a href="yar-server-exception.gettype.html">Yar_Server_Exception::getType</a> — The getType purpose</li>
+</ul>
+</li>
+<li><a href="class.yar-client-exception.html">Yar_Client_Exception</a> — The Yar_Client_Exception class<ul class="chunklist chunklist_title">
+<li><a href="yar-client-exception.gettype.html">Yar_Client_Exception::getType</a> — The getType purpose</li>
+</ul>
+</li>
+</ul>
+
+ 
+
+ 
+
+ 
+ 
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+ 
+ 
+
+
+
+
+
+ 
+ 
+
+
+
+ <h1 class="title">The Yar_Server class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="yar-server.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+
+   </p>
+  </div>
+
+
+  <div class="section" id="yar-server.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">Yar_Server</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">Yar_Server</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <var class="varname">$_executor</var>
+    ;</div>
+
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">Object</span> <code class="parameter">$obj</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">boolean</span>  <span class="methodname">handle</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+  
+
+  <div class="section" id="yar-server.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="yar-server.props.executor"><var class="varname">_executor</var></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+ <h1 class="title">The Yar_Client class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="yar-client.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+
+   </p>
+  </div>
+
+
+  <div class="section" id="yar-client.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">Yar_Client</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">Yar_Client</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <var class="varname">$_protocol</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <var class="varname">$_uri</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <var class="varname">$_options</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <var class="varname">$_running</var>
+    ;</div>
+
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">__call</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$method</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$parameters</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$url</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">boolean</span> <span class="methodname">setOpt</span>
+    ( <span class="methodparam"><span class="type">number</span> <code class="parameter">$name</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value</code></span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+  
+
+  <div class="section" id="yar-client.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="yar-client.props.protocol"><var class="varname">_protocol</var></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+    
+     <dt id="yar-client.props.uri"><var class="varname">_uri</var></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+    
+     <dt id="yar-client.props.options"><var class="varname">_options</var></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+    
+     <dt id="yar-client.props.running"><var class="varname">_running</var></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+ <h1 class="title">The Yar_Concurrent_Client class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="yar-concurrent-client.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+
+   </p>
+  </div>
+
+
+  <div class="section" id="yar-concurrent-client.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">Yar_Concurrent_Client</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">Yar_Concurrent_Client</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">static</span>
+     <var class="varname">$_callstack</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">static</span>
+     <var class="varname">$_callback</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">static</span>
+     <var class="varname">$_error_callback</var>
+    ;</div>
+
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">int</span> <span class="methodname">call</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$uri</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$method</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$parameters</code></span>
+   [, <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">boolean</span> <span class="methodname">loop</span>
+    ([ <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+   [, <span class="methodparam"><span class="type">callable</span> <code class="parameter">$error_callback</code></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">boolean</span> <span class="methodname">reset</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+  
+
+  <div class="section" id="yar-concurrent-client.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="yar-concurrent-client.props.callstack"><var class="varname">_callstack</var></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+    
+     <dt id="yar-concurrent-client.props.callback"><var class="varname">_callback</var></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+    
+     <dt id="yar-concurrent-client.props.error-callback"><var class="varname">_error_callback</var></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+ <h1 class="title">The Yar_Server_Exception class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="yar-server-exception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+     If service threw exceptions, A Yar_Server_Exception will be threw in
+     client side.
+   </p>
+  </div>
+
+
+  <div class="section" id="yar-server-exception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">Yar_Server_Exception</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">Yar_Server_Exception</strong>
+     </span>
+     
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> Exception</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">protected</span>
+     <var class="varname">$_type</var>
+    ;</div>
+
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getType</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">Throwable</span> <span class="methodname">Exception::getPrevious</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">Exception::getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getFile</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">Exception::getLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">Exception::getTrace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getTraceAsString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span>  <span class="methodname">Exception::__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">Exception::__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+   }</div>
+
+
+  </div>
+
+  
+
+  <div class="section" id="yar-server-exception.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="yar-server-exception.props.message"><var class="varname">message</var></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+    
+     <dt id="yar-server-exception.props.code"><var class="varname">code</var></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+    
+     <dt id="yar-server-exception.props.file"><var class="varname">file</var></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+    
+     <dt id="yar-server-exception.props.line"><var class="varname">line</var></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+    
+     <dt id="yar-server-exception.props.type"><var class="varname">_type</var></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+ 
+
+
+
+ <h1 class="title">The Yar_Client_Exception class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="yar-client-exception.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+
+   </p>
+  </div>
+
+
+  <div class="section" id="yar-client-exception.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">Yar_Client_Exception</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">Yar_Client_Exception</strong>
+     </span>
+     
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> Exception</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">getType</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">Throwable</span> <span class="methodname">Exception::getPrevious</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">Exception::getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getFile</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">Exception::getLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">Exception::getTrace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">Exception::getTraceAsString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span>  <span class="methodname">Exception::__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span> <span class="type">void</span> <span class="methodname">Exception::__clone</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+   }</div>
+
+
+  </div>
+
+  
+
+  <div class="section" id="yar-client-exception.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="yar-client-exception.props.message"><var class="varname">message</var></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+    
+     <dt id="yar-client-exception.props.code"><var class="varname">code</var></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+    
+     <dt id="yar-client-exception.props.file"><var class="varname">file</var></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+    
+     <dt id="yar-client-exception.props.line"><var class="varname">line</var></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

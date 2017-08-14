@@ -1,0 +1,230 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Transfers a result set from the last query</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="set.mysqlinfo.html">MySQL</a></li>
+  <li class="header up"><a href="book.mysqlnd-uh.html">mysqlnd_uh</a></li>
+  <li class="header up"><a href="class.mysqlnduhconnection.html">MysqlndUhConnection</a></li>
+  <li><a href="mysqlnduhconnection.changeuser.html">MysqlndUhConnection::changeUser</a></li>
+  <li><a href="mysqlnduhconnection.charsetname.html">MysqlndUhConnection::charsetName</a></li>
+  <li><a href="mysqlnduhconnection.close.html">MysqlndUhConnection::close</a></li>
+  <li><a href="mysqlnduhconnection.connect.html">MysqlndUhConnection::connect</a></li>
+  <li><a href="mysqlnduhconnection.construct.html">MysqlndUhConnection::__construct</a></li>
+  <li><a href="mysqlnduhconnection.endpsession.html">MysqlndUhConnection::endPSession</a></li>
+  <li><a href="mysqlnduhconnection.escapestring.html">MysqlndUhConnection::escapeString</a></li>
+  <li><a href="mysqlnduhconnection.getaffectedrows.html">MysqlndUhConnection::getAffectedRows</a></li>
+  <li><a href="mysqlnduhconnection.geterrornumber.html">MysqlndUhConnection::getErrorNumber</a></li>
+  <li><a href="mysqlnduhconnection.geterrorstring.html">MysqlndUhConnection::getErrorString</a></li>
+  <li><a href="mysqlnduhconnection.getfieldcount.html">MysqlndUhConnection::getFieldCount</a></li>
+  <li><a href="mysqlnduhconnection.gethostinformation.html">MysqlndUhConnection::getHostInformation</a></li>
+  <li><a href="mysqlnduhconnection.getlastinsertid.html">MysqlndUhConnection::getLastInsertId</a></li>
+  <li><a href="mysqlnduhconnection.getlastmessage.html">MysqlndUhConnection::getLastMessage</a></li>
+  <li><a href="mysqlnduhconnection.getprotocolinformation.html">MysqlndUhConnection::getProtocolInformation</a></li>
+  <li><a href="mysqlnduhconnection.getserverinformation.html">MysqlndUhConnection::getServerInformation</a></li>
+  <li><a href="mysqlnduhconnection.getserverstatistics.html">MysqlndUhConnection::getServerStatistics</a></li>
+  <li><a href="mysqlnduhconnection.getserverversion.html">MysqlndUhConnection::getServerVersion</a></li>
+  <li><a href="mysqlnduhconnection.getsqlstate.html">MysqlndUhConnection::getSqlstate</a></li>
+  <li><a href="mysqlnduhconnection.getstatistics.html">MysqlndUhConnection::getStatistics</a></li>
+  <li><a href="mysqlnduhconnection.getthreadid.html">MysqlndUhConnection::getThreadId</a></li>
+  <li><a href="mysqlnduhconnection.getwarningcount.html">MysqlndUhConnection::getWarningCount</a></li>
+  <li><a href="mysqlnduhconnection.init.html">MysqlndUhConnection::init</a></li>
+  <li><a href="mysqlnduhconnection.killconnection.html">MysqlndUhConnection::killConnection</a></li>
+  <li><a href="mysqlnduhconnection.listfields.html">MysqlndUhConnection::listFields</a></li>
+  <li><a href="mysqlnduhconnection.listmethod.html">MysqlndUhConnection::listMethod</a></li>
+  <li><a href="mysqlnduhconnection.moreresults.html">MysqlndUhConnection::moreResults</a></li>
+  <li><a href="mysqlnduhconnection.nextresult.html">MysqlndUhConnection::nextResult</a></li>
+  <li><a href="mysqlnduhconnection.ping.html">MysqlndUhConnection::ping</a></li>
+  <li><a href="mysqlnduhconnection.query.html">MysqlndUhConnection::query</a></li>
+  <li><a href="mysqlnduhconnection.queryreadresultsetheader.html">MysqlndUhConnection::queryReadResultsetHeader</a></li>
+  <li><a href="mysqlnduhconnection.reapquery.html">MysqlndUhConnection::reapQuery</a></li>
+  <li><a href="mysqlnduhconnection.refreshserver.html">MysqlndUhConnection::refreshServer</a></li>
+  <li><a href="mysqlnduhconnection.restartpsession.html">MysqlndUhConnection::restartPSession</a></li>
+  <li><a href="mysqlnduhconnection.selectdb.html">MysqlndUhConnection::selectDb</a></li>
+  <li><a href="mysqlnduhconnection.sendclose.html">MysqlndUhConnection::sendClose</a></li>
+  <li><a href="mysqlnduhconnection.sendquery.html">MysqlndUhConnection::sendQuery</a></li>
+  <li><a href="mysqlnduhconnection.serverdumpdebuginformation.html">MysqlndUhConnection::serverDumpDebugInformation</a></li>
+  <li><a href="mysqlnduhconnection.setautocommit.html">MysqlndUhConnection::setAutocommit</a></li>
+  <li><a href="mysqlnduhconnection.setcharset.html">MysqlndUhConnection::setCharset</a></li>
+  <li><a href="mysqlnduhconnection.setclientoption.html">MysqlndUhConnection::setClientOption</a></li>
+  <li><a href="mysqlnduhconnection.setserveroption.html">MysqlndUhConnection::setServerOption</a></li>
+  <li><a href="mysqlnduhconnection.shutdownserver.html">MysqlndUhConnection::shutdownServer</a></li>
+  <li><a href="mysqlnduhconnection.simplecommand.html">MysqlndUhConnection::simpleCommand</a></li>
+  <li><a href="mysqlnduhconnection.simplecommandhandleresponse.html">MysqlndUhConnection::simpleCommandHandleResponse</a></li>
+  <li><a href="mysqlnduhconnection.sslset.html">MysqlndUhConnection::sslSet</a></li>
+  <li><a href="mysqlnduhconnection.stmtinit.html">MysqlndUhConnection::stmtInit</a></li>
+  <li class="active"><a href="mysqlnduhconnection.storeresult.html">MysqlndUhConnection::storeResult</a></li>
+  <li><a href="mysqlnduhconnection.txcommit.html">MysqlndUhConnection::txCommit</a></li>
+  <li><a href="mysqlnduhconnection.txrollback.html">MysqlndUhConnection::txRollback</a></li>
+  <li><a href="mysqlnduhconnection.useresult.html">MysqlndUhConnection::useResult</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mysqlnduhconnection.stmtinit.html">MysqlndUhConnection::stmtInit</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mysqlnduhconnection.txcommit.html">MysqlndUhConnection::txCommit</a></div>
+                <div class="up"><a href="class.mysqlnduhconnection.html">MysqlndUhConnection</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mysqlnduhconnection.storeresult" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">MysqlndUhConnection::storeResult</h1>
+  <p class="refpurpose">Transfers a result set from the last query</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mysqlnduhconnection.storeresult-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">resource</span> <span class="methodname">MysqlndUhConnection::storeResult</span>
+    ( <span class="methodparam"><span class="type">mysqlnd_connection</span> <code class="parameter">$connection</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Transfers a result set from the last query.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mysqlnduhconnection.storeresult-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">connection</code></dt>
+
+    <dd>
+
+     <p class="para">
+      Mysqlnd connection handle. Do not modify!
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-mysqlnduhconnection.storeresult-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Resource of type <em>Mysqlnd Resultset (internal only - you must not modify it!)</em>.
+   The documentation may also refer to such resources using the alias name
+   <em>mysqlnd_resultset</em>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-mysqlnduhconnection.storeresult-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-2167">
+    <p><strong>Example #1 <span class="function">MysqlndUhConnection::storeResult</span> example</strong></p>
+        <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">proxy&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">MysqlndUhConnection&nbsp;</span><span style="color: #007700">{<br />&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">storeResult</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%s(%s)\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">__METHOD__</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">func_get_args</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">));<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$ret&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">storeResult</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">);<br />&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%s&nbsp;returns&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">__METHOD__</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$ret</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">));<br />&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$ret</span><span style="color: #007700">);<br />&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$ret</span><span style="color: #007700">;<br />&nbsp;}<br />}<br /></span><span style="color: #0000BB">mysqlnd_uh_set_connection_proxy</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">proxy</span><span style="color: #007700">());<br /><br /></span><span style="color: #0000BB">$mysqli&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">mysqli</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"root"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">""</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"test"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;'Also&nbsp;called&nbsp;buffered&nbsp;result'&nbsp;AS&nbsp;_msg&nbsp;FROM&nbsp;DUAL"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetch_assoc</span><span style="color: #007700">());<br /><br /></span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">real_query</span><span style="color: #007700">(</span><span style="color: #DD0000">"SELECT&nbsp;'Good&nbsp;morning!'&nbsp;AS&nbsp;_msg&nbsp;FROM&nbsp;DUAL"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$res&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$mysqli</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">store_result</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$res</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetch_assoc</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+proxy::storeResult(array (
+  0 =&gt; NULL,
+))
+proxy::storeResult returns NULL
+resource(475) of type (Mysqlnd Resultset (internal only - you must not modify it!))
+array(1) {
+  [&quot;_msg&quot;]=&gt;
+  string(27) &quot;Also called buffered result&quot;
+}
+proxy::storeResult(array (
+  0 =&gt; NULL,
+))
+proxy::storeResult returns NULL
+resource(730) of type (Mysqlnd Resultset (internal only - you must not modify it!))
+array(1) {
+  [&quot;_msg&quot;]=&gt;
+  string(13) &quot;Good morning!&quot;
+}
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-mysqlnduhconnection.storeresult-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member">
+     <span class="function">mysqlnd_uh_set_connection_proxy</span>
+    </li>
+    <li class="member">
+     <span class="function">mysqli_store_result</span>
+    </li>
+    <li class="member">
+     <span class="function">mysqli_real_query</span>
+    </li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

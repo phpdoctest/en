@@ -1,0 +1,243 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Get the Unicode name for a property</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.international.html">Human Language and Character Encoding Support</a></li>
+  <li class="header up"><a href="book.intl.html">intl</a></li>
+  <li class="header up"><a href="class.intlchar.html">IntlChar</a></li>
+  <li><a href="intlchar.charage.html">IntlChar::charAge</a></li>
+  <li><a href="intlchar.chardigitvalue.html">IntlChar::charDigitValue</a></li>
+  <li><a href="intlchar.chardirection.html">IntlChar::charDirection</a></li>
+  <li><a href="intlchar.charfromname.html">IntlChar::charFromName</a></li>
+  <li><a href="intlchar.charmirror.html">IntlChar::charMirror</a></li>
+  <li><a href="intlchar.charname.html">IntlChar::charName</a></li>
+  <li><a href="intlchar.chartype.html">IntlChar::charType</a></li>
+  <li><a href="intlchar.chr.html">IntlChar::chr</a></li>
+  <li><a href="intlchar.digit.html">IntlChar::digit</a></li>
+  <li><a href="intlchar.enumcharnames.html">IntlChar::enumCharNames</a></li>
+  <li><a href="intlchar.enumchartypes.html">IntlChar::enumCharTypes</a></li>
+  <li><a href="intlchar.foldcase.html">IntlChar::foldCase</a></li>
+  <li><a href="intlchar.fordigit.html">IntlChar::forDigit</a></li>
+  <li><a href="intlchar.getbidipairedbracket.html">IntlChar::getBidiPairedBracket</a></li>
+  <li><a href="intlchar.getblockcode.html">IntlChar::getBlockCode</a></li>
+  <li><a href="intlchar.getcombiningclass.html">IntlChar::getCombiningClass</a></li>
+  <li><a href="intlchar.getfc-nfkc-closure.html">IntlChar::getFC_NFKC_Closure</a></li>
+  <li><a href="intlchar.getintpropertymaxvalue.html">IntlChar::getIntPropertyMaxValue</a></li>
+  <li><a href="intlchar.getintpropertyminvalue.html">IntlChar::getIntPropertyMinValue</a></li>
+  <li><a href="intlchar.getintpropertyvalue.html">IntlChar::getIntPropertyValue</a></li>
+  <li><a href="intlchar.getnumericvalue.html">IntlChar::getNumericValue</a></li>
+  <li><a href="intlchar.getpropertyenum.html">IntlChar::getPropertyEnum</a></li>
+  <li class="active"><a href="intlchar.getpropertyname.html">IntlChar::getPropertyName</a></li>
+  <li><a href="intlchar.getpropertyvalueenum.html">IntlChar::getPropertyValueEnum</a></li>
+  <li><a href="intlchar.getpropertyvaluename.html">IntlChar::getPropertyValueName</a></li>
+  <li><a href="intlchar.getunicodeversion.html">IntlChar::getUnicodeVersion</a></li>
+  <li><a href="intlchar.hasbinaryproperty.html">IntlChar::hasBinaryProperty</a></li>
+  <li><a href="intlchar.isalnum.html">IntlChar::isalnum</a></li>
+  <li><a href="intlchar.isalpha.html">IntlChar::isalpha</a></li>
+  <li><a href="intlchar.isbase.html">IntlChar::isbase</a></li>
+  <li><a href="intlchar.isblank.html">IntlChar::isblank</a></li>
+  <li><a href="intlchar.iscntrl.html">IntlChar::iscntrl</a></li>
+  <li><a href="intlchar.isdefined.html">IntlChar::isdefined</a></li>
+  <li><a href="intlchar.isdigit.html">IntlChar::isdigit</a></li>
+  <li><a href="intlchar.isgraph.html">IntlChar::isgraph</a></li>
+  <li><a href="intlchar.isidignorable.html">IntlChar::isIDIgnorable</a></li>
+  <li><a href="intlchar.isidpart.html">IntlChar::isIDPart</a></li>
+  <li><a href="intlchar.isidstart.html">IntlChar::isIDStart</a></li>
+  <li><a href="intlchar.isisocontrol.html">IntlChar::isISOControl</a></li>
+  <li><a href="intlchar.isjavaidpart.html">IntlChar::isJavaIDPart</a></li>
+  <li><a href="intlchar.isjavaidstart.html">IntlChar::isJavaIDStart</a></li>
+  <li><a href="intlchar.isjavaspacechar.html">IntlChar::isJavaSpaceChar</a></li>
+  <li><a href="intlchar.islower.html">IntlChar::islower</a></li>
+  <li><a href="intlchar.ismirrored.html">IntlChar::isMirrored</a></li>
+  <li><a href="intlchar.isprint.html">IntlChar::isprint</a></li>
+  <li><a href="intlchar.ispunct.html">IntlChar::ispunct</a></li>
+  <li><a href="intlchar.isspace.html">IntlChar::isspace</a></li>
+  <li><a href="intlchar.istitle.html">IntlChar::istitle</a></li>
+  <li><a href="intlchar.isualphabetic.html">IntlChar::isUAlphabetic</a></li>
+  <li><a href="intlchar.isulowercase.html">IntlChar::isULowercase</a></li>
+  <li><a href="intlchar.isupper.html">IntlChar::isupper</a></li>
+  <li><a href="intlchar.isuuppercase.html">IntlChar::isUUppercase</a></li>
+  <li><a href="intlchar.isuwhitespace.html">IntlChar::isUWhiteSpace</a></li>
+  <li><a href="intlchar.iswhitespace.html">IntlChar::isWhitespace</a></li>
+  <li><a href="intlchar.isxdigit.html">IntlChar::isxdigit</a></li>
+  <li><a href="intlchar.ord.html">IntlChar::ord</a></li>
+  <li><a href="intlchar.tolower.html">IntlChar::tolower</a></li>
+  <li><a href="intlchar.totitle.html">IntlChar::totitle</a></li>
+  <li><a href="intlchar.toupper.html">IntlChar::toupper</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="intlchar.getpropertyenum.html">IntlChar::getPropertyEnum</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="intlchar.getpropertyvalueenum.html">IntlChar::getPropertyValueEnum</a></div>
+                <div class="up"><a href="class.intlchar.html">IntlChar</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="intlchar.getpropertyname" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">IntlChar::getPropertyName</h1>
+  <p class="refpurpose">Get the Unicode name for a property</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-intlchar.getpropertyname-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">string</span> <span class="methodname">IntlChar::getPropertyName</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$property</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$nameChoice</code><span class="initializer"> = <strong><code>IntlChar::LONG_PROPERTY_NAME</code></strong></span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Returns the Unicode name for a given property, as given in the Unicode database file PropertyAliases.txt.
+  </p>
+  <p class="para">
+   In addition, this function maps the property <strong><code>IntlChar::PROPERTY_GENERAL_CATEGORY_MASK</code></strong> to the
+   synthetic names &quot;gcm&quot; / &quot;General_Category_Mask&quot;. These names are not in PropertyAliases.txt.
+  </p>
+  <p class="para">
+   This function compliments <span class="function">IntlChar::getPropertyEnum</span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-intlchar.getpropertyname-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">property</code></dt>
+
+    <dd>
+
+     <p class="para">The Unicode property to lookup (see the <em>IntlChar::PROPERTY_*</em> constants).</p>
+     <p class="para">
+      <strong><code>IntlChar::PROPERTY_INVALID_CODE</code></strong> should not be used.
+      Also, if <code class="parameter">property</code> is out of range, <strong><code>FALSE</code></strong> is returned.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">nameChoice</code></dt>
+
+    <dd>
+
+     <p class="para">
+      Selector for which name to get. If out of range, <strong><code>FALSE</code></strong> is returned.
+     </p>
+     <p class="para">
+      All properties have a long name. Most have a short name, but some do not. Unicode allows for additional names;
+      if present these will be returned by adding 1, 2, etc. to <strong><code>IntlChar::LONG_PROPERTY_NAME</code></strong>.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-intlchar.getpropertyname-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the name, or <strong><code>FALSE</code></strong> if either the <code class="parameter">property</code> or the <code class="parameter">nameChoice</code>
+   is out of range.
+  </p>
+  <p class="para">
+   If a given <code class="parameter">nameChoice</code> returns <strong><code>FALSE</code></strong>, then all larger values of
+   <code class="parameter">nameChoice</code> will return <strong><code>FALSE</code></strong>, with one exception: if <strong><code>FALSE</code></strong> is returned for
+   <strong><code>IntlChar::SHORT_PROPERTY_NAME</code></strong>, then <strong><code>IntlChar::LONG_PROPERTY_NAME</code></strong>
+   (and higher) may still return a non-<strong><code>FALSE</code></strong> value.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-intlchar.getpropertyname-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-2969">
+   <p><strong>Example #1 Testing different properties</strong></p>
+   <div class="example-contents">
+    <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">getPropertyName</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">PROPERTY_BIDI_CLASS</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">getPropertyName</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">PROPERTY_BIDI_CLASS</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">SHORT_PROPERTY_NAME</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">getPropertyName</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">PROPERTY_BIDI_CLASS</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">LONG_PROPERTY_NAME</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">getPropertyName</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">PROPERTY_BIDI_CLASS</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">LONG_PROPERTY_NAME&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output:</p></div>
+   <div class="example-contents screen">
+    <div class="cdata"><pre>
+string(10) &quot;Bidi_Class&quot;
+string(2) &quot;bc&quot;
+string(10) &quot;Bidi_Class&quot;
+bool(false)
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-intlchar.getpropertyname-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">IntlChar::getPropertyEnum</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

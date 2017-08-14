@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Get number of rows affected by a query</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.ifx.html">Informix</a></li>
+  <li class="header up"><a href="ref.ifx.html">Informix Functions</a></li>
+  <li class="active"><a href="function.ifx-affected-rows.html">ifx_affected_rows</a></li>
+  <li><a href="function.ifx-blobinfile-mode.html">ifx_blobinfile_mode</a></li>
+  <li><a href="function.ifx-byteasvarchar.html">ifx_byteasvarchar</a></li>
+  <li><a href="function.ifx-close.html">ifx_close</a></li>
+  <li><a href="function.ifx-connect.html">ifx_connect</a></li>
+  <li><a href="function.ifx-copy-blob.html">ifx_copy_blob</a></li>
+  <li><a href="function.ifx-create-blob.html">ifx_create_blob</a></li>
+  <li><a href="function.ifx-create-char.html">ifx_create_char</a></li>
+  <li><a href="function.ifx-do.html">ifx_do</a></li>
+  <li><a href="function.ifx-error.html">ifx_error</a></li>
+  <li><a href="function.ifx-errormsg.html">ifx_errormsg</a></li>
+  <li><a href="function.ifx-fetch-row.html">ifx_fetch_row</a></li>
+  <li><a href="function.ifx-fieldproperties.html">ifx_fieldproperties</a></li>
+  <li><a href="function.ifx-fieldtypes.html">ifx_fieldtypes</a></li>
+  <li><a href="function.ifx-free-blob.html">ifx_free_blob</a></li>
+  <li><a href="function.ifx-free-char.html">ifx_free_char</a></li>
+  <li><a href="function.ifx-free-result.html">ifx_free_result</a></li>
+  <li><a href="function.ifx-get-blob.html">ifx_get_blob</a></li>
+  <li><a href="function.ifx-get-char.html">ifx_get_char</a></li>
+  <li><a href="function.ifx-getsqlca.html">ifx_getsqlca</a></li>
+  <li><a href="function.ifx-htmltbl-result.html">ifx_htmltbl_result</a></li>
+  <li><a href="function.ifx-nullformat.html">ifx_nullformat</a></li>
+  <li><a href="function.ifx-num-fields.html">ifx_num_fields</a></li>
+  <li><a href="function.ifx-num-rows.html">ifx_num_rows</a></li>
+  <li><a href="function.ifx-pconnect.html">ifx_pconnect</a></li>
+  <li><a href="function.ifx-prepare.html">ifx_prepare</a></li>
+  <li><a href="function.ifx-query.html">ifx_query</a></li>
+  <li><a href="function.ifx-textasvarchar.html">ifx_textasvarchar</a></li>
+  <li><a href="function.ifx-update-blob.html">ifx_update_blob</a></li>
+  <li><a href="function.ifx-update-char.html">ifx_update_char</a></li>
+  <li><a href="function.ifxus-close-slob.html">ifxus_close_slob</a></li>
+  <li><a href="function.ifxus-create-slob.html">ifxus_create_slob</a></li>
+  <li><a href="function.ifxus-free-slob.html">ifxus_free_slob</a></li>
+  <li><a href="function.ifxus-open-slob.html">ifxus_open_slob</a></li>
+  <li><a href="function.ifxus-read-slob.html">ifxus_read_slob</a></li>
+  <li><a href="function.ifxus-seek-slob.html">ifxus_seek_slob</a></li>
+  <li><a href="function.ifxus-tell-slob.html">ifxus_tell_slob</a></li>
+  <li><a href="function.ifxus-write-slob.html">ifxus_write_slob</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="ref.ifx.html">Informix Functions</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.ifx-blobinfile-mode.html">ifx_blobinfile_mode</a></div>
+                <div class="up"><a href="ref.ifx.html">Informix Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.ifx-affected-rows" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ifx_affected_rows</h1>
+  <p class="refpurpose">Get number of rows affected by a query</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.ifx-affected-rows-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname">ifx_affected_rows</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$result_id</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Returns the number of rows affected by a query associated with
+   <code class="parameter">result_id</code>.
+  </p>
+  <p class="para">
+   For inserts, updates and deletes the number is the real number
+   (sqlerrd[2]) of affected rows. For selects it is an estimate
+   (sqlerrd[0]). Don&#039;t rely on it. The database server can never
+   return the actual number of rows that will be returned by a
+   SELECT because it has not even begun fetching them at this stage
+   (just after the &quot;PREPARE&quot; when the optimizer has determined the
+   query plan).
+  </p>
+  <p class="para">
+   Useful after <span class="function">ifx_prepare</span> to limit queries to
+   reasonable result sets.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.ifx-affected-rows-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">result_id</code></dt>
+
+     <dd>
+
+      <p class="para">
+       A valid result id returned by <span class="function">ifx_query</span> or
+       <span class="function">ifx_prepare</span>.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.ifx-affected-rows-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the number of rows as an integer.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.ifx-affected-rows-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="db2-pclose.example.basic">
+    <p><strong>Example #1 Informix affected rows</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$rid&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ifx_prepare</span><span style="color: #007700">(</span><span style="color: #DD0000">"select&nbsp;*&nbsp;from&nbsp;emp<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;where&nbsp;name&nbsp;like&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$name</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$connid</span><span style="color: #007700">);<br />if&nbsp;(!&nbsp;</span><span style="color: #0000BB">$rid</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;...&nbsp;error&nbsp;...&nbsp;*/<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">$rowcount&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">ifx_affected_rows</span><span style="color: #007700">(</span><span style="color: #0000BB">$rid</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">$rowcount&nbsp;</span><span style="color: #007700">&gt;&nbsp;</span><span style="color: #0000BB">1000</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf&nbsp;</span><span style="color: #007700">(</span><span style="color: #DD0000">"Too&nbsp;many&nbsp;rows&nbsp;in&nbsp;result&nbsp;set&nbsp;(%d)\n&lt;br&nbsp;/&gt;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$rowcount</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;die&nbsp;(</span><span style="color: #DD0000">"Please&nbsp;restrict&nbsp;your&nbsp;query&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.ifx-affected-rows-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">ifx_num_rows</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

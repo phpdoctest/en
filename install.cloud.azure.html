@@ -1,0 +1,120 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Azure App Services</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="install.html">Installation and Configuration</a></li>
+  <li class="header up"><a href="install.cloud.html">Installation on Cloud Computing platforms</a></li>
+  <li class="active"><a href="install.cloud.azure.html">Azure App Services</a></li>
+  <li><a href="install.cloud.ec2.html">Amazon EC2</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="install.cloud.html">Installation on Cloud Computing platforms</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="install.cloud.ec2.html">Amazon EC2</a></div>
+                <div class="up"><a href="install.cloud.html">Installation on Cloud Computing platforms</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="install.cloud.azure" class="sect1">
+  <h2 class="title">Azure App Services</h2>
+  <p class="para">
+    PHP is frequently used on Azure App Services (aka Microsoft Azure, Windows Azure, Azure Web Apps).
+  </p>
+  <p class="para">Azure App Services manages pools of Windows Web Servers to host your web application, as an alternative to managing your own web server on your own Azure Compute VMs or other servers.
+  </p>
+  <p class="para">PHP is already enabled for your Azure App Services web site automatically. In the Azure Portal, select your web site, and you can choose which version of PHP to use. You may want to choose a newer version than the default.
+  </p>
+
+  <p class="para">As such, PHP and extensions will run on Azure App Services just as it will on other Windows servers.
+
+  Much of the knowledgebase is also portable, so see the <a href="install.windows.troubleshooting.html" class="link">Windows Troubleshooting Page</a> too.
+
+  However, the management interface for Azure App Services is different:
+  </p>
+
+  <ul class="itemizedlist">
+    <li class="listitem">
+      <p class="para">Azure portal: create, edit settings and delete web sites. <a href="https://portal.azure.com/" class="link external">&raquo;&nbsp;Azure Portal</a>
+      </p>
+    </li>
+    <li class="listitem">
+      <p class="para">Kudu Dashboard: [your web site name].azurewebsites.net Then, the Kudu dashboard is <a href="https://your_web_site_name.scm.azurewebsites.net/" class="link external">&raquo;&nbsp;https://[your web site name].scm.azurewebsites.net/</a>. The Dashboard gives you access to some debugging capabilities, file management and site extensions. Site extensions are an Azure mechanism to add extra programs, like PHP preview builds, to your web site.
+      </p>
+    </li>
+    <li class="listitem">
+      <p class="para">You can not use IIS Manager, Server Manager, or RDP.</p>
+    </li>
+  </ul>
+
+  <p class="para">There is also a PHP SDK for programmatically using many Azure Services from your PHP code. See <a href="https://github.com/Azure/azure-sdk-for-php" class="link external">&raquo;&nbsp;Azure SDK for PHP</a>.
+  </p>
+  
+  <p class="para">For more information, see <a href="https://azure.microsoft.com/en-us/develop/php/" class="link external">&raquo;&nbsp;Azure PHP Developer Center</a>
+  </p>
+
+  <div class="sect2">
+    <h3 class="title">WinCache</h3>
+  <p class="para">WinCache is enabled by default on Azure App Services and it is recommended that you leave it enabled.
+
+  If you install your own build of PHP, you should enable WinCache on that too.
+  </p>
+  </div>
+
+  <div class="sect2">
+    <h3 class="title">Custom PHP Build</h3>
+  <p class="para">You may upload your own PHP build to your D:\Home (C:\ is NOT writable). Then in the Azure Portal, set SCRIPT_PROCESSOR for .php to the absolute path to php-cgi.exe file in your build.
+  </p>
+  </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

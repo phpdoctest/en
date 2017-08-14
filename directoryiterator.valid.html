@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Check whether current DirectoryIterator position is a valid file</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.spl.html">SPL</a></li>
+  <li class="header up"><a href="spl.iterators.html">Iterators</a></li>
+  <li class="header up"><a href="class.directoryiterator.html">DirectoryIterator</a></li>
+  <li><a href="directoryiterator.construct.html">DirectoryIterator::__construct</a></li>
+  <li><a href="directoryiterator.current.html">DirectoryIterator::current</a></li>
+  <li><a href="directoryiterator.getatime.html">DirectoryIterator::getATime</a></li>
+  <li><a href="directoryiterator.getbasename.html">DirectoryIterator::getBasename</a></li>
+  <li><a href="directoryiterator.getctime.html">DirectoryIterator::getCTime</a></li>
+  <li><a href="directoryiterator.getextension.html">DirectoryIterator::getExtension</a></li>
+  <li><a href="directoryiterator.getfilename.html">DirectoryIterator::getFilename</a></li>
+  <li><a href="directoryiterator.getgroup.html">DirectoryIterator::getGroup</a></li>
+  <li><a href="directoryiterator.getinode.html">DirectoryIterator::getInode</a></li>
+  <li><a href="directoryiterator.getmtime.html">DirectoryIterator::getMTime</a></li>
+  <li><a href="directoryiterator.getowner.html">DirectoryIterator::getOwner</a></li>
+  <li><a href="directoryiterator.getpath.html">DirectoryIterator::getPath</a></li>
+  <li><a href="directoryiterator.getpathname.html">DirectoryIterator::getPathname</a></li>
+  <li><a href="directoryiterator.getperms.html">DirectoryIterator::getPerms</a></li>
+  <li><a href="directoryiterator.getsize.html">DirectoryIterator::getSize</a></li>
+  <li><a href="directoryiterator.gettype.html">DirectoryIterator::getType</a></li>
+  <li><a href="directoryiterator.isdir.html">DirectoryIterator::isDir</a></li>
+  <li><a href="directoryiterator.isdot.html">DirectoryIterator::isDot</a></li>
+  <li><a href="directoryiterator.isexecutable.html">DirectoryIterator::isExecutable</a></li>
+  <li><a href="directoryiterator.isfile.html">DirectoryIterator::isFile</a></li>
+  <li><a href="directoryiterator.islink.html">DirectoryIterator::isLink</a></li>
+  <li><a href="directoryiterator.isreadable.html">DirectoryIterator::isReadable</a></li>
+  <li><a href="directoryiterator.iswritable.html">DirectoryIterator::isWritable</a></li>
+  <li><a href="directoryiterator.key.html">DirectoryIterator::key</a></li>
+  <li><a href="directoryiterator.next.html">DirectoryIterator::next</a></li>
+  <li><a href="directoryiterator.rewind.html">DirectoryIterator::rewind</a></li>
+  <li><a href="directoryiterator.seek.html">DirectoryIterator::seek</a></li>
+  <li><a href="directoryiterator.tostring.html">DirectoryIterator::__toString</a></li>
+  <li class="active"><a href="directoryiterator.valid.html">DirectoryIterator::valid</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="directoryiterator.tostring.html">DirectoryIterator::__toString</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="class.emptyiterator.html">EmptyIterator</a></div>
+                <div class="up"><a href="class.directoryiterator.html">DirectoryIterator</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="directoryiterator.valid" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DirectoryIterator::valid</h1>
+  <p class="refpurpose">Check whether current DirectoryIterator position is a valid file</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-directoryiterator.valid-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">DirectoryIterator::valid</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Check whether current <span class="classname">DirectoryIterator</span> position is a valid file.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-directoryiterator.valid-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">This function has no parameters.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-directoryiterator.valid-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> if the position is valid, otherwise <strong><code>FALSE</code></strong>
+  </p>
+ </div>
+
+ 
+  <div class="refsect1 examples" id="refsect1-directoryiterator.valid-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4459">
+    <p><strong>Example #1 A  <span class="methodname">DirectoryIterator::valid</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$iterator&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DirectoryIterator</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;Loop&nbsp;to&nbsp;end&nbsp;of&nbsp;iterator<br /></span><span style="color: #007700">while(</span><span style="color: #0000BB">$iterator</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">valid</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$iterator</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">next</span><span style="color: #007700">();<br />}<br /><br /></span><span style="color: #0000BB">$iterator</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">valid</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;FALSE<br /></span><span style="color: #0000BB">$iterator</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">rewind</span><span style="color: #007700">();&nbsp;<br /></span><span style="color: #0000BB">$iterator</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">valid</span><span style="color: #007700">();&nbsp;</span><span style="color: #FF8000">//&nbsp;TRUE<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-directoryiterator.valid-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"> <span class="methodname">DirectoryIterator::current</span></li>
+    <li class="member"> <span class="methodname">DirectoryIterator::key</span></li>
+    <li class="member"> <span class="methodname">DirectoryIterator::next</span></li>
+    <li class="member"> <span class="methodname">DirectoryIterator::rewind</span></li>
+    <li class="member"> <span class="methodname">Iterator::valid</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

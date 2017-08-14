@@ -1,0 +1,198 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Get a list of IPv4 addresses corresponding to a given Internet host
+   name</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li class="header up"><a href="book.network.html">Network</a></li>
+  <li class="header up"><a href="ref.network.html">Network Functions</a></li>
+  <li><a href="function.checkdnsrr.html">checkdnsrr</a></li>
+  <li><a href="function.closelog.html">closelog</a></li>
+  <li><a href="function.define-syslog-variables.html">define_syslog_variables</a></li>
+  <li><a href="function.dns-check-record.html">dns_check_record</a></li>
+  <li><a href="function.dns-get-mx.html">dns_get_mx</a></li>
+  <li><a href="function.dns-get-record.html">dns_get_record</a></li>
+  <li><a href="function.fsockopen.html">fsockopen</a></li>
+  <li><a href="function.gethostbyaddr.html">gethostbyaddr</a></li>
+  <li><a href="function.gethostbyname.html">gethostbyname</a></li>
+  <li class="active"><a href="function.gethostbynamel.html">gethostbynamel</a></li>
+  <li><a href="function.gethostname.html">gethostname</a></li>
+  <li><a href="function.getmxrr.html">getmxrr</a></li>
+  <li><a href="function.getprotobyname.html">getprotobyname</a></li>
+  <li><a href="function.getprotobynumber.html">getprotobynumber</a></li>
+  <li><a href="function.getservbyname.html">getservbyname</a></li>
+  <li><a href="function.getservbyport.html">getservbyport</a></li>
+  <li><a href="function.header-register-callback.html">header_register_callback</a></li>
+  <li><a href="function.header-remove.html">header_remove</a></li>
+  <li><a href="function.header.html">header</a></li>
+  <li><a href="function.headers-list.html">headers_list</a></li>
+  <li><a href="function.headers-sent.html">headers_sent</a></li>
+  <li><a href="function.http-response-code.html">http_response_code</a></li>
+  <li><a href="function.inet-ntop.html">inet_ntop</a></li>
+  <li><a href="function.inet-pton.html">inet_pton</a></li>
+  <li><a href="function.ip2long.html">ip2long</a></li>
+  <li><a href="function.long2ip.html">long2ip</a></li>
+  <li><a href="function.openlog.html">openlog</a></li>
+  <li><a href="function.pfsockopen.html">pfsockopen</a></li>
+  <li><a href="function.setcookie.html">setcookie</a></li>
+  <li><a href="function.setrawcookie.html">setrawcookie</a></li>
+  <li><a href="function.socket-get-status.html">socket_get_status</a></li>
+  <li><a href="function.socket-set-blocking.html">socket_set_blocking</a></li>
+  <li><a href="function.socket-set-timeout.html">socket_set_timeout</a></li>
+  <li><a href="function.syslog.html">syslog</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.gethostbyname.html">gethostbyname</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.gethostname.html">gethostname</a></div>
+                <div class="up"><a href="ref.network.html">Network Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.gethostbynamel" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">gethostbynamel</h1>
+  <p class="refpurpose">
+   Get a list of IPv4 addresses corresponding to a given Internet host
+   name
+  </p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.gethostbynamel-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname">gethostbynamel</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$hostname</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Returns a list of IPv4 addresses to which the Internet host
+   specified by <code class="parameter">hostname</code> resolves. 
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.gethostbynamel-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">hostname</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The host name.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.gethostbynamel-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns an array of IPv4 addresses or <strong><code>FALSE</code></strong> if
+   <code class="parameter">hostname</code> could not be resolved.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.gethostbynamel-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-5031">
+    <p><strong>Example #1 <span class="function">gethostbynamel</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$hosts&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">gethostbynamel</span><span style="color: #007700">(</span><span style="color: #DD0000">'www.example.com'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$hosts</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [0] =&gt; 192.0.34.166
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.gethostbynamel-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">gethostbyname</span></li>
+    <li class="member"><span class="function">gethostbyaddr</span></li>
+    <li class="member"><span class="function">checkdnsrr</span></li>
+    <li class="member"><span class="function">getmxrr</span></li>
+    <li class="member">the <em>named(8)</em> manual page</li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

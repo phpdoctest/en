@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Opens an SQLite database</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.sqlite3.html">SQLite3</a></li>
+  <li class="header up"><a href="class.sqlite3.html">SQLite3</a></li>
+  <li><a href="sqlite3.busytimeout.html">SQLite3::busyTimeout</a></li>
+  <li><a href="sqlite3.changes.html">SQLite3::changes</a></li>
+  <li><a href="sqlite3.close.html">SQLite3::close</a></li>
+  <li><a href="sqlite3.construct.html">SQLite3::__construct</a></li>
+  <li><a href="sqlite3.createaggregate.html">SQLite3::createAggregate</a></li>
+  <li><a href="sqlite3.createcollation.html">SQLite3::createCollation</a></li>
+  <li><a href="sqlite3.createfunction.html">SQLite3::createFunction</a></li>
+  <li><a href="sqlite3.enableexceptions.html">SQLite3::enableExceptions</a></li>
+  <li><a href="sqlite3.escapestring.html">SQLite3::escapeString</a></li>
+  <li><a href="sqlite3.exec.html">SQLite3::exec</a></li>
+  <li><a href="sqlite3.lasterrorcode.html">SQLite3::lastErrorCode</a></li>
+  <li><a href="sqlite3.lasterrormsg.html">SQLite3::lastErrorMsg</a></li>
+  <li><a href="sqlite3.lastinsertrowid.html">SQLite3::lastInsertRowID</a></li>
+  <li><a href="sqlite3.loadextension.html">SQLite3::loadExtension</a></li>
+  <li class="active"><a href="sqlite3.open.html">SQLite3::open</a></li>
+  <li><a href="sqlite3.openblob.html">SQLite3::openBlob</a></li>
+  <li><a href="sqlite3.prepare.html">SQLite3::prepare</a></li>
+  <li><a href="sqlite3.query.html">SQLite3::query</a></li>
+  <li><a href="sqlite3.querysingle.html">SQLite3::querySingle</a></li>
+  <li><a href="sqlite3.version.html">SQLite3::version</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="sqlite3.loadextension.html">SQLite3::loadExtension</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="sqlite3.openblob.html">SQLite3::openBlob</a></div>
+                <div class="up"><a href="class.sqlite3.html">SQLite3</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="sqlite3.open" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SQLite3::open</h1>
+  <p class="refpurpose">Opens an SQLite database</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-sqlite3.open-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">SQLite3::open</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE</span></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$encryption_key</code><span class="initializer"> = null</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Opens an SQLite 3 Database. If the build includes encryption, then it will
+   attempt to use the key.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-sqlite3.open-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">filename</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Path to the SQLite database, or <em>:memory:</em> to use in-memory database.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">flags</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Optional flags used to determine how to open the SQLite database. By
+       default, open uses <em>SQLITE3_OPEN_READWRITE | SQLITE3_OPEN_CREATE</em>.
+       <ul class="itemizedlist">
+        <li class="listitem">
+         <p class="para">
+          <em>SQLITE3_OPEN_READONLY</em>: Open the database for
+          reading only.
+         </p>
+        </li>
+        <li class="listitem">
+         <p class="para">
+          <em>SQLITE3_OPEN_READWRITE</em>: Open the database for
+          reading and writing.
+         </p>
+        </li>
+        <li class="listitem">
+         <p class="para">
+          <em>SQLITE3_OPEN_CREATE</em>: Create the database if it
+          does not exist.
+         </p>
+        </li>
+       </ul>
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">encryption_key</code></dt>
+
+     <dd>
+
+      <p class="para">
+       An optional encryption key used when encrypting and decrypting an
+       SQLite database. If the SQLite encryption module is not installed,
+       this parameter will have no effect.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-sqlite3.open-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   No value is returned.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-sqlite3.open-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-2405">
+    <p><strong>Example #1 <span class="function">SQLite3::open</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/**<br />&nbsp;*&nbsp;Simple&nbsp;example&nbsp;of&nbsp;extending&nbsp;the&nbsp;SQLite3&nbsp;class&nbsp;and&nbsp;changing&nbsp;the&nbsp;__construct<br />&nbsp;*&nbsp;parameters,&nbsp;then&nbsp;using&nbsp;the&nbsp;open&nbsp;method&nbsp;to&nbsp;initialize&nbsp;the&nbsp;DB.<br />&nbsp;*/<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyDB&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">SQLite3<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">open</span><span style="color: #007700">(</span><span style="color: #DD0000">'mysqlitedb.db'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$db&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MyDB</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">exec</span><span style="color: #007700">(</span><span style="color: #DD0000">'CREATE&nbsp;TABLE&nbsp;foo&nbsp;(bar&nbsp;STRING)'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">exec</span><span style="color: #007700">(</span><span style="color: #DD0000">"INSERT&nbsp;INTO&nbsp;foo&nbsp;(bar)&nbsp;VALUES&nbsp;('This&nbsp;is&nbsp;a&nbsp;test')"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">'SELECT&nbsp;bar&nbsp;FROM&nbsp;foo'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fetchArray</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

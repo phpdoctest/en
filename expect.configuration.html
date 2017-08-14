@@ -1,0 +1,220 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Runtime Configuration</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.fileprocess.process.html">Process Control Extensions</a></li>
+  <li class="header up"><a href="book.expect.html">Expect</a></li>
+  <li class="header up"><a href="expect.setup.html">Installing/Configuring</a></li>
+  <li><a href="expect.requirements.html">Requirements</a></li>
+  <li><a href="expect.installation.html">Installation</a></li>
+  <li class="active"><a href="expect.configuration.html">Runtime Configuration</a></li>
+  <li><a href="expect.resources.html">Resource Types</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="expect.installation.html">Installation</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="expect.resources.html">Resource Types</a></div>
+                <div class="up"><a href="expect.setup.html">Installing/Configuring</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="expect.configuration" class="section">
+ <h2 class="title">Runtime Configuration</h2>
+ <p class="simpara">
+The behaviour of these functions is affected by settings in <var class="filename">php.ini</var>.
+</p>
+ <p class="para">
+  In order to configure expect extension, there are configuration options
+  in the <a href="configuration.file.html" class="link">configuration file</a> <var class="filename">php.ini</var>.
+  <table class="doctable table">
+   <caption><strong>Expect Configure Options</strong></caption>
+   
+    <thead>
+     <tr>
+      <th>Name</th>
+      <th>Default</th>
+      <th>Changeable</th>
+      <th>Changelog</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td><a href="expect.configuration.html#ini.expect.timeout" class="link">expect.timeout</a></td>
+      <td>&quot;10&quot;</td>
+      <td>PHP_INI_ALL</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr>
+      <td><a href="expect.configuration.html#ini.expect.loguser" class="link">expect.loguser</a></td>
+      <td>&quot;1&quot;</td>
+      <td>PHP_INI_ALL</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr>
+      <td><a href="expect.configuration.html#ini.expect.logfile" class="link">expect.logfile</a></td>
+      <td>&quot;&quot;</td>
+      <td>PHP_INI_ALL</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+     <tr>
+      <td><a href="expect.configuration.html#ini.expect.match-max" class="link">expect.match_max</a></td>
+      <td>&quot;&quot;</td>
+      <td>PHP_INI_ALL</td>
+      <td class="empty">&nbsp;</td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+  For further details and definitions of the
+PHP_INI_* modes, see the <a href="configuration.changes.modes.html" class="xref">Where a configuration setting may be set</a>.
+ </p>
+ 
+ <p class="para">Here&#039;s a short explanation of
+the configuration directives.</p>
+ 
+ <p class="para">
+  <dl>
+
+   
+    <dt id="ini.expect.timeout">
+     <code class="parameter">expect.timeout</code>
+     <span class="type">integer</span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      The timeout period for waiting for the data, when using the
+      <span class="function">expect_expectl</span> function.
+     </p>
+     <p class="para">
+      A value of &quot;-1&quot; disables a timeout from occurring.
+     </p>
+     <blockquote class="note"><p><strong class="note">Note</strong>: 
+      <p class="para">
+       A value of &quot;0&quot; causes the <span class="function">expect_expectl</span>
+       function to return immediately.
+      </p>
+     </p></blockquote>
+    </dd>
+
+   
+
+   
+    <dt id="ini.expect.loguser">
+     <code class="parameter">expect.loguser</code>
+     <span class="type">boolean</span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Whether expect should send any output from the spawned process to stdout.
+      Since interactive programs typically echo their input, this usually suffices
+      to show both sides of the conversation.
+     </p>
+    </dd>
+
+   
+
+   
+    <dt id="ini.expect.logfile">
+     <code class="parameter">expect.logfile</code>
+     <span class="type">string</span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Name of the file, where the output from the spawned process will be
+      written. If this file doesn&#039;t exist, it will be created.
+     </p>
+     <blockquote class="note"><p><strong class="note">Note</strong>: 
+      <p class="para">
+       If this configuration is not empty, the output is written regardless of
+       the value of <a href="expect.configuration.html#ini.expect.loguser" class="link">expect.loguser</a>.
+      </p>
+     </p></blockquote>
+    </dd>
+
+   
+
+   
+    <dt id="ini.expect.match-max">
+     <code class="parameter">expect.match_max</code>
+     <span class="type">integer</span>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Changes default size (2000 bytes) of the buffer used to match asterisks
+      in patterns.
+     </p>
+    </dd>
+
+   
+
+  </dl>
+
+ </p>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

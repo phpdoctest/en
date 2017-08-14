@@ -1,0 +1,171 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Close an Ingres database connection</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.ingres.html">Ingres</a></li>
+  <li class="header up"><a href="ref.ingres.html">Ingres Functions</a></li>
+  <li><a href="function.ingres-autocommit-state.html">ingres_autocommit_state</a></li>
+  <li><a href="function.ingres-autocommit.html">ingres_autocommit</a></li>
+  <li><a href="function.ingres-charset.html">ingres_charset</a></li>
+  <li class="active"><a href="function.ingres-close.html">ingres_close</a></li>
+  <li><a href="function.ingres-commit.html">ingres_commit</a></li>
+  <li><a href="function.ingres-connect.html">ingres_connect</a></li>
+  <li><a href="function.ingres-cursor.html">ingres_cursor</a></li>
+  <li><a href="function.ingres-errno.html">ingres_errno</a></li>
+  <li><a href="function.ingres-error.html">ingres_error</a></li>
+  <li><a href="function.ingres-errsqlstate.html">ingres_errsqlstate</a></li>
+  <li><a href="function.ingres-escape-string.html">ingres_escape_string</a></li>
+  <li><a href="function.ingres-execute.html">ingres_execute</a></li>
+  <li><a href="function.ingres-fetch-array.html">ingres_fetch_array</a></li>
+  <li><a href="function.ingres-fetch-assoc.html">ingres_fetch_assoc</a></li>
+  <li><a href="function.ingres-fetch-object.html">ingres_fetch_object</a></li>
+  <li><a href="function.ingres-fetch-proc-return.html">ingres_fetch_proc_return</a></li>
+  <li><a href="function.ingres-fetch-row.html">ingres_fetch_row</a></li>
+  <li><a href="function.ingres-field-length.html">ingres_field_length</a></li>
+  <li><a href="function.ingres-field-name.html">ingres_field_name</a></li>
+  <li><a href="function.ingres-field-nullable.html">ingres_field_nullable</a></li>
+  <li><a href="function.ingres-field-precision.html">ingres_field_precision</a></li>
+  <li><a href="function.ingres-field-scale.html">ingres_field_scale</a></li>
+  <li><a href="function.ingres-field-type.html">ingres_field_type</a></li>
+  <li><a href="function.ingres-free-result.html">ingres_free_result</a></li>
+  <li><a href="function.ingres-next-error.html">ingres_next_error</a></li>
+  <li><a href="function.ingres-num-fields.html">ingres_num_fields</a></li>
+  <li><a href="function.ingres-num-rows.html">ingres_num_rows</a></li>
+  <li><a href="function.ingres-pconnect.html">ingres_pconnect</a></li>
+  <li><a href="function.ingres-prepare.html">ingres_prepare</a></li>
+  <li><a href="function.ingres-query.html">ingres_query</a></li>
+  <li><a href="function.ingres-result-seek.html">ingres_result_seek</a></li>
+  <li><a href="function.ingres-rollback.html">ingres_rollback</a></li>
+  <li><a href="function.ingres-set-environment.html">ingres_set_environment</a></li>
+  <li><a href="function.ingres-unbuffered-query.html">ingres_unbuffered_query</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.ingres-charset.html">ingres_charset</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.ingres-commit.html">ingres_commit</a></div>
+                <div class="up"><a href="ref.ingres.html">Ingres Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.ingres-close" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ingres_close</h1>
+  <p class="refpurpose">Close an Ingres database connection</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.ingres-close-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">ingres_close</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$link</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function">ingres_close</span> closes the connection to
+   the Ingres server that is associated with the specified link.
+  </p>
+  <p class="para">
+   <span class="function">ingres_close</span> is usually unnecessary, as it
+   will not close persistent connections and all non-persistent connections
+   are automatically closed at the end of the script.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.ingres-close-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">link</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The connection link identifier
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.ingres-close-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> on success or <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.ingres-close-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">ingres_connect</span></li>
+    <li class="member"><span class="function">ingres_pconnect</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

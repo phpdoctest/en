@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Collect references to completed tasks</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.fileprocess.process.html">Process Control Extensions</a></li>
+  <li class="header up"><a href="book.pthreads.html">pthreads</a></li>
+  <li class="header up"><a href="class.worker.html">Worker</a></li>
+  <li class="active"><a href="worker.collect.html">Worker::collect</a></li>
+  <li><a href="worker.getstacked.html">Worker::getStacked</a></li>
+  <li><a href="worker.isshutdown.html">Worker::isShutdown</a></li>
+  <li><a href="worker.isworking.html">Worker::isWorking</a></li>
+  <li><a href="worker.shutdown.html">Worker::shutdown</a></li>
+  <li><a href="worker.stack.html">Worker::stack</a></li>
+  <li><a href="worker.unstack.html">Worker::unstack</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="class.worker.html">Worker</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="worker.getstacked.html">Worker::getStacked</a></div>
+                <div class="up"><a href="class.worker.html">Worker</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="worker.collect" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Worker::collect</h1>
+  <p class="refpurpose">Collect references to completed tasks</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-worker.collect-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">Worker::collect</span>
+    ([ <span class="methodparam"><span class="type">Callable</span> <code class="parameter">$collector</code></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Allows the worker to collect references determined to be garbage by the
+   optionally given collector.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-worker.collect-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">collector</code></dt>
+
+    <dd>
+
+     <p class="para">
+      A Callable collector that returns a boolean on whether the task can be
+      collected or not. Only in rare cases should a custom collector need to
+      be used.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-worker.collect-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   The number of remaining tasks on the worker&#039;s stack to be collected.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-worker.collect-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4255">
+    <p><strong>Example #1 A basic example of  <span class="methodname">Worker::collect</span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$worker&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Worker</span><span style="color: #007700">();<br /><br />echo&nbsp;</span><span style="color: #DD0000">"There&nbsp;are&nbsp;currently&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$worker</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">collect</span><span style="color: #007700">()}</span><span style="color: #DD0000">&nbsp;tasks&nbsp;on&nbsp;the&nbsp;stack&nbsp;to&nbsp;be&nbsp;collected\n"</span><span style="color: #007700">;<br /><br />for&nbsp;(</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i&nbsp;</span><span style="color: #007700">&lt;&nbsp;</span><span style="color: #0000BB">15</span><span style="color: #007700">;&nbsp;++</span><span style="color: #0000BB">$i</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$worker</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">stack</span><span style="color: #007700">(new&nbsp;class&nbsp;extends&nbsp;</span><span style="color: #0000BB">Threaded&nbsp;</span><span style="color: #007700">{});<br />}<br /><br />echo&nbsp;</span><span style="color: #DD0000">"There&nbsp;are&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$worker</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">collect</span><span style="color: #007700">()}</span><span style="color: #DD0000">&nbsp;tasks&nbsp;remaining&nbsp;on&nbsp;the&nbsp;stack&nbsp;to&nbsp;be&nbsp;collected\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$worker</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">start</span><span style="color: #007700">();<br /><br />while&nbsp;(</span><span style="color: #0000BB">$worker</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">collect</span><span style="color: #007700">());&nbsp;</span><span style="color: #FF8000">//&nbsp;blocks&nbsp;until&nbsp;all&nbsp;tasks&nbsp;have&nbsp;finished&nbsp;executing<br /><br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"There&nbsp;are&nbsp;now&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$worker</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">collect</span><span style="color: #007700">()}</span><span style="color: #DD0000">&nbsp;tasks&nbsp;on&nbsp;the&nbsp;stack&nbsp;to&nbsp;be&nbsp;collected\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$worker</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">shutdown</span><span style="color: #007700">();</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+There are currently 0 tasks on the stack to be collected
+There are 15 tasks remaining on the stack to be collected
+There are now 0 tasks on the stack to be collected
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

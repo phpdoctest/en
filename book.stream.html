@@ -1,0 +1,814 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Streams</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li><a href="book.geoip.html">GeoIP</a></li>
+  <li><a href="book.fann.html">FANN</a></li>
+  <li><a href="book.json.html">JSON</a></li>
+  <li><a href="book.judy.html">Judy</a></li>
+  <li><a href="book.lua.html">Lua</a></li>
+  <li><a href="book.misc.html">Misc.</a></li>
+  <li><a href="book.parsekit.html">Parsekit</a></li>
+  <li><a href="book.spl.html">SPL</a></li>
+  <li><a href="book.spl-types.html">SPL Types</a></li>
+  <li class="active"><a href="book.stream.html">Streams</a></li>
+  <li><a href="book.tidy.html">Tidy</a></li>
+  <li><a href="book.tokenizer.html">Tokenizer</a></li>
+  <li><a href="book.url.html">URLs</a></li>
+  <li><a href="book.v8js.html">V8js</a></li>
+  <li><a href="book.yaml.html">Yaml</a></li>
+  <li><a href="book.yaf.html">Yaf</a></li>
+  <li><a href="book.taint.html">Taint</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="class.splstring.html">SplString</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="intro.stream.html">Introduction</a></div>
+                <div class="up"><a href="refs.basic.other.html">Other Basic Extensions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="book.stream" class="book">
+ 
+ <h1>Streams</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="intro.stream.html">Introduction</a></li>
+<li><a href="stream.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_title">
+<li><a href="stream.requirements.html">Requirements</a></li>
+<li><a href="stream.installation.html">Installation</a></li>
+<li><a href="stream.configuration.html">Runtime Configuration</a></li>
+<li><a href="stream.resources.html">Stream Classes</a></li>
+</ul>
+</li>
+<li><a href="stream.constants.html">Predefined Constants</a></li>
+<li><a href="stream.filters.html">Stream Filters</a></li>
+<li><a href="stream.contexts.html">Stream Contexts</a></li>
+<li><a href="stream.errors.html">Stream Errors</a></li>
+<li><a href="stream.examples.html">Examples</a><ul class="chunklist chunklist_title">
+<li><a href="stream.streamwrapper.example-1.html">Example class registered as stream wrapper</a></li>
+</ul>
+</li>
+<li><a href="class.php-user-filter.html">php_user_filter</a> — The php_user_filter class<ul class="chunklist chunklist_title">
+<li><a href="php-user-filter.filter.html">php_user_filter::filter</a> — Called when applying the filter</li>
+<li><a href="php-user-filter.onclose.html">php_user_filter::onClose</a> — Called when closing the filter</li>
+<li><a href="php-user-filter.oncreate.html">php_user_filter::onCreate</a> — Called when creating the filter</li>
+</ul>
+</li>
+<li><a href="class.streamwrapper.html">streamWrapper</a> — The streamWrapper class<ul class="chunklist chunklist_title">
+<li><a href="streamwrapper.construct.html">streamWrapper::__construct</a> — Constructs a new stream wrapper</li>
+<li><a href="streamwrapper.destruct.html">streamWrapper::__destruct</a> — Destructs an existing stream wrapper</li>
+<li><a href="streamwrapper.dir-closedir.html">streamWrapper::dir_closedir</a> — Close directory handle</li>
+<li><a href="streamwrapper.dir-opendir.html">streamWrapper::dir_opendir</a> — Open directory handle</li>
+<li><a href="streamwrapper.dir-readdir.html">streamWrapper::dir_readdir</a> — Read entry from directory handle</li>
+<li><a href="streamwrapper.dir-rewinddir.html">streamWrapper::dir_rewinddir</a> — Rewind directory handle</li>
+<li><a href="streamwrapper.mkdir.html">streamWrapper::mkdir</a> — Create a directory</li>
+<li><a href="streamwrapper.rename.html">streamWrapper::rename</a> — Renames a file or directory</li>
+<li><a href="streamwrapper.rmdir.html">streamWrapper::rmdir</a> — Removes a directory</li>
+<li><a href="streamwrapper.stream-cast.html">streamWrapper::stream_cast</a> — Retrieve the underlaying resource</li>
+<li><a href="streamwrapper.stream-close.html">streamWrapper::stream_close</a> — Close a resource</li>
+<li><a href="streamwrapper.stream-eof.html">streamWrapper::stream_eof</a> — Tests for end-of-file on a file pointer</li>
+<li><a href="streamwrapper.stream-flush.html">streamWrapper::stream_flush</a> — Flushes the output</li>
+<li><a href="streamwrapper.stream-lock.html">streamWrapper::stream_lock</a> — Advisory file locking</li>
+<li><a href="streamwrapper.stream-metadata.html">streamWrapper::stream_metadata</a> — Change stream metadata</li>
+<li><a href="streamwrapper.stream-open.html">streamWrapper::stream_open</a> — Opens file or URL</li>
+<li><a href="streamwrapper.stream-read.html">streamWrapper::stream_read</a> — Read from stream</li>
+<li><a href="streamwrapper.stream-seek.html">streamWrapper::stream_seek</a> — Seeks to specific location in a stream</li>
+<li><a href="streamwrapper.stream-set-option.html">streamWrapper::stream_set_option</a> — Change stream options</li>
+<li><a href="streamwrapper.stream-stat.html">streamWrapper::stream_stat</a> — Retrieve information about a file resource</li>
+<li><a href="streamwrapper.stream-tell.html">streamWrapper::stream_tell</a> — Retrieve the current position of a stream</li>
+<li><a href="streamwrapper.stream-truncate.html">streamWrapper::stream_truncate</a> — Truncate stream</li>
+<li><a href="streamwrapper.stream-write.html">streamWrapper::stream_write</a> — Write to stream</li>
+<li><a href="streamwrapper.unlink.html">streamWrapper::unlink</a> — Delete a file</li>
+<li><a href="streamwrapper.url-stat.html">streamWrapper::url_stat</a> — Retrieve information about a file</li>
+</ul>
+</li>
+<li><a href="ref.stream.html">Stream Functions</a><ul class="chunklist chunklist_title">
+<li><a href="function.set-socket-blocking.html">set_socket_blocking</a> — Alias of stream_set_blocking</li>
+<li><a href="function.stream-bucket-append.html">stream_bucket_append</a> — Append bucket to brigade</li>
+<li><a href="function.stream-bucket-make-writeable.html">stream_bucket_make_writeable</a> — Return a bucket object from the brigade for operating on</li>
+<li><a href="function.stream-bucket-new.html">stream_bucket_new</a> — Create a new bucket for use on the current stream</li>
+<li><a href="function.stream-bucket-prepend.html">stream_bucket_prepend</a> — Prepend bucket to brigade</li>
+<li><a href="function.stream-context-create.html">stream_context_create</a> — Creates a stream context</li>
+<li><a href="function.stream-context-get-default.html">stream_context_get_default</a> — Retrieve the default stream context</li>
+<li><a href="function.stream-context-get-options.html">stream_context_get_options</a> — Retrieve options for a stream/wrapper/context</li>
+<li><a href="function.stream-context-get-params.html">stream_context_get_params</a> — Retrieves parameters from a context</li>
+<li><a href="function.stream-context-set-default.html">stream_context_set_default</a> — Set the default stream context</li>
+<li><a href="function.stream-context-set-option.html">stream_context_set_option</a> — Sets an option for a stream/wrapper/context</li>
+<li><a href="function.stream-context-set-params.html">stream_context_set_params</a> — Set parameters for a stream/wrapper/context</li>
+<li><a href="function.stream-copy-to-stream.html">stream_copy_to_stream</a> — Copies data from one stream to another</li>
+<li><a href="function.stream-encoding.html">stream_encoding</a> — Set character set for stream encoding</li>
+<li><a href="function.stream-filter-append.html">stream_filter_append</a> — Attach a filter to a stream</li>
+<li><a href="function.stream-filter-prepend.html">stream_filter_prepend</a> — Attach a filter to a stream</li>
+<li><a href="function.stream-filter-register.html">stream_filter_register</a> — Register a user defined stream filter</li>
+<li><a href="function.stream-filter-remove.html">stream_filter_remove</a> — Remove a filter from a stream</li>
+<li><a href="function.stream-get-contents.html">stream_get_contents</a> — Reads remainder of a stream into a string</li>
+<li><a href="function.stream-get-filters.html">stream_get_filters</a> — Retrieve list of registered filters</li>
+<li><a href="function.stream-get-line.html">stream_get_line</a> — Gets line from stream resource up to a given delimiter</li>
+<li><a href="function.stream-get-meta-data.html">stream_get_meta_data</a> — Retrieves header/meta data from streams/file pointers</li>
+<li><a href="function.stream-get-transports.html">stream_get_transports</a> — Retrieve list of registered socket transports</li>
+<li><a href="function.stream-get-wrappers.html">stream_get_wrappers</a> — Retrieve list of registered streams</li>
+<li><a href="function.stream-is-local.html">stream_is_local</a> — Checks if a stream is a local stream</li>
+<li><a href="function.stream-notification-callback.html">stream_notification_callback</a> — A callback function for the notification context parameter</li>
+<li><a href="function.stream-register-wrapper.html">stream_register_wrapper</a> — Alias of stream_wrapper_register</li>
+<li><a href="function.stream-resolve-include-path.html">stream_resolve_include_path</a> — Resolve filename against the include path</li>
+<li><a href="function.stream-select.html">stream_select</a> — Runs the equivalent of the select() system call on the given
+   arrays of streams with a timeout specified by tv_sec and tv_usec</li>
+<li><a href="function.stream-set-blocking.html">stream_set_blocking</a> — Set blocking/non-blocking mode on a stream</li>
+<li><a href="function.stream-set-chunk-size.html">stream_set_chunk_size</a> — Set the stream chunk size</li>
+<li><a href="function.stream-set-read-buffer.html">stream_set_read_buffer</a> — Set read file buffering on the given stream</li>
+<li><a href="function.stream-set-timeout.html">stream_set_timeout</a> — Set timeout period on a stream</li>
+<li><a href="function.stream-set-write-buffer.html">stream_set_write_buffer</a> — Sets write file buffering on the given stream</li>
+<li><a href="function.stream-socket-accept.html">stream_socket_accept</a> — Accept a connection on a socket created by stream_socket_server</li>
+<li><a href="function.stream-socket-client.html">stream_socket_client</a> — Open Internet or Unix domain socket connection</li>
+<li><a href="function.stream-socket-enable-crypto.html">stream_socket_enable_crypto</a> — Turns encryption on/off on an already connected socket</li>
+<li><a href="function.stream-socket-get-name.html">stream_socket_get_name</a> — Retrieve the name of the local or remote sockets</li>
+<li><a href="function.stream-socket-pair.html">stream_socket_pair</a> — Creates a pair of connected, indistinguishable socket streams</li>
+<li><a href="function.stream-socket-recvfrom.html">stream_socket_recvfrom</a> — Receives data from a socket, connected or not</li>
+<li><a href="function.stream-socket-sendto.html">stream_socket_sendto</a> — Sends a message to a socket, whether it is connected or not</li>
+<li><a href="function.stream-socket-server.html">stream_socket_server</a> — Create an Internet or Unix domain server socket</li>
+<li><a href="function.stream-socket-shutdown.html">stream_socket_shutdown</a> — Shutdown a full-duplex connection</li>
+<li><a href="function.stream-supports-lock.html">stream_supports_lock</a> — Tells whether the stream supports locking.</li>
+<li><a href="function.stream-wrapper-register.html">stream_wrapper_register</a> — Register a URL wrapper implemented as a PHP class</li>
+<li><a href="function.stream-wrapper-restore.html">stream_wrapper_restore</a> — Restores a previously unregistered built-in wrapper</li>
+<li><a href="function.stream-wrapper-unregister.html">stream_wrapper_unregister</a> — Unregister a URL wrapper</li>
+</ul>
+</li>
+</ul>
+
+
+  
+
+ 
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+ 
+
+ 
+
+
+
+  
+
+
+
+ 
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The php_user_filter class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="php-user-filter.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Children of this class are passed to
+    <span class="function">stream_filter_register</span>.
+   </p>
+  </div>
+
+
+  <div class="section" id="php-user-filter.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">php_user_filter</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">php_user_filter</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$filtername</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$params</var>
+    ;</div>
+
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">filter</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$in</code></span>
+   , <span class="methodparam"><span class="type">resource</span> <code class="parameter">$out</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter reference">&$consumed</code></span>
+   , <span class="methodparam"><span class="type">bool</span> <code class="parameter">$closing</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">onClose</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">onCreate</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+  
+
+  <div class="section" id="php-user-filter.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="php-user-filter.props.filtername"><var class="varname">filtername</var></dt>
+
+     <dd>
+
+      <p class="para">
+       Name of the filter registered by
+       <span class="function">stream_filter_append</span>.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="php-user-filter.props.params"><var class="varname">params</var></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The streamWrapper class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="streamwrapper.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Allows you to implement your own protocol handlers and streams for use
+    with all the other filesystem functions (such as <span class="function">fopen</span>,
+    <span class="function">fread</span> etc.).
+   </p>
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <p class="para">
+     This is <em class="emphasis">NOT</em> a real class, only a prototype of how
+     a class defining its own protocol should be. 
+    </p>
+   </p></blockquote>
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <p class="para">
+     Implementing the methods in other ways than described here can lead to
+     undefined behaviour.
+    </p>
+   </p></blockquote>
+   <p class="para">
+    An instance of this class is initialized as soon as a stream function
+    tries to access the protocol it is associated with.
+   </p>
+  </div>
+
+
+  <div class="section" id="streamwrapper.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">streamWrapper</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname"><span class="replaceable">streamWrapper</span></strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">resource</span>
+     <var class="varname">$context</var>
+    ;</div>
+
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+    <span class="methodname">__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+    <span class="methodname">__destruct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">dir_closedir</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">dir_opendir</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$path</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">dir_readdir</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">dir_rewinddir</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">mkdir</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$path</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">rename</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$path_from</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$path_to</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">rmdir</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$path</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">resource</span> <span class="methodname">stream_cast</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$cast_as</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">stream_close</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">stream_eof</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">stream_flush</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">stream_lock</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$operation</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">stream_metadata</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$path</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$option</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">stream_open</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$path</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$mode</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$options</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter reference">&$opened_path</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">stream_read</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$count</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">stream_seek</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$offset</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$whence</code> <span class="initializer"> = SEEK_SET</span></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">stream_set_option</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$option</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$arg1</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$arg2</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">stream_stat</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">stream_tell</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">stream_truncate</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$new_size</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">stream_write</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$data</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">unlink</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$path</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">url_stat</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$path</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code></span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+  
+
+  <div class="section" id="streamwrapper.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="streamwrapper.props.context">resource <var class="varname">context</var></dt>
+
+     <dd>
+
+      <p class="para">
+       The current <a href="context.html" class="link">context</a>, or <strong><code>NULL</code></strong> if no
+       context was passed to the caller function.
+      </p>
+      <p class="para">
+       Use the <span class="function">stream_context_get_options</span> to parse the
+       context.
+      </p>
+      <blockquote class="note"><p><strong class="note">Note</strong>: 
+       <p class="para">
+        This property <em class="emphasis">must</em> be public so PHP can populate
+        it with the actual context resource.
+       </p>
+      </p></blockquote>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+ <div class="section">
+  <h2 class="title">Changelog</h2>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.0.0</td>
+       <td>
+        Added the <em>context</em> property.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ <div class="section">
+  <h2 class="title">See Also</h2>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="stream.streamwrapper.example-1.html" class="xref">Example class registered as stream wrapper</a></li>
+    <li class="member"><span class="function">stream_wrapper_register</span></li>
+    <li class="member"><span class="function">stream_wrapper_unregister</span></li>
+    <li class="member"><span class="function">stream_wrapper_restore</span></li>
+   </ul>
+  </p>
+ </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

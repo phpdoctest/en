@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: The &quot;counter&quot; Extension - A Continuing Example</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="internals2.html">PHP at the Core: A Hacker's Guide</a></li>
+  <li><a href="internals2.preface.html">Preface</a></li>
+  <li><a href="internals2.memory.html">Memory management</a></li>
+  <li><a href="internals2.variables.html">Working with Variables</a></li>
+  <li><a href="internals2.funcs.html">Writing Functions</a></li>
+  <li><a href="internals2.classes.html">Writing Classes</a></li>
+  <li><a href="internals2.resources.html">Working with Resources</a></li>
+  <li><a href="internals2.ini.html">Working with INI settings</a></li>
+  <li><a href="internals2.streams.html">Working with streams</a></li>
+  <li class="active"><a href="internals2.counter.html">The &quot;counter&quot; Extension - A Continuing Example</a></li>
+  <li><a href="internals2.buildsys.html">The PHP 5 build system</a></li>
+  <li><a href="internals2.structure.html">Extension structure</a></li>
+  <li><a href="internals2.pdo.html">PDO Driver How-To</a></li>
+  <li><a href="internals2.faq.html">Extension FAQs</a></li>
+  <li><a href="internals2.apiref.html">Zend Engine 2 API reference</a></li>
+  <li><a href="internals2.opcodes.html">Zend Engine 2 Opcodes</a></li>
+  <li><a href="internals2.ze1.html">Zend Engine 1</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="internals2.streams.html">Working with streams</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="internals2.counter.setup.html">Installing/Configuring</a></div>
+                <div class="up"><a href="internals2.html">PHP at the Core: A Hacker's Guide</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="internals2.counter" class="part">
+  <h1>The &quot;counter&quot; Extension - A Continuing Example</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="internals2.counter.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_title">
+<li><a href="internals2.counter.intro.html">Introduction</a></li>
+<li><a href="internals2.counter.ini.html">Runtime Configuration</a></li>
+<li><a href="internals2.counter.resources.html">Resource Types</a></li>
+</ul>
+</li>
+<li><a href="internals2.counter.constants.html">Predefined Constants</a></li>
+<li><a href="internals2.counter.examples.html">Examples</a><ul class="chunklist chunklist_title">
+<li><a href="internals2.counter.examples.basic.html">Basic interface</a></li>
+<li><a href="internals2.counter.examples.extended.html">Extended interface</a></li>
+<li><a href="internals2.counter.examples.objective.html">Objective interface</a></li>
+</ul>
+</li>
+<li><a href="internals2.counter.counter-class.html">Counter</a> — The Counter class<ul class="chunklist chunklist_title">
+<li><a href="internals2.counter.counter-class.construct.html">Counter::__construct</a> — Creates an instance of a Counter which maintains a single numeric value.</li>
+<li><a href="internals2.counter.counter-class.getvalue.html">Counter::getValue</a> — Get the current value of a counter.</li>
+<li><a href="internals2.counter.counter-class.bumpvalue.html">Counter::bumpValue</a> — Change the current value of a counter.</li>
+<li><a href="internals2.counter.counter-class.resetvalue.html">Counter::resetValue</a> — Reset the current value of a counter.</li>
+<li><a href="internals2.counter.counter-class.getmeta.html">Counter::getMeta</a> — Return a piece of metainformation about a counter.</li>
+<li><a href="internals2.counter.counter-class.getnamed.html">Counter::getNamed</a> — Retrieve an existing named counter.</li>
+<li><a href="internals2.counter.counter-class.setcounterclass.html">Counter::setCounterClass</a> — Set the class returned by Counter::getNamed.</li>
+</ul>
+</li>
+<li><a href="internals2.counter.basic-interface.html">Basic</a> — The basic interface<ul class="chunklist chunklist_title">
+<li><a href="internals2.counter.function.counter-get.html">counter_get</a> — Get the current value of the basic counter.</li>
+<li><a href="internals2.counter.function.counter-bump.html">counter_bump</a> — Update the current value of the basic counter.</li>
+<li><a href="internals2.counter.function.counter-reset.html">counter_reset</a> — Reset the current value of the basic counter.</li>
+</ul>
+</li>
+<li><a href="internals2.counter.extended-interface.html">Extended</a> — The extended interface<ul class="chunklist chunklist_title">
+<li><a href="internals2.counter.function.counter-create.html">counter_create</a> — Creates a counter which maintains a single numeric value.</li>
+<li><a href="internals2.counter.function.counter-get-value.html">counter_get_value</a> — Get the current value of a counter resource.</li>
+<li><a href="internals2.counter.function.counter-bump-value.html">counter_bump_value</a> — Change the current value of a counter resource.</li>
+<li><a href="internals2.counter.function.counter-reset-value.html">counter_reset_value</a> — Reset the current value of a counter resource.</li>
+<li><a href="internals2.counter.function.counter-get-meta.html">counter_get_meta</a> — Return a piece of metainformation about a counter resource.</li>
+<li><a href="internals2.counter.function.counter-get-named.html">counter_get_named</a> — Retrieve an existing named counter as a resource.</li>
+</ul>
+</li>
+</ul>
+
+  
+  <div class="partintro">
+   <h1 class="title">Preface</h1>
+   <p class="simpara"> 
+    Throughout this Zend documentation, references are made to an example module
+    in order to illustrate various concepts. The &quot;counter&quot; extension is this
+    example, a fictional yet functional Zend module which strives to use as much
+    of the Zend API as is reasonably possible. This short chapter describes the
+    userland interface to the completed extension.
+   </p>
+  
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <span class="simpara">
+     &quot;counter&quot; serves no practical purpose whatsoever, as the functionality it
+     provides is far more effectively implemented by appropriate userland code.
+    </span>
+   </p></blockquote>
+  </div>
+  
+  
+  
+  
+
+  
+  
+  
+  
+  
+
+  
+
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

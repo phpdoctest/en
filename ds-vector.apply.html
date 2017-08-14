@@ -1,0 +1,194 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Updates all values by applying a callback function to each value.</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.vartype.html">Variable and Type Related Extensions</a></li>
+  <li class="header up"><a href="book.ds.html">Data Structures</a></li>
+  <li class="header up"><a href="class.ds-vector.html">Vector</a></li>
+  <li><a href="ds-vector.allocate.html">Ds\Vector::allocate</a></li>
+  <li class="active"><a href="ds-vector.apply.html">Ds\Vector::apply</a></li>
+  <li><a href="ds-vector.capacity.html">Ds\Vector::capacity</a></li>
+  <li><a href="ds-vector.clear.html">Ds\Vector::clear</a></li>
+  <li><a href="ds-vector.construct.html">Ds\Vector::__construct</a></li>
+  <li><a href="ds-vector.contains.html">Ds\Vector::contains</a></li>
+  <li><a href="ds-vector.copy.html">Ds\Vector::copy</a></li>
+  <li><a href="ds-vector.count.html">Ds\Vector::count</a></li>
+  <li><a href="ds-vector.filter.html">Ds\Vector::filter</a></li>
+  <li><a href="ds-vector.find.html">Ds\Vector::find</a></li>
+  <li><a href="ds-vector.first.html">Ds\Vector::first</a></li>
+  <li><a href="ds-vector.get.html">Ds\Vector::get</a></li>
+  <li><a href="ds-vector.insert.html">Ds\Vector::insert</a></li>
+  <li><a href="ds-vector.isempty.html">Ds\Vector::isEmpty</a></li>
+  <li><a href="ds-vector.join.html">Ds\Vector::join</a></li>
+  <li><a href="ds-vector.jsonserialize.html">Ds\Vector::jsonSerialize</a></li>
+  <li><a href="ds-vector.last.html">Ds\Vector::last</a></li>
+  <li><a href="ds-vector.map.html">Ds\Vector::map</a></li>
+  <li><a href="ds-vector.merge.html">Ds\Vector::merge</a></li>
+  <li><a href="ds-vector.pop.html">Ds\Vector::pop</a></li>
+  <li><a href="ds-vector.push.html">Ds\Vector::push</a></li>
+  <li><a href="ds-vector.reduce.html">Ds\Vector::reduce</a></li>
+  <li><a href="ds-vector.remove.html">Ds\Vector::remove</a></li>
+  <li><a href="ds-vector.reverse.html">Ds\Vector::reverse</a></li>
+  <li><a href="ds-vector.reversed.html">Ds\Vector::reversed</a></li>
+  <li><a href="ds-vector.rotate.html">Ds\Vector::rotate</a></li>
+  <li><a href="ds-vector.set.html">Ds\Vector::set</a></li>
+  <li><a href="ds-vector.shift.html">Ds\Vector::shift</a></li>
+  <li><a href="ds-vector.slice.html">Ds\Vector::slice</a></li>
+  <li><a href="ds-vector.sort.html">Ds\Vector::sort</a></li>
+  <li><a href="ds-vector.sorted.html">Ds\Vector::sorted</a></li>
+  <li><a href="ds-vector.sum.html">Ds\Vector::sum</a></li>
+  <li><a href="ds-vector.toarray.html">Ds\Vector::toArray</a></li>
+  <li><a href="ds-vector.unshift.html">Ds\Vector::unshift</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="ds-vector.allocate.html">Ds\Vector::allocate</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="ds-vector.capacity.html">Ds\Vector::capacity</a></div>
+                <div class="up"><a href="class.ds-vector.html">Vector</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="ds-vector.apply" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Ds\Vector::apply</h1>
+  <p class="refpurpose">Updates all values by applying a callback function to each value.</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-ds-vector.apply-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">Ds\Vector::apply</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+    Updates all values by applying a <code class="parameter">callback</code> function to
+    each value in the vector.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-ds-vector.apply-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">callback</code></dt>
+
+
+    <dd>
+
+        <p class="para">
+            <div class="methodsynopsis dc-description">
+                <span class="type">mixed</span>
+                 <span class="methodname"><span class="replaceable">callback</span></span>
+                 ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value</code></span>
+              )</div>
+
+        </p>
+        <p class="para">
+            A <span class="type">callable</span> to apply to each value in the vector.
+        </p>
+
+        <p class="para">
+            The callback should return what the value should be replaced by.
+        </p>
+    </dd>
+
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-ds-vector.apply-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+    No value is returned.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-ds-vector.apply-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-5751">
+   <p><strong>Example #1 <span class="function">Ds\Vector::apply</span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$vector&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;\</span><span style="color: #0000BB">Ds</span><span style="color: #007700">\</span><span style="color: #0000BB">Vector</span><span style="color: #007700">([</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">$vector</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">apply</span><span style="color: #007700">(function(</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{&nbsp;return&nbsp;</span><span style="color: #0000BB">$value&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">;&nbsp;});<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$vector</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Ds\Vector Object
+(
+    [0] =&gt; 2
+    [1] =&gt; 4
+    [2] =&gt; 6
+)
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,130 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Checking for E_STRICT</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="appendices.html">Appendices</a></li>
+  <li class="header up"><a href="migration51.html">Migrating from PHP 5.0.x to PHP 5.1.x</a></li>
+  <li><a href="migration51.changes.html">Key PHP 5.1.x features</a></li>
+  <li><a href="migration51.references.html">Changes in reference handling</a></li>
+  <li><a href="migration51.reading.html">Reading []</a></li>
+  <li><a href="migration51.integer-parameters.html">Integer values in function parameters</a></li>
+  <li><a href="migration51.oop.html">Class and object changes</a></li>
+  <li><a href="migration51.extensions.html">Extensions</a></li>
+  <li><a href="migration51.datetime.html">Date/time support</a></li>
+  <li><a href="migration51.databases.html">Changes in database support</a></li>
+  <li class="active"><a href="migration51.errorcheck.html">Checking for E_STRICT</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="migration51.databases.html">Changes in database support</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="migration5.html">Migrating from PHP 4 to PHP 5.0.x</a></div>
+                <div class="up"><a href="migration51.html">Migrating from PHP 5.0.x to PHP 5.1.x</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="migration51.errorcheck" class="section">
+  <h2 class="title">Checking for <strong><code>E_STRICT</code></strong></h2>
+  <div class="informalexample">
+   <p class="para">
+    If you only have a single script to check, you can pick up
+    <strong><code>E_STRICT</code></strong> errors using PHP&#039;s commandline lint
+    facility:
+   </p>
+   <div class="example-contents"><div class="shellcode"><pre class="shellcode">php -d error_reporting=4095 -l script_to_check.php</pre>
+</div></div>
+
+   <p class="para">
+    For larger projects, the shell script below will achieve the same task:
+   </p>
+   <div class="example-contents">
+<div class="shellcode"><pre class="shellcode">#!/bin/sh
+
+directory=$1
+
+shift
+
+# These extensions are checked
+extensions=&quot;php inc&quot;
+
+check_file ()
+{
+  echo -ne &quot;Doing PHP syntax check on $1 ...&quot;
+
+  # Options:
+  ERRORS=`/www/php/bin/php -d display_errors=1 -d html_errors=0 -d error_prepend_string=&quot; &quot; -d error_append_string=&quot; &quot; -d error_reporting=4095 -l $1 | grep -v &quot;No syntax errors detected&quot;`
+
+  if test -z &quot;$ERRORS&quot;; then
+    echo -ne &quot;OK.&quot;
+  else
+    echo -e &quot;Errors found!\n$ERRORS&quot;
+  fi
+
+  echo
+}
+
+# loop over remaining file args
+for FILE in &quot;$@&quot; ; do
+  for ext in $extensions; do
+     if echo $FILE | grep &quot;\.$ext$&quot; &gt; /dev/null; then
+       if test -f $FILE; then
+         check_file &quot;$FILE&quot;
+       fi
+     fi
+  done
+done</pre>
+</div>
+   </div>
+
+  </div>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Return the result code of the last operation</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li class="header up"><a href="book.memcached.html">Memcached</a></li>
+  <li class="header up"><a href="class.memcached.html">Memcached</a></li>
+  <li><a href="memcached.add.html">Memcached::add</a></li>
+  <li><a href="memcached.addbykey.html">Memcached::addByKey</a></li>
+  <li><a href="memcached.addserver.html">Memcached::addServer</a></li>
+  <li><a href="memcached.addservers.html">Memcached::addServers</a></li>
+  <li><a href="memcached.append.html">Memcached::append</a></li>
+  <li><a href="memcached.appendbykey.html">Memcached::appendByKey</a></li>
+  <li><a href="memcached.cas.html">Memcached::cas</a></li>
+  <li><a href="memcached.casbykey.html">Memcached::casByKey</a></li>
+  <li><a href="memcached.construct.html">Memcached::__construct</a></li>
+  <li><a href="memcached.decrement.html">Memcached::decrement</a></li>
+  <li><a href="memcached.decrementbykey.html">Memcached::decrementByKey</a></li>
+  <li><a href="memcached.delete.html">Memcached::delete</a></li>
+  <li><a href="memcached.deletebykey.html">Memcached::deleteByKey</a></li>
+  <li><a href="memcached.deletemulti.html">Memcached::deleteMulti</a></li>
+  <li><a href="memcached.deletemultibykey.html">Memcached::deleteMultiByKey</a></li>
+  <li><a href="memcached.fetch.html">Memcached::fetch</a></li>
+  <li><a href="memcached.fetchall.html">Memcached::fetchAll</a></li>
+  <li><a href="memcached.flush.html">Memcached::flush</a></li>
+  <li><a href="memcached.get.html">Memcached::get</a></li>
+  <li><a href="memcached.getallkeys.html">Memcached::getAllKeys</a></li>
+  <li><a href="memcached.getbykey.html">Memcached::getByKey</a></li>
+  <li><a href="memcached.getdelayed.html">Memcached::getDelayed</a></li>
+  <li><a href="memcached.getdelayedbykey.html">Memcached::getDelayedByKey</a></li>
+  <li><a href="memcached.getmulti.html">Memcached::getMulti</a></li>
+  <li><a href="memcached.getmultibykey.html">Memcached::getMultiByKey</a></li>
+  <li><a href="memcached.getoption.html">Memcached::getOption</a></li>
+  <li class="active"><a href="memcached.getresultcode.html">Memcached::getResultCode</a></li>
+  <li><a href="memcached.getresultmessage.html">Memcached::getResultMessage</a></li>
+  <li><a href="memcached.getserverbykey.html">Memcached::getServerByKey</a></li>
+  <li><a href="memcached.getserverlist.html">Memcached::getServerList</a></li>
+  <li><a href="memcached.getstats.html">Memcached::getStats</a></li>
+  <li><a href="memcached.getversion.html">Memcached::getVersion</a></li>
+  <li><a href="memcached.increment.html">Memcached::increment</a></li>
+  <li><a href="memcached.incrementbykey.html">Memcached::incrementByKey</a></li>
+  <li><a href="memcached.ispersistent.html">Memcached::isPersistent</a></li>
+  <li><a href="memcached.ispristine.html">Memcached::isPristine</a></li>
+  <li><a href="memcached.prepend.html">Memcached::prepend</a></li>
+  <li><a href="memcached.prependbykey.html">Memcached::prependByKey</a></li>
+  <li><a href="memcached.quit.html">Memcached::quit</a></li>
+  <li><a href="memcached.replace.html">Memcached::replace</a></li>
+  <li><a href="memcached.replacebykey.html">Memcached::replaceByKey</a></li>
+  <li><a href="memcached.resetserverlist.html">Memcached::resetServerList</a></li>
+  <li><a href="memcached.set.html">Memcached::set</a></li>
+  <li><a href="memcached.setbykey.html">Memcached::setByKey</a></li>
+  <li><a href="memcached.setmulti.html">Memcached::setMulti</a></li>
+  <li><a href="memcached.setmultibykey.html">Memcached::setMultiByKey</a></li>
+  <li><a href="memcached.setoption.html">Memcached::setOption</a></li>
+  <li><a href="memcached.setoptions.html">Memcached::setOptions</a></li>
+  <li><a href="memcached.setsaslauthdata.html">Memcached::setSaslAuthData</a></li>
+  <li><a href="memcached.touch.html">Memcached::touch</a></li>
+  <li><a href="memcached.touchbykey.html">Memcached::touchByKey</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="memcached.getoption.html">Memcached::getOption</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="memcached.getresultmessage.html">Memcached::getResultMessage</a></div>
+                <div class="up"><a href="class.memcached.html">Memcached</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="memcached.getresultcode" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Memcached::getResultCode</h1>
+  <p class="refpurpose">Return the result code of the last operation</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-memcached.getresultcode-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">Memcached::getResultCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function">Memcached::getResultCode</span> returns one of the
+   <strong><code>Memcached::RES_*</code></strong> constants that is the result of the
+   last executed Memcached method.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-memcached.getresultcode-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">This function has no parameters.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-memcached.getresultcode-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Result code of the last Memcached operation.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-memcached.getresultcode-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4998">
+    <p><strong>Example #1 <span class="function">Memcached::getResultCode</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$m&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Memcached</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">addServer</span><span style="color: #007700">(</span><span style="color: #DD0000">'localhost'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">11211</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(</span><span style="color: #DD0000">'foo'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'bar'</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">$m</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getResultCode</span><span style="color: #007700">()&nbsp;==&nbsp;</span><span style="color: #0000BB">Memcached</span><span style="color: #007700">::</span><span style="color: #0000BB">RES_NOTSTORED</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;...&nbsp;*/<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

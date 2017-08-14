@@ -1,0 +1,149 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Installation</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.sqlite.html">SQLite</a></li>
+  <li class="header up"><a href="sqlite.setup.html">Installing/Configuring</a></li>
+  <li><a href="sqlite.requirements.html">Requirements</a></li>
+  <li class="active"><a href="sqlite.installation.html">Installation</a></li>
+  <li><a href="sqlite.configuration.html">Runtime Configuration</a></li>
+  <li><a href="sqlite.resources.html">Resource Types</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="sqlite.requirements.html">Requirements</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="sqlite.configuration.html">Runtime Configuration</a></div>
+                <div class="up"><a href="sqlite.setup.html">Installing/Configuring</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="sqlite.installation" class="section">
+  <h2 class="title">Installation</h2>
+  <p class="para">
+   Since PHP 5.0 this extension was bundled with PHP. Beginning with PHP 5.4,
+   this extension is available only via PECL.
+  </p>
+  <p class="para">
+   Windows users must enable <var class="filename">php_sqlite.dll</var> inside
+   of <var class="filename">php.ini</var> in order to use these functions.
+   A <acronym class="acronym">DLL</acronym> for this
+<acronym class="acronym">PECL</acronym> extension is currently unavailable. See also the
+<a href="install.windows.legacy.index.html#install.windows.legacy.building" class="link">building on Windows</a>
+section.
+  </p>
+  <p class="para">
+   Windows builds must also enable PDO because as of PHP 5.1.0 it depends
+   on it. So, <var class="filename">php.ini</var> will end up with something like this:
+   <div class="informalexample">
+    <div class="example-contents">
+<div class="inicode"><pre class="inicode">extension=php_pdo.dll
+extension=php_sqlite.dll</pre>
+</div>
+    </div>
+
+   </div>
+   On Linux or Unix operating systems, if you build PDO as a shared
+   extension, you must build SQLite as a shared extension using the
+   <strong class="command">--with-sqlite=shared</strong> configure option.
+  </p>
+  <p class="para">
+   The PHP 5.0.x series of Windows builds enabled this extension by
+   default, where no <acronym class="acronym">DLL</acronym> file is necessary.
+  </p>
+  <p class="para">
+   SQLite 3 is supported through <a href="ref.pdo-sqlite.html" class="link">PDO SQLite</a>.
+  </p>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <strong>Windows installation for unprivileged accounts</strong><br />
+   <p class="para">
+    On Windows operating systems, unprivileged accounts don&#039;t have the
+    <var class="varname">TMP</var> environment variable set by default. This will
+    make sqlite create temporary files in the windows directory, which is
+    not desirable. So, you should set the <var class="varname">TMP</var> environment
+    variable for the web server or the user account the web server is
+    running under. If Apache is your web server, you can accomplish this via
+    a <strong class="command">SetEnv</strong> directive in your <var class="filename">httpd.conf</var> file. For
+    example:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="apache-confcode"><pre class="apache-confcode">SetEnv TMP c:/temp</pre>
+</div>
+     </div>
+
+    </div>
+    If you are unable to establish this setting at the server
+    level, you can implement the setting in your script:
+    <div class="informalexample">
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />putenv</span><span style="color: #007700">(</span><span style="color: #DD0000">'TMP=C:/temp'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+    The setting must refer to a directory that the web server
+    has permission to create files in and subsequently write
+    to and delete the files it created.
+    Otherwise, you may receive the following error message:
+    <span class="computeroutput">
+     malformed database schema -
+     unable to open a temporary database file for storing temporary tables
+    </span>
+   </p>
+  </p></blockquote>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

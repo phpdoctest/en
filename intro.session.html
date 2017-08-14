@@ -1,0 +1,151 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Introduction</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.session.html">Session Extensions</a></li>
+  <li class="header up"><a href="book.session.html">Sessions</a></li>
+  <li class="active"><a href="intro.session.html">Introduction</a></li>
+  <li><a href="session.setup.html">Installing/Configuring</a></li>
+  <li><a href="session.constants.html">Predefined Constants</a></li>
+  <li><a href="session.examples.html">Examples</a></li>
+  <li><a href="session.upload-progress.html">Session Upload Progress</a></li>
+  <li><a href="session.security.html">Sessions and Security</a></li>
+  <li><a href="ref.session.html">Session Functions</a></li>
+  <li><a href="class.sessionhandler.html">SessionHandler</a></li>
+  <li><a href="class.sessionhandlerinterface.html">SessionHandlerInterface</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="book.session.html">Sessions</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="session.setup.html">Installing/Configuring</a></div>
+                <div class="up"><a href="book.session.html">Sessions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="intro.session" class="preface">
+  <h1 class="title">Introduction</h1>
+  <p class="para">
+   Session support in PHP consists of a way to preserve certain data
+   across subsequent accesses. 
+  </p>
+  <p class="para">
+   A visitor accessing your web site is assigned a unique id, the
+   so-called session id. This is either stored in a cookie on the
+   user side or is propagated in the URL.
+  </p>
+  <p class="para">
+   The session support allows you to store data between requests in the
+   <var class="varname">$_SESSION</var> superglobal array. When a visitor accesses
+   your site, PHP will check automatically (if <a href="session.configuration.html#ini.session.auto-start" class="link">session.auto_start</a>
+   is set to 1) or on your request (explicitly through
+   <span class="function">session_start</span>) whether a specific session
+   id has been sent with the request. If this is the case, the prior
+   saved environment is recreated.
+  </p>
+  <div class="caution"><strong class="caution">Caution</strong>
+   <p class="para">
+    If you turn on <a href="session.configuration.html#ini.session.auto-start" class="link">
+    session.auto_start</a> then the only way to put objects
+    into your sessions is to load its class definition using
+    <a href="ini.core.html#ini.auto-prepend-file" class="link">auto_prepend_file</a>
+    in which you load the class definition else you will have to
+    <span class="function">serialize</span> your object
+    and <span class="function">unserialize</span> it
+    afterwards.
+   </p>
+  </div>
+  <p class="para">
+   <var class="varname">$_SESSION</var> (and all registered variables) are serialized
+   internally by PHP using the serialization handler specified by the
+   <a href="session.configuration.html#ini.session.serialize-handler" class="link">session.serialize_handler</a> ini setting,
+   after the request finishes.  Registered variables which are undefined are
+   marked as being not defined.  On subsequent accesses, these are not defined
+   by the session module unless the user defines them later. 
+  </p>
+  <div class="warning"><strong class="warning">Warning</strong>
+   <p class="para">
+    Because session data is serialized, <span class="type">resource</span> variables cannot
+    be stored in the session.
+   </p>
+   <p class="para">
+     Serialize handlers (<em>php</em>
+     and <em>php_binary</em>) inherit register_globals
+     limitations. Therefore, numeric index or string index contains
+     special characters (<em>|</em>
+     and <em>!</em>) cannot be used. Using these will end up
+     with errors at script shutdown. <em>php_serialize</em>
+     does not have such limitations. <em>php_serialize</em>
+     is available from PHP 5.5.4.
+   </p>
+  </div>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    Please note when working with sessions that a record of a session
+    is not created until a variable has been registered using the
+    <span class="function">session_register</span> function or by adding a new
+    key to the <var class="varname">$_SESSION</var> superglobal array. This
+    holds true regardless of if a session has been started using the
+    <span class="function">session_start</span> function.
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    PHP 5.2.2 introduced an undocumented feature to store session files
+    in &quot;/tmp&quot; even if <a href="ini.core.html#ini.open-basedir" class="link">open_basedir</a>
+    was enabled and &quot;/tmp&quot; is not explicitly added to the allowed paths
+    list. This feature has been removed from PHP as of PHP 5.3.0.
+   </p>
+  </p></blockquote>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,478 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: High resolution timing</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.calendar.html">Date and Time Related Extensions</a></li>
+  <li><a href="book.calendar.html">Calendar</a></li>
+  <li><a href="book.datetime.html">Date/Time</a></li>
+  <li class="active"><a href="book.hrtime.html">HRTime</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="timezones.others.html">Others</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="intro.hrtime.html">Introduction</a></div>
+                <div class="up"><a href="refs.calendar.html">Date and Time Related Extensions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="book.hrtime" class="book">
+ <h1>High resolution timing</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="intro.hrtime.html">Introduction</a></li>
+<li><a href="hrtime.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_title">
+<li><a href="hrtime.installation.html">Installation</a></li>
+</ul>
+</li>
+<li><a href="hrtime.examples.html">Examples</a><ul class="chunklist chunklist_title">
+<li><a href="hrtime.example.basic.html">Basic usage</a></li>
+</ul>
+</li>
+<li><a href="class.hrtime-performancecounter.html">HRTime\PerformanceCounter</a> — The HRTime\PerformanceCounter class<ul class="chunklist chunklist_title">
+<li><a href="hrtime-performancecounter.getfrequency.html">HRTime\PerformanceCounter::getFrequency</a> — Timer frequency in ticks per second</li>
+<li><a href="hrtime-performancecounter.getticks.html">HRTime\PerformanceCounter::getTicks</a> — Current ticks from the system</li>
+<li><a href="hrtime-performancecounter.gettickssince.html">HRTime\PerformanceCounter::getTicksSince</a> — Ticks elapsed since the given value</li>
+</ul>
+</li>
+<li><a href="class.hrtime-stopwatch.html">HRTime\StopWatch</a> — The HRTime\StopWatch class<ul class="chunklist chunklist_title">
+<li><a href="hrtime-stopwatch.getelapsedticks.html">HRTime\StopWatch::getElapsedTicks</a> — Get elapsed ticks for all intervals.</li>
+<li><a href="hrtime-stopwatch.getelapsedtime.html">HRTime\StopWatch::getElapsedTime</a> — Get elapsed time for all intervals.</li>
+<li><a href="hrtime-stopwatch.getlastelapsedticks.html">HRTime\StopWatch::getLastElapsedTicks</a> — Get elapsed ticks for the last interval.</li>
+<li><a href="hrtime-stopwatch.getlastelapsedtime.html">HRTime\StopWatch::getLastElapsedTime</a> — Get elapsed time for the last interval.</li>
+<li><a href="hrtime-stopwatch.isrunning.html">HRTime\StopWatch::isRunning</a> — Whether the measurement is running.</li>
+<li><a href="hrtime-stopwatch.start.html">HRTime\StopWatch::start</a> — Start time measurement</li>
+<li><a href="hrtime-stopwatch.stop.html">HRTime\StopWatch::stop</a> — Stop time measurement</li>
+</ul>
+</li>
+<li><a href="class.hrtime-unit.html">HRTime\Unit</a> — The HRTime\Unit class</li>
+</ul>
+
+ 
+
+ 
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The HRTime\PerformanceCounter class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="hrtime-performancecounter.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+
+   </p>
+  </div>
+
+
+  <div class="section" id="hrtime-performancecounter.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">HRTime\PerformanceCounter</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">HRTime\PerformanceCounter</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+	  <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">int</span> <span class="methodname">getFrequency</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+	  <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">int</span> <span class="methodname">getTicks</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+	  <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">int</span> <span class="methodname">getTicksSince</span>
+    ( <span class="methodparam"><span class="type">integer</span> <code class="parameter">$start</code></span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The HRTime\StopWatch class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="hrtime-stopwatch.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+
+   </p>
+  </div>
+
+
+  <div class="section" id="hrtime-stopwatch.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">HRTime\StopWatch</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">HRTime\StopWatch</strong>
+     </span>
+     
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> HRTime\PerformanceCounter</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getElapsedTicks</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">float</span> <span class="methodname">getElapsedTime</span>
+    ([ <span class="methodparam"><span class="type">integer</span> <code class="parameter">$unit</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getLastElapsedTicks</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">float</span> <span class="methodname">getLastElapsedTime</span>
+    ([ <span class="methodparam"><span class="type">integer</span> <code class="parameter">$unit</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isRunning</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">start</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">stop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+	  <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">int</span> <span class="methodname">HRTime\PerformanceCounter::getFrequency</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+	  <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">int</span> <span class="methodname">HRTime\PerformanceCounter::getTicks</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+	  <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">int</span> <span class="methodname">HRTime\PerformanceCounter::getTicksSince</span>
+    ( <span class="methodparam"><span class="type">integer</span> <code class="parameter">$start</code></span>
+   )</div>
+
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The HRTime\Unit class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="hrtime-unit.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+
+   </p>
+  </div>
+
+
+  <div class="section" id="hrtime-unit.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">HRTime\Unit</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">HRTime\Unit</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">HRTime\Unit::SECOND</var>
+     <span class="initializer"> = 0</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">HRTime\Unit::MILLISECOND</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">HRTime\Unit::MICROSECOND</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">HRTime\Unit::NANOSECOND</var>
+     <span class="initializer"> = 3</span>
+    ;</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    
+   }</div>
+
+
+  </div>
+  
+
+  <div class="section" id="hrtime-unit.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <dl>
+
+
+    
+     <dt id="hrtime-unit.constants.second"><strong><code>HRTime\Unit::SECOND</code></strong></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+
+    
+     <dt id="hrtime-unit.constants.millisecond"><strong><code>HRTime\Unit::MILLISECOND</code></strong></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+
+    
+     <dt id="hrtime-unit.constants.microsecond"><strong><code>HRTime\Unit::MICROSECOND</code></strong></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+
+    
+     <dt id="hrtime-unit.constants.nanosecond"><strong><code>HRTime\Unit::NANOSECOND</code></strong></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

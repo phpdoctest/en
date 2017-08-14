@@ -1,0 +1,238 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Executes an SQL statement, returning a result set as a PDOStatement object</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.abstract.html">Abstraction Layers</a></li>
+  <li class="header up"><a href="book.pdo.html">PDO</a></li>
+  <li class="header up"><a href="class.pdo.html">PDO</a></li>
+  <li><a href="pdo.begintransaction.html">PDO::beginTransaction</a></li>
+  <li><a href="pdo.commit.html">PDO::commit</a></li>
+  <li><a href="pdo.construct.html">PDO::__construct</a></li>
+  <li><a href="pdo.errorcode.html">PDO::errorCode</a></li>
+  <li><a href="pdo.errorinfo.html">PDO::errorInfo</a></li>
+  <li><a href="pdo.exec.html">PDO::exec</a></li>
+  <li><a href="pdo.getattribute.html">PDO::getAttribute</a></li>
+  <li><a href="pdo.getavailabledrivers.html">PDO::getAvailableDrivers</a></li>
+  <li><a href="pdo.intransaction.html">PDO::inTransaction</a></li>
+  <li><a href="pdo.lastinsertid.html">PDO::lastInsertId</a></li>
+  <li><a href="pdo.prepare.html">PDO::prepare</a></li>
+  <li class="active"><a href="pdo.query.html">PDO::query</a></li>
+  <li><a href="pdo.quote.html">PDO::quote</a></li>
+  <li><a href="pdo.rollback.html">PDO::rollBack</a></li>
+  <li><a href="pdo.setattribute.html">PDO::setAttribute</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="pdo.prepare.html">PDO::prepare</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="pdo.quote.html">PDO::quote</a></div>
+                <div class="up"><a href="class.pdo.html">PDO</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="pdo.query" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">PDO::query</h1>
+  <p class="refpurpose">
+   Executes an SQL statement, returning a result set as a PDOStatement object
+  </p>
+ </div>
+ <div class="refsect1 description" id="refsect1-pdo.query-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">PDOStatement</span> <span class="methodname">PDO::query</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$statement</code></span>
+   )</div>
+
+
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">PDOStatement</span> <span class="methodname">PDO::query</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$statement</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$PDO::FETCH_COLUMN</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$colno</code></span>
+   )</div>
+
+
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">PDOStatement</span> <span class="methodname">PDO::query</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$statement</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$PDO::FETCH_CLASS</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$classname</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$ctorargs</code></span>
+   )</div>
+
+
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">PDOStatement</span> <span class="methodname">PDO::query</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$statement</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$PDO::FETCH_INTO</code></span>
+   , <span class="methodparam"><span class="type">object</span> <code class="parameter">$object</code></span>
+   )</div>
+
+
+  <p class="para rdfs-comment">
+   <span class="function">PDO::query</span> executes an SQL statement in
+   a single function call, returning the result set (if any) returned by the
+   statement as a PDOStatement object.
+  </p>
+  <p class="para">
+   For a query that you need to issue multiple times, you will realize better
+   performance if you prepare a PDOStatement object using
+   <span class="function">PDO::prepare</span> and issue the statement with multiple
+   calls to <span class="function">PDOStatement::execute</span>.
+  </p>
+  <p class="para">
+   If you do not fetch all of the data in a result set before issuing your
+   next call to <span class="function">PDO::query</span>, your call may fail. Call
+   <span class="function">PDOStatement::closeCursor</span> to release the database
+   resources associated with the PDOStatement object before issuing your
+   next call to <span class="function">PDO::query</span>.
+  </p>
+
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    Although this function is only documented as having a single
+    parameter, you may pass additional arguments to this function.
+    They will be treated as though you called
+    <span class="function">PDOStatement::setFetchMode</span> on the resultant statement
+    object.
+   </p>
+  </p></blockquote>
+
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-pdo.query-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">statement</code></dt>
+
+      <dd>
+
+       <p class="para">
+        The SQL statement to prepare and execute.
+       </p>
+       <p class="para">
+        Data inside the query should be <a href="pdo.quote.html" class="link">properly escaped</a>.
+       </p>
+      </dd>
+
+     
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-pdo.query-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+    <span class="function">PDO::query</span> returns a PDOStatement object, or <strong><code>FALSE</code></strong>
+    on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-pdo.query-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-1015">
+    <p><strong>Example #1 Demonstrate PDO::query</strong></p>
+    <div class="example-contents"><p>
+     A nice feature of <span class="function">PDO::query</span> is that it
+     enables you to iterate over the rowset returned by a
+     successfully executed SELECT statement.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">getFruit</span><span style="color: #007700">(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$sql&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'SELECT&nbsp;name,&nbsp;color,&nbsp;calories&nbsp;FROM&nbsp;fruit&nbsp;ORDER&nbsp;BY&nbsp;name'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">$conn</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #0000BB">$sql</span><span style="color: #007700">)&nbsp;as&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'name'</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\t"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'color'</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\t"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #0000BB">$row</span><span style="color: #007700">[</span><span style="color: #DD0000">'calories'</span><span style="color: #007700">]&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+apple   red     150
+banana  yellow  250
+kiwi    brown   75
+lemon   yellow  25
+orange  orange  300
+pear    green   150
+watermelon      pink    90
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+
+ <div class="refsect1 seealso" id="refsect1-pdo.query-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">PDO::exec</span></li>
+    <li class="member"><span class="function">PDO::prepare</span></li>
+    <li class="member"><span class="function">PDOStatement::execute</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

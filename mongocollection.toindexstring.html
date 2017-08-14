@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Converts keys specifying an index to its identifying string</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.mongo.html">Mongo</a></li>
+  <li class="header up"><a href="mongo.core.html">Core Classes</a></li>
+  <li class="header up"><a href="class.mongocollection.html">MongoCollection</a></li>
+  <li><a href="mongocollection.aggregate.html">MongoCollection::aggregate</a></li>
+  <li><a href="mongocollection.aggregatecursor.html">MongoCollection::aggregateCursor</a></li>
+  <li><a href="mongocollection.batchinsert.html">MongoCollection::batchInsert</a></li>
+  <li><a href="mongocollection.construct.html">MongoCollection::__construct</a></li>
+  <li><a href="mongocollection.count.html">MongoCollection::count</a></li>
+  <li><a href="mongocollection.createdbref.html">MongoCollection::createDBRef</a></li>
+  <li><a href="mongocollection.createindex.html">MongoCollection::createIndex</a></li>
+  <li><a href="mongocollection.deleteindex.html">MongoCollection::deleteIndex</a></li>
+  <li><a href="mongocollection.deleteindexes.html">MongoCollection::deleteIndexes</a></li>
+  <li><a href="mongocollection.distinct.html">MongoCollection::distinct</a></li>
+  <li><a href="mongocollection.drop.html">MongoCollection::drop</a></li>
+  <li><a href="mongocollection.ensureindex.html">MongoCollection::ensureIndex</a></li>
+  <li><a href="mongocollection.find.html">MongoCollection::find</a></li>
+  <li><a href="mongocollection.findandmodify.html">MongoCollection::findAndModify</a></li>
+  <li><a href="mongocollection.findone.html">MongoCollection::findOne</a></li>
+  <li><a href="mongocollection.get.html">MongoCollection::__get</a></li>
+  <li><a href="mongocollection.getdbref.html">MongoCollection::getDBRef</a></li>
+  <li><a href="mongocollection.getindexinfo.html">MongoCollection::getIndexInfo</a></li>
+  <li><a href="mongocollection.getname.html">MongoCollection::getName</a></li>
+  <li><a href="mongocollection.getreadpreference.html">MongoCollection::getReadPreference</a></li>
+  <li><a href="mongocollection.getslaveokay.html">MongoCollection::getSlaveOkay</a></li>
+  <li><a href="mongocollection.getwriteconcern.html">MongoCollection::getWriteConcern</a></li>
+  <li><a href="mongocollection.group.html">MongoCollection::group</a></li>
+  <li><a href="mongocollection.insert.html">MongoCollection::insert</a></li>
+  <li><a href="mongocollection.parallelcollectionscan.html">MongoCollection::parallelCollectionScan</a></li>
+  <li><a href="mongocollection.remove.html">MongoCollection::remove</a></li>
+  <li><a href="mongocollection.save.html">MongoCollection::save</a></li>
+  <li><a href="mongocollection.setreadpreference.html">MongoCollection::setReadPreference</a></li>
+  <li><a href="mongocollection.setslaveokay.html">MongoCollection::setSlaveOkay</a></li>
+  <li><a href="mongocollection.setwriteconcern.html">MongoCollection::setWriteConcern</a></li>
+  <li class="active"><a href="mongocollection.toindexstring.html">MongoCollection::toIndexString</a></li>
+  <li><a href="mongocollection.--tostring.html">MongoCollection::__toString</a></li>
+  <li><a href="mongocollection.update.html">MongoCollection::update</a></li>
+  <li><a href="mongocollection.validate.html">MongoCollection::validate</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mongocollection.setwriteconcern.html">MongoCollection::setWriteConcern</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mongocollection.--tostring.html">MongoCollection::__toString</a></div>
+                <div class="up"><a href="class.mongocollection.html">MongoCollection</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mongocollection.toindexstring" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">MongoCollection::toIndexString</h1>
+  <p class="refpurpose">Converts keys specifying an index to its identifying string</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mongocollection.toindexstring-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">static protected</span> <span class="type">string</span> <span class="methodname">MongoCollection::toIndexString</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$keys</code></span>
+   )</div>
+
+  <div class="warning"><strong class="warning">Warning</strong>
+   <p class="para">
+    This method is deprecated since version 1.5.0.
+   </p>
+  </div>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mongocollection.toindexstring-parameters">
+  <h3 class="title">Parameters</h3>  
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+
+      <code class="parameter">keys</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Field or fields to convert to the identifying string
+      </p>
+     </dd>
+
+       
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-mongocollection.toindexstring-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns a string that describes the index.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-mongocollection.toindexstring-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-1574">
+   <p><strong>Example #1 <span class="function">MongoCollection::toIndexString</span> example</strong></p>
+   <div class="example-contents"><p>This example shows how you can create an index name out of keys.
+   Because this is a protected (static) method, you need to overload it in a
+   child class first.</p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Create&nbsp;inherited&nbsp;class&nbsp;to&nbsp;make&nbsp;the&nbsp;method&nbsp;"public".<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyCollection&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">MongoCollection<br /></span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">toIndexString</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">toIndexString</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br />echo&nbsp;</span><span style="color: #0000BB">MyCollection</span><span style="color: #007700">::</span><span style="color: #0000BB">toIndexString</span><span style="color: #007700">(</span><span style="color: #DD0000">"foo"</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;Outputs:&nbsp;foo_1<br /><br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">MyCollection</span><span style="color: #007700">::</span><span style="color: #0000BB">toIndexString</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'name'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'age'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">)),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #FF8000">//&nbsp;Outputs:&nbsp;name_1_age_-1<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-mongocollection.toindexstring-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   MongoDB core docs on <a href="https://docs.mongodb.com/manual/indexes/" class="link external">&raquo;&nbsp;indexes</a>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-mongocollection.toindexstring-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>1.5.0</td>
+       <td>
+        This method has been deprecated.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

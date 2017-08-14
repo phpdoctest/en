@@ -1,0 +1,146 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Messages</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li class="header up"><a href="book.sam.html">SAM</a></li>
+  <li class="header up"><a href="sam.examples.html">Examples</a></li>
+  <li><a href="sam.connections.html">Connections</a></li>
+  <li class="active"><a href="sam.messages.html">Messages</a></li>
+  <li><a href="sam.operations.html">Messaging operations</a></li>
+  <li><a href="sam.pubsub.html">Publish/Subscribe and subscriptions to topics</a></li>
+  <li><a href="sam.errors.html">Error handling</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="sam.connections.html">Connections</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="sam.operations.html">Messaging operations</a></div>
+                <div class="up"><a href="sam.examples.html">Examples</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="sam.messages" class="section">
+  <h2 class="title">Messages</h2>
+  <p class="para">
+   Messages sent to and received from queues are represented by the
+   SAMMessage object. The SAMMessage object encapsulates the body of
+   the message (if one exists) and the header properties associated with
+   the message. A SAMMessage object is either supplied as a parameter to
+   a messaging operation or returned as a result.
+  </p>
+  <p class="para">
+   <div class="example" id="example-5060">
+    <p><strong>Example #1 Creating a message with a simple text body</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$msg&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SAMMessage</span><span style="color: #007700">(</span><span style="color: #DD0000">'This&nbsp;is&nbsp;a&nbsp;simple&nbsp;text&nbsp;message'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Messages may have header properties associated with them that provide
+   control over the transport of the message or further information to the
+   receiving application. By default message properties are delivered to
+   the underlying messaging system as strings and in this case they may be
+   set with the following simple syntax:
+  </p>
+  <p class="para">
+   <div class="example" id="example-5061">
+    <p><strong>Example #2 Setting a text format property using the default syntax</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$msg</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">header</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">myPropertyName&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'textData'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   If it is desired to pass type information an alternative syntax may be
+   used where the value and the type hint are passed in an associative
+   array:
+  </p>
+  <p class="para">
+   <div class="example" id="example-5062">
+    <p><strong>Example #3 Setting a property using a type hint</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$msg</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">header</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">myPropertyName&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #0000BB">3.14159</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">SAM_FLOAT</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   Properties may also be extracted from the header of a message.
+  </p>
+  <p class="para">
+   <div class="example" id="example-5063">
+    <p><strong>Example #4 Retrieving a property from a message header</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$myProperty&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$msg</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">header</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">myPropertyName</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

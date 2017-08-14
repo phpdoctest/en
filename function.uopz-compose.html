@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Compose a class</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.php.html">Affecting PHP's Behaviour</a></li>
+  <li class="header up"><a href="book.uopz.html">uopz</a></li>
+  <li class="header up"><a href="ref.uopz.html">Uopz Functions</a></li>
+  <li><a href="function.uopz-backup.html">uopz_backup</a></li>
+  <li class="active"><a href="function.uopz-compose.html">uopz_compose</a></li>
+  <li><a href="function.uopz-copy.html">uopz_copy</a></li>
+  <li><a href="function.uopz-delete.html">uopz_delete</a></li>
+  <li><a href="function.uopz-extend.html">uopz_extend</a></li>
+  <li><a href="function.uopz-flags.html">uopz_flags</a></li>
+  <li><a href="function.uopz-function.html">uopz_function</a></li>
+  <li><a href="function.uopz-implement.html">uopz_implement</a></li>
+  <li><a href="function.uopz-overload.html">uopz_overload</a></li>
+  <li><a href="function.uopz-redefine.html">uopz_redefine</a></li>
+  <li><a href="function.uopz-rename.html">uopz_rename</a></li>
+  <li><a href="function.uopz-restore.html">uopz_restore</a></li>
+  <li><a href="function.uopz-undefine.html">uopz_undefine</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.uopz-backup.html">uopz_backup</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.uopz-copy.html">uopz_copy</a></div>
+                <div class="up"><a href="ref.uopz.html">Uopz Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.uopz-compose" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">uopz_compose</h1>
+  <p class="refpurpose">Compose a class</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.uopz-compose-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname">uopz_compose</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$classes</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$methods</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$properties</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code></span>
+  ]]] )</div>
+
+  <p class="para rdfs-comment">
+ Creates a new class of the given name that implements, extends, or uses all of the provided classes
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.uopz-compose-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">name</code></dt>
+
+    <dd>
+
+     <p class="para">
+ A legal class name
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">classes</code></dt>
+
+    <dd>
+
+     <p class="para">
+ An array of class, interface and trait names     
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">methods</code></dt>
+
+    <dd>
+
+     <p class="para">
+ An associative array of methods, values are either closures or [modifiers =&gt; closure]
+     </p>   
+    </dd>
+ 
+   
+    
+    <dt>
+<code class="parameter">properties</code></dt>
+
+    <dd>
+
+     <p class="para">
+ An associative array of properties, keys are names, values are modifiers
+     </p>    
+    </dd>
+
+   
+    
+    <dt>
+<code class="parameter">flags</code></dt>
+
+    <dd>
+
+     <p class="para">
+ Entry type, by default ZEND_ACC_CLASS
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.uopz-compose-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.uopz-compose-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-595">
+   <p><strong>Example #1 <span class="function">uopz_compose</span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">myClass&nbsp;</span><span style="color: #007700">{}<br />trait&nbsp;</span><span style="color: #0000BB">myTrait&nbsp;</span><span style="color: #007700">{}<br />interface&nbsp;</span><span style="color: #0000BB">myInterface&nbsp;</span><span style="color: #007700">{}<br /><br /></span><span style="color: #0000BB">uopz_compose</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">Composed</span><span style="color: #007700">::class,&nbsp;[<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">myClass</span><span style="color: #007700">::class,&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">myTrait</span><span style="color: #007700">::class,&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">myInterface</span><span style="color: #007700">::class<br />&nbsp;&nbsp;&nbsp;&nbsp;],&nbsp;[<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"__construct"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;function()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;...&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">}<br />]);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(<br />&nbsp;</span><span style="color: #0000BB">class_uses</span><span style="color: #007700">(</span><span style="color: #0000BB">Composed</span><span style="color: #007700">::class),<br />&nbsp;</span><span style="color: #0000BB">class_parents</span><span style="color: #007700">(</span><span style="color: #0000BB">Composed</span><span style="color: #007700">::class),<br />&nbsp;</span><span style="color: #0000BB">class_implements</span><span style="color: #007700">(</span><span style="color: #0000BB">Composed</span><span style="color: #007700">::class));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+array(1) {
+  [&quot;myTrait&quot;]=&gt;
+  string(7) &quot;myTrait&quot;
+}
+array(1) {
+  [&quot;myClass&quot;]=&gt;
+  string(7) &quot;myClass&quot;
+}
+array(1) {
+  [&quot;myInterface&quot;]=&gt;
+  string(11) &quot;myInterface&quot;
+}
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

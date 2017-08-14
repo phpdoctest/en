@@ -1,0 +1,162 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Mysqlnd query result cache plugin</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="set.mysqlinfo.html">MySQL</a></li>
+  <li><a href="mysql.html">Overview of the MySQL PHP drivers</a></li>
+  <li><a href="book.mysqli.html">MySQLi</a></li>
+  <li><a href="book.mysql.html">MySQL (Original)</a></li>
+  <li><a href="book.mysqlnd.html">Mysqlnd</a></li>
+  <li><a href="book.mysqlnd-ms.html">mysqlnd_ms</a></li>
+  <li class="active"><a href="book.mysqlnd-qc.html">mysqlnd_qc</a></li>
+  <li><a href="book.mysqlnd-uh.html">mysqlnd_uh</a></li>
+  <li><a href="book.mysqlnd-mux.html">mysqlnd_mux</a></li>
+  <li><a href="book.mysqlnd-memcache.html">mysqlnd_memcache</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mysqlnd-ms.changes-one-o.html">PECL/mysqlnd_ms 1.0 series</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="intro.mysqlnd-qc.html">Introduction</a></div>
+                <div class="up"><a href="set.mysqlinfo.html">MySQL</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="book.mysqlnd-qc" class="book">
+ <h1>Mysqlnd query result cache plugin</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="intro.mysqlnd-qc.html">Introduction</a></li>
+<li><a href="mysqlnd-qc.quickstart.html">Quickstart and Examples</a><ul class="chunklist chunklist_title">
+<li><a href="mysqlnd-qc.quickstart.concepts.html">Architecture and Concepts</a></li>
+<li><a href="mysqlnd-qc.quickstart.configuration.html">Setup</a></li>
+<li><a href="mysqlnd-qc.quickstart.caching.html">Caching queries</a></li>
+<li><a href="mysqlnd-qc.per-query-ttl.html">Setting the TTL</a></li>
+<li><a href="mysqlnd-qc.pattern-based-caching.html">Pattern based caching</a></li>
+<li><a href="mysqlnd-qc.slam-defense.html">Slam defense</a></li>
+<li><a href="mysqlnd-qc.cache-candidates.html">Finding cache candidates</a></li>
+<li><a href="mysqlnd-qc.cache-efficiency.html">Measuring cache efficiency</a></li>
+<li><a href="mysqlnd-qc.set-user-handlers.html">Beyond TTL: user-defined storage</a></li>
+</ul>
+</li>
+<li><a href="mysqlnd-qc.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_title">
+<li><a href="mysqlnd-qc.requirements.html">Requirements</a></li>
+<li><a href="mysqlnd-qc.installation.html">Installation</a></li>
+<li><a href="mysqlnd-qc.configuration.html">Runtime Configuration</a></li>
+</ul>
+</li>
+<li><a href="mysqlnd-qc.constants.html">Predefined Constants</a></li>
+<li><a href="ref.mysqlnd-qc.html">mysqlnd_qc Functions</a><ul class="chunklist chunklist_title">
+<li><a href="function.mysqlnd-qc-clear-cache.html">mysqlnd_qc_clear_cache</a> — Flush all cache contents</li>
+<li><a href="function.mysqlnd-qc-get-available-handlers.html">mysqlnd_qc_get_available_handlers</a> — Returns a list of available storage handler</li>
+<li><a href="function.mysqlnd-qc-get-cache-info.html">mysqlnd_qc_get_cache_info</a> — Returns information on the current handler, the number of cache entries and cache entries, if available</li>
+<li><a href="function.mysqlnd-qc-get-core-stats.html">mysqlnd_qc_get_core_stats</a> — Statistics collected by the core of the query cache</li>
+<li><a href="function.mysqlnd-qc-get-normalized-query-trace-log.html">mysqlnd_qc_get_normalized_query_trace_log</a> — Returns a normalized query trace log for each query inspected by the query cache</li>
+<li><a href="function.mysqlnd-qc-get-query-trace-log.html">mysqlnd_qc_get_query_trace_log</a> — Returns a backtrace for each query inspected by the query cache</li>
+<li><a href="function.mysqlnd-qc-set-cache-condition.html">mysqlnd_qc_set_cache_condition</a> — Set conditions for automatic caching</li>
+<li><a href="function.mysqlnd-qc-set-is-select.html">mysqlnd_qc_set_is_select</a> — Installs a callback which decides whether a statement is cached</li>
+<li><a href="function.mysqlnd-qc-set-storage-handler.html">mysqlnd_qc_set_storage_handler</a> — Change current storage handler</li>
+<li><a href="function.mysqlnd-qc-set-user-handlers.html">mysqlnd_qc_set_user_handlers</a> — Sets the callback functions for a user-defined procedural storage handler</li>
+</ul>
+</li>
+<li><a href="mysqlnd-qc.changes.html">Change History</a><ul class="chunklist chunklist_title">
+<li><a href="mysqlnd-qc.changes-one-two.html">PECL/mysqlnd_qc 1.2 series</a></li>
+<li><a href="mysqlnd-qc.changes-one-one.html">PECL/mysqlnd_qc 1.1 series</a></li>
+<li><a href="mysqlnd-qc.changes-one-o.html">PECL/mysqlnd_qc 1.0 series</a></li>
+</ul>
+</li>
+</ul>
+
+ 
+
+ 
+
+
+ 
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

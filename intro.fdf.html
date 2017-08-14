@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Introduction</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.utilspec.nontext.html">Non-Text MIME Output</a></li>
+  <li class="header up"><a href="book.fdf.html">FDF</a></li>
+  <li class="active"><a href="intro.fdf.html">Introduction</a></li>
+  <li><a href="fdf.setup.html">Installing/Configuring</a></li>
+  <li><a href="fdf.constants.html">Predefined Constants</a></li>
+  <li><a href="fdf.examples.html">Examples</a></li>
+  <li><a href="ref.fdf.html">FDF Functions</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="book.fdf.html">FDF</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="fdf.setup.html">Installing/Configuring</a></div>
+                <div class="up"><a href="book.fdf.html">FDF</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="intro.fdf" class="preface">
+  <h1 class="title">Introduction</h1>
+  <p class="simpara">
+   Forms Data Format (FDF) is a format for handling
+   forms within PDF documents. You should read the documentation at 
+   <a href="http://www.adobe.com/devnet/acrobat/fdftoolkit.html" class="link external">&raquo;&nbsp;http://www.adobe.com/devnet/acrobat/fdftoolkit.html</a>
+   for more information on what FDF is and how it is used in general.
+  </p>
+  <p class="simpara">
+   The general idea of FDF is similar to HTML forms. The difference is
+   basically the format how data is transmitted to the server when the submit
+   button is pressed (this is actually the Form Data Format) and the format
+   of the form itself (which is the Portable Document Format, PDF).
+   Processing the FDF data is one of the features provided by the fdf
+   functions. But there is more.  One may as well take an existing PDF form
+   and populated the input fields with data without modifying the form
+   itself. In such a case one would create a FDF document
+   (<span class="function">fdf_create</span>) set the values of each input field
+   (<span class="function">fdf_set_value</span>) and associate it with a PDF form
+   (<span class="function">fdf_set_file</span>). Finally it has to be sent to the
+   browser with MimeType <em>application/vnd.fdf</em>. The Acrobat
+   reader plugin of your browser recognizes the MimeType,  reads the
+   associated PDF form and fills in the data from the FDF document.
+  </p>
+
+  <p class="simpara">
+   If you look at an FDF-document with a text editor you will find a
+   catalogue object with the name <em>FDF</em>. Such an object may
+   contain a number of entries like <em>Fields</em>,
+   <em>F</em>, <em>Status</em> etc..
+   The most commonly used entries are <em>Fields</em> which points
+   to a list of input fields, and <em>F</em> which contains the
+   filename of the PDF-document this data belongs to. Those entries are
+   referred to in the FDF documentation as /F-Key or /Status-Key.
+   Modifying this entries
+   is done by functions like <span class="function">fdf_set_file</span> and
+   <span class="function">fdf_set_status</span>. Fields are modified with
+   <span class="function">fdf_set_value</span>, <span class="function">fdf_set_opt</span> etc..
+  </p>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

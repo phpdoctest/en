@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Fetches the next row and returns it as an object.</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.abstract.html">Abstraction Layers</a></li>
+  <li class="header up"><a href="book.pdo.html">PDO</a></li>
+  <li class="header up"><a href="class.pdostatement.html">PDOStatement</a></li>
+  <li><a href="pdostatement.bindcolumn.html">PDOStatement::bindColumn</a></li>
+  <li><a href="pdostatement.bindparam.html">PDOStatement::bindParam</a></li>
+  <li><a href="pdostatement.bindvalue.html">PDOStatement::bindValue</a></li>
+  <li><a href="pdostatement.closecursor.html">PDOStatement::closeCursor</a></li>
+  <li><a href="pdostatement.columncount.html">PDOStatement::columnCount</a></li>
+  <li><a href="pdostatement.debugdumpparams.html">PDOStatement::debugDumpParams</a></li>
+  <li><a href="pdostatement.errorcode.html">PDOStatement::errorCode</a></li>
+  <li><a href="pdostatement.errorinfo.html">PDOStatement::errorInfo</a></li>
+  <li><a href="pdostatement.execute.html">PDOStatement::execute</a></li>
+  <li><a href="pdostatement.fetch.html">PDOStatement::fetch</a></li>
+  <li><a href="pdostatement.fetchall.html">PDOStatement::fetchAll</a></li>
+  <li><a href="pdostatement.fetchcolumn.html">PDOStatement::fetchColumn</a></li>
+  <li class="active"><a href="pdostatement.fetchobject.html">PDOStatement::fetchObject</a></li>
+  <li><a href="pdostatement.getattribute.html">PDOStatement::getAttribute</a></li>
+  <li><a href="pdostatement.getcolumnmeta.html">PDOStatement::getColumnMeta</a></li>
+  <li><a href="pdostatement.nextrowset.html">PDOStatement::nextRowset</a></li>
+  <li><a href="pdostatement.rowcount.html">PDOStatement::rowCount</a></li>
+  <li><a href="pdostatement.setattribute.html">PDOStatement::setAttribute</a></li>
+  <li><a href="pdostatement.setfetchmode.html">PDOStatement::setFetchMode</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="pdostatement.fetchcolumn.html">PDOStatement::fetchColumn</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="pdostatement.getattribute.html">PDOStatement::getAttribute</a></div>
+                <div class="up"><a href="class.pdostatement.html">PDOStatement</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="pdostatement.fetchobject" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">PDOStatement::fetchObject</h1>
+  <p class="refpurpose">Fetches the next row and returns it as an object.</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-pdostatement.fetchobject-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">PDOStatement::fetchObject</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$class_name</code><span class="initializer"> = &quot;stdClass&quot;</span></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$ctor_args</code></span>
+  ]] )</div>
+
+
+  <p class="para rdfs-comment">
+   Fetches the next row and returns it as an object. This function is an
+   alternative to <span class="function">PDOStatement::fetch</span> with
+   <strong><code>PDO::FETCH_CLASS</code></strong> or
+   <strong><code>PDO::FETCH_OBJ</code></strong> style.
+  </p>
+  <p class="para">
+   When an object is fetched, its properties are assigned from respective
+   column values, and afterwards its constructor is invoked.
+  </p>
+
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-pdostatement.fetchobject-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">class_name</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Name of the created class.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">ctor_args</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Elements of this array are passed to the constructor.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-pdostatement.fetchobject-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns an instance of the required class with property names that
+   correspond to the column names  or <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-pdostatement.fetchobject-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">PDOStatement::fetch</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

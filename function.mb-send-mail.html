@@ -1,0 +1,292 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Send encoded mail</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.international.html">Human Language and Character Encoding Support</a></li>
+  <li class="header up"><a href="book.mbstring.html">Multibyte String</a></li>
+  <li class="header up"><a href="ref.mbstring.html">Multibyte String Functions</a></li>
+  <li><a href="function.mb-check-encoding.html">mb_check_encoding</a></li>
+  <li><a href="function.mb-convert-case.html">mb_convert_case</a></li>
+  <li><a href="function.mb-convert-encoding.html">mb_convert_encoding</a></li>
+  <li><a href="function.mb-convert-kana.html">mb_convert_kana</a></li>
+  <li><a href="function.mb-convert-variables.html">mb_convert_variables</a></li>
+  <li><a href="function.mb-decode-mimeheader.html">mb_decode_mimeheader</a></li>
+  <li><a href="function.mb-decode-numericentity.html">mb_decode_numericentity</a></li>
+  <li><a href="function.mb-detect-encoding.html">mb_detect_encoding</a></li>
+  <li><a href="function.mb-detect-order.html">mb_detect_order</a></li>
+  <li><a href="function.mb-encode-mimeheader.html">mb_encode_mimeheader</a></li>
+  <li><a href="function.mb-encode-numericentity.html">mb_encode_numericentity</a></li>
+  <li><a href="function.mb-encoding-aliases.html">mb_encoding_aliases</a></li>
+  <li><a href="function.mb-ereg-match.html">mb_ereg_match</a></li>
+  <li><a href="function.mb-ereg-replace-callback.html">mb_ereg_replace_callback</a></li>
+  <li><a href="function.mb-ereg-replace.html">mb_ereg_replace</a></li>
+  <li><a href="function.mb-ereg-search-getpos.html">mb_ereg_search_getpos</a></li>
+  <li><a href="function.mb-ereg-search-getregs.html">mb_ereg_search_getregs</a></li>
+  <li><a href="function.mb-ereg-search-init.html">mb_ereg_search_init</a></li>
+  <li><a href="function.mb-ereg-search-pos.html">mb_ereg_search_pos</a></li>
+  <li><a href="function.mb-ereg-search-regs.html">mb_ereg_search_regs</a></li>
+  <li><a href="function.mb-ereg-search-setpos.html">mb_ereg_search_setpos</a></li>
+  <li><a href="function.mb-ereg-search.html">mb_ereg_search</a></li>
+  <li><a href="function.mb-ereg.html">mb_ereg</a></li>
+  <li><a href="function.mb-eregi-replace.html">mb_eregi_replace</a></li>
+  <li><a href="function.mb-eregi.html">mb_eregi</a></li>
+  <li><a href="function.mb-get-info.html">mb_get_info</a></li>
+  <li><a href="function.mb-http-input.html">mb_http_input</a></li>
+  <li><a href="function.mb-http-output.html">mb_http_output</a></li>
+  <li><a href="function.mb-internal-encoding.html">mb_internal_encoding</a></li>
+  <li><a href="function.mb-language.html">mb_language</a></li>
+  <li><a href="function.mb-list-encodings.html">mb_list_encodings</a></li>
+  <li><a href="function.mb-output-handler.html">mb_output_handler</a></li>
+  <li><a href="function.mb-parse-str.html">mb_parse_str</a></li>
+  <li><a href="function.mb-preferred-mime-name.html">mb_preferred_mime_name</a></li>
+  <li><a href="function.mb-regex-encoding.html">mb_regex_encoding</a></li>
+  <li><a href="function.mb-regex-set-options.html">mb_regex_set_options</a></li>
+  <li class="active"><a href="function.mb-send-mail.html">mb_send_mail</a></li>
+  <li><a href="function.mb-split.html">mb_split</a></li>
+  <li><a href="function.mb-strcut.html">mb_strcut</a></li>
+  <li><a href="function.mb-strimwidth.html">mb_strimwidth</a></li>
+  <li><a href="function.mb-stripos.html">mb_stripos</a></li>
+  <li><a href="function.mb-stristr.html">mb_stristr</a></li>
+  <li><a href="function.mb-strlen.html">mb_strlen</a></li>
+  <li><a href="function.mb-strpos.html">mb_strpos</a></li>
+  <li><a href="function.mb-strrchr.html">mb_strrchr</a></li>
+  <li><a href="function.mb-strrichr.html">mb_strrichr</a></li>
+  <li><a href="function.mb-strripos.html">mb_strripos</a></li>
+  <li><a href="function.mb-strrpos.html">mb_strrpos</a></li>
+  <li><a href="function.mb-strstr.html">mb_strstr</a></li>
+  <li><a href="function.mb-strtolower.html">mb_strtolower</a></li>
+  <li><a href="function.mb-strtoupper.html">mb_strtoupper</a></li>
+  <li><a href="function.mb-strwidth.html">mb_strwidth</a></li>
+  <li><a href="function.mb-substitute-character.html">mb_substitute_character</a></li>
+  <li><a href="function.mb-substr-count.html">mb_substr_count</a></li>
+  <li><a href="function.mb-substr.html">mb_substr</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.mb-regex-set-options.html">mb_regex_set_options</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.mb-split.html">mb_split</a></div>
+                <div class="up"><a href="ref.mbstring.html">Multibyte String Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.mb-send-mail" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mb_send_mail</h1>
+  <p class="refpurpose">Send encoded mail</p>
+ </div>
+   
+ <div class="refsect1 description" id="refsect1-function.mb-send-mail-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">mb_send_mail</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$to</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$subject</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$message</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$additional_headers</code><span class="initializer"> = <strong><code>NULL</code></strong></span></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$additional_parameter</code><span class="initializer"> = <strong><code>NULL</code></strong></span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Sends email. Headers and messages are converted and encoded according
+   to the <span class="function">mb_language</span> setting. It&#039;s a wrapper function
+   for <span class="function">mail</span>, so see also <span class="function">mail</span> for details.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.mb-send-mail-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">to</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The mail addresses being sent to. Multiple
+       recipients may be specified by putting a comma between each
+       address in <code class="parameter">to</code>. 
+       This parameter is not automatically encoded.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">subject</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The subject of the mail.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">message</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The message of the mail.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">additional_headers</code> (optional)</dt>
+
+     <dd>
+
+      <p class="para">
+       String to be inserted at the end of the email header.
+      </p>
+      <p class="para">
+       This is typically used to add extra headers (From, Cc, and Bcc).
+       Multiple extra headers should be separated with a CRLF (\r\n).
+       Validate parameter not to be injected unwanted headers by attackers.
+      </p>
+      <blockquote class="note"><p><strong class="note">Note</strong>: 
+       <p class="para">
+        When sending mail, the mail <em class="emphasis">must</em> contain
+        a <em>From</em> header. This can be set with the 
+        <code class="parameter">additional_headers</code> parameter, or a default
+        can be set in <var class="filename">php.ini</var>.
+       </p>
+       <p class="para">
+        Failing to do this will result in an error
+        message similar to <em>Warning: mail(): &quot;sendmail_from&quot; not
+        set in php.ini or custom &quot;From:&quot; header missing</em>.
+        The <em>From</em> header sets also
+        <em>Return-Path</em> under Windows.
+       </p>
+      </p></blockquote>
+      <blockquote class="note"><p><strong class="note">Note</strong>: 
+       <p class="para">
+        If messages are not received, try using a LF (\n) only.
+        Some Unix mail transfer agents (most notably
+        <a href="http://www.qmail.org/" class="link external">&raquo;&nbsp;qmail</a>) replace LF by CRLF
+        automatically (which leads to doubling CR if CRLF is used).
+        This should be a last resort, as it does not comply with
+        <a href="http://www.faqs.org/rfcs/rfc2822" class="link external">&raquo;&nbsp;RFC 2822</a>.
+       </p>
+      </p></blockquote>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">additional_parameter</code></dt>
+
+     <dd>
+
+      <p class="para">
+       <code class="parameter">additional_parameter</code> is a MTA command line
+       parameter. It is useful when setting the correct Return-Path
+       header when using sendmail.
+      </p>
+      <p class="para">
+       This parameter is escaped by <span class="function">escapeshellcmd</span> internally
+       to prevent command execution. <span class="function">escapeshellcmd</span> prevents
+       command execution, but allows to add addtional parameters. For security reason,
+       this parameter should be validated.
+      </p>
+      <p class="para">
+       Since <span class="function">escapeshellcmd</span> is applied automatically, some characters
+       that are allowed as email addresses by internet RFCs cannot be used. Programs
+       that are required to use these characters <span class="function">mail</span> cannot be used.
+      </p>
+      <p class="para">
+       The user that the webserver runs as should be added as a trusted user to the
+       sendmail configuration to prevent a &#039;X-Warning&#039; header from being added
+       to the message when the envelope sender (-f) is set using this method.
+       For sendmail users, this file is <var class="filename">/etc/mail/trusted-users</var>.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.mb-send-mail-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> on success or <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.mb-send-mail-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">mail</span></li>
+    <li class="member"><span class="function">mb_encode_mimeheader</span></li>
+    <li class="member"><span class="function">mb_language</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

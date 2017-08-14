@@ -1,0 +1,170 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Returns the JSON representation of a BSON value</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="set.mongodb.html">MongoDB</a></li>
+  <li class="header up"><a href="book.bson.html">MongoDB\BSON</a></li>
+  <li class="header up"><a href="ref.bson.html">Functions</a></li>
+  <li><a href="function.mongodb.bson-fromjson.html">MongoDB\BSON\fromJSON</a></li>
+  <li><a href="function.mongodb.bson-fromphp.html">MongoDB\BSON\fromPHP</a></li>
+  <li class="active"><a href="function.mongodb.bson-tojson.html">MongoDB\BSON\toJSON</a></li>
+  <li><a href="function.mongodb.bson-tophp.html">MongoDB\BSON\toPHP</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.mongodb.bson-fromphp.html">MongoDB\BSON\fromPHP</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.mongodb.bson-tophp.html">MongoDB\BSON\toPHP</a></div>
+                <div class="up"><a href="ref.bson.html">Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.mongodb.bson-tojson" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">MongoDB\BSON\toJSON</h1>
+  <p class="refpurpose">Returns the JSON representation of a BSON value</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.mongodb.bson-tojson-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname">MongoDB\BSON\toJSON</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$bson</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Converts a BSON string to its
+   <a href="https://docs.mongodb.com/manual/reference/mongodb-extended-json/" class="link external">&raquo;&nbsp;extended JSON</a>
+   representation.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.mongodb.bson-tojson-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">bson</code> (<span class="type">string</span>)</dt>
+
+    <dd>
+
+     <p class="para">
+      BSON value to be converted.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.mongodb.bson-tojson-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   The converted JSON value.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-function.mongodb.bson-tojson-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   Throws
+   <span class="classname">MongoDB\Driver\Exception\UnexpectedValueException</span> if
+   the input did not contain exactly one BSON document. Possible reasons
+   include, but are not limited to, invalid BSON, extra data (after reading one
+   BSON document), or an unexpected
+   <a href="https://github.com/mongodb/libbson" class="link external">&raquo;&nbsp;libbson</a> error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.mongodb.bson-tojson-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-1713">
+   <p><strong>Example #1 <span class="function">MongoDB\BSON\toJSON</span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$document&nbsp;</span><span style="color: #007700">=&nbsp;[</span><span style="color: #DD0000">'_id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">ObjectId</span><span style="color: #007700">(</span><span style="color: #DD0000">'56315a7c6118fd1b920270b1'</span><span style="color: #007700">)];<br /></span><span style="color: #0000BB">$bson&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">fromPHP</span><span style="color: #007700">(</span><span style="color: #0000BB">$document</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">BSON</span><span style="color: #007700">\</span><span style="color: #0000BB">toJSON</span><span style="color: #007700">(</span><span style="color: #0000BB">$bson</span><span style="color: #007700">),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+{ &quot;_id&quot; : { &quot;$oid&quot; : &quot;56315a7c6118fd1b920270b1&quot; } }
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+
+ <div class="refsect1 seealso" id="refsect1-function.mongodb.bson-tojson-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li class="member"><span class="function">MongoDB\BSON\fromJSON</span></li>
+   <li class="member"><a href="https://docs.mongodb.com/manual/reference/mongodb-extended-json/" class="link external">&raquo;&nbsp;MongoDB Extended JSON</a></li>
+   <li class="member"><a href="https://docs.mongodb.com/manual/reference/bson-types/" class="link external">&raquo;&nbsp;MongoDB BSON</a></li>
+  </ul>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

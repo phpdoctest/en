@@ -1,0 +1,172 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: DateTime Arithmetic</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.calendar.html">Date and Time Related Extensions</a></li>
+  <li class="header up"><a href="book.datetime.html">Date/Time</a></li>
+  <li class="header up"><a href="datetime.examples.html">Examples</a></li>
+  <li class="active"><a href="datetime.examples-arithmetic.html">DateTime Arithmetic</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="datetime.examples.html">Examples</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="class.datetime.html">DateTime</a></div>
+                <div class="up"><a href="datetime.examples.html">Examples</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="datetime.examples-arithmetic" class="section">
+  <h2 class="title">DateTime Arithmetic</h2>
+  <p class="para">
+   The following examples show some pitfalls of DateTime arithmetic with regard
+   to DST transitions and months having different numbers of days.
+  </p>
+  <p class="para">
+   <div class="example" id="example-2495">
+    <p><strong>Example #1 DateTime::add/sub add intervals which cover elapsed time</strong></p>
+    <div class="example-contents"><p>
+        Adding PT24H over a DST transition will appear to add 23/25 hours (for
+        most timezones).
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$dt&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTime</span><span style="color: #007700">(</span><span style="color: #DD0000">"2015-11-01&nbsp;00:00:00"</span><span style="color: #007700">,&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTimeZone</span><span style="color: #007700">(</span><span style="color: #DD0000">"America/New_York"</span><span style="color: #007700">));<br />echo&nbsp;</span><span style="color: #DD0000">"Start:&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$dt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">"Y-m-d&nbsp;H:i:s&nbsp;P"</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$dt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">DateInterval</span><span style="color: #007700">(</span><span style="color: #DD0000">"PT3H"</span><span style="color: #007700">));<br />echo&nbsp;</span><span style="color: #DD0000">"End:&nbsp;&nbsp;&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$dt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">"Y-m-d&nbsp;H:i:s&nbsp;P"</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Start: 2015-11-01 00:00:00 -04:00
+End:   2015-11-01 02:00:00 -05:00
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-2496">
+    <p><strong>Example #2 DateTime::modify and strtotime increment or decrement individual component values</strong></p>
+    <div class="example-contents"><p>
+     Adding +24 hours over a DST transition will add exactly 24 hours as seen in
+     the date/time string (unless the start or end time is on a transition
+     point).
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$dt&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTime</span><span style="color: #007700">(</span><span style="color: #DD0000">"2015-11-01&nbsp;00:00:00"</span><span style="color: #007700">,&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTimeZone</span><span style="color: #007700">(</span><span style="color: #DD0000">"America/New_York"</span><span style="color: #007700">));<br />echo&nbsp;</span><span style="color: #DD0000">"Start:&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$dt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">"Y-m-d&nbsp;H:i:s&nbsp;P"</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$dt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">modify</span><span style="color: #007700">(</span><span style="color: #DD0000">"+24&nbsp;hours"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"End:&nbsp;&nbsp;&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$dt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">"Y-m-d&nbsp;H:i:s&nbsp;P"</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Start: 2015-11-01 00:00:00 -04:00
+End:   2015-11-02 00:00:00 -05:00
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-2497">
+    <p><strong>Example #3 Adding or subtracting times can over- or underflow dates</strong></p>
+    <div class="example-contents"><p>
+     Like where January 31st + 1 month will result in March 2nd (leap year) or
+     3rd (normal year).
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"Normal&nbsp;year:\n"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;February&nbsp;has&nbsp;28&nbsp;days<br /></span><span style="color: #0000BB">$dt&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTime</span><span style="color: #007700">(</span><span style="color: #DD0000">"2015-01-31&nbsp;00:00:00"</span><span style="color: #007700">,&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTimeZone</span><span style="color: #007700">(</span><span style="color: #DD0000">"America/New_York"</span><span style="color: #007700">));<br />echo&nbsp;</span><span style="color: #DD0000">"Start:&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$dt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">"Y-m-d&nbsp;H:i:s&nbsp;P"</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$dt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">modify</span><span style="color: #007700">(</span><span style="color: #DD0000">"+1&nbsp;month"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"End:&nbsp;&nbsp;&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$dt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">"Y-m-d&nbsp;H:i:s&nbsp;P"</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Leap&nbsp;year:\n"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;February&nbsp;has&nbsp;29&nbsp;days<br /></span><span style="color: #0000BB">$dt&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTime</span><span style="color: #007700">(</span><span style="color: #DD0000">"2016-01-31&nbsp;00:00:00"</span><span style="color: #007700">,&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTimeZone</span><span style="color: #007700">(</span><span style="color: #DD0000">"America/New_York"</span><span style="color: #007700">));<br />echo&nbsp;</span><span style="color: #DD0000">"Start:&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$dt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">"Y-m-d&nbsp;H:i:s&nbsp;P"</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$dt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">modify</span><span style="color: #007700">(</span><span style="color: #DD0000">"+1&nbsp;month"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"End:&nbsp;&nbsp;&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$dt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">"Y-m-d&nbsp;H:i:s&nbsp;P"</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Normal year:
+Start: 2015-01-31 00:00:00 -05:00
+End:   2015-03-03 00:00:00 -05:00
+Leap year:
+Start: 2016-01-31 00:00:00 -05:00
+End:   2016-03-02 00:00:00 -05:00
+</pre></div>
+    </div>
+    <div class="example-contents"><p>
+     To get the last day of the next month (i.e. to prevent the overflow),
+     the <em>last day of</em> format is available as of PHP 5.3.0.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"Normal&nbsp;year:\n"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;February&nbsp;has&nbsp;28&nbsp;days<br /></span><span style="color: #0000BB">$dt&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTime</span><span style="color: #007700">(</span><span style="color: #DD0000">"2015-01-31&nbsp;00:00:00"</span><span style="color: #007700">,&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTimeZone</span><span style="color: #007700">(</span><span style="color: #DD0000">"America/New_York"</span><span style="color: #007700">));<br />echo&nbsp;</span><span style="color: #DD0000">"Start:&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$dt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">"Y-m-d&nbsp;H:i:s&nbsp;P"</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$dt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">modify</span><span style="color: #007700">(</span><span style="color: #DD0000">"last&nbsp;day&nbsp;of&nbsp;next&nbsp;month"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"End:&nbsp;&nbsp;&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$dt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">"Y-m-d&nbsp;H:i:s&nbsp;P"</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Leap&nbsp;year:\n"</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;February&nbsp;has&nbsp;29&nbsp;days<br /></span><span style="color: #0000BB">$dt&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTime</span><span style="color: #007700">(</span><span style="color: #DD0000">"2016-01-31&nbsp;00:00:00"</span><span style="color: #007700">,&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTimeZone</span><span style="color: #007700">(</span><span style="color: #DD0000">"America/New_York"</span><span style="color: #007700">));<br />echo&nbsp;</span><span style="color: #DD0000">"Start:&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$dt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">"Y-m-d&nbsp;H:i:s&nbsp;P"</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$dt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">modify</span><span style="color: #007700">(</span><span style="color: #DD0000">"last&nbsp;day&nbsp;of&nbsp;next&nbsp;month"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"End:&nbsp;&nbsp;&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$dt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">format</span><span style="color: #007700">(</span><span style="color: #DD0000">"Y-m-d&nbsp;H:i:s&nbsp;P"</span><span style="color: #007700">),&nbsp;</span><span style="color: #0000BB">PHP_EOL</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Normal year:
+Start: 2015-01-31 00:00:00 -05:00
+End:   2015-02-28 00:00:00 -05:00
+Leap year:
+Start: 2016-01-31 00:00:00 -05:00
+End:   2016-02-29 00:00:00 -05:00
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

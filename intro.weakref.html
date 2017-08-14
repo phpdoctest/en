@@ -1,0 +1,104 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Introduction</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.php.html">Affecting PHP's Behaviour</a></li>
+  <li class="header up"><a href="book.weakref.html">Weakref</a></li>
+  <li class="active"><a href="intro.weakref.html">Introduction</a></li>
+  <li><a href="weakref.setup.html">Installing/Configuring</a></li>
+  <li><a href="class.weakref.html">WeakRef</a></li>
+  <li><a href="class.weakmap.html">WeakMap</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="book.weakref.html">Weakref</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="weakref.setup.html">Installing/Configuring</a></div>
+                <div class="up"><a href="book.weakref.html">Weakref</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="intro.weakref" class="preface">
+  <h1 class="title">Introduction</h1>
+  <p class="para">
+   Weak references provide a non-intrusive gateway to ephemeral objects. Unlike
+   normal (strong) references, weak references do not prevent the garbage
+   collector from freeing that object. For this reason, an object may be
+   destroyed even though a weak reference to that object still exists. In such
+   conditions, the weak reference seamlessly becomes invalid.
+  </p>
+
+  <p class="para">
+   <div class="example" id="example-610">
+    <p><strong>Example #1 <span class="classname">Weakref</span> usage example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyClass&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__destruct</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Destroying&nbsp;object!\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$o1&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MyClass</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$r1&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Weakref</span><span style="color: #007700">(</span><span style="color: #0000BB">$o1</span><span style="color: #007700">);<br /><br />if&nbsp;(</span><span style="color: #0000BB">$r1</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">valid</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Object&nbsp;still&nbsp;exists!\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$r1</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">get</span><span style="color: #007700">());<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Object&nbsp;is&nbsp;dead!\n"</span><span style="color: #007700">;<br />}<br /><br />unset(</span><span style="color: #0000BB">$o1</span><span style="color: #007700">);<br /><br />if&nbsp;(</span><span style="color: #0000BB">$r1</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">valid</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Object&nbsp;still&nbsp;exists!\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$r1</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">get</span><span style="color: #007700">());<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Object&nbsp;is&nbsp;dead!\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Object still exists!
+object(MyClass)#1 (0) {
+}
+Destroying object!
+Object is dead!
+</pre></div>
+     </div>
+    </div>
+   </p>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

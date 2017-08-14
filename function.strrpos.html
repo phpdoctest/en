@@ -1,0 +1,337 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Find the position of the last occurrence of a substring in a string</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.text.html">Text Processing</a></li>
+  <li class="header up"><a href="book.strings.html">Strings</a></li>
+  <li class="header up"><a href="ref.strings.html">String Functions</a></li>
+  <li><a href="function.addcslashes.html">addcslashes</a></li>
+  <li><a href="function.addslashes.html">addslashes</a></li>
+  <li><a href="function.bin2hex.html">bin2hex</a></li>
+  <li><a href="function.chop.html">chop</a></li>
+  <li><a href="function.chr.html">chr</a></li>
+  <li><a href="function.chunk-split.html">chunk_split</a></li>
+  <li><a href="function.convert-cyr-string.html">convert_cyr_string</a></li>
+  <li><a href="function.convert-uudecode.html">convert_uudecode</a></li>
+  <li><a href="function.convert-uuencode.html">convert_uuencode</a></li>
+  <li><a href="function.count-chars.html">count_chars</a></li>
+  <li><a href="function.crc32.html">crc32</a></li>
+  <li><a href="function.crypt.html">crypt</a></li>
+  <li><a href="function.echo.html">echo</a></li>
+  <li><a href="function.explode.html">explode</a></li>
+  <li><a href="function.fprintf.html">fprintf</a></li>
+  <li><a href="function.get-html-translation-table.html">get_html_translation_table</a></li>
+  <li><a href="function.hebrev.html">hebrev</a></li>
+  <li><a href="function.hebrevc.html">hebrevc</a></li>
+  <li><a href="function.hex2bin.html">hex2bin</a></li>
+  <li><a href="function.html-entity-decode.html">html_entity_decode</a></li>
+  <li><a href="function.htmlentities.html">htmlentities</a></li>
+  <li><a href="function.htmlspecialchars-decode.html">htmlspecialchars_decode</a></li>
+  <li><a href="function.htmlspecialchars.html">htmlspecialchars</a></li>
+  <li><a href="function.implode.html">implode</a></li>
+  <li><a href="function.join.html">join</a></li>
+  <li><a href="function.lcfirst.html">lcfirst</a></li>
+  <li><a href="function.levenshtein.html">levenshtein</a></li>
+  <li><a href="function.localeconv.html">localeconv</a></li>
+  <li><a href="function.ltrim.html">ltrim</a></li>
+  <li><a href="function.md5-file.html">md5_file</a></li>
+  <li><a href="function.md5.html">md5</a></li>
+  <li><a href="function.metaphone.html">metaphone</a></li>
+  <li><a href="function.money-format.html">money_format</a></li>
+  <li><a href="function.nl-langinfo.html">nl_langinfo</a></li>
+  <li><a href="function.nl2br.html">nl2br</a></li>
+  <li><a href="function.number-format.html">number_format</a></li>
+  <li><a href="function.ord.html">ord</a></li>
+  <li><a href="function.parse-str.html">parse_str</a></li>
+  <li><a href="function.print.html">print</a></li>
+  <li><a href="function.printf.html">printf</a></li>
+  <li><a href="function.quoted-printable-decode.html">quoted_printable_decode</a></li>
+  <li><a href="function.quoted-printable-encode.html">quoted_printable_encode</a></li>
+  <li><a href="function.quotemeta.html">quotemeta</a></li>
+  <li><a href="function.rtrim.html">rtrim</a></li>
+  <li><a href="function.setlocale.html">setlocale</a></li>
+  <li><a href="function.sha1-file.html">sha1_file</a></li>
+  <li><a href="function.sha1.html">sha1</a></li>
+  <li><a href="function.similar-text.html">similar_text</a></li>
+  <li><a href="function.soundex.html">soundex</a></li>
+  <li><a href="function.sprintf.html">sprintf</a></li>
+  <li><a href="function.sscanf.html">sscanf</a></li>
+  <li><a href="function.str-getcsv.html">str_getcsv</a></li>
+  <li><a href="function.str-ireplace.html">str_ireplace</a></li>
+  <li><a href="function.str-pad.html">str_pad</a></li>
+  <li><a href="function.str-repeat.html">str_repeat</a></li>
+  <li><a href="function.str-replace.html">str_replace</a></li>
+  <li><a href="function.str-rot13.html">str_rot13</a></li>
+  <li><a href="function.str-shuffle.html">str_shuffle</a></li>
+  <li><a href="function.str-split.html">str_split</a></li>
+  <li><a href="function.str-word-count.html">str_word_count</a></li>
+  <li><a href="function.strcasecmp.html">strcasecmp</a></li>
+  <li><a href="function.strchr.html">strchr</a></li>
+  <li><a href="function.strcmp.html">strcmp</a></li>
+  <li><a href="function.strcoll.html">strcoll</a></li>
+  <li><a href="function.strcspn.html">strcspn</a></li>
+  <li><a href="function.strip-tags.html">strip_tags</a></li>
+  <li><a href="function.stripcslashes.html">stripcslashes</a></li>
+  <li><a href="function.stripos.html">stripos</a></li>
+  <li><a href="function.stripslashes.html">stripslashes</a></li>
+  <li><a href="function.stristr.html">stristr</a></li>
+  <li><a href="function.strlen.html">strlen</a></li>
+  <li><a href="function.strnatcasecmp.html">strnatcasecmp</a></li>
+  <li><a href="function.strnatcmp.html">strnatcmp</a></li>
+  <li><a href="function.strncasecmp.html">strncasecmp</a></li>
+  <li><a href="function.strncmp.html">strncmp</a></li>
+  <li><a href="function.strpbrk.html">strpbrk</a></li>
+  <li><a href="function.strpos.html">strpos</a></li>
+  <li><a href="function.strrchr.html">strrchr</a></li>
+  <li><a href="function.strrev.html">strrev</a></li>
+  <li><a href="function.strripos.html">strripos</a></li>
+  <li class="active"><a href="function.strrpos.html">strrpos</a></li>
+  <li><a href="function.strspn.html">strspn</a></li>
+  <li><a href="function.strstr.html">strstr</a></li>
+  <li><a href="function.strtok.html">strtok</a></li>
+  <li><a href="function.strtolower.html">strtolower</a></li>
+  <li><a href="function.strtoupper.html">strtoupper</a></li>
+  <li><a href="function.strtr.html">strtr</a></li>
+  <li><a href="function.substr-compare.html">substr_compare</a></li>
+  <li><a href="function.substr-count.html">substr_count</a></li>
+  <li><a href="function.substr-replace.html">substr_replace</a></li>
+  <li><a href="function.substr.html">substr</a></li>
+  <li><a href="function.trim.html">trim</a></li>
+  <li><a href="function.ucfirst.html">ucfirst</a></li>
+  <li><a href="function.ucwords.html">ucwords</a></li>
+  <li><a href="function.vfprintf.html">vfprintf</a></li>
+  <li><a href="function.vprintf.html">vprintf</a></li>
+  <li><a href="function.vsprintf.html">vsprintf</a></li>
+  <li><a href="function.wordwrap.html">wordwrap</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.strripos.html">strripos</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.strspn.html">strspn</a></div>
+                <div class="up"><a href="ref.strings.html">String Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.strrpos" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">strrpos</h1>
+  <p class="refpurpose">Find the position of the last occurrence of a substring in a string</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.strrpos-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname">strrpos</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$haystack</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$needle</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$offset</code><span class="initializer"> = 0</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Find the numeric position of the last occurrence of
+   <code class="parameter">needle</code> in the <code class="parameter">haystack</code> string.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.strrpos-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">haystack</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The string to search in.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">needle</code></dt>
+
+     <dd>
+
+      <p class="para">
+       If <code class="parameter">needle</code> is not a string, it is converted
+       to an integer and applied as the ordinal value of a character.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">offset</code></dt>
+
+     <dd>
+
+      <p class="para">
+       If specified, search will start this number of characters counted from the
+       beginning of the string. If the value is negative, search will instead start
+       from that many characters from the end of the string, searching backwards.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.strrpos-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the position where the needle exists relative to the beginning of
+   the <code class="parameter">haystack</code> string (independent of search direction
+   or offset).
+   Also note that string positions start at 0, and not 1.
+  </p>
+  <p class="para">
+   Returns <strong><code>FALSE</code></strong> if the needle was not found.
+  </p>
+  <div class="warning"><strong class="warning">Warning</strong><p class="simpara">This function may
+return Boolean <strong><code>FALSE</code></strong>, but may also return a non-Boolean value which
+evaluates to <strong><code>FALSE</code></strong>. Please read the section on <a href="language.types.boolean.html" class="link">Booleans</a> for more
+information. Use <a href="language.operators.comparison.html" class="link">the ===
+operator</a> for testing the return value of this
+function.</p></div>
+ </div>
+
+ 
+ <div class="refsect1 changelog" id="refsect1-function.strrpos-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.0.0</td>
+       <td>
+        The <code class="parameter">needle</code> may now be a string of more than one
+        character.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-function.strrpos-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-5520">
+    <p><strong>Example #1 Checking if a needle is in the haystack</strong></p>
+    <div class="example-contents"><p>
+     It is easy to mistake the return values for &quot;character found at
+     position 0&quot; and &quot;character not found&quot;.  Here&#039;s how to detect
+     the difference:
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$pos&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">strrpos</span><span style="color: #007700">(</span><span style="color: #0000BB">$mystring</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"b"</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">$pos&nbsp;</span><span style="color: #007700">===&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">)&nbsp;{&nbsp;</span><span style="color: #FF8000">//&nbsp;note:&nbsp;three&nbsp;equal&nbsp;signs<br />&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;not&nbsp;found...<br /></span><span style="color: #007700">}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-5521">
+    <p><strong>Example #2 Searching with offsets</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$foo&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"0123456789a123456789b123456789c"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">strrpos</span><span style="color: #007700">(</span><span style="color: #0000BB">$foo</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'7'</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">5</span><span style="color: #007700">));&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Starts&nbsp;looking&nbsp;backwards&nbsp;five&nbsp;positions<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;from&nbsp;the&nbsp;end.&nbsp;Result:&nbsp;int(17)<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">strrpos</span><span style="color: #007700">(</span><span style="color: #0000BB">$foo</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'7'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">20</span><span style="color: #007700">));&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Starts&nbsp;searching&nbsp;20&nbsp;positions&nbsp;into&nbsp;the<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;//&nbsp;string.&nbsp;Result:&nbsp;int(27)<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">strrpos</span><span style="color: #007700">(</span><span style="color: #0000BB">$foo</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'7'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">28</span><span style="color: #007700">));&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Result:&nbsp;bool(false)<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.strrpos-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">strpos</span></li>
+    <li class="member"><span class="function">stripos</span></li>
+    <li class="member"><span class="function">strripos</span></li>
+    <li class="member"><span class="function">strrchr</span></li>
+    <li class="member"><span class="function">substr</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,247 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Compresses all files in the current Phar archive using Gzip compression</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.compression.html">Compression and Archive Extensions</a></li>
+  <li class="header up"><a href="book.phar.html">Phar</a></li>
+  <li class="header up"><a href="class.phar.html">Phar</a></li>
+  <li><a href="phar.addemptydir.html">Phar::addEmptyDir</a></li>
+  <li><a href="phar.addfile.html">Phar::addFile</a></li>
+  <li><a href="phar.addfromstring.html">Phar::addFromString</a></li>
+  <li><a href="phar.apiversion.html">Phar::apiVersion</a></li>
+  <li><a href="phar.buildfromdirectory.html">Phar::buildFromDirectory</a></li>
+  <li><a href="phar.buildfromiterator.html">Phar::buildFromIterator</a></li>
+  <li><a href="phar.cancompress.html">Phar::canCompress</a></li>
+  <li><a href="phar.canwrite.html">Phar::canWrite</a></li>
+  <li><a href="phar.compress.html">Phar::compress</a></li>
+  <li><a href="phar.compressallfilesbzip2.html">Phar::compressAllFilesBZIP2</a></li>
+  <li class="active"><a href="phar.compressallfilesgz.html">Phar::compressAllFilesGZ</a></li>
+  <li><a href="phar.compressfiles.html">Phar::compressFiles</a></li>
+  <li><a href="phar.construct.html">Phar::__construct</a></li>
+  <li><a href="phar.converttodata.html">Phar::convertToData</a></li>
+  <li><a href="phar.converttoexecutable.html">Phar::convertToExecutable</a></li>
+  <li><a href="phar.copy.html">Phar::copy</a></li>
+  <li><a href="phar.count.html">Phar::count</a></li>
+  <li><a href="phar.createdefaultstub.html">Phar::createDefaultStub</a></li>
+  <li><a href="phar.decompress.html">Phar::decompress</a></li>
+  <li><a href="phar.decompressfiles.html">Phar::decompressFiles</a></li>
+  <li><a href="phar.delmetadata.html">Phar::delMetadata</a></li>
+  <li><a href="phar.delete.html">Phar::delete</a></li>
+  <li><a href="phar.extractto.html">Phar::extractTo</a></li>
+  <li><a href="phar.getmetadata.html">Phar::getMetadata</a></li>
+  <li><a href="phar.getmodified.html">Phar::getModified</a></li>
+  <li><a href="phar.getsignature.html">Phar::getSignature</a></li>
+  <li><a href="phar.getstub.html">Phar::getStub</a></li>
+  <li><a href="phar.getsupportedcompression.html">Phar::getSupportedCompression</a></li>
+  <li><a href="phar.getsupportedsignatures.html">Phar::getSupportedSignatures</a></li>
+  <li><a href="phar.getversion.html">Phar::getVersion</a></li>
+  <li><a href="phar.hasmetadata.html">Phar::hasMetadata</a></li>
+  <li><a href="phar.interceptfilefuncs.html">Phar::interceptFileFuncs</a></li>
+  <li><a href="phar.isbuffering.html">Phar::isBuffering</a></li>
+  <li><a href="phar.iscompressed.html">Phar::isCompressed</a></li>
+  <li><a href="phar.isfileformat.html">Phar::isFileFormat</a></li>
+  <li><a href="phar.isvalidpharfilename.html">Phar::isValidPharFilename</a></li>
+  <li><a href="phar.iswritable.html">Phar::isWritable</a></li>
+  <li><a href="phar.loadphar.html">Phar::loadPhar</a></li>
+  <li><a href="phar.mapphar.html">Phar::mapPhar</a></li>
+  <li><a href="phar.mount.html">Phar::mount</a></li>
+  <li><a href="phar.mungserver.html">Phar::mungServer</a></li>
+  <li><a href="phar.offsetexists.html">Phar::offsetExists</a></li>
+  <li><a href="phar.offsetget.html">Phar::offsetGet</a></li>
+  <li><a href="phar.offsetset.html">Phar::offsetSet</a></li>
+  <li><a href="phar.offsetunset.html">Phar::offsetUnset</a></li>
+  <li><a href="phar.running.html">Phar::running</a></li>
+  <li><a href="phar.setalias.html">Phar::setAlias</a></li>
+  <li><a href="phar.setdefaultstub.html">Phar::setDefaultStub</a></li>
+  <li><a href="phar.setmetadata.html">Phar::setMetadata</a></li>
+  <li><a href="phar.setsignaturealgorithm.html">Phar::setSignatureAlgorithm</a></li>
+  <li><a href="phar.setstub.html">Phar::setStub</a></li>
+  <li><a href="phar.startbuffering.html">Phar::startBuffering</a></li>
+  <li><a href="phar.stopbuffering.html">Phar::stopBuffering</a></li>
+  <li><a href="phar.uncompressallfiles.html">Phar::uncompressAllFiles</a></li>
+  <li><a href="phar.unlinkarchive.html">Phar::unlinkArchive</a></li>
+  <li><a href="phar.webphar.html">Phar::webPhar</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="phar.compressallfilesbzip2.html">Phar::compressAllFilesBZIP2</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="phar.compressfiles.html">Phar::compressFiles</a></div>
+                <div class="up"><a href="class.phar.html">Phar</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="phar.compressallfilesgz" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Phar::compressAllFilesGZ</h1>
+  <p class="refpurpose">Compresses all files in the current Phar archive using Gzip compression</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-phar.compressallfilesgz-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">Phar::compressAllFilesGZ</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <blockquote class="note"><p><strong class="note">Note</strong>: <p class="para">This
+method has been removed from the phar extension as of version 2.0.0.  Alternative
+implementations are available using <span class="function">Phar::compress</span>,
+<span class="function">Phar::decompress</span>, <span class="function">Phar::compressFiles</span> and
+<span class="function">Phar::decompressFiles</span>.</p></p></blockquote>
+  <blockquote class="note"><p><strong class="note">Note</strong>: <p class="para">This
+method requires the <var class="filename">php.ini</var> setting <em>phar.readonly</em> to be
+set to <em>0</em> in order to work for <span class="classname">Phar</span>
+objects.  Otherwise, a <span class="classname">PharException</span> will be thrown.</p></p></blockquote>
+
+  <p class="para">
+   For tar-based phar archives, this method compresses the entire archive using
+   gzip compression.  The resulting file can be processed with the gunzip command, or
+   accessed directly and transparently with the Phar extension.
+  </p>
+  <p class="para">
+   For Zip-based and phar-based phar archives, this method compresses all files in the
+   Phar archive using gzip compression.
+   The <a href="ref.zlib.html" class="link">zlib</a> extension must be enabled to take
+   advantage of this feature.  In addition, if any files are already compressed using
+   bzip2 compression, the <a href="ref.bzip2.html" class="link">bzip2</a> extension must be
+   enabled in order to decompress the files prior to re-compressing with gzip compression.
+   As with all functionality that modifies the contents of a phar, the
+   <a href="phar.configuration.html#ini.phar.readonly" class="link">phar.readonly</a> INI variable must be off
+   in order to succeed.
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-phar.compressallfilesgz-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> on success or <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-phar.compressallfilesgz-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   Throws <span class="classname">BadMethodCallException</span> if
+   the <a href="phar.configuration.html#ini.phar.readonly" class="link">phar.readonly</a>
+   INI variable is on, the <a href="ref.zlib.html" class="link">zlib</a>
+   extension is not available, or if any files are compressed using
+   bzip2 compression and the <a href="ref.bzip2.html" class="link">bzip2</a> extension
+   is not enabled.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-phar.compressallfilesgz-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-730">
+    <p><strong>Example #1 A <span class="function">Phar::compressAllFilesGZ</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$p&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Phar</span><span style="color: #007700">(</span><span style="color: #DD0000">'/path/to/my.phar'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'my.phar'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'myfile.txt'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'hi'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'myfile2.txt'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'hi'</span><span style="color: #007700">;<br />foreach&nbsp;(</span><span style="color: #0000BB">$p&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getFileName</span><span style="color: #007700">());<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isCompressed</span><span style="color: #007700">());<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isCompressedBZIP2</span><span style="color: #007700">());<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isCompressedGZ</span><span style="color: #007700">());<br />}<br /></span><span style="color: #0000BB">$p</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">compressAllFilesGZ</span><span style="color: #007700">();<br />foreach&nbsp;(</span><span style="color: #0000BB">$p&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getFileName</span><span style="color: #007700">());<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isCompressed</span><span style="color: #007700">());<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isCompressedBZIP2</span><span style="color: #007700">());<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$file</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">isCompressedGZ</span><span style="color: #007700">());<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+string(10) &quot;myfile.txt&quot;
+bool(false)
+bool(false)
+bool(false)
+string(11) &quot;myfile2.txt&quot;
+bool(false)
+bool(false)
+bool(false)
+string(10) &quot;myfile.txt&quot;
+bool(true)
+bool(false)
+bool(true)
+string(11) &quot;myfile2.txt&quot;
+bool(true)
+bool(false)
+bool(true)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-phar.compressallfilesgz-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">PharFileInfo::getCompressedSize</span></li>
+    <li class="member"><span class="function">PharFileInfo::isCompressedBZIP2</span></li>
+    <li class="member"><span class="function">PharFileInfo::isCompressed</span></li>
+    <li class="member"><span class="function">PharFileInfo::isCompressedGZ</span></li>
+    <li class="member"><span class="function">PharFileInfo::setCompressedBZIP2</span></li>
+    <li class="member"><span class="function">PharFileInfo::setUncompressed</span></li>
+    <li class="member"><span class="function">PharFileInfo::setCompressedGZ</span></li>
+    <li class="member"><span class="function">Phar::canCompress</span></li>
+    <li class="member"><span class="function">Phar::isCompressed</span></li>
+    <li class="member"><span class="function">Phar::compressAllFilesBZIP2</span></li>
+    <li class="member"><span class="function">Phar::getSupportedCompression</span></li>
+    <li class="member"><span class="function">Phar::uncompressAllFiles</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

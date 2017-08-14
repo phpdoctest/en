@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Call a function for every element in an iterator</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.spl.html">SPL</a></li>
+  <li class="header up"><a href="ref.spl.html">SPL Functions</a></li>
+  <li><a href="function.class-implements.html">class_implements</a></li>
+  <li><a href="function.class-parents.html">class_parents</a></li>
+  <li><a href="function.class-uses.html">class_uses</a></li>
+  <li class="active"><a href="function.iterator-apply.html">iterator_apply</a></li>
+  <li><a href="function.iterator-count.html">iterator_count</a></li>
+  <li><a href="function.iterator-to-array.html">iterator_to_array</a></li>
+  <li><a href="function.spl-autoload-call.html">spl_autoload_call</a></li>
+  <li><a href="function.spl-autoload-extensions.html">spl_autoload_extensions</a></li>
+  <li><a href="function.spl-autoload-functions.html">spl_autoload_functions</a></li>
+  <li><a href="function.spl-autoload-register.html">spl_autoload_register</a></li>
+  <li><a href="function.spl-autoload-unregister.html">spl_autoload_unregister</a></li>
+  <li><a href="function.spl-autoload.html">spl_autoload</a></li>
+  <li><a href="function.spl-classes.html">spl_classes</a></li>
+  <li><a href="function.spl-object-hash.html">spl_object_hash</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.class-uses.html">class_uses</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.iterator-count.html">iterator_count</a></div>
+                <div class="up"><a href="ref.spl.html">SPL Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.iterator-apply" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">iterator_apply</h1>
+  <p class="refpurpose">Call a function for every element in an iterator</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.iterator-apply-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname">iterator_apply</span>
+    ( <span class="methodparam"><span class="type">Traversable</span> <code class="parameter">$iterator</code></span>
+   , <span class="methodparam"><span class="type">callable</span> <code class="parameter">$function</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$args</code></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Calls a function for every element in an iterator.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.iterator-apply-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">iterator</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The class to iterate over.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">function</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The callback function to call on every element.
+       <blockquote class="note"><p><strong class="note">Note</strong>: 
+        <span class="simpara">
+         The function must return <strong><code>TRUE</code></strong> in order to
+         continue iterating over the <code class="parameter">iterator</code>.
+        </span>
+       </p></blockquote>
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">args</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Arguments to pass to the callback function.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.iterator-apply-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the iteration count.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.iterator-apply-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4502">
+    <p><strong>Example #1 <span class="function">iterator_apply</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">print_caps</span><span style="color: #007700">(</span><span style="color: #0000BB">Iterator&nbsp;$iterator</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">strtoupper</span><span style="color: #007700">(</span><span style="color: #0000BB">$iterator</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">current</span><span style="color: #007700">())&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">TRUE</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$it&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">ArrayIterator</span><span style="color: #007700">(array(</span><span style="color: #DD0000">"Apples"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Bananas"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Cherries"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">iterator_apply</span><span style="color: #007700">(</span><span style="color: #0000BB">$it</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"print_caps"</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #0000BB">$it</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+APPLES
+BANANAS
+CHERRIES
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+
+
+ <div class="refsect1 seealso" id="refsect1-function.iterator-apply-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">array_walk</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

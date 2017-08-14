@@ -1,0 +1,202 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Construct a LimitIterator</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.spl.html">SPL</a></li>
+  <li class="header up"><a href="spl.iterators.html">Iterators</a></li>
+  <li class="header up"><a href="class.limititerator.html">LimitIterator</a></li>
+  <li class="active"><a href="limititerator.construct.html">LimitIterator::__construct</a></li>
+  <li><a href="limititerator.current.html">LimitIterator::current</a></li>
+  <li><a href="limititerator.getinneriterator.html">LimitIterator::getInnerIterator</a></li>
+  <li><a href="limititerator.getposition.html">LimitIterator::getPosition</a></li>
+  <li><a href="limititerator.key.html">LimitIterator::key</a></li>
+  <li><a href="limititerator.next.html">LimitIterator::next</a></li>
+  <li><a href="limititerator.rewind.html">LimitIterator::rewind</a></li>
+  <li><a href="limititerator.seek.html">LimitIterator::seek</a></li>
+  <li><a href="limititerator.valid.html">LimitIterator::valid</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="class.limititerator.html">LimitIterator</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="limititerator.current.html">LimitIterator::current</a></div>
+                <div class="up"><a href="class.limititerator.html">LimitIterator</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="limititerator.construct" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">LimitIterator::__construct</h1>
+  <p class="refpurpose">Construct a LimitIterator</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-limititerator.construct-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">LimitIterator::__construct</span>
+    ( <span class="methodparam"><span class="type">Iterator</span> <code class="parameter">$iterator</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$offset</code><span class="initializer"> = 0</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$count</code><span class="initializer"> = -1</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Constructs a new <span class="classname">LimitIterator</span> from an 
+   <code class="parameter">iterator</code> with a given starting 
+   <code class="parameter">offset</code> and maximum <code class="parameter">count</code>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-limititerator.construct-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">iterator</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The <span class="classname">Iterator</span> to limit.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">offset</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Optional offset of the limit.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">count</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Optional count of the limit.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-limititerator.construct-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   The new <span class="classname">LimitIterator</span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-limititerator.construct-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   Throws an <span class="classname">OutOfRangeException</span>
+   if the <code class="parameter">offset</code> is less than <em>0</em>
+   or the <code class="parameter">count</code> is less than <em>-1</em>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-limititerator.construct-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4471">
+    <p><strong>Example #1 <span class="function">LimitIterator::__construct</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$ait&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">ArrayIterator</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'a'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'b'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'c'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'d'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'e'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">$lit&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">LimitIterator</span><span style="color: #007700">(</span><span style="color: #0000BB">$ait</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">);<br />foreach&nbsp;(</span><span style="color: #0000BB">$lit&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$value&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+b
+c
+d
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-limititerator.construct-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="class.limititerator.html#limititerator.examples" class="link">LimitIterator examples</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

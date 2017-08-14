@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Create stopped EvSignal watcher object</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.fileprocess.process.html">Process Control Extensions</a></li>
+  <li class="header up"><a href="book.ev.html">Ev</a></li>
+  <li class="header up"><a href="class.evsignal.html">EvSignal</a></li>
+  <li><a href="evsignal.construct.html">EvSignal::__construct</a></li>
+  <li class="active"><a href="evsignal.createstopped.html">EvSignal::createStopped</a></li>
+  <li><a href="evsignal.set.html">EvSignal::set</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="evsignal.construct.html">EvSignal::__construct</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="evsignal.set.html">EvSignal::set</a></div>
+                <div class="up"><a href="class.evsignal.html">EvSignal</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="evsignal.createstopped" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">EvSignal::createStopped</h1>
+  <p class="refpurpose">Create stopped EvSignal watcher object</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-evsignal.createstopped-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">EvSignal</span>
+    <span class="methodname">EvSignal::createStopped</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$signum</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+    <span class="initializer"> = 0</span>
+   </span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Create stopped EvSignal watcher object. Unlike
+    <span class="methodname">EvSignal::__construct</span>
+   , this method does&#039;t start the watcher automatically.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-evsignal.createstopped-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+
+     <code class="parameter">signum</code>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Signal number. See constants exported by
+      <em class="emphasis">pcntl</em>
+      extension. See also
+      <em>signal(7)</em>
+      man page.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+
+     <code class="parameter">callback</code>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      See
+      <a href="ev.watcher-callbacks.html" class="link">Watcher callbacks</a>
+      .
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+
+     <code class="parameter">data</code>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Custom data associated with the watcher.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+
+     <code class="parameter">priority</code>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      <a href="class.ev.html#ev.constants.watcher-pri" class="link">Watcher priority</a>
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-evsignal.createstopped-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns EvSignal object on success.
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-evsignal.createstopped-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li class="member">
+     <span class="methodname">EvWatcher::start</span>
+   </li>
+   <li class="member">
+     <span class="methodname">EvSignal::__construct</span>
+   </li>
+  </ul>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

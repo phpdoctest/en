@@ -1,0 +1,242 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Get the decimal digit value of a code point for a given radix</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.international.html">Human Language and Character Encoding Support</a></li>
+  <li class="header up"><a href="book.intl.html">intl</a></li>
+  <li class="header up"><a href="class.intlchar.html">IntlChar</a></li>
+  <li><a href="intlchar.charage.html">IntlChar::charAge</a></li>
+  <li><a href="intlchar.chardigitvalue.html">IntlChar::charDigitValue</a></li>
+  <li><a href="intlchar.chardirection.html">IntlChar::charDirection</a></li>
+  <li><a href="intlchar.charfromname.html">IntlChar::charFromName</a></li>
+  <li><a href="intlchar.charmirror.html">IntlChar::charMirror</a></li>
+  <li><a href="intlchar.charname.html">IntlChar::charName</a></li>
+  <li><a href="intlchar.chartype.html">IntlChar::charType</a></li>
+  <li><a href="intlchar.chr.html">IntlChar::chr</a></li>
+  <li class="active"><a href="intlchar.digit.html">IntlChar::digit</a></li>
+  <li><a href="intlchar.enumcharnames.html">IntlChar::enumCharNames</a></li>
+  <li><a href="intlchar.enumchartypes.html">IntlChar::enumCharTypes</a></li>
+  <li><a href="intlchar.foldcase.html">IntlChar::foldCase</a></li>
+  <li><a href="intlchar.fordigit.html">IntlChar::forDigit</a></li>
+  <li><a href="intlchar.getbidipairedbracket.html">IntlChar::getBidiPairedBracket</a></li>
+  <li><a href="intlchar.getblockcode.html">IntlChar::getBlockCode</a></li>
+  <li><a href="intlchar.getcombiningclass.html">IntlChar::getCombiningClass</a></li>
+  <li><a href="intlchar.getfc-nfkc-closure.html">IntlChar::getFC_NFKC_Closure</a></li>
+  <li><a href="intlchar.getintpropertymaxvalue.html">IntlChar::getIntPropertyMaxValue</a></li>
+  <li><a href="intlchar.getintpropertyminvalue.html">IntlChar::getIntPropertyMinValue</a></li>
+  <li><a href="intlchar.getintpropertyvalue.html">IntlChar::getIntPropertyValue</a></li>
+  <li><a href="intlchar.getnumericvalue.html">IntlChar::getNumericValue</a></li>
+  <li><a href="intlchar.getpropertyenum.html">IntlChar::getPropertyEnum</a></li>
+  <li><a href="intlchar.getpropertyname.html">IntlChar::getPropertyName</a></li>
+  <li><a href="intlchar.getpropertyvalueenum.html">IntlChar::getPropertyValueEnum</a></li>
+  <li><a href="intlchar.getpropertyvaluename.html">IntlChar::getPropertyValueName</a></li>
+  <li><a href="intlchar.getunicodeversion.html">IntlChar::getUnicodeVersion</a></li>
+  <li><a href="intlchar.hasbinaryproperty.html">IntlChar::hasBinaryProperty</a></li>
+  <li><a href="intlchar.isalnum.html">IntlChar::isalnum</a></li>
+  <li><a href="intlchar.isalpha.html">IntlChar::isalpha</a></li>
+  <li><a href="intlchar.isbase.html">IntlChar::isbase</a></li>
+  <li><a href="intlchar.isblank.html">IntlChar::isblank</a></li>
+  <li><a href="intlchar.iscntrl.html">IntlChar::iscntrl</a></li>
+  <li><a href="intlchar.isdefined.html">IntlChar::isdefined</a></li>
+  <li><a href="intlchar.isdigit.html">IntlChar::isdigit</a></li>
+  <li><a href="intlchar.isgraph.html">IntlChar::isgraph</a></li>
+  <li><a href="intlchar.isidignorable.html">IntlChar::isIDIgnorable</a></li>
+  <li><a href="intlchar.isidpart.html">IntlChar::isIDPart</a></li>
+  <li><a href="intlchar.isidstart.html">IntlChar::isIDStart</a></li>
+  <li><a href="intlchar.isisocontrol.html">IntlChar::isISOControl</a></li>
+  <li><a href="intlchar.isjavaidpart.html">IntlChar::isJavaIDPart</a></li>
+  <li><a href="intlchar.isjavaidstart.html">IntlChar::isJavaIDStart</a></li>
+  <li><a href="intlchar.isjavaspacechar.html">IntlChar::isJavaSpaceChar</a></li>
+  <li><a href="intlchar.islower.html">IntlChar::islower</a></li>
+  <li><a href="intlchar.ismirrored.html">IntlChar::isMirrored</a></li>
+  <li><a href="intlchar.isprint.html">IntlChar::isprint</a></li>
+  <li><a href="intlchar.ispunct.html">IntlChar::ispunct</a></li>
+  <li><a href="intlchar.isspace.html">IntlChar::isspace</a></li>
+  <li><a href="intlchar.istitle.html">IntlChar::istitle</a></li>
+  <li><a href="intlchar.isualphabetic.html">IntlChar::isUAlphabetic</a></li>
+  <li><a href="intlchar.isulowercase.html">IntlChar::isULowercase</a></li>
+  <li><a href="intlchar.isupper.html">IntlChar::isupper</a></li>
+  <li><a href="intlchar.isuuppercase.html">IntlChar::isUUppercase</a></li>
+  <li><a href="intlchar.isuwhitespace.html">IntlChar::isUWhiteSpace</a></li>
+  <li><a href="intlchar.iswhitespace.html">IntlChar::isWhitespace</a></li>
+  <li><a href="intlchar.isxdigit.html">IntlChar::isxdigit</a></li>
+  <li><a href="intlchar.ord.html">IntlChar::ord</a></li>
+  <li><a href="intlchar.tolower.html">IntlChar::tolower</a></li>
+  <li><a href="intlchar.totitle.html">IntlChar::totitle</a></li>
+  <li><a href="intlchar.toupper.html">IntlChar::toupper</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="intlchar.chr.html">IntlChar::chr</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="intlchar.enumcharnames.html">IntlChar::enumCharNames</a></div>
+                <div class="up"><a href="class.intlchar.html">IntlChar</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="intlchar.digit" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">IntlChar::digit</h1>
+  <p class="refpurpose">Get the decimal digit value of a code point for a given radix</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-intlchar.digit-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">int</span> <span class="methodname">IntlChar::digit</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$codepoint</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$radix</code><span class="initializer"> = 10</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Returns the decimal digit value of the code point in the specified radix.
+  </p>
+  <p class="para">
+   If the radix is not in the range <em>2&lt;=radix&lt;=36</em> or if the value of <code class="parameter">codepoint</code>
+   is not a valid digit in the specified radix, <strong><code>FALSE</code></strong> is returned.
+   A character is a valid digit if at least one of the following is true:
+   <ul class="simplelist">
+    <li class="member">The character has a decimal digit value. Such characters have the general category &quot;Nd&quot; (decimal digit numbers) and a Numeric_Type of Decimal. In this case the value is the character&#039;s decimal digit value.</li>
+    <li class="member">The character is one of the uppercase Latin letters &#039;A&#039; through &#039;Z&#039;. In this case the value is c-&#039;A&#039;+10.</li>
+    <li class="member">The character is one of the lowercase Latin letters &#039;a&#039; through &#039;z&#039;. In this case the value is ch-&#039;a&#039;+10.</li>
+    <li class="member">Latin letters from both the ASCII range (0061..007A, 0041..005A) as well as from the Fullwidth ASCII range (FF41..FF5A, FF21..FF3A) are recognized.</li>
+   </ul>
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-intlchar.digit-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">codepoint</code></dt>
+
+    <dd>
+
+     <p class="para">The <span class="type">integer</span> codepoint value (e.g. <em>0x2603</em> for <em class="emphasis">U+2603 SNOWMAN</em>), or the character encoded as a UTF-8 <span class="type">string</span> (e.g. <em>&quot;\u{2603}&quot;</em>)</p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">radix</code></dt>
+
+    <dd>
+
+     <p class="para">
+      The radix (defaults to <em>10</em>).
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-intlchar.digit-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the numeric value represented by the character in the specified radix,
+   or <strong><code>FALSE</code></strong> if there is no value or if the value exceeds the radix.
+  </p>
+  <div class="warning"><strong class="warning">Warning</strong><p class="simpara">This function may
+return Boolean <strong><code>FALSE</code></strong>, but may also return a non-Boolean value which
+evaluates to <strong><code>FALSE</code></strong>. Please read the section on <a href="language.types.boolean.html" class="link">Booleans</a> for more
+information. Use <a href="language.operators.comparison.html" class="link">the ===
+operator</a> for testing the return value of this
+function.</p></div>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-intlchar.digit-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-2956">
+   <p><strong>Example #1 Testing different code points</strong></p>
+   <div class="example-contents">
+    <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">digit</span><span style="color: #007700">(</span><span style="color: #DD0000">"0"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">digit</span><span style="color: #007700">(</span><span style="color: #DD0000">"3"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">digit</span><span style="color: #007700">(</span><span style="color: #DD0000">"A"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">IntlChar</span><span style="color: #007700">::</span><span style="color: #0000BB">digit</span><span style="color: #007700">(</span><span style="color: #DD0000">"A"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">16</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output:</p></div>
+   <div class="example-contents screen">
+    <div class="cdata"><pre>
+int(0)
+int(3)
+bool(false)
+int(10)
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-intlchar.digit-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">IntlChar::forDigit</span></li>
+    <li class="member"><span class="function">IntlChar::charDigitValue</span></li>
+    <li class="member"><span class="function">IntlChar::isdigit</span></li>
+    <li class="member"><strong><code>IntlChar::PROPERTY_NUMERIC_TYPE</code></strong></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

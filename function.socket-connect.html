@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Initiates a connection on a socket</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li class="header up"><a href="book.sockets.html">Sockets</a></li>
+  <li class="header up"><a href="ref.sockets.html">Socket Functions</a></li>
+  <li><a href="function.socket-accept.html">socket_accept</a></li>
+  <li><a href="function.socket-bind.html">socket_bind</a></li>
+  <li><a href="function.socket-clear-error.html">socket_clear_error</a></li>
+  <li><a href="function.socket-close.html">socket_close</a></li>
+  <li><a href="function.socket-cmsg-space.html">socket_cmsg_space</a></li>
+  <li class="active"><a href="function.socket-connect.html">socket_connect</a></li>
+  <li><a href="function.socket-create-listen.html">socket_create_listen</a></li>
+  <li><a href="function.socket-create-pair.html">socket_create_pair</a></li>
+  <li><a href="function.socket-create.html">socket_create</a></li>
+  <li><a href="function.socket-get-option.html">socket_get_option</a></li>
+  <li><a href="function.socket-getopt.html">socket_getopt</a></li>
+  <li><a href="function.socket-getpeername.html">socket_getpeername</a></li>
+  <li><a href="function.socket-getsockname.html">socket_getsockname</a></li>
+  <li><a href="function.socket-import-stream.html">socket_import_stream</a></li>
+  <li><a href="function.socket-last-error.html">socket_last_error</a></li>
+  <li><a href="function.socket-listen.html">socket_listen</a></li>
+  <li><a href="function.socket-read.html">socket_read</a></li>
+  <li><a href="function.socket-recv.html">socket_recv</a></li>
+  <li><a href="function.socket-recvfrom.html">socket_recvfrom</a></li>
+  <li><a href="function.socket-recvmsg.html">socket_recvmsg</a></li>
+  <li><a href="function.socket-select.html">socket_select</a></li>
+  <li><a href="function.socket-send.html">socket_send</a></li>
+  <li><a href="function.socket-sendmsg.html">socket_sendmsg</a></li>
+  <li><a href="function.socket-sendto.html">socket_sendto</a></li>
+  <li><a href="function.socket-set-block.html">socket_set_block</a></li>
+  <li><a href="function.socket-set-nonblock.html">socket_set_nonblock</a></li>
+  <li><a href="function.socket-set-option.html">socket_set_option</a></li>
+  <li><a href="function.socket-setopt.html">socket_setopt</a></li>
+  <li><a href="function.socket-shutdown.html">socket_shutdown</a></li>
+  <li><a href="function.socket-strerror.html">socket_strerror</a></li>
+  <li><a href="function.socket-write.html">socket_write</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.socket-cmsg-space.html">socket_cmsg_space</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.socket-create-listen.html">socket_create_listen</a></div>
+                <div class="up"><a href="ref.sockets.html">Socket Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.socket-connect" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">socket_connect</h1>
+  <p class="refpurpose">Initiates a connection on a socket</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.socket-connect-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">socket_connect</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$socket</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$address</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$port</code><span class="initializer"> = 0</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Initiate a connection to <code class="parameter">address</code> using the socket resource
+   <code class="parameter">socket</code>, which must be a valid socket
+   resource created with <span class="function">socket_create</span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.socket-connect-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">socket</code></dt>
+
+     <dd>
+
+      <p class="para">
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">address</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The <code class="parameter">address</code> parameter is either an IPv4 address
+       in dotted-quad notation (e.g. <em>127.0.0.1</em>) if 
+       <code class="parameter">socket</code> is <strong><code>AF_INET</code></strong>, a valid 
+       IPv6 address (e.g. <em>::1</em>) if IPv6 support is enabled and 
+       <code class="parameter">socket</code> is <strong><code>AF_INET6</code></strong>
+       or the pathname of a Unix domain socket, if the socket family is
+       <strong><code>AF_UNIX</code></strong>.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">port</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The <code class="parameter">port</code> parameter is only used and is mandatory
+       when connecting to an <strong><code>AF_INET</code></strong> or an 
+       <strong><code>AF_INET6</code></strong> socket, and designates
+       the port on the remote host to which a connection should be made.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.socket-connect-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> on success or <strong><code>FALSE</code></strong> on failure. The error code can be retrieved with
+   <span class="function">socket_last_error</span>. This code may be passed to
+   <span class="function">socket_strerror</span> to get a textual explanation of the
+   error.
+  </p>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    If the socket is non-blocking then this function returns <strong><code>FALSE</code></strong> with an
+    error <em>Operation now in progress</em>.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.socket-connect-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">socket_bind</span></li>
+    <li class="member"><span class="function">socket_listen</span></li>
+    <li class="member"><span class="function">socket_create</span></li>
+    <li class="member"><span class="function">socket_last_error</span></li>
+    <li class="member"><span class="function">socket_strerror</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,112 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Request Injection Attacks</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="set.mongodb.html">MongoDB</a></li>
+  <li class="header up"><a href="mongodb.security.html">Security</a></li>
+  <li class="active"><a href="mongodb.security.request_injection.html">Request Injection Attacks</a></li>
+  <li><a href="mongodb.security.script_injection.html">Script Injection Attacks</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mongodb.security.html">Security</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mongodb.security.script_injection.html">Script Injection Attacks</a></div>
+                <div class="up"><a href="mongodb.security.html">Security</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mongodb.security.request_injection" class="article">
+  <h1>Request Injection Attacks</h1>
+  <p class="para">
+   If you are passing <em>$_GET</em> (or <em>$_POST</em>)
+   parameters to your queries, make sure that they are cast to strings first.
+   Users can insert associative arrays in GET and POST requests, which could
+   then become unwanted $-queries.
+  </p>
+
+  <p class="para">
+   A fairly innocuous example: suppose you are looking up a user&#039;s information
+   with the request <em class="emphasis">http://www.example.com?username=bob</em>.
+   Your application creates the query
+   <em>$q = new \MongoDB\Driver\Query( [ &#039;username&#039; =&gt; $_GET[&#039;username&#039;] ])</em>.
+  </p>
+
+  <p class="para">
+   Someone could subvert this by getting
+   <em class="emphasis">http://www.example.com?username[$ne]=foo</em>, which PHP
+   will magically turn into an associative array, turning your query into
+   <em>$q = new \MongoDB\Driver\Query( [ &#039;username&#039; =&gt; [ &#039;$ne&#039; =&gt; &#039;foo&#039; ] ] )</em>,
+   which will return all users not named &quot;foo&quot; (all of your users, probably).
+  </p>
+
+  <p class="para">
+   This is a fairly easy attack to defend against: make sure $_GET and $_POST
+   parameters are the type you expect before you send them to the database.
+   PHP has the <span class="function">filter_var</span> function to assist with this.
+  </p>
+
+  <p class="para">
+   Note that this type of attack can be used with any database interaction that
+   locates a document, including updates, upserts, deletes, and findAndModify
+   commands.
+  </p>
+
+  <p class="para">
+   See <a href="https://docs.mongodb.com/manual/security/" class="link external">&raquo;&nbsp;the main documentation</a>
+   for more information about SQL-injection-like issues with MongoDB.
+  </p>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

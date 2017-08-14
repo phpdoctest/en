@@ -1,0 +1,203 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Fetch extended error information associated with the last operation on the database handle</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.abstract.html">Abstraction Layers</a></li>
+  <li class="header up"><a href="book.pdo.html">PDO</a></li>
+  <li class="header up"><a href="class.pdo.html">PDO</a></li>
+  <li><a href="pdo.begintransaction.html">PDO::beginTransaction</a></li>
+  <li><a href="pdo.commit.html">PDO::commit</a></li>
+  <li><a href="pdo.construct.html">PDO::__construct</a></li>
+  <li><a href="pdo.errorcode.html">PDO::errorCode</a></li>
+  <li class="active"><a href="pdo.errorinfo.html">PDO::errorInfo</a></li>
+  <li><a href="pdo.exec.html">PDO::exec</a></li>
+  <li><a href="pdo.getattribute.html">PDO::getAttribute</a></li>
+  <li><a href="pdo.getavailabledrivers.html">PDO::getAvailableDrivers</a></li>
+  <li><a href="pdo.intransaction.html">PDO::inTransaction</a></li>
+  <li><a href="pdo.lastinsertid.html">PDO::lastInsertId</a></li>
+  <li><a href="pdo.prepare.html">PDO::prepare</a></li>
+  <li><a href="pdo.query.html">PDO::query</a></li>
+  <li><a href="pdo.quote.html">PDO::quote</a></li>
+  <li><a href="pdo.rollback.html">PDO::rollBack</a></li>
+  <li><a href="pdo.setattribute.html">PDO::setAttribute</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="pdo.errorcode.html">PDO::errorCode</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="pdo.exec.html">PDO::exec</a></div>
+                <div class="up"><a href="class.pdo.html">PDO</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="pdo.errorinfo" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">PDO::errorInfo</h1>
+  <p class="refpurpose">
+   Fetch extended error information associated with the last operation on the database handle
+  </p>
+ </div>
+ <div class="refsect1 description" id="refsect1-pdo.errorinfo-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">PDO::errorInfo</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-pdo.errorinfo-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   <span class="function">PDO::errorInfo</span> returns an array of error information
+   about the last operation performed by this database handle. The array
+   consists of the following fields:
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Element</th>
+       <th>Information</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>0</td>
+       <td>SQLSTATE error code (a five characters alphanumeric identifier defined
+               in the ANSI SQL standard).</td>
+      </tr>
+
+      <tr>
+       <td>1</td>
+       <td>Driver-specific error code.</td>
+      </tr>
+
+      <tr>
+       <td>2</td>
+       <td>Driver-specific error message.</td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    If the SQLSTATE error code is not set or there is no driver-specific
+    error, the elements following element 0 will be set to <strong><code>NULL</code></strong>.
+    </p>
+  </p></blockquote>
+
+  <p class="para">
+   <span class="function">PDO::errorInfo</span> only retrieves error information for
+   operations performed directly on the database handle. If you create a
+   PDOStatement object through <span class="function">PDO::prepare</span> or
+   <span class="function">PDO::query</span> and invoke an error on the statement
+   handle, <span class="function">PDO::errorInfo</span> will not reflect the error
+   from the statement handle. You must call
+   <span class="function">PDOStatement::errorInfo</span> to return the error
+   information for an operation performed on a particular statement handle.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-pdo.errorinfo-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-1009"><p><strong>Example #1 Displaying errorInfo() fields for a PDO_ODBC connection to a DB2 database</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;Provoke&nbsp;an&nbsp;error&nbsp;--&nbsp;bogus&nbsp;SQL&nbsp;syntax&nbsp;*/<br /></span><span style="color: #0000BB">$stmt&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #DD0000">'bogus&nbsp;sql'</span><span style="color: #007700">);<br />if&nbsp;(!</span><span style="color: #0000BB">$stmt</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"\nPDO::errorInfo():\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">errorInfo</span><span style="color: #007700">());<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+PDO::errorInfo():
+Array
+(
+    [0] =&gt; HY000
+    [1] =&gt; 1
+    [2] =&gt; near &quot;bogus&quot;: syntax error
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-pdo.errorinfo-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">PDO::errorCode</span></li>
+    <li class="member"><span class="function">PDOStatement::errorCode</span></li>
+    <li class="member"><span class="function">PDOStatement::errorInfo</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

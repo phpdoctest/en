@@ -1,0 +1,277 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Transfers a result set from the last query</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="set.mysqlinfo.html">MySQL</a></li>
+  <li class="header up"><a href="book.mysqli.html">MySQLi</a></li>
+  <li class="header up"><a href="class.mysqli.html">mysqli</a></li>
+  <li><a href="mysqli.affected-rows.html">mysqli::$affected_rows</a></li>
+  <li><a href="mysqli.autocommit.html">mysqli::autocommit</a></li>
+  <li><a href="mysqli.begin-transaction.html">mysqli::begin_transaction</a></li>
+  <li><a href="mysqli.change-user.html">mysqli::change_user</a></li>
+  <li><a href="mysqli.character-set-name.html">mysqli::character_set_name</a></li>
+  <li><a href="mysqli.client-info.html">mysqli::$client_info</a></li>
+  <li><a href="mysqli.client-version.html">mysqli::$client_version</a></li>
+  <li><a href="mysqli.close.html">mysqli::close</a></li>
+  <li><a href="mysqli.commit.html">mysqli::commit</a></li>
+  <li><a href="mysqli.connect-errno.html">mysqli::$connect_errno</a></li>
+  <li><a href="mysqli.connect-error.html">mysqli::$connect_error</a></li>
+  <li><a href="mysqli.construct.html">mysqli::__construct</a></li>
+  <li><a href="mysqli.debug.html">mysqli::debug</a></li>
+  <li><a href="mysqli.dump-debug-info.html">mysqli::dump_debug_info</a></li>
+  <li><a href="mysqli.errno.html">mysqli::$errno</a></li>
+  <li><a href="mysqli.error-list.html">mysqli::$error_list</a></li>
+  <li><a href="mysqli.error.html">mysqli::$error</a></li>
+  <li><a href="mysqli.field-count.html">mysqli::$field_count</a></li>
+  <li><a href="mysqli.get-charset.html">mysqli::get_charset</a></li>
+  <li><a href="mysqli.get-client-info.html">mysqli::get_client_info</a></li>
+  <li><a href="mysqli.get-client-stats.html">mysqli_get_client_stats</a></li>
+  <li><a href="mysqli.get-client-version.html">mysqli_get_client_version</a></li>
+  <li><a href="mysqli.get-connection-stats.html">mysqli::get_connection_stats</a></li>
+  <li><a href="mysqli.get-host-info.html">mysqli::$host_info</a></li>
+  <li><a href="mysqli.get-proto-info.html">mysqli::$protocol_version</a></li>
+  <li><a href="mysqli.get-server-info.html">mysqli::$server_info</a></li>
+  <li><a href="mysqli.get-server-version.html">mysqli::$server_version</a></li>
+  <li><a href="mysqli.get-warnings.html">mysqli::get_warnings</a></li>
+  <li><a href="mysqli.info.html">mysqli::$info</a></li>
+  <li><a href="mysqli.init.html">mysqli::init</a></li>
+  <li><a href="mysqli.insert-id.html">mysqli::$insert_id</a></li>
+  <li><a href="mysqli.kill.html">mysqli::kill</a></li>
+  <li><a href="mysqli.more-results.html">mysqli::more_results</a></li>
+  <li><a href="mysqli.multi-query.html">mysqli::multi_query</a></li>
+  <li><a href="mysqli.next-result.html">mysqli::next_result</a></li>
+  <li><a href="mysqli.options.html">mysqli::options</a></li>
+  <li><a href="mysqli.ping.html">mysqli::ping</a></li>
+  <li><a href="mysqli.poll.html">mysqli::poll</a></li>
+  <li><a href="mysqli.prepare.html">mysqli::prepare</a></li>
+  <li><a href="mysqli.query.html">mysqli::query</a></li>
+  <li><a href="mysqli.real-connect.html">mysqli::real_connect</a></li>
+  <li><a href="mysqli.real-escape-string.html">mysqli::real_escape_string</a></li>
+  <li><a href="mysqli.real-query.html">mysqli::real_query</a></li>
+  <li><a href="mysqli.reap-async-query.html">mysqli::reap_async_query</a></li>
+  <li><a href="mysqli.refresh.html">mysqli::refresh</a></li>
+  <li><a href="mysqli.release-savepoint.html">mysqli::release_savepoint</a></li>
+  <li><a href="mysqli.rollback.html">mysqli::rollback</a></li>
+  <li><a href="mysqli.rpl-query-type.html">mysqli::rpl_query_type</a></li>
+  <li><a href="mysqli.savepoint.html">mysqli::savepoint</a></li>
+  <li><a href="mysqli.select-db.html">mysqli::select_db</a></li>
+  <li><a href="mysqli.send-query.html">mysqli::send_query</a></li>
+  <li><a href="mysqli.set-charset.html">mysqli::set_charset</a></li>
+  <li><a href="mysqli.set-local-infile-default.html">mysqli::set_local_infile_default</a></li>
+  <li><a href="mysqli.set-local-infile-handler.html">mysqli::set_local_infile_handler</a></li>
+  <li><a href="mysqli.sqlstate.html">mysqli::$sqlstate</a></li>
+  <li><a href="mysqli.ssl-set.html">mysqli::ssl_set</a></li>
+  <li><a href="mysqli.stat.html">mysqli::stat</a></li>
+  <li><a href="mysqli.stmt-init.html">mysqli::stmt_init</a></li>
+  <li class="active"><a href="mysqli.store-result.html">mysqli::store_result</a></li>
+  <li><a href="mysqli.thread-id.html">mysqli::$thread_id</a></li>
+  <li><a href="mysqli.thread-safe.html">mysqli::thread_safe</a></li>
+  <li><a href="mysqli.use-result.html">mysqli::use_result</a></li>
+  <li><a href="mysqli.warning-count.html">mysqli::$warning_count</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mysqli.stmt-init.html">mysqli::stmt_init</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mysqli.thread-id.html">mysqli::$thread_id</a></div>
+                <div class="up"><a href="class.mysqli.html">mysqli</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mysqli.store-result" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mysqli::store_result</h1>
+  <h1 class="refname">mysqli_store_result</h1>
+  <p class="refpurpose">Transfers a result set from the last query</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mysqli.store-result-description">
+  <h3 class="title">Description</h3>
+  <p class="para">Object oriented style</p>
+  <div class="methodsynopsis dc-description">
+   <span class="type">mysqli_result</span> <span class="methodname">mysqli::store_result</span>
+    ([ <span class="methodparam"><span class="type">int</span> <code class="parameter">$option</code></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">Procedural style</p>
+  <div class="methodsynopsis dc-description">
+   <span class="type">mysqli_result</span> <span class="methodname">mysqli_store_result</span>
+    ( <span class="methodparam"><span class="type">mysqli</span> <code class="parameter">$link</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$option</code></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Transfers the result set from the last query on the database connection
+   represented by the <code class="parameter">link</code> parameter to be used with
+   the <span class="function">mysqli_data_seek</span> function.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mysqli.store-result-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+   <dt>
+<code class="parameter">
+link</code></dt>
+<dd>
+<p class="para">Procedural style only: A link identifier
+returned by <span class="function">mysqli_connect</span> or <span class="function">mysqli_init</span>
+</p></dd>
+
+   
+     <dt>
+<code class="parameter">option</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The option that you want to set. It can be one of the following values:
+       <table class="doctable table">
+        <caption><strong>Valid options</strong></caption>
+        
+         <thead>
+          <tr>
+           <th>Name</th>
+           <th>Description</th>
+          </tr>
+
+         </thead>
+
+         <tbody class="tbody">
+          <tr>
+           <td><strong><code>MYSQLI_STORE_RESULT_COPY_DATA</code></strong></td>
+           <td>Copy results from the internal mysqlnd buffer into the PHP variables fetched. By default,
+           mysqlnd will use a reference logic to avoid copying and duplicating results held in memory.
+           For certain result sets, for example, result sets with many small rows, the copy approach can
+           reduce the overall memory usage because PHP variables holding results may be
+           released earlier (available with mysqlnd only, since PHP 5.6.0)</td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-mysqli.store-result-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns a buffered result object or <strong><code>FALSE</code></strong> if an error occurred.
+  </p>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    <span class="function">mysqli_store_result</span> returns <strong><code>FALSE</code></strong> in case the query
+    didn&#039;t return a result set (if the query was, for example an INSERT
+    statement). This function also returns <strong><code>FALSE</code></strong> if the reading of the
+    result set failed. You can check if you have got an error by checking
+    if <span class="function">mysqli_error</span> doesn&#039;t return an empty string, if
+    <span class="function">mysqli_errno</span> returns a non zero value, or if
+    <span class="function">mysqli_field_count</span> returns a non zero value.
+    Also possible reason for this function returning <strong><code>FALSE</code></strong> after
+    successful call to <span class="function">mysqli_query</span> can be too large
+    result set (memory for it cannot be allocated). If
+    <span class="function">mysqli_field_count</span> returns a non-zero value, the
+    statement should have produced a non-empty result set.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-mysqli.store-result-notes">
+  <h3 class="title">Notes</h3>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    Although it is always good practice to free the memory used by the result
+    of a query using the <span class="function">mysqli_free_result</span> function,
+    when transferring large result sets using the
+    <span class="function">mysqli_store_result</span> this becomes particularly
+    important.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-mysqli.store-result-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   See <span class="function">mysqli_multi_query</span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-mysqli.store-result-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">mysqli_real_query</span></li>
+    <li class="member"><span class="function">mysqli_use_result</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

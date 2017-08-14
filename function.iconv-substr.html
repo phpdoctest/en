@@ -1,0 +1,250 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Cut out part of a string</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.international.html">Human Language and Character Encoding Support</a></li>
+  <li class="header up"><a href="book.iconv.html">iconv</a></li>
+  <li class="header up"><a href="ref.iconv.html">iconv Functions</a></li>
+  <li><a href="function.iconv-get-encoding.html">iconv_get_encoding</a></li>
+  <li><a href="function.iconv-mime-decode-headers.html">iconv_mime_decode_headers</a></li>
+  <li><a href="function.iconv-mime-decode.html">iconv_mime_decode</a></li>
+  <li><a href="function.iconv-mime-encode.html">iconv_mime_encode</a></li>
+  <li><a href="function.iconv-set-encoding.html">iconv_set_encoding</a></li>
+  <li><a href="function.iconv-strlen.html">iconv_strlen</a></li>
+  <li><a href="function.iconv-strpos.html">iconv_strpos</a></li>
+  <li><a href="function.iconv-strrpos.html">iconv_strrpos</a></li>
+  <li class="active"><a href="function.iconv-substr.html">iconv_substr</a></li>
+  <li><a href="function.iconv.html">iconv</a></li>
+  <li><a href="function.ob-iconv-handler.html">ob_iconv_handler</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.iconv-strrpos.html">iconv_strrpos</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.iconv.html">iconv</a></div>
+                <div class="up"><a href="ref.iconv.html">iconv Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.iconv-substr" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">iconv_substr</h1>
+  <p class="refpurpose">Cut out part of a string</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.iconv-substr-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname">iconv_substr</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$str</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$offset</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$length</code><span class="initializer"> = iconv_strlen($str, $charset)</span></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$charset</code><span class="initializer"> = ini_get(&quot;iconv.internal_encoding&quot;)</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Cuts a portion of <code class="parameter">str</code> specified by the 
+   <code class="parameter">offset</code> and <code class="parameter">length</code> parameters.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.iconv-substr-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">str</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The original string.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">offset</code></dt>
+
+     <dd>
+
+      <p class="para">
+       If <code class="parameter">offset</code> is non-negative,
+       <span class="function">iconv_substr</span> cuts the portion out of
+       <code class="parameter">str</code> beginning at <code class="parameter">offset</code>&#039;th
+       character, counting from zero.
+      </p>
+      <p class="para">
+       If <code class="parameter">offset</code> is negative,
+       <span class="function">iconv_substr</span> cuts out the portion beginning
+       at the position, <code class="parameter">offset</code> characters
+       away from the end of <code class="parameter">str</code>.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">length</code></dt>
+
+     <dd>
+
+      <p class="para">
+       If <code class="parameter">length</code> is given and is positive, the return
+       value will contain at most <code class="parameter">length</code> characters
+       of the portion that begins at <code class="parameter">offset</code>
+       (depending on the length of <code class="parameter">string</code>).
+      </p>
+      <p class="para">
+       If negative <code class="parameter">length</code> is passed,
+       <span class="function">iconv_substr</span> cuts the portion out of
+       <code class="parameter">str</code> from the <code class="parameter">offset</code>&#039;th
+       character up to the character that is
+       <code class="parameter">length</code> characters away from the end of the string.
+       In case <code class="parameter">offset</code> is also negative, the start position
+       is calculated beforehand according to the rule explained above.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">charset</code></dt>
+
+     <dd>
+
+      <p class="para">
+       If <code class="parameter">charset</code> parameter is omitted,
+       <code class="parameter">string</code> are assumed to be encoded in
+       <a href="iconv.configuration.html" class="link">iconv.internal_encoding</a>.
+      </p>
+      <p class="para">
+       Note that <code class="parameter">offset</code> and <code class="parameter">length</code>
+       parameters are always deemed to represent offsets that are
+       calculated on the basis of the character set determined by
+       <code class="parameter">charset</code>, whilst the counterpart
+       <span class="function">substr</span> always takes these for byte offsets.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.iconv-substr-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the portion of <code class="parameter">str</code> specified by the
+   <code class="parameter">offset</code> and <code class="parameter">length</code> parameters.
+  </p>
+  <p class="para">
+   If <code class="parameter">str</code> is shorter than <code class="parameter">offset</code>
+   characters long, <strong><code>FALSE</code></strong> will be returned.
+   If <code class="parameter">str</code> is exactly <code class="parameter">offset</code>
+   characters long, an empty string will be returned.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.iconv-substr-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>7.0.11</td>
+       <td>
+        If <code class="parameter">str</code> is equal to
+        <code class="parameter">offset</code> characters long, an empty string will be
+        returned. Prior to this version, <strong><code>FALSE</code></strong> was returned in this case.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.iconv-substr-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">substr</span></li>
+    <li class="member"><span class="function">mb_substr</span></li>
+    <li class="member"><span class="function">mb_strcut</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

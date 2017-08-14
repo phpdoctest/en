@@ -1,0 +1,200 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Changed functions</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="appendices.html">Appendices</a></li>
+  <li class="header up"><a href="migration56.html">Migrating from PHP 5.5.x to PHP 5.6.x</a></li>
+  <li><a href="migration56.incompatible.html">Backward incompatible changes</a></li>
+  <li><a href="migration56.new-features.html">New features</a></li>
+  <li><a href="migration56.deprecated.html">Deprecated features in PHP 5.6.x</a></li>
+  <li class="active"><a href="migration56.changed-functions.html">Changed functions</a></li>
+  <li><a href="migration56.new-functions.html">New functions</a></li>
+  <li><a href="migration56.openssl.html">OpenSSL changes in PHP 5.6.x</a></li>
+  <li><a href="migration56.extensions.html">Other changes to extensions</a></li>
+  <li><a href="migration56.constants.html">New global constants</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="migration56.deprecated.html">Deprecated features in PHP 5.6.x</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="migration56.new-functions.html">New functions</a></div>
+                <div class="up"><a href="migration56.html">Migrating from PHP 5.5.x to PHP 5.6.x</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="migration56.changed-functions" class="sect1">
+ <h2 class="title">Changed functions</h2>
+
+ <div class="sect2" id="migration56.changed-functions.core">
+  <h3 class="title">PHP Core</h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">crypt</span> will now raise an
+     <strong><code>E_NOTICE</code></strong> error if the <code class="parameter">salt</code>
+     parameter is omitted.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">substr_compare</span> will now accept <em>0</em>
+     for its <code class="parameter">length</code> parameter.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">unserialize</span> will now fail if passed serialised data
+     that has been manipulated to attempt to instantiate an object without
+     calling its constructor.
+    </span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration56.changed-functions.curl">
+  <h3 class="title"><a href="book.curl.html" class="link">cURL</a></h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     Uploads using the <em>@file</em> syntax are now only supported
+     if the <strong><code>CURLOPT_SAFE_UPLOAD</code></strong> option is set to
+     <strong><code>FALSE</code></strong>. <span class="classname">CURLFile</span> should be used instead.
+    </span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration56.changed-functions.mcrypt">
+  <h3 class="title"><a href="book.mcrypt.html" class="link">Mcrypt</a></h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     The <code class="parameter">source</code> parameter of
+     <span class="function">mcrypt_create_iv</span> now defaults to
+     <strong><code>MCRYPT_DEV_URANDOM</code></strong> instead of
+     <strong><code>MCRYPT_DEV_RANDOM</code></strong>.
+    </span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration56.changed-functions.openssl">
+  <h3 class="title"><a href="book.openssl.html" class="link">OpenSSL</a></h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">stream_socket_enable_crypto</span> now allows the
+     <code class="parameter">crypto_type</code> parameter to be optional if the
+     stream&#039;s SSL context includes the new <code class="parameter">crypto_type</code>
+     option.
+    </span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration56.changed-functions.pgsql">
+  <h3 class="title"><a href="book.pgsql.html" class="link">PostgreSQL</a></h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">pg_insert</span>, <span class="function">pg_select</span>,
+     <span class="function">pg_update</span> and <span class="function">pg_delete</span> are no
+     longer experimental.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">pg_send_execute</span>,
+     <span class="function">pg_send_prepare</span>, <span class="function">pg_send_query</span>
+     and <span class="function">pg_send_query_params</span> will no longer block until
+     query write completion if the underlying socket stream for the database
+     connection is set to non-blocking mode.
+    </span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration56.changed-functions.reflection">
+  <h3 class="title"><a href="book.reflection.html" class="link">Reflection</a></h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+      <span class="methodname">ReflectionClass::newInstanceWithoutConstructor</span>
+     now allows non-final internal classes to be
+     instantiated.
+    </span>
+   </li>
+  </ul>
+ </div>
+
+ <div class="sect2" id="migration56.changed-functions.xmlreader">
+  <h3 class="title"><a href="book.xmlreader.html" class="link">XMLReader</a></h3>
+
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+      <span class="methodname">XMLReader::getAttributeNs</span> and
+      <span class="methodname">XMLReader::getAttributeNo</span> now return <strong><code>NULL</code></strong> if
+     the attribute could not be found, like
+      <span class="methodname">XMLReader::getAttribute</span>.
+    </span>
+   </li>
+  </ul>
+ </div>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

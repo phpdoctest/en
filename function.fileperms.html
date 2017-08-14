@@ -1,0 +1,285 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Gets file permissions</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.fileprocess.file.html">File System Related Extensions</a></li>
+  <li class="header up"><a href="book.filesystem.html">Filesystem</a></li>
+  <li class="header up"><a href="ref.filesystem.html">Filesystem Functions</a></li>
+  <li><a href="function.basename.html">basename</a></li>
+  <li><a href="function.chgrp.html">chgrp</a></li>
+  <li><a href="function.chmod.html">chmod</a></li>
+  <li><a href="function.chown.html">chown</a></li>
+  <li><a href="function.clearstatcache.html">clearstatcache</a></li>
+  <li><a href="function.copy.html">copy</a></li>
+  <li><a href="function.delete.html">delete</a></li>
+  <li><a href="function.dirname.html">dirname</a></li>
+  <li><a href="function.disk-free-space.html">disk_free_space</a></li>
+  <li><a href="function.disk-total-space.html">disk_total_space</a></li>
+  <li><a href="function.diskfreespace.html">diskfreespace</a></li>
+  <li><a href="function.fclose.html">fclose</a></li>
+  <li><a href="function.feof.html">feof</a></li>
+  <li><a href="function.fflush.html">fflush</a></li>
+  <li><a href="function.fgetc.html">fgetc</a></li>
+  <li><a href="function.fgetcsv.html">fgetcsv</a></li>
+  <li><a href="function.fgets.html">fgets</a></li>
+  <li><a href="function.fgetss.html">fgetss</a></li>
+  <li><a href="function.file-exists.html">file_exists</a></li>
+  <li><a href="function.file-get-contents.html">file_get_contents</a></li>
+  <li><a href="function.file-put-contents.html">file_put_contents</a></li>
+  <li><a href="function.file.html">file</a></li>
+  <li><a href="function.fileatime.html">fileatime</a></li>
+  <li><a href="function.filectime.html">filectime</a></li>
+  <li><a href="function.filegroup.html">filegroup</a></li>
+  <li><a href="function.fileinode.html">fileinode</a></li>
+  <li><a href="function.filemtime.html">filemtime</a></li>
+  <li><a href="function.fileowner.html">fileowner</a></li>
+  <li class="active"><a href="function.fileperms.html">fileperms</a></li>
+  <li><a href="function.filesize.html">filesize</a></li>
+  <li><a href="function.filetype.html">filetype</a></li>
+  <li><a href="function.flock.html">flock</a></li>
+  <li><a href="function.fnmatch.html">fnmatch</a></li>
+  <li><a href="function.fopen.html">fopen</a></li>
+  <li><a href="function.fpassthru.html">fpassthru</a></li>
+  <li><a href="function.fputcsv.html">fputcsv</a></li>
+  <li><a href="function.fputs.html">fputs</a></li>
+  <li><a href="function.fread.html">fread</a></li>
+  <li><a href="function.fscanf.html">fscanf</a></li>
+  <li><a href="function.fseek.html">fseek</a></li>
+  <li><a href="function.fstat.html">fstat</a></li>
+  <li><a href="function.ftell.html">ftell</a></li>
+  <li><a href="function.ftruncate.html">ftruncate</a></li>
+  <li><a href="function.fwrite.html">fwrite</a></li>
+  <li><a href="function.glob.html">glob</a></li>
+  <li><a href="function.is-dir.html">is_dir</a></li>
+  <li><a href="function.is-executable.html">is_executable</a></li>
+  <li><a href="function.is-file.html">is_file</a></li>
+  <li><a href="function.is-link.html">is_link</a></li>
+  <li><a href="function.is-readable.html">is_readable</a></li>
+  <li><a href="function.is-uploaded-file.html">is_uploaded_file</a></li>
+  <li><a href="function.is-writable.html">is_writable</a></li>
+  <li><a href="function.is-writeable.html">is_writeable</a></li>
+  <li><a href="function.lchgrp.html">lchgrp</a></li>
+  <li><a href="function.lchown.html">lchown</a></li>
+  <li><a href="function.link.html">link</a></li>
+  <li><a href="function.linkinfo.html">linkinfo</a></li>
+  <li><a href="function.lstat.html">lstat</a></li>
+  <li><a href="function.mkdir.html">mkdir</a></li>
+  <li><a href="function.move-uploaded-file.html">move_uploaded_file</a></li>
+  <li><a href="function.parse-ini-file.html">parse_ini_file</a></li>
+  <li><a href="function.parse-ini-string.html">parse_ini_string</a></li>
+  <li><a href="function.pathinfo.html">pathinfo</a></li>
+  <li><a href="function.pclose.html">pclose</a></li>
+  <li><a href="function.popen.html">popen</a></li>
+  <li><a href="function.readfile.html">readfile</a></li>
+  <li><a href="function.readlink.html">readlink</a></li>
+  <li><a href="function.realpath-cache-get.html">realpath_cache_get</a></li>
+  <li><a href="function.realpath-cache-size.html">realpath_cache_size</a></li>
+  <li><a href="function.realpath.html">realpath</a></li>
+  <li><a href="function.rename.html">rename</a></li>
+  <li><a href="function.rewind.html">rewind</a></li>
+  <li><a href="function.rmdir.html">rmdir</a></li>
+  <li><a href="function.set-file-buffer.html">set_file_buffer</a></li>
+  <li><a href="function.stat.html">stat</a></li>
+  <li><a href="function.symlink.html">symlink</a></li>
+  <li><a href="function.tempnam.html">tempnam</a></li>
+  <li><a href="function.tmpfile.html">tmpfile</a></li>
+  <li><a href="function.touch.html">touch</a></li>
+  <li><a href="function.umask.html">umask</a></li>
+  <li><a href="function.unlink.html">unlink</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.fileowner.html">fileowner</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.filesize.html">filesize</a></div>
+                <div class="up"><a href="ref.filesystem.html">Filesystem Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.fileperms" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">fileperms</h1>
+  <p class="refpurpose">Gets file permissions</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.fileperms-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname">fileperms</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Gets permissions for the given file.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.fileperms-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">filename</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Path to the file.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.fileperms-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the file&#039;s permissions as a numeric mode. Lower bits of this mode
+   are the same as the permissions expected by <span class="function">chmod</span>,
+   however on most platforms the return value will also include information on
+   the type of file given as <code class="parameter">filename</code>. The examples
+   below demonstrate how to test the return value for specific permissions and
+   file types on POSIX systems, including Linux and Mac OS X.
+  </p>
+  <p class="para">
+   For local files, the specific return value is that of the
+   <em>st_mode</em> member of the structure returned by the C
+   library&#039;s <span class="function">stat</span> function. Exactly which bits are set
+   can vary from platform to platform, and looking up your specific platform&#039;s
+   documentation is recommended if parsing the non-permission bits of the
+   return value is required.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.fileperms-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-2633">
+    <p><strong>Example #1 Display permissions as an octal value</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">'%o'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">fileperms</span><span style="color: #007700">(</span><span style="color: #DD0000">'/tmp'</span><span style="color: #007700">)),&nbsp;-</span><span style="color: #0000BB">4</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">sprintf</span><span style="color: #007700">(</span><span style="color: #DD0000">'%o'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">fileperms</span><span style="color: #007700">(</span><span style="color: #DD0000">'/etc/passwd'</span><span style="color: #007700">)),&nbsp;-</span><span style="color: #0000BB">4</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+1777
+0644
+</pre></div>
+    </div>
+   </div>
+   <div class="example" id="example-2634">
+    <p><strong>Example #2 Display full permissions</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$perms&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fileperms</span><span style="color: #007700">(</span><span style="color: #DD0000">'/etc/passwd'</span><span style="color: #007700">);<br /><br />switch&nbsp;(</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0xF000</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">0xC000</span><span style="color: #007700">:&nbsp;</span><span style="color: #FF8000">//&nbsp;socket<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'s'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">0xA000</span><span style="color: #007700">:&nbsp;</span><span style="color: #FF8000">//&nbsp;symbolic&nbsp;link<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'l'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">0x8000</span><span style="color: #007700">:&nbsp;</span><span style="color: #FF8000">//&nbsp;regular<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'r'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">0x6000</span><span style="color: #007700">:&nbsp;</span><span style="color: #FF8000">//&nbsp;block&nbsp;special<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'b'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">0x4000</span><span style="color: #007700">:&nbsp;</span><span style="color: #FF8000">//&nbsp;directory<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'d'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">0x2000</span><span style="color: #007700">:&nbsp;</span><span style="color: #FF8000">//&nbsp;character&nbsp;special<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'c'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">0x1000</span><span style="color: #007700">:&nbsp;</span><span style="color: #FF8000">//&nbsp;FIFO&nbsp;pipe<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'p'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;default:&nbsp;</span><span style="color: #FF8000">//&nbsp;unknown<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'u'</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Owner<br /></span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">.=&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0100</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">'r'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'-'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">.=&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0080</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">'w'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'-'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">.=&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0040</span><span style="color: #007700">)&nbsp;?<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0800</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">'s'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'x'&nbsp;</span><span style="color: #007700">)&nbsp;:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0800</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">'S'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'-'</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;Group<br /></span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">.=&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0020</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">'r'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'-'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">.=&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0010</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">'w'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'-'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">.=&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0008</span><span style="color: #007700">)&nbsp;?<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0400</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">'s'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'x'&nbsp;</span><span style="color: #007700">)&nbsp;:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0400</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">'S'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'-'</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;World<br /></span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">.=&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0004</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">'r'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'-'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">.=&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0002</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">'w'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'-'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">.=&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0001</span><span style="color: #007700">)&nbsp;?<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0200</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">'t'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'x'&nbsp;</span><span style="color: #007700">)&nbsp;:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;((</span><span style="color: #0000BB">$perms&nbsp;</span><span style="color: #007700">&amp;&nbsp;</span><span style="color: #0000BB">0x0200</span><span style="color: #007700">)&nbsp;?&nbsp;</span><span style="color: #DD0000">'T'&nbsp;</span><span style="color: #007700">:&nbsp;</span><span style="color: #DD0000">'-'</span><span style="color: #007700">));<br /><br />echo&nbsp;</span><span style="color: #0000BB">$info</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+-rw-r--r--
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-function.fileperms-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+Upon failure, an <strong><code>E_WARNING</code></strong> is emitted.
+</p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.fileperms-notes">
+  <h3 class="title">Notes</h3>
+  <blockquote class="note"><p><strong class="note">Note</strong>: <span class="simpara">The results of this
+function are cached. See <span class="function">clearstatcache</span> for
+more details.</span></p></blockquote>
+  <div class="tip"><strong class="tip">Tip</strong><p class="simpara">As of PHP 5.0.0, this function
+can also be used with <em class="emphasis">some</em> URL wrappers.  Refer to
+<a href="wrappers.html" class="xref">Supported Protocols and Wrappers</a> to determine which wrappers support
+<span class="function">stat</span> family of functionality.</p></div>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.fileperms-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">chmod</span></li>
+    <li class="member"><span class="function">is_readable</span></li>
+    <li class="member"><span class="function">stat</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

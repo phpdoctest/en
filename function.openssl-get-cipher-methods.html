@@ -1,0 +1,348 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Gets available cipher methods</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.crypto.html">Cryptography Extensions</a></li>
+  <li class="header up"><a href="book.openssl.html">OpenSSL</a></li>
+  <li class="header up"><a href="ref.openssl.html">OpenSSL Functions</a></li>
+  <li><a href="function.openssl-cipher-iv-length.html">openssl_cipher_iv_length</a></li>
+  <li><a href="function.openssl-csr-export-to-file.html">openssl_csr_export_to_file</a></li>
+  <li><a href="function.openssl-csr-export.html">openssl_csr_export</a></li>
+  <li><a href="function.openssl-csr-get-public-key.html">openssl_csr_get_public_key</a></li>
+  <li><a href="function.openssl-csr-get-subject.html">openssl_csr_get_subject</a></li>
+  <li><a href="function.openssl-csr-new.html">openssl_csr_new</a></li>
+  <li><a href="function.openssl-csr-sign.html">openssl_csr_sign</a></li>
+  <li><a href="function.openssl-decrypt.html">openssl_decrypt</a></li>
+  <li><a href="function.openssl-dh-compute-key.html">openssl_dh_compute_key</a></li>
+  <li><a href="function.openssl-digest.html">openssl_digest</a></li>
+  <li><a href="function.openssl-encrypt.html">openssl_encrypt</a></li>
+  <li><a href="function.openssl-error-string.html">openssl_error_string</a></li>
+  <li><a href="function.openssl-free-key.html">openssl_free_key</a></li>
+  <li><a href="function.openssl-get-cert-locations.html">openssl_get_cert_locations</a></li>
+  <li class="active"><a href="function.openssl-get-cipher-methods.html">openssl_get_cipher_methods</a></li>
+  <li><a href="function.openssl-get-md-methods.html">openssl_get_md_methods</a></li>
+  <li><a href="function.openssl-get-privatekey.html">openssl_get_privatekey</a></li>
+  <li><a href="function.openssl-get-publickey.html">openssl_get_publickey</a></li>
+  <li><a href="function.openssl-open.html">openssl_open</a></li>
+  <li><a href="function.openssl-pbkdf2.html">openssl_pbkdf2</a></li>
+  <li><a href="function.openssl-pkcs12-export-to-file.html">openssl_pkcs12_export_to_file</a></li>
+  <li><a href="function.openssl-pkcs12-export.html">openssl_pkcs12_export</a></li>
+  <li><a href="function.openssl-pkcs12-read.html">openssl_pkcs12_read</a></li>
+  <li><a href="function.openssl-pkcs7-decrypt.html">openssl_pkcs7_decrypt</a></li>
+  <li><a href="function.openssl-pkcs7-encrypt.html">openssl_pkcs7_encrypt</a></li>
+  <li><a href="function.openssl-pkcs7-sign.html">openssl_pkcs7_sign</a></li>
+  <li><a href="function.openssl-pkcs7-verify.html">openssl_pkcs7_verify</a></li>
+  <li><a href="function.openssl-pkey-export-to-file.html">openssl_pkey_export_to_file</a></li>
+  <li><a href="function.openssl-pkey-export.html">openssl_pkey_export</a></li>
+  <li><a href="function.openssl-pkey-free.html">openssl_pkey_free</a></li>
+  <li><a href="function.openssl-pkey-get-details.html">openssl_pkey_get_details</a></li>
+  <li><a href="function.openssl-pkey-get-private.html">openssl_pkey_get_private</a></li>
+  <li><a href="function.openssl-pkey-get-public.html">openssl_pkey_get_public</a></li>
+  <li><a href="function.openssl-pkey-new.html">openssl_pkey_new</a></li>
+  <li><a href="function.openssl-private-decrypt.html">openssl_private_decrypt</a></li>
+  <li><a href="function.openssl-private-encrypt.html">openssl_private_encrypt</a></li>
+  <li><a href="function.openssl-public-decrypt.html">openssl_public_decrypt</a></li>
+  <li><a href="function.openssl-public-encrypt.html">openssl_public_encrypt</a></li>
+  <li><a href="function.openssl-random-pseudo-bytes.html">openssl_random_pseudo_bytes</a></li>
+  <li><a href="function.openssl-seal.html">openssl_seal</a></li>
+  <li><a href="function.openssl-sign.html">openssl_sign</a></li>
+  <li><a href="function.openssl-spki-export-challenge.html">openssl_spki_export_challenge</a></li>
+  <li><a href="function.openssl-spki-export.html">openssl_spki_export</a></li>
+  <li><a href="function.openssl-spki-new.html">openssl_spki_new</a></li>
+  <li><a href="function.openssl-spki-verify.html">openssl_spki_verify</a></li>
+  <li><a href="function.openssl-verify.html">openssl_verify</a></li>
+  <li><a href="function.openssl-x509-check-private-key.html">openssl_x509_check_private_key</a></li>
+  <li><a href="function.openssl-x509-checkpurpose.html">openssl_x509_checkpurpose</a></li>
+  <li><a href="function.openssl-x509-export-to-file.html">openssl_x509_export_to_file</a></li>
+  <li><a href="function.openssl-x509-export.html">openssl_x509_export</a></li>
+  <li><a href="function.openssl-x509-fingerprint.html">openssl_x509_fingerprint</a></li>
+  <li><a href="function.openssl-x509-free.html">openssl_x509_free</a></li>
+  <li><a href="function.openssl-x509-parse.html">openssl_x509_parse</a></li>
+  <li><a href="function.openssl-x509-read.html">openssl_x509_read</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.openssl-get-cert-locations.html">openssl_get_cert_locations</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.openssl-get-md-methods.html">openssl_get_md_methods</a></div>
+                <div class="up"><a href="ref.openssl.html">OpenSSL Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.openssl-get-cipher-methods" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">openssl_get_cipher_methods</h1>
+  <p class="refpurpose">Gets available cipher methods</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.openssl-get-cipher-methods-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname">openssl_get_cipher_methods</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$aliases</code><span class="initializer"> = false</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Gets a list of available cipher methods.
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.openssl-get-cipher-methods-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">aliases</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Set to <strong><code>TRUE</code></strong> if cipher aliases should be included within the
+       returned <span class="type">array</span>.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.openssl-get-cipher-methods-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   An <span class="type">array</span> of available cipher methods.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.openssl-get-cipher-methods-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-938">
+    <p><strong>Example #1 <span class="function">openssl_get_cipher_methods</span> example</strong></p>
+    <div class="example-contents"><p>
+     Shows how the available ciphers might look, and also which aliases
+     might be available.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$ciphers&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">openssl_get_cipher_methods</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$ciphers_and_aliases&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">openssl_get_cipher_methods</span><span style="color: #007700">(</span><span style="color: #0000BB">true</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$cipher_aliases&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">array_diff</span><span style="color: #007700">(</span><span style="color: #0000BB">$ciphers_and_aliases</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$ciphers</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$ciphers</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$cipher_aliases</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [0] =&gt; AES-128-CBC
+    [1] =&gt; AES-128-CFB
+    [2] =&gt; AES-128-CFB1
+    [3] =&gt; AES-128-CFB8
+    [4] =&gt; AES-128-ECB
+    [5] =&gt; AES-128-OFB
+    [6] =&gt; AES-192-CBC
+    [7] =&gt; AES-192-CFB
+    [8] =&gt; AES-192-CFB1
+    [9] =&gt; AES-192-CFB8
+    [10] =&gt; AES-192-ECB
+    [11] =&gt; AES-192-OFB
+    [12] =&gt; AES-256-CBC
+    [13] =&gt; AES-256-CFB
+    [14] =&gt; AES-256-CFB1
+    [15] =&gt; AES-256-CFB8
+    [16] =&gt; AES-256-ECB
+    [17] =&gt; AES-256-OFB
+    [18] =&gt; BF-CBC
+    [19] =&gt; BF-CFB
+    [20] =&gt; BF-ECB
+    [21] =&gt; BF-OFB
+    [22] =&gt; CAST5-CBC
+    [23] =&gt; CAST5-CFB
+    [24] =&gt; CAST5-ECB
+    [25] =&gt; CAST5-OFB
+    [26] =&gt; DES-CBC
+    [27] =&gt; DES-CFB
+    [28] =&gt; DES-CFB1
+    [29] =&gt; DES-CFB8
+    [30] =&gt; DES-ECB
+    [31] =&gt; DES-EDE
+    [32] =&gt; DES-EDE-CBC
+    [33] =&gt; DES-EDE-CFB
+    [34] =&gt; DES-EDE-OFB
+    [35] =&gt; DES-EDE3
+    [36] =&gt; DES-EDE3-CBC
+    [37] =&gt; DES-EDE3-CFB
+    [38] =&gt; DES-EDE3-OFB
+    [39] =&gt; DES-OFB
+    [40] =&gt; DESX-CBC
+    [41] =&gt; IDEA-CBC
+    [42] =&gt; IDEA-CFB
+    [43] =&gt; IDEA-ECB
+    [44] =&gt; IDEA-OFB
+    [45] =&gt; RC2-40-CBC
+    [46] =&gt; RC2-64-CBC
+    [47] =&gt; RC2-CBC
+    [48] =&gt; RC2-CFB
+    [49] =&gt; RC2-ECB
+    [50] =&gt; RC2-OFB
+    [51] =&gt; RC4
+    [52] =&gt; RC4-40
+    [53] =&gt; aes-128-cbc
+    [54] =&gt; aes-128-cfb
+    [55] =&gt; aes-128-cfb1
+    [56] =&gt; aes-128-cfb8
+    [57] =&gt; aes-128-ecb
+    [58] =&gt; aes-128-ofb
+    [59] =&gt; aes-192-cbc
+    [60] =&gt; aes-192-cfb
+    [61] =&gt; aes-192-cfb1
+    [62] =&gt; aes-192-cfb8
+    [63] =&gt; aes-192-ecb
+    [64] =&gt; aes-192-ofb
+    [65] =&gt; aes-256-cbc
+    [66] =&gt; aes-256-cfb
+    [67] =&gt; aes-256-cfb1
+    [68] =&gt; aes-256-cfb8
+    [69] =&gt; aes-256-ecb
+    [70] =&gt; aes-256-ofb
+    [71] =&gt; bf-cbc
+    [72] =&gt; bf-cfb
+    [73] =&gt; bf-ecb
+    [74] =&gt; bf-ofb
+    [75] =&gt; cast5-cbc
+    [76] =&gt; cast5-cfb
+    [77] =&gt; cast5-ecb
+    [78] =&gt; cast5-ofb
+    [79] =&gt; des-cbc
+    [80] =&gt; des-cfb
+    [81] =&gt; des-cfb1
+    [82] =&gt; des-cfb8
+    [83] =&gt; des-ecb
+    [84] =&gt; des-ede
+    [85] =&gt; des-ede-cbc
+    [86] =&gt; des-ede-cfb
+    [87] =&gt; des-ede-ofb
+    [88] =&gt; des-ede3
+    [89] =&gt; des-ede3-cbc
+    [90] =&gt; des-ede3-cfb
+    [91] =&gt; des-ede3-ofb
+    [92] =&gt; des-ofb
+    [93] =&gt; desx-cbc
+    [94] =&gt; idea-cbc
+    [95] =&gt; idea-cfb
+    [96] =&gt; idea-ecb
+    [97] =&gt; idea-ofb
+    [98] =&gt; rc2-40-cbc
+    [99] =&gt; rc2-64-cbc
+    [100] =&gt; rc2-cbc
+    [101] =&gt; rc2-cfb
+    [102] =&gt; rc2-ecb
+    [103] =&gt; rc2-ofb
+    [104] =&gt; rc4
+    [105] =&gt; rc4-40
+)
+Array
+(
+    [18] =&gt; AES128
+    [19] =&gt; AES192
+    [20] =&gt; AES256
+    [21] =&gt; BF
+    [26] =&gt; CAST
+    [27] =&gt; CAST-cbc
+    [32] =&gt; DES
+    [47] =&gt; DES3
+    [48] =&gt; DESX
+    [50] =&gt; IDEA
+    [55] =&gt; RC2
+    [82] =&gt; aes128
+    [83] =&gt; aes192
+    [84] =&gt; aes256
+    [85] =&gt; bf
+    [90] =&gt; blowfish
+    [91] =&gt; cast
+    [92] =&gt; cast-cbc
+    [97] =&gt; des
+    [112] =&gt; des3
+    [113] =&gt; desx
+    [115] =&gt; idea
+    [120] =&gt; rc2
+)
+
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.openssl-get-cipher-methods-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">openssl_get_md_methods</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

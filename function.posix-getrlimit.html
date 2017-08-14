@@ -1,0 +1,297 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Return info about system resource limits</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.fileprocess.process.html">Process Control Extensions</a></li>
+  <li class="header up"><a href="book.posix.html">POSIX</a></li>
+  <li class="header up"><a href="ref.posix.html">POSIX Functions</a></li>
+  <li><a href="function.posix-access.html">posix_access</a></li>
+  <li><a href="function.posix-ctermid.html">posix_ctermid</a></li>
+  <li><a href="function.posix-errno.html">posix_errno</a></li>
+  <li><a href="function.posix-get-last-error.html">posix_get_last_error</a></li>
+  <li><a href="function.posix-getcwd.html">posix_getcwd</a></li>
+  <li><a href="function.posix-getegid.html">posix_getegid</a></li>
+  <li><a href="function.posix-geteuid.html">posix_geteuid</a></li>
+  <li><a href="function.posix-getgid.html">posix_getgid</a></li>
+  <li><a href="function.posix-getgrgid.html">posix_getgrgid</a></li>
+  <li><a href="function.posix-getgrnam.html">posix_getgrnam</a></li>
+  <li><a href="function.posix-getgroups.html">posix_getgroups</a></li>
+  <li><a href="function.posix-getlogin.html">posix_getlogin</a></li>
+  <li><a href="function.posix-getpgid.html">posix_getpgid</a></li>
+  <li><a href="function.posix-getpgrp.html">posix_getpgrp</a></li>
+  <li><a href="function.posix-getpid.html">posix_getpid</a></li>
+  <li><a href="function.posix-getppid.html">posix_getppid</a></li>
+  <li><a href="function.posix-getpwnam.html">posix_getpwnam</a></li>
+  <li><a href="function.posix-getpwuid.html">posix_getpwuid</a></li>
+  <li class="active"><a href="function.posix-getrlimit.html">posix_getrlimit</a></li>
+  <li><a href="function.posix-getsid.html">posix_getsid</a></li>
+  <li><a href="function.posix-getuid.html">posix_getuid</a></li>
+  <li><a href="function.posix-initgroups.html">posix_initgroups</a></li>
+  <li><a href="function.posix-isatty.html">posix_isatty</a></li>
+  <li><a href="function.posix-kill.html">posix_kill</a></li>
+  <li><a href="function.posix-mkfifo.html">posix_mkfifo</a></li>
+  <li><a href="function.posix-mknod.html">posix_mknod</a></li>
+  <li><a href="function.posix-setegid.html">posix_setegid</a></li>
+  <li><a href="function.posix-seteuid.html">posix_seteuid</a></li>
+  <li><a href="function.posix-setgid.html">posix_setgid</a></li>
+  <li><a href="function.posix-setpgid.html">posix_setpgid</a></li>
+  <li><a href="function.posix-setrlimit.html">posix_setrlimit</a></li>
+  <li><a href="function.posix-setsid.html">posix_setsid</a></li>
+  <li><a href="function.posix-setuid.html">posix_setuid</a></li>
+  <li><a href="function.posix-strerror.html">posix_strerror</a></li>
+  <li><a href="function.posix-times.html">posix_times</a></li>
+  <li><a href="function.posix-ttyname.html">posix_ttyname</a></li>
+  <li><a href="function.posix-uname.html">posix_uname</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.posix-getpwuid.html">posix_getpwuid</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.posix-getsid.html">posix_getsid</a></div>
+                <div class="up"><a href="ref.posix.html">POSIX Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.posix-getrlimit" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">posix_getrlimit</h1>
+  <p class="refpurpose">Return info about system resource limits</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.posix-getrlimit-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname">posix_getrlimit</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function">posix_getrlimit</span> returns an <span class="type">array</span>
+   of information about the current resource&#039;s soft and hard limits.
+  </p>
+  
+<p class="para">
+  Each resource has an associated soft and hard limit.  The soft
+  limit is the value that the kernel enforces for the corresponding
+  resource.  The hard limit acts as a ceiling for the soft limit.
+  An unprivileged process may only set its soft limit to a value
+  from 0 to the hard limit, and irreversibly lower its hard limit.
+</p>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.posix-getrlimit-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns an associative <span class="type">array</span> of elements for each
+   limit that is defined. Each limit has a soft and a hard limit.
+   <table class="doctable table">
+    <caption><strong>List of possible limits returned</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>Limit name</th>
+       <th>Limit description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>core</td>
+       <td>
+        The maximum size of the core file.  When 0, not core files are
+        created.  When core files are larger than this size, they will
+        be truncated at this size.
+       </td>
+      </tr>
+
+      <tr>
+       <td>totalmem</td>
+       <td>
+        The maximum size of the memory of the process, in bytes.
+       </td>
+      </tr>
+
+      <tr>
+       <td>virtualmem</td>
+       <td>
+        The maximum size of the virtual memory for the process, in bytes.
+       </td>
+      </tr>
+ 
+      <tr>
+       <td>data</td>
+       <td>
+        The maximum size of the data segment for the process, in bytes.
+       </td>
+      </tr>
+
+      <tr>
+       <td>stack</td>
+       <td>
+        The maximum size of the process stack, in bytes.
+       </td>
+      </tr>
+
+      <tr>
+       <td>rss</td>
+       <td>
+        The maximum number of virtual pages resident in RAM
+       </td>
+      </tr>
+
+      <tr>
+       <td>maxproc</td>
+       <td>
+        The maximum number of processes that can be created for the
+        real user ID of the calling process.
+       </td>
+      </tr>
+
+      <tr>
+       <td>memlock</td>
+       <td>
+        The maximum number of bytes of memory that may be locked into RAM.
+       </td>
+      </tr>
+
+      <tr>
+       <td>cpu</td>
+       <td>
+        The amount of time the process is allowed to use the CPU.
+       </td>
+      </tr>
+
+      <tr>
+       <td>filesize</td>
+       <td>
+        The maximum size of the data segment for the process, in bytes.
+       </td>
+      </tr>
+
+      <tr>
+       <td>openfiles</td>
+       <td>
+        One more than the maximum number of open file descriptors.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.posix-getrlimit-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4212">
+    <p><strong>Example #1 Example use of <span class="function">posix_getrlimit</span></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$limits&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">posix_getrlimit</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$limits</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [soft core] =&gt; 0
+    [hard core] =&gt; unlimited
+    [soft data] =&gt; unlimited
+    [hard data] =&gt; unlimited
+    [soft stack] =&gt; 8388608
+    [hard stack] =&gt; unlimited
+    [soft totalmem] =&gt; unlimited
+    [hard totalmem] =&gt; unlimited
+    [soft rss] =&gt; unlimited
+    [hard rss] =&gt; unlimited
+    [soft maxproc] =&gt; unlimited
+    [hard maxproc] =&gt; unlimited
+    [soft memlock] =&gt; unlimited
+    [hard memlock] =&gt; unlimited
+    [soft cpu] =&gt; unlimited
+    [hard cpu] =&gt; unlimited
+    [soft filesize] =&gt; unlimited
+    [hard filesize] =&gt; unlimited
+    [soft openfiles] =&gt; 1024
+    [hard openfiles] =&gt; 1024
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.posix-getrlimit-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member">man page GETRLIMIT(2)</li>
+    <li class="member"><span class="function">posix_setrlimit</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

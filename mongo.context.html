@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Stream Context Options</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.mongo.html">Mongo</a></li>
+  <li class="header up"><a href="mongo.manual.html">Manual</a></li>
+  <li><a href="mongo.tutorial.html">Tutorial</a></li>
+  <li><a href="mongo.readpreferences.html">Read Preferences</a></li>
+  <li><a href="mongo.writeconcerns.html">Write Concerns</a></li>
+  <li><a href="mongo.sqltomongo.html">SQL to Mongo Mapping Chart</a></li>
+  <li><a href="mongo.connecting.html">Connecting</a></li>
+  <li class="active"><a href="mongo.context.html">Stream Context Options</a></li>
+  <li><a href="mongo.writes.html">Writes</a></li>
+  <li><a href="mongo.queries.html">Querying</a></li>
+  <li><a href="mongo.updates.html">Updates</a></li>
+  <li><a href="mongo.security.html">Security</a></li>
+  <li><a href="mongo.trouble.html">Troubleshooting</a></li>
+  <li><a href="mongo.testing.html">Running the Driver's Tests</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mongo.connecting.persistent.manual.html">Manually Persistent Connections (version up to 1.1.4 *only*)</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.log-cmd-delete.html">log_cmd_delete</a></div>
+                <div class="up"><a href="mongo.manual.html">Manual</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mongo.context" class="reference">
+ <h1 class="title">Stream Context Options</h1>
+
+ <div class="partintro">
+  <p class="para" id="mongo.context.options">
+   The PHP MongoDB extension provides <a href="context.html" class="link">Stream Context Support</a>
+   using the <a href="context.mongodb.html" class="link">mongodb</a> context.
+  </p>
+
+  <p class="para">
+   A stream context must be created with <span class="function">stream_context_create</span> and passed to the  <span class="methodname">MongoClient::__construct</span> before the actual connection to MongoDB is made.
+   It is not possible to apply a stream context to already created streams.
+  </p>
+
+  <p class="para">
+   Additional context options and parameters, such as <a href="context.ssl.html" class="link">ssl</a>
+   and <a href="context.params.html" class="link">notification parameters</a>, are also supported.
+  </p>
+
+  <p class="para">
+   The MongoDB context options provide a rich interface to log network traffic between the driver and the MongoDB servers.
+   This interface can be used to provide query logging, profiler, debuggers, or anything that would need to inspect the underlaying
+   commands and protocol options.
+  </p>
+
+  <div class="simplesect">
+   <h1 class="title">See Also</h1>
+   <ul class="simplelist">
+    <li class="member"><a href="context.ssl.html" class="xref">SSL context options</a></li>
+    <li class="member"><a href="context.socket.html" class="xref">Socket context options</a></li>
+    <li class="member"><a href="context.params.html" class="xref">Context parameters</a></li>
+   </ul>
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+<strong>Table of Contents</strong><ul class="chunklist chunklist_reference">
+<li><a href="function.log-cmd-delete.html">log_cmd_delete</a> — Callback When Deleting Documents</li>
+<li><a href="function.log-cmd-insert.html">log_cmd_insert</a> — Callback When Inserting Documents</li>
+<li><a href="function.log-cmd-update.html">log_cmd_update</a> — Callback When Updating Documents</li>
+<li><a href="function.log-getmore.html">log_getmore</a> — Callback When Retrieving Next Cursor Batch</li>
+<li><a href="function.log-killcursor.html">log_killcursor</a> — Callback When Executing KILLCURSOR operations</li>
+<li><a href="function.log-reply.html">log_reply</a> — Callback When Reading the MongoDB reply</li>
+<li><a href="function.log-write-batch.html">log_write_batch</a> — Callback When Writing Batches</li>
+</ul>
+</ol>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

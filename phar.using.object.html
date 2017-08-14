@@ -1,0 +1,186 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Using Phar Archives: the Phar and PharData class</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.compression.html">Compression and Archive Extensions</a></li>
+  <li class="header up"><a href="book.phar.html">Phar</a></li>
+  <li class="header up"><a href="phar.using.html">Using Phar Archives</a></li>
+  <li><a href="phar.using.intro.html">Using Phar Archives: Introduction</a></li>
+  <li><a href="phar.using.stream.html">Using Phar Archives: the phar stream wrapper</a></li>
+  <li class="active"><a href="phar.using.object.html">Using Phar Archives: the Phar and PharData class</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="phar.using.stream.html">Using Phar Archives: the phar stream wrapper</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="phar.creating.html">Creating Phar Archives</a></div>
+                <div class="up"><a href="phar.using.html">Using Phar Archives</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="phar.using.object" class="section">
+ <h2 class="title">Using Phar Archives: the Phar and PharData class</h2>
+ <p class="para">
+  The <span class="classname">Phar</span> class supports reading and manipulation
+  of Phar archives, as well as iteration through inherited functionality of
+  the <span class="classname">RecursiveDirectoryIterator</span>
+  class.  With support for the <span class="classname">ArrayAccess</span>
+  interface, files inside a Phar archive can be accessed as if they were
+  part of an associative array.
+ </p>
+ <p class="para">
+  The <span class="classname">PharData</span> class extends the <span class="classname">Phar</span>, and
+  allows creating and modifying non-executable (data) tar and zip archives even if
+  <em>phar.readonly</em>=1 in php.ini.  As such,
+  <span class="function">PharData::setAlias</span> and <span class="function">PharData::setStub</span>
+  are both disabled as the concept of alias and stub are unique to executable phar
+  archives.
+ </p>
+ <p class="para">
+  It is important to note that when creating a Phar archive, the full path
+  should be passed to the <span class="classname">Phar</span> object constructor.
+  Relative paths will fail to initialize.
+ </p>
+ <p class="para">
+  Assuming that <em>$p</em> is a Phar object initialized as follows:
+ </p>
+ <p class="para">
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$p&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Phar</span><span style="color: #007700">(</span><span style="color: #DD0000">'/path/to/myphar.phar'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'myphar.phar'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="para">
+  An empty Phar archive will be created at <em>/path/to/myphar.phar</em>,
+  or if <em>/path/to/myphar.phar</em> already exists, it will be opened
+  again.  The literal <em>myphar.phar</em> demonstrates the concept of an alias
+  that can be used to reference <em>/path/to/myphar.phar</em> in URLs as in:
+ </p>
+ <p class="para">
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;these&nbsp;two&nbsp;calls&nbsp;to&nbsp;file_get_contents()&nbsp;are&nbsp;equivalent&nbsp;if<br />//&nbsp;/path/to/myphar.phar&nbsp;has&nbsp;an&nbsp;explicit&nbsp;alias&nbsp;of&nbsp;"myphar.phar"<br />//&nbsp;in&nbsp;its&nbsp;manifest,&nbsp;or&nbsp;if&nbsp;the&nbsp;phar&nbsp;was&nbsp;initialized&nbsp;with&nbsp;the<br />//&nbsp;previous&nbsp;example's&nbsp;Phar&nbsp;object&nbsp;setup<br /></span><span style="color: #0000BB">$f&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'phar:///path/to/myphar.phar/whatever.txt'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$f&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">file_get_contents</span><span style="color: #007700">(</span><span style="color: #DD0000">'phar://myphar.phar/whatever.txt'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </p>
+ <p class="para">
+  With the newly created <em>$p</em> <span class="classname">Phar</span> object,
+  the following is possible:
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <em>$a = $p[&#039;file.php&#039;]</em> creates a <span class="classname">PharFileInfo</span>
+     class that refers to the contents of <em>phar://myphar.phar/file.php</em>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <em>$p[&#039;file.php&#039;] = $v</em> creates a new file
+     (<em>phar://myphar.phar/file.php</em>), or overwrites
+     an existing file within <em>myphar.phar</em>.  <em>$v</em>
+     can be either a string or an open file pointer, in which case the entire
+     contents of the file will be used to create the new file.  Note that
+     <em>$p-&gt;addFromString(&#039;file.php&#039;, $v)</em> is functionally
+     equivalent to the above.  Also possible is to add the contents of a file
+     with <em>$p-&gt;addFile(&#039;/path/to/file.php&#039;, &#039;file.php&#039;)</em>.
+     Lastly, an empty directory can be created with
+     <em>$p-&gt;addEmptyDir(&#039;empty&#039;)</em>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <em>isset($p[&#039;file.php&#039;])</em> can be used to determine
+     whether <em>phar://myphar.phar/file.php</em> exists within
+     <em>myphar.phar</em>.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <em>unset($p[&#039;file.php&#039;])</em> erases
+     <em>phar://myphar.phar/file.php</em> from
+     <em>myphar.phar</em>.
+    </span>
+   </li>
+  </ul>
+ </p>
+ <p class="para">
+  In addition, the <span class="classname">Phar</span> object is the only way to access
+  Phar-specific metadata, through
+  <span class="function">Phar::getMetadata</span>,
+  and the only way to set or retrieve a Phar archive&#039;s PHP loader stub through
+  <span class="function">Phar::getStub</span> and
+  <span class="function">Phar::setStub</span>.
+  Additionally, compression for the entire Phar archive at once can only be manipulated
+  using the <span class="classname">Phar</span> class.
+ </p>
+ <p class="para">
+  The full list of <span class="classname">Phar</span> object functionality is documented
+  below.
+ </p>
+ <p class="para">
+  The <span class="classname">PharFileInfo</span> class extends the
+  <span class="classname">SplFileInfo</span>
+  class, and adds several methods for manipulating Phar-specific details of a file
+  contained within a Phar, such as manipulating compression and metadata.
+ </p>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

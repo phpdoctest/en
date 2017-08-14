@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Exceptions</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="langref.html">Language Reference</a></li>
+  <li><a href="language.basic-syntax.html">Basic syntax</a></li>
+  <li><a href="language.types.html">Types</a></li>
+  <li><a href="language.variables.html">Variables</a></li>
+  <li><a href="language.constants.html">Constants</a></li>
+  <li><a href="language.expressions.html">Expressions</a></li>
+  <li><a href="language.operators.html">Operators</a></li>
+  <li><a href="language.control-structures.html">Control Structures</a></li>
+  <li><a href="language.functions.html">Functions</a></li>
+  <li><a href="language.oop5.html">Classes and Objects</a></li>
+  <li><a href="language.namespaces.html">Namespaces</a></li>
+  <li><a href="language.errors.html">Errors</a></li>
+  <li class="active"><a href="language.exceptions.html">Exceptions</a></li>
+  <li><a href="language.generators.html">Generators</a></li>
+  <li><a href="language.references.html">References Explained</a></li>
+  <li><a href="reserved.variables.html">Predefined Variables</a></li>
+  <li><a href="reserved.exceptions.html">Predefined Exceptions</a></li>
+  <li><a href="reserved.interfaces.html">Predefined Interfaces and Classes</a></li>
+  <li><a href="context.html">Context options and parameters</a></li>
+  <li><a href="wrappers.html">Supported Protocols and Wrappers</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="language.errors.php7.html">Errors in PHP 7</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="language.exceptions.extending.html">Extending Exceptions</a></div>
+                <div class="up"><a href="langref.html">Language Reference</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="language.exceptions" class="chapter">
+  <h1>Exceptions</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="language.exceptions.extending.html">Extending Exceptions</a></li>
+</ul>
+
+   
+  
+
+  <div class="simplesect" id="language.exceptions.introduction">
+   <p class="para">
+    PHP 5 has an exception model similar to that of other programming
+    languages.  An exception can be <a href="language.exceptions.html" class="link"><em>throw</em></a>n, and caught (&quot;<a href="language.exceptions.html#language.exceptions.catch" class="link"><em>catch</em></a>ed&quot;) within
+    PHP. Code may be surrounded in a <a href="language.exceptions.html" class="link"><em>try</em></a> block, to facilitate the catching
+    of potential exceptions. Each <a href="language.exceptions.html" class="link"><em>try</em></a> must have at least one corresponding
+    <a href="language.exceptions.html#language.exceptions.catch" class="link"><em>catch</em></a> or <a href="language.exceptions.html#language.exceptions.finally" class="link"><em>finally</em></a> block.
+   </p>
+
+   <p class="para">
+    The thrown object must be an instance of the
+    <span class="classname">Exception</span> class or a subclass of
+    <span class="classname">Exception</span>. Trying to throw an object that is not
+    will result in a PHP Fatal Error.
+   </p>
+  </div>
+
+  <div class="simplesect" id="language.exceptions.catch">
+   <h1 class="title"><em>catch</em></h1>
+   <p class="para">
+    Multiple <a href="language.exceptions.html#language.exceptions.catch" class="link"><em>catch</em></a> blocks can be used to catch different classes of
+    exceptions. Normal execution (when no exception is thrown within the <a href="language.exceptions.html" class="link"><em>try</em></a>
+    block) will continue after that last <a href="language.exceptions.html#language.exceptions.catch" class="link"><em>catch</em></a> block defined in sequence.
+    Exceptions can be <a href="language.exceptions.html" class="link"><em>throw</em></a>n (or re-thrown) within a <a href="language.exceptions.html#language.exceptions.catch" class="link"><em>catch</em></a> block.
+   </p>
+   <p class="para">
+    When an exception is thrown, code following the statement will not be
+    executed, and PHP will attempt to find the first matching <a href="language.exceptions.html#language.exceptions.catch" class="link"><em>catch</em></a> block.
+    If an exception is not caught, a PHP Fatal Error will be issued with an
+    &quot;<em>Uncaught Exception ...</em>&quot; message, unless a handler has
+    been defined with <span class="function">set_exception_handler</span>.
+   </p>
+  </div>
+
+  <div class="simplesect" id="language.exceptions.finally">
+   <h1 class="title"><em>finally</em></h1>
+   <p class="para">
+    In PHP 5.5 and later, a <a href="language.exceptions.html#language.exceptions.finally" class="link"><em>finally</em></a> block may also be specified after or
+    instead of <a href="language.exceptions.html#language.exceptions.catch" class="link"><em>catch</em></a> blocks. Code within the <a href="language.exceptions.html#language.exceptions.finally" class="link"><em>finally</em></a> block will always be
+    executed after the <a href="language.exceptions.html" class="link"><em>try</em></a> and <a href="language.exceptions.html#language.exceptions.catch" class="link"><em>catch</em></a> blocks, regardless of whether an
+    exception has been thrown, and before normal execution resumes.
+   </p>
+  </div>
+
+  <div class="simplesect" id="language.exceptions.notes">
+   <h1 class="title">Notes</h1>
+
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <p class="para">
+     Internal PHP functions mainly use
+     <a href="errorfunc.configuration.html#ini.error-reporting" class="link">Error reporting</a>, only modern
+     <a href="language.oop5.html" class="link">Object oriented</a>
+     extensions use exceptions. However, errors can be simply translated to
+     exceptions with <a href="class.errorexception.html" class="link">ErrorException</a>.
+    </p>
+   </p></blockquote>
+   <div class="tip"><strong class="tip">Tip</strong>
+    <p class="para">
+     The <a href="intro.spl.html" class="link">Standard PHP Library (SPL)</a> provides
+     a good number of <a href="spl.exceptions.html" class="link">built-in
+     exceptions</a>.
+    </p>
+   </div>
+  </div>
+
+  <div class="simplesect" id="language.exceptions.examples">
+   <h1 class="title">Examples</h1>
+
+   <div class="example" id="example-280">
+    <p><strong>Example #1 Throwing an Exception</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">inverse</span><span style="color: #007700">(</span><span style="color: #0000BB">$x</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">$x</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">Exception</span><span style="color: #007700">(</span><span style="color: #DD0000">'Division&nbsp;by&nbsp;zero.'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">/</span><span style="color: #0000BB">$x</span><span style="color: #007700">;<br />}<br /><br />try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">inverse</span><span style="color: #007700">(</span><span style="color: #0000BB">5</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">inverse</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">Exception&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Caught&nbsp;exception:&nbsp;'</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">(),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Continue&nbsp;execution<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;World\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+0.2
+Caught exception: Division by zero.
+Hello World
+</pre></div>
+    </div>
+   </div>
+   <div class="example" id="example-281">
+    <p><strong>Example #2 Exception handling with a <em>finally</em> block</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">inverse</span><span style="color: #007700">(</span><span style="color: #0000BB">$x</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(!</span><span style="color: #0000BB">$x</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">Exception</span><span style="color: #007700">(</span><span style="color: #DD0000">'Division&nbsp;by&nbsp;zero.'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">/</span><span style="color: #0000BB">$x</span><span style="color: #007700">;<br />}<br /><br />try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">inverse</span><span style="color: #007700">(</span><span style="color: #0000BB">5</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">Exception&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Caught&nbsp;exception:&nbsp;'</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">(),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}&nbsp;finally&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"First&nbsp;finally.\n"</span><span style="color: #007700">;<br />}<br /><br />try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">inverse</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">Exception&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Caught&nbsp;exception:&nbsp;'</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">(),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}&nbsp;finally&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Second&nbsp;finally.\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Continue&nbsp;execution<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;World\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+0.2
+First finally.
+Caught exception: Division by zero.
+Second finally.
+Hello World
+</pre></div>
+    </div>
+   </div>
+   <div class="example" id="example-282">
+    <p><strong>Example #3 Nested Exception</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">MyException&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">Exception&nbsp;</span><span style="color: #007700">{&nbsp;}<br /><br />class&nbsp;</span><span style="color: #0000BB">Test&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">testing</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;throw&nbsp;new&nbsp;</span><span style="color: #0000BB">MyException</span><span style="color: #007700">(</span><span style="color: #DD0000">'foo!'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">MyException&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;rethrow&nbsp;it<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">throw&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">Exception&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">());<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Test</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$foo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">testing</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+string(4) &quot;foo!&quot;
+</pre></div>
+    </div>
+   </div>
+  </div>
+
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

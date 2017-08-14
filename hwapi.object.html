@@ -1,0 +1,204 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Retrieve attribute information</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li class="header up"><a href="book.hwapi.html">Hyperwave API</a></li>
+  <li class="header up"><a href="ref.hwapi.html">Hyperwave API Functions</a></li>
+  <li><a href="hwapi.checkin.html">hw_api::checkin</a></li>
+  <li><a href="hwapi.checkout.html">hw_api::checkout</a></li>
+  <li><a href="hwapi.children.html">hw_api::children</a></li>
+  <li><a href="hwapi.content.html">hw_api::content</a></li>
+  <li><a href="hwapi.copy.html">hw_api::copy</a></li>
+  <li><a href="hwapi.dbstat.html">hw_api::dbstat</a></li>
+  <li><a href="hwapi.dcstat.html">hw_api::dcstat</a></li>
+  <li><a href="hwapi.dstanchors.html">hw_api::dstanchors</a></li>
+  <li><a href="hwapi.dstofsrcanchor.html">hw_api::dstofsrcanchor</a></li>
+  <li><a href="hwapi.find.html">hw_api::find</a></li>
+  <li><a href="hwapi.ftstat.html">hw_api::ftstat</a></li>
+  <li><a href="hwapi.hwstat.html">hw_api::hwstat</a></li>
+  <li><a href="hwapi.identify.html">hw_api::identify</a></li>
+  <li><a href="hwapi.info.html">hw_api::info</a></li>
+  <li><a href="hwapi.insert.html">hw_api::insert</a></li>
+  <li><a href="hwapi.insertanchor.html">hw_api::insertanchor</a></li>
+  <li><a href="hwapi.insertcollection.html">hw_api::insertcollection</a></li>
+  <li><a href="hwapi.insertdocument.html">hw_api::insertdocument</a></li>
+  <li><a href="hwapi.link.html">hw_api::link</a></li>
+  <li><a href="hwapi.lock.html">hw_api::lock</a></li>
+  <li><a href="hwapi.move.html">hw_api::move</a></li>
+  <li class="active"><a href="hwapi.object.html">hw_api::object</a></li>
+  <li><a href="hwapi.objectbyanchor.html">hw_api::objectbyanchor</a></li>
+  <li><a href="hwapi.parents.html">hw_api::parents</a></li>
+  <li><a href="hwapi.remove.html">hw_api::remove</a></li>
+  <li><a href="hwapi.replace.html">hw_api::replace</a></li>
+  <li><a href="hwapi.setcommittedversion.html">hw_api::setcommittedversion</a></li>
+  <li><a href="hwapi.srcanchors.html">hw_api::srcanchors</a></li>
+  <li><a href="hwapi.srcsofdst.html">hw_api::srcsofdst</a></li>
+  <li><a href="hwapi.unlock.html">hw_api::unlock</a></li>
+  <li><a href="hwapi.user.html">hw_api::user</a></li>
+  <li><a href="hwapi.userlist.html">hw_api::userlist</a></li>
+  <li><a href="hwapi.attribute-key.html">hw_api_attribute::key</a></li>
+  <li><a href="hwapi.attribute-langdepvalue.html">hw_api_attribute::langdepvalue</a></li>
+  <li><a href="hwapi.attribute-value.html">hw_api_attribute::value</a></li>
+  <li><a href="hwapi.attribute-values.html">hw_api_attribute::values</a></li>
+  <li><a href="hwapi.content-mimetype.html">hw_api_content::mimetype</a></li>
+  <li><a href="hwapi.content-read.html">hw_api_content::read</a></li>
+  <li><a href="hwapi.error-count.html">hw_api_error::count</a></li>
+  <li><a href="hwapi.error-reason.html">hw_api_error::reason</a></li>
+  <li><a href="hwapi.object-assign.html">hw_api_object::assign</a></li>
+  <li><a href="hwapi.object-attreditable.html">hw_api_object::attreditable</a></li>
+  <li><a href="hwapi.object-count.html">hw_api_object::count</a></li>
+  <li><a href="hwapi.object-insert.html">hw_api_object::insert</a></li>
+  <li><a href="hwapi.object-remove.html">hw_api_object::remove</a></li>
+  <li><a href="hwapi.object-title.html">hw_api_object::title</a></li>
+  <li><a href="hwapi.object-value.html">hw_api_object::value</a></li>
+  <li><a href="hwapi.reason-description.html">hw_api_reason::description</a></li>
+  <li><a href="hwapi.reason-type.html">hw_api_reason::type</a></li>
+  <li><a href="function.hwapi-attribute-new.html">hwapi_attribute_new</a></li>
+  <li><a href="function.hwapi-content-new.html">hwapi_content_new</a></li>
+  <li><a href="function.hwapi-hgcsp.html">hwapi_hgcsp</a></li>
+  <li><a href="function.hwapi-object-new.html">hwapi_object_new</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="hwapi.move.html">hw_api::move</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="hwapi.objectbyanchor.html">hw_api::objectbyanchor</a></div>
+                <div class="up"><a href="ref.hwapi.html">Hyperwave API Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="hwapi.object" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">hw_api::object</h1>
+  <p class="refpurpose">Retrieve attribute information</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-hwapi.object-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">hw_api_object</span> <span class="methodname">hw_api::object</span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$parameter</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   This function retrieves the attribute information of an object of any
+   version. It will not return the document content. 
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-hwapi.object-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">parameter</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The parameter array contains the required elements &#039;objectIdentifier&#039;
+       and the optional elements &#039;attributeSelector&#039; and &#039;version&#039;.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-hwapi.object-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   The returned object is an instance of class
+   <span class="classname">HW_API_Object</span> on success or
+   <span class="classname">HW_API_Error</span> if an error occurred.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-hwapi.object-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   This simple example retrieves an object and checks for errors.
+   <div class="example" id="example-4933">
+    <p><strong>Example #1 Retrieve an object</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">handle_error</span><span style="color: #007700">(</span><span style="color: #0000BB">$error</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$reason&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$error</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">reason</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">);<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Type:&nbsp;&lt;b&gt;"</span><span style="color: #007700">;<br />&nbsp;&nbsp;switch&nbsp;(</span><span style="color: #0000BB">$reason</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">type</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Error"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Warning"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;&nbsp;&nbsp;case&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">:<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Message"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;break;<br />&nbsp;&nbsp;}<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&lt;/b&gt;&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Description:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$reason</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">description</span><span style="color: #007700">(</span><span style="color: #DD0000">"en"</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">"&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />}<br /><br />function&nbsp;</span><span style="color: #0000BB">list_attr</span><span style="color: #007700">(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&lt;table&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;</span><span style="color: #0000BB">$count&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">count</span><span style="color: #007700">();<br />&nbsp;&nbsp;for&nbsp;(</span><span style="color: #0000BB">$i</span><span style="color: #007700">=</span><span style="color: #0000BB">0</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">&lt;</span><span style="color: #0000BB">$count</span><span style="color: #007700">;&nbsp;</span><span style="color: #0000BB">$i</span><span style="color: #007700">++)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$attr&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$obj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">attribute</span><span style="color: #007700">(</span><span style="color: #0000BB">$i</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"&lt;tr&gt;&lt;td&nbsp;align=\"right\"&nbsp;bgcolor=\"#c0c0c0\"&gt;&lt;b&gt;%s&lt;/b&gt;&lt;/td&gt;&lt;td&nbsp;bgcolor=\"#F0F0F0\"&gt;%s&lt;/td&gt;&lt;/tr&gt;\n"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$attr</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">key</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">$attr</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">value</span><span style="color: #007700">());<br />&nbsp;&nbsp;}<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"&lt;/table&gt;\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$hwapi&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">hwapi_hgcsp</span><span style="color: #007700">(</span><span style="color: #0000BB">$g_config</span><span style="color: #007700">[</span><span style="color: #0000BB">HOSTNAME</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">$parms&nbsp;</span><span style="color: #007700">=&nbsp;array(</span><span style="color: #DD0000">"objectIdentifier"</span><span style="color: #007700">=&gt;</span><span style="color: #DD0000">"rootcollection"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"attributeSelector"</span><span style="color: #007700">=&gt;array(</span><span style="color: #DD0000">"Title"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Name"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"DocumentType"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">$root&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$hwapi</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">object</span><span style="color: #007700">(</span><span style="color: #0000BB">$parms</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">get_class</span><span style="color: #007700">(</span><span style="color: #0000BB">$root</span><span style="color: #007700">)&nbsp;==&nbsp;</span><span style="color: #DD0000">"HW_API_Error"</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;</span><span style="color: #0000BB">handle_error</span><span style="color: #007700">(</span><span style="color: #0000BB">$root</span><span style="color: #007700">);<br />&nbsp;&nbsp;exit;<br />}<br /></span><span style="color: #0000BB">list_attr</span><span style="color: #007700">(</span><span style="color: #0000BB">$root</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-hwapi.object-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="hwapi.content.html" class="xref">hw_api::content</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

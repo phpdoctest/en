@@ -1,0 +1,208 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Construct a tar/zip archive from the files within a directory.</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.compression.html">Compression and Archive Extensions</a></li>
+  <li class="header up"><a href="book.phar.html">Phar</a></li>
+  <li class="header up"><a href="class.phardata.html">PharData</a></li>
+  <li><a href="phardata.addemptydir.html">PharData::addEmptyDir</a></li>
+  <li><a href="phardata.addfile.html">PharData::addFile</a></li>
+  <li><a href="phardata.addfromstring.html">PharData::addFromString</a></li>
+  <li class="active"><a href="phardata.buildfromdirectory.html">PharData::buildFromDirectory</a></li>
+  <li><a href="phardata.buildfromiterator.html">PharData::buildFromIterator</a></li>
+  <li><a href="phardata.compress.html">PharData::compress</a></li>
+  <li><a href="phardata.compressfiles.html">PharData::compressFiles</a></li>
+  <li><a href="phardata.construct.html">PharData::__construct</a></li>
+  <li><a href="phardata.converttodata.html">PharData::convertToData</a></li>
+  <li><a href="phardata.converttoexecutable.html">PharData::convertToExecutable</a></li>
+  <li><a href="phardata.copy.html">PharData::copy</a></li>
+  <li><a href="phardata.decompress.html">PharData::decompress</a></li>
+  <li><a href="phardata.decompressfiles.html">PharData::decompressFiles</a></li>
+  <li><a href="phardata.delmetadata.html">PharData::delMetadata</a></li>
+  <li><a href="phardata.delete.html">PharData::delete</a></li>
+  <li><a href="phardata.extractto.html">PharData::extractTo</a></li>
+  <li><a href="phardata.iswritable.html">PharData::isWritable</a></li>
+  <li><a href="phardata.offsetset.html">PharData::offsetSet</a></li>
+  <li><a href="phardata.offsetunset.html">PharData::offsetUnset</a></li>
+  <li><a href="phardata.setalias.html">PharData::setAlias</a></li>
+  <li><a href="phardata.setdefaultstub.html">PharData::setDefaultStub</a></li>
+  <li><a href="phardata.setmetadata.html">Phar::setMetadata</a></li>
+  <li><a href="phardata.setsignaturealgorithm.html">Phar::setSignatureAlgorithm</a></li>
+  <li><a href="phardata.setstub.html">PharData::setStub</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="phardata.addfromstring.html">PharData::addFromString</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="phardata.buildfromiterator.html">PharData::buildFromIterator</a></div>
+                <div class="up"><a href="class.phardata.html">PharData</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="phardata.buildfromdirectory" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">PharData::buildFromDirectory</h1>
+  <p class="refpurpose">Construct a tar/zip archive from the files within a directory.</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-phardata.buildfromdirectory-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">Phar::buildFromDirectory</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$base_dir</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$regex</code></span>
+  ] )</div>
+
+
+  <p class="para rdfs-comment">
+   Populate a tar/zip archive from directory contents.  The optional second
+   parameter is a regular expression (pcre) that is used to exclude files.
+   Any filename that matches the regular expression will be included, all others will be
+   excluded.  For more fine-grained control, use <span class="function">PharData::buildFromIterator</span>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-phardata.buildfromdirectory-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">base_dir</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The full or relative path to the directory that contains all files
+       to add to the archive.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">regex</code></dt>
+
+     <dd>
+
+      <p class="para">
+       An optional pcre regular expression that is used to filter the
+       list of files.  Only file paths matching the regular expression
+       will be included in the archive.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-phardata.buildfromdirectory-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   <span class="function">Phar::buildFromDirectory</span> returns an associative array
+   mapping internal path of file to the full path of the file on the
+   filesystem.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-phardata.buildfromdirectory-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   This method throws <span class="classname">BadMethodCallException</span> when unable
+   to instantiate the internal directory iterators,
+   or a <span class="classname">PharException</span> if there were errors
+   saving the phar archive.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-phardata.buildfromdirectory-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-771">
+    <p><strong>Example #1 A <span class="function">PharData::buildFromDirectory</span> example</strong></p>
+  <div class="example-contents"><p>
+   
+  </p></div>
+  <div class="example-contents"><p>
+   <div class="example-contents">
+    <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$phar&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">PharData</span><span style="color: #007700">(</span><span style="color: #DD0000">'project.tar'</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;add&nbsp;all&nbsp;files&nbsp;in&nbsp;the&nbsp;project<br /></span><span style="color: #0000BB">$phar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">buildFromDirectory</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/project'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$phar2&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">PharData</span><span style="color: #007700">(</span><span style="color: #DD0000">'project2.zip'</span><span style="color: #007700">);<br /></span><span style="color: #FF8000">//&nbsp;add&nbsp;all&nbsp;files&nbsp;in&nbsp;the&nbsp;project,&nbsp;only&nbsp;include&nbsp;php&nbsp;files<br /></span><span style="color: #0000BB">$phar2</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">buildFromDirectory</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/project'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'/\.php$/'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </p></div>
+  </div>
+ </div>
+
+
+
+ <div class="refsect1 seealso" id="refsect1-phardata.buildfromdirectory-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">Phar::buildFromDirectory</span></li>
+    <li class="member"><span class="function">PharData::buildFromIterator</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

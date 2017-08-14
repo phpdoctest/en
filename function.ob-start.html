@@ -1,0 +1,446 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Turn on output buffering</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.php.html">Affecting PHP's Behaviour</a></li>
+  <li class="header up"><a href="book.outcontrol.html">Output Control</a></li>
+  <li class="header up"><a href="ref.outcontrol.html">Output Control Functions</a></li>
+  <li><a href="function.flush.html">flush</a></li>
+  <li><a href="function.ob-clean.html">ob_clean</a></li>
+  <li><a href="function.ob-end-clean.html">ob_end_clean</a></li>
+  <li><a href="function.ob-end-flush.html">ob_end_flush</a></li>
+  <li><a href="function.ob-flush.html">ob_flush</a></li>
+  <li><a href="function.ob-get-clean.html">ob_get_clean</a></li>
+  <li><a href="function.ob-get-contents.html">ob_get_contents</a></li>
+  <li><a href="function.ob-get-flush.html">ob_get_flush</a></li>
+  <li><a href="function.ob-get-length.html">ob_get_length</a></li>
+  <li><a href="function.ob-get-level.html">ob_get_level</a></li>
+  <li><a href="function.ob-get-status.html">ob_get_status</a></li>
+  <li><a href="function.ob-gzhandler.html">ob_gzhandler</a></li>
+  <li><a href="function.ob-implicit-flush.html">ob_implicit_flush</a></li>
+  <li><a href="function.ob-list-handlers.html">ob_list_handlers</a></li>
+  <li class="active"><a href="function.ob-start.html">ob_start</a></li>
+  <li><a href="function.output-add-rewrite-var.html">output_add_rewrite_var</a></li>
+  <li><a href="function.output-reset-rewrite-vars.html">output_reset_rewrite_vars</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.ob-list-handlers.html">ob_list_handlers</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.output-add-rewrite-var.html">output_add_rewrite_var</a></div>
+                <div class="up"><a href="ref.outcontrol.html">Output Control Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.ob-start" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ob_start</h1>
+  <p class="refpurpose">Turn on output buffering</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.ob-start-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">ob_start</span>
+    ([ <span class="methodparam"><span class="type">callable</span> <code class="parameter">$output_callback</code><span class="initializer"> = <strong><code>NULL</code></strong></span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$chunk_size</code><span class="initializer"> = 0</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = <strong><code>PHP_OUTPUT_HANDLER_STDFLAGS</code></strong></span></span>
+  ]]] )</div>
+
+  <p class="para rdfs-comment">
+   This function will turn output buffering on. While output buffering is
+   active no output is sent from the script (other than headers), instead the
+   output is stored in an internal buffer.
+  </p>
+  <p class="para">
+   The contents of this internal buffer may be copied into a string variable
+   using <span class="function">ob_get_contents</span>.  To output what is stored in
+   the internal buffer, use <span class="function">ob_end_flush</span>. Alternatively,
+   <span class="function">ob_end_clean</span> will silently discard the buffer
+   contents.
+  </p>
+  <div class="warning"><strong class="warning">Warning</strong>
+   <p class="para">
+    Some web servers (e.g. Apache) change the working directory of a script
+    when calling the callback function. You can change it back by e.g.
+    <em>chdir(dirname($_SERVER[&#039;SCRIPT_FILENAME&#039;]))</em> in the
+    callback function.
+   </p>
+  </div>
+  <p class="para">
+   Output buffers are stackable, that is, you may call
+   <span class="function">ob_start</span> while another
+   <span class="function">ob_start</span> is active. Just make
+   sure that you call <span class="function">ob_end_flush</span>
+   the appropriate number of times. If multiple output callback
+   functions are active, output is being filtered sequentially
+   through each of them in nesting order.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.ob-start-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">output_callback</code></dt>
+
+     <dd>
+
+      <p class="para">
+       An optional <code class="parameter">output_callback</code> function may be
+       specified. This function takes a string as a parameter and should
+       return a string. The function will be called when
+       the output buffer is flushed (sent) or cleaned (with
+       <span class="function">ob_flush</span>, <span class="function">ob_clean</span> or similar
+       function) or when the output buffer
+       is flushed to the browser at the end of the request.  When
+       <code class="parameter">output_callback</code> is called, it will receive the
+       contents of the output buffer as its parameter and is expected to
+       return a new output buffer as a result, which will be sent to the
+       browser. If the <code class="parameter">output_callback</code> is not a
+       callable function, this function will return <strong><code>FALSE</code></strong>.
+       This is the callback signature:
+      </p>
+      <p class="para">
+       <div class="methodsynopsis dc-description">
+        <span class="type">string</span> <span class="methodname"><span class="replaceable">handler</span></span>
+         ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$buffer</code></span>
+        [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$phase</code></span>
+       ] )</div>
+
+       <dl>
+
+        
+         <dt>
+<code class="parameter">buffer</code></dt>
+
+         <dd>
+
+          <span class="simpara">
+           Contents of the output buffer.
+          </span>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">phase</code></dt>
+
+         <dd>
+
+          <span class="simpara">
+           Bitmask of <strong><code>PHP_OUTPUT_HANDLER_*</code></strong> constants.
+          </span>
+         </dd>
+
+        
+       </dl>
+
+      </p>
+      <p class="para">
+       If <code class="parameter">output_callback</code> returns <strong><code>FALSE</code></strong> original
+       input is sent to the browser.
+      </p>
+      <p class="para">
+       The <code class="parameter">output_callback</code> parameter may be bypassed
+       by passing a <strong><code>NULL</code></strong> value.
+      </p>
+      <p class="para">
+       <span class="function">ob_end_clean</span>, <span class="function">ob_end_flush</span>,
+       <span class="function">ob_clean</span>, <span class="function">ob_flush</span> and
+       <span class="function">ob_start</span> may not be called from a callback
+       function. If you call them from callback function, the behavior is
+       undefined. If you would like to delete the contents of a buffer,
+       return &quot;&quot; (a null string) from callback function.
+       You can&#039;t even call functions using the output buffering functions like
+       <em>print_r($expression, true)</em> or
+       <em>highlight_file($filename, true)</em> from a callback
+       function.
+      </p>
+      <blockquote class="note"><p><strong class="note">Note</strong>: 
+       <p class="para">
+        <span class="function">ob_gzhandler</span> function exists to
+        facilitate sending gz-encoded data to web browsers that support
+        compressed web pages.  <span class="function">ob_gzhandler</span> determines
+        what type of content encoding the browser will accept and will return
+        its output accordingly.
+       </p>
+      </p></blockquote>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">chunk_size</code></dt>
+
+     <dd>
+
+      <p class="para">
+       If the optional parameter <code class="parameter">chunk_size</code> is passed, the
+       buffer will be flushed after any output call which causes the buffer&#039;s
+       length to equal or exceed <code class="parameter">chunk_size</code>. The default
+       value <em>0</em> means that the output function will only be
+       called when the output buffer is closed.
+      </p>
+      <p class="para">
+       Prior to PHP 5.4.0, the value <em>1</em> was a special case
+       value that set the chunk size to 4096 bytes.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">flags</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The <code class="parameter">flags</code> parameter is a bitmask that controls
+       the operations that can be performed on the output buffer. The default
+       is to allow output buffers to be cleaned, flushed and removed, which
+       can be set explicitly via
+       <strong><code>PHP_OUTPUT_HANDLER_CLEANABLE</code></strong> |
+       <strong><code>PHP_OUTPUT_HANDLER_FLUSHABLE</code></strong> |
+       <strong><code>PHP_OUTPUT_HANDLER_REMOVABLE</code></strong>, or
+       <strong><code>PHP_OUTPUT_HANDLER_STDFLAGS</code></strong> as shorthand.
+      </p>
+      <p class="para">
+       Each flag controls access to a set of functions, as described below:
+       <table class="doctable informaltable">
+        
+         <thead>
+          <tr>
+           <th>Constant</th>
+           <th>Functions</th>
+          </tr>
+
+         </thead>
+
+         <tbody class="tbody">
+          <tr>
+           <td><strong><code>PHP_OUTPUT_HANDLER_CLEANABLE</code></strong></td>
+           <td>
+            <span class="function">ob_clean</span>,
+            <span class="function">ob_end_clean</span>, and
+            <span class="function">ob_get_clean</span>.
+           </td>
+          </tr>
+
+          <tr>
+           <td><strong><code>PHP_OUTPUT_HANDLER_FLUSHABLE</code></strong></td>
+           <td>
+            <span class="function">ob_end_flush</span>,
+            <span class="function">ob_flush</span>, and
+            <span class="function">ob_get_flush</span>.
+           </td>
+          </tr>
+
+          <tr>
+           <td><strong><code>PHP_OUTPUT_HANDLER_REMOVABLE</code></strong></td>
+           <td>
+            <span class="function">ob_end_clean</span>,
+            <span class="function">ob_end_flush</span>, and
+            <span class="function">ob_get_flush</span>.
+           </td>
+          </tr>
+
+         </tbody>
+        
+       </table>
+
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.ob-start-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> on success or <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.ob-start-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>7.0.0</td>
+       <td>
+        In case <span class="function">ob_start</span> is used inside an output buffer 
+        callback, this function will no longer issue an <strong><code>E_ERROR</code></strong> 
+        but instead an <strong><code>E_RECOVERABLE_ERROR</code></strong>, allowing custom 
+        error handlers to catch such errors.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.4.0</td>
+       <td>
+        The third parameter of <span class="function">ob_start</span> changed from a
+        <span class="type">boolean</span> parameter called <code class="parameter">erase</code>
+        (which, if set to <strong><code>FALSE</code></strong>, would prevent the output buffer from being
+        deleted until the script finished executing) to an
+        <span class="type">integer</span> parameter called <code class="parameter">flags</code>.
+        Unfortunately, this results in an API compatibility break for code
+        written prior to PHP 5.4.0 that uses the third parameter. See
+        <a href="function.ob-start.html#function.ob-start.flags-bc" class="link">the flags example</a>
+        for an example of how to handle this with code that needs to be
+        compatible with both.
+       </td>
+      </tr>
+
+      <tr>
+       <td>5.4.0</td>
+       <td>
+        A chunk size of <em>1</em> now results in chunks of 1 byte
+        being sent to the output buffer.
+       </td>
+      </tr>
+
+      <tr>
+       <td>4.3.2</td>
+       <td>
+        This function was changed to return <strong><code>FALSE</code></strong> in case the passed
+        <code class="parameter">output_callback</code> can not be executed.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.ob-start-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-514">
+    <p><strong>Example #1 User defined callback function example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">callback</span><span style="color: #007700">(</span><span style="color: #0000BB">$buffer</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;replace&nbsp;all&nbsp;the&nbsp;apples&nbsp;with&nbsp;oranges<br />&nbsp;&nbsp;</span><span style="color: #007700">return&nbsp;(</span><span style="color: #0000BB">str_replace</span><span style="color: #007700">(</span><span style="color: #DD0000">"apples"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"oranges"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$buffer</span><span style="color: #007700">));<br />}<br /><br /></span><span style="color: #0000BB">ob_start</span><span style="color: #007700">(</span><span style="color: #DD0000">"callback"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;<br /></span>&lt;html&gt;<br />&lt;body&gt;<br />&lt;p&gt;It's&nbsp;like&nbsp;comparing&nbsp;apples&nbsp;to&nbsp;oranges.&lt;/p&gt;<br />&lt;/body&gt;<br />&lt;/html&gt;<br /><span style="color: #0000BB">&lt;?php<br /><br />ob_end_flush</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+&lt;html&gt;
+&lt;body&gt;
+&lt;p&gt;It&#039;s like comparing oranges to oranges.&lt;/p&gt;
+&lt;/body&gt;
+&lt;/html&gt;
+</pre></div>
+    </div>
+   </div>
+  </p>
+
+  <p class="para">
+   <div class="example" id="example-515">
+    <p><strong>Example #2 Creating an uneraseable output buffer in a way compatible with both PHP 5.3 and 5.4</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">version_compare</span><span style="color: #007700">(</span><span style="color: #0000BB">PHP_VERSION</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'5.4.0'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'&gt;='</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;</span><span style="color: #0000BB">ob_start</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PHP_OUTPUT_HANDLER_STDFLAGS&nbsp;</span><span style="color: #007700">^<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">PHP_OUTPUT_HANDLER_REMOVABLE</span><span style="color: #007700">);<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;</span><span style="color: #0000BB">ob_start</span><span style="color: #007700">(</span><span style="color: #0000BB">null</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.ob-start-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">ob_get_contents</span></li>
+    <li class="member"><span class="function">ob_end_clean</span></li>
+    <li class="member"><span class="function">ob_end_flush</span></li>
+    <li class="member"><span class="function">ob_implicit_flush</span></li>
+    <li class="member"><span class="function">ob_gzhandler</span></li>
+    <li class="member"><span class="function">ob_iconv_handler</span></li>
+    <li class="member"><span class="function">mb_output_handler</span></li>
+    <li class="member"><span class="function">ob_tidyhandler</span></li>
+   </ul>
+  </p>
+ </div>
+  
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

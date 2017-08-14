@@ -1,0 +1,216 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Generate a unique ID</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.misc.html">Misc.</a></li>
+  <li class="header up"><a href="ref.misc.html">Misc. Functions</a></li>
+  <li><a href="function.connection-aborted.html">connection_aborted</a></li>
+  <li><a href="function.connection-status.html">connection_status</a></li>
+  <li><a href="function.constant.html">constant</a></li>
+  <li><a href="function.define.html">define</a></li>
+  <li><a href="function.defined.html">defined</a></li>
+  <li><a href="function.die.html">die</a></li>
+  <li><a href="function.eval.html">eval</a></li>
+  <li><a href="function.exit.html">exit</a></li>
+  <li><a href="function.get-browser.html">get_browser</a></li>
+  <li><a href="function.halt-compiler.html">__halt_compiler</a></li>
+  <li><a href="function.highlight-file.html">highlight_file</a></li>
+  <li><a href="function.highlight-string.html">highlight_string</a></li>
+  <li><a href="function.ignore-user-abort.html">ignore_user_abort</a></li>
+  <li><a href="function.pack.html">pack</a></li>
+  <li><a href="function.php-check-syntax.html">php_check_syntax</a></li>
+  <li><a href="function.php-strip-whitespace.html">php_strip_whitespace</a></li>
+  <li><a href="function.show-source.html">show_source</a></li>
+  <li><a href="function.sleep.html">sleep</a></li>
+  <li><a href="function.sys-getloadavg.html">sys_getloadavg</a></li>
+  <li><a href="function.time-nanosleep.html">time_nanosleep</a></li>
+  <li><a href="function.time-sleep-until.html">time_sleep_until</a></li>
+  <li class="active"><a href="function.uniqid.html">uniqid</a></li>
+  <li><a href="function.unpack.html">unpack</a></li>
+  <li><a href="function.usleep.html">usleep</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.time-sleep-until.html">time_sleep_until</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.unpack.html">unpack</a></div>
+                <div class="up"><a href="ref.misc.html">Misc. Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.uniqid" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">uniqid</h1>
+  <p class="refpurpose">Generate a unique ID</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.uniqid-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname">uniqid</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$prefix</code><span class="initializer"> = &quot;&quot;</span></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$more_entropy</code><span class="initializer"> = false</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Gets a prefixed unique identifier based on the current time in
+   microseconds.
+  </p>
+  <div class="caution"><strong class="caution">Caution</strong><p class="para">This function does not
+generate cryptographically secure values, and should not be used for cryptographic purposes. If you need a
+cryptographically secure value, consider using <span class="function">random_int</span>, <span class="function">random_bytes</span>, or
+<span class="function">openssl_random_pseudo_bytes</span> instead.</p></div>
+  <div class="warning"><strong class="warning">Warning</strong>
+    <p class="para">
+     This function does not guarantee uniqueness of return
+     value. Since most systems adjust system clock by NTP or like,
+     system time is changed constantly. Therefore, it is possible that
+     this function does not return unique ID for the
+     process/thread. Use <code class="parameter">more_entropy</code> to
+     increase likelihood of uniqueness.
+    </p>
+  </div>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.uniqid-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">prefix</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Can be useful, for instance, if you generate identifiers
+       simultaneously on several hosts that might happen to generate the
+       identifier at the same microsecond.
+      </p>
+      <p class="para">
+       With an empty <code class="parameter">prefix</code>, the returned string will
+       be 13 characters long.  If <code class="parameter">more_entropy</code> is
+       <strong><code>TRUE</code></strong>, it will be 23 characters.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">more_entropy</code></dt>
+
+     <dd>
+
+      <p class="para">
+       If set to <strong><code>TRUE</code></strong>, <span class="function">uniqid</span> will add additional
+       entropy (using the combined linear congruential generator) at the end
+       of the return value, which increases the likelihood that the result
+       will be unique.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.uniqid-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns timestamp based unique identifier as a string.
+  </p>
+  <div class="warning"><strong class="warning">Warning</strong>
+   <p class="para">
+     This function tries to create unique identifier, but it does not
+     guarantee 100% uniqueness of return value.
+   </p>
+  </div>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.uniqid-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4374">
+    <p><strong>Example #1 <span class="function">uniqid</span> Example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;A&nbsp;uniqid,&nbsp;like:&nbsp;4b3403665fea6&nbsp;*/<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"uniqid():&nbsp;%s\r\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">uniqid</span><span style="color: #007700">());<br /><br /></span><span style="color: #FF8000">/*&nbsp;We&nbsp;can&nbsp;also&nbsp;prefix&nbsp;the&nbsp;uniqid,&nbsp;this&nbsp;the&nbsp;same&nbsp;as&nbsp;<br />&nbsp;*&nbsp;doing:<br />&nbsp;*<br />&nbsp;*&nbsp;$uniqid&nbsp;=&nbsp;$prefix&nbsp;.&nbsp;uniqid();<br />&nbsp;*&nbsp;$uniqid&nbsp;=&nbsp;uniqid($prefix);<br />&nbsp;*/<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"uniqid('php_'):&nbsp;%s\r\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">uniqid</span><span style="color: #007700">(</span><span style="color: #DD0000">'php_'</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">/*&nbsp;We&nbsp;can&nbsp;also&nbsp;activate&nbsp;the&nbsp;more_entropy&nbsp;parameter,&nbsp;which&nbsp;is&nbsp;<br />&nbsp;*&nbsp;required&nbsp;on&nbsp;some&nbsp;systems,&nbsp;like&nbsp;Cygwin.&nbsp;This&nbsp;makes&nbsp;uniqid()<br />&nbsp;*&nbsp;produce&nbsp;a&nbsp;value&nbsp;like:&nbsp;4b340550242239.64159797<br />&nbsp;*/<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"uniqid('',&nbsp;true):&nbsp;%s\r\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">uniqid</span><span style="color: #007700">(</span><span style="color: #DD0000">''</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.uniqid-notes">
+  <h3 class="title">Notes</h3>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    Under Cygwin, the <code class="parameter">more_entropy</code> must be set 
+    to <strong><code>TRUE</code></strong> for this function to work.
+   </p>
+  </p></blockquote>
+
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

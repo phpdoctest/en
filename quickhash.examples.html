@@ -1,0 +1,155 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Examples</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.vartype.html">Variable and Type Related Extensions</a></li>
+  <li class="header up"><a href="book.quickhash.html">Quickhash</a></li>
+  <li><a href="intro.quickhash.html">Introduction</a></li>
+  <li><a href="quickhash.setup.html">Installing/Configuring</a></li>
+  <li><a href="quickhash.constants.html">Predefined Constants</a></li>
+  <li class="active"><a href="quickhash.examples.html">Examples</a></li>
+  <li><a href="class.quickhashintset.html">QuickHashIntSet</a></li>
+  <li><a href="class.quickhashinthash.html">QuickHashIntHash</a></li>
+  <li><a href="class.quickhashstringinthash.html">QuickHashStringIntHash</a></li>
+  <li><a href="class.quickhashintstringhash.html">QuickHashIntStringHash</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="quickhash.constants.html">Predefined Constants</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="class.quickhashintset.html">QuickHashIntSet</a></div>
+                <div class="up"><a href="book.quickhash.html">Quickhash</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="quickhash.examples" class="chapter">
+ <h1>Examples</h1>
+ <div class="example" id="example-5980">
+  <p><strong>Example #1 Quickhash Example</strong></p>
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$set&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">QuickHashIntSet</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">1024</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">QuickHashIntSet</span><span style="color: #007700">::</span><span style="color: #0000BB">CHECK_FOR_DUPES&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$set</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">1&nbsp;</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$set</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">3&nbsp;</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$set</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">exists</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">3&nbsp;</span><span style="color: #007700">)&nbsp;);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$set</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">exists</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">4&nbsp;</span><span style="color: #007700">)&nbsp;);<br /><br /></span><span style="color: #0000BB">$set</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">saveToFile</span><span style="color: #007700">(&nbsp;</span><span style="color: #DD0000">"/tmp/test-set.set"&nbsp;</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$newSet&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">QuickHashIntSet</span><span style="color: #007700">::</span><span style="color: #0000BB">loadFromFile</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"/tmp/test-set.set"<br /></span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$newSet</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">exists</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">3&nbsp;</span><span style="color: #007700">)&nbsp;);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">$newSet</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">exists</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">4&nbsp;</span><span style="color: #007700">)&nbsp;);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+  </div>
+
+  <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+bool(true)
+bool(false)
+bool(true)
+bool(false)
+</pre></div>
+  </div>
+ </div>
+ <div class="example" id="example-5981">
+  <p><strong>Example #2 Quickhash ArrayAccess Example</strong></p>
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$hash&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">QuickHashIntHash</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">64&nbsp;</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Adding&nbsp;and&nbsp;updating&nbsp;hash&nbsp;entries.<br /></span><span style="color: #0000BB">$hash</span><span style="color: #007700">[</span><span style="color: #0000BB">3</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">145926</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$hash</span><span style="color: #007700">[</span><span style="color: #0000BB">3</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">1415926</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$hash</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">72</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;Checking&nbsp;if&nbsp;keys&nbsp;exist<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(&nbsp;isset(&nbsp;</span><span style="color: #0000BB">$hash</span><span style="color: #007700">[</span><span style="color: #0000BB">3</span><span style="color: #007700">]&nbsp;)&nbsp;);<br /><br /></span><span style="color: #FF8000">//&nbsp;Removing&nbsp;hash&nbsp;entries<br /></span><span style="color: #007700">unset(&nbsp;</span><span style="color: #0000BB">$hash</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">]&nbsp;);<br /><br /></span><span style="color: #FF8000">//&nbsp;Retrieving&nbsp;the&nbsp;value&nbsp;stored&nbsp;for&nbsp;a&nbsp;hash<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$hash</span><span style="color: #007700">[</span><span style="color: #0000BB">3</span><span style="color: #007700">],&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+  </div>
+
+  <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+bool(true)
+1415926
+</pre></div>
+  </div>
+ </div>
+ <div class="example" id="example-5982">
+  <p><strong>Example #3 Quickhash Iterator Example</strong></p>
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$hash&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">QuickHashIntHash</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">64&nbsp;</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Adding&nbsp;hash&nbsp;entries.<br /></span><span style="color: #0000BB">$hash</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">145926</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$hash</span><span style="color: #007700">[</span><span style="color: #0000BB">2</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">1415926</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$hash</span><span style="color: #007700">[</span><span style="color: #0000BB">3</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">72</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$hash</span><span style="color: #007700">[</span><span style="color: #0000BB">4</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">712314</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$hash</span><span style="color: #007700">[</span><span style="color: #0000BB">5</span><span style="color: #007700">]&nbsp;=&nbsp;-</span><span style="color: #0000BB">4234</span><span style="color: #007700">;<br /><br />foreach(&nbsp;</span><span style="color: #0000BB">$hash&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$value&nbsp;</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$key</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'&nbsp;=&gt;&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+  </div>
+
+  <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+5 =&gt; -4234
+4 =&gt; 712314
+1 =&gt; 145926
+2 =&gt; 1415926
+3 =&gt; 72
+</pre></div>
+  </div>
+ </div>
+ <div class="example" id="example-5983">
+  <p><strong>Example #4 Quickhash String Values Example</strong></p>
+  <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$hash&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">QuickHashIntStringHash</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">64&nbsp;</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Adding&nbsp;hash&nbsp;entries.<br /></span><span style="color: #0000BB">$hash</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"one&nbsp;million&nbsp;four&nbsp;hundred&nbsp;fifteen&nbsp;thousand&nbsp;nine&nbsp;hundred&nbsp;twenty&nbsp;six"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$hash</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">add</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"one&nbsp;more"&nbsp;</span><span style="color: #007700">);<br /><br />foreach(&nbsp;</span><span style="color: #0000BB">$hash&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$value&nbsp;</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$key</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'&nbsp;=&gt;&nbsp;'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+  </div>
+
+  <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+  <div class="example-contents screen">
+<div class="cdata"><pre>
+1 =&gt; one million four hundred fifteen thousand nine hundred twenty six
+2 =&gt; one more
+</pre></div>
+  </div>
+ </div>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Puts values</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.tokyo-tyrant.html">tokyo_tyrant</a></li>
+  <li class="header up"><a href="class.tokyotyrant.html">TokyoTyrant</a></li>
+  <li><a href="tokyotyrant.add.html">TokyoTyrant::add</a></li>
+  <li><a href="tokyotyrant.connect.html">TokyoTyrant::connect</a></li>
+  <li><a href="tokyotyrant.connecturi.html">TokyoTyrant::connectUri</a></li>
+  <li><a href="tokyotyrant.construct.html">TokyoTyrant::__construct</a></li>
+  <li><a href="tokyotyrant.copy.html">TokyoTyrant::copy</a></li>
+  <li><a href="tokyotyrant.ext.html">TokyoTyrant::ext</a></li>
+  <li><a href="tokyotyrant.fwmkeys.html">TokyoTyrant::fwmKeys</a></li>
+  <li><a href="tokyotyrant.get.html">TokyoTyrant::get</a></li>
+  <li><a href="tokyotyrant.getiterator.html">TokyoTyrant::getIterator</a></li>
+  <li><a href="tokyotyrant.num.html">TokyoTyrant::num</a></li>
+  <li><a href="tokyotyrant.out.html">TokyoTyrant::out</a></li>
+  <li class="active"><a href="tokyotyrant.put.html">TokyoTyrant::put</a></li>
+  <li><a href="tokyotyrant.putcat.html">TokyoTyrant::putCat</a></li>
+  <li><a href="tokyotyrant.putkeep.html">TokyoTyrant::putKeep</a></li>
+  <li><a href="tokyotyrant.putnr.html">TokyoTyrant::putNr</a></li>
+  <li><a href="tokyotyrant.putshl.html">TokyoTyrant::putShl</a></li>
+  <li><a href="tokyotyrant.restore.html">TokyoTyrant::restore</a></li>
+  <li><a href="tokyotyrant.setmaster.html">TokyoTyrant::setMaster</a></li>
+  <li><a href="tokyotyrant.size.html">TokyoTyrant::size</a></li>
+  <li><a href="tokyotyrant.stat.html">TokyoTyrant::stat</a></li>
+  <li><a href="tokyotyrant.sync.html">TokyoTyrant::sync</a></li>
+  <li><a href="tokyotyrant.tune.html">TokyoTyrant::tune</a></li>
+  <li><a href="tokyotyrant.vanish.html">TokyoTyrant::vanish</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="tokyotyrant.out.html">TokyoTyrant::out</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="tokyotyrant.putcat.html">TokyoTyrant::putCat</a></div>
+                <div class="up"><a href="class.tokyotyrant.html">TokyoTyrant</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="tokyotyrant.put" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">TokyoTyrant::put</h1>
+  <p class="refpurpose">Puts values</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-tokyotyrant.put-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">TokyoTyrant</span> <span class="methodname">TokyoTyrant::put</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$keys</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$value</code><span class="initializer"> = NULL</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Puts a key-value pair into the database or multiple key-value pairs. If <code class="parameter">keys</code> is
+   string then the second parameter value defines the value. 
+   The second parameter is mandatory if <code class="parameter">keys</code> is a string. If the key exists the value
+   will be replaced with new value.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-tokyotyrant.put-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">keys</code></dt>
+
+     <dd>
+
+      <p class="para">
+       A string key or an array of key-value pairs
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">value</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The value in case a string key is used
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-tokyotyrant.put-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+    This method returns a reference to the current object and throws TokyoTyrantException on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-tokyotyrant.put-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-2458">
+    <p><strong>Example #1  <span class="methodname">TokyoTyrant::put</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;Connect&nbsp;to&nbsp;a&nbsp;database&nbsp;on&nbsp;default&nbsp;port&nbsp;*/<br /></span><span style="color: #0000BB">$tt&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">TokyoTyrant</span><span style="color: #007700">(</span><span style="color: #DD0000">"localhost"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;Put&nbsp;single&nbsp;key-value&nbsp;pair&nbsp;*/<br /></span><span style="color: #0000BB">$tt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">put</span><span style="color: #007700">(</span><span style="color: #DD0000">"key"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"value"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;Put&nbsp;key-value&nbsp;pairs,&nbsp;new&nbsp;value&nbsp;overwrites&nbsp;the&nbsp;old&nbsp;*/<br /></span><span style="color: #0000BB">$tt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">put</span><span style="color: #007700">(array(</span><span style="color: #DD0000">"key1"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"value1"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"key"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"value2"</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">/*&nbsp;Get&nbsp;back&nbsp;one&nbsp;key&nbsp;*/<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$tt</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">get</span><span style="color: #007700">(</span><span style="color: #DD0000">"key"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+value2
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-tokyotyrant.put-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"> <span class="methodname">TokyoTyrant::putKeep</span></li>
+    <li class="member"> <span class="methodname">TokyoTyrant::putCat</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

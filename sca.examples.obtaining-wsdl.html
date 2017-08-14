@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Obtaining the WSDL for an SCA component offering a Service as
+   a Web service</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.webservice.html">Web Services</a></li>
+  <li class="header up"><a href="book.sca.html">SCA</a></li>
+  <li class="header up"><a href="sca.examples.html">Examples</a></li>
+  <li><a href="sca.examples.structure.html">The structure of a Service Component</a></li>
+  <li><a href="sca.examples.proxies.html">Obtaining a proxy for another Service Component</a></li>
+  <li><a href="sca.examples.calling.html">Calling another Service Component</a></li>
+  <li><a href="sca.examples.nonscascript.html">Locating and calling services from a script which is not an
+   SCA Component</a></li>
+  <li><a href="sca.examples.exposing-webservice.html">Exposing a Service Component as a Web service</a></li>
+  <li><a href="sca.examples.deploy.html">Deploying an SCA component</a></li>
+  <li class="active"><a href="sca.examples.obtaining-wsdl.html">Obtaining the WSDL for an SCA component offering a Service as
+   a Web service</a></li>
+  <li><a href="sca.examples.understanding-wsdl.html">Understanding how the WSDL is generated</a></li>
+  <li><a href="sca.examples.structures.html">Working with Data Structures</a></li>
+  <li><a href="sca.examples.errorhandling.html">Error handling</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="sca.examples.deploy.html">Deploying an SCA component</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="sca.examples.understanding-wsdl.html">Understanding how the WSDL is generated</a></div>
+                <div class="up"><a href="sca.examples.html">Examples</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="sca.examples.obtaining-wsdl" class="section">
+  <h2 class="title">Obtaining the WSDL for an SCA component offering a Service as
+   a Web service </h2>
+  
+  <p class="para"> 
+   SCA components that expose a Web service interface (i.e. have
+   an @binding.soap annotation) will return their WSDL definition in
+   response to an HTTP request with a get parameter of &quot;wsdl&quot;. The usual
+   way to obtain this is with &quot;?wsdl&quot; on the end of a URL. The example
+   below uses
+   <span class="function">file_get_contents</span> to obtain WSDL from a
+   service and writes it to a temporary file before then obtaining a
+   proxy for the service in the usual way. You could of course also
+   obtain the WSDL in a browser, or by some other means, and save the file
+   yourself. 
+  </p>
+  
+  <p class="para">
+   <div class="example" id="example-6183">
+    <p><strong>Example #1  Generated WSDL </strong></p>
+    <div class="example-contents">
+<div class="xmlcode"><pre class="xmlcode">&lt;?php
+$wsdl = file_get_contents(&#039;http://www.example.com/Services/Example.php?wsdl&#039;);
+file_put_contents(&quot;service.wsdl&quot;,$wsdl); //write the wsdl to a file
+$service = SCA::getService(&#039;service.wsdl&#039;); 
+?&gt;</pre>
+</div>
+    </div>
+
+   </div>
+  </p>
+  
+  <p class="para">
+   NOTE: If the wsdl requires imported xsds, these will need to be
+   fetched separately. 
+  </p>
+  
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

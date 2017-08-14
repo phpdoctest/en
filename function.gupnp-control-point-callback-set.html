@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Set control point callback</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li class="header up"><a href="book.gupnp.html">Gupnp</a></li>
+  <li class="header up"><a href="ref.gupnp.html">Gupnp Functions</a></li>
+  <li><a href="function.gupnp-context-get-host-ip.html">gupnp_context_get_host_ip</a></li>
+  <li><a href="function.gupnp-context-get-port.html">gupnp_context_get_port</a></li>
+  <li><a href="function.gupnp-context-get-subscription-timeout.html">gupnp_context_get_subscription_timeout</a></li>
+  <li><a href="function.gupnp-context-host-path.html">gupnp_context_host_path</a></li>
+  <li><a href="function.gupnp-context-new.html">gupnp_context_new</a></li>
+  <li><a href="function.gupnp-context-set-subscription-timeout.html">gupnp_context_set_subscription_timeout</a></li>
+  <li><a href="function.gupnp-context-timeout-add.html">gupnp_context_timeout_add</a></li>
+  <li><a href="function.gupnp-context-unhost-path.html">gupnp_context_unhost_path</a></li>
+  <li><a href="function.gupnp-control-point-browse-start.html">gupnp_control_point_browse_start</a></li>
+  <li><a href="function.gupnp-control-point-browse-stop.html">gupnp_control_point_browse_stop</a></li>
+  <li class="active"><a href="function.gupnp-control-point-callback-set.html">gupnp_control_point_callback_set</a></li>
+  <li><a href="function.gupnp-control-point-new.html">gupnp_control_point_new</a></li>
+  <li><a href="function.gupnp-device-action-callback-set.html">gupnp_device_action_callback_set</a></li>
+  <li><a href="function.gupnp-device-info-get-service.html">gupnp_device_info_get_service</a></li>
+  <li><a href="function.gupnp-device-info-get.html">gupnp_device_info_get</a></li>
+  <li><a href="function.gupnp-root-device-get-available.html">gupnp_root_device_get_available</a></li>
+  <li><a href="function.gupnp-root-device-get-relative-location.html">gupnp_root_device_get_relative_location</a></li>
+  <li><a href="function.gupnp-root-device-new.html">gupnp_root_device_new</a></li>
+  <li><a href="function.gupnp-root-device-set-available.html">gupnp_root_device_set_available</a></li>
+  <li><a href="function.gupnp-root-device-start.html">gupnp_root_device_start</a></li>
+  <li><a href="function.gupnp-root-device-stop.html">gupnp_root_device_stop</a></li>
+  <li><a href="function.gupnp-service-action-get.html">gupnp_service_action_get</a></li>
+  <li><a href="function.gupnp-service-action-return-error.html">gupnp_service_action_return_error</a></li>
+  <li><a href="function.gupnp-service-action-return.html">gupnp_service_action_return</a></li>
+  <li><a href="function.gupnp-service-action-set.html">gupnp_service_action_set</a></li>
+  <li><a href="function.gupnp-service-freeze-notify.html">gupnp_service_freeze_notify</a></li>
+  <li><a href="function.gupnp-service-info-get-introspection.html">gupnp_service_info_get_introspection</a></li>
+  <li><a href="function.gupnp-service-info-get.html">gupnp_service_info_get</a></li>
+  <li><a href="function.gupnp-service-introspection-get-state-variable.html">gupnp_service_introspection_get_state_variable</a></li>
+  <li><a href="function.gupnp-service-notify.html">gupnp_service_notify</a></li>
+  <li><a href="function.gupnp-service-proxy-action-get.html">gupnp_service_proxy_action_get</a></li>
+  <li><a href="function.gupnp-service-proxy-action-set.html">gupnp_service_proxy_action_set</a></li>
+  <li><a href="function.gupnp-service-proxy-add-notify.html">gupnp_service_proxy_add_notify</a></li>
+  <li><a href="function.gupnp-service-proxy-callback-set.html">gupnp_service_proxy_callback_set</a></li>
+  <li><a href="function.gupnp-service-proxy-get-subscribed.html">gupnp_service_proxy_get_subscribed</a></li>
+  <li><a href="function.gupnp-service-proxy-remove-notify.html">gupnp_service_proxy_remove_notify</a></li>
+  <li><a href="gupnp-service-proxy-send-action.html">gupnp_service_proxy_send_action</a></li>
+  <li><a href="function.gupnp-service-proxy-set-subscribed.html">gupnp_service_proxy_set_subscribed</a></li>
+  <li><a href="function.gupnp-service-thaw-notify.html">gupnp_service_thaw_notify</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.gupnp-control-point-browse-stop.html">gupnp_control_point_browse_stop</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.gupnp-control-point-new.html">gupnp_control_point_new</a></div>
+                <div class="up"><a href="ref.gupnp.html">Gupnp Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.gupnp-control-point-callback-set" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">gupnp_control_point_callback_set</h1>
+  <p class="refpurpose">Set control point callback</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.gupnp-control-point-callback-set-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span> <span class="methodname">gupnp_control_point_callback_set</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$cpoint</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$signal</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$callback</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$arg</code></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Set control point callback function for signal.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.gupnp-control-point-callback-set-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">cpoint</code></dt>
+
+     <dd>
+
+      <p class="para">
+       A control point identifier, returned by <span class="function">gupnp_control_point_new</span>.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">signal</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The value of signal. Signal can be one of the following values:
+       <dl>
+
+        
+         <dt>
+<strong><code>GUPNP_SIGNAL_DEVICE_PROXY_AVAILABLE</code></strong></dt>
+
+         <dd>
+
+          <span class="simpara">
+           Emitted whenever a new device has become available.
+          </span>
+         </dd>
+
+        
+        
+         <dt>
+<strong><code>GUPNP_SIGNAL_DEVICE_PROXY_UNAVAILABLE</code></strong></dt>
+
+         <dd>
+
+          <span class="simpara">
+           Emitted whenever a device is not available any more.
+          </span>
+         </dd>
+
+        
+        
+         <dt>
+<strong><code>GUPNP_SIGNAL_SERVICE_PROXY_AVAILABLE</code></strong></dt>
+
+         <dd>
+
+          <span class="simpara">
+           Emitted whenever a new service has become available.
+          </span>
+         </dd>
+
+        
+        
+         <dt>
+<strong><code>GUPNP_SIGNAL_SERVICE_PROXY_UNAVAILABLE</code></strong></dt>
+
+         <dd>
+
+          <span class="simpara">
+           Emitted whenever a service is not available any more.
+          </span>
+         </dd>
+
+        
+       </dl>
+
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">callback</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The callback function for the certain signal. Typically, callback function 
+       takes on two parameters. The <code class="parameter">proxy</code> parameter&#039;s 
+       identifier being the first, and the <code class="parameter">arg</code> second. 
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">arg</code></dt>
+
+     <dd>
+
+      <p class="para">
+       User data for <code class="parameter">callback</code>. 
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.gupnp-control-point-callback-set-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> on success or <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.gupnp-control-point-callback-set-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4930">
+    <p><strong>Example #1 Create new UPnP context and start browsing</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">device_proxy_available_cb</span><span style="color: #007700">(</span><span style="color: #0000BB">$proxy</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$arg</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$info&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">gupnp_device_info_get</span><span style="color: #007700">(</span><span style="color: #0000BB">$proxy</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$type&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$info</span><span style="color: #007700">[</span><span style="color: #DD0000">'device_type'</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$location&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$info</span><span style="color: #007700">[</span><span style="color: #DD0000">'location'</span><span style="color: #007700">];<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Device&nbsp;available:\n"</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"type:&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$type</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"location:&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$location</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">/*&nbsp;Create&nbsp;the&nbsp;UPnP&nbsp;context&nbsp;*/<br /></span><span style="color: #0000BB">$context&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">gupnp_context_new</span><span style="color: #007700">();<br /><br />if&nbsp;(!</span><span style="color: #0000BB">$context</span><span style="color: #007700">)&nbsp;{<br />&nbsp;die(</span><span style="color: #DD0000">"Error&nbsp;creating&nbsp;the&nbsp;GUPnP&nbsp;context\n"</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">/*&nbsp;We're&nbsp;interested&nbsp;in&nbsp;everything&nbsp;*/<br /></span><span style="color: #0000BB">$cp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">gupnp_control_point_new</span><span style="color: #007700">(</span><span style="color: #0000BB">$context</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"ssdp:all"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">gupnp_control_point_callback_set</span><span style="color: #007700">(</span><span style="color: #0000BB">$cp</span><span style="color: #007700">,&nbsp;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">GUPNP_SIGNAL_DEVICE_PROXY_AVAILABLE</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'device_proxy_available_cb'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;Start&nbsp;for&nbsp;browsing&nbsp;*/<br /></span><span style="color: #0000BB">gupnp_control_point_browse_start</span><span style="color: #007700">(</span><span style="color: #0000BB">$cp</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+
+ <div class="refsect1 errors" id="refsect1-function.gupnp-control-point-callback-set-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   Issues E_WARNING with not valid callback function. 
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.gupnp-control-point-callback-set-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">gupnp_control_point_new</span></li>
+    <li class="member"><span class="function">gupnp_control_point_browse_start</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Return an instance of the Directory class</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.fileprocess.file.html">File System Related Extensions</a></li>
+  <li class="header up"><a href="book.dir.html">Directories</a></li>
+  <li class="header up"><a href="ref.dir.html">Directory Functions</a></li>
+  <li><a href="function.chdir.html">chdir</a></li>
+  <li><a href="function.chroot.html">chroot</a></li>
+  <li><a href="function.closedir.html">closedir</a></li>
+  <li class="active"><a href="function.dir.html">dir</a></li>
+  <li><a href="function.getcwd.html">getcwd</a></li>
+  <li><a href="function.opendir.html">opendir</a></li>
+  <li><a href="function.readdir.html">readdir</a></li>
+  <li><a href="function.rewinddir.html">rewinddir</a></li>
+  <li><a href="function.scandir.html">scandir</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.closedir.html">closedir</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.getcwd.html">getcwd</a></div>
+                <div class="up"><a href="ref.dir.html">Directory Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.dir" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">dir</h1>
+  <p class="refpurpose">Return an instance of the Directory class</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.dir-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">Directory</span> <span class="methodname">dir</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$directory</code></span>
+   [, <span class="methodparam"><span class="type">resource</span> <code class="parameter">$context</code></span>
+  ] )</div>
+
+  
+  <p class="para rdfs-comment">
+   A pseudo-object oriented mechanism for reading a directory.  The
+   given <code class="parameter">directory</code> is opened.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.dir-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">directory</code></dt>
+
+    <dd>
+
+     <p class="para">
+      Directory to open
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">context</code></dt>
+
+    <dd>
+
+     <p class="para">
+      <blockquote class="note"><p><strong class="note">Note</strong>: <span class="simpara">Context support was added
+with PHP 5.0.0. For a description of <em>contexts</em>, refer to
+<a href="book.stream.html" class="xref">Streams</a>.</span></p></blockquote>
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.dir-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns an instance of <span class="classname">Directory</span>, or <strong><code>NULL</code></strong> with
+   wrong parameters, or <strong><code>FALSE</code></strong> in case of another error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.dir-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-2592">
+    <p><strong>Example #1 <span class="function">dir</span> example</strong></p>
+    <div class="example-contents"><p>
+     Please note the fashion in which <span class="function">Directory::read</span>&#039;s
+     return value is checked in the example below. We are explicitly
+     testing whether the return value is identical to (equal to and of
+     the same type as - see <a href="language.operators.comparison.html" class="link">
+     Comparison Operators</a> for more information) <strong><code>FALSE</code></strong> since
+     otherwise, any directory entry whose name evaluates to <strong><code>FALSE</code></strong> will
+     stop the loop.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$d&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">dir</span><span style="color: #007700">(</span><span style="color: #DD0000">"/etc/php5"</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #DD0000">"Handle:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$d</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">handle&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />echo&nbsp;</span><span style="color: #DD0000">"Path:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$d</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">path&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />while&nbsp;(</span><span style="color: #0000BB">false&nbsp;</span><span style="color: #007700">!==&nbsp;(</span><span style="color: #0000BB">$entry&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$d</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">read</span><span style="color: #007700">()))&nbsp;{<br />&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$entry</span><span style="color: #007700">.</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">$d</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">close</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Handle: Resource id #2
+Path: /etc/php5
+.
+..
+apache
+cgi
+cli
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.dir-notes">
+  <h3 class="title">Notes</h3>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    The order in which directory entries are returned by the read method is
+    system-dependent.
+   </p>
+  </p></blockquote>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

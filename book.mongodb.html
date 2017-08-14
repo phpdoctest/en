@@ -1,0 +1,2418 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: MongoDB driver classes</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="set.mongodb.html">MongoDB</a></li>
+  <li><a href="mongodb.setup.html">Installing/Configuring</a></li>
+  <li><a href="mongodb.tutorial.html">Tutorials</a></li>
+  <li><a href="mongodb.architecture.html">Driver Architecture and Internals</a></li>
+  <li><a href="mongodb.security.html">Security</a></li>
+  <li class="active"><a href="book.mongodb.html">MongoDB\Driver</a></li>
+  <li><a href="book.bson.html">MongoDB\BSON</a></li>
+  <li><a href="mongodb.exceptions.html">MongoDB\Driver\Exception</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mongodb.security.script_injection.html">Script Injection Attacks</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="class.mongodb-driver-manager.html">MongoDB\Driver\Manager</a></div>
+                <div class="up"><a href="set.mongodb.html">MongoDB</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="book.mongodb" class="book">
+  <h1>MongoDB driver classes</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="class.mongodb-driver-manager.html">MongoDB\Driver\Manager</a> — The MongoDB\Driver\Manager class<ul class="chunklist chunklist_title">
+<li><a href="mongodb-driver-manager.construct.html">MongoDB\Driver\Manager::__construct</a> — Create new MongoDB Manager</li>
+<li><a href="mongodb-driver-manager.executebulkwrite.html">MongoDB\Driver\Manager::executeBulkWrite</a> — Execute one or more write operations</li>
+<li><a href="mongodb-driver-manager.executecommand.html">MongoDB\Driver\Manager::executeCommand</a> — Execute a database command</li>
+<li><a href="mongodb-driver-manager.executequery.html">MongoDB\Driver\Manager::executeQuery</a> — Execute a database query</li>
+<li><a href="mongodb-driver-manager.getreadconcern.html">MongoDB\Driver\Manager::getReadConcern</a> — Return the ReadConcern for the Manager</li>
+<li><a href="mongodb-driver-manager.getreadpreference.html">MongoDB\Driver\Manager::getReadPreference</a> — Return the ReadPreference for the Manager</li>
+<li><a href="mongodb-driver-manager.getservers.html">MongoDB\Driver\Manager::getServers</a> — Return the servers to which this manager is connected</li>
+<li><a href="mongodb-driver-manager.getwriteconcern.html">MongoDB\Driver\Manager::getWriteConcern</a> — Return the WriteConcern for the Manager</li>
+<li><a href="mongodb-driver-manager.selectserver.html">MongoDB\Driver\Manager::selectServer</a> — Select a server matching a read preference</li>
+</ul>
+</li>
+<li><a href="class.mongodb-driver-command.html">MongoDB\Driver\Command</a> — The MongoDB\Driver\Command class<ul class="chunklist chunklist_title">
+<li><a href="mongodb-driver-command.construct.html">MongoDB\Driver\Command::__construct</a> — Create a new Command</li>
+</ul>
+</li>
+<li><a href="class.mongodb-driver-query.html">MongoDB\Driver\Query</a> — The MongoDB\Driver\Query class<ul class="chunklist chunklist_title">
+<li><a href="mongodb-driver-query.construct.html">MongoDB\Driver\Query::__construct</a> — Construct new Query</li>
+</ul>
+</li>
+<li><a href="class.mongodb-driver-bulkwrite.html">MongoDB\Driver\BulkWrite</a> — The MongoDB\Driver\BulkWrite class<ul class="chunklist chunklist_title">
+<li><a href="mongodb-driver-bulkwrite.construct.html">MongoDB\Driver\BulkWrite::__construct</a> — Create a new BulkWrite</li>
+<li><a href="mongodb-driver-bulkwrite.count.html">MongoDB\Driver\BulkWrite::count</a> — Count number of write operations in the bulk</li>
+<li><a href="mongodb-driver-bulkwrite.delete.html">MongoDB\Driver\BulkWrite::delete</a> — Add a delete operation to the bulk</li>
+<li><a href="mongodb-driver-bulkwrite.insert.html">MongoDB\Driver\BulkWrite::insert</a> — Add an insert operation to the bulk</li>
+<li><a href="mongodb-driver-bulkwrite.update.html">MongoDB\Driver\BulkWrite::update</a> — Add an update operation to the bulk</li>
+</ul>
+</li>
+<li><a href="class.mongodb-driver-writeconcern.html">MongoDB\Driver\WriteConcern</a> — The MongoDB\Driver\WriteConcern class<ul class="chunklist chunklist_title">
+<li><a href="mongodb-driver-writeconcern.bsonserialize.html">MongoDB\Driver\WriteConcern::bsonSerialize</a> — Returns an object for BSON serialization</li>
+<li><a href="mongodb-driver-writeconcern.construct.html">MongoDB\Driver\WriteConcern::__construct</a> — Construct immutable WriteConcern</li>
+<li><a href="mongodb-driver-writeconcern.getjournal.html">MongoDB\Driver\WriteConcern::getJournal</a> — Returns the WriteConcern's &quot;journal&quot; option</li>
+<li><a href="mongodb-driver-writeconcern.getw.html">MongoDB\Driver\WriteConcern::getW</a> — Returns the WriteConcern's &quot;w&quot; option</li>
+<li><a href="mongodb-driver-writeconcern.getwtimeout.html">MongoDB\Driver\WriteConcern::getWtimeout</a> — Returns the WriteConcern's &quot;wtimeout&quot; option</li>
+</ul>
+</li>
+<li><a href="class.mongodb-driver-readpreference.html">MongoDB\Driver\ReadPreference</a> — The MongoDB\Driver\ReadPreference class<ul class="chunklist chunklist_title">
+<li><a href="mongodb-driver-readpreference.bsonserialize.html">MongoDB\Driver\ReadPreference::bsonSerialize</a> — Returns an object for BSON serialization</li>
+<li><a href="mongodb-driver-readpreference.construct.html">MongoDB\Driver\ReadPreference::__construct</a> — Construct immutable ReadPreference</li>
+<li><a href="mongodb-driver-readpreference.getmaxstalenessseconds.html">MongoDB\Driver\ReadPreference::getMaxStalenessSeconds</a> — Returns the ReadPreference's &quot;maxStalenessSeconds&quot; option</li>
+<li><a href="mongodb-driver-readpreference.getmode.html">MongoDB\Driver\ReadPreference::getMode</a> — Returns the ReadPreference's &quot;mode&quot; option</li>
+<li><a href="mongodb-driver-readpreference.gettagsets.html">MongoDB\Driver\ReadPreference::getTagSets</a> — Returns the ReadPreference's &quot;tagSets&quot; option</li>
+</ul>
+</li>
+<li><a href="class.mongodb-driver-readconcern.html">MongoDB\Driver\ReadConcern</a> — The MongoDB\Driver\ReadConcern class<ul class="chunklist chunklist_title">
+<li><a href="mongodb-driver-readconcern.bsonserialize.html">MongoDB\Driver\ReadConcern::bsonSerialize</a> — Returns an object for BSON serialization</li>
+<li><a href="mongodb-driver-readconcern.construct.html">MongoDB\Driver\ReadConcern::__construct</a> — Construct immutable ReadConcern</li>
+<li><a href="mongodb-driver-readconcern.getlevel.html">MongoDB\Driver\ReadConcern::getLevel</a> — Returns the ReadConcern's &quot;level&quot; option</li>
+</ul>
+</li>
+<li><a href="class.mongodb-driver-cursor.html">MongoDB\Driver\Cursor</a> — The MongoDB\Driver\Cursor class<ul class="chunklist chunklist_title">
+<li><a href="mongodb-driver-cursor.construct.html">MongoDB\Driver\Cursor::__construct</a> — Create a new Cursor (not used)</li>
+<li><a href="mongodb-driver-cursor.getid.html">MongoDB\Driver\Cursor::getId</a> — Returns the ID for this cursor</li>
+<li><a href="mongodb-driver-cursor.getserver.html">MongoDB\Driver\Cursor::getServer</a> — Returns the server associated with this cursor</li>
+<li><a href="mongodb-driver-cursor.isdead.html">MongoDB\Driver\Cursor::isDead</a> — Checks if the cursor is still open on the server</li>
+<li><a href="mongodb-driver-cursor.settypemap.html">MongoDB\Driver\Cursor::setTypeMap</a> — Sets a type map to use for BSON unserialization</li>
+<li><a href="mongodb-driver-cursor.toarray.html">MongoDB\Driver\Cursor::toArray</a> — Returns an array containing all results for this cursor</li>
+</ul>
+</li>
+<li><a href="class.mongodb-driver-cursorid.html">MongoDB\Driver\CursorId</a> — The MongoDB\Driver\CursorId class<ul class="chunklist chunklist_title">
+<li><a href="mongodb-driver-cursorid.construct.html">MongoDB\Driver\CursorId::__construct</a> — Create a new CursorId (not used)</li>
+<li><a href="mongodb-driver-cursorid.tostring.html">MongoDB\Driver\CursorId::__toString</a> — String representation of the cursor ID</li>
+</ul>
+</li>
+<li><a href="class.mongodb-driver-server.html">MongoDB\Driver\Server</a> — The MongoDB\Driver\Server class<ul class="chunklist chunklist_title">
+<li><a href="mongodb-driver-server.construct.html">MongoDB\Driver\Server::__construct</a> — Create a new Server (not used)</li>
+<li><a href="mongodb-driver-server.executebulkwrite.html">MongoDB\Driver\Server::executeBulkWrite</a> — Execute one or more write operations on this server</li>
+<li><a href="mongodb-driver-server.executecommand.html">MongoDB\Driver\Server::executeCommand</a> — Execute a database command on this server</li>
+<li><a href="mongodb-driver-server.executequery.html">MongoDB\Driver\Server::executeQuery</a> — Execute a database query on this server</li>
+<li><a href="mongodb-driver-server.gethost.html">MongoDB\Driver\Server::getHost</a> — Returns the hostname of this server</li>
+<li><a href="mongodb-driver-server.getinfo.html">MongoDB\Driver\Server::getInfo</a> — Returns an array of information about this server</li>
+<li><a href="mongodb-driver-server.getlatency.html">MongoDB\Driver\Server::getLatency</a> — Returns the latency of this server</li>
+<li><a href="mongodb-driver-server.getport.html">MongoDB\Driver\Server::getPort</a> — Returns the port on which this server is listening</li>
+<li><a href="mongodb-driver-server.gettags.html">MongoDB\Driver\Server::getTags</a> — Returns an array of tags describing this server in a replica set</li>
+<li><a href="mongodb-driver-server.gettype.html">MongoDB\Driver\Server::getType</a> — Returns an integer denoting the type of this server</li>
+<li><a href="mongodb-driver-server.isarbiter.html">MongoDB\Driver\Server::isArbiter</a> — Checks if this server is an arbiter member of a replica set</li>
+<li><a href="mongodb-driver-server.ishidden.html">MongoDB\Driver\Server::isHidden</a> — Checks if this server is a hidden member of a replica set</li>
+<li><a href="mongodb-driver-server.ispassive.html">MongoDB\Driver\Server::isPassive</a> — Checks if this server is a passive member of a replica set</li>
+<li><a href="mongodb-driver-server.isprimary.html">MongoDB\Driver\Server::isPrimary</a> — Checks if this server is a primary member of a replica set</li>
+<li><a href="mongodb-driver-server.issecondary.html">MongoDB\Driver\Server::isSecondary</a> — Checks if this server is a secondary member of a replica set</li>
+</ul>
+</li>
+<li><a href="class.mongodb-driver-writeconcernerror.html">MongoDB\Driver\WriteConcernError</a> — The MongoDB\Driver\WriteConcernError class<ul class="chunklist chunklist_title">
+<li><a href="mongodb-driver-writeconcernerror.getcode.html">MongoDB\Driver\WriteConcernError::getCode</a> — Returns the WriteConcernError's error code</li>
+<li><a href="mongodb-driver-writeconcernerror.getinfo.html">MongoDB\Driver\WriteConcernError::getInfo</a> — Returns additional metadata for the WriteConcernError</li>
+<li><a href="mongodb-driver-writeconcernerror.getmessage.html">MongoDB\Driver\WriteConcernError::getMessage</a> — Returns the WriteConcernError's error message</li>
+</ul>
+</li>
+<li><a href="class.mongodb-driver-writeerror.html">MongoDB\Driver\WriteError</a> — The MongoDB\Driver\WriteError class<ul class="chunklist chunklist_title">
+<li><a href="mongodb-driver-writeerror.getcode.html">MongoDB\Driver\WriteError::getCode</a> — Returns the WriteError's error code</li>
+<li><a href="mongodb-driver-writeerror.getindex.html">MongoDB\Driver\WriteError::getIndex</a> — Returns the index of the write operation corresponding to this WriteError</li>
+<li><a href="mongodb-driver-writeerror.getinfo.html">MongoDB\Driver\WriteError::getInfo</a> — Returns additional metadata for the WriteError</li>
+<li><a href="mongodb-driver-writeerror.getmessage.html">MongoDB\Driver\WriteError::getMessage</a> — Returns the WriteError's error message</li>
+</ul>
+</li>
+<li><a href="class.mongodb-driver-writeresult.html">MongoDB\Driver\WriteResult</a> — The MongoDB\Driver\WriteResult class<ul class="chunklist chunklist_title">
+<li><a href="mongodb-driver-writeresult.getdeletedcount.html">MongoDB\Driver\WriteResult::getDeletedCount</a> — Returns the number of documents deleted</li>
+<li><a href="mongodb-driver-writeresult.getinsertedcount.html">MongoDB\Driver\WriteResult::getInsertedCount</a> — Returns the number of documents inserted (excluding upserts)</li>
+<li><a href="mongodb-driver-writeresult.getmatchedcount.html">MongoDB\Driver\WriteResult::getMatchedCount</a> — Returns the number of documents selected for update</li>
+<li><a href="mongodb-driver-writeresult.getmodifiedcount.html">MongoDB\Driver\WriteResult::getModifiedCount</a> — Returns the number of existing documents updated</li>
+<li><a href="mongodb-driver-writeresult.getserver.html">MongoDB\Driver\WriteResult::getServer</a> — Returns the server associated with this write result</li>
+<li><a href="mongodb-driver-writeresult.getupsertedcount.html">MongoDB\Driver\WriteResult::getUpsertedCount</a> — Returns the number of documents inserted by an upsert</li>
+<li><a href="mongodb-driver-writeresult.getupsertedids.html">MongoDB\Driver\WriteResult::getUpsertedIds</a> — Returns an array of identifiers for upserted documents</li>
+<li><a href="mongodb-driver-writeresult.getwriteconcernerror.html">MongoDB\Driver\WriteResult::getWriteConcernError</a> — Returns any write concern error that occurred</li>
+<li><a href="mongodb-driver-writeresult.getwriteerrors.html">MongoDB\Driver\WriteResult::getWriteErrors</a> — Returns any write errors that occurred</li>
+<li><a href="mongodb-driver-writeresult.isacknowledged.html">MongoDB\Driver\WriteResult::isAcknowledged</a> — Returns whether the write was acknowledged</li>
+</ul>
+</li>
+</ul>
+
+  
+
+  
+ 
+
+
+
+ <h1 class="title">The MongoDB\Driver\Manager class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongodb-driver-manager.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The <span class="classname">MongoDB\Driver\Manager</span> is the main entry point
+    to the extension. It is responsible for maintaining connections to MongoDB
+    (be it standalone server, replica set, or sharded cluster).
+   </p>
+   <p class="para">
+    No connection to MongoDB is made upon instantiating the Manager.
+    This means the <span class="classname">MongoDB\Driver\Manager</span> can always be
+    constructed, even though one or more MongoDB servers are down.
+   </p>
+   <p class="para">
+    Any write or query can throw connection exceptions as connections are created lazily.
+    A MongoDB server may also become unavailable during the life time of the script.
+    It is therefore important that all actions on the Manager to be wrapped in try/catch statements.
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-driver-manager.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoDB\Driver\Manager</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="modifier">final</span>
+     <span class="ooclass">
+       class <strong class="classname">MongoDB\Driver\Manager</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$uri</code><span class="initializer"> = &quot;mongodb://127.0.0.1/</span></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$uriOptions</code><span class="initializer"> = []</span></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$driverOptions</code><span class="initializer"> = []</span></span>
+  ]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">MongoDB\Driver\WriteResult</span> <span class="methodname">executeBulkWrite</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespace</code></span>
+   , <span class="methodparam"><span class="type">MongoDB\Driver\BulkWrite</span> <code class="parameter">$bulk</code></span>
+   [, <span class="methodparam"><span class="type">MongoDB\Driver\WriteConcern</span> <code class="parameter">$writeConcern</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">MongoDB\Driver\Cursor</span> <span class="methodname">executeCommand</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$db</code></span>
+   , <span class="methodparam"><span class="type">MongoDB\Driver\Command</span> <code class="parameter">$command</code></span>
+   [, <span class="methodparam"><span class="type">MongoDB\Driver\ReadPreference</span> <code class="parameter">$readPreference</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">MongoDB\Driver\Cursor</span> <span class="methodname">executeQuery</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespace</code></span>
+   , <span class="methodparam"><span class="type">MongoDB\Driver\Query</span> <code class="parameter">$query</code></span>
+   [, <span class="methodparam"><span class="type">MongoDB\Driver\ReadPreference</span> <code class="parameter">$readPreference</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">MongoDB\Driver\ReadConcern</span> <span class="methodname">getReadConcern</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">MongoDB\Driver\ReadPreference</span> <span class="methodname">getReadPreference</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getServers</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">MongoDB\Driver\WriteConcern</span> <span class="methodname">getWriteConcern</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">MongoDB\Driver\Server</span> <span class="methodname">selectServer</span>
+    ( <span class="methodparam"><span class="type">MongoDB\Driver\ReadPreference</span> <code class="parameter">$readPreference</code></span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+  <div class="section" id="mongodb-driver-manager.examples">
+   <h2 class="title">Examples</h2>
+
+   <div class="example" id="mongowritebatch.example.basic">
+    <p><strong>Example #1 <span class="function">MongoDB\Driver\Manager::__construct</span> basic example</strong></p>
+    <div class="example-contents"><p>
+     <span class="function">var_dump</span>ing a
+     <span class="classname">MongoDB\Driver\Manager</span> will print out various
+     details about the manager that are otherwise not normally exposed.
+     This can be useful to debug how the driver views your MongoDB setup, and 
+     which options are used.
+    </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$manager&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Manager</span><span style="color: #007700">(</span><span style="color: #DD0000">"mongodb://localhost:27017"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$manager</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+object(MongoDB\Driver\Manager)#1 (3) {
+  [&quot;request_id&quot;]=&gt;
+  int(1714636915)
+  [&quot;uri&quot;]=&gt;
+  string(25) &quot;mongodb://localhost:27017&quot;
+  [&quot;cluster&quot;]=&gt;
+  array(13) {
+    [&quot;mode&quot;]=&gt;
+    string(6) &quot;direct&quot;
+    [&quot;state&quot;]=&gt;
+    string(4) &quot;born&quot;
+    [&quot;request_id&quot;]=&gt;
+    int(0)
+    [&quot;sockettimeoutms&quot;]=&gt;
+    int(300000)
+    [&quot;last_reconnect&quot;]=&gt;
+    int(0)
+    [&quot;uri&quot;]=&gt;
+    string(25) &quot;mongodb://localhost:27017&quot;
+    [&quot;requires_auth&quot;]=&gt;
+    int(0)
+    [&quot;nodes&quot;]=&gt;
+    array(...)
+    [&quot;max_bson_size&quot;]=&gt;
+    int(16777216)
+    [&quot;max_msg_size&quot;]=&gt;
+    int(50331648)
+    [&quot;sec_latency_ms&quot;]=&gt;
+    int(15)
+    [&quot;peers&quot;]=&gt;
+    array(0) {
+    }
+    [&quot;replSet&quot;]=&gt;
+    NULL
+  }
+}
+</pre></div>
+    </div>
+   </div>
+  </div>
+ </div>
+
+ 
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+ 
+
+
+
+ <h1 class="title">The MongoDB\Driver\Command class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongodb-driver-command.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The <span class="classname">MongoDB\Driver\Command</span> class is a value object
+    that represents a database command.
+   </p>
+   <p class="para">
+    To provide <q class="quote">Command Helpers</q> the <span class="classname">MongoDB\Driver\Command</span> object should be composed.
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-driver-command.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoDB\Driver\Command</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="modifier">final</span>
+     <span class="ooclass">
+       class <strong class="classname">MongoDB\Driver\Command</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">array|object</span> <code class="parameter">$document</code></span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+  <div class="section" id="mongodb-driver-command.examples">
+   <h2 class="title">Examples</h2>
+
+   <div class="example" id="example-1656">
+    <p><strong>Example #1 Composing <span class="classname">MongoDB\Driver\Command</span> to provide a helper to create collections</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">CreateCollection&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;protected&nbsp;</span><span style="color: #0000BB">$cmd&nbsp;</span><span style="color: #007700">=&nbsp;array();<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">(</span><span style="color: #0000BB">$collectionName</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">cmd</span><span style="color: #007700">[</span><span style="color: #DD0000">"create"</span><span style="color: #007700">]&nbsp;=&nbsp;(string)</span><span style="color: #0000BB">$collectionName</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">setAutoIndexId</span><span style="color: #007700">(</span><span style="color: #0000BB">$bool</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">cmd</span><span style="color: #007700">[</span><span style="color: #DD0000">"autoIndexId"</span><span style="color: #007700">]&nbsp;=&nbsp;(bool)</span><span style="color: #0000BB">$bool</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">setCappedCollection</span><span style="color: #007700">(</span><span style="color: #0000BB">$maxBytes</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$maxDocuments&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">cmd</span><span style="color: #007700">[</span><span style="color: #DD0000">"capped"</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">cmd</span><span style="color: #007700">[</span><span style="color: #DD0000">"size"</span><span style="color: #007700">]&nbsp;&nbsp;&nbsp;=&nbsp;(int)</span><span style="color: #0000BB">$maxBytes</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$maxDocuments</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">cmd</span><span style="color: #007700">[</span><span style="color: #DD0000">"max"</span><span style="color: #007700">]&nbsp;=&nbsp;(int)</span><span style="color: #0000BB">$maxDocuments</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">usePowerOf2Sizes</span><span style="color: #007700">(</span><span style="color: #0000BB">$bool</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">$bool</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">cmd</span><span style="color: #007700">[</span><span style="color: #DD0000">"flags"</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">cmd</span><span style="color: #007700">[</span><span style="color: #DD0000">"flags"</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">setFlags</span><span style="color: #007700">(</span><span style="color: #0000BB">$flags</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">cmd</span><span style="color: #007700">[</span><span style="color: #DD0000">"flags"</span><span style="color: #007700">]&nbsp;=&nbsp;(int)</span><span style="color: #0000BB">$flags</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">getCommand</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Command</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">cmd</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">getCollectionName</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">cmd</span><span style="color: #007700">[</span><span style="color: #DD0000">"create"</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /><br /></span><span style="color: #0000BB">$manager&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Manager</span><span style="color: #007700">(</span><span style="color: #DD0000">"mongodb://localhost:27017"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$createCollection&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">CreateCollection</span><span style="color: #007700">(</span><span style="color: #DD0000">"cappedCollection"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$createCollection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setCappedCollection</span><span style="color: #007700">(</span><span style="color: #0000BB">64&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">1024</span><span style="color: #007700">);<br /><br />try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$command&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$createCollection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getCommand</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$cursor&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$manager</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">executeCommand</span><span style="color: #007700">(</span><span style="color: #DD0000">"databaseName"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$command</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$response&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$cursor</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">toArray</span><span style="color: #007700">()[</span><span style="color: #0000BB">0</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$response</span><span style="color: #007700">);<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$collstats&nbsp;</span><span style="color: #007700">=&nbsp;[</span><span style="color: #DD0000">"collstats"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$createCollection</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getCollectionName</span><span style="color: #007700">()];<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$cursor&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$manager</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">executeCommand</span><span style="color: #007700">(</span><span style="color: #DD0000">"databaseName"</span><span style="color: #007700">,&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Command</span><span style="color: #007700">(</span><span style="color: #0000BB">$collstats</span><span style="color: #007700">));<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$response&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$cursor</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">toArray</span><span style="color: #007700">()[</span><span style="color: #0000BB">0</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$response</span><span style="color: #007700">);<br />}&nbsp;catch(</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Exception&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">(),&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <p class="para">The above example will output:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+object(MongoDB\Driver\Command)#3 (1) {
+  [&quot;command&quot;]=&gt;
+  array(3) {
+    [&quot;create&quot;]=&gt;
+    string(16) &quot;cappedCollection&quot;
+    [&quot;capped&quot;]=&gt;
+    bool(true)
+    [&quot;size&quot;]=&gt;
+    int(65536)
+  }
+}
+array(1) {
+  [&quot;ok&quot;]=&gt;
+  float(1)
+}
+array(16) {
+  [&quot;ns&quot;]=&gt;
+  string(29) &quot;databaseName.cappedCollection&quot;
+  [&quot;count&quot;]=&gt;
+  int(0)
+  [&quot;size&quot;]=&gt;
+  int(0)
+  [&quot;numExtents&quot;]=&gt;
+  int(1)
+  [&quot;storageSize&quot;]=&gt;
+  int(65536)
+  [&quot;nindexes&quot;]=&gt;
+  int(1)
+  [&quot;lastExtentSize&quot;]=&gt;
+  float(65536)
+  [&quot;paddingFactor&quot;]=&gt;
+  float(1)
+  [&quot;paddingFactorNote&quot;]=&gt;
+  string(101) &quot;paddingFactor is unused and unmaintained in 2.8. It remains hard coded to 1.0 for compatibility only.&quot;
+  [&quot;userFlags&quot;]=&gt;
+  int(0)
+  [&quot;capped&quot;]=&gt;
+  bool(true)
+  [&quot;max&quot;]=&gt;
+  int(9223372036854775807)
+  [&quot;maxSize&quot;]=&gt;
+  int(65536)
+  [&quot;totalIndexSize&quot;]=&gt;
+  int(8176)
+  [&quot;indexSizes&quot;]=&gt;
+  object(stdClass)#4 (1) {
+    [&quot;_id_&quot;]=&gt;
+    int(8176)
+  }
+  [&quot;ok&quot;]=&gt;
+  float(1)
+}
+</pre></div>
+   </div>
+  </div>
+
+ </div>
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+  
+ 
+
+
+
+ <h1 class="title">The MongoDB\Driver\Query class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongodb-driver-query.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The <span class="classname">MongoDB\Driver\Query</span> class is a value object that
+    represents a database query.
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-driver-query.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoDB\Driver\Query</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="modifier">final</span>
+     <span class="ooclass">
+       class <strong class="classname">MongoDB\Driver\Query</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">array|object</span> <code class="parameter">$filter</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$queryOptions</code></span>
+  ] )</div>
+
+   }</div>
+
+
+  </div>
+  
+
+ </div>
+
+ 
+ 
+
+
+
+
+
+
+
+
+
+
+
+  
+ 
+
+
+
+ <h1 class="title">The MongoDB\Driver\BulkWrite class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongodb-driver-bulkwrite.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The <span class="classname">MongoDB\Driver\BulkWrite</span> collects one or more
+    write operations that should be sent to the server. After adding any
+    number of insert, update, and delete operations, the collection may be
+    executed via
+     <span class="methodname">MongoDB\Driver\Manager::executeBulkWrite</span>.
+   </p>
+   <p class="para">
+    Write operations may either be ordered (default) or unordered. Ordered write
+    operations are sent to the server, in the order provided, for serial
+    execution. If a write fails, any remaining operations will be aborted.
+    Unordered operations are sent to the server in an arbitrary order
+    where they may be executed in parallel. Any errors that occur are reported
+    after all operations have been attempted.
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-driver-bulkwrite.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoDB\Driver\BulkWrite</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="modifier">final</span>
+     <span class="ooclass">
+       class <strong class="classname">MongoDB\Driver\BulkWrite</strong>
+     </span>
+     
+     <span class="oointerface">implements 
+      <span class="interfacename">Countable</span>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ([ <span class="methodparam"><span class="type">array</span> <code class="parameter">$options</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">count</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">delete</span>
+    ( <span class="methodparam"><span class="type">array|object</span> <code class="parameter">$filter</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$deleteOptions</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">insert</span>
+    ( <span class="methodparam"><span class="type">array|object</span> <code class="parameter">$document</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">update</span>
+    ( <span class="methodparam"><span class="type">array|object</span> <code class="parameter">$filter</code></span>
+   , <span class="methodparam"><span class="type">array|object</span> <code class="parameter">$newObj</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$updateOptions</code></span>
+  ] )</div>
+
+   }</div>
+
+
+  </div>
+
+  <div class="section" id="mongodb-driver-bulkwrite.examples">
+   <h2 class="title">Examples</h2>
+
+   <div class="example" id="mongoduplicatekeyexception.example.catch">
+    <p><strong>Example #1 Mixed write operations are grouped by type</strong></p>
+    <div class="example-contents"><p>
+     Mixed write operations (i.e. inserts, updates, and deletes) will be
+     assembled into typed write commands to be sent sequentially to the server.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$bulk&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">BulkWrite</span><span style="color: #007700">([</span><span style="color: #DD0000">'ordered'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">$bulk</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">insert</span><span style="color: #007700">([</span><span style="color: #DD0000">'_id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'x'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">$bulk</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">insert</span><span style="color: #007700">([</span><span style="color: #DD0000">'_id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'x'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">$bulk</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">update</span><span style="color: #007700">([</span><span style="color: #DD0000">'x'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">],&nbsp;[</span><span style="color: #DD0000">'$set'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'x'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">]]);<br /></span><span style="color: #0000BB">$bulk</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">insert</span><span style="color: #007700">([</span><span style="color: #DD0000">'_id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'x'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">$bulk</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">delete</span><span style="color: #007700">([</span><span style="color: #DD0000">'x'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">]);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>
+     Will result in four write commands (i.e. roundtrips) being executed. Since
+     the operations are ordered, the third insertion cannot be sent until the
+     preceding update is executed.
+    </p></div>
+   </div>
+   <div class="example" id="mongoprotocolexception.example.catch">
+    <p><strong>Example #2 Ordered write operations causing an error</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$bulk&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">BulkWrite</span><span style="color: #007700">([</span><span style="color: #DD0000">'ordered'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">$bulk</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">delete</span><span style="color: #007700">([]);<br /></span><span style="color: #0000BB">$bulk</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">insert</span><span style="color: #007700">([</span><span style="color: #DD0000">'_id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">$bulk</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">insert</span><span style="color: #007700">([</span><span style="color: #DD0000">'_id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">$bulk</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">insert</span><span style="color: #007700">([</span><span style="color: #DD0000">'_id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'hello'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'world'</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">$bulk</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">update</span><span style="color: #007700">([</span><span style="color: #DD0000">'_id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">],&nbsp;[</span><span style="color: #DD0000">'$set'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'hello'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'earth'</span><span style="color: #007700">]]);<br /></span><span style="color: #0000BB">$bulk</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">insert</span><span style="color: #007700">([</span><span style="color: #DD0000">'_id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'hello'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'pluto'</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">$bulk</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">update</span><span style="color: #007700">([</span><span style="color: #DD0000">'_id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">],&nbsp;[</span><span style="color: #DD0000">'$set'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;[</span><span style="color: #DD0000">'hello'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'moon'</span><span style="color: #007700">]]);<br /></span><span style="color: #0000BB">$bulk</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">insert</span><span style="color: #007700">([</span><span style="color: #DD0000">'_id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">$bulk</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">insert</span><span style="color: #007700">([</span><span style="color: #DD0000">'_id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">$bulk</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">insert</span><span style="color: #007700">([</span><span style="color: #DD0000">'_id'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">5</span><span style="color: #007700">]);<br /><br /></span><span style="color: #0000BB">$manager&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Manager</span><span style="color: #007700">(</span><span style="color: #DD0000">'mongodb://localhost:27017'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$writeConcern&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">WriteConcern</span><span style="color: #007700">(</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">WriteConcern</span><span style="color: #007700">::</span><span style="color: #0000BB">MAJORITY</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1000</span><span style="color: #007700">);<br /><br />try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$manager</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">executeBulkWrite</span><span style="color: #007700">(</span><span style="color: #DD0000">'db.collection'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$bulk</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$writeConcern</span><span style="color: #007700">);<br />}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Exception</span><span style="color: #007700">\</span><span style="color: #0000BB">BulkWriteException&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getWriteResult</span><span style="color: #007700">();<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Check&nbsp;if&nbsp;the&nbsp;write&nbsp;concern&nbsp;could&nbsp;not&nbsp;be&nbsp;fulfilled<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">$writeConcernError&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getWriteConcernError</span><span style="color: #007700">())&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"%s&nbsp;(%d):&nbsp;%s\n"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$writeConcernError</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">(),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$writeConcernError</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getCode</span><span style="color: #007700">(),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_export</span><span style="color: #007700">(</span><span style="color: #0000BB">$writeConcernError</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getInfo</span><span style="color: #007700">(),&nbsp;</span><span style="color: #0000BB">true</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Check&nbsp;if&nbsp;any&nbsp;write&nbsp;operations&nbsp;did&nbsp;not&nbsp;complete&nbsp;at&nbsp;all<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">foreach&nbsp;(</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getWriteErrors</span><span style="color: #007700">()&nbsp;as&nbsp;</span><span style="color: #0000BB">$writeError</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Operation#%d:&nbsp;%s&nbsp;(%d)\n"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$writeError</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getIndex</span><span style="color: #007700">(),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$writeError</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">(),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$writeError</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getCode</span><span style="color: #007700">()<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">Exception</span><span style="color: #007700">\</span><span style="color: #0000BB">Exception&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Other&nbsp;error:&nbsp;%s\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getMessage</span><span style="color: #007700">());<br />&nbsp;&nbsp;&nbsp;&nbsp;exit;<br />}<br /><br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Inserted&nbsp;%d&nbsp;document(s)\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getInsertedCount</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">printf</span><span style="color: #007700">(</span><span style="color: #DD0000">"Updated&nbsp;&nbsp;%d&nbsp;document(s)\n"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$result</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getModifiedCount</span><span style="color: #007700">());<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <p class="para">The above example will output:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Operation#7: E11000 duplicate key error index: db.collection.$_id_ dup key: { : 3 } (11000)
+Inserted 4 document(s)
+Updated  2 document(s)
+</pre></div>
+   </div>
+   <p class="para">
+    If the write concern could not be fullfilled, the example above would output
+    something like:
+   </p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+waiting for replication timed out (64): array (
+  &#039;wtimeout&#039; =&gt; true,
+)
+Operation#7: E11000 duplicate key error index: databaseName.collectionName.$_id_ dup key: { : 3 } (11000)
+Inserted 4 document(s)
+Updated  2 document(s)
+</pre></div>
+   </div>
+   <p class="para">
+    If we execute the example above, but allow for unordered writes:
+   </p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$bulk&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">BulkWrite</span><span style="color: #007700">([</span><span style="color: #DD0000">'ordered'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">false</span><span style="color: #007700">]);<br /></span><span style="color: #FF8000">/*&nbsp;...&nbsp;*/<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">The above example will output:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Operation#7: E11000 duplicate key error index: db.collection.$_id_ dup key: { : 3 } (11000)
+Operation#8: E11000 duplicate key error index: db.collection.$_id_ dup key: { : 4 } (11000)
+Inserted 5 document(s)
+Updated  2 document(s)
+</pre></div>
+   </div>
+  </div>
+
+  <div class="section" id="mongodb-driver-bulkwrite.seealso">
+   <h2 class="title">See Also</h2>
+   <ul class="simplelist">
+    <li class="member"> <span class="methodname">MongoDB\Driver\Manager::executeBulkWrite</span></li>
+    <li class="member"><span class="classname">MongoDB\Driver\WriteResult</span></li>
+    <li class="member"><span class="classname">MongoDB\Driver\WriteConcern</span></li>
+    <li class="member"><span class="classname">MongoDB\Driver\WriteConcernError</span></li>
+    <li class="member"><span class="classname">MongoDB\Driver\WriteError</span></li>
+   </ul>
+  </div>
+
+ </div>
+
+ 
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+  
+ 
+
+
+
+ <h1 class="title">The MongoDB\Driver\WriteConcern class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongodb-driver-writeconcern.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    <span class="classname">MongoDB\Driver\WriteConcern</span> describes the level of
+    acknowledgement requested from MongoDB for write operations to a standalone
+    <em>mongod</em> or to replica sets or to sharded clusters. In
+    sharded clusters, <em>mongos</em> instances will pass the write
+    concern on to the shards.
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-driver-writeconcern.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoDB\Driver\WriteConcern</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="modifier">final</span>
+     <span class="ooclass">
+       class <strong class="classname">MongoDB\Driver\WriteConcern</strong>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename">MongoDB\BSON\Serializable</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+     <var class="fieldsynopsis_varname">MongoDB\Driver\WriteConcern::MAJORITY</var>
+     <span class="initializer"> = &quot;majority&quot;</span>
+    ;</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">object</span> <span class="methodname">bsonSerialize</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">string|int</span> <code class="parameter">$w</code></span>
+   [, <span class="methodparam"><span class="type">integer</span> <code class="parameter">$wtimeout</code></span>
+   [, <span class="methodparam"><span class="type">boolean</span> <code class="parameter">$journal</code></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">bool|null</span> <span class="methodname">getJournal</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string|int|null</span> <span class="methodname">getW</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getWtimeout</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+  
+
+  <div class="section" id="mongodb-driver-writeconcern.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <dl>
+
+
+    
+     <dt id="mongodb-driver-writeconcern.constants.majority"><strong><code>MongoDB\Driver\WriteConcern::MAJORITY</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       Majority of all the members in the set; arbiters, non-voting members,
+       passive members, hidden members and delayed members are all included in
+       the definition of majority write concern.
+      </p>
+     </dd>
+
+    
+
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+ 
+
+
+
+ <h1 class="title">The MongoDB\Driver\ReadPreference class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongodb-driver-readpreference.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-driver-readpreference.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoDB\Driver\ReadPreference</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="modifier">final</span>
+     <span class="ooclass">
+       class <strong class="classname">MongoDB\Driver\ReadPreference</strong>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename">MongoDB\BSON\Serializable</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">MongoDB\Driver\ReadPreference::RP_PRIMARY</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">MongoDB\Driver\ReadPreference::RP_PRIMARY_PREFERRED</var>
+     <span class="initializer"> = 5</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">MongoDB\Driver\ReadPreference::RP_SECONDARY</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">MongoDB\Driver\ReadPreference::RP_SECONDARY_PREFERRED</var>
+     <span class="initializer"> = 6</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">MongoDB\Driver\ReadPreference::RP_NEAREST</var>
+     <span class="initializer"> = 10</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">MongoDB\Driver\ReadPreference::NO_MAX_STALENESS</var>
+     <span class="initializer"> = -1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">MongoDB\Driver\ReadPreference::SMALLEST_MAX_STALENESS_SECONDS</var>
+     <span class="initializer"> = 90</span>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">object</span> <span class="methodname">bsonSerialize</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$tagSets</code><span class="initializer"> = <strong><code>NULL</code></strong></span></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$options</code><span class="initializer"> = []</span></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">integer</span> <span class="methodname">getMaxStalenessSeconds</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">integer</span> <span class="methodname">getMode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getTagSets</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+  
+
+  <div class="section" id="mongodb-driver-readpreference.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <dl>
+
+
+    
+     <dt id="mongodb-driver-readpreference.constants.rp-primary"><strong><code>MongoDB\Driver\ReadPreference::RP_PRIMARY</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       All operations read from the current replica set primary. This is the
+       default read preference for MongoDB.
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-readpreference.constants.rp-primary-preferred"><strong><code>MongoDB\Driver\ReadPreference::RP_PRIMARY_PREFERRED</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       In most situations, operations read from the primary but if it is
+       unavailable, operations read from secondary members.
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-readpreference.constants.rp-secondary"><strong><code>MongoDB\Driver\ReadPreference::RP_SECONDARY</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       All operations read from the secondary members of the replica set.
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-readpreference.constants.rp-secondary-preferred"><strong><code>MongoDB\Driver\ReadPreference::RP_SECONDARY_PREFERRED</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       In most situations, operations read from secondary members but if no
+       secondary members are available, operations read from the primary.
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-readpreference.constants.rp-nearest"><strong><code>MongoDB\Driver\ReadPreference::RP_NEAREST</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       Operations read from member of the replica set with the least network
+       latency, irrespective of the member&#039;s type.
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-readpreference.constants.no-max-staleness"><strong><code>MongoDB\Driver\ReadPreference::NO_MAX_STALENESS</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       The default value for the <em>&quot;maxStalenessSeconds&quot;</em>
+       option is to specify no limit on maximum staleness, which means that the
+       driver will not consider a secondary&#039;s lag when choosing where to
+       direct a read operation.
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-readpreference.constants.smallest-max-staleness-seconds"><strong><code>MongoDB\Driver\ReadPreference::SMALLEST_MAX_STALENESS_SECONDS</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       The minimum value for the <em>&quot;maxStalenessSeconds&quot;</em> option
+       is 90 seconds. The driver estimates secondaries&#039; staleness by
+       periodically checking the latest write date of each replica set member.
+       Since these checks are infrequent, the staleness estimate is coarse.
+       Thus, the driver cannot enforce a max staleness value of less than 90
+       seconds.
+      </p>
+     </dd>
+
+    
+
+   </dl>
+
+  </div>
+
+
+  <div class="section">
+   <h2 class="title">Changelog</h2>
+   <p class="para">
+    <table class="doctable informaltable">
+     
+      <thead>
+       <tr>
+        <th>Version</th>
+        <th>Description</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td>1.2.0</td>
+        <td>
+         Added the
+         <strong><code>MongoDB\Driver\ReadPreference::NO_MAX_STALENESS</code></strong>
+         and
+         <strong><code>MongoDB\Driver\ReadPreference::SMALLEST_MAX_STALENESS_SECONDS</code></strong>
+         constants.
+        </td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+ 
+
+
+
+ <h1 class="title">The MongoDB\Driver\ReadConcern class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongodb-driver-readconcern.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    <span class="classname">MongoDB\Driver\ReadConcern</span> controls the level of
+    isolation for read operations for replica sets and replica set shards. This
+    option requires the WiredTiger storage engine and MongoDB 3.2 or later.
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-driver-readconcern.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoDB\Driver\ReadConcern</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="modifier">final</span>
+     <span class="ooclass">
+       class <strong class="classname">MongoDB\Driver\ReadConcern</strong>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename">MongoDB\BSON\Serializable</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+     <var class="fieldsynopsis_varname">MongoDB\Driver\ReadConcern::LINEARIZABLE</var>
+     <span class="initializer"> = &quot;linearizable&quot;</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+     <var class="fieldsynopsis_varname">MongoDB\Driver\ReadConcern::LOCAL</var>
+     <span class="initializer"> = &quot;local&quot;</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">string</span>
+     <var class="fieldsynopsis_varname">MongoDB\Driver\ReadConcern::MAJORITY</var>
+     <span class="initializer"> = &quot;majority&quot;</span>
+    ;</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">object</span> <span class="methodname">bsonSerialize</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$level</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string|null</span> <span class="methodname">getLevel</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+  
+
+  <div class="section" id="mongodb-driver-readconcern.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <dl>
+
+
+    
+     <dt id="mongodb-driver-readconcern.constants.linearizable"><strong><code>MongoDB\Driver\ReadConcern::LINEARIZABLE</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       A linearizable read avoids returning reads from a
+       <em class="emphasis">stale</em> primary (one that has already been superseded
+       by a new primary but doesn&#039;t know it yet). It is important to note
+       that this read concern level does not by itself produce linearizable
+       reads; they must be issued in conjunction with
+       <strong><code>MongoDB\Driver\WriteConcern::MAJORITY</code></strong> writes to the
+       same document(s) in order to be linearizable.
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-readconcern.constants.local"><strong><code>MongoDB\Driver\ReadConcern::LOCAL</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       Queries using this read concern will return the node&#039;s most recent
+       copy of the data. This provides no guarantee that the data has been
+       written to a majority of the nodes (i.e. it may be rolled back).
+      </p>
+      <p class="para">
+       This is the default read concern level.
+      </p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-readconcern.constants.majority"><strong><code>MongoDB\Driver\ReadConcern::MAJORITY</code></strong></dt>
+
+     <dd>
+
+      <p class="para">
+       Queries using this read concern will return the node&#039;s most recent
+       copy of the data confirmed as having been written to a majority of the
+       nodes (i.e. the data cannot be rolled back).
+      </p>
+     </dd>
+
+    
+
+   </dl>
+
+  </div>
+
+
+  <div class="section">
+   <h2 class="title">Changelog</h2>
+   <p class="para">
+    <table class="doctable informaltable">
+     
+      <thead>
+       <tr>
+        <th>Version</th>
+        <th>Description</th>
+       </tr>
+
+      </thead>
+
+      <tbody class="tbody">
+       <tr>
+        <td>1.2.0</td>
+        <td>
+         Added the <strong><code>MongoDB\Driver\ReadConcern::LINEARIZABLE</code></strong>
+         constant.
+        </td>
+       </tr>
+
+      </tbody>
+     
+    </table>
+
+   </p>
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+ 
+
+
+
+ <h1 class="title">The MongoDB\Driver\Cursor class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongodb-driver-cursor.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The <span class="classname">MongoDB\Driver\Cursor</span> class encapsulates
+    the results of a MongoDB command or query and may be returned by
+     <span class="methodname">MongoDB\Driver\Manager::executeCommand</span> or
+     <span class="methodname">MongoDB\Driver\Manager::executeQuery</span>, respectively.
+   </p>
+   <p class="para">
+
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-driver-cursor.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoDB\Driver\Cursor</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">MongoDB\Driver\Cursor</strong>
+     </span>
+     
+     <span class="oointerface">implements 
+      <span class="interfacename">Traversable</span>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">MongoDB\Driver\CursorId</span> <span class="methodname">getId</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">MongoDB\Driver\Server</span> <span class="methodname">getServer</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isDead</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">setTypeMap</span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$typemap</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">toArray</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+  
+ 
+
+
+
+ <h1 class="title">The MongoDB\Driver\CursorId class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongodb-driver-cursorid.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-driver-cursorid.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoDB\Driver\CursorId</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="modifier">final</span>
+     <span class="ooclass">
+       class <strong class="classname">MongoDB\Driver\CursorId</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+  
+ 
+
+
+
+ <h1 class="title">The MongoDB\Driver\Server class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongodb-driver-server.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-driver-server.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoDB\Driver\Server</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="modifier">final</span>
+     <span class="ooclass">
+       class <strong class="classname">MongoDB\Driver\Server</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">MongoDB\Driver\Server::TYPE_UNKNOWN</var>
+     <span class="initializer"> = 0</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">MongoDB\Driver\Server::TYPE_STANDALONE</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">MongoDB\Driver\Server::TYPE_MONGOS</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">MongoDB\Driver\Server::TYPE_POSSIBLE_PRIMARY</var>
+     <span class="initializer"> = 3</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">MongoDB\Driver\Server::TYPE_RS_PRIMARY</var>
+     <span class="initializer"> = 4</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">MongoDB\Driver\Server::TYPE_RS_SECONDARY</var>
+     <span class="initializer"> = 5</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">MongoDB\Driver\Server::TYPE_RS_ARBITER</var>
+     <span class="initializer"> = 6</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">MongoDB\Driver\Server::TYPE_RS_OTHER</var>
+     <span class="initializer"> = 7</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">MongoDB\Driver\Server::TYPE_RS_GHOST</var>
+     <span class="initializer"> = 8</span>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">private</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">MongoDB\Driver\WriteResult</span> <span class="methodname">executeBulkWrite</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespace</code></span>
+   , <span class="methodparam"><span class="type">MongoDB\Driver\BulkWrite</span> <code class="parameter">$bulk</code></span>
+   [, <span class="methodparam"><span class="type">MongoDB\Driver\WriteConcern</span> <code class="parameter">$writeConcern</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">MongoDB\Driver\Cursor</span> <span class="methodname">executeCommand</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$db</code></span>
+   , <span class="methodparam"><span class="type">MongoDB\Driver\Command</span> <code class="parameter">$command</code></span>
+   [, <span class="methodparam"><span class="type">MongoDB\Driver\ReadPreference</span> <code class="parameter">$readPreference</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">MongoDB\Driver\Cursor</span> <span class="methodname">executeQuery</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$namespace</code></span>
+   , <span class="methodparam"><span class="type">MongoDB\Driver\Query</span> <code class="parameter">$query</code></span>
+   [, <span class="methodparam"><span class="type">MongoDB\Driver\ReadPreference</span> <code class="parameter">$readPreference</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getHost</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getInfo</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getLatency</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getPort</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getTags</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getType</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isArbiter</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isHidden</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isPassive</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isPrimary</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isSecondary</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+  
+
+  <div class="section" id="mongodb-driver-server.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <dl>
+
+
+    
+     <dt id="mongodb-driver-server.constants.type-unknown"><strong><code>MongoDB\Driver\Server::TYPE_UNKNOWN</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Unknown server type, returned by  <span class="methodname">MongoDB\Driver\Server::getType</span>.</p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-server.constants.type-standalone"><strong><code>MongoDB\Driver\Server::TYPE_STANDALONE</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Standalone server type, returned by  <span class="methodname">MongoDB\Driver\Server::getType</span>.</p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-server.constants.type-mongos"><strong><code>MongoDB\Driver\Server::TYPE_MONGOS</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Mongos server type, returned by  <span class="methodname">MongoDB\Driver\Server::getType</span>.</p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-server.constants.type-possible-primary"><strong><code>MongoDB\Driver\Server::TYPE_POSSIBLE_PRIMARY</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Replica set possible primary server type, returned by  <span class="methodname">MongoDB\Driver\Server::getType</span>.</p>
+      <p class="para">A server may be identified as a possible primary if it has not yet been checked but another memory of the replica set thinks it is the primary.</p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-server.constants.type-rs-primary"><strong><code>MongoDB\Driver\Server::TYPE_RS_PRIMARY</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Replica set primary server type, returned by  <span class="methodname">MongoDB\Driver\Server::getType</span>.</p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-server.constants.type-rs-secondary"><strong><code>MongoDB\Driver\Server::TYPE_RS_SECONDARY</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Replica set secondary server type, returned by  <span class="methodname">MongoDB\Driver\Server::getType</span>.</p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-server.constants.type-rs-arbiter"><strong><code>MongoDB\Driver\Server::TYPE_RS_ARBITER</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Replica set arbiter server type, returned by  <span class="methodname">MongoDB\Driver\Server::getType</span>.</p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-server.constants.type-rs-other"><strong><code>MongoDB\Driver\Server::TYPE_RS_OTHER</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Replica set other server type, returned by  <span class="methodname">MongoDB\Driver\Server::getType</span>.</p>
+      <p class="para">Such servers may be hidden, starting up, or recovering. They cannot be queried, but their hosts lists are useful for discovering the current replica set configuration.</p>
+     </dd>
+
+    
+
+    
+     <dt id="mongodb-driver-server.constants.type-rs-ghost"><strong><code>MongoDB\Driver\Server::TYPE_RS_GHOST</code></strong></dt>
+
+     <dd>
+
+      <p class="para">Replica set ghost server type, returned by  <span class="methodname">MongoDB\Driver\Server::getType</span>.</p>
+      <p class="para">Servers may be identified as such in at least three situations: briefly during server startup; in an uninitialized replica set; or when the server is shunned (i.e. removed from the replica set config). They cannot be queried, nor can their host list be used to discover the current replica set configuration; however, the client may monitor this server in hope that it transitions to a more useful state.</p>
+     </dd>
+
+    
+
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+  
+ 
+
+
+
+ <h1 class="title">The MongoDB\Driver\WriteConcernError class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongodb-driver-writeconcernerror.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The <span class="classname">MongoDB\Driver\WriteConcernError</span> class
+    encapsulates information about a write concern error and may be returned by
+     <span class="methodname">MongoDB\Driver\WriteResult::getWriteConcernError</span>.
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-driver-writeconcernerror.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoDB\Driver\WriteConcernError</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="modifier">final</span>
+     <span class="ooclass">
+       class <strong class="classname">MongoDB\Driver\WriteConcernError</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">getInfo</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+ 
+
+
+
+ <h1 class="title">The MongoDB\Driver\WriteError class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongodb-driver-writeerror.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The <span class="classname">MongoDB\Driver\WriteError</span> class encapsulates
+    information about a write error and may be returned as an array element from
+     <span class="methodname">MongoDB\Driver\WriteResult::getWriteErrors</span>.
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-driver-writeerror.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoDB\Driver\WriteError</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="modifier">final</span>
+     <span class="ooclass">
+       class <strong class="classname">MongoDB\Driver\WriteError</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getIndex</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">getInfo</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+ 
+
+
+
+ <h1 class="title">The MongoDB\Driver\WriteResult class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="mongodb-driver-writeresult.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    The <span class="classname">MongoDB\Driver\WriteResult</span> class encapsulates
+    information about an executed
+    <span class="classname">MongoDB\Driver\BulkWrite</span> and may be returned by
+     <span class="methodname">MongoDB\Driver\Manager::executeBulkWrite</span>.
+
+   </p>
+  </div>
+
+
+  <div class="section" id="mongodb-driver-writeresult.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">MongoDB\Driver\WriteResult</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="modifier">final</span>
+     <span class="ooclass">
+       class <strong class="classname">MongoDB\Driver\WriteResult</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int|null</span> <span class="methodname">getDeletedCount</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int|null</span> <span class="methodname">getInsertedCount</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int|null</span> <span class="methodname">getMatchedCount</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int|null</span> <span class="methodname">getModifiedCount</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">MongoDB\Driver\Server</span> <span class="methodname">getServer</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">int|null</span> <span class="methodname">getUpsertedCount</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getUpsertedIds</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">MongoDB\Driver\WriteConcernError|null</span> <span class="methodname">getWriteConcernError</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getWriteErrors</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isAcknowledged</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

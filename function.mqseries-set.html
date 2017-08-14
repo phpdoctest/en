@@ -1,0 +1,261 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: MQSeries MQSET</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li class="header up"><a href="book.mqseries.html">mqseries</a></li>
+  <li class="header up"><a href="ref.mqseries.html">mqseries Functions</a></li>
+  <li><a href="function.mqseries-back.html">mqseries_back</a></li>
+  <li><a href="function.mqseries-begin.html">mqseries_begin</a></li>
+  <li><a href="function.mqseries-close.html">mqseries_close</a></li>
+  <li><a href="function.mqseries-cmit.html">mqseries_cmit</a></li>
+  <li><a href="function.mqseries-conn.html">mqseries_conn</a></li>
+  <li><a href="function.mqseries-connx.html">mqseries_connx</a></li>
+  <li><a href="function.mqseries-disc.html">mqseries_disc</a></li>
+  <li><a href="function.mqseries-get.html">mqseries_get</a></li>
+  <li><a href="function.mqseries-inq.html">mqseries_inq</a></li>
+  <li><a href="function.mqseries-open.html">mqseries_open</a></li>
+  <li><a href="function.mqseries-put1.html">mqseries_put1</a></li>
+  <li><a href="function.mqseries-put.html">mqseries_put</a></li>
+  <li class="active"><a href="function.mqseries-set.html">mqseries_set</a></li>
+  <li><a href="function.mqseries-strerror.html">mqseries_strerror</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.mqseries-put.html">mqseries_put</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.mqseries-strerror.html">mqseries_strerror</a></div>
+                <div class="up"><a href="ref.mqseries.html">mqseries Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.mqseries-set" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mqseries_set</h1>
+  <p class="refpurpose">MQSeries MQSET</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.mqseries-set-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">void</span> <span class="methodname">mqseries_set</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$hConn</code></span>
+   , <span class="methodparam"><span class="type">resource</span> <code class="parameter">$hObj</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$selectorCount</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$selectors</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$intAttrCount</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$intAttrs</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$charAttrLength</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$charAttrs</code></span>
+   , <span class="methodparam"><span class="type">resource</span> <code class="parameter reference">&$compCode</code></span>
+   , <span class="methodparam"><span class="type">resource</span> <code class="parameter reference">&$reason</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   The <span class="function">mqseries_set</span>
+   (MQSET) call is used to change the attributes of an object represented by a
+   handle. The object must be a queue.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.mqseries-set-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+
+      <code class="parameter">hConn</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">Connection handle.</p>
+      <p class="para">This handle represents the connection to the queue manager.</p>
+     </dd>
+
+    
+    
+     <dt>
+
+      <code class="parameter">hObj</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">Object handle.</p>
+      <p class="para">This handle represents the object to be used.</p>
+     </dd>
+
+    
+    
+     <dt>
+
+      <code class="parameter">selectorCount</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">Count of selectors.</p>
+     </dd>
+
+    
+    
+     <dt>
+
+      <code class="parameter">selectors</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">Array of attribute selectors.</p>
+     </dd>
+
+    
+    
+     <dt>
+
+      <code class="parameter">intAttrCount</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">Count of integer attributes.</p>
+     </dd>
+
+    
+    
+     <dt>
+
+      <code class="parameter">intAttrs</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">Array of integer attributes.</p>
+     </dd>
+
+    
+    
+     <dt>
+
+      <code class="parameter">charAttrLength</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">Length of character attributes buffer.</p>
+     </dd>
+
+    
+    
+     <dt>
+
+      <code class="parameter">charAttrs</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">Character attributes.</p>
+     </dd>
+
+    
+    
+     <dt>
+
+      <code class="parameter">compCode</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">Completion code.</p>
+     </dd>
+
+    
+    
+     <dt>
+
+      <code class="parameter">reason</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">Reason code qualifying the compCode.</p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.mqseries-set-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">No value is returned.</p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.mqseries-set-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">mqseries_inq</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

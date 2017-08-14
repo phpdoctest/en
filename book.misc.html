@@ -1,0 +1,156 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Miscellaneous Functions</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li><a href="book.geoip.html">GeoIP</a></li>
+  <li><a href="book.fann.html">FANN</a></li>
+  <li><a href="book.json.html">JSON</a></li>
+  <li><a href="book.judy.html">Judy</a></li>
+  <li><a href="book.lua.html">Lua</a></li>
+  <li class="active"><a href="book.misc.html">Misc.</a></li>
+  <li><a href="book.parsekit.html">Parsekit</a></li>
+  <li><a href="book.spl.html">SPL</a></li>
+  <li><a href="book.spl-types.html">SPL Types</a></li>
+  <li><a href="book.stream.html">Streams</a></li>
+  <li><a href="book.tidy.html">Tidy</a></li>
+  <li><a href="book.tokenizer.html">Tokenizer</a></li>
+  <li><a href="book.url.html">URLs</a></li>
+  <li><a href="book.v8js.html">V8js</a></li>
+  <li><a href="book.yaml.html">Yaml</a></li>
+  <li><a href="book.yaf.html">Yaf</a></li>
+  <li><a href="book.taint.html">Taint</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="luaclosure.invoke.html">LuaClosure::__invoke</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="intro.misc.html">Introduction</a></div>
+                <div class="up"><a href="refs.basic.other.html">Other Basic Extensions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="book.misc" class="book">
+ 
+ <h1>Miscellaneous Functions</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="intro.misc.html">Introduction</a></li>
+<li><a href="misc.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_title">
+<li><a href="misc.requirements.html">Requirements</a></li>
+<li><a href="misc.installation.html">Installation</a></li>
+<li><a href="misc.configuration.html">Runtime Configuration</a></li>
+<li><a href="misc.resources.html">Resource Types</a></li>
+</ul>
+</li>
+<li><a href="misc.constants.html">Predefined Constants</a></li>
+<li><a href="ref.misc.html">Misc. Functions</a><ul class="chunklist chunklist_title">
+<li><a href="function.connection-aborted.html">connection_aborted</a> — Check whether client disconnected</li>
+<li><a href="function.connection-status.html">connection_status</a> — Returns connection status bitfield</li>
+<li><a href="function.constant.html">constant</a> — Returns the value of a constant</li>
+<li><a href="function.define.html">define</a> — Defines a named constant</li>
+<li><a href="function.defined.html">defined</a> — Checks whether a given named constant exists</li>
+<li><a href="function.die.html">die</a> — Equivalent to exit</li>
+<li><a href="function.eval.html">eval</a> — Evaluate a string as PHP code</li>
+<li><a href="function.exit.html">exit</a> — Output a message and terminate the current script</li>
+<li><a href="function.get-browser.html">get_browser</a> — Tells what the user's browser is capable of</li>
+<li><a href="function.halt-compiler.html">__halt_compiler</a> — Halts the compiler execution</li>
+<li><a href="function.highlight-file.html">highlight_file</a> — Syntax highlighting of a file</li>
+<li><a href="function.highlight-string.html">highlight_string</a> — Syntax highlighting of a string</li>
+<li><a href="function.ignore-user-abort.html">ignore_user_abort</a> — Set whether a client disconnect should abort script execution</li>
+<li><a href="function.pack.html">pack</a> — Pack data into binary string</li>
+<li><a href="function.php-check-syntax.html">php_check_syntax</a> — Check the PHP syntax of (and execute) the specified file</li>
+<li><a href="function.php-strip-whitespace.html">php_strip_whitespace</a> — Return source with stripped comments and whitespace</li>
+<li><a href="function.show-source.html">show_source</a> — Alias of highlight_file</li>
+<li><a href="function.sleep.html">sleep</a> — Delay execution</li>
+<li><a href="function.sys-getloadavg.html">sys_getloadavg</a> — Gets system load average</li>
+<li><a href="function.time-nanosleep.html">time_nanosleep</a> — Delay for a number of seconds and nanoseconds</li>
+<li><a href="function.time-sleep-until.html">time_sleep_until</a> — Make the script sleep until the specified time</li>
+<li><a href="function.uniqid.html">uniqid</a> — Generate a unique ID</li>
+<li><a href="function.unpack.html">unpack</a> — Unpack data from binary string</li>
+<li><a href="function.usleep.html">usleep</a> — Delay execution in microseconds</li>
+</ul>
+</li>
+<li><a href="changelog.misc.html">Changelog</a></li>
+</ul>
+
+ 
+
+ 
+
+
+ 
+
+
+
+
+
+ 
+
+ 
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

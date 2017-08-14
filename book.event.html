@@ -1,0 +1,5780 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Event</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li><a href="book.chdb.html">chdb</a></li>
+  <li><a href="book.curl.html">cURL</a></li>
+  <li class="active"><a href="book.event.html">Event</a></li>
+  <li><a href="book.fam.html">FAM</a></li>
+  <li><a href="book.ftp.html">FTP</a></li>
+  <li><a href="book.gearman.html">Gearman</a></li>
+  <li><a href="book.net-gopher.html">Gopher</a></li>
+  <li><a href="book.gupnp.html">Gupnp</a></li>
+  <li><a href="book.hwapi.html">Hyperwave API</a></li>
+  <li><a href="book.ldap.html">LDAP</a></li>
+  <li><a href="book.memcache.html">Memcache</a></li>
+  <li><a href="book.memcached.html">Memcached</a></li>
+  <li><a href="book.mqseries.html">mqseries</a></li>
+  <li><a href="book.network.html">Network</a></li>
+  <li><a href="book.rrd.html">RRD</a></li>
+  <li><a href="book.sam.html">SAM</a></li>
+  <li><a href="book.snmp.html">SNMP</a></li>
+  <li><a href="book.sockets.html">Sockets</a></li>
+  <li><a href="book.ssh2.html">SSH2</a></li>
+  <li><a href="book.stomp.html">Stomp</a></li>
+  <li><a href="book.svm.html">SVM</a></li>
+  <li><a href="book.svn.html">SVN</a></li>
+  <li><a href="book.tcpwrap.html">TCP</a></li>
+  <li><a href="book.varnish.html">Varnish</a></li>
+  <li><a href="book.yaz.html">YAZ</a></li>
+  <li><a href="book.nis.html">YP/NIS</a></li>
+  <li><a href="book.zmq.html">0MQ messaging</a></li>
+  <li><a href="book.zookeeper.html">ZooKeeper</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="curlfile.wakeup.html">CURLFile::__wakeup</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="intro.event.html">Introduction</a></div>
+                <div class="up"><a href="refs.remote.other.html">Other Services</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="book.event" class="book">
+ <h1>Event</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="intro.event.html">Introduction</a></li>
+<li><a href="event.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_title">
+<li><a href="event.requirements.html">Requirements</a></li>
+<li><a href="event.installation.html">Installation</a></li>
+<li><a href="event.configuration.html">Runtime Configuration</a></li>
+<li><a href="event.resources.html">Resource Types</a></li>
+</ul>
+</li>
+<li><a href="event.examples.html">Examples</a></li>
+<li><a href="event.flags.html">Event flags</a></li>
+<li><a href="event.persistence.html">About event persistence</a></li>
+<li><a href="event.callbacks.html">Event callbacks</a></li>
+<li><a href="event.constructing.signal.events.html">Constructing signal events</a></li>
+<li><a href="class.event.html">Event</a> — The Event class<ul class="chunklist chunklist_title">
+<li><a href="event.add.html">Event::add</a> — Makes event pending</li>
+<li><a href="event.addsignal.html">Event::addSignal</a> — Makes signal event pending</li>
+<li><a href="event.addtimer.html">Event::addTimer</a> — Makes timer event pending</li>
+<li><a href="event.construct.html">Event::__construct</a> — Constructs Event object</li>
+<li><a href="event.del.html">Event::del</a> — Makes event non-pending</li>
+<li><a href="event.delsignal.html">Event::delSignal</a> — Makes signal event non-pending</li>
+<li><a href="event.deltimer.html">Event::delTimer</a> — Makes timer event non-pending</li>
+<li><a href="event.free.html">Event::free</a> — Make event non-pending and free resources allocated for this
+  event.</li>
+<li><a href="event.getsupportedmethods.html">Event::getSupportedMethods</a> — Returns array with of the names of the methods supported in this version of Libevent</li>
+<li><a href="event.pending.html">Event::pending</a> — Detects whether event is pending or scheduled</li>
+<li><a href="event.set.html">Event::set</a> — Re-configures event</li>
+<li><a href="event.setpriority.html">Event::setPriority</a> — Set event priority</li>
+<li><a href="event.settimer.html">Event::setTimer</a> — Re-configures timer event</li>
+<li><a href="event.signal.html">Event::signal</a> — Constructs signal event object</li>
+<li><a href="event.timer.html">Event::timer</a> — Constructs timer event object</li>
+</ul>
+</li>
+<li><a href="class.eventbase.html">EventBase</a> — The EventBase class<ul class="chunklist chunklist_title">
+<li><a href="eventbase.construct.html">EventBase::__construct</a> — Constructs EventBase object</li>
+<li><a href="eventbase.dispatch.html">EventBase::dispatch</a> — Dispatch pending events</li>
+<li><a href="eventbase.exit.html">EventBase::exit</a> — Stop dispatching events</li>
+<li><a href="eventbase.free.html">EventBase::free</a> — Free resources allocated for this event base</li>
+<li><a href="eventbase.getfeatures.html">EventBase::getFeatures</a> — Returns bitmask of features supported</li>
+<li><a href="eventbase.getmethod.html">EventBase::getMethod</a> — Returns event method in use</li>
+<li><a href="eventbase.gettimeofdaycached.html">EventBase::getTimeOfDayCached</a> — Returns the current event base time</li>
+<li><a href="eventbase.gotexit.html">EventBase::gotExit</a> — Checks if the event loop was told to exit</li>
+<li><a href="eventbase.gotstop.html">EventBase::gotStop</a> — Checks if the event loop was told to exit</li>
+<li><a href="eventbase.loop.html">EventBase::loop</a> — Dispatch pending events</li>
+<li><a href="eventbase.priorityinit.html">EventBase::priorityInit</a> — Sets number of priorities per event base</li>
+<li><a href="eventbase.reinit.html">EventBase::reInit</a> — Re-initialize event base(after a fork).</li>
+<li><a href="eventbase.stop.html">EventBase::stop</a> — Tells event_base to stop dispatching events</li>
+</ul>
+</li>
+<li><a href="class.eventbuffer.html">EventBuffer</a> — The EventBuffer class<ul class="chunklist chunklist_title">
+<li><a href="eventbuffer.add.html">EventBuffer::add</a> — Append data to the end of an event buffer</li>
+<li><a href="eventbuffer.addbuffer.html">EventBuffer::addBuffer</a> — Move all data from a buffer provided to the current instance of EventBuffer</li>
+<li><a href="eventbuffer.appendfrom.html">EventBuffer::appendFrom</a> — Moves the specified number of bytes from a source buffer to the
+  end of the current buffer</li>
+<li><a href="eventbuffer.construct.html">EventBuffer::__construct</a> — Constructs EventBuffer object</li>
+<li><a href="eventbuffer.copyout.html">EventBuffer::copyout</a> — Copies out specified number of bytes from the front of the buffer</li>
+<li><a href="eventbuffer.drain.html">EventBuffer::drain</a> — Removes specified number of bytes from the front of the buffer
+  without copying it anywhere</li>
+<li><a href="eventbuffer.enablelocking.html">EventBuffer::enableLocking</a> — Description</li>
+<li><a href="eventbuffer.expand.html">EventBuffer::expand</a> — Reserves space in buffer</li>
+<li><a href="eventbuffer.freeze.html">EventBuffer::freeze</a> — Prevent calls that modify an event buffer from succeeding</li>
+<li><a href="eventbuffer.lock.html">EventBuffer::lock</a> — Acquires a lock on buffer</li>
+<li><a href="eventbuffer.prepend.html">EventBuffer::prepend</a> — Prepend data to the front of the buffer</li>
+<li><a href="eventbuffer.prependbuffer.html">EventBuffer::prependBuffer</a> — Moves all data from source buffer to the front of current buffer</li>
+<li><a href="eventbuffer.pullup.html">EventBuffer::pullup</a> — Linearizes data within buffer
+  and returns it's contents as a string</li>
+<li><a href="eventbuffer.read.html">EventBuffer::read</a> — Read data from an evbuffer and drain the bytes read</li>
+<li><a href="eventbuffer.readfrom.html">EventBuffer::readFrom</a> — Read data from a file onto the end of the buffer</li>
+<li><a href="eventbuffer.readline.html">EventBuffer::readLine</a> — Extracts a line from the front of the buffer</li>
+<li><a href="eventbuffer.search.html">EventBuffer::search</a> — Scans the buffer for an occurrence of a string</li>
+<li><a href="eventbuffer.searcheol.html">EventBuffer::searchEol</a> — Scans the buffer for an occurrence of an end of line</li>
+<li><a href="eventbuffer.substr.html">EventBuffer::substr</a> — Substracts a portion of the buffer data</li>
+<li><a href="eventbuffer.unfreeze.html">EventBuffer::unfreeze</a> — Re-enable calls that modify an event buffer</li>
+<li><a href="eventbuffer.unlock.html">EventBuffer::unlock</a> — Releases lock acquired by EventBuffer::lock</li>
+<li><a href="eventbuffer.write.html">EventBuffer::write</a> — Write contents of the buffer to a file or socket</li>
+</ul>
+</li>
+<li><a href="class.eventbufferevent.html">EventBufferEvent</a> — The EventBufferEvent class<ul class="chunklist chunklist_title">
+<li><a href="eventbufferevent.close.html">EventBufferEvent::close</a> — Closes file descriptor associated with the current buffer event</li>
+<li><a href="eventbufferevent.connect.html">EventBufferEvent::connect</a> — Connect buffer event's file descriptor to given address or
+  UNIX socket</li>
+<li><a href="eventbufferevent.connecthost.html">EventBufferEvent::connectHost</a> — Connects to a hostname with optionally asyncronous DNS resolving</li>
+<li><a href="eventbufferevent.construct.html">EventBufferEvent::__construct</a> — Constructs EventBufferEvent object</li>
+<li><a href="eventbufferevent.createpair.html">EventBufferEvent::createPair</a> — Creates two buffer events connected to each other</li>
+<li><a href="eventbufferevent.disable.html">EventBufferEvent::disable</a> — Disable events read, write, or both on a buffer event.</li>
+<li><a href="eventbufferevent.enable.html">EventBufferEvent::enable</a> — Enable events read, write, or both on a buffer event.</li>
+<li><a href="eventbufferevent.free.html">EventBufferEvent::free</a> — Free a buffer event</li>
+<li><a href="eventbufferevent.getdnserrorstring.html">EventBufferEvent::getDnsErrorString</a> — Returns string describing the last failed DNS lookup attempt</li>
+<li><a href="eventbufferevent.getenabled.html">EventBufferEvent::getEnabled</a> — Returns bitmask of events currently enabled on the buffer event</li>
+<li><a href="eventbufferevent.getinput.html">EventBufferEvent::getInput</a> — Returns underlying input buffer associated with current buffer
+  event</li>
+<li><a href="eventbufferevent.getoutput.html">EventBufferEvent::getOutput</a> — Returns underlying output buffer associated with current buffer
+  event</li>
+<li><a href="eventbufferevent.read.html">EventBufferEvent::read</a> — Read buffer's data</li>
+<li><a href="eventbufferevent.readbuffer.html">EventBufferEvent::readBuffer</a> — Drains the entire contents of the input buffer and places them into buf</li>
+<li><a href="eventbufferevent.setcallbacks.html">EventBufferEvent::setCallbacks</a> — Assigns read, write and event(status) callbacks</li>
+<li><a href="eventbufferevent.setpriority.html">EventBufferEvent::setPriority</a> — Assign a priority to a bufferevent</li>
+<li><a href="eventbufferevent.settimeouts.html">EventBufferEvent::setTimeouts</a> — Set the read and write timeout for a buffer event</li>
+<li><a href="eventbufferevent.setwatermark.html">EventBufferEvent::setWatermark</a> — Adjusts read and/or write watermarks</li>
+<li><a href="eventbufferevent.sslerror.html">EventBufferEvent::sslError</a> — Returns most recent OpenSSL error reported on the buffer event</li>
+<li><a href="eventbufferevent.sslfilter.html">EventBufferEvent::sslFilter</a> — Create a new SSL buffer event to send its data over another buffer event</li>
+<li><a href="eventbufferevent.sslgetcipherinfo.html">EventBufferEvent::sslGetCipherInfo</a> — Returns a textual description of the cipher.</li>
+<li><a href="eventbufferevent.sslgetciphername.html">EventBufferEvent::sslGetCipherName</a> — Returns the current cipher name of the SSL connection.</li>
+<li><a href="eventbufferevent.sslgetcipherversion.html">EventBufferEvent::sslGetCipherVersion</a> — Returns version of cipher used by current SSL connection.</li>
+<li><a href="eventbufferevent.sslgetprotocol.html">EventBufferEvent::sslGetProtocol</a> — Returns the name of the protocol used for current SSL connection.</li>
+<li><a href="eventbufferevent.sslrenegotiate.html">EventBufferEvent::sslRenegotiate</a> — Tells a bufferevent to begin SSL renegotiation.</li>
+<li><a href="eventbufferevent.sslsocket.html">EventBufferEvent::sslSocket</a> — Creates a new SSL buffer event to send its data over an SSL on a socket</li>
+<li><a href="eventbufferevent.write.html">EventBufferEvent::write</a> — Adds data to a buffer event's output buffer</li>
+<li><a href="eventbufferevent.writebuffer.html">EventBufferEvent::writeBuffer</a> — Adds contents of the entire buffer to a buffer event's output
+  buffer</li>
+</ul>
+</li>
+<li><a href="eventbufferevent.about.callbacks.html">About buffer event callbacks</a></li>
+<li><a href="class.eventconfig.html">EventConfig</a> — The EventConfig class<ul class="chunklist chunklist_title">
+<li><a href="eventconfig.avoidmethod.html">EventConfig::avoidMethod</a> — Tells libevent to avoid specific event method</li>
+<li><a href="eventconfig.construct.html">EventConfig::__construct</a> — Constructs EventConfig object</li>
+<li><a href="eventconfig.requirefeatures.html">EventConfig::requireFeatures</a> — Enters a required event method feature that the application demands</li>
+<li><a href="eventconfig.setmaxdispatchinterval.html">EventConfig::setMaxDispatchInterval</a> — Prevents priority inversion</li>
+</ul>
+</li>
+<li><a href="class.eventdnsbase.html">EventDnsBase</a> — The EventDnsBase class<ul class="chunklist chunklist_title">
+<li><a href="eventdnsbase.addnameserverip.html">EventDnsBase::addNameserverIp</a> — Adds a nameserver to the DNS base</li>
+<li><a href="eventdnsbase.addsearch.html">EventDnsBase::addSearch</a> — Adds a domain to the list of search domains</li>
+<li><a href="eventdnsbase.clearsearch.html">EventDnsBase::clearSearch</a> — Removes all current search suffixes</li>
+<li><a href="eventdnsbase.construct.html">EventDnsBase::__construct</a> — Constructs EventDnsBase object</li>
+<li><a href="eventdnsbase.countnameservers.html">EventDnsBase::countNameservers</a> — Gets the number of configured nameservers</li>
+<li><a href="eventdnsbase.loadhosts.html">EventDnsBase::loadHosts</a> — Loads a hosts file (in the same format as /etc/hosts) from hosts file</li>
+<li><a href="eventdnsbase.parseresolvconf.html">EventDnsBase::parseResolvConf</a> — Scans the resolv.conf-formatted file</li>
+<li><a href="eventdnsbase.setoption.html">EventDnsBase::setOption</a> — Set the value of a configuration option</li>
+<li><a href="eventdnsbase.setsearchndots.html">EventDnsBase::setSearchNdots</a> — Set the 'ndots' parameter for searches</li>
+</ul>
+</li>
+<li><a href="class.eventhttp.html">EventHttp</a> — The EventHttp class<ul class="chunklist chunklist_title">
+<li><a href="eventhttp.accept.html">EventHttp::accept</a> — Makes an HTTP server accept connections on the specified socket stream or resource</li>
+<li><a href="eventhttp.addserveralias.html">EventHttp::addServerAlias</a> — Adds a server alias to the HTTP server object</li>
+<li><a href="eventhttp.bind.html">EventHttp::bind</a> — Binds an HTTP server on the specified address and port</li>
+<li><a href="eventhttp.construct.html">EventHttp::__construct</a> — Constructs EventHttp object(the HTTP server)</li>
+<li><a href="eventhttp.removeserveralias.html">EventHttp::removeServerAlias</a> — Removes server alias</li>
+<li><a href="eventhttp.setallowedmethods.html">EventHttp::setAllowedMethods</a> — Sets the what HTTP methods are supported in requests accepted by this server, and passed to user callbacks</li>
+<li><a href="eventhttp.setcallback.html">EventHttp::setCallback</a> — Sets a callback for specified URI</li>
+<li><a href="eventhttp.setdefaultcallback.html">EventHttp::setDefaultCallback</a> — Sets default callback to handle requests that are not caught by specific callbacks</li>
+<li><a href="eventhttp.setmaxbodysize.html">EventHttp::setMaxBodySize</a> — Sets maximum request body size</li>
+<li><a href="eventhttp.setmaxheaderssize.html">EventHttp::setMaxHeadersSize</a> — Sets maximum HTTP header size</li>
+<li><a href="eventhttp.settimeout.html">EventHttp::setTimeout</a> — Sets the timeout for an HTTP request</li>
+</ul>
+</li>
+<li><a href="class.eventhttpconnection.html">EventHttpConnection</a> — The EventHttpConnection class<ul class="chunklist chunklist_title">
+<li><a href="eventhttpconnection.construct.html">EventHttpConnection::__construct</a> — Constructs EventHttpConnection object</li>
+<li><a href="eventhttpconnection.getbase.html">EventHttpConnection::getBase</a> — Returns event base associated with the connection</li>
+<li><a href="eventhttpconnection.getpeer.html">EventHttpConnection::getPeer</a> — Gets the remote address and port associated with the connection</li>
+<li><a href="eventhttpconnection.makerequest.html">EventHttpConnection::makeRequest</a> — Makes an HTTP request over the specified connection</li>
+<li><a href="eventhttpconnection.setclosecallback.html">EventHttpConnection::setCloseCallback</a> — Set callback for connection close</li>
+<li><a href="eventhttpconnection.setlocaladdress.html">EventHttpConnection::setLocalAddress</a> — Sets the IP address from which HTTP connections are made</li>
+<li><a href="eventhttpconnection.setlocalport.html">EventHttpConnection::setLocalPort</a> — Sets the local port from which connections are made</li>
+<li><a href="eventhttpconnection.setmaxbodysize.html">EventHttpConnection::setMaxBodySize</a> — Sets maximum body size for the connection</li>
+<li><a href="eventhttpconnection.setmaxheaderssize.html">EventHttpConnection::setMaxHeadersSize</a> — Sets maximum header size</li>
+<li><a href="eventhttpconnection.setretries.html">EventHttpConnection::setRetries</a> — Sets the retry limit for the connection</li>
+<li><a href="eventhttpconnection.settimeout.html">EventHttpConnection::setTimeout</a> — Sets the timeout for the connection</li>
+</ul>
+</li>
+<li><a href="class.eventhttprequest.html">EventHttpRequest</a> — The EventHttpRequest class<ul class="chunklist chunklist_title">
+<li><a href="eventhttprequest.addheader.html">EventHttpRequest::addHeader</a> — Adds an HTTP header to the headers of the request</li>
+<li><a href="eventhttprequest.cancel.html">EventHttpRequest::cancel</a> — Cancels a pending HTTP request</li>
+<li><a href="eventhttprequest.clearheaders.html">EventHttpRequest::clearHeaders</a> — Removes all output headers from the header list of the request</li>
+<li><a href="eventhttprequest.closeconnection.html">EventHttpRequest::closeConnection</a> — Closes associated HTTP connection</li>
+<li><a href="eventhttprequest.construct.html">EventHttpRequest::__construct</a> — Constructs EventHttpRequest object</li>
+<li><a href="eventhttprequest.findheader.html">EventHttpRequest::findHeader</a> — Finds the value belonging a header</li>
+<li><a href="eventhttprequest.free.html">EventHttpRequest::free</a> — Frees the object and removes associated events</li>
+<li><a href="eventhttprequest.getbufferevent.html">EventHttpRequest::getBufferEvent</a> — Returns EventBufferEvent object</li>
+<li><a href="eventhttprequest.getcommand.html">EventHttpRequest::getCommand</a> — Returns the request command(method)</li>
+<li><a href="eventhttprequest.getconnection.html">EventHttpRequest::getConnection</a> — Returns EventHttpConnection object</li>
+<li><a href="eventhttprequest.gethost.html">EventHttpRequest::getHost</a> — Returns the request host</li>
+<li><a href="eventhttprequest.getinputbuffer.html">EventHttpRequest::getInputBuffer</a> — Returns the input buffer</li>
+<li><a href="eventhttprequest.getinputheaders.html">EventHttpRequest::getInputHeaders</a> — Returns associative array of the input headers</li>
+<li><a href="eventhttprequest.getoutputbuffer.html">EventHttpRequest::getOutputBuffer</a> — Returns the output buffer of the request</li>
+<li><a href="eventhttprequest.getoutputheaders.html">EventHttpRequest::getOutputHeaders</a> — Returns associative array of the output headers</li>
+<li><a href="eventhttprequest.getresponsecode.html">EventHttpRequest::getResponseCode</a> — Returns the response code</li>
+<li><a href="eventhttprequest.geturi.html">EventHttpRequest::getUri</a> — Returns the request URI</li>
+<li><a href="eventhttprequest.removeheader.html">EventHttpRequest::removeHeader</a> — Removes an HTTP header from the headers of the request</li>
+<li><a href="eventhttprequest.senderror.html">EventHttpRequest::sendError</a> — Send an HTML error message to the client</li>
+<li><a href="eventhttprequest.sendreply.html">EventHttpRequest::sendReply</a> — Send an HTML reply to the client</li>
+<li><a href="eventhttprequest.sendreplychunk.html">EventHttpRequest::sendReplyChunk</a> — Send another data chunk as part of an ongoing chunked reply</li>
+<li><a href="eventhttprequest.sendreplyend.html">EventHttpRequest::sendReplyEnd</a> — Complete a chunked reply, freeing the request as appropriate</li>
+<li><a href="eventhttprequest.sendreplystart.html">EventHttpRequest::sendReplyStart</a> — Initiate a chunked reply</li>
+</ul>
+</li>
+<li><a href="class.eventlistener.html">EventListener</a> — The EventListener class<ul class="chunklist chunklist_title">
+<li><a href="eventlistener.construct.html">EventListener::__construct</a> — Creates new connection listener associated with an event base</li>
+<li><a href="eventlistener.disable.html">EventListener::disable</a> — Disables an event connect listener object</li>
+<li><a href="eventlistener.enable.html">EventListener::enable</a> — Enables an event connect listener object</li>
+<li><a href="eventlistener.getbase.html">EventListener::getBase</a> — Returns event base associated with the event listener</li>
+<li><a href="eventlistener.getsocketname.html">EventListener::getSocketName</a> — Retreives the current address to which the
+  listener's socket is bound.</li>
+<li><a href="eventlistener.setcallback.html">EventListener::setCallback</a> — The setCallback purpose</li>
+<li><a href="eventlistener.seterrorcallback.html">EventListener::setErrorCallback</a> — Set event listener's error callback</li>
+</ul>
+</li>
+<li><a href="class.eventsslcontext.html">EventSslContext</a> — The EventSslContext class<ul class="chunklist chunklist_title">
+<li><a href="eventsslcontext.construct.html">EventSslContext::__construct</a> — Constructs an OpenSSL context for use with Event classes</li>
+</ul>
+</li>
+<li><a href="class.eventutil.html">EventUtil</a> — The EventUtil class<ul class="chunklist chunklist_title">
+<li><a href="eventutil.construct.html">EventUtil::__construct</a> — The abstract constructor</li>
+<li><a href="eventutil.getlastsocketerrno.html">EventUtil::getLastSocketErrno</a> — Returns the most recent socket error number</li>
+<li><a href="eventutil.getlastsocketerror.html">EventUtil::getLastSocketError</a> — Returns the most recent socket error</li>
+<li><a href="eventutil.getsocketfd.html">EventUtil::getSocketFd</a> — Returns numeric file descriptor of a socket, or stream</li>
+<li><a href="eventutil.getsocketname.html">EventUtil::getSocketName</a> — Retreives the current address to which the
+  socket is bound.</li>
+<li><a href="eventutil.setsocketoption.html">EventUtil::setSocketOption</a> — Sets socket options</li>
+<li><a href="eventutil.sslrandpoll.html">EventUtil::sslRandPoll</a> — Generates entropy by means of OpenSSL's RAND_poll()</li>
+</ul>
+</li>
+</ul>
+
+ 
+ 
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+ <h1 class="title">The Event class</h1>
+ 
+ <div class="partintro">
+
+  <div class="section" id="event.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    <span class="classname">Event</span>
+    class represents and event firing on a file descriptor being ready to read
+    from or write to; a file descriptor becoming ready to read from or write
+    to(edge-triggered I/O only); a timeout expiring; a signal occuring; a
+    user-triggered event.
+   </p>
+   <p class="para">
+    Every event is associated with
+    <span class="classname">EventBase</span>
+    . However, event will never fire until it is
+    <em class="emphasis">added</em>
+    (via
+     <span class="methodname">Event::add</span>
+    ). An added event remains in
+    <em class="emphasis">pending</em>
+    state until the registered event occurs, thus turning it to
+    <em class="emphasis">active</em>
+    state. To handle events user may register a callback which is called when
+    event becomes active. If event is configured
+    <em class="emphasis">persistent</em>
+    , it remains pending. If it is not persistent, it stops being pending when
+    it&#039;s callback runs.
+     <span class="methodname">Event::del</span>
+    method
+    <em class="emphasis">deletes</em>
+    event, thus making it non-pending. By means of
+     <span class="methodname">Event::add</span>
+    method it could be added again.
+   </p>
+  </div>
+
+  <div class="section" id="event.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     <strong class="classname">Event</strong>
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">final</span>
+       class <strong class="classname">Event</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Event::ET</var>
+     <span class="initializer"> = 32</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Event::PERSIST</var>
+     <span class="initializer"> = 16</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Event::READ</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Event::WRITE</var>
+     <span class="initializer"> = 4</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Event::SIGNAL</var>
+     <span class="initializer"> = 8</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Event::TIMEOUT</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">bool</span>
+     <var class="varname">$pending</var>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">add</span>
+    ([ <span class="methodparam">
+    <span class="type">double</span>
+     <code class="parameter">$timeout</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">addSignal</span>
+    ([ <span class="methodparam">
+    <span class="type">double</span>
+     <code class="parameter">$timeout</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">addTimer</span>
+    ([ <span class="methodparam">
+    <span class="type">double</span>
+     <code class="parameter">$timeout</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+    <span class="methodname">__construct</span>
+    ( <span class="methodparam">
+    <span class="type">EventBase</span>
+     <code class="parameter">$base</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$fd</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$what</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$cb</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$arg</code>
+    <span class="initializer"> = NULL</span>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">del</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">delSignal</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">delTimer</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">free</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">array</span>
+    <span class="methodname">getSupportedMethods</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">pending</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$flags</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">set</span>
+    ( <span class="methodparam">
+    <span class="type">EventBase</span>
+     <code class="parameter">$base</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$fd</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$what</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$cb</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$arg</code>
+   </span>
+  ]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">setPriority</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">setTimer</span>
+    ( <span class="methodparam">
+    <span class="type">EventBase</span>
+     <code class="parameter">$base</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$cb</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$arg</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">Event</span>
+    <span class="methodname">signal</span>
+    ( <span class="methodparam">
+    <span class="type">EventBase</span>
+     <code class="parameter">$base</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$signum</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$cb</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$arg</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">Event</span>
+    <span class="methodname">timer</span>
+    ( <span class="methodparam">
+    <span class="type">EventBase</span>
+     <code class="parameter">$base</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$cb</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$arg</code>
+   </span>
+  ] )</div>
+
+   }</div>
+
+  </div>
+
+  <div class="section" id="event.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="event.props.pending">
+      <var class="varname">pending</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Whether event is pending. See
+       <a href="event.persistence.html" class="link">About event persistence</a>
+       .
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+  <div class="section" id="event.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <dl>
+
+    
+     <dt id="event.constants.et">
+      <strong><code>Event::ET</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Indicates that the event should be edge-triggered, if the underlying
+       event base backend supports edge-triggered events. This affects the
+       semantics of
+       <strong><code>Event::READ</code></strong>
+       and
+       <strong><code>Event::WRITE</code></strong>
+       .
+      </p>
+     </dd>
+
+    
+    
+     <dt id="event.constants.persist">
+      <strong><code>Event::PERSIST</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Indicates that the event is persistent. See
+       <a href="event.persistence.html" class="link">About event persistence</a>
+       .
+      </p>
+     </dd>
+
+    
+    
+     <dt id="event.constants.read">
+      <strong><code>Event::READ</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       This flag indicates an event that becomes active when the provided file
+       descriptor(usually a stream resource, or socket) is ready for reading.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="event.constants.write">
+      <strong><code>Event::WRITE</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       This flag indicates an event that becomes active when the provided file
+       descriptor(usually a stream resource, or socket) is ready for reading.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="event.constants.signal">
+      <strong><code>Event::SIGNAL</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Used to implement signal detection. See &quot;Constructing signal events&quot;
+       below.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="event.constants.timeout">
+      <strong><code>Event::TIMEOUT</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       This flag indicates an event that becomes active after a timeout
+       elapses.
+      </p>
+      <p class="para">
+       The
+       <strong><code>Event::TIMEOUT</code></strong>
+       flag is ignored when constructing an event: one can either set a
+       timeout when event is
+       <em class="emphasis">added</em>
+       , or not. It is set in the
+       <em>$what</em>
+       argument to the callback function when a timeout has occurred.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ <h1 class="title">The EventBase class</h1>
+ 
+ <div class="partintro">
+
+  <div class="section" id="eventbase.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    <span class="classname">EventBase</span>
+    class represents libevent&#039;s event base structure. It holds a set of events
+    and can poll to determine which events are active.
+   </p>
+   <p class="para">
+    Each event base has a
+    <em class="emphasis">method</em>
+    , or a
+    <em class="emphasis">backend</em>
+    that it uses to determine which events are ready. The recognized methods
+    are:
+    <em>select</em>
+    ,
+    <em>poll</em>
+    ,
+    <em>epoll</em>
+    ,
+    <em>kqueue</em>
+    ,
+    <em>devpoll</em>
+    ,
+    <em>evport</em>
+    and
+    <em>win32</em>
+    .
+   </p>
+   <p class="para">
+    To configure event base to use, or avoid specific backend
+    <span class="classname">EventConfig</span>
+    class can be used.
+   </p>
+   <div class="warning"><strong class="warning">Warning</strong>
+    <p class="para">
+     Do
+     <em class="emphasis">NOT</em>
+     destroy the
+     <span class="classname">EventBase</span>
+     object as long as resources of the associated
+     <em>Event</em>
+     objects are not released. Otherwise, it will lead to unpredictable
+     results!
+    </p>
+   </div>
+  </div>
+
+  <div class="section" id="eventbase.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     <strong class="classname">EventBase</strong>
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">final</span>
+       class <strong class="classname">EventBase</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventBase::LOOP_ONCE</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventBase::LOOP_NONBLOCK</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventBase::NOLOCK</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventBase::STARTUP_IOCP</var>
+     <span class="initializer"> = 4</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventBase::NO_CACHE_TIME</var>
+     <span class="initializer"> = 8</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventBase::EPOLL_USE_CHANGELIST</var>
+     <span class="initializer"> = 16</span>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+    <span class="methodname">__construct</span>
+    ([ <span class="methodparam">
+    <span class="type">EventConfig</span>
+     <code class="parameter">$cfg</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">dispatch</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">exit</span>
+    ([ <span class="methodparam">
+    <span class="type">double</span>
+     <code class="parameter">$timeout</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">free</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">int</span>
+    <span class="methodname">getFeatures</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">string</span>
+    <span class="methodname">getMethod</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">double</span>
+    <span class="methodname">getTimeOfDayCached</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">gotExit</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">gotStop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">loop</span>
+    ([ <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$flags</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">priorityInit</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$n_priorities</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">reInit</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">stop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+  </div>
+
+  <div class="section" id="eventbase.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <dl>
+
+    
+     <dt id="eventbase.constants.loop-once">
+      <strong><code>EventBase::LOOP_ONCE</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Flag used with
+        <span class="methodname">EventBase::loop</span>
+       method which means: &quot;block until libevent has an active event, then
+       exit once all active events have had their callbacks run&quot;.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbase.constants.loop-nonblock">
+      <strong><code>EventBase::LOOP_NONBLOCK</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Flag used with
+        <span class="methodname">EventBase::loop</span>
+       method which means: &quot;do not block: see which events are ready now, run
+       the callbacks of the highest-priority ones, then exit&quot;.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbase.constants.nolock">
+      <strong><code>EventBase::NOLOCK</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Configuration flag. Do not allocate a lock for the event base, even if
+       we have locking set up&quot;.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbase.constants.startup-iocp">
+      <strong><code>EventBase::STARTUP_IOCP</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Windows-only configuration flag. Enables the IOCP dispatcher at
+       startup.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbase.constants.no-cache-time">
+      <strong><code>EventBase::NO_CACHE_TIME</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Configuration flag. Instead of checking the current time every time the
+       event loop is ready to run timeout callbacks, check after each timeout
+       callback.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbase.constants.epoll-use-changelist">
+      <strong><code>EventBase::EPOLL_USE_CHANGELIST</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       If we are using the
+       <em>epoll</em>
+       backend, this flag says that it is safe to use Libevent&#039;s internal
+       change-list code to batch up adds and deletes in order to try to do as
+       few syscalls as possible.
+      </p>
+      <p class="para">
+       Setting this flag can make code run faster, but it may trigger a Linux
+       bug: it is not safe to use this flag if one has any fds cloned by
+       dup(), or its variants. Doing so will produce strange and
+       hard-to-diagnose bugs.
+      </p>
+      <p class="para">
+       This flag can also be activated by settnig the
+       <em>EVENT_EPOLL_USE_CHANGELIST</em>
+       environment variable.
+      </p>
+      <p class="para">
+       This flag has no effect if one winds up using a backend other than
+       <em>epoll</em>
+       .
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ <h1 class="title">The EventBuffer class</h1>
+ 
+ <div class="partintro">
+
+  <div class="section" id="eventbuffer.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    <span class="classname">EventBuffer</span>
+    represents Libevent&#039;s &quot;evbuffer&quot;, an utility functionality for buffered
+    I/O.
+   </p>
+   <p class="para">
+    Event buffers are meant to be generally useful for doing the &quot;buffer&quot; part
+    of buffered network I/O.
+   </p>
+  </div>
+
+  <div class="section" id="eventbuffer.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     <strong class="classname">EventBuffer</strong>
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">EventBuffer</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventBuffer::EOL_ANY</var>
+     <span class="initializer"> = 0</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventBuffer::EOL_CRLF</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventBuffer::EOL_CRLF_STRICT</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventBuffer::EOL_LF</var>
+     <span class="initializer"> = 3</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventBuffer::PTR_SET</var>
+     <span class="initializer"> = 0</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventBuffer::PTR_ADD</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">int</span>
+     <var class="varname">$length</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">int</span>
+     <var class="varname">$contiguous_space</var>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">add</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$data</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">addBuffer</span>
+    ( <span class="methodparam">
+    <span class="type">EventBuffer</span>
+     <code class="parameter">$buf</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">int</span>
+    <span class="methodname">appendFrom</span>
+    ( <span class="methodparam">
+    <span class="type">EventBuffer</span>
+     <code class="parameter">$buf</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$len</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+    <span class="methodname">__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">int</span>
+    <span class="methodname">copyout</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter reference">&$data</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$max_bytes</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">drain</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$len</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">enableLocking</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">expand</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$len</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">freeze</span>
+    ( <span class="methodparam">
+    <span class="type">bool</span>
+     <code class="parameter">$at_front</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">lock</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">prepend</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$data</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">prependBuffer</span>
+    ( <span class="methodparam">
+    <span class="type">EventBuffer</span>
+     <code class="parameter">$buf</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">string</span>
+    <span class="methodname">pullup</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$size</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">string</span>
+    <span class="methodname">read</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$max_bytes</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">int</span>
+    <span class="methodname">read</span>
+    ( <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$fd</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$howmuch</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">string</span>
+    <span class="methodname">readLine</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$eol_style</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">mixed</span>
+    <span class="methodname">search</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$what</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$start</code>
+    <span class="initializer"> = -1</span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$end</code>
+    <span class="initializer"> = -1</span>
+   </span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">mixed</span>
+    <span class="methodname">searchEol</span>
+    ([ <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$start</code>
+    <span class="initializer"> = -1</span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$eol_style</code>
+    <span class="initializer"> = 
+     <strong><code>EventBuffer::EOL_ANY</code></strong>
+    </span>
+   </span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">string</span>
+    <span class="methodname">substr</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$start</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$length</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">unfreeze</span>
+    ( <span class="methodparam">
+    <span class="type">bool</span>
+     <code class="parameter">$at_front</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">unlock</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">int</span>
+    <span class="methodname">write</span>
+    ( <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$fd</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$howmuch</code>
+   </span>
+  ] )</div>
+
+   }</div>
+
+  </div>
+
+  <div class="section" id="eventbuffer.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="eventbuffer.props.length">
+      <var class="varname">length</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       The number of bytes stored in an event buffer.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbuffer.props.contiguous-space">
+      <var class="varname">contiguous_space</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       The number of bytes stored contiguously at the front of the buffer. The
+       bytes in a buffer may be stored in multiple separate chunks of memory;
+       the property returns the number of bytes currently stored in the first
+       chunk.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+  <div class="section" id="eventbuffer.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <dl>
+
+    
+     <dt id="eventbuffer.constants.eol-any">
+      <strong><code>EventBuffer::EOL_ANY</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       The end of line is any sequence of any number of carriage return and
+       linefeed characters. This format is not very useful; it exists mainly
+       for backward compatibility.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbuffer.constants.eol-crlf">
+      <strong><code>EventBuffer::EOL_CRLF</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       The end of the line is an optional carriage return, followed by a
+       linefeed. (In other words, it is either a
+       <em>&quot;\r\n&quot;</em>
+       or a
+       <em>&quot;\n&quot;</em>
+       .) This format is useful in parsing text-based Internet protocols,
+       since the standards generally prescribe a
+       <em>&quot;\r\n&quot;</em>
+       line-terminator, but nonconformant clients sometimes say just
+       <em>&quot;\n&quot;</em>
+       .
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbuffer.constants.eol-crlf-strict">
+      <strong><code>EventBuffer::EOL_CRLF_STRICT</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       The end of a line is a single carriage return, followed by a single
+       linefeed. (This is also known as
+       <em>&quot;\r\n&quot;</em>
+       . The ASCII values are
+       <strong><code>0x0D</code></strong>
+       <strong><code>0x0A</code></strong>
+       ).
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbuffer.constants.eol-lf">
+      <strong><code>EventBuffer::EOL_LF</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       The end of a line is a single linefeed character. (This is also known
+       as
+       <em>&quot;\n&quot;</em>
+       . It is ASCII value is
+       <strong><code>0x0A</code></strong>
+       .)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbuffer.constants.ptr-set">
+      <strong><code>EventBuffer::PTR_SET</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Flag used as argument of
+        <span class="methodname">EventBuffer::setPosition</span>
+       method. If this flag specified, the position pointer is moved to an
+       absolute position within the buffer.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbuffer.constants.ptr-add">
+      <strong><code>EventBuffer::PTR_ADD</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       The same as
+       <strong><code>EventBuffer::PTR_SET</code></strong>
+       , except this flag causes
+        <span class="methodname">EventBuffer::setPosition</span>
+       method to move position forward up to the specified number of
+       bytes(instead of setting absolute position).
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ <h1 class="title">The EventBufferEvent class</h1>
+ 
+ <div class="partintro">
+
+  <div class="section" id="eventbufferevent.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Represents Libevent&#039;s buffer event.
+   </p>
+   <p class="para">
+    Usually an application wants to perform some amount of data buffering in
+    addition to just responding to events. When we want to write data, for
+    example, the usual pattern looks like:
+   </p>
+   <ol type="1">
+    <li class="listitem">
+     <p class="para">
+      Decide that we want to write some data to a connection; put that data in
+      a buffer.
+     </p>
+    </li>
+    <li class="listitem">
+     <p class="para">
+      Wait for the connection to become writable
+     </p>
+    </li>
+    <li class="listitem">
+     <p class="para">
+      Write as much of the data as we can
+     </p>
+    </li>
+    <li class="listitem">
+     <p class="para">
+      Remember how much we wrote, and if we still have more data to write,
+      wait for the connection to become writable again.
+     </p>
+    </li>
+   </ol>
+   <p class="para">
+    This buffered I/O pattern is common enough that Libevent provides a
+    generic mechanism for it. A &quot;buffer event&quot; consists of an underlying
+    transport (like a socket), a read buffer, and a write buffer. Instead of
+    regular events, which give callbacks when the underlying transport is
+    ready to be read or written, a buffer event invokes its user-supplied
+    callbacks when it has read or written enough data.
+   </p>
+  </div>
+
+  <div class="section" id="eventbufferevent.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     <strong class="classname">EventBufferEvent</strong>
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">final</span>
+       class <strong class="classname">EventBufferEvent</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventBufferEvent::READING</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventBufferEvent::WRITING</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventBufferEvent::EOF</var>
+     <span class="initializer"> = 16</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventBufferEvent::ERROR</var>
+     <span class="initializer"> = 32</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventBufferEvent::TIMEOUT</var>
+     <span class="initializer"> = 64</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventBufferEvent::CONNECTED</var>
+     <span class="initializer"> = 128</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventBufferEvent::OPT_CLOSE_ON_FREE</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventBufferEvent::OPT_THREADSAFE</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventBufferEvent::OPT_DEFER_CALLBACKS</var>
+     <span class="initializer"> = 4</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventBufferEvent::OPT_UNLOCK_CALLBACKS</var>
+     <span class="initializer"> = 8</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventBufferEvent::SSL_OPEN</var>
+     <span class="initializer"> = 0</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventBufferEvent::SSL_CONNECTING</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventBufferEvent::SSL_ACCEPTING</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">integer</span>
+     <var class="varname">$fd</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">integer</span>
+     <var class="varname">$priority</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">EventBuffer</span>
+     <var class="varname">$input</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">EventBuffer</span>
+     <var class="varname">$output</var>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">close</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">connect</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$addr</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">connectHost</span>
+    ( <span class="methodparam">
+    <span class="type">EventDnsBase</span>
+     <code class="parameter">$dns_base</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$hostname</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$port</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$family</code>
+    <span class="initializer"> = EventUtil::AF_UNSPEC</span>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+    <span class="methodname">__construct</span>
+    ( <span class="methodparam">
+    <span class="type">EventBase</span>
+     <code class="parameter">$base</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$socket</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$options</code>
+    <span class="initializer"> = 0</span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$readcb</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$writecb</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$eventcb</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+  ]]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">array</span>
+    <span class="methodname">createPair</span>
+    ( <span class="methodparam">
+    <span class="type">EventBase</span>
+     <code class="parameter">$base</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$options</code>
+    <span class="initializer"> = 0</span>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">disable</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$events</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">enable</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$events</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">free</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">string</span>
+    <span class="methodname">getDnsErrorString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">int</span>
+    <span class="methodname">getEnabled</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">EventBuffer</span>
+    <span class="methodname">getInput</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">EventBuffer</span>
+    <span class="methodname">getOutput</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">string</span>
+    <span class="methodname">read</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$size</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">readBuffer</span>
+    ( <span class="methodparam">
+    <span class="type">EventBuffer</span>
+     <code class="parameter">$buf</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">setCallbacks</span>
+    ( <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$readcb</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$writecb</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$eventcb</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$arg</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">setPriority</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">setTimeouts</span>
+    ( <span class="methodparam">
+    <span class="type">float</span>
+     <code class="parameter">$timeout_read</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">float</span>
+     <code class="parameter">$timeout_write</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">setWatermark</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$events</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$lowmark</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$highmark</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">string</span>
+    <span class="methodname">sslError</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">EventBufferEvent</span>
+    <span class="methodname">sslFilter</span>
+    ( <span class="methodparam">
+    <span class="type">EventBase</span>
+     <code class="parameter">$base</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">EventBufferEvent</span>
+     <code class="parameter">$underlying</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">EventSslContext</span>
+     <code class="parameter">$ctx</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$state</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$options</code>
+    <span class="initializer"> = 0</span>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">string</span>
+    <span class="methodname">sslGetCipherInfo</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">string</span>
+    <span class="methodname">sslGetCipherName</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">string</span>
+    <span class="methodname">sslGetCipherVersion</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">string</span>
+    <span class="methodname">sslGetProtocol</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">sslRenegotiate</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">EventBufferEvent</span>
+    <span class="methodname">sslSocket</span>
+    ( <span class="methodparam">
+    <span class="type">EventBase</span>
+     <code class="parameter">$base</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$socket</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">EventSslContext</span>
+     <code class="parameter">$ctx</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$state</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$options</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">write</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$data</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">writeBuffer</span>
+    ( <span class="methodparam">
+    <span class="type">EventBuffer</span>
+     <code class="parameter">$buf</code>
+   </span>
+   )</div>
+
+   }</div>
+
+  </div>
+
+  <div class="section" id="eventbufferevent.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="eventbufferevent.props.fd">
+      <var class="varname">fd</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Numeric file descriptor associated with the buffer event. Normally
+       represents a bound socket. Equals to <strong><code>NULL</code></strong>, if there is no file
+       descriptor(socket) associated with the buffer event.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbufferevent.props.priority">
+      <var class="varname">priority</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       The priority of the events used to implement the buffer event.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbufferevent.props.input">
+      <var class="varname">input</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Underlying input buffer object(
+       <span class="classname">EventBuffer</span>
+       )
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbufferevent.props.output">
+      <var class="varname">output</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Underlying output buffer object(
+       <span class="classname">EventBuffer</span>
+       )
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+  <div class="section" id="eventbufferevent.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <dl>
+
+    
+     <dt id="eventbufferevent.constants.reading">
+      <strong><code>EventBufferEvent::READING</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       An event occured during a read operation on the bufferevent. See the
+       other flags for which event it was.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbufferevent.constants.writing">
+      <strong><code>EventBufferEvent::WRITING</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       An event occured during a write operation on the bufferevent. See the
+       other flags for which event it was.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbufferevent.constants.eof">
+      <strong><code>EventBufferEvent::EOF</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Got an end-of-file indication on the buffer event.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbufferevent.constants.error">
+      <strong><code>EventBufferEvent::ERROR</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       An error occurred during a bufferevent operation. For more information
+       on what the error was, call
+        <span class="methodname">EventUtil::getLastSocketErrno</span>
+       and/or
+        <span class="methodname">EventUtil::getLastSocketError</span>
+       .
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbufferevent.constants.timeout">
+      <strong><code>EventBufferEvent::TIMEOUT</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+    
+     <dt id="eventbufferevent.constants.connected">
+      <strong><code>EventBufferEvent::CONNECTED</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Finished a requested connection on the bufferevent.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbufferevent.constants.opt-close-on-free">
+      <strong><code>EventBufferEvent::OPT_CLOSE_ON_FREE</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       When the buffer event is freed, close the underlying transport. This
+       will close an underlying socket, free an underlying buffer event, etc.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbufferevent.constants.opt-threadsafe">
+      <strong><code>EventBufferEvent::OPT_THREADSAFE</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Automatically allocate locks for the bufferevent, so that it’s safe
+       to use from multiple threads.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbufferevent.constants.opt-defer-callbacks">
+      <strong><code>EventBufferEvent::OPT_DEFER_CALLBACKS</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       When this flag is set, the bufferevent defers all of its callbacks. See
+       <a href="http://www.wangafu.net/~nickm/libevent-book/Ref6_bufferevent.html#_deferred_callbacks" class="link external">&raquo;&nbsp;Fast
+      portable non-blocking network programming with Libevent, Deferred callbacks</a>
+       .
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbufferevent.constants.opt-unlock-callbacks">
+      <strong><code>EventBufferEvent::OPT_UNLOCK_CALLBACKS</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       By default, when the bufferevent is set up to be threadsafe, the buffer
+       event’s locks are held whenever the any user-provided callback is
+       invoked. Setting this option makes Libevent release the buffer
+       event’s lock when it’s invoking the callbacks.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbufferevent.constants.ssl-open">
+      <strong><code>EventBufferEvent::SSL_OPEN</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       The SSL handshake is done
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbufferevent.constants.ssl-connecting">
+      <strong><code>EventBufferEvent::SSL_CONNECTING</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       SSL is currently performing negotiation as a client
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventbufferevent.constants.ssl-accepting">
+      <strong><code>EventBufferEvent::SSL_ACCEPTING</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       SSL is currently performing negotiation as a server
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+ <h1 class="title">The EventConfig class</h1>
+ 
+ <div class="partintro">
+
+  <div class="section" id="eventconfig.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Represents configuration structure which could be used in construction of
+    the
+    <span class="classname">EventBase</span>
+    .
+   </p>
+  </div>
+
+  <div class="section" id="eventconfig.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     <strong class="classname">EventConfig</strong>
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">final</span>
+       class <strong class="classname">EventConfig</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventConfig::FEATURE_ET</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventConfig::FEATURE_O1</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventConfig::FEATURE_FDS</var>
+     <span class="initializer"> = 4</span>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">avoidMethod</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$method</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+    <span class="methodname">__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">requireFeatures</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$feature</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">setMaxDispatchInterval</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$max_interval</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$max_callbacks</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$min_priority</code>
+   </span>
+   )</div>
+
+   }</div>
+
+  </div>
+
+  <div class="section" id="eventconfig.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <dl>
+
+    
+     <dt id="eventconfig.constants.feature-et">
+      <strong><code>EventConfig::FEATURE_ET</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Requires a backend method that supports edge-triggered I/O.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventconfig.constants.feature-o1">
+      <strong><code>EventConfig::FEATURE_O1</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Requires a backend method where adding or deleting a single event, or
+       having a single event become active, is an O(1) operation.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventconfig.constants.feature-fds">
+      <strong><code>EventConfig::FEATURE_FDS</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Requires a backend method that can support arbitrary file descriptor
+       types, and not just sockets.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ <h1 class="title">The EventDnsBase class</h1>
+ 
+ <div class="partintro">
+
+  <div class="section" id="eventdnsbase.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Represents Libevent&#039;s DNS base structure. Used to resolve DNS
+    asyncronously, parse configuration files like resolv.conf etc.
+   </p>
+  </div>
+
+  <div class="section" id="eventdnsbase.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     <strong class="classname">EventDnsBase</strong>
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">final</span>
+       class <strong class="classname">EventDnsBase</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventDnsBase::OPTION_SEARCH</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventDnsBase::OPTION_NAMESERVERS</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventDnsBase::OPTION_MISC</var>
+     <span class="initializer"> = 4</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventDnsBase::OPTION_HOSTSFILE</var>
+     <span class="initializer"> = 8</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventDnsBase::OPTIONS_ALL</var>
+     <span class="initializer"> = 15</span>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">addNameserverIp</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$ip</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">addSearch</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$domain</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">clearSearch</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+    <span class="methodname">__construct</span>
+    ( <span class="methodparam">
+    <span class="type">EventBase</span>
+     <code class="parameter">$base</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">bool</span>
+     <code class="parameter">$initialize</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">int</span>
+    <span class="methodname">countNameservers</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">loadHosts</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$hosts</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">parseResolvConf</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$flags</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$filename</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">setOption</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$option</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$value</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">setSearchNdots</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$ndots</code>
+   </span>
+   )</div>
+
+   }</div>
+
+  </div>
+
+  <div class="section" id="eventdnsbase.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <dl>
+
+    
+     <dt id="eventdnsbase.constants.option-search">
+      <strong><code>EventDnsBase::OPTION_SEARCH</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Tells to read the domain and search fields from the
+       <em>resolv.conf</em>
+       file and the
+       <em>ndots</em>
+       option, and use them to decide which domains(if any) to search for
+       hostnames that aren’t fully-qualified.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventdnsbase.constants.option-nameservers">
+      <strong><code>EventDnsBase::OPTION_NAMESERVERS</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Tells to learn the nameservers from the
+       <em>resolv.conf</em>
+       file.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventdnsbase.constants.option-misc">
+      <strong><code>EventDnsBase::OPTION_MISC</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+    
+     <dt id="eventdnsbase.constants.option-hostsfile">
+      <strong><code>EventDnsBase::OPTION_HOSTSFILE</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Tells to read a list of hosts from
+       <em>/etc/hosts</em>
+       as part of loading the
+       <em>resolv.conf</em>
+       file.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventdnsbase.constants.options-all">
+      <strong><code>EventDnsBase::OPTIONS_ALL</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Tells to learn as much as it can from the
+       <em>resolv.conf</em>
+       file.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ <h1 class="title">The EventHttp class</h1>
+ 
+ <div class="partintro">
+
+  <div class="section" id="eventhttp.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Represents HTTP server.
+   </p>
+  </div>
+
+  <div class="section" id="eventhttp.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     <strong class="classname">EventHttp</strong>
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">final</span>
+       class <strong class="classname">EventHttp</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">accept</span>
+    ( <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$socket</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">addServerAlias</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$alias</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">bind</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$address</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$port</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+    <span class="methodname">__construct</span>
+    ( <span class="methodparam">
+    <span class="type">EventBase</span>
+     <code class="parameter">$base</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">EventSslContext</span>
+     <code class="parameter">$ctx</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">removeServerAlias</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$alias</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">setAllowedMethods</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$methods</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">setCallback</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$path</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$cb</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$arg</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">setDefaultCallback</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$cb</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$arg</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">setMaxBodySize</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$value</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">setMaxHeadersSize</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$value</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">setTimeout</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$value</code>
+   </span>
+   )</div>
+
+   }</div>
+
+  </div>
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ <h1 class="title">The EventHttpConnection class</h1>
+ 
+ <div class="partintro">
+
+  <div class="section" id="eventhttpconnection.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Represents an HTTP connection.
+   </p>
+  </div>
+
+  <div class="section" id="eventhttpconnection.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     <strong class="classname">EventHttpConnection</strong>
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">EventHttpConnection</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+    <span class="methodname">__construct</span>
+    ( <span class="methodparam">
+    <span class="type">EventBase</span>
+     <code class="parameter">$base</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">EventDnsBase</span>
+     <code class="parameter">$dns_base</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$address</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$port</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">EventSslContext</span>
+     <code class="parameter">$ctx</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">EventBase</span>
+    <span class="methodname">getBase</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">getPeer</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter reference">&$address</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter reference">&$port</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">makeRequest</span>
+    ( <span class="methodparam">
+    <span class="type">EventHttpRequest</span>
+     <code class="parameter">$req</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$type</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$uri</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">setCloseCallback</span>
+    ( <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">setLocalAddress</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$address</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">setLocalPort</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$port</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">setMaxBodySize</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$max_size</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">setMaxHeadersSize</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$max_size</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">setRetries</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$retries</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">setTimeout</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$timeout</code>
+   </span>
+   )</div>
+
+   }</div>
+
+  </div>
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ <h1 class="title">The EventHttpRequest class</h1>
+ 
+ <div class="partintro">
+
+  <div class="section" id="eventhttprequest.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Represents an HTTP request.
+   </p>
+  </div>
+
+  <div class="section" id="eventhttprequest.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     <strong class="classname">EventHttpRequest</strong>
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">EventHttpRequest</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventHttpRequest::CMD_GET</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventHttpRequest::CMD_POST</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventHttpRequest::CMD_HEAD</var>
+     <span class="initializer"> = 4</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventHttpRequest::CMD_PUT</var>
+     <span class="initializer"> = 8</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventHttpRequest::CMD_DELETE</var>
+     <span class="initializer"> = 16</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventHttpRequest::CMD_OPTIONS</var>
+     <span class="initializer"> = 32</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventHttpRequest::CMD_TRACE</var>
+     <span class="initializer"> = 64</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventHttpRequest::CMD_CONNECT</var>
+     <span class="initializer"> = 128</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventHttpRequest::CMD_PATCH</var>
+     <span class="initializer"> = 256</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventHttpRequest::INPUT_HEADER</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventHttpRequest::OUTPUT_HEADER</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">addHeader</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$key</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$value</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$type</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">cancel</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">clearHeaders</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">closeConnection</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+    <span class="methodname">__construct</span>
+    ( <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">findHeader</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$key</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$type</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">free</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">EventBufferEvent</span>
+    <span class="methodname">closeConnection</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">getCommand</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">EventHttpConnection</span>
+    <span class="methodname">closeConnection</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">string</span>
+    <span class="methodname">getHost</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">EventBuffer</span>
+    <span class="methodname">getInputBuffer</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">array</span>
+    <span class="methodname">getInputHeaders</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">EventBuffer</span>
+    <span class="methodname">getOutputBuffer</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">getOutputHeaders</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">int</span>
+    <span class="methodname">getResponseCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">string</span>
+    <span class="methodname">getUri</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">removeHeader</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$key</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$type</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">sendError</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$error</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$reason</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">sendReply</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$code</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$reason</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">EventBuffer</span>
+     <code class="parameter">$buf</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">sendReplyChunk</span>
+    ( <span class="methodparam">
+    <span class="type">EventBuffer</span>
+     <code class="parameter">$buf</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">sendReplyEnd</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">sendReplyStart</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$code</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$reason</code>
+   </span>
+   )</div>
+
+   }</div>
+
+  </div>
+
+  <div class="section" id="eventhttprequest.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <dl>
+
+    
+     <dt id="eventhttprequest.constants.cmd-get">
+      <strong><code>EventHttpRequest::CMD_GET</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       GET method(command)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventhttprequest.constants.cmd-post">
+      <strong><code>EventHttpRequest::CMD_POST</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       POST method(command)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventhttprequest.constants.cmd-head">
+      <strong><code>EventHttpRequest::CMD_HEAD</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       HEAD method(command)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventhttprequest.constants.cmd-put">
+      <strong><code>EventHttpRequest::CMD_PUT</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       PUT method(command)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventhttprequest.constants.cmd-delete">
+      <strong><code>EventHttpRequest::CMD_DELETE</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       DELETE command(method)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventhttprequest.constants.cmd-options">
+      <strong><code>EventHttpRequest::CMD_OPTIONS</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       OPTIONS method(command)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventhttprequest.constants.cmd-trace">
+      <strong><code>EventHttpRequest::CMD_TRACE</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       TRACE method(command)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventhttprequest.constants.cmd-connect">
+      <strong><code>EventHttpRequest::CMD_CONNECT</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       CONNECT method(command)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventhttprequest.constants.cmd-patch">
+      <strong><code>EventHttpRequest::CMD_PATCH</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       PATCH method(command)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventhttprequest.constants.input-header">
+      <strong><code>EventHttpRequest::INPUT_HEADER</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Request input header type.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventhttprequest.constants.output-header">
+      <strong><code>EventHttpRequest::OUTPUT_HEADER</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Request output header type.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ <h1 class="title">The EventListener class</h1>
+ 
+ <div class="partintro">
+
+  <div class="section" id="eventlistener.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Represents a connection listener.
+   </p>
+  </div>
+
+  <div class="section" id="eventlistener.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     <strong class="classname">EventListener</strong>
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">final</span>
+       class <strong class="classname">EventListener</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventListener::OPT_LEAVE_SOCKETS_BLOCKING</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventListener::OPT_CLOSE_ON_FREE</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventListener::OPT_CLOSE_ON_EXEC</var>
+     <span class="initializer"> = 4</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventListener::OPT_REUSEABLE</var>
+     <span class="initializer"> = 8</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventListener::OPT_THREADSAFE</var>
+     <span class="initializer"> = 16</span>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="modifier">readonly</span>
+     <span class="type">int</span>
+     <var class="varname">$fd</var>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+    <span class="methodname">__construct</span>
+    ( <span class="methodparam">
+    <span class="type">EventBase</span>
+     <code class="parameter">$base</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$cb</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$flags</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$backlog</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$target</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">disable</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">enable</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">getBase</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">bool</span>
+    <span class="methodname">getSocketName</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter reference">&$address</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter reference">&$port</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">setCallback</span>
+    ( <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$cb</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$arg</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">setErrorCallback</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$cb</code>
+   </span>
+   )</div>
+
+   }</div>
+
+  </div>
+  <div class="section" id="eventlistener.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="eventlistener.props.fd">
+      <var class="varname">fd</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Numeric file descriptor of the underlying socket. (Added in
+       <em>event-1.6.0</em>
+       .)
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+  <div class="section" id="eventlistener.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <dl>
+
+    
+     <dt id="eventlistener.constants.opt-leave-sockets-blocking">
+      <strong><code>EventListener::OPT_LEAVE_SOCKETS_BLOCKING</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       By default Libevent turns underlying file descriptors, or sockets, to
+       non-blocking mode. This flag tells to leave them non-blocking.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventlistener.constants.opt-close-on-free">
+      <strong><code>EventListener::OPT_CLOSE_ON_FREE</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       If this option is set, the connection listener closes its underlying
+       socket when the
+       <span class="classname">EventListener</span>
+       object is freed.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventlistener.constants.opt-close-on-exec">
+      <strong><code>EventListener::OPT_CLOSE_ON_EXEC</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       If this option is set, the connection listener sets the close-on-exec
+       flag on the underlying listener socket. See platform documentation for
+       <em>fcntl</em>
+       and
+       <strong><code>FD_CLOEXEC</code></strong>
+       for more information.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventlistener.constants.opt-reuseable">
+      <strong><code>EventListener::OPT_REUSEABLE</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       By default on some platforms, once a listener socket is closed, no
+       other socket can bind to the same port until a while has passed.
+       Setting this option makes Libevent mark the socket as reusable, so that
+       once it is closed, another socket can be opened to listen on the same
+       port.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventlistener.constants.opt-threadsafe">
+      <strong><code>EventListener::OPT_THREADSAFE</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Allocate locks for the listener, so that it’s safe to use it from
+       multiple threads.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ <h1 class="title">The EventSslContext class</h1>
+ 
+ <div class="partintro">
+
+  <div class="section" id="eventsslcontext.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Represents
+    <em>SSL_CTX</em>
+    structure. Provides methods and properties to configure the SSL context.
+   </p>
+  </div>
+
+  <div class="section" id="eventsslcontext.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     <strong class="classname">EventSslContext</strong>
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">final</span>
+       class <strong class="classname">EventSslContext</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventSslContext::SSLv2_CLIENT_METHOD</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventSslContext::SSLv3_CLIENT_METHOD</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventSslContext::SSLv23_CLIENT_METHOD</var>
+     <span class="initializer"> = 3</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventSslContext::TLS_CLIENT_METHOD</var>
+     <span class="initializer"> = 4</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventSslContext::SSLv2_SERVER_METHOD</var>
+     <span class="initializer"> = 5</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventSslContext::SSLv3_SERVER_METHOD</var>
+     <span class="initializer"> = 6</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventSslContext::SSLv23_SERVER_METHOD</var>
+     <span class="initializer"> = 7</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventSslContext::TLS_SERVER_METHOD</var>
+     <span class="initializer"> = 8</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventSslContext::OPT_LOCAL_CERT</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventSslContext::OPT_LOCAL_PK</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventSslContext::OPT_PASSPHRASE</var>
+     <span class="initializer"> = 3</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventSslContext::OPT_CA_FILE</var>
+     <span class="initializer"> = 4</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventSslContext::OPT_CA_PATH</var>
+     <span class="initializer"> = 5</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventSslContext::OPT_ALLOW_SELF_SIGNED</var>
+     <span class="initializer"> = 6</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventSslContext::OPT_VERIFY_PEER</var>
+     <span class="initializer"> = 7</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventSslContext::OPT_VERIFY_DEPTH</var>
+     <span class="initializer"> = 8</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventSslContext::OPT_CIPHERS</var>
+     <span class="initializer"> = 9</span>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$local_cert</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <span class="type">string</span>
+     <var class="varname">$local_pk</var>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+    <span class="methodname">__construct</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$method</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$options</code>
+   </span>
+   )</div>
+
+   }</div>
+
+  </div>
+
+  <div class="section" id="eventsslcontext.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="eventsslcontext.props.local-cert">
+      <var class="varname">local_cert</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Path to local certificate file on filesystem. It must be a PEM-encoded
+       file which contains certificate. It can optionally contain the
+       certificate chain of issuers.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventsslcontext.props.local-pk">
+      <var class="varname">local_pk</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Path to local private key file
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+
+  <div class="section" id="eventsslcontext.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <dl>
+
+    
+     <dt id="eventsslcontext.constants.sslv2-client-method">
+      <strong><code>EventSslContext::SSLv2_CLIENT_METHOD</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       SSLv2 client method. See
+       <em>SSL_CTX_new(3)</em>
+       man page.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventsslcontext.constants.sslv3-client-method">
+      <strong><code>EventSslContext::SSLv3_CLIENT_METHOD</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       SSLv3 client method. See
+       <em>SSL_CTX_new(3)</em>
+       man page.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventsslcontext.constants.sslv23-client-method">
+      <strong><code>EventSslContext::SSLv23_CLIENT_METHOD</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       SSLv23 client method. See
+       <em>SSL_CTX_new(3)</em>
+       man page.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventsslcontext.constants.tls-client-method">
+      <strong><code>EventSslContext::TLS_CLIENT_METHOD</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       TLS client method. See
+       <em>SSL_CTX_new(3)</em>
+       man page.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventsslcontext.constants.sslv2-server-method">
+      <strong><code>EventSslContext::SSLv2_SERVER_METHOD</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       SSLv2 server method. See
+       <em>SSL_CTX_new(3)</em>
+       man page.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventsslcontext.constants.sslv3-server-method">
+      <strong><code>EventSslContext::SSLv3_SERVER_METHOD</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       SSLv3 server method. See
+       <em>SSL_CTX_new(3)</em>
+       man page.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventsslcontext.constants.sslv23-server-method">
+      <strong><code>EventSslContext::SSLv23_SERVER_METHOD</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       SSLv23 server method. See
+       <em>SSL_CTX_new(3)</em>
+       man page.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventsslcontext.constants.tls-server-method">
+      <strong><code>EventSslContext::TLS_SERVER_METHOD</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       TLS server method. See
+       <em>SSL_CTX_new(3)</em>
+       man page.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventsslcontext.constants.opt-local-cert">
+      <strong><code>EventSslContext::OPT_LOCAL_CERT</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Key for an item of the options&#039; array used in
+        <span class="methodname">EventSslContext::__construct</span>
+       . The option points to path of local certificate.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventsslcontext.constants.opt-local-pk">
+      <strong><code>EventSslContext::OPT_LOCAL_PK</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Key for an item of the options&#039; array used in
+        <span class="methodname">EventSslContext::__construct</span>
+       . The option points to path of the private key.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventsslcontext.constants.opt-passphrase">
+      <strong><code>EventSslContext::OPT_PASSPHRASE</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Key for an item of the options&#039; array used in
+        <span class="methodname">EventSslContext::__construct</span>
+       . Represents passphrase of the certificate.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventsslcontext.constants.opt-ca-file">
+      <strong><code>EventSslContext::OPT_CA_FILE</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Key for an item of the options&#039; array used in
+        <span class="methodname">EventSslContext::__construct</span>
+       . Represents path of the certificate authority file.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventsslcontext.constants.opt-ca-path">
+      <strong><code>EventSslContext::OPT_CA_PATH</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Key for an item of the options&#039; array used in
+        <span class="methodname">EventSslContext::__construct</span>
+       . Represents path where the certificate authority file should be
+       searched for.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventsslcontext.constants.opt-allow-self-signed">
+      <strong><code>EventSslContext::OPT_ALLOW_SELF_SIGNED</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Key for an item of the options&#039; array used in
+        <span class="methodname">EventSslContext::__construct</span>
+       . Represents option that allows self-signed certificates.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventsslcontext.constants.opt-verify-peer">
+      <strong><code>EventSslContext::OPT_VERIFY_PEER</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Key for an item of the options&#039; array used in
+        <span class="methodname">EventSslContext::__construct</span>
+       . Represents option that tells Event to verify peer.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventsslcontext.constants.opt-verify-depth">
+      <strong><code>EventSslContext::OPT_VERIFY_DEPTH</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Key for an item of the options&#039; array used in
+        <span class="methodname">EventSslContext::__construct</span>
+       . Represents maximum depth for the certificate chain verification that
+       shall be allowed for the SSL context.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventsslcontext.constants.opt-ciphers">
+      <strong><code>EventSslContext::OPT_CIPHERS</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Key for an item of the options&#039; array used in
+        <span class="methodname">EventSslContext::__construct</span>
+       . Represents the cipher list for the SSL context.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+ 
+
+
+ <h1 class="title">The EventUtil class</h1>
+ 
+ <div class="partintro">
+
+  <div class="section" id="eventutil.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    <span class="classname">EventUtil</span>
+    is a singleton with supplimentary methods and constants.
+   </p>
+  </div>
+
+  <div class="section" id="eventutil.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     <strong class="classname">EventUtil</strong>
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">final</span>
+       class <strong class="classname">EventUtil</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventUtil::AF_INET</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventUtil::AF_INET6</var>
+     <span class="initializer"> = 10</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventUtil::AF_UNSPEC</var>
+     <span class="initializer"> = 0</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventUtil::LIBEVENT_VERSION_NUMBER</var>
+     <span class="initializer"> = 33559808</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventUtil::SO_DEBUG</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventUtil::SO_REUSEADDR</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventUtil::SO_KEEPALIVE</var>
+     <span class="initializer"> = 9</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventUtil::SO_DONTROUTE</var>
+     <span class="initializer"> = 5</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventUtil::SO_LINGER</var>
+     <span class="initializer"> = 13</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventUtil::SO_BROADCAST</var>
+     <span class="initializer"> = 6</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventUtil::SO_OOBINLINE</var>
+     <span class="initializer"> = 10</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventUtil::SO_SNDBUF</var>
+     <span class="initializer"> = 7</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventUtil::SO_RCVBUF</var>
+     <span class="initializer"> = 8</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventUtil::SO_SNDLOWAT</var>
+     <span class="initializer"> = 19</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventUtil::SO_RCVLOWAT</var>
+     <span class="initializer"> = 18</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventUtil::SO_SNDTIMEO</var>
+     <span class="initializer"> = 21</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventUtil::SO_RCVTIMEO</var>
+     <span class="initializer"> = 20</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventUtil::SO_TYPE</var>
+     <span class="initializer"> = 3</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventUtil::SO_ERROR</var>
+     <span class="initializer"> = 4</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventUtil::SOL_SOCKET</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventUtil::SOL_TCP</var>
+     <span class="initializer"> = 6</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventUtil::SOL_UDP</var>
+     <span class="initializer"> = 17</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventUtil::IPPROTO_IP</var>
+     <span class="initializer"> = 0</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">EventUtil::IPPROTO_IPV6</var>
+     <span class="initializer"> = 41</span>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span>
+   <span class="modifier">public</span>
+    <span class="methodname">__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">int</span>
+    <span class="methodname">getLastSocketErrno</span>
+    ([ <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$socket</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">string</span>
+    <span class="methodname">getLastSocketError</span>
+    ([ <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$socket</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">int</span>
+    <span class="methodname">getSocketFd</span>
+    ( <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$socket</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">bool</span>
+    <span class="methodname">getSocketName</span>
+    ( <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$socket</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter reference">&$address</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter reference">&$port</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">bool</span>
+    <span class="methodname">setSocketOption</span>
+    ( <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$socket</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$level</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$optname</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$optval</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">void</span>
+    <span class="methodname">sslRandPoll</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+  </div>
+
+  <div class="section" id="eventutil.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <dl>
+
+    
+     <dt id="eventutil.constants.af-inet">
+      <strong><code>EventUtil::AF_INET</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       IPv4 address family
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventutil.constants.af-inet6">
+      <strong><code>EventUtil::AF_INET6</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       IPv6 address family
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventutil.constants.af-unspec">
+      <strong><code>EventUtil::AF_UNSPEC</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Unspecified IP address family
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventutil.constants.so-debug">
+      <strong><code>EventUtil::SO_DEBUG</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Socket option. Enable socket debugging. Only allowed for processes with
+       the
+       <em>CAP_NET_ADMIN</em>
+       capability or an effective user ID of
+       <strong><code>0</code></strong>
+       . (Added in event-1.6.0.)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventutil.constants.so-reuseaddr">
+      <strong><code>EventUtil::SO_REUSEADDR</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Socket option. Indicates that the rules used in validating addresses
+       supplied in a
+       <em>bind(2)</em>
+       call should allow reuse of local addresses. See the
+       <em>socket(7)</em>
+       manual page. (Added in event-1.6.0.)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventutil.constants.so-keepalive">
+      <strong><code>EventUtil::SO_KEEPALIVE</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Socket option. Enable sending of keep-alive messages on
+       connection-oriented sockets. Expects an integer boolean flag. See the
+       <em>socket(7)</em>
+       manual page. (Added in event-1.6.0.)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventutil.constants.so-dontroute">
+      <strong><code>EventUtil::SO_DONTROUTE</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Socket option. See the
+       <em>socket(7)</em>
+       manual page. (Added in event-1.6.0.)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventutil.constants.so-linger">
+      <strong><code>EventUtil::SO_LINGER</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Socket option. When enabled, a
+       <em>close(2)</em>
+       or
+       <em>shutdown(2)</em>
+       will not return until all queued messages for the socket have been
+       successfully sent or the linger timeout has been reached. Otherwise,
+       the call returns immediately and the closing is done in the background.
+       See the
+       <em>socket(7)</em>
+       manual page. (Added in event-1.6.0.)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventutil.constants.so-broadcast">
+      <strong><code>EventUtil::SO_BROADCAST</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Socket option. Reports whether transmission of broadcast messages is
+       supported. See the
+       <em>socket(7)</em>
+       manual page. (Added in event-1.6.0.)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventutil.constants.so-oobinline">
+      <strong><code>EventUtil::SO_OOBINLINE</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Socket option. See the
+       <em>socket(7)</em>
+       manual page. (Added in event-1.6.0.)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventutil.constants.so-sndbuf">
+      <strong><code>EventUtil::SO_SNDBUF</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Socket option. See the
+       <em>socket(7)</em>
+       manual page. (Added in event-1.6.0.)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventutil.constants.so-rcvbuf">
+      <strong><code>EventUtil::SO_RCVBUF</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Socket option. See the
+       <em>socket(7)</em>
+       manual page. (Added in event-1.6.0.)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventutil.constants.so-sndlowat">
+      <strong><code>EventUtil::SO_SNDLOWAT</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Socket option. See the
+       <em>socket(7)</em>
+       manual page. (Added in event-1.6.0.)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventutil.constants.so-rcvlowat">
+      <strong><code>EventUtil::SO_RCVLOWAT</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Socket option. See the
+       <em>socket(7)</em>
+       manual page. (Added in event-1.6.0.)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventutil.constants.so-sndtimeo">
+      <strong><code>EventUtil::SO_SNDTIMEO</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Socket option. See the
+       <em>socket(7)</em>
+       manual page. (Added in event-1.6.0.)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventutil.constants.so-rcvtimeo">
+      <strong><code>EventUtil::SO_RCVTIMEO</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Socket option. See the
+       <em>socket(7)</em>
+       manual page. (Added in event-1.6.0.)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventutil.constants.so-type">
+      <strong><code>EventUtil::SO_TYPE</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Socket option. See the
+       <em>socket(7)</em>
+       manual page. (Added in event-1.6.0.)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventutil.constants.so-error">
+      <strong><code>EventUtil::SO_ERROR</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Socket option. See the
+       <em>socket(7)</em>
+       manual page. (Added in event-1.6.0.)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventutil.constants.sol-socket">
+      <strong><code>EventUtil::SOL_SOCKET</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Socket option level. See the
+       <em>socket(7)</em>
+       manual page. (Added in event-1.6.0.)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventutil.constants.sol-tcp">
+      <strong><code>EventUtil::SOL_TCP</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Socket option level. See the
+       <em>socket(7)</em>
+       manual page. (Added in event-1.6.0.)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventutil.constants.sol-udp">
+      <strong><code>EventUtil::SOL_UDP</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Socket option level. See the
+       <em>socket(7)</em>
+       manual page. (Added in event-1.6.0.)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventutil.constants.ipproto-ip">
+      <strong><code>EventUtil::IPPROTO_IP</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       See the
+       <em>socket(7)</em>
+       manual page. (Added in event-1.6.0.)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventutil.constants.ipproto-ipv6">
+      <strong><code>EventUtil::IPPROTO_IPV6</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       See the
+       <em>socket(7)</em>
+       manual page. (Added in event-1.6.0.)
+      </p>
+     </dd>
+
+    
+    
+     <dt id="eventutil.constants.libevent-version-number">
+      <strong><code>EventUtil::LIBEVENT_VERSION_NUMBER</code></strong>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Libevent&#039; version number at the time when Event extension had been
+       compiled with the library.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

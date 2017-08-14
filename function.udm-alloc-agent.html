@@ -1,0 +1,193 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Allocate mnoGoSearch session</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.search.html">Search Engine Extensions</a></li>
+  <li class="header up"><a href="book.mnogosearch.html">mnoGoSearch</a></li>
+  <li class="header up"><a href="ref.mnogosearch.html">mnoGoSearch Functions</a></li>
+  <li><a href="function.udm-add-search-limit.html">udm_add_search_limit</a></li>
+  <li><a href="function.udm-alloc-agent-array.html">udm_alloc_agent_array</a></li>
+  <li class="active"><a href="function.udm-alloc-agent.html">udm_alloc_agent</a></li>
+  <li><a href="function.udm-api-version.html">udm_api_version</a></li>
+  <li><a href="function.udm-cat-list.html">udm_cat_list</a></li>
+  <li><a href="function.udm-cat-path.html">udm_cat_path</a></li>
+  <li><a href="function.udm-check-charset.html">udm_check_charset</a></li>
+  <li><a href="function.udm-clear-search-limits.html">udm_clear_search_limits</a></li>
+  <li><a href="function.udm-crc32.html">udm_crc32</a></li>
+  <li><a href="function.udm-errno.html">udm_errno</a></li>
+  <li><a href="function.udm-error.html">udm_error</a></li>
+  <li><a href="function.udm-find.html">udm_find</a></li>
+  <li><a href="function.udm-free-agent.html">udm_free_agent</a></li>
+  <li><a href="function.udm-free-ispell-data.html">udm_free_ispell_data</a></li>
+  <li><a href="function.udm-free-res.html">udm_free_res</a></li>
+  <li><a href="function.udm-get-doc-count.html">udm_get_doc_count</a></li>
+  <li><a href="function.udm-get-res-field.html">udm_get_res_field</a></li>
+  <li><a href="function.udm-get-res-param.html">udm_get_res_param</a></li>
+  <li><a href="function.udm-hash32.html">udm_hash32</a></li>
+  <li><a href="function.udm-load-ispell-data.html">udm_load_ispell_data</a></li>
+  <li><a href="function.udm-set-agent-param.html">udm_set_agent_param</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.udm-alloc-agent-array.html">udm_alloc_agent_array</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.udm-api-version.html">udm_api_version</a></div>
+                <div class="up"><a href="ref.mnogosearch.html">mnoGoSearch Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.udm-alloc-agent" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">udm_alloc_agent</h1>
+  <p class="refpurpose">Allocate mnoGoSearch session</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.udm-alloc-agent-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname">udm_alloc_agent</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$dbaddr</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$dbmode</code></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Allocate a mnoGoSearch session.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.udm-alloc-agent-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">dbaddr</code></dt>
+
+     <dd>
+
+      <p class="para">
+       <code class="parameter">dbaddr</code> - URL-style database description, with
+       options (type, host, database name, port, user and password) to connect
+       to SQL database. Do not matter for built-in text files support. Format for
+       <code class="parameter">dbaddr</code>:
+       <em>DBType:[//[DBUser[:DBPass]@]DBHost[:DBPort]]/DBName/</em>.
+       Currently supported DBType values are: mysql, pgsql, msql, solid, mssql, oracle,
+       and ibase. Actually, it does not matter for native libraries support, but
+       ODBC users should specify one of the supported values. If your database
+       type is not supported, you may use <em>unknown</em> instead.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">dbmode</code></dt>
+
+     <dd>
+
+      <p class="para">
+       <code class="parameter">dbmode</code> - You may select the SQL database mode of
+       words storage. Possible values of <code class="parameter">dbmode</code> are:
+       <em>single</em>, <em>multi</em>, <em>crc</em>,
+       or <em>crc-multi</em>. When <em>single</em> is
+       specified, all words are stored in the same table. If <em>multi
+       </em> is selected, words will be located in different tables depending
+       of their lengths. &quot;multi&quot; mode is usually faster, but requires more tables
+       in the database. If &quot;crc&quot; mode is selected, mnoGoSearch will store 32 bit
+       integer word IDs calculated by CRC32 algorithm instead of words. This mode
+       requires less disk space and it is faster comparing with &quot;single&quot; and
+       &quot;multi&quot; modes. <em>crc-multi</em> uses the same storage structure
+       with the &quot;crc&quot; mode, but also stores words in different tables depending on
+       words lengths like in &quot;multi&quot; mode.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    <code class="parameter">dbaddr</code> and <code class="parameter">dbmode</code> must match
+    those used during indexing.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.udm-alloc-agent-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns a mnogosearch agent identifier on success, <strong><code>FALSE</code></strong> on failure. This
+   function creates a session with database parameters.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.udm-alloc-agent-notes">
+  <h3 class="title">Notes</h3>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    In fact this function does not open a connection to the database and
+    thus does not check the entered login and password. Establishing a
+    connection to the database and login/password verification is done by
+    <span class="function">udm_find</span>.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

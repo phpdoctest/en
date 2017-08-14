@@ -1,0 +1,209 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Called when applying the filter</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.stream.html">Streams</a></li>
+  <li class="header up"><a href="class.php-user-filter.html">php_user_filter</a></li>
+  <li class="active"><a href="php-user-filter.filter.html">php_user_filter::filter</a></li>
+  <li><a href="php-user-filter.onclose.html">php_user_filter::onClose</a></li>
+  <li><a href="php-user-filter.oncreate.html">php_user_filter::onCreate</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="class.php-user-filter.html">php_user_filter</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="php-user-filter.onclose.html">php_user_filter::onClose</a></div>
+                <div class="up"><a href="class.php-user-filter.html">php_user_filter</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="php-user-filter.filter" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">php_user_filter::filter</h1>
+  <p class="refpurpose">Called when applying the filter</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-php-user-filter.filter-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">php_user_filter::filter</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$in</code></span>
+   , <span class="methodparam"><span class="type">resource</span> <code class="parameter">$out</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter reference">&$consumed</code></span>
+   , <span class="methodparam"><span class="type">bool</span> <code class="parameter">$closing</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   This method is called whenever data is read from or written to
+   the attached stream (such as with <span class="function">fread</span> or <span class="function">fwrite</span>).
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-php-user-filter.filter-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">in</code></dt>
+
+    <dd>
+
+     <p class="para">
+      <code class="parameter">in</code> is a resource pointing to a <em>bucket brigade</em>
+      which contains one or more <em>bucket</em> objects containing data to be filtered.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">out</code></dt>
+
+    <dd>
+
+     <p class="para">
+      <code class="parameter">out</code> is a resource pointing to a second <em>bucket brigade</em>
+      into which your modified buckets should be placed.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">consumed</code></dt>
+
+    <dd>
+
+     <p class="para">
+      <code class="parameter">consumed</code>, which must <em class="emphasis">always</em>
+      be declared by reference, should be incremented by the length of the data
+      which your filter reads in and alters.  In most cases this means you will
+      increment <code class="parameter">consumed</code> by <em>$bucket-&gt;datalen</em>
+      for each <em>$bucket</em>.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">closing</code></dt>
+
+    <dd>
+
+     <p class="para">
+      If the stream is in the process of closing
+      (and therefore this is the last pass through the filterchain),
+      the <code class="parameter">closing</code> parameter will be set to <strong><code>TRUE</code></strong>.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-php-user-filter.filter-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   The  <span class="methodname">filter</span> method must return one of
+   three values upon completion.
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Return Value</th>
+       <th>Meaning</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td><strong><code>PSFS_PASS_ON</code></strong></td>
+       <td>
+        Filter processed successfully with data available in the
+        <code class="parameter">out</code> <em>bucket brigade</em>.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code>PSFS_FEED_ME</code></strong></td>
+       <td>
+        Filter processed successfully, however no data was available to
+        return. More data is required from the stream or prior filter.
+       </td>
+      </tr>
+
+      <tr>
+       <td><strong><code>PSFS_ERR_FATAL</code></strong> (default)</td>
+       <td>
+        The filter experienced an unrecoverable error and cannot continue.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

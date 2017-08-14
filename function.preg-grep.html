@@ -1,0 +1,192 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Return array entries that match the pattern</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.text.html">Text Processing</a></li>
+  <li class="header up"><a href="book.pcre.html">PCRE</a></li>
+  <li class="header up"><a href="ref.pcre.html">PCRE Functions</a></li>
+  <li><a href="function.preg-filter.html">preg_filter</a></li>
+  <li class="active"><a href="function.preg-grep.html">preg_grep</a></li>
+  <li><a href="function.preg-last-error.html">preg_last_error</a></li>
+  <li><a href="function.preg-match-all.html">preg_match_all</a></li>
+  <li><a href="function.preg-match.html">preg_match</a></li>
+  <li><a href="function.preg-quote.html">preg_quote</a></li>
+  <li><a href="function.preg-replace-callback-array.html">preg_replace_callback_array</a></li>
+  <li><a href="function.preg-replace-callback.html">preg_replace_callback</a></li>
+  <li><a href="function.preg-replace.html">preg_replace</a></li>
+  <li><a href="function.preg-split.html">preg_split</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.preg-filter.html">preg_filter</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.preg-last-error.html">preg_last_error</a></div>
+                <div class="up"><a href="ref.pcre.html">PCRE Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.preg-grep" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">preg_grep</h1>
+  <p class="refpurpose">Return array entries that match the pattern</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.preg-grep-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname">preg_grep</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$pattern</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$input</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$flags</code><span class="initializer"> = 0</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Returns the array consisting of the elements of the 
+   <code class="parameter">input</code> array that match the given
+   <code class="parameter">pattern</code>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.preg-grep-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">pattern</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The pattern to search for, as a string.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">input</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The input array.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">flags</code></dt>
+
+     <dd>
+
+      <p class="para">
+       If set to <strong><code>PREG_GREP_INVERT</code></strong>, this function returns
+       the elements of the input array that do <em class="emphasis">not</em> match
+       the given <code class="parameter">pattern</code>.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.preg-grep-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns an array indexed using the keys from the
+   <code class="parameter">input</code> array. 
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.preg-grep-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-5397">
+    <p><strong>Example #1 <span class="function">preg_grep</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;return&nbsp;all&nbsp;array&nbsp;elements<br />//&nbsp;containing&nbsp;floating&nbsp;point&nbsp;numbers<br /></span><span style="color: #0000BB">$fl_array&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">preg_grep</span><span style="color: #007700">(</span><span style="color: #DD0000">"/^(\d+)?\.\d+$/"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$array</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+
+ <div class="refsect1 seealso" id="refsect1-function.preg-grep-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><a href="pcre.pattern.html" class="link">PCRE Patterns</a></li>
+    <li class="member"><span class="function">preg_quote</span></li>
+    <li class="member"><span class="function">preg_match_all</span></li>
+    <li class="member"><span class="function">preg_filter</span></li>
+    <li class="member"><span class="function">preg_last_error</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

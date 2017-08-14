@@ -1,0 +1,233 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Creates a database</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.dbase.html">dBase</a></li>
+  <li class="header up"><a href="ref.dbase.html">dBase Functions</a></li>
+  <li><a href="function.dbase-add-record.html">dbase_add_record</a></li>
+  <li><a href="function.dbase-close.html">dbase_close</a></li>
+  <li class="active"><a href="function.dbase-create.html">dbase_create</a></li>
+  <li><a href="function.dbase-delete-record.html">dbase_delete_record</a></li>
+  <li><a href="function.dbase-get-header-info.html">dbase_get_header_info</a></li>
+  <li><a href="function.dbase-get-record-with-names.html">dbase_get_record_with_names</a></li>
+  <li><a href="function.dbase-get-record.html">dbase_get_record</a></li>
+  <li><a href="function.dbase-numfields.html">dbase_numfields</a></li>
+  <li><a href="function.dbase-numrecords.html">dbase_numrecords</a></li>
+  <li><a href="function.dbase-open.html">dbase_open</a></li>
+  <li><a href="function.dbase-pack.html">dbase_pack</a></li>
+  <li><a href="function.dbase-replace-record.html">dbase_replace_record</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.dbase-close.html">dbase_close</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.dbase-delete-record.html">dbase_delete_record</a></div>
+                <div class="up"><a href="ref.dbase.html">dBase Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.dbase-create" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">dbase_create</h1>
+  <p class="refpurpose">Creates a database</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.dbase-create-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname">dbase_create</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$fields</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$type</code><span class="initializer"> = DBASE_TYPE_DBASE</span></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function">dbase_create</span> creates a dBase database with the given
+   definition.
+   If the file already exists, it is not truncated.
+   <span class="function">dbase_pack</span> can be called to force truncation.
+  </p>
+  <blockquote class="note"><p><strong class="note">Note</strong>: <span class="simpara">When <a href="features.safe-mode.html" class="link">safe mode</a> is enabled, PHP checks whether
+the files or directories being operated upon have the same UID (owner) as the
+script that is being executed.</span></p></blockquote>
+  <blockquote class="note"><p><strong class="note">Note</strong>: <p class="para">This function is affected by <a href="ini.core.html#ini.open-basedir" class="link">open_basedir</a>.</p></p></blockquote>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.dbase-create-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">filename</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The name of the database. It can be a relative or absolute path to
+       the file where dBase will store your data.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">fields</code></dt>
+
+     <dd>
+
+      <p class="para">
+       An array of arrays, each array describing the format of one field of the
+       database. Each field consists of a name, a character indicating the field
+       type, and optionally, a length, a precision and a nullable flag.
+       The supported field types are listed in the <a href="intro.dbase.html" class="link">introduction section</a>.
+      </p>
+      <blockquote class="note"><p><strong class="note">Note</strong>: 
+       <p class="para">
+        The fieldnames are limited in length and must not exceed 10 chars.
+       </p>
+      </p></blockquote>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">type</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The type of database to be created. Either
+       <strong><code>DBASE_TYPE_DBASE</code></strong> or
+       <strong><code>DBASE_TYPE_FOXPRO</code></strong>.
+      </p>
+      <blockquote class="note"><p><strong class="note">Note</strong>: 
+       <p class="para">
+        The fieldnames are limited in length and must not exceed 10 chars.
+       </p>
+      </p></blockquote>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.dbase-create-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns a database link identifier if the database is successfully created,
+   or <strong><code>FALSE</code></strong> if an error occurred.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.dbase-create-changelog">
+  <h3 class="title">Changelog</h3>
+  <table class="doctable informaltable">
+   
+    <thead>
+     <tr>
+      <th>Version</th>
+      <th>Description</th>
+     </tr>
+
+    </thead>
+
+    <tbody class="tbody">
+     <tr>
+      <td>dbase 7.0.0</td>
+      <td>
+       The return value is now a <span class="type">resource</span> instead of an
+       <span class="type">int</span>.
+      </td>
+     </tr>
+
+    </tbody>
+   
+  </table>
+
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.dbase-create-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-1185">
+    <p><strong>Example #1 Creating a dBase database file</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">//&nbsp;database&nbsp;"definition"<br /></span><span style="color: #0000BB">$def&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;array(</span><span style="color: #DD0000">"date"</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"D"</span><span style="color: #007700">),<br />&nbsp;&nbsp;array(</span><span style="color: #DD0000">"name"</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"C"</span><span style="color: #007700">,&nbsp;&nbsp;</span><span style="color: #0000BB">50</span><span style="color: #007700">),<br />&nbsp;&nbsp;array(</span><span style="color: #DD0000">"age"</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"N"</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">),<br />&nbsp;&nbsp;array(</span><span style="color: #DD0000">"email"</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"C"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">128</span><span style="color: #007700">),<br />&nbsp;&nbsp;array(</span><span style="color: #DD0000">"ismember"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"L"</span><span style="color: #007700">)<br />);<br /><br /></span><span style="color: #FF8000">//&nbsp;creation<br /></span><span style="color: #007700">if&nbsp;(!</span><span style="color: #0000BB">dbase_create</span><span style="color: #007700">(</span><span style="color: #DD0000">'/tmp/test.dbf'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$def</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"Error,&nbsp;can't&nbsp;create&nbsp;the&nbsp;database\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.dbase-create-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">dbase_open</span></li>
+    <li class="member"><span class="function">dbase_close</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,217 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Accessing local filesystem</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="langref.html">Language Reference</a></li>
+  <li class="header up"><a href="wrappers.html">Supported Protocols and Wrappers</a></li>
+  <li class="active"><a href="wrappers.file.html">file://</a></li>
+  <li><a href="wrappers.http.html">http://</a></li>
+  <li><a href="wrappers.ftp.html">ftp://</a></li>
+  <li><a href="wrappers.php.html">php://</a></li>
+  <li><a href="wrappers.compression.html">zlib://</a></li>
+  <li><a href="wrappers.data.html">data://</a></li>
+  <li><a href="wrappers.glob.html">glob://</a></li>
+  <li><a href="wrappers.phar.html">phar://</a></li>
+  <li><a href="wrappers.ssh2.html">ssh2://</a></li>
+  <li><a href="wrappers.rar.html">rar://</a></li>
+  <li><a href="wrappers.audio.html">ogg://</a></li>
+  <li><a href="wrappers.expect.html">expect://</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="wrappers.html">Supported Protocols and Wrappers</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="wrappers.http.html">http://</a></div>
+                <div class="up"><a href="wrappers.html">Supported Protocols and Wrappers</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="wrappers.file" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">file://</h1>
+  <p class="refpurpose">Accessing local filesystem</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-wrappers.file-description">
+  <h3 class="title">Description</h3>
+  <p class="para">
+   <em class="emphasis">Filesystem</em> is the default wrapper used with PHP and represents the local filesystem.
+   When a relative path is specified (a path which does not begin with /, \, \\, or a Windows drive letter)
+   the path provided will be applied against the current working directory.  In many cases this is the
+   directory in which the script resides unless it has been changed.  Using the CLI sapi, this defaults
+   to the directory from which the script was called.
+  </p>
+  <p class="simpara">
+   With some functions, such as <span class="function">fopen</span> and <span class="function">file_get_contents</span>,
+   <em>include_path</em> may be optionally searched for relative paths as well.
+  </p>
+ </div>
+
+
+ <div class="refsect1 usage" id="refsect1-wrappers.file-usage"> 
+  <h3 class="title">Usage</h3>
+  <ul class="itemizedlist">
+   <li class="listitem"><span class="simpara"><var class="filename">/path/to/file.ext</var></span></li>
+   <li class="listitem"><span class="simpara"><var class="filename">relative/path/to/file.ext</var></span></li>
+   <li class="listitem"><span class="simpara"><var class="filename">fileInCwd.ext</var></span></li>
+   <li class="listitem"><span class="simpara"><var class="filename">C:/path/to/winfile.ext</var></span></li>
+   <li class="listitem"><span class="simpara"><var class="filename">C:\path\to\winfile.ext</var></span></li>
+   <li class="listitem"><span class="simpara"><var class="filename">\\smbserver\share\path\to\winfile.ext</var></span></li>
+   <li class="listitem"><span class="simpara"><var class="filename">file:///path/to/file.ext</var></span></li>
+  </ul>
+ </div>
+ 
+
+ <div class="refsect1 options" id="refsect1-wrappers.file-options">
+  <h3 class="title">Options</h3>
+  <p class="para">
+   <table class="doctable table">
+    <caption><strong>Wrapper Summary</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>Attribute</th>
+       <th>Supported</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>Restricted by <a href="filesystem.configuration.html#ini.allow-url-fopen" class="link">allow_url_fopen</a></td>
+       <td>No</td>
+      </tr>
+
+      <tr>
+       <td>Allows Reading</td>
+       <td>Yes</td>
+      </tr>
+
+      <tr>
+       <td>Allows Writing</td>
+       <td>Yes</td>
+      </tr>
+
+      <tr>
+       <td>Allows Appending</td>
+       <td>Yes</td>
+      </tr>
+
+      <tr>
+       <td>Allows Simultaneous Reading and Writing</td>
+       <td>Yes</td>
+      </tr>
+
+      <tr>
+       <td>Supports <span class="function">stat</span></td>
+       <td>Yes</td>
+      </tr>
+
+      <tr>
+       <td>Supports <span class="function">unlink</span></td>
+       <td>Yes</td>
+      </tr>
+
+      <tr>
+       <td>Supports <span class="function">rename</span></td>
+       <td>Yes</td>
+      </tr>
+
+      <tr>
+       <td>Supports <span class="function">mkdir</span></td>
+       <td>Yes</td>
+      </tr>
+
+      <tr>
+       <td>Supports <span class="function">rmdir</span></td>
+       <td>Yes</td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+ 
+
+ <div class="refsect1 changelog" id="refsect1-wrappers.file-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.0.0</td>
+       <td>
+        Added <em>file://</em>.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,1164 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Predefined Interfaces and Classes</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="langref.html">Language Reference</a></li>
+  <li><a href="language.basic-syntax.html">Basic syntax</a></li>
+  <li><a href="language.types.html">Types</a></li>
+  <li><a href="language.variables.html">Variables</a></li>
+  <li><a href="language.constants.html">Constants</a></li>
+  <li><a href="language.expressions.html">Expressions</a></li>
+  <li><a href="language.operators.html">Operators</a></li>
+  <li><a href="language.control-structures.html">Control Structures</a></li>
+  <li><a href="language.functions.html">Functions</a></li>
+  <li><a href="language.oop5.html">Classes and Objects</a></li>
+  <li><a href="language.namespaces.html">Namespaces</a></li>
+  <li><a href="language.errors.html">Errors</a></li>
+  <li><a href="language.exceptions.html">Exceptions</a></li>
+  <li><a href="language.generators.html">Generators</a></li>
+  <li><a href="language.references.html">References Explained</a></li>
+  <li><a href="reserved.variables.html">Predefined Variables</a></li>
+  <li><a href="reserved.exceptions.html">Predefined Exceptions</a></li>
+  <li class="active"><a href="reserved.interfaces.html">Predefined Interfaces and Classes</a></li>
+  <li><a href="context.html">Context options and parameters</a></li>
+  <li><a href="wrappers.html">Supported Protocols and Wrappers</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="class.typeerror.html">TypeError</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="class.traversable.html">Traversable</a></div>
+                <div class="up"><a href="langref.html">Language Reference</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="reserved.interfaces" class="part">
+ <h1>Predefined Interfaces and Classes</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="class.traversable.html">Traversable</a> — The Traversable interface</li>
+<li><a href="class.iterator.html">Iterator</a> — The Iterator interface<ul class="chunklist chunklist_title">
+<li><a href="iterator.current.html">Iterator::current</a> — Return the current element</li>
+<li><a href="iterator.key.html">Iterator::key</a> — Return the key of the current element</li>
+<li><a href="iterator.next.html">Iterator::next</a> — Move forward to next element</li>
+<li><a href="iterator.rewind.html">Iterator::rewind</a> — Rewind the Iterator to the first element</li>
+<li><a href="iterator.valid.html">Iterator::valid</a> — Checks if current position is valid</li>
+</ul>
+</li>
+<li><a href="class.iteratoraggregate.html">IteratorAggregate</a> — The IteratorAggregate interface<ul class="chunklist chunklist_title">
+<li><a href="iteratoraggregate.getiterator.html">IteratorAggregate::getIterator</a> — Retrieve an external iterator</li>
+</ul>
+</li>
+<li><a href="class.throwable.html">Throwable</a> — Throwable<ul class="chunklist chunklist_title">
+<li><a href="throwable.getmessage.html">Throwable::getMessage</a> — Gets the message</li>
+<li><a href="throwable.getcode.html">Throwable::getCode</a> — Gets the exception code</li>
+<li><a href="throwable.getfile.html">Throwable::getFile</a> — Gets the file in which the exception was created</li>
+<li><a href="throwable.getline.html">Throwable::getLine</a> — Gets the line on which the object was instantiated</li>
+<li><a href="throwable.gettrace.html">Throwable::getTrace</a> — Gets the stack trace</li>
+<li><a href="throwable.gettraceasstring.html">Throwable::getTraceAsString</a> — Gets the stack trace as a string</li>
+<li><a href="throwable.getprevious.html">Throwable::getPrevious</a> — Returns the previous Throwable</li>
+<li><a href="throwable.tostring.html">Throwable::__toString</a> — Gets a string representation of the thrown object</li>
+</ul>
+</li>
+<li><a href="class.arrayaccess.html">ArrayAccess</a> — The ArrayAccess interface<ul class="chunklist chunklist_title">
+<li><a href="arrayaccess.offsetexists.html">ArrayAccess::offsetExists</a> — Whether an offset exists</li>
+<li><a href="arrayaccess.offsetget.html">ArrayAccess::offsetGet</a> — Offset to retrieve</li>
+<li><a href="arrayaccess.offsetset.html">ArrayAccess::offsetSet</a> — Assign a value to the specified offset</li>
+<li><a href="arrayaccess.offsetunset.html">ArrayAccess::offsetUnset</a> — Unset an offset</li>
+</ul>
+</li>
+<li><a href="class.serializable.html">Serializable</a> — The Serializable interface<ul class="chunklist chunklist_title">
+<li><a href="serializable.serialize.html">Serializable::serialize</a> — String representation of object</li>
+<li><a href="serializable.unserialize.html">Serializable::unserialize</a> — Constructs the object</li>
+</ul>
+</li>
+<li><a href="class.closure.html">Closure</a> — The Closure class<ul class="chunklist chunklist_title">
+<li><a href="closure.construct.html">Closure::__construct</a> — Constructor that disallows instantiation</li>
+<li><a href="closure.bind.html">Closure::bind</a> — Duplicates a closure with a specific bound object and class scope</li>
+<li><a href="closure.bindto.html">Closure::bindTo</a> — Duplicates the closure with a new bound object and class scope</li>
+<li><a href="closure.call.html">Closure::call</a> — Binds and calls the closure</li>
+<li><a href="closure.fromcallable.html">Closure::fromCallable</a> — Converts a callable into a closure.</li>
+</ul>
+</li>
+<li><a href="class.generator.html">Generator</a> — The Generator class<ul class="chunklist chunklist_title">
+<li><a href="generator.current.html">Generator::current</a> — Get the yielded value</li>
+<li><a href="generator.getreturn.html">Generator::getReturn</a> — Get the return value of a generator</li>
+<li><a href="generator.key.html">Generator::key</a> — Get the yielded key</li>
+<li><a href="generator.next.html">Generator::next</a> — Resume execution of the generator</li>
+<li><a href="generator.rewind.html">Generator::rewind</a> — Rewind the iterator</li>
+<li><a href="generator.send.html">Generator::send</a> — Send a value to the generator</li>
+<li><a href="generator.throw.html">Generator::throw</a> — Throw an exception into the generator</li>
+<li><a href="generator.valid.html">Generator::valid</a> — Check if the iterator has been closed</li>
+<li><a href="generator.wakeup.html">Generator::__wakeup</a> — Serialize callback</li>
+</ul>
+</li>
+</ul>
+
+
+ <div class="partintro">
+  <p class="para">
+   See also the <a href="spl.interfaces.html" class="link">SPL Interfaces</a> and <a href="reserved.classes.html" class="link">reserved classes</a>.
+  </p>
+ </div>
+
+ 
+
+
+
+
+ <h1 class="title">The <span class="interfacename">Traversable</span> interface</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="traversable.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Interface to detect if a class is traversable using <a href="control-structures.foreach.html" class="link">foreach</a>.
+   </p>
+   <p class="para">
+    Abstract base interface that cannot be implemented alone. Instead it must
+    be implemented by either <span class="interfacename">IteratorAggregate</span> or
+    <span class="interfacename">Iterator</span>.
+   </p>
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <p class="para">
+     Internal (built-in) classes that implement this interface can be used in
+     a <a href="control-structures.foreach.html" class="link">foreach</a> construct and do not need to implement
+     <span class="interfacename">IteratorAggregate</span> or
+     <span class="interfacename">Iterator</span>.
+    </p>
+   </p></blockquote>
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <p class="para">
+     This is an internal engine interface which cannot be implemented in PHP
+     scripts. Either <span class="interfacename">IteratorAggregate</span> or
+     <span class="interfacename">Iterator</span> must be used instead.
+      When implementing an interface which extends Traversable, make sure to
+      list <span class="interfacename">IteratorAggregate</span> or
+      <span class="interfacename">Iterator</span> before its name in the implements
+      clause.
+    </p>
+   </p></blockquote>
+  </div>
+
+
+  <div class="section" id="traversable.synopsis">
+   <h2 class="title">Interface synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">Traversable</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">Traversable</strong>
+     </span>
+     {</div>
+
+
+   }</div>
+
+
+   <p class="para">
+    This interface has no methods, its only purpose is to be the base
+    interface for all traversable classes.
+   </p>
+
+  </div>
+
+ </div>
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The Iterator interface</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="iterator.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Interface for external iterators or objects that can be iterated
+    themselves internally.
+   </p>
+  </div>
+
+
+  <div class="section" id="iterator.synopsis">
+   <h2 class="title">Interface synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">Iterator</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">Iterator</strong>
+     </span>
+     
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> Traversable</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">current</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">scalar</span> <span class="methodname">key</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">next</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">rewind</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">boolean</span> <span class="methodname">valid</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+  
+  <div class="section" id="iterator.iterators">
+   <h2 class="title">Predefined iterators</h2>
+   <p class="para">
+    PHP already provides a number of iterators for many day to day tasks.
+    See <a href="spl.iterators.html" class="link">SPL iterators</a> for a list.
+   </p>
+  </div>
+
+  <div class="section" id="iterator.examples">
+   <h2 class="title">Examples</h2>
+   <div class="example" id="example-322">
+    <p><strong>Example #1 Basic usage</strong></p>
+    <div class="example-contents"><p>
+     This example demonstrates in which order methods are called when
+     using <a href="control-structures.foreach.html" class="link">foreach</a> with an iterator.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">myIterator&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">Iterator&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$position&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$array&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"firstelement"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"secondelement"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"lastelement"</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;);&nbsp;&nbsp;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">position&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">rewind</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">__METHOD__</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">position&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">current</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">__METHOD__</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">array</span><span style="color: #007700">[</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">position</span><span style="color: #007700">];<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">key</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">__METHOD__</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">position</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">next</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">__METHOD__</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;++</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">position</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">valid</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">__METHOD__</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;isset(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">array</span><span style="color: #007700">[</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">position</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$it&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">myIterator</span><span style="color: #007700">;<br /><br />foreach(</span><span style="color: #0000BB">$it&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$key</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+string(18) &quot;myIterator::rewind&quot;
+string(17) &quot;myIterator::valid&quot;
+string(19) &quot;myIterator::current&quot;
+string(15) &quot;myIterator::key&quot;
+int(0)
+string(12) &quot;firstelement&quot;
+
+string(16) &quot;myIterator::next&quot;
+string(17) &quot;myIterator::valid&quot;
+string(19) &quot;myIterator::current&quot;
+string(15) &quot;myIterator::key&quot;
+int(1)
+string(13) &quot;secondelement&quot;
+
+string(16) &quot;myIterator::next&quot;
+string(17) &quot;myIterator::valid&quot;
+string(19) &quot;myIterator::current&quot;
+string(15) &quot;myIterator::key&quot;
+int(2)
+string(11) &quot;lastelement&quot;
+
+string(16) &quot;myIterator::next&quot;
+string(17) &quot;myIterator::valid&quot;
+</pre></div>
+    </div>
+   </div>
+  </div>
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The IteratorAggregate interface</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="iteratoraggregate.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Interface to create an external Iterator.
+   </p>
+  </div>
+
+
+  <div class="section" id="iteratoraggregate.synopsis">
+   <h2 class="title">Interface synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">IteratorAggregate</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">IteratorAggregate</strong>
+     </span>
+     
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> Traversable</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">Traversable</span> <span class="methodname">getIterator</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+  <div class="section" id="iteratoraggregate.examples">
+   <div class="example" id="example-323">
+    <p><strong>Example #1 Basic usage</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">myData&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">IteratorAggregate&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$property1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Public&nbsp;property&nbsp;one"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$property2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Public&nbsp;property&nbsp;two"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;</span><span style="color: #0000BB">$property3&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"Public&nbsp;property&nbsp;three"</span><span style="color: #007700">;<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">property4&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"last&nbsp;property"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">getIterator</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;</span><span style="color: #0000BB">ArrayIterator</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">myData</span><span style="color: #007700">;<br /><br />foreach(</span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$key</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+string(9) &quot;property1&quot;
+string(19) &quot;Public property one&quot;
+
+string(9) &quot;property2&quot;
+string(19) &quot;Public property two&quot;
+
+string(9) &quot;property3&quot;
+string(21) &quot;Public property three&quot;
+
+string(9) &quot;property4&quot;
+string(13) &quot;last property&quot;
+
+</pre></div>
+    </div>
+   </div>
+  </div>
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">Throwable</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="throwable.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    <span class="classname">Throwable</span> is the base interface for any object that
+    can be thrown via a <a href="language.exceptions.html" class="link"><em>throw</em></a> statement in PHP 7, including
+    <span class="classname">Error</span> and <span class="classname">Exception</span>.
+   </p>
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <p class="para">
+     PHP classes cannot implement the <span class="classname">Throwable</span>
+     interface directly, and must instead extend
+     <span class="classname">Exception</span>.
+    </p>
+   </p></blockquote>
+  </div>
+
+
+  <div class="section" id="throwable.synopsis">
+   <h2 class="title">Interface synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">Throwable</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">Throwable</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getMessage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getCode</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getFile</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getLine</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getTrace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getTraceAsString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">Throwable</span> <span class="methodname">getPrevious</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">__toString</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The ArrayAccess interface</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="arrayaccess.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Interface to provide accessing objects as arrays.
+   </p>
+  </div>
+
+
+  <div class="section" id="arrayaccess.synopsis">
+   <h2 class="title">Interface synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">ArrayAccess</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">ArrayAccess</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">boolean</span> <span class="methodname">offsetExists</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$offset</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">offsetGet</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$offset</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">offsetSet</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$offset</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">offsetUnset</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$offset</code></span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+  <div class="section" id="arrayaccess.examples">
+   <div class="example" id="example-324">
+    <p><strong>Example #1 Basic usage</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">obj&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">ArrayAccess&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$container&nbsp;</span><span style="color: #007700">=&nbsp;array();<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">container&nbsp;</span><span style="color: #007700">=&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"one"&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"two"&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">"three"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">3</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">offsetSet</span><span style="color: #007700">(</span><span style="color: #0000BB">$offset</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">is_null</span><span style="color: #007700">(</span><span style="color: #0000BB">$offset</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">container</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">container</span><span style="color: #007700">[</span><span style="color: #0000BB">$offset</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">offsetExists</span><span style="color: #007700">(</span><span style="color: #0000BB">$offset</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;isset(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">container</span><span style="color: #007700">[</span><span style="color: #0000BB">$offset</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">offsetUnset</span><span style="color: #007700">(</span><span style="color: #0000BB">$offset</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;unset(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">container</span><span style="color: #007700">[</span><span style="color: #0000BB">$offset</span><span style="color: #007700">]);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">offsetGet</span><span style="color: #007700">(</span><span style="color: #0000BB">$offset</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;isset(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">container</span><span style="color: #007700">[</span><span style="color: #0000BB">$offset</span><span style="color: #007700">])&nbsp;?&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">container</span><span style="color: #007700">[</span><span style="color: #0000BB">$offset</span><span style="color: #007700">]&nbsp;:&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">obj</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">[</span><span style="color: #DD0000">"two"</span><span style="color: #007700">]));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">[</span><span style="color: #DD0000">"two"</span><span style="color: #007700">]);<br />unset(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">[</span><span style="color: #DD0000">"two"</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(isset(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">[</span><span style="color: #DD0000">"two"</span><span style="color: #007700">]));<br /></span><span style="color: #0000BB">$obj</span><span style="color: #007700">[</span><span style="color: #DD0000">"two"</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">"A&nbsp;value"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">[</span><span style="color: #DD0000">"two"</span><span style="color: #007700">]);<br /></span><span style="color: #0000BB">$obj</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #DD0000">'Append&nbsp;1'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$obj</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #DD0000">'Append&nbsp;2'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$obj</span><span style="color: #007700">[]&nbsp;=&nbsp;</span><span style="color: #DD0000">'Append&nbsp;3'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+bool(true)
+int(2)
+bool(false)
+string(7) &quot;A value&quot;
+obj Object
+(
+    [container:obj:private] =&gt; Array
+        (
+            [one] =&gt; 1
+            [three] =&gt; 3
+            [two] =&gt; A value
+            [0] =&gt; Append 1
+            [1] =&gt; Append 2
+            [2] =&gt; Append 3
+        )
+
+)
+</pre></div>
+    </div>
+   </div>
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The Serializable interface</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="serializable.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Interface for customized serializing.
+   </p>
+
+   <p class="para">
+    Classes that implement this interface no longer support
+    <a href="language.oop5.magic.html#object.sleep" class="link">__sleep()</a> and
+    <a href="language.oop5.magic.html#object.wakeup" class="link">__wakeup()</a>. The method serialize is
+    called whenever an instance needs to be serialized. This does not invoke __destruct()
+    or have any other side effect unless programmed inside the method. When the data is
+    unserialized the class is known and the appropriate unserialize() method is called as
+    a constructor instead of calling __construct(). If you need to execute the standard
+    constructor you may do so in the method.
+   </p>
+   <p class="para">
+    Note, that when an old instance of a class that implements this interface
+    now, which had been serialized before the class implemeted the interface, is
+    unserialized, <a href="language.oop5.magic.html#object.wakeup" class="link">__wakeup()</a> is called
+    instead of the serialize method, which might be useful for migration
+    purposes.
+   </p>
+  </div>
+
+
+  <div class="section" id="serializable.synopsis">
+   <h2 class="title">Interface synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">Serializable</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">Serializable</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">serialize</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">unserialize</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$serialized</code></span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+  <div class="section" id="serializable.examples">
+   <div class="example" id="example-326">
+    <p><strong>Example #1 Basic usage</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">obj&nbsp;</span><span style="color: #007700">implements&nbsp;</span><span style="color: #0000BB">Serializable&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;private&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">__construct</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">data&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"My&nbsp;private&nbsp;data"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">serialize</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">serialize</span><span style="color: #007700">(</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">data</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">unserialize</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">data&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">unserialize</span><span style="color: #007700">(</span><span style="color: #0000BB">$data</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">getData</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$this</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">data</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">$obj&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">obj</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$ser&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">serialize</span><span style="color: #007700">(</span><span style="color: #0000BB">$obj</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$ser</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$newobj&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">unserialize</span><span style="color: #007700">(</span><span style="color: #0000BB">$ser</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$newobj</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getData</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+string(38) &quot;C:3:&quot;obj&quot;:23:{s:15:&quot;My private data&quot;;}&quot;
+string(15) &quot;My private data&quot;
+</pre></div>
+    </div>
+   </div>
+  </div>
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The Closure class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="closure.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Class used to represent <a href="functions.anonymous.html" class="link">anonymous
+    functions</a>.
+   </p>
+
+   <p class="para">
+    Anonymous functions, implemented in PHP 5.3, yield objects of this type.
+    This fact used to be considered an implementation detail, but it can now
+    be relied upon. Starting with PHP 5.4, this class has methods that allow
+    further control of the anonymous function after it has been created.
+   </p>
+
+   <p class="para">
+    Besides the methods listed here, this class also has an
+    <em>__invoke</em> method. This is for consistency with other
+    classes that implement <a href="language.oop5.magic.html#language.oop5.magic.invoke" class="link">calling
+    magic</a>, as this method is not used for calling the function.
+   </p>
+
+  </div>
+
+
+  <div class="section" id="closure.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">Closure</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">Closure</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">private</span>  <span class="methodname">__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">Closure</span> <span class="methodname">bind</span>
+    ( <span class="methodparam"><span class="type">Closure</span> <code class="parameter">$closure</code></span>
+   , <span class="methodparam"><span class="type">object</span> <code class="parameter">$newthis</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$newscope</code>
+   <span class="initializer"> = &quot;static&quot;</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Closure</span> <span class="methodname">bindTo</span>
+    ( <span class="methodparam"><span class="type">object</span> <code class="parameter">$newthis</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$newscope</code>
+   <span class="initializer"> = &quot;static&quot;</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">call</span>
+    ( <span class="methodparam"><span class="type">object</span> <code class="parameter">$newthis</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$...</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="modifier">static</span> <span class="type">Closure</span> <span class="methodname">fromCallable</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callable</code></span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The Generator class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="generator.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    <span class="classname">Generator</span> objects are returned from <a href="language.generators.html" class="link">generators</a>.
+   </p>
+   
+   <div class="caution"><strong class="caution">Caution</strong>
+    <p class="para">
+     <span class="classname">Generator</span> objects cannot be instantiated via
+     <a href="language.oop5.basic.html#language.oop5.basic.new" class="link">new</a>.
+    </p>
+   </div>
+
+  </div>
+
+
+  <div class="section" id="generator.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">Generator</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">Generator</strong>
+     </span>
+     
+     <span class="oointerface">implements 
+      <span class="interfacename">Iterator</span>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">current</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">getReturn</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">key</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">next</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">rewind</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">send</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">throw</span>
+    ( <span class="methodparam"><span class="type">Throwable</span> <code class="parameter">$exception</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">valid</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">__wakeup</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

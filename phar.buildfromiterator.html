@@ -1,0 +1,302 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Construct a phar archive from an iterator.</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.compression.html">Compression and Archive Extensions</a></li>
+  <li class="header up"><a href="book.phar.html">Phar</a></li>
+  <li class="header up"><a href="class.phar.html">Phar</a></li>
+  <li><a href="phar.addemptydir.html">Phar::addEmptyDir</a></li>
+  <li><a href="phar.addfile.html">Phar::addFile</a></li>
+  <li><a href="phar.addfromstring.html">Phar::addFromString</a></li>
+  <li><a href="phar.apiversion.html">Phar::apiVersion</a></li>
+  <li><a href="phar.buildfromdirectory.html">Phar::buildFromDirectory</a></li>
+  <li class="active"><a href="phar.buildfromiterator.html">Phar::buildFromIterator</a></li>
+  <li><a href="phar.cancompress.html">Phar::canCompress</a></li>
+  <li><a href="phar.canwrite.html">Phar::canWrite</a></li>
+  <li><a href="phar.compress.html">Phar::compress</a></li>
+  <li><a href="phar.compressallfilesbzip2.html">Phar::compressAllFilesBZIP2</a></li>
+  <li><a href="phar.compressallfilesgz.html">Phar::compressAllFilesGZ</a></li>
+  <li><a href="phar.compressfiles.html">Phar::compressFiles</a></li>
+  <li><a href="phar.construct.html">Phar::__construct</a></li>
+  <li><a href="phar.converttodata.html">Phar::convertToData</a></li>
+  <li><a href="phar.converttoexecutable.html">Phar::convertToExecutable</a></li>
+  <li><a href="phar.copy.html">Phar::copy</a></li>
+  <li><a href="phar.count.html">Phar::count</a></li>
+  <li><a href="phar.createdefaultstub.html">Phar::createDefaultStub</a></li>
+  <li><a href="phar.decompress.html">Phar::decompress</a></li>
+  <li><a href="phar.decompressfiles.html">Phar::decompressFiles</a></li>
+  <li><a href="phar.delmetadata.html">Phar::delMetadata</a></li>
+  <li><a href="phar.delete.html">Phar::delete</a></li>
+  <li><a href="phar.extractto.html">Phar::extractTo</a></li>
+  <li><a href="phar.getmetadata.html">Phar::getMetadata</a></li>
+  <li><a href="phar.getmodified.html">Phar::getModified</a></li>
+  <li><a href="phar.getsignature.html">Phar::getSignature</a></li>
+  <li><a href="phar.getstub.html">Phar::getStub</a></li>
+  <li><a href="phar.getsupportedcompression.html">Phar::getSupportedCompression</a></li>
+  <li><a href="phar.getsupportedsignatures.html">Phar::getSupportedSignatures</a></li>
+  <li><a href="phar.getversion.html">Phar::getVersion</a></li>
+  <li><a href="phar.hasmetadata.html">Phar::hasMetadata</a></li>
+  <li><a href="phar.interceptfilefuncs.html">Phar::interceptFileFuncs</a></li>
+  <li><a href="phar.isbuffering.html">Phar::isBuffering</a></li>
+  <li><a href="phar.iscompressed.html">Phar::isCompressed</a></li>
+  <li><a href="phar.isfileformat.html">Phar::isFileFormat</a></li>
+  <li><a href="phar.isvalidpharfilename.html">Phar::isValidPharFilename</a></li>
+  <li><a href="phar.iswritable.html">Phar::isWritable</a></li>
+  <li><a href="phar.loadphar.html">Phar::loadPhar</a></li>
+  <li><a href="phar.mapphar.html">Phar::mapPhar</a></li>
+  <li><a href="phar.mount.html">Phar::mount</a></li>
+  <li><a href="phar.mungserver.html">Phar::mungServer</a></li>
+  <li><a href="phar.offsetexists.html">Phar::offsetExists</a></li>
+  <li><a href="phar.offsetget.html">Phar::offsetGet</a></li>
+  <li><a href="phar.offsetset.html">Phar::offsetSet</a></li>
+  <li><a href="phar.offsetunset.html">Phar::offsetUnset</a></li>
+  <li><a href="phar.running.html">Phar::running</a></li>
+  <li><a href="phar.setalias.html">Phar::setAlias</a></li>
+  <li><a href="phar.setdefaultstub.html">Phar::setDefaultStub</a></li>
+  <li><a href="phar.setmetadata.html">Phar::setMetadata</a></li>
+  <li><a href="phar.setsignaturealgorithm.html">Phar::setSignatureAlgorithm</a></li>
+  <li><a href="phar.setstub.html">Phar::setStub</a></li>
+  <li><a href="phar.startbuffering.html">Phar::startBuffering</a></li>
+  <li><a href="phar.stopbuffering.html">Phar::stopBuffering</a></li>
+  <li><a href="phar.uncompressallfiles.html">Phar::uncompressAllFiles</a></li>
+  <li><a href="phar.unlinkarchive.html">Phar::unlinkArchive</a></li>
+  <li><a href="phar.webphar.html">Phar::webPhar</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="phar.buildfromdirectory.html">Phar::buildFromDirectory</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="phar.cancompress.html">Phar::canCompress</a></div>
+                <div class="up"><a href="class.phar.html">Phar</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="phar.buildfromiterator" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Phar::buildFromIterator</h1>
+  <p class="refpurpose">Construct a phar archive from an iterator.</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-phar.buildfromiterator-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">Phar::buildFromIterator</span>
+    ( <span class="methodparam"><span class="type">Iterator</span> <code class="parameter">$iter</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$base_directory</code></span>
+  ] )</div>
+
+  <blockquote class="note"><p><strong class="note">Note</strong>: <p class="para">This
+method requires the <var class="filename">php.ini</var> setting <em>phar.readonly</em> to be
+set to <em>0</em> in order to work for <span class="classname">Phar</span>
+objects.  Otherwise, a <span class="classname">PharException</span> will be thrown.</p></p></blockquote>
+  <p class="para">
+   Populate a phar archive from an iterator.  Two styles of iterators are supported,
+   iterators that map the filename within the phar to the name of a file on disk,
+   and iterators like DirectoryIterator that return
+   SplFileInfo objects.  For iterators that return SplFileInfo objects, the second
+   parameter is required.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-phar.buildfromiterator-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">iter</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Any iterator that either associatively maps phar file to location or
+       returns SplFileInfo objects
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">base_directory</code></dt>
+
+     <dd>
+
+      <p class="para">
+       For iterators that return SplFileInfo objects, the portion of each
+       file&#039;s full path to remove when adding to the phar archive
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-phar.buildfromiterator-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   <span class="function">Phar::buildFromIterator</span> returns an associative array
+   mapping internal path of file to the full path of the file on the
+   filesystem.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-phar.buildfromiterator-examples">
+  <h3 class="title">Examples</h3>
+   <div class="example" id="example-724">
+    <p><strong>Example #1 A <span class="function">Phar::buildFromIterator</span> with SplFileInfo</strong></p>
+  <div class="example-contents"><p>
+   For most phar archives, the archive will reflect an actual directory layout, and
+   the second style is the most useful.  For instance, to create a phar archive
+   containing the files in this sample directory layout:
+  </p></div>
+  <div class="example-contents"><p>
+   <div class="example-contents screen">
+    <div class="examplescode"><pre class="examplescode">/path/to/project/
+                 config/
+                        dist.xml
+                        debug.xml
+                 lib/
+                     file1.php
+                     file2.php
+                 src/
+                     processthing.php
+                 www/
+                     index.php
+                 cli/
+                     index.php</pre>
+</div>
+   </div>
+  </p></div>
+  <div class="example-contents"><p>
+   This code could be used to add these files to the &quot;project.phar&quot; phar archive:
+  </p></div>
+  <div class="example-contents"><p>
+   <div class="example-contents">
+    <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;create&nbsp;with&nbsp;alias&nbsp;"project.phar"<br /></span><span style="color: #0000BB">$phar&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Phar</span><span style="color: #007700">(</span><span style="color: #DD0000">'project.phar'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'project.phar'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$phar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">buildFromIterator</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;</span><span style="color: #0000BB">RecursiveIteratorIterator</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;</span><span style="color: #0000BB">RecursiveDirectoryIterator</span><span style="color: #007700">(</span><span style="color: #DD0000">'/path/to/project'</span><span style="color: #007700">)),<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'/path/to/project'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$phar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setStub</span><span style="color: #007700">(</span><span style="color: #0000BB">$phar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createDefaultStub</span><span style="color: #007700">(</span><span style="color: #DD0000">'cli/index.php'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'www/index.php'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </p></div>
+  <div class="example-contents"><p>
+   The file project.phar can then be used immediately.  <span class="function">Phar::buildFromIterator</span> does not
+   set values such as compression, metadata, and this can be done after creating the
+   phar archive.
+  </p></div>
+  <div class="example-contents"><p>
+   As an interesting note, <span class="function">Phar::buildFromIterator</span> can also be used to
+   copy the contents of an existing phar archive, as the Phar object descends
+   from <span class="classname">DirectoryIterator</span>:
+  </p></div>
+  <div class="example-contents"><p>
+   <div class="example-contents">
+    <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;create&nbsp;with&nbsp;alias&nbsp;"project.phar"<br /></span><span style="color: #0000BB">$phar&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Phar</span><span style="color: #007700">(</span><span style="color: #DD0000">'project.phar'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'project.phar'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$phar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">buildFromIterator</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;</span><span style="color: #0000BB">RecursiveIteratorIterator</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;</span><span style="color: #0000BB">Phar</span><span style="color: #007700">(</span><span style="color: #DD0000">'/path/to/anotherphar.phar'</span><span style="color: #007700">)),<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'phar:///path/to/anotherphar.phar/path/to/project'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$phar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setStub</span><span style="color: #007700">(</span><span style="color: #0000BB">$phar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createDefaultStub</span><span style="color: #007700">(</span><span style="color: #DD0000">'cli/index.php'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'www/index.php'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </p></div>
+  </div>
+  <div class="example" id="example-725">
+    <p><strong>Example #2 A <span class="function">Phar::buildFromIterator</span> with other iterators</strong></p>
+  <div class="example-contents"><p>
+   The second form of the iterator can be used with any iterator that returns
+   a key =&gt; value mapping, such as an <span class="classname">ArrayIterator</span>:
+  </p></div>
+  <div class="example-contents"><p>
+   <div class="example-contents">
+    <div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;create&nbsp;with&nbsp;alias&nbsp;"project.phar"<br /></span><span style="color: #0000BB">$phar&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Phar</span><span style="color: #007700">(</span><span style="color: #DD0000">'project.phar'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'project.phar'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$phar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">buildFromIterator</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;new&nbsp;</span><span style="color: #0000BB">ArrayIterator</span><span style="color: #007700">(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;array(<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'internal/file.php'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/somefile.php'</span><span style="color: #007700">,<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'another/file.jpg'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #DD0000">'/path/to/bigfile.jpg'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'rb'</span><span style="color: #007700">),<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;)));<br /></span><span style="color: #0000BB">$phar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setStub</span><span style="color: #007700">(</span><span style="color: #0000BB">$phar</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">createDefaultStub</span><span style="color: #007700">(</span><span style="color: #DD0000">'cli/index.php'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'www/index.php'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </p></div>
+  </div>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-phar.buildfromiterator-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   This method returns <span class="classname">UnexpectedValueException</span> when the
+   iterator returns incorrect values, such as an integer key instead of a
+   string, a <span class="classname">BadMethodCallException</span> when an
+   SplFileInfo-based iterator is passed without a <code class="parameter">base_directory</code>
+   parameter, or a <span class="classname">PharException</span> if there were errors
+   saving the phar archive.
+  </p>
+ </div>
+
+
+
+ <div class="refsect1 seealso" id="refsect1-phar.buildfromiterator-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">Phar::buildFromDirectory</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

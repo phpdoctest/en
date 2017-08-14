@@ -1,0 +1,177 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Deletes the metadata of the entry</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.compression.html">Compression and Archive Extensions</a></li>
+  <li class="header up"><a href="book.phar.html">Phar</a></li>
+  <li class="header up"><a href="class.pharfileinfo.html">PharFileInfo</a></li>
+  <li><a href="pharfileinfo.chmod.html">PharFileInfo::chmod</a></li>
+  <li><a href="pharfileinfo.compress.html">PharFileInfo::compress</a></li>
+  <li><a href="pharfileinfo.construct.html">PharFileInfo::__construct</a></li>
+  <li><a href="pharfileinfo.decompress.html">PharFileInfo::decompress</a></li>
+  <li class="active"><a href="pharfileinfo.delmetadata.html">PharFileInfo::delMetadata</a></li>
+  <li><a href="pharfileinfo.getcrc32.html">PharFileInfo::getCRC32</a></li>
+  <li><a href="pharfileinfo.getcompressedsize.html">PharFileInfo::getCompressedSize</a></li>
+  <li><a href="pharfileinfo.getmetadata.html">PharFileInfo::getMetadata</a></li>
+  <li><a href="pharfileinfo.getpharflags.html">PharFileInfo::getPharFlags</a></li>
+  <li><a href="pharfileinfo.hasmetadata.html">PharFileInfo::hasMetadata</a></li>
+  <li><a href="pharfileinfo.iscrcchecked.html">PharFileInfo::isCRCChecked</a></li>
+  <li><a href="pharfileinfo.iscompressed.html">PharFileInfo::isCompressed</a></li>
+  <li><a href="pharfileinfo.iscompressedbzip2.html">PharFileInfo::isCompressedBZIP2</a></li>
+  <li><a href="pharfileinfo.iscompressedgz.html">PharFileInfo::isCompressedGZ</a></li>
+  <li><a href="pharfileinfo.setcompressedbzip2.html">PharFileInfo::setCompressedBZIP2</a></li>
+  <li><a href="pharfileinfo.setcompressedgz.html">PharFileInfo::setCompressedGZ</a></li>
+  <li><a href="pharfileinfo.setmetadata.html">PharFileInfo::setMetadata</a></li>
+  <li><a href="pharfileinfo.setuncompressed.html">PharFileInfo::setUncompressed</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="pharfileinfo.decompress.html">PharFileInfo::decompress</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="pharfileinfo.getcrc32.html">PharFileInfo::getCRC32</a></div>
+                <div class="up"><a href="class.pharfileinfo.html">PharFileInfo</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="pharfileinfo.delmetadata" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">PharFileInfo::delMetadata</h1>
+  <p class="refpurpose">Deletes the metadata of the entry</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-pharfileinfo.delmetadata-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">PharFileInfo::delMetadata</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Deletes the metadata of the entry, if any.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-pharfileinfo.delmetadata-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   No parameters.
+  </p>
+
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-pharfileinfo.delmetadata-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>TRUE</code></strong> if successful, <strong><code>FALSE</code></strong> if the entry had no metadata.
+   As with all functionality that modifies the contents of
+   a phar, the <a href="phar.configuration.html#ini.phar.readonly" class="link">phar.readonly</a> INI variable
+   must be off in order to succeed if the file is within a <span class="classname">Phar</span>
+   archive.  Files within <span class="classname">PharData</span> archives do not have
+   this restriction.
+  </p>
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-pharfileinfo.delmetadata-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   Throws <span class="classname">PharException</span> if errors occurred while flushing
+   changes to disk, and <span class="classname">BadMethodCallException</span> if
+   write access is disabled.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-pharfileinfo.delmetadata-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-792">
+    <p><strong>Example #1 A <span class="function">PharFileInfo::delMetaData</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Phar</span><span style="color: #007700">(</span><span style="color: #DD0000">'myphar.phar'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">'hi'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'hi'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">'hi'</span><span style="color: #007700">]-&gt;</span><span style="color: #0000BB">delMetadata</span><span style="color: #007700">());<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">'hi'</span><span style="color: #007700">]-&gt;</span><span style="color: #0000BB">setMetadata</span><span style="color: #007700">(</span><span style="color: #DD0000">'there'</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">'hi'</span><span style="color: #007700">]-&gt;</span><span style="color: #0000BB">delMetadata</span><span style="color: #007700">());<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">[</span><span style="color: #DD0000">'hi'</span><span style="color: #007700">]-&gt;</span><span style="color: #0000BB">delMetadata</span><span style="color: #007700">());<br />}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">Exception&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;handle&nbsp;errors<br /></span><span style="color: #007700">}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+bool(false)
+bool(true)
+bool(false)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-pharfileinfo.delmetadata-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">PharFileInfo::setMetadata</span></li>
+    <li class="member"><span class="function">PharFileInfo::hasMetadata</span></li>
+    <li class="member"><span class="function">PharFileInfo::getMetadata</span></li>
+    <li class="member"><span class="function">Phar::setMetadata</span></li>
+    <li class="member"><span class="function">Phar::hasMetadata</span></li>
+    <li class="member"><span class="function">Phar::getMetadata</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

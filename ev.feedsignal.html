@@ -1,0 +1,159 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Feed a signal event info Ev</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.fileprocess.process.html">Process Control Extensions</a></li>
+  <li class="header up"><a href="book.ev.html">Ev</a></li>
+  <li class="header up"><a href="class.ev.html">Ev</a></li>
+  <li><a href="ev.backend.html">Ev::backend</a></li>
+  <li><a href="ev.depth.html">Ev::depth</a></li>
+  <li><a href="ev.embeddablebackends.html">Ev::embeddableBackends</a></li>
+  <li class="active"><a href="ev.feedsignal.html">Ev::feedSignal</a></li>
+  <li><a href="ev.feedsignalevent.html">Ev::feedSignalEvent</a></li>
+  <li><a href="ev.iteration.html">Ev::iteration</a></li>
+  <li><a href="ev.now.html">Ev::now</a></li>
+  <li><a href="ev.nowupdate.html">Ev::nowUpdate</a></li>
+  <li><a href="ev.recommendedbackends.html">Ev::recommendedBackends</a></li>
+  <li><a href="ev.resume.html">Ev::resume</a></li>
+  <li><a href="ev.run.html">Ev::run</a></li>
+  <li><a href="ev.sleep.html">Ev::sleep</a></li>
+  <li><a href="ev.stop.html">Ev::stop</a></li>
+  <li><a href="ev.supportedbackends.html">Ev::supportedBackends</a></li>
+  <li><a href="ev.suspend.html">Ev::suspend</a></li>
+  <li><a href="ev.time.html">Ev::time</a></li>
+  <li><a href="ev.verify.html">Ev::verify</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="ev.embeddablebackends.html">Ev::embeddableBackends</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="ev.feedsignalevent.html">Ev::feedSignalEvent</a></div>
+                <div class="up"><a href="class.ev.html">Ev</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="ev.feedsignal" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Ev::feedSignal</h1>
+  <p class="refpurpose">Feed a signal event info Ev</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-ev.feedsignal-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">void</span>
+    <span class="methodname">Ev::feedSignal</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$signum</code>
+   </span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Simulates a signal receive. It is safe to call this function at any time,
+   from any context, including signal handlers or random threads. Its main use
+   is to customise signal handling in the process.
+  </p>
+  <p class="para">
+   Unlike
+    <span class="methodname">Ev::feedSignalEvent</span>
+   , this works regardless of which loop has registered the signal.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-ev.feedsignal-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+
+     <code class="parameter">signum</code>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Signal number. See
+      <em>signal(7)</em>
+      man page for detals. You can use constants exported by
+      <em>pcntl</em>
+      extension.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-ev.feedsignal-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   No value is returned.
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-ev.feedsignal-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li class="member">
+     <span class="methodname">Ev::feedSignalEvent</span>
+   </li>
+  </ul>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

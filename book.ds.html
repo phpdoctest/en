@@ -1,0 +1,3549 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Data Structures</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.vartype.html">Variable and Type Related Extensions</a></li>
+  <li><a href="book.array.html">Arrays</a></li>
+  <li><a href="book.classobj.html">Classes/Objects</a></li>
+  <li><a href="book.classkit.html">Classkit</a></li>
+  <li><a href="book.ctype.html">Ctype</a></li>
+  <li class="active"><a href="book.ds.html">Data Structures</a></li>
+  <li><a href="book.filter.html">Filter</a></li>
+  <li><a href="book.funchand.html">Function Handling</a></li>
+  <li><a href="book.quickhash.html">Quickhash</a></li>
+  <li><a href="book.reflection.html">Reflection</a></li>
+  <li><a href="book.var.html">Variable handling</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.ctype-xdigit.html">ctype_xdigit</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="intro.ds.html">Introduction</a></div>
+                <div class="up"><a href="refs.basic.vartype.html">Variable and Type Related Extensions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="book.ds" class="book">
+ <h1>Data Structures</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="intro.ds.html">Introduction</a></li>
+<li><a href="ds.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_title">
+<li><a href="ds.requirements.html">Requirements</a></li>
+<li><a href="ds.installation.html">Installation</a></li>
+</ul>
+</li>
+<li><a href="ds.constants.html">Predefined Constants</a></li>
+<li><a href="ds.examples.html">Examples</a></li>
+<li><a href="class.ds-collection.html">Collection</a> — The Collection interface<ul class="chunklist chunklist_title">
+<li><a href="ds-collection.clear.html">Ds\Collection::clear</a> — Removes all values.</li>
+<li><a href="ds-collection.copy.html">Ds\Collection::copy</a> — Returns a shallow copy of the collection.</li>
+<li><a href="ds-collection.isempty.html">Ds\Collection::isEmpty</a> — Returns whether the collection is empty</li>
+<li><a href="ds-collection.toarray.html">Ds\Collection::toArray</a> — Converts the collection to an array.</li>
+</ul>
+</li>
+<li><a href="class.ds-hashable.html">Hashable</a> — The Hashable interface<ul class="chunklist chunklist_title">
+<li><a href="ds-hashable.equals.html">Ds\Hashable::equals</a> — Determines whether an object is equal to the current instance.</li>
+<li><a href="ds-hashable.hash.html">Ds\Hashable::hash</a> — Returns a scalar value to be used as a hash value.</li>
+</ul>
+</li>
+<li><a href="class.ds-sequence.html">Sequence</a> — The Sequence interface<ul class="chunklist chunklist_title">
+<li><a href="ds-sequence.allocate.html">Ds\Sequence::allocate</a> — Allocates enough memory for a required capacity.</li>
+<li><a href="ds-sequence.apply.html">Ds\Sequence::apply</a> — Updates all values by applying a callback function to each value.</li>
+<li><a href="ds-sequence.capacity.html">Ds\Sequence::capacity</a> — Returns the current capacity.</li>
+<li><a href="ds-sequence.contains.html">Ds\Sequence::contains</a> — Determines if the sequence contains given values.</li>
+<li><a href="ds-sequence.filter.html">Ds\Sequence::filter</a> — Creates a new sequence using a callable to
+    determine which values to include.</li>
+<li><a href="ds-sequence.find.html">Ds\Sequence::find</a> — Attempts to find a value's index.</li>
+<li><a href="ds-sequence.first.html">Ds\Sequence::first</a> — Returns the first value in the sequence.</li>
+<li><a href="ds-sequence.get.html">Ds\Sequence::get</a> — Returns the value at a given index.</li>
+<li><a href="ds-sequence.insert.html">Ds\Sequence::insert</a> — Inserts values at a given index.</li>
+<li><a href="ds-sequence.join.html">Ds\Sequence::join</a> — Joins all values together as a string.</li>
+<li><a href="ds-sequence.last.html">Ds\Sequence::last</a> — Returns the last value.</li>
+<li><a href="ds-sequence.map.html">Ds\Sequence::map</a> — Returns the result of applying a callback to each value.</li>
+<li><a href="ds-sequence.merge.html">Ds\Sequence::merge</a> — Returns the result of adding all given values to the sequence.</li>
+<li><a href="ds-sequence.pop.html">Ds\Sequence::pop</a> — Removes and returns the last value.</li>
+<li><a href="ds-sequence.push.html">Ds\Sequence::push</a> — Adds values to the end of the sequence.</li>
+<li><a href="ds-sequence.reduce.html">Ds\Sequence::reduce</a> — Reduces the sequence to a single value using a callback function.</li>
+<li><a href="ds-sequence.remove.html">Ds\Sequence::remove</a> — Removes and returns a value by index.</li>
+<li><a href="ds-sequence.reverse.html">Ds\Sequence::reverse</a> — Reverses the sequence in-place.</li>
+<li><a href="ds-sequence.reversed.html">Ds\Sequence::reversed</a> — Returns a reversed copy.</li>
+<li><a href="ds-sequence.rotate.html">Ds\Sequence::rotate</a> — Rotates the sequence by a given number of rotations.</li>
+<li><a href="ds-sequence.set.html">Ds\Sequence::set</a> — Updates a value at a given index.</li>
+<li><a href="ds-sequence.shift.html">Ds\Sequence::shift</a> — Removes and returns the first value.</li>
+<li><a href="ds-sequence.slice.html">Ds\Sequence::slice</a> — Returns a sub-sequence of a given range.</li>
+<li><a href="ds-sequence.sort.html">Ds\Sequence::sort</a> — Sorts the sequence in-place.</li>
+<li><a href="ds-sequence.sorted.html">Ds\Sequence::sorted</a> — Returns a sorted copy.</li>
+<li><a href="ds-sequence.sum.html">Ds\Sequence::sum</a> — Returns the sum of all values in the sequence.</li>
+<li><a href="ds-sequence.unshift.html">Ds\Sequence::unshift</a> — Adds values to the front of the sequence.</li>
+</ul>
+</li>
+<li><a href="class.ds-vector.html">Vector</a> — The Vector class<ul class="chunklist chunklist_title">
+<li><a href="ds-vector.allocate.html">Ds\Vector::allocate</a> — Allocates enough memory for a required capacity.</li>
+<li><a href="ds-vector.apply.html">Ds\Vector::apply</a> — Updates all values by applying a callback function to each value.</li>
+<li><a href="ds-vector.capacity.html">Ds\Vector::capacity</a> — Returns the current capacity.</li>
+<li><a href="ds-vector.clear.html">Ds\Vector::clear</a> — Removes all values.</li>
+<li><a href="ds-vector.construct.html">Ds\Vector::__construct</a> — Creates a new instance.</li>
+<li><a href="ds-vector.contains.html">Ds\Vector::contains</a> — Determines if the vector contains given values.</li>
+<li><a href="ds-vector.copy.html">Ds\Vector::copy</a> — Returns a shallow copy of the vector.</li>
+<li><a href="ds-vector.count.html">Ds\Vector::count</a> — Returns the number of values in the collection.</li>
+<li><a href="ds-vector.filter.html">Ds\Vector::filter</a> — Creates a new vector using a callable to
+    determine which values to include.</li>
+<li><a href="ds-vector.find.html">Ds\Vector::find</a> — Attempts to find a value's index.</li>
+<li><a href="ds-vector.first.html">Ds\Vector::first</a> — Returns the first value in the vector.</li>
+<li><a href="ds-vector.get.html">Ds\Vector::get</a> — Returns the value at a given index.</li>
+<li><a href="ds-vector.insert.html">Ds\Vector::insert</a> — Inserts values at a given index.</li>
+<li><a href="ds-vector.isempty.html">Ds\Vector::isEmpty</a> — Returns whether the vector is empty</li>
+<li><a href="ds-vector.join.html">Ds\Vector::join</a> — Joins all values together as a string.</li>
+<li><a href="ds-vector.jsonserialize.html">Ds\Vector::jsonSerialize</a> — Returns a representation that can be converted to JSON.</li>
+<li><a href="ds-vector.last.html">Ds\Vector::last</a> — Returns the last value.</li>
+<li><a href="ds-vector.map.html">Ds\Vector::map</a> — Returns the result of applying a callback to each value.</li>
+<li><a href="ds-vector.merge.html">Ds\Vector::merge</a> — Returns the result of adding all given values to the vector.</li>
+<li><a href="ds-vector.pop.html">Ds\Vector::pop</a> — Removes and returns the last value.</li>
+<li><a href="ds-vector.push.html">Ds\Vector::push</a> — Adds values to the end of the vector.</li>
+<li><a href="ds-vector.reduce.html">Ds\Vector::reduce</a> — Reduces the vector to a single value using a callback function.</li>
+<li><a href="ds-vector.remove.html">Ds\Vector::remove</a> — Removes and returns a value by index.</li>
+<li><a href="ds-vector.reverse.html">Ds\Vector::reverse</a> — Reverses the vector in-place.</li>
+<li><a href="ds-vector.reversed.html">Ds\Vector::reversed</a> — Returns a reversed copy.</li>
+<li><a href="ds-vector.rotate.html">Ds\Vector::rotate</a> — Rotates the vector by a given number of rotations.</li>
+<li><a href="ds-vector.set.html">Ds\Vector::set</a> — Updates a value at a given index.</li>
+<li><a href="ds-vector.shift.html">Ds\Vector::shift</a> — Removes and returns the first value.</li>
+<li><a href="ds-vector.slice.html">Ds\Vector::slice</a> — Returns a sub-vector of a given range.</li>
+<li><a href="ds-vector.sort.html">Ds\Vector::sort</a> — Sorts the vector in-place.</li>
+<li><a href="ds-vector.sorted.html">Ds\Vector::sorted</a> — Returns a sorted copy.</li>
+<li><a href="ds-vector.sum.html">Ds\Vector::sum</a> — Returns the sum of all values in the vector.</li>
+<li><a href="ds-vector.toarray.html">Ds\Vector::toArray</a> — Converts the vector to an array.</li>
+<li><a href="ds-vector.unshift.html">Ds\Vector::unshift</a> — Adds values to the front of the vector.</li>
+</ul>
+</li>
+<li><a href="class.ds-deque.html">Deque</a> — The Deque class<ul class="chunklist chunklist_title">
+<li><a href="ds-deque.allocate.html">Ds\Deque::allocate</a> — Allocates enough memory for a required capacity.</li>
+<li><a href="ds-deque.apply.html">Ds\Deque::apply</a> — Updates all values by applying a callback function to each value.</li>
+<li><a href="ds-deque.capacity.html">Ds\Deque::capacity</a> — Returns the current capacity.</li>
+<li><a href="ds-deque.clear.html">Ds\Deque::clear</a> — Removes all values from the deque.</li>
+<li><a href="ds-deque.construct.html">Ds\Deque::__construct</a> — Creates a new instance.</li>
+<li><a href="ds-deque.contains.html">Ds\Deque::contains</a> — Determines if the deque contains given values.</li>
+<li><a href="ds-deque.copy.html">Ds\Deque::copy</a> — Returns a shallow copy of the deque.</li>
+<li><a href="ds-deque.count.html">Ds\Deque::count</a> — Returns the number of values in the collection.</li>
+<li><a href="ds-deque.filter.html">Ds\Deque::filter</a> — Creates a new deque using a callable to
+    determine which values to include.</li>
+<li><a href="ds-deque.find.html">Ds\Deque::find</a> — Attempts to find a value's index.</li>
+<li><a href="ds-deque.first.html">Ds\Deque::first</a> — Returns the first value in the deque.</li>
+<li><a href="ds-deque.get.html">Ds\Deque::get</a> — Returns the value at a given index.</li>
+<li><a href="ds-deque.insert.html">Ds\Deque::insert</a> — Inserts values at a given index.</li>
+<li><a href="ds-deque.isempty.html">Ds\Deque::isEmpty</a> — Returns whether the deque is empty</li>
+<li><a href="ds-deque.join.html">Ds\Deque::join</a> — Joins all values together as a string.</li>
+<li><a href="ds-deque.jsonserialize.html">Ds\Deque::jsonSerialize</a> — Returns a representation that can be converted to JSON.</li>
+<li><a href="ds-deque.last.html">Ds\Deque::last</a> — Returns the last value.</li>
+<li><a href="ds-deque.map.html">Ds\Deque::map</a> — Returns the result of applying a callback to each value.</li>
+<li><a href="ds-deque.merge.html">Ds\Deque::merge</a> — Returns the result of adding all given values to the deque.</li>
+<li><a href="ds-deque.pop.html">Ds\Deque::pop</a> — Removes and returns the last value.</li>
+<li><a href="ds-deque.push.html">Ds\Deque::push</a> — Adds values to the end of the deque.</li>
+<li><a href="ds-deque.reduce.html">Ds\Deque::reduce</a> — Reduces the deque to a single value using a callback function.</li>
+<li><a href="ds-deque.remove.html">Ds\Deque::remove</a> — Removes and returns a value by index.</li>
+<li><a href="ds-deque.reverse.html">Ds\Deque::reverse</a> — Reverses the deque in-place.</li>
+<li><a href="ds-deque.reversed.html">Ds\Deque::reversed</a> — Returns a reversed copy.</li>
+<li><a href="ds-deque.rotate.html">Ds\Deque::rotate</a> — Rotates the deque by a given number of rotations.</li>
+<li><a href="ds-deque.set.html">Ds\Deque::set</a> — Updates a value at a given index.</li>
+<li><a href="ds-deque.shift.html">Ds\Deque::shift</a> — Removes and returns the first value.</li>
+<li><a href="ds-deque.slice.html">Ds\Deque::slice</a> — Returns a sub-deque of a given range.</li>
+<li><a href="ds-deque.sort.html">Ds\Deque::sort</a> — Sorts the deque in-place.</li>
+<li><a href="ds-deque.sorted.html">Ds\Deque::sorted</a> — Returns a sorted copy.</li>
+<li><a href="ds-deque.sum.html">Ds\Deque::sum</a> — Returns the sum of all values in the deque.</li>
+<li><a href="ds-deque.toarray.html">Ds\Deque::toArray</a> — Converts the deque to an array.</li>
+<li><a href="ds-deque.unshift.html">Ds\Deque::unshift</a> — Adds values to the front of the deque.</li>
+</ul>
+</li>
+<li><a href="class.ds-map.html">Map</a> — The Map class<ul class="chunklist chunklist_title">
+<li><a href="ds-map.allocate.html">Ds\Map::allocate</a> — Allocates enough memory for a required capacity.</li>
+<li><a href="ds-map.apply.html">Ds\Map::apply</a> — Updates all values by applying a callback function to each value.</li>
+<li><a href="ds-map.capacity.html">Ds\Map::capacity</a> — Returns the current capacity.</li>
+<li><a href="ds-map.clear.html">Ds\Map::clear</a> — Removes all values.</li>
+<li><a href="ds-map.construct.html">Ds\Map::__construct</a> — Creates a new instance.</li>
+<li><a href="ds-map.copy.html">Ds\Map::copy</a> — Returns a shallow copy of the map.</li>
+<li><a href="ds-map.count.html">Ds\Map::count</a> — Returns the number of values in the map.</li>
+<li><a href="ds-map.diff.html">Ds\Map::diff</a> — Creates a new map using keys that aren't in another map.</li>
+<li><a href="ds-map.filter.html">Ds\Map::filter</a> — Creates a new map using a callable to determine which pairs to include.</li>
+<li><a href="ds-map.first.html">Ds\Map::first</a> — Returns the first pair in the map.</li>
+<li><a href="ds-map.get.html">Ds\Map::get</a> — Returns the value for a given key.</li>
+<li><a href="ds-map.haskey.html">Ds\Map::hasKey</a> — Determines whether the map contains a given key.</li>
+<li><a href="ds-map.hasvalue.html">Ds\Map::hasValue</a> — Determines whether the map contains a given value.</li>
+<li><a href="ds-map.intersect.html">Ds\Map::intersect</a> — Creates a new map by intersecting keys with another map.</li>
+<li><a href="ds-map.isempty.html">Ds\Map::isEmpty</a> — Returns whether the map is empty</li>
+<li><a href="ds-map.jsonserialize.html">Ds\Map::jsonSerialize</a> — Returns a representation that can be converted to JSON.</li>
+<li><a href="ds-map.keys.html">Ds\Map::keys</a> — Returns a set of the map's keys.</li>
+<li><a href="ds-map.ksort.html">Ds\Map::ksort</a> — Sorts the map in-place by key.</li>
+<li><a href="ds-map.ksorted.html">Ds\Map::ksorted</a> — Returns a copy, sorted by key.</li>
+<li><a href="ds-map.last.html">Ds\Map::last</a> — Returns the last pair of the map.</li>
+<li><a href="ds-map.map.html">Ds\Map::map</a> — Returns the result of applying a callback to each value.</li>
+<li><a href="ds-map.merge.html">Ds\Map::merge</a> — Returns the result of adding all given associations.</li>
+<li><a href="ds-map.pairs.html">Ds\Map::pairs</a> — Returns a sequence containing all the pairs of the map.</li>
+<li><a href="ds-map.put.html">Ds\Map::put</a> — Associates a key with a value.</li>
+<li><a href="ds-map.putall.html">Ds\Map::putAll</a> — Associates all key-value pairs of a traversable object or array.</li>
+<li><a href="ds-map.reduce.html">Ds\Map::reduce</a> — Reduces the map to a single value using a callback function.</li>
+<li><a href="ds-map.remove.html">Ds\Map::remove</a> — Removes and returns a value by key.</li>
+<li><a href="ds-map.reverse.html">Ds\Map::reverse</a> — Reverses the map in-place.</li>
+<li><a href="ds-map.reversed.html">Ds\Map::reversed</a> — Returns a reversed copy.</li>
+<li><a href="ds-map.skip.html">Ds\Map::skip</a> — Returns the pair at a given positional index.</li>
+<li><a href="ds-map.slice.html">Ds\Map::slice</a> — Returns a subset of the map defined by a starting index and length.</li>
+<li><a href="ds-map.sort.html">Ds\Map::sort</a> — Sorts the map in-place by value.</li>
+<li><a href="ds-map.sorted.html">Ds\Map::sorted</a> — Returns a copy, sorted by value.</li>
+<li><a href="ds-map.sum.html">Ds\Map::sum</a> — Returns the sum of all values in the map.</li>
+<li><a href="ds-map.toarray.html">Ds\Map::toArray</a> — Converts the map to an array.</li>
+<li><a href="ds-map.union.html">Ds\Map::union</a> — Creates a new map using values from the current instance and another map.</li>
+<li><a href="ds-map.values.html">Ds\Map::values</a> — Returns a sequence of the map's values.</li>
+<li><a href="ds-map.xor.html">Ds\Map::xor</a> — Creates a new map using keys of either the current instance or of another map, but not of both.</li>
+</ul>
+</li>
+<li><a href="class.ds-pair.html">Pair</a> — The Pair class<ul class="chunklist chunklist_title">
+<li><a href="ds-pair.clear.html">Ds\Pair::clear</a> — Removes all values.</li>
+<li><a href="ds-pair.construct.html">Ds\Pair::__construct</a> — Creates a new instance.</li>
+<li><a href="ds-pair.copy.html">Ds\Pair::copy</a> — Returns a shallow copy of the pair.</li>
+<li><a href="ds-pair.isempty.html">Ds\Pair::isEmpty</a> — Returns whether the pair is empty</li>
+<li><a href="ds-pair.jsonserialize.html">Ds\Pair::jsonSerialize</a> — Returns a representation that can be converted to JSON.</li>
+<li><a href="ds-pair.toarray.html">Ds\Pair::toArray</a> — Converts the pair to an array.</li>
+</ul>
+</li>
+<li><a href="class.ds-set.html">Set</a> — The Set class<ul class="chunklist chunklist_title">
+<li><a href="ds-set.add.html">Ds\Set::add</a> — Adds values to the set.</li>
+<li><a href="ds-set.allocate.html">Ds\Set::allocate</a> — Allocates enough memory for a required capacity.</li>
+<li><a href="ds-set.capacity.html">Ds\Set::capacity</a> — Returns the current capacity.</li>
+<li><a href="ds-set.clear.html">Ds\Set::clear</a> — Removes all values.</li>
+<li><a href="ds-set.construct.html">Ds\Set::__construct</a> — Creates a new instance.</li>
+<li><a href="ds-set.contains.html">Ds\Set::contains</a> — Determines if the set contains all values.</li>
+<li><a href="ds-set.copy.html">Ds\Set::copy</a> — Returns a shallow copy of the set.</li>
+<li><a href="ds-set.count.html">Ds\Set::count</a> — Returns the number of values in the set.</li>
+<li><a href="ds-set.diff.html">Ds\Set::diff</a> — Creates a new set using values that aren't in another set.</li>
+<li><a href="ds-set.filter.html">Ds\Set::filter</a> — Creates a new set using a callable to
+    determine which values to include.</li>
+<li><a href="ds-set.first.html">Ds\Set::first</a> — Returns the first value in the set.</li>
+<li><a href="ds-set.get.html">Ds\Set::get</a> — Returns the value at a given index.</li>
+<li><a href="ds-set.intersect.html">Ds\Set::intersect</a> — Creates a new set by intersecting values with another set.</li>
+<li><a href="ds-set.isempty.html">Ds\Set::isEmpty</a> — Returns whether the set is empty</li>
+<li><a href="ds-set.join.html">Ds\Set::join</a> — Joins all values together as a string.</li>
+<li><a href="ds-set.jsonserialize.html">Ds\Set::jsonSerialize</a> — Returns a representation that can be converted to JSON.</li>
+<li><a href="ds-set.last.html">Ds\Set::last</a> — Returns the last value in the set.</li>
+<li><a href="ds-set.merge.html">Ds\Set::merge</a> — Returns the result of adding all given values to the set.</li>
+<li><a href="ds-set.reduce.html">Ds\Set::reduce</a> — Reduces the set to a single value using a callback function.</li>
+<li><a href="ds-set.remove.html">Ds\Set::remove</a> — Removes all given values from the set.</li>
+<li><a href="ds-set.reverse.html">Ds\Set::reverse</a> — Reverses the set in-place.</li>
+<li><a href="ds-set.reversed.html">Ds\Set::reversed</a> — Returns a reversed copy.</li>
+<li><a href="ds-set.slice.html">Ds\Set::slice</a> — Returns a sub-set of a given range.</li>
+<li><a href="ds-set.sort.html">Ds\Set::sort</a> — Sorts the set in-place.</li>
+<li><a href="ds-set.sorted.html">Ds\Set::sorted</a> — Returns a sorted copy.</li>
+<li><a href="ds-set.sum.html">Ds\Set::sum</a> — Returns the sum of all values in the set.</li>
+<li><a href="ds-set.toarray.html">Ds\Set::toArray</a> — Converts the set to an array.</li>
+<li><a href="ds-set.union.html">Ds\Set::union</a> — Creates a new set using values from the current instance and another set.</li>
+<li><a href="ds-set.xor.html">Ds\Set::xor</a> — Creates a new set using values in either the current instance or in another set, but not in both.</li>
+</ul>
+</li>
+<li><a href="class.ds-stack.html">Stack</a> — The Stack class<ul class="chunklist chunklist_title">
+<li><a href="ds-stack.allocate.html">Ds\Stack::allocate</a> — Allocates enough memory for a required capacity.</li>
+<li><a href="ds-stack.capacity.html">Ds\Stack::capacity</a> — Returns the current capacity.</li>
+<li><a href="ds-stack.clear.html">Ds\Stack::clear</a> — Removes all values.</li>
+<li><a href="ds-stack.construct.html">Ds\Stack::__construct</a> — Creates a new instance.</li>
+<li><a href="ds-stack.copy.html">Ds\Stack::copy</a> — Returns a shallow copy of the stack.</li>
+<li><a href="ds-stack.count.html">Ds\Stack::count</a> — Returns the number of values in the stack.</li>
+<li><a href="ds-stack.isempty.html">Ds\Stack::isEmpty</a> — Returns whether the stack is empty</li>
+<li><a href="ds-stack.jsonserialize.html">Ds\Stack::jsonSerialize</a> — Returns a representation that can be converted to JSON.</li>
+<li><a href="ds-stack.peek.html">Ds\Stack::peek</a> — Returns the value at the top of the stack.</li>
+<li><a href="ds-stack.pop.html">Ds\Stack::pop</a> — Removes and returns the value at the top of the stack.</li>
+<li><a href="ds-stack.push.html">Ds\Stack::push</a> — Pushes values onto the stack.</li>
+<li><a href="ds-stack.toarray.html">Ds\Stack::toArray</a> — Converts the stack to an array.</li>
+</ul>
+</li>
+<li><a href="class.ds-queue.html">Queue</a> — The Queue class<ul class="chunklist chunklist_title">
+<li><a href="ds-queue.allocate.html">Ds\Queue::allocate</a> — Allocates enough memory for a required capacity.</li>
+<li><a href="ds-queue.capacity.html">Ds\Queue::capacity</a> — Returns the current capacity.</li>
+<li><a href="ds-queue.clear.html">Ds\Queue::clear</a> — Removes all values.</li>
+<li><a href="ds-queue.construct.html">Ds\Queue::__construct</a> — Creates a new instance.</li>
+<li><a href="ds-queue.copy.html">Ds\Queue::copy</a> — Returns a shallow copy of the queue.</li>
+<li><a href="ds-queue.count.html">Ds\Queue::count</a> — Returns the number of values in the queue.</li>
+<li><a href="ds-queue.isempty.html">Ds\Queue::isEmpty</a> — Returns whether the queue is empty</li>
+<li><a href="ds-queue.jsonserialize.html">Ds\Queue::jsonSerialize</a> — Returns a representation that can be converted to JSON.</li>
+<li><a href="ds-queue.peek.html">Ds\Queue::peek</a> — Returns the value at the front of the queue.</li>
+<li><a href="ds-queue.pop.html">Ds\Queue::pop</a> — Removes and returns the value at the front of the queue.</li>
+<li><a href="ds-queue.push.html">Ds\Queue::push</a> — Pushes values into the queue.</li>
+<li><a href="ds-queue.toarray.html">Ds\Queue::toArray</a> — Converts the queue to an array.</li>
+</ul>
+</li>
+<li><a href="class.ds-priorityqueue.html">PriorityQueue</a> — The PriorityQueue class<ul class="chunklist chunklist_title">
+<li><a href="ds-priorityqueue.allocate.html">Ds\PriorityQueue::allocate</a> — Allocates enough memory for a required capacity.</li>
+<li><a href="ds-priorityqueue.capacity.html">Ds\PriorityQueue::capacity</a> — Returns the current capacity.</li>
+<li><a href="ds-priorityqueue.clear.html">Ds\PriorityQueue::clear</a> — Removes all values.</li>
+<li><a href="ds-priorityqueue.construct.html">Ds\PriorityQueue::__construct</a> — Creates a new instance.</li>
+<li><a href="ds-priorityqueue.copy.html">Ds\PriorityQueue::copy</a> — Returns a shallow copy of the queue.</li>
+<li><a href="ds-priorityqueue.count.html">Ds\PriorityQueue::count</a> — Returns the number of values in the queue.</li>
+<li><a href="ds-priorityqueue.isempty.html">Ds\PriorityQueue::isEmpty</a> — Returns whether the queue is empty</li>
+<li><a href="ds-priorityqueue.jsonserialize.html">Ds\PriorityQueue::jsonSerialize</a> — Returns a representation that can be converted to JSON.</li>
+<li><a href="ds-priorityqueue.peek.html">Ds\PriorityQueue::peek</a> — Returns the value at the front of the queue.</li>
+<li><a href="ds-priorityqueue.pop.html">Ds\PriorityQueue::pop</a> — Removes and returns the value with the highest priority.</li>
+<li><a href="ds-priorityqueue.push.html">Ds\PriorityQueue::push</a> — Pushes values into the queue.</li>
+<li><a href="ds-priorityqueue.toarray.html">Ds\PriorityQueue::toArray</a> — Converts the queue to an array.</li>
+</ul>
+</li>
+</ul>
+
+ 
+
+ 
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The Collection interface</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="ds-collection.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    <span class="classname">Collection</span> is the base interface which covers functionality
+    common to all the data structures in this library. It guarantees that all structures
+    are traversable, countable, and can be converted to json using <span class="function">json_encode</span>.
+   </p>
+  </div>
+
+
+  <div class="section" id="ds-collection.synopsis">
+   <h2 class="title">Interface synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">Ds\Collection</strong></div>
+
+
+    <div class="classsynopsisinfo">
+
+    <span class="ooclass"> class <strong class="classname">Ds\Collection</strong></span>
+
+    <span class="oointerface">implements <span class="interfacename">Traversable</span></span>
+    <span class="oointerface">, <span class="interfacename">Countable</span></span>
+    <span class="oointerface">, <span class="interfacename">JsonSerializable</span></span>
+
+     {</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">clear</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">Ds\Collection</span> <span class="methodname">copy</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isEmpty</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">toArray</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The Hashable interface</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="ds-hashable.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+        Hashable is an interface which allows objects to be used as keys.
+        It’s an alternative to <span class="function">spl_object_hash</span>,
+        which determines an object’s hash based on its handle:
+        this means that two objects that are considered equal by an implicit
+        definition would not treated as equal because they are not the same instance.
+   </p>
+   <p class="para">
+        <span class="function">hash</span> is used to return a scalar value to be used as
+        the object&#039;s hash value, which determines where it goes in the hash table.
+        While this value does not have to be unique, objects which are equal must
+        have the same hash value.
+    </p>
+    <p class="para">
+        <span class="function">equals</span> is used to determine if two objects are equal.
+        It&#039;s guaranteed that the comparing object will be an instance of the same class
+        as the subject.
+    </p>
+
+  </div>
+
+
+  <div class="section" id="ds-hashable.synopsis">
+   <h2 class="title">Interface synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">Ds\Hashable</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">Ds\Hashable</strong>
+     </span>
+     {</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">equals</span>
+    ( <span class="methodparam"><span class="type">object</span> <code class="parameter">$obj</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">hash</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The Sequence interface</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="ds-sequence.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+        A Sequence describes the behaviour of values arranged in a single, linear dimension.
+        Some languages refer to this as a &quot;List&quot;. It’s similar to an array that uses
+        incremental integer keys, with the exception of a few characteristics:
+        <ul class="simplelist">
+            <li class="member">Values will always be indexed as [0, 1, 2, …, size - 1].</li>
+            <li class="member">Only allowed to access values by index in the range [0, size - 1].</li>
+        </ul>
+    </p>
+    <p class="para">
+        Use cases:
+        <ul class="simplelist">
+            <li class="member">Wherever you would use an array as a list (not concerned with keys).</li>
+            <li class="member">A more efficient alternative to
+                <span class="classname">SplDoublyLinkedList</span> and
+                <span class="classname">SplFixedArray</span>.
+            </li>
+        </ul>
+   </p>
+  </div>
+
+
+  <div class="section" id="ds-sequence.synopsis">
+   <h2 class="title">Interface synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">Ds\Sequence</strong></div>
+
+
+    <div class="classsynopsisinfo">
+
+    <span class="ooclass"> class <strong class="classname">Ds\Sequence</strong></span>
+    <span class="oointerface">implements <span class="interfacename">Ds\Collection</span></span>
+
+     {</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">allocate</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$capacity</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">apply</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">capacity</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">contains</span>
+    ([ <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$...values</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">Ds\Sequence</span> <span class="methodname">filter</span>
+    ([ <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">find</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">first</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">get</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">insert</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$...values</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">join</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$glue</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">last</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">Ds\Sequence</span> <span class="methodname">map</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">Ds\Sequence</span> <span class="methodname">merge</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$values</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">pop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">push</span>
+    ([ <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$...values</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">reduce</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$initial</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">remove</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">reverse</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">Ds\Sequence</span> <span class="methodname">reversed</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">rotate</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$rotations</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">set</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">shift</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">Ds\Sequence</span> <span class="methodname">slice</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$length</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">sort</span>
+    ([ <span class="methodparam"><span class="type">callable</span> <code class="parameter">$comparator</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">Ds\Sequence</span> <span class="methodname">sorted</span>
+    ([ <span class="methodparam"><span class="type">callable</span> <code class="parameter">$comparator</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">number</span> <span class="methodname">sum</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span> <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">unshift</span>
+    ([ <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$values</code></span>
+  ] )</div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The Vector class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="ds-vector.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    A Vector is a sequence of values in a contiguous buffer that grows and
+    shrinks automatically. It’s the most efficient sequential structure because
+    a value’s index is a direct mapping to its index in the buffer, and the
+    growth factor isn&#039;t bound to a specific multiple or exponent.
+   </p>
+  </div>
+
+
+
+<div class="section" id="ds-vector.strengths">
+    <h2 class="title">Strengths</h2>
+    <p class="para">
+        <ul class="simplelist">
+            <li class="member">Supports array syntax (square brackets).</li>
+            <li class="member">Uses less overall memory than an <span class="type">array</span> for the same number of values.</li>
+            <li class="member">Automatically frees allocated memory when its size drops low enough.</li>
+            <li class="member">Capacity does not have to be a power of 2.</li>
+            <li class="member">
+                <span class="function">get</span>,
+                <span class="function">set</span>,
+                <span class="function">push</span>,
+                <span class="function">pop</span> are all O(1).
+            </li>
+        </ul>
+   </p>
+</div>
+
+<div class="section" id="ds-vector.weaknesses">
+    <h2 class="title">Weaknesses</h2>
+    <p class="para">
+        <ul class="simplelist">
+            <li class="member">
+                <span class="function">shift</span>,
+                <span class="function">unshift</span>,
+                <span class="function">insert</span> and
+                <span class="function">remove</span> are all O(n).
+            </li>
+        </ul>
+   </p>
+</div>
+
+  <div class="section" id="ds-vector.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+        <strong class="classname">Ds\Vector</strong>
+    </div>
+
+
+    <div class="classsynopsisinfo">
+
+    <span class="ooclass"> class <strong class="classname">Ds\Vector</strong></span>
+    <span class="oointerface">implements <span class="interfacename">Ds\Sequence</span></span>
+
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
+     <var class="fieldsynopsis_varname">Ds\Vector::MIN_CAPACITY</var>
+     <span class="initializer"> = 10</span>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">allocate</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$capacity</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">apply</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">capacity</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">clear</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">contains</span>
+    ([ <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$...values</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Vector</span> <span class="methodname">copy</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Vector</span> <span class="methodname">filter</span>
+    ([ <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">find</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">first</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">get</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">insert</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$...values</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isEmpty</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">join</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$glue</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">last</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Vector</span> <span class="methodname">map</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Vector</span> <span class="methodname">merge</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$values</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">pop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">push</span>
+    ([ <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$...values</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">reduce</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$initial</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">remove</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">reverse</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Vector</span> <span class="methodname">reversed</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">rotate</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$rotations</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">set</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">shift</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Vector</span> <span class="methodname">slice</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$length</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">sort</span>
+    ([ <span class="methodparam"><span class="type">callable</span> <code class="parameter">$comparator</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Vector</span> <span class="methodname">sorted</span>
+    ([ <span class="methodparam"><span class="type">callable</span> <code class="parameter">$comparator</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">number</span> <span class="methodname">sum</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">toArray</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">unshift</span>
+    ([ <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$values</code></span>
+  ] )</div>
+
+   }</div>
+
+
+  </div>
+
+
+  <div class="section" id="ds-vector.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <dl>
+
+
+    
+     <dt id="ds-vector.constants.min-capacity"><strong><code>Ds\Vector::MIN_CAPACITY</code></strong></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The Deque class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="ds-deque.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    A Deque (pronounced “deck”) is a sequence of values
+    in a contiguous buffer that grows and shrinks automatically.
+    The name is a common abbreviation of “double-ended queue” and is used
+    internally by <span class="classname">Ds\Queue</span>.
+   </p>
+   <p class="para">
+    Two pointers are used to keep track of a head and a tail. The pointers can
+    “wrap around” the end of the buffer, which avoids the need to move other
+    values around to make room. This makes shift and unshift very fast — 
+    something a <span class="classname">Ds\Vector</span> can’t compete with.
+   </p>
+   <p class="para">
+    Accessing a value by index requires a translation between the index and its
+    corresponding position in the buffer: <code class="code">((head + position) % capacity)</code>.
+   </p>
+  </div>
+
+
+<div class="section" id="ds-deque.strengths">
+    <h2 class="title">Strengths</h2>
+    <p class="para">
+        <ul class="simplelist">
+            <li class="member">Supports array syntax (square brackets).</li>
+            <li class="member">Uses less overall memory than an <span class="type">array</span> for the same number of values.</li>
+            <li class="member">Automatically frees allocated memory when its size drops low enough.</li>
+            <li class="member">
+                <span class="function">get</span>,
+                <span class="function">set</span>,
+                <span class="function">push</span>,
+                <span class="function">pop</span>,
+                <span class="function">shift</span>, and
+                <span class="function">unshift</span> are all O(1).
+            </li>
+        </ul>
+   </p>
+</div>
+
+<div class="section" id="ds-deque.weaknesses">
+    <h2 class="title">Weaknesses</h2>
+    <p class="para">
+        <ul class="simplelist">
+            <li class="member">Capacity must be a power of 2.</li>
+            <li class="member">
+                <span class="function">insert</span> and
+                <span class="function">remove</span> are O(n).
+            </li>
+        </ul>
+   </p>
+</div>
+
+  <div class="section" id="ds-deque.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">Ds\Deque</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">Ds\Deque</strong>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename">Ds\Sequence</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
+     <var class="fieldsynopsis_varname">Ds\Deque::MIN_CAPACITY</var>
+     <span class="initializer"> = 8</span>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">allocate</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$capacity</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">apply</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">capacity</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">clear</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">contains</span>
+    ([ <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$...values</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Deque</span> <span class="methodname">copy</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Deque</span> <span class="methodname">filter</span>
+    ([ <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">find</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">first</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">get</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">insert</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$...values</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isEmpty</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">join</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$glue</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">last</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Deque</span> <span class="methodname">map</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Deque</span> <span class="methodname">merge</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$values</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">pop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">push</span>
+    ([ <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$...values</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">reduce</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$initial</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">remove</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">reverse</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Deque</span> <span class="methodname">reversed</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">rotate</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$rotations</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">set</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">shift</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Deque</span> <span class="methodname">slice</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$length</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">sort</span>
+    ([ <span class="methodparam"><span class="type">callable</span> <code class="parameter">$comparator</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Deque</span> <span class="methodname">sorted</span>
+    ([ <span class="methodparam"><span class="type">callable</span> <code class="parameter">$comparator</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">number</span> <span class="methodname">sum</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">toArray</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">unshift</span>
+    ([ <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$values</code></span>
+  ] )</div>
+
+   }</div>
+
+
+  </div>
+
+
+  <div class="section" id="ds-deque.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <dl>
+
+
+    
+     <dt id="ds-deque.constants.min-capacity"><strong><code>Ds\Deque::MIN_CAPACITY</code></strong></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The Map class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="ds-map.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    A Map is a sequential collection of key-value pairs, almost identical to an
+    <span class="type">array</span> used in a similar context. Keys can be any type, but must be unique.
+    Values are replaced if added to the map using the same key.
+   </p>
+  </div>
+
+
+
+<div class="section" id="ds-map.strengths">
+    <h2 class="title">Strengths</h2>
+    <p class="para">
+        <ul class="simplelist">
+            <li class="member">Keys and values can be any type, including objects.</li>
+            <li class="member">Supports array syntax (square brackets).</li>
+            <li class="member">Insertion order is preserved.</li>
+            <li class="member">Performance and memory efficiency is very similar to an <span class="type">array</span>.</li>
+            <li class="member">Automatically frees allocated memory when its size drops low enough.</li>
+        </ul>
+   </p>
+</div>
+
+<div class="section" id="ds-map.weaknesses">
+    <h2 class="title">Weaknesses</h2>
+    <p class="para">
+        <ul class="simplelist">
+            <li class="member">Can’t be converted to an array when objects are used as keys.</li>
+        </ul>
+   </p>
+</div>
+
+
+  <div class="section" id="ds-map.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">Ds\Map</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">Ds\Map</strong>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename">Ds\Collection</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
+     <var class="fieldsynopsis_varname">Ds\Map::MIN_CAPACITY</var>
+     <span class="initializer"> = 16</span>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">allocate</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$capacity</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">apply</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">capacity</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">clear</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Map</span> <span class="methodname">copy</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Map</span> <span class="methodname">diff</span>
+    ( <span class="methodparam"><span class="type">Ds\Map</span> <code class="parameter">$map</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Map</span> <span class="methodname">filter</span>
+    ([ <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Pair</span> <span class="methodname">first</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">get</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$key</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$default</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">hasKey</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$key</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">hasValue</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Map</span> <span class="methodname">intersect</span>
+    ( <span class="methodparam"><span class="type">Ds\Map</span> <code class="parameter">$map</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isEmpty</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Set</span> <span class="methodname">keys</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">ksort</span>
+    ([ <span class="methodparam"><span class="type">callable</span> <code class="parameter">$comparator</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Map</span> <span class="methodname">ksorted</span>
+    ([ <span class="methodparam"><span class="type">callable</span> <code class="parameter">$comparator</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Pair</span> <span class="methodname">last</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Map</span> <span class="methodname">map</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Map</span> <span class="methodname">merge</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$values</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Sequence</span> <span class="methodname">pairs</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">put</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$key</code></span>
+   , <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">putAll</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$pairs</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">reduce</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$initial</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">remove</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$key</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$default</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">reverse</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Map</span> <span class="methodname">reversed</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Pair</span> <span class="methodname">skip</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$position</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Map</span> <span class="methodname">slice</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$length</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">sort</span>
+    ([ <span class="methodparam"><span class="type">callable</span> <code class="parameter">$comparator</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Map</span> <span class="methodname">sorted</span>
+    ([ <span class="methodparam"><span class="type">callable</span> <code class="parameter">$comparator</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">number</span> <span class="methodname">sum</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">toArray</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Map</span> <span class="methodname">union</span>
+    ( <span class="methodparam"><span class="type">Ds\Map</span> <code class="parameter">$map</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Sequence</span> <span class="methodname">values</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Map</span> <span class="methodname">xor</span>
+    ( <span class="methodparam"><span class="type">Ds\Map</span> <code class="parameter">$map</code></span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+
+  <div class="section" id="ds-map.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <dl>
+
+
+    
+     <dt id="ds-map.constants.min-capacity"><strong><code>Ds\Map::MIN_CAPACITY</code></strong></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The Pair class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="ds-pair.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    A pair is used by <span class="classname">Ds\Map</span> to pair keys with values.
+   </p>
+  </div>
+
+
+  <div class="section" id="ds-pair.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">Ds\Pair</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">Ds\Pair</strong>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename">JsonSerializable</span>
+     </span>
+     {</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="constructorsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ([ <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$key</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value</code></span>
+  ]] )</div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The Set class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="ds-set.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    A Set is a sequence of unique values. This implementation uses the same hash
+    table as <span class="classname">Ds\Map</span>, where values are used as keys and the
+    mapped value is ignored.
+   </p>
+  </div>
+
+
+
+<div class="section" id="ds-set.strengths">
+    <h2 class="title">Strengths</h2>
+    <p class="para">
+        <ul class="simplelist">
+            <li class="member">Values can be any type, including objects.</li>
+            <li class="member">Supports array syntax (square brackets).</li>
+            <li class="member">Insertion order is preserved.</li>
+            <li class="member">Automatically frees allocated memory when its size drops low enough.</li>
+            <li class="member">
+                <span class="function">add</span>,
+                <span class="function">remove</span> and
+                <span class="function">contains</span> are all O(1).
+            </li>
+        </ul>
+   </p>
+</div>
+
+<div class="section" id="ds-set.weaknesses">
+    <h2 class="title">Weaknesses</h2>
+    <p class="para">
+        <ul class="simplelist">
+            <li class="member">Doesn’t support
+                <span class="function">push</span>,
+                <span class="function">pop</span>,
+                <span class="function">insert</span>,
+                <span class="function">shift</span>, or
+                <span class="function">unshift</span>.
+            </li>
+            <li class="member">
+                <span class="function">get</span> is O(n) if there are deleted values
+                in the buffer before the accessed index, O(1) otherwise.
+            </li>
+        </ul>
+   </p>
+</div>
+
+  <div class="section" id="ds-set.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">Ds\Set</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">Ds\Set</strong>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename">Ds\Collection</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
+     <var class="fieldsynopsis_varname">Ds\Set::MIN_CAPACITY</var>
+     <span class="initializer"> = 16</span>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">add</span>
+    ([ <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$...values</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">allocate</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$capacity</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">capacity</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">clear</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">contains</span>
+    ([ <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$...values</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Set</span> <span class="methodname">copy</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Set</span> <span class="methodname">diff</span>
+    ( <span class="methodparam"><span class="type">Ds\Set</span> <code class="parameter">$set</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Set</span> <span class="methodname">filter</span>
+    ([ <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">first</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">get</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Set</span> <span class="methodname">intersect</span>
+    ( <span class="methodparam"><span class="type">Ds\Set</span> <code class="parameter">$set</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isEmpty</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">join</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$glue</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">last</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Set</span> <span class="methodname">merge</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$values</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">reduce</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$initial</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">remove</span>
+    ([ <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$...values</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">reverse</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Set</span> <span class="methodname">reversed</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Set</span> <span class="methodname">slice</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$length</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">sort</span>
+    ([ <span class="methodparam"><span class="type">callable</span> <code class="parameter">$comparator</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Set</span> <span class="methodname">sorted</span>
+    ([ <span class="methodparam"><span class="type">callable</span> <code class="parameter">$comparator</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">number</span> <span class="methodname">sum</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">toArray</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Set</span> <span class="methodname">union</span>
+    ( <span class="methodparam"><span class="type">Ds\Set</span> <code class="parameter">$set</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Set</span> <span class="methodname">xor</span>
+    ( <span class="methodparam"><span class="type">Ds\Set</span> <code class="parameter">$set</code></span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+
+  <div class="section" id="ds-set.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <dl>
+
+
+    
+     <dt id="ds-set.constants.min-capacity"><strong><code>Ds\Set::MIN_CAPACITY</code></strong></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The Stack class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="ds-stack.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    A Stack is a “last in, first out” or “LIFO” collection that only allows
+    access to the value at the top of the structure and iterates in that order,
+    destructively.
+   </p>
+   <p class="para">
+    Uses a <span class="classname">Ds\Vector</span> internally.
+   </p>
+  </div>
+
+
+  <div class="section" id="ds-stack.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">Ds\Stack</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">Ds\Stack</strong>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename">Ds\Collection</span>
+     </span>
+     {</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">allocate</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$capacity</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">capacity</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">clear</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Stack</span> <span class="methodname">copy</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isEmpty</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">peek</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">pop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">push</span>
+    ([ <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$...values</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">toArray</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The Queue class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="ds-queue.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    A Queue is a “first in, first out” or “FIFO” collection that only allows
+    access to the value at the front of the queue and iterates in that order,
+    destructively.
+   </p>
+  </div>
+
+
+  <div class="section" id="ds-queue.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">Ds\Queue</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">Ds\Queue</strong>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename">Ds\Collection</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
+     <var class="fieldsynopsis_varname">Ds\Queue::MIN_CAPACITY</var>
+     <span class="initializer"> = 8</span>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">allocate</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$capacity</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">capacity</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">clear</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\Queue</span> <span class="methodname">copy</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isEmpty</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">peek</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">pop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">push</span>
+    ([ <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$...values</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">toArray</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+
+  <div class="section" id="ds-queue.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <dl>
+
+
+    
+     <dt id="ds-queue.constants.min-capacity"><strong><code>Ds\Queue::MIN_CAPACITY</code></strong></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The PriorityQueue class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="ds-priorityqueue.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    A PriorityQueue is very similar to a Queue. Values are pushed into the queue
+    with an assigned priority, and the value with the highest priority will
+    always be at the front of the queue.
+   </p>
+   <p class="para">
+        Implemented using a max heap.
+   </p>
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+        <p class="para">
+            &quot;First in, first out&quot; ordering is preserved for values with the same priority.
+        </p>
+   </p></blockquote>
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+        <p class="para">
+            Iterating over a PriorityQueue is destructive, equivalent to successive pop operations until the queue is empty.
+        </p>
+   </p></blockquote>
+  </div>
+
+
+  <div class="section" id="ds-priorityqueue.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">Ds\PriorityQueue</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">Ds\PriorityQueue</strong>
+     </span>
+
+     <span class="oointerface">implements 
+      <span class="interfacename">Ds\Collection</span>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">int</span>
+     <var class="fieldsynopsis_varname">Ds\PriorityQueue::MIN_CAPACITY</var>
+     <span class="initializer"> = 8</span>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">allocate</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$capacity</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">capacity</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">clear</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Ds\PriorityQueue</span> <span class="methodname">copy</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">isEmpty</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">peek</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">pop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">push</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$value</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$priority</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">toArray</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+
+  <div class="section" id="ds-priorityqueue.constants">
+   <h2 class="title">Predefined Constants</h2>
+   <dl>
+
+
+    
+     <dt id="ds-priorityqueue.constants.min-capacity"><strong><code>Ds\PriorityQueue::MIN_CAPACITY</code></strong></dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+
+   </dl>
+
+  </div>
+
+
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

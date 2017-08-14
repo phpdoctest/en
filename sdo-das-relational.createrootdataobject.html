@@ -1,0 +1,157 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Returns the special root object in an otherwise 
+   empty data graph. Used when creating a data graph from scratch.</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.xml.html">XML Manipulation</a></li>
+  <li class="header up"><a href="book.sdodasrel.html">SDO-DAS-Relational</a></li>
+  <li class="header up"><a href="ref.sdodasrel.html">SDO-DAS-Relational Functions</a></li>
+  <li><a href="sdo-das-relational.applychanges.html">SDO_DAS_Relational::applyChanges</a></li>
+  <li><a href="sdo-das-relational.construct.html">SDO_DAS_Relational::__construct</a></li>
+  <li class="active"><a href="sdo-das-relational.createrootdataobject.html">SDO_DAS_Relational::createRootDataObject</a></li>
+  <li><a href="sdo-das-relational.executepreparedquery.html">SDO_DAS_Relational::executePreparedQuery</a></li>
+  <li><a href="sdo-das-relational.executequery.html">SDO_DAS_Relational::executeQuery</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="sdo-das-relational.construct.html">SDO_DAS_Relational::__construct</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="sdo-das-relational.executepreparedquery.html">SDO_DAS_Relational::executePreparedQuery</a></div>
+                <div class="up"><a href="ref.sdodasrel.html">SDO-DAS-Relational Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="sdo-das-relational.createrootdataobject" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SDO_DAS_Relational::createRootDataObject</h1>
+  <p class="refpurpose">
+   Returns the special root object in an otherwise 
+   empty data graph. Used when creating a data graph from scratch.
+  </p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-sdo-das-relational.createrootdataobject-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">SDODataObject</span>
+    <span class="methodname">SDO_DAS_Relational::createRootDataObject</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   <div class="warning"><strong class="warning">Warning</strong><p class="simpara">This function is
+<em class="emphasis">EXPERIMENTAL</em>. The behaviour of this function, its name, and
+surrounding documentation may change without notice in a future release of PHP.
+This function should be used at your own risk.
+</p></div>
+  <p class="para">
+   Returns the special root object at the top of an otherwise 
+   empty data graph.
+   This call is used when the application wants to create a 
+   data graph from scratch, without having called
+   <span class="function">executeQuery</span>
+   to create a data graph.
+  </p>
+  <p class="para">
+   The special root object has one multi-valued containment property, 
+   with a name of the application root type that was passed when 
+   the Relational DAS was constructed.
+   The property can take values of only that type.
+   The only thing that the application can usefully do with the root 
+   type is to call
+   <span class="function">createDataObject</span>
+   on it, passing the name of the application root type,
+   in order to create a data object of their own application type.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 parameters" id="refsect1-sdo-das-relational.createrootdataobject-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   None.
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-sdo-das-relational.createrootdataobject-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   The root object.
+  </p>
+ </div>
+
+
+
+
+ <div class="refsect1 errors" id="refsect1-sdo-das-relational.createrootdataobject-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <p class="para">
+   None.
+  </p>
+ </div>
+
+
+
+
+ <div class="refsect1 examples" id="refsect1-sdo-das-relational.createrootdataobject-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   Please see the
+   <a href="sdodasrel.examples.html" class="link">Examples</a>
+   section in the general information about the Relational DAS
+   for many examples of calling this method.
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,881 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Cairo Functions</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.utilspec.image.html">Image Processing and Generation</a></li>
+  <li class="header up"><a href="book.cairo.html">Cairo</a></li>
+  <li><a href="intro.cairo.html">Introduction</a></li>
+  <li><a href="cairo.setup.html">Installing/Configuring</a></li>
+  <li><a href="cairo.constants.html">Predefined Constants</a></li>
+  <li><a href="cairo.examples.html">Examples</a></li>
+  <li class="active"><a href="ref.cairo.html">Cairo Functions</a></li>
+  <li><a href="class.cairo.html">Cairo</a></li>
+  <li><a href="class.cairocontext.html">CairoContext</a></li>
+  <li><a href="class.cairoexception.html">CairoException</a></li>
+  <li><a href="class.cairostatus.html">CairoStatus</a></li>
+  <li><a href="class.cairosurface.html">CairoSurface</a></li>
+  <li><a href="class.cairosvgsurface.html">CairoSvgSurface</a></li>
+  <li><a href="class.cairoimagesurface.html">CairoImageSurface</a></li>
+  <li><a href="class.cairopdfsurface.html">CairoPdfSurface</a></li>
+  <li><a href="class.cairopssurface.html">CairoPsSurface</a></li>
+  <li><a href="class.cairosurfacetype.html">CairoSurfaceType</a></li>
+  <li><a href="class.cairofontface.html">CairoFontFace</a></li>
+  <li><a href="class.cairofontoptions.html">CairoFontOptions</a></li>
+  <li><a href="class.cairofontslant.html">CairoFontSlant</a></li>
+  <li><a href="class.cairofonttype.html">CairoFontType</a></li>
+  <li><a href="class.cairofontweight.html">CairoFontWeight</a></li>
+  <li><a href="class.cairoscaledfont.html">CairoScaledFont</a></li>
+  <li><a href="class.cairotoyfontface.html">CairoToyFontFace</a></li>
+  <li><a href="class.cairopatterntype.html">CairoPatternType</a></li>
+  <li><a href="class.cairopattern.html">CairoPattern</a></li>
+  <li><a href="class.cairogradientpattern.html">CairoGradientPattern</a></li>
+  <li><a href="class.cairosolidpattern.html">CairoSolidPattern</a></li>
+  <li><a href="class.cairosurfacepattern.html">CairoSurfacePattern</a></li>
+  <li><a href="class.cairolineargradient.html">CairoLinearGradient</a></li>
+  <li><a href="class.cairoradialgradient.html">CairoRadialGradient</a></li>
+  <li><a href="class.cairoantialias.html">CairoAntialias</a></li>
+  <li><a href="class.cairocontent.html">CairoContent</a></li>
+  <li><a href="class.cairoextend.html">CairoExtend</a></li>
+  <li><a href="class.cairoformat.html">CairoFormat</a></li>
+  <li><a href="class.cairofillrule.html">CairoFillRule</a></li>
+  <li><a href="class.cairofilter.html">CairoFilter</a></li>
+  <li><a href="class.cairohintmetrics.html">CairoHintMetrics</a></li>
+  <li><a href="class.cairohintstyle.html">CairoHintStyle</a></li>
+  <li><a href="class.cairolinecap.html">CairoLineCap</a></li>
+  <li><a href="class.cairolinejoin.html">CairoLineJoin</a></li>
+  <li><a href="class.cairomatrix.html">CairoMatrix</a></li>
+  <li><a href="class.cairooperator.html">CairoOperator</a></li>
+  <li><a href="class.cairopath.html">CairoPath</a></li>
+  <li><a href="class.cairopslevel.html">CairoPsLevel</a></li>
+  <li><a href="class.cairosubpixelorder.html">CairoSubpixelOrder</a></li>
+  <li><a href="class.cairosvgversion.html">CairoSvgVersion</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="cairo.examples.html">Examples</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.cairo-create.html">cairo_create</a></div>
+                <div class="up"><a href="book.cairo.html">Cairo</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="ref.cairo" class="reference">
+ <h1 class="title">Cairo Functions</h1>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+<strong>Table of Contents</strong><ul class="chunklist chunklist_reference">
+<li><a href="function.cairo-create.html">cairo_create</a> — Returns a new CairoContext object on the requested surface.</li>
+<li><a href="function.cairo-font-face-get-type.html">cairo_font_face_get_type</a> — Description</li>
+<li><a href="function.cairo-font-face-status.html">cairo_font_face_status</a> — Description</li>
+<li><a href="function.cairo-font-options-create.html">cairo_font_options_create</a> — Description</li>
+<li><a href="function.cairo-font-options-equal.html">cairo_font_options_equal</a> — Description</li>
+<li><a href="function.cairo-font-options-get-antialias.html">cairo_font_options_get_antialias</a> — Description</li>
+<li><a href="function.cairo-font-options-get-hint-metrics.html">cairo_font_options_get_hint_metrics</a> — Description</li>
+<li><a href="function.cairo-font-options-get-hint-style.html">cairo_font_options_get_hint_style</a> — Description</li>
+<li><a href="function.cairo-font-options-get-subpixel-order.html">cairo_font_options_get_subpixel_order</a> — Description</li>
+<li><a href="function.cairo-font-options-hash.html">cairo_font_options_hash</a> — Description</li>
+<li><a href="function.cairo-font-options-merge.html">cairo_font_options_merge</a> — Description</li>
+<li><a href="function.cairo-font-options-set-antialias.html">cairo_font_options_set_antialias</a> — Description</li>
+<li><a href="function.cairo-font-options-set-hint-metrics.html">cairo_font_options_set_hint_metrics</a> — Description</li>
+<li><a href="function.cairo-font-options-set-hint-style.html">cairo_font_options_set_hint_style</a> — Description</li>
+<li><a href="function.cairo-font-options-set-subpixel-order.html">cairo_font_options_set_subpixel_order</a> — Description</li>
+<li><a href="function.cairo-font-options-status.html">cairo_font_options_status</a> — Description</li>
+<li><a href="function.cairo-format-stride-for-width.html">cairo_format_stride_for_width</a> — Description</li>
+<li><a href="function.cairo-image-surface-create-for-data.html">cairo_image_surface_create_for_data</a> — Description</li>
+<li><a href="function.cairo-image-surface-create-from-png.html">cairo_image_surface_create_from_png</a> — Description</li>
+<li><a href="function.cairo-image-surface-create.html">cairo_image_surface_create</a> — Description</li>
+<li><a href="function.cairo-image-surface-get-data.html">cairo_image_surface_get_data</a> — Description</li>
+<li><a href="function.cairo-image-surface-get-format.html">cairo_image_surface_get_format</a> — Description</li>
+<li><a href="function.cairo-image-surface-get-height.html">cairo_image_surface_get_height</a> — Description</li>
+<li><a href="function.cairo-image-surface-get-stride.html">cairo_image_surface_get_stride</a> — Description</li>
+<li><a href="function.cairo-image-surface-get-width.html">cairo_image_surface_get_width</a> — Description</li>
+<li><a href="function.cairo-matrix-create-scale.html">cairo_matrix_create_scale</a> — Alias of CairoMatrix::initScale</li>
+<li><a href="function.cairo-matrix-create-translate.html">cairo_matrix_create_translate</a> — Alias of CairoMatrix::initTranslate</li>
+<li><a href="function.cairo-matrix-invert.html">cairo_matrix_invert</a> — Description</li>
+<li><a href="function.cairo-matrix-multiply.html">cairo_matrix_multiply</a> — Description</li>
+<li><a href="function.cairo-matrix-rotate.html">cairo_matrix_rotate</a> — Description</li>
+<li><a href="function.cairo-matrix-transform-distance.html">cairo_matrix_transform_distance</a> — Description</li>
+<li><a href="function.cairo-matrix-transform-point.html">cairo_matrix_transform_point</a> — Description</li>
+<li><a href="function.cairo-matrix-translate.html">cairo_matrix_translate</a> — Description</li>
+<li><a href="function.cairo-pattern-add-color-stop-rgb.html">cairo_pattern_add_color_stop_rgb</a> — Description</li>
+<li><a href="function.cairo-pattern-add-color-stop-rgba.html">cairo_pattern_add_color_stop_rgba</a> — Description</li>
+<li><a href="function.cairo-pattern-create-for-surface.html">cairo_pattern_create_for_surface</a> — Description</li>
+<li><a href="function.cairo-pattern-create-linear.html">cairo_pattern_create_linear</a> — Description</li>
+<li><a href="function.cairo-pattern-create-radial.html">cairo_pattern_create_radial</a> — Description</li>
+<li><a href="function.cairo-pattern-create-rgb.html">cairo_pattern_create_rgb</a> — Description</li>
+<li><a href="function.cairo-pattern-create-rgba.html">cairo_pattern_create_rgba</a> — Description</li>
+<li><a href="function.cairo-pattern-get-color-stop-count.html">cairo_pattern_get_color_stop_count</a> — Description</li>
+<li><a href="function.cairo-pattern-get-color-stop-rgba.html">cairo_pattern_get_color_stop_rgba</a> — Description</li>
+<li><a href="function.cairo-pattern-get-extend.html">cairo_pattern_get_extend</a> — Description</li>
+<li><a href="function.cairo-pattern-get-filter.html">cairo_pattern_get_filter</a> — Description</li>
+<li><a href="function.cairo-pattern-get-linear-points.html">cairo_pattern_get_linear_points</a> — Description</li>
+<li><a href="function.cairo-pattern-get-matrix.html">cairo_pattern_get_matrix</a> — Description</li>
+<li><a href="function.cairo-pattern-get-radial-circles.html">cairo_pattern_get_radial_circles</a> — Description</li>
+<li><a href="function.cairo-pattern-get-rgba.html">cairo_pattern_get_rgba</a> — Description</li>
+<li><a href="function.cairo-pattern-get-surface.html">cairo_pattern_get_surface</a> — Description</li>
+<li><a href="function.cairo-pattern-get-type.html">cairo_pattern_get_type</a> — Description</li>
+<li><a href="function.cairo-pattern-set-extend.html">cairo_pattern_set_extend</a> — Description</li>
+<li><a href="function.cairo-pattern-set-filter.html">cairo_pattern_set_filter</a> — Description</li>
+<li><a href="function.cairo-pattern-set-matrix.html">cairo_pattern_set_matrix</a> — Description</li>
+<li><a href="function.cairo-pattern-status.html">cairo_pattern_status</a> — Description</li>
+<li><a href="function.cairo-pdf-surface-create.html">cairo_pdf_surface_create</a> — Description</li>
+<li><a href="function.cairo-pdf-surface-set-size.html">cairo_pdf_surface_set_size</a> — Description</li>
+<li><a href="function.cairo-ps-get-levels.html">cairo_ps_get_levels</a> — Description</li>
+<li><a href="function.cairo-ps-level-to-string.html">cairo_ps_level_to_string</a> — Description</li>
+<li><a href="function.cairo-ps-surface-create.html">cairo_ps_surface_create</a> — Description</li>
+<li><a href="function.cairo-ps-surface-dsc-begin-page-setup.html">cairo_ps_surface_dsc_begin_page_setup</a> — Description</li>
+<li><a href="function.cairo-ps-surface-dsc-begin-setup.html">cairo_ps_surface_dsc_begin_setup</a> — Description</li>
+<li><a href="function.cairo-ps-surface-dsc-comment.html">cairo_ps_surface_dsc_comment</a> — Description</li>
+<li><a href="function.cairo-ps-surface-get-eps.html">cairo_ps_surface_get_eps</a> — Description</li>
+<li><a href="function.cairo-ps-surface-restrict-to-level.html">cairo_ps_surface_restrict_to_level</a> — Description</li>
+<li><a href="function.cairo-ps-surface-set-eps.html">cairo_ps_surface_set_eps</a> — Description</li>
+<li><a href="function.cairo-ps-surface-set-size.html">cairo_ps_surface_set_size</a> — Description</li>
+<li><a href="function.cairo-scaled-font-create.html">cairo_scaled_font_create</a> — Description</li>
+<li><a href="function.cairo-scaled-font-extents.html">cairo_scaled_font_extents</a> — Description</li>
+<li><a href="function.cairo-scaled-font-get-ctm.html">cairo_scaled_font_get_ctm</a> — Description</li>
+<li><a href="function.cairo-scaled-font-get-font-face.html">cairo_scaled_font_get_font_face</a> — Description</li>
+<li><a href="function.cairo-scaled-font-get-font-matrix.html">cairo_scaled_font_get_font_matrix</a> — Description</li>
+<li><a href="function.cairo-scaled-font-get-font-options.html">cairo_scaled_font_get_font_options</a> — Description</li>
+<li><a href="function.cairo-scaled-font-get-scale-matrix.html">cairo_scaled_font_get_scale_matrix</a> — Description</li>
+<li><a href="function.cairo-scaled-font-get-type.html">cairo_scaled_font_get_type</a> — Description</li>
+<li><a href="function.cairo-scaled-font-glyph-extents.html">cairo_scaled_font_glyph_extents</a> — Description</li>
+<li><a href="function.cairo-scaled-font-status.html">cairo_scaled_font_status</a> — Description</li>
+<li><a href="function.cairo-scaled-font-text-extents.html">cairo_scaled_font_text_extents</a> — Description</li>
+<li><a href="function.cairo-surface-copy-page.html">cairo_surface_copy_page</a> — Description</li>
+<li><a href="function.cairo-surface-create-similar.html">cairo_surface_create_similar</a> — Description</li>
+<li><a href="function.cairo-surface-finish.html">cairo_surface_finish</a> — Description</li>
+<li><a href="function.cairo-surface-flush.html">cairo_surface_flush</a> — Description</li>
+<li><a href="function.cairo-surface-get-content.html">cairo_surface_get_content</a> — Description</li>
+<li><a href="function.cairo-surface-get-device-offset.html">cairo_surface_get_device_offset</a> — Description</li>
+<li><a href="function.cairo-surface-get-font-options.html">cairo_surface_get_font_options</a> — Description</li>
+<li><a href="function.cairo-surface-get-type.html">cairo_surface_get_type</a> — Description</li>
+<li><a href="function.cairo-surface-mark-dirty-rectangle.html">cairo_surface_mark_dirty_rectangle</a> — Description</li>
+<li><a href="function.cairo-surface-mark-dirty.html">cairo_surface_mark_dirty</a> — Description</li>
+<li><a href="function.cairo-surface-set-device-offset.html">cairo_surface_set_device_offset</a> — Description</li>
+<li><a href="function.cairo-surface-set-fallback-resolution.html">cairo_surface_set_fallback_resolution</a> — Description</li>
+<li><a href="function.cairo-surface-show-page.html">cairo_surface_show_page</a> — Description</li>
+<li><a href="function.cairo-surface-status.html">cairo_surface_status</a> — Description</li>
+<li><a href="function.cairo-surface-write-to-png.html">cairo_surface_write_to_png</a> — Description</li>
+<li><a href="function.cairo-svg-surface-create.html">cairo_svg_surface_create</a> — Description</li>
+<li><a href="function.cairo-svg-surface-restrict-to-version.html">cairo_svg_surface_restrict_to_version</a> — Description</li>
+<li><a href="function.cairo-svg-version-to-string.html">cairo_svg_version_to_string</a> — Description</li>
+</ul>
+</ol>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

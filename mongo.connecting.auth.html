@@ -1,0 +1,119 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Authentication</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.mongo.html">Mongo</a></li>
+  <li class="header up"><a href="mongo.manual.html">Manual</a></li>
+  <li class="header up"><a href="mongo.connecting.html">Connecting</a></li>
+  <li><a href="mongo.connecting.ssl.html">Connecting over SSL</a></li>
+  <li class="active"><a href="mongo.connecting.auth.html">Authentication</a></li>
+  <li><a href="mongo.connecting.rs.html">Replica Sets</a></li>
+  <li><a href="mongo.connecting.mongos.html">Sharding</a></li>
+  <li><a href="mongo.connecting.uds.html">Domain Socket Support</a></li>
+  <li><a href="mongo.connecting.persistent.html">Persistent Connections (version 1.3.0+)</a></li>
+  <li><a href="mongo.connecting.pools.html">Connection Pooling (version 1.2.0-1.2.12 *only*)</a></li>
+  <li><a href="mongo.connecting.persistent.manual.html">Manually Persistent Connections (version up to 1.1.4 *only*)</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mongo.connecting.ssl.html">Connecting over SSL</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mongo.connecting.rs.html">Replica Sets</a></div>
+                <div class="up"><a href="mongo.connecting.html">Connecting</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mongo.connecting.auth" class="section">
+  <h2 class="title">Authentication</h2>
+  <p class="para">
+   If MongoDB is started with the <em>--auth</em> or
+   <em>--keyFile</em> options, you must authenticate before you can do
+   any operations with the driver. You may authenticate a connection by
+   specifying the username and password in either the connection URI or the
+   <em>&quot;username&quot;</em> and <em>&quot;password&quot;</em> options for
+   <span class="function">MongoClient::__construct</span>.
+  </p>
+  <div class="example" id="mongo.tutorial.multi.query-example">
+   <p><strong>Example #1 Authenticating against the &quot;admin&quot; database</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Specifying&nbsp;the&nbsp;username&nbsp;and&nbsp;password&nbsp;in&nbsp;the&nbsp;connection&nbsp;URI&nbsp;(preferred)<br /></span><span style="color: #0000BB">$m&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoClient</span><span style="color: #007700">(</span><span style="color: #DD0000">"mongodb://</span><span style="color: #007700">${</span><span style="color: #0000BB">username</span><span style="color: #007700">}</span><span style="color: #DD0000">:</span><span style="color: #007700">${</span><span style="color: #0000BB">password</span><span style="color: #007700">}</span><span style="color: #DD0000">@localhost"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Specifying&nbsp;the&nbsp;username&nbsp;and&nbsp;password&nbsp;via&nbsp;the&nbsp;options&nbsp;array&nbsp;(alternative)<br /></span><span style="color: #0000BB">$m&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoClient</span><span style="color: #007700">(</span><span style="color: #DD0000">"mongodb://localhost"</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">"username"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$username</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"password"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$password</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+  <p class="para">
+   By default, the driver will authenticate against the <em>admin</em>
+   database. You may authenticate against a different database by specifying it
+   in either the connection URI or the <em>&quot;db&quot;</em> option for
+   <span class="function">MongoClient::__construct</span>.
+  </p>
+  <div class="example" id="mongo.tutorial.indexes-example">
+   <p><strong>Example #2 Authenticating against normal databases</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Specifying&nbsp;the&nbsp;authentication&nbsp;database&nbsp;in&nbsp;the&nbsp;connection&nbsp;URI&nbsp;(preferred)<br /></span><span style="color: #0000BB">$m&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoClient</span><span style="color: #007700">(</span><span style="color: #DD0000">"mongodb://</span><span style="color: #007700">${</span><span style="color: #0000BB">username</span><span style="color: #007700">}</span><span style="color: #DD0000">:</span><span style="color: #007700">${</span><span style="color: #0000BB">password</span><span style="color: #007700">}</span><span style="color: #DD0000">@localhost/myDatabase"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Specifying&nbsp;the&nbsp;authentication&nbsp;database&nbsp;via&nbsp;the&nbsp;options&nbsp;array&nbsp;(alternative)<br /></span><span style="color: #0000BB">$m&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">MongoClient</span><span style="color: #007700">(</span><span style="color: #DD0000">"mongodb://</span><span style="color: #007700">${</span><span style="color: #0000BB">username</span><span style="color: #007700">}</span><span style="color: #DD0000">:</span><span style="color: #007700">${</span><span style="color: #0000BB">password</span><span style="color: #007700">}</span><span style="color: #DD0000">@localhost"</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">"db"&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">"myDatabase"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+  <p class="para">
+   If your connection is dropped, the driver will automatically attempt to
+   reconnect and reauthenticate you.
+  </p>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

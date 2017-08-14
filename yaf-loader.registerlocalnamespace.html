@@ -1,0 +1,169 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: register local class prefix</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.yaf.html">Yaf</a></li>
+  <li class="header up"><a href="class.yaf-loader.html">Yaf_Loader</a></li>
+  <li><a href="yaf-loader.autoload.html">Yaf_Loader::autoload</a></li>
+  <li><a href="yaf-loader.clearlocalnamespace.html">Yaf_Loader::clearLocalNamespace</a></li>
+  <li><a href="yaf-loader.clone.html">Yaf_Loader::__clone</a></li>
+  <li><a href="yaf-loader.construct.html">Yaf_Loader::__construct</a></li>
+  <li><a href="yaf-loader.getinstance.html">Yaf_Loader::getInstance</a></li>
+  <li><a href="yaf-loader.getlibrarypath.html">Yaf_Loader::getLibraryPath</a></li>
+  <li><a href="yaf-loader.getlocalnamespace.html">Yaf_Loader::getLocalNamespace</a></li>
+  <li><a href="yaf-loader.import.html">Yaf_Loader::import</a></li>
+  <li><a href="yaf-loader.islocalname.html">Yaf_Loader::isLocalName</a></li>
+  <li class="active"><a href="yaf-loader.registerlocalnamespace.html">Yaf_Loader::registerLocalNamespace</a></li>
+  <li><a href="yaf-loader.setlibrarypath.html">Yaf_Loader::setLibraryPath</a></li>
+  <li><a href="yaf-loader.sleep.html">Yaf_Loader::__sleep</a></li>
+  <li><a href="yaf-loader.wakeup.html">Yaf_Loader::__wakeup</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="yaf-loader.islocalname.html">Yaf_Loader::isLocalName</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="yaf-loader.setlibrarypath.html">Yaf_Loader::setLibraryPath</a></div>
+                <div class="up"><a href="class.yaf-loader.html">Yaf_Loader</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="yaf-loader.registerlocalnamespace" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Yaf_Loader::registerLocalNamespace</h1>
+  <p class="refpurpose">register local class prefix</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-yaf-loader.registerlocalnamespace-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">Yaf_Loader::registerLocalNamespace</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$prefix</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Register local class prefix name, <span class="classname">Yaf_Loader</span> search
+   classes in two library directories, the one is configured via <a href="yaf.appconfig.html#configuration.yaf.library" class="link">application.library.directory</a>(in
+   application.ini) which is called local libraray directory; the other is
+   configured via <a href="yaf.configuration.html#ini.yaf.library" class="link">yaf.library</a> (in
+   php.ini) which is callled global library directory, since it can be shared
+   by many applications in the same server. 
+  </p>
+  <p class="para">
+   When an autloading is trigger, <span class="classname">Yaf_Loader</span> will
+   determine which library directory should be searched in by exame the prefix
+   name of the missed classname.
+
+   If the prefix name is registered as a localnamespack then look for it in
+   local library directory, otherwise look for it in global library directory.
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <p class="para">
+     If yaf.library is not configured, then the global library directory is
+     assumed to be the local library directory. in that case, all autoloading
+     will look for local library directory. 
+
+     But if you want your Yaf application be strong, then always register your
+     own classes as local classes.
+    </p>
+   </p></blockquote>
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-yaf-loader.registerlocalnamespace-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">prefix</code></dt>
+
+    <dd>
+
+     <p class="para">
+      a string or a array of class name prefix.
+      all class prefix with these prefix will be loaded in local library path.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-yaf-loader.registerlocalnamespace-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   bool
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-yaf-loader.registerlocalnamespace-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-4745">
+   <p><strong>Example #1 <span class="function">Yaf_Loader::registerLocalNamespace</span>example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$loader&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">Yaf_Loader</span><span style="color: #007700">::</span><span style="color: #0000BB">getInstance</span><span style="color: #007700">(</span><span style="color: #DD0000">'/local/library/'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'/global/library'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$loader</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">registerLocalNamespace</span><span style="color: #007700">(</span><span style="color: #DD0000">"Baidu"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$loader</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">registerLocalNamespace</span><span style="color: #007700">(array(</span><span style="color: #DD0000">"Sina"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"Weibo"</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">$loader</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">autoload</span><span style="color: #007700">(</span><span style="color: #DD0000">"Baidu_Name"</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;search&nbsp;in&nbsp;'/local/library/'<br /></span><span style="color: #0000BB">$loader</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">autoload</span><span style="color: #007700">(</span><span style="color: #DD0000">"Sina"</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;search&nbsp;'/local/library/'<br /></span><span style="color: #0000BB">$loader</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">autoload</span><span style="color: #007700">(</span><span style="color: #DD0000">"Global_Name"</span><span style="color: #007700">);</span><span style="color: #FF8000">//&nbsp;search&nbsp;in&nbsp;'/global/library/'<br /></span><span style="color: #0000BB">$loader</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">autoload</span><span style="color: #007700">(</span><span style="color: #DD0000">"Foo_Bar"</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;search&nbsp;in&nbsp;'/global/library/'<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

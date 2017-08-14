@@ -1,0 +1,363 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Construct immutable ReadPreference</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="set.mongodb.html">MongoDB</a></li>
+  <li class="header up"><a href="book.mongodb.html">MongoDB\Driver</a></li>
+  <li class="header up"><a href="class.mongodb-driver-readpreference.html">MongoDB\Driver\ReadPreference</a></li>
+  <li><a href="mongodb-driver-readpreference.bsonserialize.html">MongoDB\Driver\ReadPreference::bsonSerialize</a></li>
+  <li class="active"><a href="mongodb-driver-readpreference.construct.html">MongoDB\Driver\ReadPreference::__construct</a></li>
+  <li><a href="mongodb-driver-readpreference.getmaxstalenessseconds.html">MongoDB\Driver\ReadPreference::getMaxStalenessSeconds</a></li>
+  <li><a href="mongodb-driver-readpreference.getmode.html">MongoDB\Driver\ReadPreference::getMode</a></li>
+  <li><a href="mongodb-driver-readpreference.gettagsets.html">MongoDB\Driver\ReadPreference::getTagSets</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mongodb-driver-readpreference.bsonserialize.html">MongoDB\Driver\ReadPreference::bsonSerialize</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mongodb-driver-readpreference.getmaxstalenessseconds.html">MongoDB\Driver\ReadPreference::getMaxStalenessSeconds</a></div>
+                <div class="up"><a href="class.mongodb-driver-readpreference.html">MongoDB\Driver\ReadPreference</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mongodb-driver-readpreference.construct" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">MongoDB\Driver\ReadPreference::__construct</h1>
+  <p class="refpurpose">Construct immutable ReadPreference</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mongodb-driver-readpreference.construct-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span> <span class="modifier">public</span>  <span class="methodname">MongoDB\Driver\ReadPreference::__construct</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$mode</code></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$tagSets</code><span class="initializer"> = <strong><code>NULL</code></strong></span></span>
+   [, <span class="methodparam"><span class="type">array</span> <code class="parameter">$options</code><span class="initializer"> = []</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Creates a new ReadPreference.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mongodb-driver-readpreference.construct-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+<code class="parameter">mode</code></dt>
+
+    <dd>
+
+     <p class="para">
+      <table class="doctable table">
+       <caption><strong>Read preference mode</strong></caption>
+       
+        <thead>
+         <tr>
+          <th>Value</th>
+          <th>Description</th>
+         </tr>
+
+        </thead>
+
+        <tbody class="tbody">
+         <tr>
+          <td><strong><code>MongoDB\Driver\ReadPreference::RP_PRIMARY</code></strong></td>
+          <td>
+           <p class="para">
+            All operations read from the current replica set primary. This is
+            the default read preference for MongoDB.
+           </p>
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>MongoDB\Driver\ReadPreference::RP_PRIMARY_PREFERRED</code></strong></td>
+          <td>
+           <p class="para">
+            In most situations, operations read from the primary but if it is
+            unavailable, operations read from secondary members.
+           </p>
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>MongoDB\Driver\ReadPreference::RP_SECONDARY</code></strong></td>
+          <td>
+           <p class="para">
+            All operations read from the secondary members of the replica set.
+           </p>
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>MongoDB\Driver\ReadPreference::RP_SECONDARY_PREFERRED</code></strong></td>
+          <td>
+           <p class="para">
+            In most situations, operations read from secondary members but if no
+            secondary members are available, operations read from the primary.
+           </p>
+          </td>
+         </tr>
+
+         <tr>
+          <td><strong><code>MongoDB\Driver\ReadPreference::RP_NEAREST</code></strong></td>
+          <td>
+           <p class="para">
+            Operations read from member of the replica set with the least
+            network latency, irrespective of the member&#039;s type.
+           </p>
+          </td>
+         </tr>
+
+        </tbody>
+       
+      </table>
+
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">tagSets</code></dt>
+
+    <dd>
+
+     <p class="para">
+      Tag sets allow you to target read operations to specific members of a
+      replica set. This parameter should be an array of associative arrays, each
+      of which contain zero or more key/value pairs. When selecting a server for
+      a read operation, the driver attempt to select a node having all tags in a
+      set (i.e. the associative array of key/value pairs). If selection fails,
+      the driver will attempt subsequent sets. An empty tag set
+      (<em>array()</em>) will match any node and may be used as a
+      fallback.
+     </p>
+     <p class="para">
+      Tags are not compatible with the
+      <strong><code>MongoDB\Driver\ReadPreference::RP_PRIMARY</code></strong> mode and,
+      in general, only apply when selecting a secondary member of a set for a
+      read operation. However, the
+      <strong><code>MongoDB\Driver\ReadPreference::RP_NEAREST</code></strong> mode, when
+      combined with a tag set, selects the matching member with the lowest
+      network latency. This member may be a primary or secondary.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+<code class="parameter">options</code></dt>
+
+    <dd>
+
+     <p class="para">
+      <table class="doctable table">
+       <caption><strong>options</strong></caption>
+       
+        <thead>
+         <tr>
+          <th>Option</th>
+          <th>Type</th>
+          <th>Description</th>
+         </tr>
+
+        </thead>
+
+        <tbody class="tbody">
+         <tr>
+          <td>maxStalenessSeconds</td>
+          <td><span class="type">integer</span></td>
+          <td>
+           <p class="para">
+            Specifies a maximum replication lag, or &quot;staleness&quot;, for reads from
+            secondaries. When a secondary&#039;s estimated staleness exceeds
+            this value, the driver stops using it for read operations.
+           </p>
+           <p class="para">
+            If specified, the max staleness must be a signed 32-bit integer
+            greater than or equal to
+            <strong><code>MongoDB\Driver\ReadPreference::SMALLEST_MAX_STALENESS_SECONDS</code></strong>.
+           </p>
+           <p class="para">
+            Defaults to
+            <strong><code>MongoDB\Driver\ReadPreference::NO_MAX_STALENESS</code></strong>,
+            which means that the driver will not consider a secondary&#039;s lag
+            when choosing where to direct a read operation.
+           </p>
+           <p class="para">
+            This option is not compatible with the
+            <strong><code>MongoDB\Driver\ReadPreference::RP_PRIMARY</code></strong> mode.
+            Specifying a max staleness also requires all MongoDB instances in
+            the deployment to be using MongoDB 3.4+. An exception will be thrown
+            at execution time if any MongoDB instances in the deployment are of
+            an older server version.
+           </p>
+          </td>
+         </tr>
+
+        </tbody>
+       
+      </table>
+
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 errors" id="refsect1-mongodb-driver-readpreference.construct-errors">
+  <h3 class="title">Errors/Exceptions</h3>
+  <ul class="simplelist">
+   <li class="member">Throws <span class="classname">MongoDB\Driver\Exception\InvalidArgumentException</span> on argument parsing errors.</li>
+   <li class="member">Throws <span class="classname">MongoDB\Driver\Exception\InvalidArgumentException</span> if <code class="parameter">mode</code> is invalid.</li>
+   <li class="member">Throws <span class="classname">MongoDB\Driver\Exception\InvalidArgumentException</span> if <code class="parameter">tagSets</code> is provided for a primary read preference or is malformed (i.e. not an array of zero or more documents).</li>
+   <li class="member">Throws <span class="classname">MongoDB\Driver\Exception\InvalidArgumentException</span> if the <em>&quot;maxStalenessSeconds&quot;</em> option is provided for a primary read preference or is out of range.</li>
+  </ul>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-mongodb-driver-readpreference.construct-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>1.2.0</td>
+       <td>
+        <p class="para">
+         Added a third <code class="parameter">options</code> argument, which supports
+         the <em>&quot;maxStalenessSeconds&quot;</em> option.
+        </p>
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-mongodb-driver-readpreference.construct-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-1675">
+   <p><strong>Example #1 <span class="function">MongoDB\Driver\ReadPreference::__construct</span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">/*&nbsp;Prefer&nbsp;a&nbsp;secondary&nbsp;node&nbsp;but&nbsp;fall&nbsp;back&nbsp;to&nbsp;a&nbsp;primary.&nbsp;*/<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">ReadPreference</span><span style="color: #007700">(</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">ReadPreference</span><span style="color: #007700">::</span><span style="color: #0000BB">RP_SECONDARY_PREFERRED</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">/*&nbsp;Prefer&nbsp;a&nbsp;node&nbsp;in&nbsp;the&nbsp;New&nbsp;York&nbsp;data&nbsp;center&nbsp;with&nbsp;lowest&nbsp;latency.&nbsp;*/<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">ReadPreference</span><span style="color: #007700">(</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">ReadPreference</span><span style="color: #007700">::</span><span style="color: #0000BB">RP_NEAREST</span><span style="color: #007700">,&nbsp;[[</span><span style="color: #DD0000">'dc'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'ny'</span><span style="color: #007700">]]));<br /><br /></span><span style="color: #FF8000">/*&nbsp;Require&nbsp;a&nbsp;secondary&nbsp;node&nbsp;whose&nbsp;replication&nbsp;lag&nbsp;is&nbsp;within&nbsp;two&nbsp;minutes&nbsp;of&nbsp;the&nbsp;primary&nbsp;*/<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(new&nbsp;</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">ReadPreference</span><span style="color: #007700">(</span><span style="color: #0000BB">MongoDB</span><span style="color: #007700">\</span><span style="color: #0000BB">Driver</span><span style="color: #007700">\</span><span style="color: #0000BB">ReadPreference</span><span style="color: #007700">::</span><span style="color: #0000BB">RP_SECONDARY</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">null</span><span style="color: #007700">,&nbsp;[</span><span style="color: #DD0000">'maxStalenessSeconds'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">120</span><span style="color: #007700">]));<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+object(MongoDB\Driver\ReadPreference)#1 (1) {
+  [&quot;mode&quot;]=&gt;
+  string(18) &quot;secondaryPreferred&quot;
+}
+object(MongoDB\Driver\ReadPreference)#1 (2) {
+  [&quot;mode&quot;]=&gt;
+  string(7) &quot;nearest&quot;
+  [&quot;tags&quot;]=&gt;
+  array(1) {
+    [0]=&gt;
+    object(stdClass)#2 (1) {
+      [&quot;dc&quot;]=&gt;
+      string(2) &quot;ny&quot;
+    }
+  }
+}
+object(MongoDB\Driver\ReadPreference)#1 (2) {
+  [&quot;mode&quot;]=&gt;
+  string(9) &quot;secondary&quot;
+  [&quot;maxStalenessSeconds&quot;]=&gt;
+  int(120)
+}
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+
+ <div class="refsect1 seealso" id="refsect1-mongodb-driver-readpreference.construct-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li class="member"><a href="https://docs.mongodb.com/manual/core/read-preference/" class="link external">&raquo;&nbsp;Read Preference reference</a></li>
+  </ul>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

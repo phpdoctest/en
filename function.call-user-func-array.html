@@ -1,0 +1,293 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Call a callback with an array of parameters</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.vartype.html">Variable and Type Related Extensions</a></li>
+  <li class="header up"><a href="book.funchand.html">Function Handling</a></li>
+  <li class="header up"><a href="ref.funchand.html">Function handling Functions</a></li>
+  <li class="active"><a href="function.call-user-func-array.html">call_user_func_array</a></li>
+  <li><a href="function.call-user-func.html">call_user_func</a></li>
+  <li><a href="function.create-function.html">create_function</a></li>
+  <li><a href="function.forward-static-call-array.html">forward_static_call_array</a></li>
+  <li><a href="function.forward-static-call.html">forward_static_call</a></li>
+  <li><a href="function.func-get-arg.html">func_get_arg</a></li>
+  <li><a href="function.func-get-args.html">func_get_args</a></li>
+  <li><a href="function.func-num-args.html">func_num_args</a></li>
+  <li><a href="function.function-exists.html">function_exists</a></li>
+  <li><a href="function.get-defined-functions.html">get_defined_functions</a></li>
+  <li><a href="function.register-shutdown-function.html">register_shutdown_function</a></li>
+  <li><a href="function.register-tick-function.html">register_tick_function</a></li>
+  <li><a href="function.unregister-tick-function.html">unregister_tick_function</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="ref.funchand.html">Function handling Functions</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.call-user-func.html">call_user_func</a></div>
+                <div class="up"><a href="ref.funchand.html">Function handling Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.call-user-func-array" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">call_user_func_array</h1>
+  <p class="refpurpose">Call a callback with an array of parameters</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.call-user-func-array-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname">call_user_func_array</span>
+    ( <span class="methodparam"><span class="type">callable</span> <code class="parameter">$callback</code></span>
+   , <span class="methodparam"><span class="type">array</span> <code class="parameter">$param_arr</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Calls the <code class="parameter">callback</code> given by the first parameter with
+   the parameters in <code class="parameter">param_arr</code>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.call-user-func-array-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">callback</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The <span class="type">callable</span> to be called.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">param_arr</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The parameters to be passed to the callback, as an indexed array.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.call-user-func-array-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns the return value of the callback, or <strong><code>FALSE</code></strong> on error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.call-user-func-array-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.3.0</td>
+       <td>
+        The interpretation of object oriented keywords like <em>parent</em> 
+        and <em>self</em> has changed. Previously, calling them using the 
+        double colon syntax would emit an <strong><code>E_STRICT</code></strong> warning because 
+        they were interpreted as static.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.call-user-func-array-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-5954">
+    <p><strong>Example #1 <span class="function">call_user_func_array</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">foobar</span><span style="color: #007700">(</span><span style="color: #0000BB">$arg</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$arg2</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">__FUNCTION__</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"&nbsp;got&nbsp;</span><span style="color: #0000BB">$arg</span><span style="color: #DD0000">&nbsp;and&nbsp;</span><span style="color: #0000BB">$arg2</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}<br />class&nbsp;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">bar</span><span style="color: #007700">(</span><span style="color: #0000BB">$arg</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$arg2</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">__METHOD__</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"&nbsp;got&nbsp;</span><span style="color: #0000BB">$arg</span><span style="color: #DD0000">&nbsp;and&nbsp;</span><span style="color: #0000BB">$arg2</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /><br /></span><span style="color: #FF8000">//&nbsp;Call&nbsp;the&nbsp;foobar()&nbsp;function&nbsp;with&nbsp;2&nbsp;arguments<br /></span><span style="color: #0000BB">call_user_func_array</span><span style="color: #007700">(</span><span style="color: #DD0000">"foobar"</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">"one"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"two"</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;Call&nbsp;the&nbsp;$foo-&gt;bar()&nbsp;method&nbsp;with&nbsp;2&nbsp;arguments<br /></span><span style="color: #0000BB">$foo&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">call_user_func_array</span><span style="color: #007700">(array(</span><span style="color: #0000BB">$foo</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"bar"</span><span style="color: #007700">),&nbsp;array(</span><span style="color: #DD0000">"three"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"four"</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+foobar got one and two
+foo::bar got three and four
+</pre></div>
+    </div>
+   </div>
+   <div class="example" id="example-5955">
+    <p><strong>Example #2 <span class="function">call_user_func_array</span> using namespace name</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">namespace&nbsp;</span><span style="color: #0000BB">Foobar</span><span style="color: #007700">;<br /><br />class&nbsp;</span><span style="color: #0000BB">Foo&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;static&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">test</span><span style="color: #007700">(</span><span style="color: #0000BB">$name</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;print&nbsp;</span><span style="color: #DD0000">"Hello&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$name</span><span style="color: #007700">}</span><span style="color: #DD0000">!\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;As&nbsp;of&nbsp;PHP&nbsp;5.3.0<br /></span><span style="color: #0000BB">call_user_func_array</span><span style="color: #007700">(</span><span style="color: #0000BB">__NAMESPACE__&nbsp;</span><span style="color: #007700">.</span><span style="color: #DD0000">'\Foo::test'</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #DD0000">'Hannes'</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;As&nbsp;of&nbsp;PHP&nbsp;5.3.0<br /></span><span style="color: #0000BB">call_user_func_array</span><span style="color: #007700">(array(</span><span style="color: #0000BB">__NAMESPACE__&nbsp;</span><span style="color: #007700">.</span><span style="color: #DD0000">'\Foo'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'test'</span><span style="color: #007700">),&nbsp;array(</span><span style="color: #DD0000">'Philip'</span><span style="color: #007700">));<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Hello Hannes!
+Hello Philip!
+</pre></div>
+    </div>
+   </div>
+   <div class="example" id="example-5956">
+    <p><strong>Example #3 Using lambda function</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$func&nbsp;</span><span style="color: #007700">=&nbsp;function(</span><span style="color: #0000BB">$arg1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$arg2</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$arg1&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">$arg2</span><span style="color: #007700">;<br />};<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">call_user_func_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$func</span><span style="color: #007700">,&nbsp;array(</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">)));&nbsp;</span><span style="color: #FF8000">/*&nbsp;As&nbsp;of&nbsp;PHP&nbsp;5.3.0&nbsp;*/<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+int(8)
+</pre></div>
+    </div>
+   </div>
+   <div class="example" id="example-5957">
+    <p><strong>Example #4 Passing values by reference</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">mega</span><span style="color: #007700">(&amp;</span><span style="color: #0000BB">$a</span><span style="color: #007700">){<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">55</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"function&nbsp;mega&nbsp;\$a=</span><span style="color: #0000BB">$a</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">$bar&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">77</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">call_user_func_array</span><span style="color: #007700">(</span><span style="color: #DD0000">'mega'</span><span style="color: #007700">,array(&amp;</span><span style="color: #0000BB">$bar</span><span style="color: #007700">));<br />echo&nbsp;</span><span style="color: #DD0000">"global&nbsp;\$bar=</span><span style="color: #0000BB">$bar</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+function mega $a=55
+global $bar=55
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.call-user-func-array-notes">
+  <h3 class="title">Notes</h3>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    Before PHP 5.4, referenced variables in <code class="parameter">param_arr</code>
+    are passed to the function by reference, regardless of whether the function
+    expects the respective parameter to be passed by reference. This form of
+    call-time pass by reference does not emit a deprecation notice, but it is
+    nonetheless deprecated, and has been removed in PHP 5.4.
+    Furthermore, this does not apply to internal functions, for which
+    the function signature is honored. Passing by value when the function
+    expects a parameter by reference results in a warning and having
+    <span class="function">call_user_func</span> return <strong><code>FALSE</code></strong> (there is, however, an
+    exception for passed values with reference count = 1, such as in literals,
+    as these can be turned into references without ill effects — but also
+    without writes to that value having any effect —; do not rely
+    in this behavior, though, as the reference count is an implementation
+    detail and the soundness of this behavior is questionable).
+   </p>
+  </p></blockquote>
+  <blockquote class="note"><p><strong class="note">Note</strong>: <p class="para">Callbacks registered
+with functions such as <span class="function">call_user_func</span> and <span class="function">call_user_func_array</span> will not be
+called if there is an uncaught exception thrown in a previous callback.</p></p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.call-user-func-array-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">call_user_func</span></li>
+    <li class="member">information about the <a href="language.pseudo-types.html#language.types.callback" class="link">callback</a> type</li>
+    <li class="member"> <span class="methodname">ReflectionFunction::invokeArgs</span></li>
+    <li class="member"> <span class="methodname">ReflectionMethod::invokeArgs</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,366 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Creates a new service entry in the SCM database</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.utilspec.windows.html">Windows Only Extensions</a></li>
+  <li class="header up"><a href="book.win32service.html">win32service</a></li>
+  <li class="header up"><a href="ref.win32service.html">win32service Functions</a></li>
+  <li><a href="function.win32-continue-service.html">win32_continue_service</a></li>
+  <li class="active"><a href="function.win32-create-service.html">win32_create_service</a></li>
+  <li><a href="function.win32-delete-service.html">win32_delete_service</a></li>
+  <li><a href="function.win32-get-last-control-message.html">win32_get_last_control_message</a></li>
+  <li><a href="function.win32-pause-service.html">win32_pause_service</a></li>
+  <li><a href="function.win32-query-service-status.html">win32_query_service_status</a></li>
+  <li><a href="function.win32-set-service-status.html">win32_set_service_status</a></li>
+  <li><a href="function.win32-start-service-ctrl-dispatcher.html">win32_start_service_ctrl_dispatcher</a></li>
+  <li><a href="function.win32-start-service.html">win32_start_service</a></li>
+  <li><a href="function.win32-stop-service.html">win32_stop_service</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.win32-continue-service.html">win32_continue_service</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.win32-delete-service.html">win32_delete_service</a></div>
+                <div class="up"><a href="ref.win32service.html">win32service Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.win32-create-service" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">win32_create_service</h1>
+  <p class="refpurpose">Creates a new service entry in the SCM database</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.win32-create-service-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">mixed</span> <span class="methodname">win32_create_service</span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$details</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$machine</code></span>
+  ] )</div>
+
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.win32-create-service-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">details</code></dt>
+
+     <dd>
+
+      <p class="para">
+       An array of service details:
+       <dl>
+
+        
+         <dt>
+<code class="parameter">service</code></dt>
+
+         <dd>
+
+          <p class="para">
+           The short name of the service.  This is the name that you
+           will use to control the service using the <em>net</em>
+           command.  The service must be unique (no two services can share the
+           same name), and, ideally, should avoid having spaces in the name.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">display</code></dt>
+
+         <dd>
+
+          <p class="para">The display name of the service.  This is the name that you
+          will see in the Services Applet.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">description</code></dt>
+
+         <dd>
+
+          <p class="para">The long description of the service.  This is the description
+          that you will see in the Services Applet.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">user</code></dt>
+
+         <dd>
+
+          <p class="para">
+           The name of the user account under which you want the service to
+           run.  If omitted, the service will run as the LocalSystem account.
+           If the username is specified, you must also provide a password.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">password</code></dt>
+
+         <dd>
+
+          <p class="para">
+           The password that corresponds to the <code class="parameter">user</code>.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">path</code></dt>
+
+         <dd>
+
+          <p class="para">
+           The full path to the executable module that will be launched when
+           the service is started.  If omitted, the path to the current PHP
+           process will be used.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">params</code></dt>
+
+         <dd>
+
+          <p class="para">
+           Command line parameters to pass to the service when it starts.
+           If you want to run a PHP script as the service, then the first
+           parameter should be the full path to the PHP script that you intend
+           to run. If the script name or path contains spaces, then wrap the
+           full path to the PHP script with <em>&quot;</em>.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">load_order</code></dt>
+
+         <dd>
+
+          <p class="para">
+           Controls the load_order.  This is not yet fully supported.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">svc_type</code></dt>
+
+         <dd>
+
+          <p class="para">
+           Sets the service type.  If omitted, the default value is
+           <strong><code>WIN32_SERVICE_WIN32_OWN_PROCESS</code></strong>.
+           Don&#039;t change this unless you know what you&#039;re doing.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">start_type</code></dt>
+
+         <dd>
+
+          <p class="para">
+           Specifies how the service should be started.  The default is
+           <strong><code>WIN32_SERVICE_AUTO_START</code></strong> which means the
+           service will be launched when the machine starts up.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">error_control</code></dt>
+
+         <dd>
+
+          <p class="para">
+           Informs the SCM what it should do when it detects a problem with
+           the service.  The default is
+           <strong><code>WIN32_SERVER_ERROR_IGNORE</code></strong>.  Changing this
+           value is not yet fully supported.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">delayed_start</code></dt>
+
+         <dd>
+
+          <p class="para">
+           If <code class="parameter">delayed_start</code> is set to <strong><code>TRUE</code></strong>, then this
+           will inform the SCM that this service should be started after other
+           auto-start services are started plus a short delay.
+          </p>
+          <p class="para">
+           Any service can be marked as a delayed auto-start service; however,
+           this setting has no effect unless the service&#039;s
+           <code class="parameter">start_type</code> is
+           <strong><code>WIN32_SERVICE_AUTO_START</code></strong>.
+          </p>
+          <p class="para">
+           This setting is only applicable on Windows Vista and Windows Server
+           2008 or greater.
+          </p>
+         </dd>
+
+        
+        
+         <dt>
+<code class="parameter">base_priority</code></dt>
+
+         <dd>
+
+          <p class="para">
+           To reduce the impact on processor utilisation, it may be necessary
+           to set a base priority lower than normal.
+          </p>
+          <p class="para">
+           The <code class="parameter">base_priority</code> can be set to one of the
+           constants define in
+           <a href="win32service.constants.basepriorities.html" class="link">Win32 Base Priority Classes</a>.
+          </p>
+         </dd>
+
+        
+       </dl>
+
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">machine</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The optional machine name on which you want to create a service.
+       If omitted, it will use the local machine.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.win32-create-service-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns <strong><code>WIN32_NO_ERROR</code></strong> on success, <strong><code>FALSE</code></strong> if there is a problem with the parameters or a <a href="win32service.constants.errors.html" class="link">Win32 Error Code</a> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.win32-create-service-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-6243">
+    <p><strong>Example #1 A <span class="function">win32_create_service</span> example</strong></p>
+    <div class="example-contents"><p>
+     Create a service with the short name &#039;dummyphp&#039;.
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$x&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">win32_create_service</span><span style="color: #007700">(array(<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'service'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'dummyphp'</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">#&nbsp;the&nbsp;name&nbsp;of&nbsp;your&nbsp;service<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'display'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'sample&nbsp;dummy&nbsp;PHP&nbsp;service'</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">#&nbsp;short&nbsp;description<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'description'&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'This&nbsp;is&nbsp;a&nbsp;dummy&nbsp;Windows&nbsp;service&nbsp;created&nbsp;using&nbsp;PHP.'</span><span style="color: #007700">,&nbsp;</span><span style="color: #FF8000">#&nbsp;long&nbsp;description<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #DD0000">'params'&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #DD0000">'"'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">__FILE__&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">'"&nbsp;&nbsp;run'</span><span style="color: #007700">,&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">#&nbsp;path&nbsp;to&nbsp;the&nbsp;script&nbsp;and&nbsp;parameters<br /></span><span style="color: #007700">));<br /></span><span style="color: #0000BB">debug_zval_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$x</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.win32-create-service-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">win32_delete_service</span></li>
+    <li class="member"><a href="win32service.constants.basepriorities.html" class="link">Win32 Base Priority Classes</a></li>
+    <li class="member"><a href="win32service.constants.errors.html" class="link">Win32 Error Codes</a></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

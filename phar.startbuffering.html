@@ -1,0 +1,201 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Start buffering Phar write operations, do not modify the Phar object on disk</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.compression.html">Compression and Archive Extensions</a></li>
+  <li class="header up"><a href="book.phar.html">Phar</a></li>
+  <li class="header up"><a href="class.phar.html">Phar</a></li>
+  <li><a href="phar.addemptydir.html">Phar::addEmptyDir</a></li>
+  <li><a href="phar.addfile.html">Phar::addFile</a></li>
+  <li><a href="phar.addfromstring.html">Phar::addFromString</a></li>
+  <li><a href="phar.apiversion.html">Phar::apiVersion</a></li>
+  <li><a href="phar.buildfromdirectory.html">Phar::buildFromDirectory</a></li>
+  <li><a href="phar.buildfromiterator.html">Phar::buildFromIterator</a></li>
+  <li><a href="phar.cancompress.html">Phar::canCompress</a></li>
+  <li><a href="phar.canwrite.html">Phar::canWrite</a></li>
+  <li><a href="phar.compress.html">Phar::compress</a></li>
+  <li><a href="phar.compressallfilesbzip2.html">Phar::compressAllFilesBZIP2</a></li>
+  <li><a href="phar.compressallfilesgz.html">Phar::compressAllFilesGZ</a></li>
+  <li><a href="phar.compressfiles.html">Phar::compressFiles</a></li>
+  <li><a href="phar.construct.html">Phar::__construct</a></li>
+  <li><a href="phar.converttodata.html">Phar::convertToData</a></li>
+  <li><a href="phar.converttoexecutable.html">Phar::convertToExecutable</a></li>
+  <li><a href="phar.copy.html">Phar::copy</a></li>
+  <li><a href="phar.count.html">Phar::count</a></li>
+  <li><a href="phar.createdefaultstub.html">Phar::createDefaultStub</a></li>
+  <li><a href="phar.decompress.html">Phar::decompress</a></li>
+  <li><a href="phar.decompressfiles.html">Phar::decompressFiles</a></li>
+  <li><a href="phar.delmetadata.html">Phar::delMetadata</a></li>
+  <li><a href="phar.delete.html">Phar::delete</a></li>
+  <li><a href="phar.extractto.html">Phar::extractTo</a></li>
+  <li><a href="phar.getmetadata.html">Phar::getMetadata</a></li>
+  <li><a href="phar.getmodified.html">Phar::getModified</a></li>
+  <li><a href="phar.getsignature.html">Phar::getSignature</a></li>
+  <li><a href="phar.getstub.html">Phar::getStub</a></li>
+  <li><a href="phar.getsupportedcompression.html">Phar::getSupportedCompression</a></li>
+  <li><a href="phar.getsupportedsignatures.html">Phar::getSupportedSignatures</a></li>
+  <li><a href="phar.getversion.html">Phar::getVersion</a></li>
+  <li><a href="phar.hasmetadata.html">Phar::hasMetadata</a></li>
+  <li><a href="phar.interceptfilefuncs.html">Phar::interceptFileFuncs</a></li>
+  <li><a href="phar.isbuffering.html">Phar::isBuffering</a></li>
+  <li><a href="phar.iscompressed.html">Phar::isCompressed</a></li>
+  <li><a href="phar.isfileformat.html">Phar::isFileFormat</a></li>
+  <li><a href="phar.isvalidpharfilename.html">Phar::isValidPharFilename</a></li>
+  <li><a href="phar.iswritable.html">Phar::isWritable</a></li>
+  <li><a href="phar.loadphar.html">Phar::loadPhar</a></li>
+  <li><a href="phar.mapphar.html">Phar::mapPhar</a></li>
+  <li><a href="phar.mount.html">Phar::mount</a></li>
+  <li><a href="phar.mungserver.html">Phar::mungServer</a></li>
+  <li><a href="phar.offsetexists.html">Phar::offsetExists</a></li>
+  <li><a href="phar.offsetget.html">Phar::offsetGet</a></li>
+  <li><a href="phar.offsetset.html">Phar::offsetSet</a></li>
+  <li><a href="phar.offsetunset.html">Phar::offsetUnset</a></li>
+  <li><a href="phar.running.html">Phar::running</a></li>
+  <li><a href="phar.setalias.html">Phar::setAlias</a></li>
+  <li><a href="phar.setdefaultstub.html">Phar::setDefaultStub</a></li>
+  <li><a href="phar.setmetadata.html">Phar::setMetadata</a></li>
+  <li><a href="phar.setsignaturealgorithm.html">Phar::setSignatureAlgorithm</a></li>
+  <li><a href="phar.setstub.html">Phar::setStub</a></li>
+  <li class="active"><a href="phar.startbuffering.html">Phar::startBuffering</a></li>
+  <li><a href="phar.stopbuffering.html">Phar::stopBuffering</a></li>
+  <li><a href="phar.uncompressallfiles.html">Phar::uncompressAllFiles</a></li>
+  <li><a href="phar.unlinkarchive.html">Phar::unlinkArchive</a></li>
+  <li><a href="phar.webphar.html">Phar::webPhar</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="phar.setstub.html">Phar::setStub</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="phar.stopbuffering.html">Phar::stopBuffering</a></div>
+                <div class="up"><a href="class.phar.html">Phar</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="phar.startbuffering" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">Phar::startBuffering</h1>
+  <p class="refpurpose">Start buffering Phar write operations, do not modify the Phar object on disk</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-phar.startbuffering-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">Phar::startBuffering</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+
+  <p class="para rdfs-comment">
+   Although technically unnecessary, the <span class="function">Phar::startBuffering</span> method
+   can provide a significant performance boost when creating or modifying a
+   Phar archive with a large number of files.  Ordinarily, every time a file
+   within a Phar archive is created or modified in any way, the entire Phar
+   archive will be recreated with the changes.  In this way, the archive will
+   be up-to-date with the activity performed on it.
+  </p>
+  <p class="para">
+   However, this can be unnecessary when simply creating a new Phar archive,
+   when it would make more sense to write the entire archive out at once.
+   Similarly, it is often necessary to make a series of changes and to ensure
+   that they all are possible before making any changes on disk, similar to the
+   relational database concept of transactions.  the
+   <span class="function">Phar::startBuffering</span>/<span class="function">Phar::stopBuffering</span> pair
+   of methods is provided for this purpose.
+  </p>
+  <p class="para">
+   Phar write buffering is per-archive, buffering active for the
+   <em>foo.phar</em> Phar archive does not affect changes
+   to the <em>bar.phar</em> Phar archive.
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-phar.startbuffering-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   No value is returned.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-phar.startbuffering-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-763">
+    <p><strong>Example #1 A <span class="function">Phar::startBuffering</span> example</strong></p>
+    <div class="example-contents"><p>
+    </p></div>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;make&nbsp;sure&nbsp;it&nbsp;doesn't&nbsp;exist<br /></span><span style="color: #007700">@</span><span style="color: #0000BB">unlink</span><span style="color: #007700">(</span><span style="color: #DD0000">'brandnewphar.phar'</span><span style="color: #007700">);<br />try&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$p&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">Phar</span><span style="color: #007700">(</span><span style="color: #0000BB">dirname</span><span style="color: #007700">(</span><span style="color: #0000BB">__FILE__</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">'/brandnewphar.phar'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'brandnewphar.phar'</span><span style="color: #007700">);<br />}&nbsp;catch&nbsp;(</span><span style="color: #0000BB">Exception&nbsp;$e</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'Could&nbsp;not&nbsp;create&nbsp;phar:'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$e</span><span style="color: #007700">;<br />}<br />echo&nbsp;</span><span style="color: #DD0000">'The&nbsp;new&nbsp;phar&nbsp;has&nbsp;'&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$p</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">count</span><span style="color: #007700">()&nbsp;.&nbsp;</span><span style="color: #DD0000">"&nbsp;entries\n"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$p</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">startBuffering</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'file.txt'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'hi'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'file2.txt'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'there'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'file2.txt'</span><span style="color: #007700">]-&gt;</span><span style="color: #0000BB">setCompressedGZ</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'file3.txt'</span><span style="color: #007700">]&nbsp;=&nbsp;</span><span style="color: #DD0000">'babyface'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$p</span><span style="color: #007700">[</span><span style="color: #DD0000">'file3.txt'</span><span style="color: #007700">]-&gt;</span><span style="color: #0000BB">setMetadata</span><span style="color: #007700">(</span><span style="color: #0000BB">42</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$p</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">setStub</span><span style="color: #007700">(</span><span style="color: #DD0000">"&lt;?php<br />function&nbsp;__autoload(</span><span style="color: #0000BB">$class</span><span style="color: #DD0000">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;include&nbsp;'phar://myphar.phar/'&nbsp;.&nbsp;str_replace('_',&nbsp;'/',&nbsp;</span><span style="color: #0000BB">$class</span><span style="color: #DD0000">)&nbsp;.&nbsp;'.php';<br />}<br />Phar::mapPhar('myphar.phar');<br />include&nbsp;'phar://myphar.phar/startup.php';<br />__HALT_COMPILER();"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$p</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">stopBuffering</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-phar.startbuffering-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">Phar::stopBuffering</span></li>
+    <li class="member"><span class="function">Phar::isBuffering</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

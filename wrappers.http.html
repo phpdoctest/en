@@ -1,0 +1,288 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Accessing HTTP(s) URLs</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="langref.html">Language Reference</a></li>
+  <li class="header up"><a href="wrappers.html">Supported Protocols and Wrappers</a></li>
+  <li><a href="wrappers.file.html">file://</a></li>
+  <li class="active"><a href="wrappers.http.html">http://</a></li>
+  <li><a href="wrappers.ftp.html">ftp://</a></li>
+  <li><a href="wrappers.php.html">php://</a></li>
+  <li><a href="wrappers.compression.html">zlib://</a></li>
+  <li><a href="wrappers.data.html">data://</a></li>
+  <li><a href="wrappers.glob.html">glob://</a></li>
+  <li><a href="wrappers.phar.html">phar://</a></li>
+  <li><a href="wrappers.ssh2.html">ssh2://</a></li>
+  <li><a href="wrappers.rar.html">rar://</a></li>
+  <li><a href="wrappers.audio.html">ogg://</a></li>
+  <li><a href="wrappers.expect.html">expect://</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="wrappers.file.html">file://</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="wrappers.ftp.html">ftp://</a></div>
+                <div class="up"><a href="wrappers.html">Supported Protocols and Wrappers</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="wrappers.http" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">http://</h1>
+  <h1 class="refname">https://</h1>
+  <p class="refpurpose">Accessing HTTP(s) URLs</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-wrappers.http-description">
+  <h3 class="title">Description</h3>
+  <p class="para">
+   Allows read-only access to files/resources via HTTP 1.0,
+   using the HTTP GET method. A <em>Host:</em> header is sent with the request
+   to handle name-based virtual hosts.  If you have configured
+   a <a href="filesystem.configuration.html#ini.user-agent" class="link">user_agent</a> string using
+   your <var class="filename">php.ini</var> file or the stream context, it will also be included
+   in the request.
+  </p>
+  <p class="simpara">
+   The stream allows access to the <em class="emphasis">body</em> of
+   the resource; the headers are stored in the
+   <var class="varname">$http_response_header</var> variable.
+  </p>
+  <p class="simpara">
+   If it&#039;s important to know the URL of the resource where
+   your document came from (after all redirects have been processed),
+   you&#039;ll need to process the series of response headers returned by the
+   stream.
+  </p>
+  <p class="simpara">
+   The <a href="filesystem.configuration.html#ini.from" class="link">from</a> directive will be used for the
+   <em>From:</em> header if set and not overwritten by the
+   <a href="context.html" class="xref">Context options and parameters</a>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 usage" id="refsect1-wrappers.http-usage"> 
+  <h3 class="title">Usage</h3>
+  <ul class="itemizedlist">
+   <li class="listitem"><span class="simpara"><var class="filename">http://example.com</var></span></li>
+   <li class="listitem"><span class="simpara"><var class="filename">http://example.com/file.php?var1=val1&amp;var2=val2</var></span></li>
+   <li class="listitem"><span class="simpara"><var class="filename">http://user:password@example.com</var></span></li>
+   <li class="listitem"><span class="simpara"><var class="filename">https://example.com</var></span></li>
+   <li class="listitem"><span class="simpara"><var class="filename">https://example.com/file.php?var1=val1&amp;var2=val2</var></span></li>
+   <li class="listitem"><span class="simpara"><var class="filename">https://user:password@example.com</var></span></li>
+  </ul>
+ </div>
+ 
+
+ <div class="refsect1 options" id="refsect1-wrappers.http-options">
+  <h3 class="title">Options</h3>
+  <p class="para">
+   <table class="doctable table">
+    <caption><strong>Wrapper Summary</strong></caption>
+    
+     <thead>
+      <tr>
+       <th>Attribute</th>
+       <th>Supported</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>Restricted by <a href="filesystem.configuration.html#ini.allow-url-fopen" class="link">allow_url_fopen</a></td>
+       <td>Yes</td>
+      </tr>
+
+      <tr>
+       <td>Allows Reading</td>
+       <td>Yes</td>
+      </tr>
+
+      <tr>
+       <td>Allows Writing</td>
+       <td>No</td>
+      </tr>
+
+      <tr>
+       <td>Allows Appending</td>
+       <td>No</td>
+      </tr>
+
+      <tr>
+       <td>Allows Simultaneous Reading and Writing</td>
+       <td>N/A</td>
+      </tr>
+
+      <tr>
+       <td>Supports <span class="function">stat</span></td>
+       <td>No</td>
+      </tr>
+
+      <tr>
+       <td>Supports <span class="function">unlink</span></td>
+       <td>No</td>
+      </tr>
+
+      <tr>
+       <td>Supports <span class="function">rename</span></td>
+       <td>No</td>
+      </tr>
+
+      <tr>
+       <td>Supports <span class="function">mkdir</span></td>
+       <td>No</td>
+      </tr>
+
+      <tr>
+       <td>Supports <span class="function">rmdir</span></td>
+       <td>No</td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+ 
+
+ <div class="refsect1 changelog" id="refsect1-wrappers.http-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>4.3.7</td>
+       <td>
+        Detect buggy IIS servers to avoid <em>&quot;SSL: Fatal Protocol Error&quot;</em> errors.
+       </td>
+      </tr>
+
+      <tr>
+       <td>4.3.0</td>
+       <td>
+        Added <em>https://</em>.
+       </td>
+      </tr>
+
+      <tr>
+       <td>4.0.5</td>
+       <td>
+        Added support for redirects.
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-wrappers.http-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="arrayaccess.example.basic">
+   <p><strong>Example #1 Detecting which URL we ended up on after redirects</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$url&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'http://www.example.com/redirecting_page.php'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$fp&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">fopen</span><span style="color: #007700">(</span><span style="color: #0000BB">$url</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'r'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$meta_data&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">stream_get_meta_data</span><span style="color: #007700">(</span><span style="color: #0000BB">$fp</span><span style="color: #007700">);<br />foreach&nbsp;(</span><span style="color: #0000BB">$meta_data</span><span style="color: #007700">[</span><span style="color: #DD0000">'wrapper_data'</span><span style="color: #007700">]&nbsp;as&nbsp;</span><span style="color: #0000BB">$response</span><span style="color: #007700">)&nbsp;{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;Were&nbsp;we&nbsp;redirected?&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">strtolower</span><span style="color: #007700">(</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">$response</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">))&nbsp;==&nbsp;</span><span style="color: #DD0000">'location:&nbsp;'</span><span style="color: #007700">)&nbsp;{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">/*&nbsp;update&nbsp;$url&nbsp;with&nbsp;where&nbsp;we&nbsp;were&nbsp;redirected&nbsp;to&nbsp;*/<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$url&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">substr</span><span style="color: #007700">(</span><span style="color: #0000BB">$response</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-wrappers.http-notes">
+  <h3 class="title">Notes</h3>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <span class="simpara">
+    HTTPS is only supported when the <a href="book.openssl.html" class="link">openssl</a>
+    extension is enabled.
+   </span>
+  </p></blockquote>
+  <p class="simpara">
+   HTTP connections are read-only; writing data or copying
+   files to an HTTP resource is not supported.
+  </p>
+  <p class="simpara">
+   Sending <em class="emphasis">POST</em> and <em class="emphasis">PUT</em> requests, for example,
+   can be done with the help of <a href="context.http.html" class="link">HTTP Contexts</a>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-wrappers.http-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li class="member"><a href="context.http.html" class="xref">HTTP context options</a></li>
+   <li class="member"><var class="varname">$http_response_header</var></li>
+   <li class="member"><span class="function">stream_get_meta_data</span></li>
+  </ul>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

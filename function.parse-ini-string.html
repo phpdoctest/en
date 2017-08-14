@@ -1,0 +1,273 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Parse a configuration string</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.fileprocess.file.html">File System Related Extensions</a></li>
+  <li class="header up"><a href="book.filesystem.html">Filesystem</a></li>
+  <li class="header up"><a href="ref.filesystem.html">Filesystem Functions</a></li>
+  <li><a href="function.basename.html">basename</a></li>
+  <li><a href="function.chgrp.html">chgrp</a></li>
+  <li><a href="function.chmod.html">chmod</a></li>
+  <li><a href="function.chown.html">chown</a></li>
+  <li><a href="function.clearstatcache.html">clearstatcache</a></li>
+  <li><a href="function.copy.html">copy</a></li>
+  <li><a href="function.delete.html">delete</a></li>
+  <li><a href="function.dirname.html">dirname</a></li>
+  <li><a href="function.disk-free-space.html">disk_free_space</a></li>
+  <li><a href="function.disk-total-space.html">disk_total_space</a></li>
+  <li><a href="function.diskfreespace.html">diskfreespace</a></li>
+  <li><a href="function.fclose.html">fclose</a></li>
+  <li><a href="function.feof.html">feof</a></li>
+  <li><a href="function.fflush.html">fflush</a></li>
+  <li><a href="function.fgetc.html">fgetc</a></li>
+  <li><a href="function.fgetcsv.html">fgetcsv</a></li>
+  <li><a href="function.fgets.html">fgets</a></li>
+  <li><a href="function.fgetss.html">fgetss</a></li>
+  <li><a href="function.file-exists.html">file_exists</a></li>
+  <li><a href="function.file-get-contents.html">file_get_contents</a></li>
+  <li><a href="function.file-put-contents.html">file_put_contents</a></li>
+  <li><a href="function.file.html">file</a></li>
+  <li><a href="function.fileatime.html">fileatime</a></li>
+  <li><a href="function.filectime.html">filectime</a></li>
+  <li><a href="function.filegroup.html">filegroup</a></li>
+  <li><a href="function.fileinode.html">fileinode</a></li>
+  <li><a href="function.filemtime.html">filemtime</a></li>
+  <li><a href="function.fileowner.html">fileowner</a></li>
+  <li><a href="function.fileperms.html">fileperms</a></li>
+  <li><a href="function.filesize.html">filesize</a></li>
+  <li><a href="function.filetype.html">filetype</a></li>
+  <li><a href="function.flock.html">flock</a></li>
+  <li><a href="function.fnmatch.html">fnmatch</a></li>
+  <li><a href="function.fopen.html">fopen</a></li>
+  <li><a href="function.fpassthru.html">fpassthru</a></li>
+  <li><a href="function.fputcsv.html">fputcsv</a></li>
+  <li><a href="function.fputs.html">fputs</a></li>
+  <li><a href="function.fread.html">fread</a></li>
+  <li><a href="function.fscanf.html">fscanf</a></li>
+  <li><a href="function.fseek.html">fseek</a></li>
+  <li><a href="function.fstat.html">fstat</a></li>
+  <li><a href="function.ftell.html">ftell</a></li>
+  <li><a href="function.ftruncate.html">ftruncate</a></li>
+  <li><a href="function.fwrite.html">fwrite</a></li>
+  <li><a href="function.glob.html">glob</a></li>
+  <li><a href="function.is-dir.html">is_dir</a></li>
+  <li><a href="function.is-executable.html">is_executable</a></li>
+  <li><a href="function.is-file.html">is_file</a></li>
+  <li><a href="function.is-link.html">is_link</a></li>
+  <li><a href="function.is-readable.html">is_readable</a></li>
+  <li><a href="function.is-uploaded-file.html">is_uploaded_file</a></li>
+  <li><a href="function.is-writable.html">is_writable</a></li>
+  <li><a href="function.is-writeable.html">is_writeable</a></li>
+  <li><a href="function.lchgrp.html">lchgrp</a></li>
+  <li><a href="function.lchown.html">lchown</a></li>
+  <li><a href="function.link.html">link</a></li>
+  <li><a href="function.linkinfo.html">linkinfo</a></li>
+  <li><a href="function.lstat.html">lstat</a></li>
+  <li><a href="function.mkdir.html">mkdir</a></li>
+  <li><a href="function.move-uploaded-file.html">move_uploaded_file</a></li>
+  <li><a href="function.parse-ini-file.html">parse_ini_file</a></li>
+  <li class="active"><a href="function.parse-ini-string.html">parse_ini_string</a></li>
+  <li><a href="function.pathinfo.html">pathinfo</a></li>
+  <li><a href="function.pclose.html">pclose</a></li>
+  <li><a href="function.popen.html">popen</a></li>
+  <li><a href="function.readfile.html">readfile</a></li>
+  <li><a href="function.readlink.html">readlink</a></li>
+  <li><a href="function.realpath-cache-get.html">realpath_cache_get</a></li>
+  <li><a href="function.realpath-cache-size.html">realpath_cache_size</a></li>
+  <li><a href="function.realpath.html">realpath</a></li>
+  <li><a href="function.rename.html">rename</a></li>
+  <li><a href="function.rewind.html">rewind</a></li>
+  <li><a href="function.rmdir.html">rmdir</a></li>
+  <li><a href="function.set-file-buffer.html">set_file_buffer</a></li>
+  <li><a href="function.stat.html">stat</a></li>
+  <li><a href="function.symlink.html">symlink</a></li>
+  <li><a href="function.tempnam.html">tempnam</a></li>
+  <li><a href="function.tmpfile.html">tmpfile</a></li>
+  <li><a href="function.touch.html">touch</a></li>
+  <li><a href="function.umask.html">umask</a></li>
+  <li><a href="function.unlink.html">unlink</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.parse-ini-file.html">parse_ini_file</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.pathinfo.html">pathinfo</a></div>
+                <div class="up"><a href="ref.filesystem.html">Filesystem Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.parse-ini-string" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">parse_ini_string</h1>
+  <p class="refpurpose">Parse a configuration string</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.parse-ini-string-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname">parse_ini_string</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$ini</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$process_sections</code><span class="initializer"> = false</span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$scanner_mode</code><span class="initializer"> = INI_SCANNER_NORMAL</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function">parse_ini_string</span> returns the settings in string
+   <code class="parameter">ini</code> in an associative array.
+  </p>
+  <p class="para">
+   The structure of the ini string is the same as the <var class="filename">php.ini</var>&#039;s.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.parse-ini-string-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">ini</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The contents of the ini file being parsed.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">process_sections</code></dt>
+
+     <dd>
+
+      <p class="para">
+       By setting the <code class="parameter">process_sections</code>
+       parameter to <strong><code>TRUE</code></strong>, you get a multidimensional array, with
+       the section names and settings included. The default
+       for <code class="parameter">process_sections</code> is <strong><code>FALSE</code></strong>      
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">scanner_mode</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Can either be <strong><code>INI_SCANNER_NORMAL</code></strong> (default) or 
+       <strong><code>INI_SCANNER_RAW</code></strong>. If <strong><code>INI_SCANNER_RAW</code></strong> 
+       is supplied, then option values will not be parsed.
+      </p>
+      <p class="para">
+    As of PHP 5.6.1 can also be specified as <strong><code>INI_SCANNER_TYPED</code></strong>.
+    In this mode boolean, null and integer types are preserved when possible.
+    String values <em>&quot;true&quot;</em>, <em>&quot;on&quot;</em> and <em>&quot;yes&quot;</em>
+    are converted to <strong><code>TRUE</code></strong>. <em>&quot;false&quot;</em>, <em>&quot;off&quot;</em>, <em>&quot;no&quot;</em>
+    and <em>&quot;none&quot;</em> are considered <strong><code>FALSE</code></strong>. <em>&quot;null&quot;</em> is converted to <strong><code>NULL</code></strong>
+    in typed mode. Also, all numeric strings are converted to integer type if it is possible.
+   </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 returnvalues" id="refsect1-function.parse-ini-string-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   The settings are returned as an associative <span class="type">array</span> on success,
+   and <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.parse-ini-string-notes">
+  <h3 class="title">Notes</h3>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <span class="simpara">
+    There are reserved words which must not be used as keys for
+    ini files.  These include: <em>null</em>, <em>yes</em>, 
+    <em>no</em>, <em>true</em>, <em>false</em>,
+    <em>on</em>, <em>off</em>, <em>none</em>.
+    Values <em>null</em>, <em>off</em>, <em>no</em> and 
+    <em>false</em> result in <em>&quot;&quot;</em>, and values
+    <em>on</em>, <em>yes</em> and <em>true</em> result
+    in <em>&quot;1&quot;</em>, unless <strong><code>INI_SCANNER_TYPED</code></strong> mode is used.
+    Characters <em>?{}|&amp;~![()^&quot;</em> must not be used anywhere in
+    the key and have a special meaning in the value.
+   </span>
+  </p></blockquote>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-function.parse-ini-string-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">parse_ini_file</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

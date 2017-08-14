@@ -1,0 +1,311 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: New Parameters</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="appendices.html">Appendices</a></li>
+  <li class="header up"><a href="migration52.html">Migrating from PHP 5.1.x to PHP 5.2.x</a></li>
+  <li><a href="migration52.changes.html">What has changed in PHP 5.2.x</a></li>
+  <li><a href="migration52.incompatible.html">Backward Incompatible Changes</a></li>
+  <li><a href="migration52.error-messages.html">New Error Messages</a></li>
+  <li><a href="migration52.datetime.html">Changes in PHP datetime
+   support</a></li>
+  <li class="active"><a href="migration52.parameters.html">New Parameters</a></li>
+  <li><a href="migration52.functions.html">New Functions</a></li>
+  <li><a href="migration52.methods.html">New Methods</a></li>
+  <li><a href="migration52.removed-extensions.html">Removed Extensions</a></li>
+  <li><a href="migration52.new-extensions.html">New Extensions</a></li>
+  <li><a href="migration52.classes.html">New Classes</a></li>
+  <li><a href="migration52.global-constants.html">New Global Constants</a></li>
+  <li><a href="migration52.class-constants.html">New Class Constants</a></li>
+  <li><a href="migration52.newconf.html">New INI Configuration Directives</a></li>
+  <li><a href="migration52.errorrep.html">Error Reporting</a></li>
+  <li><a href="migration52.other.html">Other Enhancements</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="migration52.datetime.html">Changes in PHP datetime
+   support</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="migration52.functions.html">New Functions</a></div>
+                <div class="up"><a href="migration52.html">Migrating from PHP 5.1.x to PHP 5.2.x</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="migration52.parameters" class="section">
+  <h2 class="title">New Parameters</h2>
+  <p class="para">
+   Some functions were given new, optional, parameters in PHP 5.2.x:
+  </p>
+
+  <p class="para">PHP Core:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">htmlentities</span>
+     - added <code class="parameter">double_encode</code> in PHP 5.2.3.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">htmlspecialchars</span>
+     - added <code class="parameter">double_encode</code> in PHP 5.2.3.
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">base64_decode</span>
+     - added <code class="parameter">strict</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">setcookie</span>
+     - added <code class="parameter">httponly</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">setrawcookie</span>
+     - added <code class="parameter">httponly</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">session_set_cookie_params</span>
+     - added <code class="parameter">httponly</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">memory_get_usage</span>
+     - added <code class="parameter">real_usage</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">get_loaded_extensions</span>
+     - added <code class="parameter">zend_extensions</code> in PHP 5.2.4
+    </span>
+   </li>
+  </ul>
+
+  <p class="para"><a href="ref.curl.html" class="link">curl</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">curl_multi_info_read</span>
+     - added <code class="parameter">msgs_in_queue</code>
+    </span>
+   </li>
+  </ul>
+
+  <p class="para"><a href="ref.datetime.html" class="link">datetime</a></p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">date</span>
+     - added &quot;u&quot; (milliseconds) format character in PHP 5.2.2
+    </span>
+   </li>
+  </ul>
+
+  <p class="para"><a href="ref.imap.html" class="link">imap</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">imap_open</span>
+     - added <code class="parameter">n_retries</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">imap_reopen</span>
+     - added <code class="parameter">n_retries</code>
+    </span>
+   </li>
+  </ul>
+
+  <p class="para"><a href="ref.mbstring.html" class="link">mbstring</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">mb_strrpos</span>
+     - added <code class="parameter">offset</code>
+    </span>
+    <div class="warning"><strong class="warning">Warning</strong>
+     <p class="simpara">
+      The <code class="parameter">offset</code> parameter was put in the position
+      the <code class="parameter">encoding</code> parameter used to be.
+      Backward compatibility has been
+      provided by allowing <code class="parameter">encoding</code> to be specified
+      as the third parameter.  Using this backward compatibility mode is
+      not recommended because it will be removed in a future release of PHP.
+     </p>
+    </div>
+   </li>
+  </ul>
+
+  <p class="para"><a href="ref.ming.html" class="link">ming</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">SWFMovie::streamMP3</span>
+     - added <code class="parameter">skip</code> in PHP 5.2.1
+    </span>
+   </li>
+  </ul>
+
+  <p class="para"><a href="ref.openssl.html" class="link">openssl</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">openssl_verify</span>
+     - added <code class="parameter">signature_algo</code>
+    </span>
+   </li>
+  </ul>
+
+  <p class="para"><a href="ref.pgsql.html" class="link">pgsql</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">pg_escape_bytea</span>
+     - added <code class="parameter">connection</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">pg_escape_string</span>
+     - added <code class="parameter">connection</code>
+    </span>
+   </li>
+  </ul>
+
+  <p class="para"><a href="ref.simplexml.html" class="link">simplexml</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">SimpleXMLElement::__construct</span>
+     - added <code class="parameter">is_prefix</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">SimpleXMLElement::attributes</span>
+     - added <code class="parameter">is_prefix</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">SimpleXMLElement::children</span>
+     - added <code class="parameter">is_prefix</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">simplexml_load_file</span>
+     - added <code class="parameter">is_prefix</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">simplexml_load_string</span>
+     - added <code class="parameter">is_prefix</code>
+    </span>
+   </li>
+  </ul>
+
+  <p class="para"><a href="ref.spl.html" class="link">spl</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     array iterator_to_array(Traversable it [, bool use_keys = true])
+     - added <code class="parameter">use_keys</code> in PHP 5.2.1
+    </span>
+   </li>
+  </ul>
+
+  <p class="para"><a href="book.xmlreader.html" class="link">xmlreader</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">XMLReader::open</span>
+     - added <code class="parameter">encoding</code>
+     and <code class="parameter">options</code>
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">XMLReader::XML</span>
+     - added <code class="parameter">encoding</code>
+     and <code class="parameter">options</code>
+    </span>
+   </li>
+  </ul>
+
+  <p class="para"><a href="ref.xmlwriter.html" class="link">XMLWriter</a>:</p>
+  <ul class="itemizedlist">
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">xmlwriter_write_element</span>
+     - the <code class="parameter">content</code> became optional in PHP 5.2.3
+    </span>
+   </li>
+   <li class="listitem">
+    <span class="simpara">
+     <span class="function">xmlwriter_write_element_ns</span>
+     - the <code class="parameter">content</code> became optional in PHP 5.2.3
+    </span>
+   </li>
+  </ul>
+ </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

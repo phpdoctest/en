@@ -1,0 +1,136 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Check whether the current element of the iterator is acceptable</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.spl.html">SPL</a></li>
+  <li class="header up"><a href="spl.iterators.html">Iterators</a></li>
+  <li class="header up"><a href="class.filteriterator.html">FilterIterator</a></li>
+  <li class="active"><a href="filteriterator.accept.html">FilterIterator::accept</a></li>
+  <li><a href="filteriterator.construct.html">FilterIterator::__construct</a></li>
+  <li><a href="filteriterator.current.html">FilterIterator::current</a></li>
+  <li><a href="filteriterator.getinneriterator.html">FilterIterator::getInnerIterator</a></li>
+  <li><a href="filteriterator.key.html">FilterIterator::key</a></li>
+  <li><a href="filteriterator.next.html">FilterIterator::next</a></li>
+  <li><a href="filteriterator.rewind.html">FilterIterator::rewind</a></li>
+  <li><a href="filteriterator.valid.html">FilterIterator::valid</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="class.filteriterator.html">FilterIterator</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="filteriterator.construct.html">FilterIterator::__construct</a></div>
+                <div class="up"><a href="class.filteriterator.html">FilterIterator</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="filteriterator.accept" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">FilterIterator::accept</h1>
+  <p class="refpurpose">Check whether the current element of the iterator is acceptable</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-filteriterator.accept-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="modifier">abstract</span>
+   <span class="type">bool</span> <span class="methodname">FilterIterator::accept</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Returns whether the current element of the iterator is acceptable through this filter.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-filteriterator.accept-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">This function has no parameters.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-filteriterator.accept-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   <strong><code>TRUE</code></strong> if the current element is acceptable, otherwise <strong><code>FALSE</code></strong>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-filteriterator.accept-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4466">
+    <p><strong>Example #1 <span class="function">FilterIterator::accept</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;This&nbsp;iterator&nbsp;filters&nbsp;all&nbsp;values&nbsp;with&nbsp;less&nbsp;than&nbsp;10&nbsp;characters<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">LengthFilterIterator&nbsp;</span><span style="color: #007700">extends&nbsp;</span><span style="color: #0000BB">FilterIterator&nbsp;</span><span style="color: #007700">{<br /><br />&nbsp;&nbsp;&nbsp;&nbsp;public&nbsp;function&nbsp;</span><span style="color: #0000BB">accept</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Only&nbsp;accept&nbsp;strings&nbsp;with&nbsp;a&nbsp;length&nbsp;of&nbsp;10&nbsp;and&nbsp;greater<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">return&nbsp;</span><span style="color: #0000BB">strlen</span><span style="color: #007700">(</span><span style="color: #0000BB">parent</span><span style="color: #007700">::</span><span style="color: #0000BB">current</span><span style="color: #007700">())&nbsp;&gt;=&nbsp;</span><span style="color: #0000BB">10</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br /><br />}<br /><br /></span><span style="color: #0000BB">$arrayIterator&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">ArrayIterator</span><span style="color: #007700">(array(</span><span style="color: #DD0000">'test1'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'more&nbsp;than&nbsp;10&nbsp;characters'</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">$lengthFilter&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">LengthFilterIterator</span><span style="color: #007700">(</span><span style="color: #0000BB">$arrayIterator</span><span style="color: #007700">);<br /><br />foreach&nbsp;(</span><span style="color: #0000BB">$lengthFilter&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$value</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$value&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+more than 10 characters
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

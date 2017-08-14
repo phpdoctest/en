@@ -1,0 +1,5484 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Ev</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.fileprocess.process.html">Process Control Extensions</a></li>
+  <li><a href="book.eio.html">Eio</a></li>
+  <li class="active"><a href="book.ev.html">Ev</a></li>
+  <li><a href="book.expect.html">Expect</a></li>
+  <li><a href="book.libevent.html">Libevent</a></li>
+  <li><a href="book.pcntl.html">PCNTL</a></li>
+  <li><a href="book.posix.html">POSIX</a></li>
+  <li><a href="book.exec.html">Program execution</a></li>
+  <li><a href="book.pthreads.html">pthreads</a></li>
+  <li><a href="book.sem.html">Semaphore</a></li>
+  <li><a href="book.shmop.html">Shared Memory</a></li>
+  <li><a href="book.sync.html">Sync</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.eio-write.html">eio_write</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="intro.ev.html">Introduction</a></div>
+                <div class="up"><a href="refs.fileprocess.process.html">Process Control Extensions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="book.ev" class="book">
+ <h1>Ev</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="intro.ev.html">Introduction</a></li>
+<li><a href="ev.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_title">
+<li><a href="ev.requirements.html">Requirements</a></li>
+<li><a href="ev.installation.html">Installation</a></li>
+<li><a href="ev.configuration.html">Runtime Configuration</a></li>
+<li><a href="ev.resources.html">Resource Types</a></li>
+</ul>
+</li>
+<li><a href="ev.global.constants.html">Predefined Constants</a></li>
+<li><a href="ev.examples.html">Examples</a></li>
+<li><a href="ev.watchers.html">Watchers</a></li>
+<li><a href="ev.watcher-callbacks.html">Watcher callbacks</a></li>
+<li><a href="ev.periodic-modes.html">Periodic watcher operation modes</a></li>
+<li><a href="class.ev.html">Ev</a> — The Ev class<ul class="chunklist chunklist_title">
+<li><a href="ev.backend.html">Ev::backend</a> — Returns an integer describing the backend used by libev.</li>
+<li><a href="ev.depth.html">Ev::depth</a> — Returns recursion depth</li>
+<li><a href="ev.embeddablebackends.html">Ev::embeddableBackends</a> — Returns the set of backends that are embeddable in other event loops.</li>
+<li><a href="ev.feedsignal.html">Ev::feedSignal</a> — Feed a signal event info Ev</li>
+<li><a href="ev.feedsignalevent.html">Ev::feedSignalEvent</a> — Feed signal event into the default loop</li>
+<li><a href="ev.iteration.html">Ev::iteration</a> — Return the number of times the default event loop has polled for new
+  events.</li>
+<li><a href="ev.now.html">Ev::now</a> — Returns the time when the last iteration of the default event
+  loop has started.</li>
+<li><a href="ev.nowupdate.html">Ev::nowUpdate</a> — Establishes the current time by querying the kernel, updating the time
+    returned by Ev::now in the progress.</li>
+<li><a href="ev.recommendedbackends.html">Ev::recommendedBackends</a> — Returns a bit mask of recommended backends for current
+  platform.</li>
+<li><a href="ev.resume.html">Ev::resume</a> — Resume previously suspended default event loop</li>
+<li><a href="ev.run.html">Ev::run</a> — Begin checking for events and calling callbacks for the default
+  loop</li>
+<li><a href="ev.sleep.html">Ev::sleep</a> — Block the process for the given number of seconds.</li>
+<li><a href="ev.stop.html">Ev::stop</a> — Stops the default event loop</li>
+<li><a href="ev.supportedbackends.html">Ev::supportedBackends</a> — Returns the set of backends supported by current libev
+  configuration.</li>
+<li><a href="ev.suspend.html">Ev::suspend</a> — Suspend the default event loop</li>
+<li><a href="ev.time.html">Ev::time</a> — Returns the current time in fractional seconds since the epoch.</li>
+<li><a href="ev.verify.html">Ev::verify</a> — Performs internal consistency checks(for debugging)</li>
+</ul>
+</li>
+<li><a href="class.evcheck.html">EvCheck</a> — The EvCheck class<ul class="chunklist chunklist_title">
+<li><a href="evcheck.construct.html">EvCheck::__construct</a> — Constructs the EvCheck watcher object</li>
+<li><a href="evcheck.createstopped.html">EvCheck::createStopped</a> — Create instance of a stopped EvCheck watcher</li>
+</ul>
+</li>
+<li><a href="class.evchild.html">EvChild</a> — The EvChild class<ul class="chunklist chunklist_title">
+<li><a href="evchild.construct.html">EvChild::__construct</a> — Constructs the EvChild watcher object</li>
+<li><a href="evchild.createstopped.html">EvChild::createStopped</a> — Create instance of a stopped EvCheck watcher</li>
+<li><a href="evchild.set.html">EvChild::set</a> — Configures the watcher</li>
+</ul>
+</li>
+<li><a href="class.evembed.html">EvEmbed</a> — The EvEmbed class<ul class="chunklist chunklist_title">
+<li><a href="evembed.construct.html">EvEmbed::__construct</a> — Constructs the EvEmbed object</li>
+<li><a href="evembed.createstopped.html">EvEmbed::createStopped</a> — Create stopped EvEmbed watcher object</li>
+<li><a href="evembed.set.html">EvEmbed::set</a> — Configures the watcher</li>
+<li><a href="evembed.sweep.html">EvEmbed::sweep</a> — Make a single, non-blocking sweep over the embedded loop.</li>
+</ul>
+</li>
+<li><a href="class.evfork.html">EvFork</a> — The EvFork class<ul class="chunklist chunklist_title">
+<li><a href="evfork.construct.html">EvFork::__construct</a> — Constructs the EvFork watcher object</li>
+<li><a href="evfork.createstopped.html">EvFork::createStopped</a> — Creates a stopped instance of EvFork watcher class</li>
+</ul>
+</li>
+<li><a href="class.evidle.html">EvIdle</a> — The EvIdle class<ul class="chunklist chunklist_title">
+<li><a href="evidle.construct.html">EvIdle::__construct</a> — Constructs the EvIdle watcher object</li>
+<li><a href="evidle.createstopped.html">EvIdle::createStopped</a> — Creates instance of a stopped EvIdle watcher object</li>
+</ul>
+</li>
+<li><a href="class.evio.html">EvIo</a> — The EvIo class<ul class="chunklist chunklist_title">
+<li><a href="evio.construct.html">EvIo::__construct</a> — Constructs EvIo watcher object</li>
+<li><a href="evio.createstopped.html">EvIo::createStopped</a> — Create stopped EvIo watcher object</li>
+<li><a href="evio.set.html">EvIo::set</a> — Configures the watcher</li>
+</ul>
+</li>
+<li><a href="class.evloop.html">EvLoop</a> — The EvLoop class<ul class="chunklist chunklist_title">
+<li><a href="evloop.backend.html">EvLoop::backend</a> — Returns an integer describing the backend used by libev.</li>
+<li><a href="evloop.check.html">EvLoop::check</a> — Creates EvCheck object associated with the current event loop
+  instance</li>
+<li><a href="evloop.child.html">EvLoop::child</a> — Creates EvChild object associated with the current event loop</li>
+<li><a href="evloop.construct.html">EvLoop::__construct</a> — Constructs the event loop object</li>
+<li><a href="evloop.defaultloop.html">EvLoop::defaultLoop</a> — Returns or creates the default event loop.</li>
+<li><a href="evloop.embed.html">EvLoop::embed</a> — Creates an instance of EvEmbed watcher associated
+  with the current EvLoop object.</li>
+<li><a href="evloop.fork.html">EvLoop::fork</a> — Creates EvFork watcher object associated with the current event
+  loop instance</li>
+<li><a href="evloop.idle.html">EvLoop::idle</a> — Creates EvIdle watcher object associated with the current event
+  loop instance</li>
+<li><a href="evloop.invokepending.html">EvLoop::invokePending</a> — Invoke all pending watchers while resetting their pending state</li>
+<li><a href="evloop.io.html">EvLoop::io</a> — Create EvIo watcher object associated with the current event
+  loop instance</li>
+<li><a href="evloop.loopfork.html">EvLoop::loopFork</a> — Must be called after a fork</li>
+<li><a href="evloop.now.html">EvLoop::now</a> — Returns the current &quot;event loop time&quot;</li>
+<li><a href="evloop.nowupdate.html">EvLoop::nowUpdate</a> — Establishes the current time by querying the kernel, updating the time
+    returned by EvLoop::now in the progress.</li>
+<li><a href="evloop.periodic.html">EvLoop::periodic</a> — Creates EvPeriodic watcher object associated with the current
+  event loop instance</li>
+<li><a href="evloop.prepare.html">EvLoop::prepare</a> — Creates EvPrepare watcher object associated with the current
+  event loop instance</li>
+<li><a href="evloop.resume.html">EvLoop::resume</a> — Resume previously suspended default event loop</li>
+<li><a href="evloop.run.html">EvLoop::run</a> — Begin checking for events and calling callbacks for the loop</li>
+<li><a href="evloop.signal.html">EvLoop::signal</a> — Creates EvSignal watcher object associated with the current
+  event loop instance</li>
+<li><a href="evloop.stat.html">EvLoop::stat</a> — Creates EvStat watcher object associated with the current event
+  loop instance</li>
+<li><a href="evloop.stop.html">EvLoop::stop</a> — Stops the event loop</li>
+<li><a href="evloop.suspend.html">EvLoop::suspend</a> — Suspend the loop</li>
+<li><a href="evloop.timer.html">EvLoop::timer</a> — Creates EvTimer watcher object associated with the current event
+  loop instance</li>
+<li><a href="evloop.verify.html">EvLoop::verify</a> — Performs internal consistency checks(for debugging)</li>
+</ul>
+</li>
+<li><a href="class.evperiodic.html">EvPeriodic</a> — The EvPeriodic class<ul class="chunklist chunklist_title">
+<li><a href="evperiodic.again.html">EvPeriodic::again</a> — Simply stops and restarts the periodic watcher again.</li>
+<li><a href="evperiodic.at.html">EvPeriodic::at</a> — Returns the absolute time that this
+  watcher is supposed to trigger next</li>
+<li><a href="evperiodic.construct.html">EvPeriodic::__construct</a> — Constructs EvPeriodic watcher object</li>
+<li><a href="evperiodic.createstopped.html">EvPeriodic::createStopped</a> — Create a stopped EvPeriodic watcher</li>
+<li><a href="evperiodic.set.html">EvPeriodic::set</a> — Configures the watcher</li>
+</ul>
+</li>
+<li><a href="class.evprepare.html">EvPrepare</a> — The EvPrepare class<ul class="chunklist chunklist_title">
+<li><a href="evprepare.construct.html">EvPrepare::__construct</a> — Constructs EvPrepare watcher object</li>
+<li><a href="evprepare.createstopped.html">EvPrepare::createStopped</a> — Creates a stopped instance of EvPrepare watcher</li>
+</ul>
+</li>
+<li><a href="class.evsignal.html">EvSignal</a> — The EvSignal class<ul class="chunklist chunklist_title">
+<li><a href="evsignal.construct.html">EvSignal::__construct</a> — Constructs EvPeriodic watcher object</li>
+<li><a href="evsignal.createstopped.html">EvSignal::createStopped</a> — Create stopped EvSignal watcher object</li>
+<li><a href="evsignal.set.html">EvSignal::set</a> — Configures the watcher</li>
+</ul>
+</li>
+<li><a href="class.evstat.html">EvStat</a> — The EvStat class<ul class="chunklist chunklist_title">
+<li><a href="evstat.attr.html">EvStat::attr</a> — Returns the values most recently detected by Ev</li>
+<li><a href="evstat.construct.html">EvStat::__construct</a> — Constructs EvStat watcher object</li>
+<li><a href="evstat.createstopped.html">EvStat::createStopped</a> — Create a stopped EvStat watcher object</li>
+<li><a href="evstat.prev.html">EvStat::prev</a> — Returns the previous set of values returned by EvStat::attr</li>
+<li><a href="evstat.set.html">EvStat::set</a> — Configures the watcher</li>
+<li><a href="evstat.stat.html">EvStat::stat</a> — Initiates the stat call</li>
+</ul>
+</li>
+<li><a href="class.evtimer.html">EvTimer</a> — The EvTimer class<ul class="chunklist chunklist_title">
+<li><a href="evtimer.again.html">EvTimer::again</a> — Restarts the timer watcher</li>
+<li><a href="evtimer.construct.html">EvTimer::__construct</a> — Constructs an EvTimer watcher object</li>
+<li><a href="evtimer.createstopped.html">EvTimer::createStopped</a> — Creates EvTimer stopped watcher object</li>
+<li><a href="evtimer.set.html">EvTimer::set</a> — Configures the watcher</li>
+</ul>
+</li>
+<li><a href="class.evwatcher.html">EvWatcher</a> — The EvWatcher class<ul class="chunklist chunklist_title">
+<li><a href="evwatcher.clear.html">EvWatcher::clear</a> — Clear watcher pending status</li>
+<li><a href="evwatcher.construct.html">EvWatcher::__construct</a> — Abstract constructor of a watcher object</li>
+<li><a href="evwatcher.feed.html">EvWatcher::feed</a> — Feeds the given revents set into the event loop</li>
+<li><a href="evwatcher.getloop.html">EvWatcher::getLoop</a> — Returns the loop responsible for the watcher</li>
+<li><a href="evwatcher.invoke.html">EvWatcher::invoke</a> — Invokes the watcher callback with the given received events bit
+  mask</li>
+<li><a href="evwatcher.keepalive.html">EvWatcher::keepalive</a> — Configures whether to keep the loop from returning</li>
+<li><a href="evwatcher.setcallback.html">EvWatcher::setCallback</a> — Sets new callback for the watcher</li>
+<li><a href="evwatcher.start.html">EvWatcher::start</a> — Starts the watcher</li>
+<li><a href="evwatcher.stop.html">EvWatcher::stop</a> — Stops the watcher</li>
+</ul>
+</li>
+</ul>
+
+ 
+ 
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+
+
+ 
+
+
+ <h1 class="title">The Ev class</h1>
+ 
+ <div class="partintro">
+
+  <div class="section" id="ev.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Ev is a static class providing access to the default loop and to some common
+    operations.
+   </p>
+  </div>
+
+  <div class="section" id="ev.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     <strong class="classname">Ev</strong>
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">final</span>
+       class <strong class="classname">Ev</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Constants */</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::FLAG_AUTO</var>
+     <span class="initializer"> = 0</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::FLAG_NOENV</var>
+     <span class="initializer"> = 16777216</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::FLAG_FORKCHECK</var>
+     <span class="initializer"> = 33554432</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::FLAG_NOINOTIFY</var>
+     <span class="initializer"> = 1048576</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::FLAG_SIGNALFD</var>
+     <span class="initializer"> = 2097152</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::FLAG_NOSIGMASK</var>
+     <span class="initializer"> = 4194304</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::RUN_NOWAIT</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::RUN_ONCE</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::BREAK_CANCEL</var>
+     <span class="initializer"> = 0</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::BREAK_ONE</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::BREAK_ALL</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::MINPRI</var>
+     <span class="initializer"> = -2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::MAXPRI</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::READ</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::WRITE</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::TIMER</var>
+     <span class="initializer"> = 256</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::PERIODIC</var>
+     <span class="initializer"> = 512</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::SIGNAL</var>
+     <span class="initializer"> = 1024</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::CHILD</var>
+     <span class="initializer"> = 2048</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::STAT</var>
+     <span class="initializer"> = 4096</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::IDLE</var>
+     <span class="initializer"> = 8192</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::PREPARE</var>
+     <span class="initializer"> = 16384</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::CHECK</var>
+     <span class="initializer"> = 32768</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::EMBED</var>
+     <span class="initializer"> = 65536</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::CUSTOM</var>
+     <span class="initializer"> = 16777216</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::ERROR</var>
+     <span class="initializer"> = 2147483648</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::BACKEND_SELECT</var>
+     <span class="initializer"> = 1</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::BACKEND_POLL</var>
+     <span class="initializer"> = 2</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::BACKEND_EPOLL</var>
+     <span class="initializer"> = 4</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::BACKEND_KQUEUE</var>
+     <span class="initializer"> = 8</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::BACKEND_DEVPOLL</var>
+     <span class="initializer"> = 16</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::BACKEND_PORT</var>
+     <span class="initializer"> = 32</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::BACKEND_ALL</var>
+     <span class="initializer"> = 63</span>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">const</span>
+     <span class="type">integer</span>
+     <var class="fieldsynopsis_varname">Ev::BACKEND_MASK</var>
+     <span class="initializer"> = 65535</span>
+    ;</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">int</span>
+    <span class="methodname">backend</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">int</span>
+    <span class="methodname">depth</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">void</span>
+    <span class="methodname">embeddableBackends</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">void</span>
+    <span class="methodname">feedSignal</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$signum</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">void</span>
+    <span class="methodname">feedSignalEvent</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$signum</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">int</span>
+    <span class="methodname">iteration</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">double</span>
+    <span class="methodname">now</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">void</span>
+    <span class="methodname">nowUpdate</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">void</span>
+    <span class="methodname">recommendedBackends</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">void</span>
+    <span class="methodname">resume</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">void</span>
+    <span class="methodname">run</span>
+    ([ <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$flags</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">void</span>
+    <span class="methodname">sleep</span>
+    ( <span class="methodparam">
+    <span class="type">double</span>
+     <code class="parameter">$seconds</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">void</span>
+    <span class="methodname">stop</span>
+    ([ <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$how</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">void</span>
+    <span class="methodname">supportedBackends</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">void</span>
+    <span class="methodname">suspend</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">double</span>
+    <span class="methodname">time</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">void</span>
+    <span class="methodname">verify</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+  </div>
+
+  <div class="section" id="ev.constants">
+   <h2 class="title">Predefined Constants</h2>
+
+  <p class="para" id="ev.constants.loop-flags">
+    Flags passed to create a loop:
+
+    <dl>
+
+     
+      <dt id="ev.constants.flag-auto">
+       <strong><code>Ev::FLAG_AUTO</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        The default flags value
+       </p>
+      </dd>
+
+     
+     
+      <dt id="ev.constants.flag-noenv">
+       <strong><code>Ev::FLAG_NOENV</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        If this flag used(or the program runs setuid or setgid),
+        <em>libev</em>
+        won&#039;t look at the environment variable
+        <var class="varname">LIBEV_FLAGS</var>
+        . Otherwise(by default),
+        <var class="varname">LIBEV_FLAGS</var>
+        will override the flags completely if it is found. Useful for
+        performance tests and searching for bugs.
+       </p>
+      </dd>
+
+     
+     
+      <dt id="ev.constants.flag-forkcheck">
+       <strong><code>Ev::FLAG_FORKCHECK</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Makes libev check for a fork in each iteration, instead of calling
+         <span class="methodname">EvLoop::fork</span>
+        manually. This works by calling
+        <em>getpid()</em>
+        on every iteration of the loop, and thus this might slow down the
+        event loop with lots of loop iterations, but usually is not
+        noticeable. This flag setting cannot be overridden or specified in the
+        <var class="varname">LIBEV_FLAGS</var>
+        environment variable.
+       </p>
+      </dd>
+
+     
+     
+      <dt id="ev.constants.flag-noinotify">
+       <strong><code>Ev::FLAG_NOINOTIFY</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        When this flag is specified,
+        <em>libev</em>
+        won&#039;t attempt to use the
+        <em>inotify</em>
+        API for its
+        <a href="http://pod.tst.eu/http://cvs.schmorp.de/libev/ev.pod#code_ev_stat_code_did_the_file_attri" class="link external">&raquo;&nbsp;ev_stat</a>
+        watchers. The flag can be useful to conserve inotify file descriptors,
+        as otherwise each loop using
+        <em>ev_stat</em>
+        watchers consumes one
+        <em>inotify</em>
+        handle.
+       </p>
+      </dd>
+
+     
+     
+      <dt id="ev.constants.flag-signalfd">
+       <strong><code>Ev::FLAG_SIGNALFD</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        When this flag is specified,
+        <em>libev</em>
+        will attempt to use the
+        <em>signalfd</em>
+        API for its
+        <a href="http://pod.tst.eu/http://cvs.schmorp.de/libev/ev.pod#code_ev_signal_code_signal_me_when_a" class="link external">&raquo;&nbsp;ev_signal</a>
+        (and
+        <a href="http://pod.tst.eu/http://cvs.schmorp.de/libev/ev.pod#code_ev_child_code_watch_out_for_pro" class="link external">&raquo;&nbsp;ev_child</a>
+        ) watchers. This API delivers signals synchronously, which makes it
+        both faster and might make it possible to get the queued signal data.
+        It can also simplify signal handling with threads, as long as signals
+        are properly blocked in threads.
+        <em>Signalfd</em>
+        will not be used by default.
+       </p>
+      </dd>
+
+     
+     
+      <dt id="ev.constants.flag-nosigmask">
+       <strong><code>Ev::FLAG_NOSIGMASK</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        When this flag is specified,
+        <em>libev</em>
+        will avoid to modify the signal mask. Specifically, this means having
+        to make sure signals are unblocked before receiving them.
+       </p>
+       <p class="para">
+        This behaviour is useful for custom signal handling, or handling
+        signals only in specific threads.
+       </p>
+      </dd>
+
+     
+    </dl>
+
+   </p>
+
+   <p class="para" id="ev.constants.run-flags">
+    Flags passed to
+     <span class="methodname">Ev::run</span>
+    , or
+     <span class="methodname">EvLoop::run</span>
+
+    <dl>
+
+     
+      <dt id="ev.constants.run-nowait">
+       <strong><code>Ev::RUN_NOWAIT</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Means that event loop will look for new events, will handle those
+        events and any already outstanding ones, but will not wait and block
+        the process in case there are no events and will return after one
+        iteration of the loop. This is sometimes useful to poll and handle new
+        events while doing lengthy calculations, to keep the program
+        responsive.
+       </p>
+      </dd>
+
+     
+     
+      <dt id="ev.constants.run-once">
+       <strong><code>Ev::RUN_ONCE</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Means that event loop will look for new events (waiting if necessary)
+        and will handle those and any already outstanding ones. It will block
+        the process until at least one new event arrives (which could be an
+        event internal to libev itself, so there is no guarantee that a
+        user-registered callback will be called), and will return after one
+        iteration of the loop.
+       </p>
+      </dd>
+
+     
+    </dl>
+
+   </p>
+
+   <p class="para" id="ev.constants.break-flags">
+    Flags passed to
+     <span class="methodname">Ev::stop</span>
+    , or
+     <span class="methodname">EvLoop::stop</span>
+
+    <dl>
+
+     
+      <dt id="ev.constants.break-cancel">
+       <strong><code>Ev::BREAK_CANCEL</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Cancel the break operation.
+       </p>
+      </dd>
+
+     
+     
+      <dt id="ev.constants.break-one">
+       <strong><code>Ev::BREAK_ONE</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Makes the innermost
+         <span class="methodname">Ev::run</span>
+        (or
+         <span class="methodname">EvLoop::run</span>
+        ) call return.
+       </p>
+      </dd>
+
+     
+     
+      <dt id="ev.constants.break-all">
+       <strong><code>Ev::BREAK_ALL</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Makes all nested
+         <span class="methodname">Ev::run</span>
+        (or
+         <span class="methodname">EvLoop::run</span>
+        ) calls return.
+       </p>
+      </dd>
+
+     
+    </dl>
+
+   </p>
+
+   <p class="para" id="ev.constants.watcher-pri">
+    Watcher priorities:
+
+    <dl>
+
+     
+      <dt id="ev.constants.minpri">
+       <strong><code>Ev::MINPRI</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Minimum allowed watcher priority.
+       </p>
+      </dd>
+
+     
+     
+      <dt id="ev.constants.maxpri">
+       <strong><code>Ev::MAXPRI</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Maximum allowed watcher priority.
+       </p>
+      </dd>
+
+     
+    </dl>
+
+   </p>
+
+   <p class="para" id="ev.constants.watcher-revents">
+    Bit masks of (received) events:
+
+    <dl>
+
+     
+      <dt id="ev.constants.read">
+       <strong><code>Ev::READ</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        The file descriptor in the
+        <span class="classname">EvIo</span>
+        watcher has become readable.
+       </p>
+      </dd>
+
+     
+     
+      <dt id="ev.constants.write">
+       <strong><code>Ev::WRITE</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        The file descriptor in the
+        <span class="classname">EvIo</span>
+        watcher has become writable.
+       </p>
+      </dd>
+
+     
+     
+      <dt id="ev.constants.timer">
+       <strong><code>Ev::TIMER</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        <span class="classname">EvTimer</span>
+        watcher has been timed out.
+       </p>
+      </dd>
+
+     
+     
+      <dt id="ev.constants.periodic">
+       <strong><code>Ev::PERIODIC</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        <span class="classname">EvPeriodic</span>
+        watcher has been timed out.
+       </p>
+      </dd>
+
+     
+     
+      <dt id="ev.constants.signal">
+       <strong><code>Ev::SIGNAL</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        A signal specified in
+         <span class="methodname">EvSignal::__construct</span>
+        has been received.
+       </p>
+      </dd>
+
+     
+     
+      <dt id="ev.constants.child">
+       <strong><code>Ev::CHILD</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        The
+        <code class="parameter">pid</code>
+        specified in
+         <span class="methodname">EvChild::__construct</span>
+        has received a status change.
+       </p>
+      </dd>
+
+     
+     
+      <dt id="ev.constants.stat">
+       <strong><code>Ev::STAT</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        The path specified in
+        <span class="classname">EvStat</span>
+        watcher changed its attributes.
+       </p>
+      </dd>
+
+     
+     
+      <dt id="ev.constants.idle">
+       <strong><code>Ev::IDLE</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        <span class="classname">EvIdle</span>
+        watcher works when there is nothing to do with other watchers.
+       </p>
+      </dd>
+
+     
+     
+      <dt id="ev.constants.prepare">
+       <strong><code>Ev::PREPARE</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        All
+        <span class="classname">EvPrepare</span>
+        watchers are invoked just before
+         <span class="methodname">Ev::run</span>
+        starts. Thus,
+        <span class="classname">EvPrepare</span>
+        watchers are the last watchers invoked before the event loop sleeps or
+        polls for new events.
+       </p>
+      </dd>
+
+     
+     
+      <dt id="ev.constants.check">
+       <strong><code>Ev::CHECK</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        All
+        <span class="classname">EvCheck</span>
+        watchers are queued just after
+         <span class="methodname">Ev::run</span>
+        has gathered the new events, but before it queues any callbacks for
+        any received events. Thus,
+        <span class="classname">EvCheck</span>
+        watchers will be invoked before any other watchers of the same or
+        lower priority within an event loop iteration.
+       </p>
+      </dd>
+
+     
+     
+      <dt id="ev.constants.embed">
+       <strong><code>Ev::EMBED</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        The embedded event loop specified in the
+        <span class="classname">EvEmbed</span>
+        watcher needs attention.
+       </p>
+      </dd>
+
+     
+     
+      <dt id="ev.constants.custom">
+       <strong><code>Ev::CUSTOM</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Not ever sent(or otherwise used) by
+        <em>libev</em>
+        itself, but can be freely used by
+        <em>libev</em>
+        users to signal watchers (e.g. via
+         <span class="methodname">EvWatcher::feed</span>
+        ).
+       </p>
+      </dd>
+
+     
+     
+      <dt id="ev.constants.error">
+       <strong><code>Ev::ERROR</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        An unspecified error has occurred, the watcher has been stopped. This
+        might happen because the watcher could not be properly started because
+        <em>libev</em>
+        ran out of memory, a file descriptor was found to be closed or any
+        other problem.
+        <em>Libev</em>
+        considers these application bugs. See also
+        <a href="http://pod.tst.eu/http://cvs.schmorp.de/libev/ev.pod#ANATOMY_OF_A_WATCHER_CONTENT" class="link external">&raquo;&nbsp;ANATOMY
+    OF A WATCHER</a>
+       </p>
+      </dd>
+
+     
+    </dl>
+
+   </p>
+
+   <p class="para" id="ev.constants.watcher-backends">
+    Backend flags:
+
+    <dl>
+
+     
+      <dt id="ev.constants.backend-select">
+       <strong><code>Ev::BACKEND_SELECT</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        <em>select(2) backend</em>
+       </p>
+      </dd>
+
+     
+     
+      <dt id="ev.constants.backend-poll">
+       <strong><code>Ev::BACKEND_POLL</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        <em>poll(2) backend</em>
+       </p>
+      </dd>
+
+     
+     
+      <dt id="ev.constants.backend-epoll">
+       <strong><code>Ev::BACKEND_EPOLL</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Linux-specific
+        <em>epoll(7)</em>
+        backend for both pre- and post-2.6.9 kernels
+       </p>
+      </dd>
+
+     
+     
+      <dt id="ev.constants.backend-kqueue">
+       <strong><code>Ev::BACKEND_KQUEUE</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        <em>kqueue</em>
+        backend used on most BSD systems.
+        <span class="classname">EvEmbed</span>
+        watcher could be used to embed one loop(with kqueue backend) into
+        another. For instance, one can try to create an event loop with
+        <em>kqueue</em>
+        backend and use it for sockets only.
+       </p>
+      </dd>
+
+     
+     
+      <dt id="ev.constants.backend-devpoll">
+       <strong><code>Ev::BACKEND_DEVPOLL</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Solaris 8 backend. This is not implemented yet.
+       </p>
+      </dd>
+
+     
+     
+      <dt id="ev.constants.backend-port">
+       <strong><code>Ev::BACKEND_PORT</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Solaris 10 event port mechanism with a good scaling.
+       </p>
+      </dd>
+
+     
+     
+      <dt id="ev.constants.backend-all">
+       <strong><code>Ev::BACKEND_ALL</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Try all backends(even currupted ones). It&#039;s not recommended to use it
+        explicitly. Bitwise operators should be applied here(e.g.
+        <strong><code>Ev::BACKEND_ALL</code></strong>
+        &amp; ~
+        <strong><code>Ev::BACKEND_KQUEUE</code></strong>
+        ) Use
+         <span class="methodname">Ev::recommendedBackends</span>
+        , or don&#039;t specify any backends at all.
+       </p>
+      </dd>
+
+     
+     
+      <dt id="ev.constants.backend-mask">
+       <strong><code>Ev::BACKEND_MASK</code></strong>
+      </dt>
+
+      <dd>
+
+       <p class="para">
+        Not a backend, but a mask to select all backend bits from
+        <code class="parameter">flags</code>
+        value to mask out any backends(e.g. when modifying the
+        <var class="varname">LIBEV_FLAGS</var>
+        environment variable).
+       </p>
+      </dd>
+
+     
+    </dl>
+
+   </p>
+
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <p class="para">
+     For the default loop during module initialization phase
+     <em>Ev</em>
+     registers
+     <a href="http://pod.tst.eu/http://cvs.schmorp.de/libev/ev.pod#FUNCTIONS_CONTROLLING_EVENT_LOOPS_CO" class="link external">&raquo;&nbsp;ev_loop_fork</a>
+     call by means of
+     <em>pthread_atfork</em>
+     (if available).
+    </p>
+   </p></blockquote>
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <p class="para">
+     There are methods providing access to the
+     <em class="emphasis">default event
+   loop</em>
+     in
+     <span class="classname">Ev</span>
+     class(e.g.
+      <span class="methodname">Ev::iteration</span>
+     ,
+      <span class="methodname">Ev::depth</span>
+     etc.) For
+     <em class="emphasis">custom loops</em>
+     (created with
+      <span class="methodname">EvLoop::__construct</span>
+     ) these values may be accessed via corresponding properties and methods
+     of the
+     <span class="classname">EvLoop</span>
+     class.
+    </p>
+    <p class="para">
+     The instance of the default event loop itself can be fetched by means of
+      <span class="methodname">EvLoop::defaultLoop</span>
+     method.
+    </p>
+   </p></blockquote>
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ <h1 class="title">The EvCheck class</h1>
+ 
+ <div class="partintro">
+
+  <div class="section" id="evcheck.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    <span class="classname">EvPrepare</span>
+    and
+    <span class="classname">EvCheck</span>
+    watchers are usually used in pairs.
+    <span class="classname">EvPrepare</span>
+    watchers get invoked before the process blocks,
+    <span class="classname">EvCheck</span>
+    afterwards.
+   </p>
+   <p class="para">
+    It is not allowed to call
+     <span class="methodname">EvLoop::run</span>
+    or similar methods or functions that enter the current event loop from
+    either
+    <span class="classname">EvPrepare</span>
+    or
+    <span class="classname">EvCheck</span>
+    watchers. Other loops than the current one are fine, however. The
+    rationale behind this is that one don&#039;t need to check for recursion
+    in those watchers, i.e. the sequence will always be:
+    <span class="classname">EvPrepare</span>
+    -&gt; blocking -&gt;
+    <span class="classname">EvCheck</span>
+    , so having a watcher of each kind they will always be called in pairs
+    bracketing the blocking call.
+   </p>
+   <p class="para">
+    The main purpose is to integrate other event mechanisms into
+    <em class="emphasis">libev</em>
+    and their use is somewhat advanced. They could be used, for example, to
+    track variable changes, implement custom watchers, integrate net-snmp or a
+    coroutine library and lots more. They are also occasionally useful to
+    cache some data and want to flush it before blocking.
+   </p>
+   <p class="para">
+    It is recommended to give
+    <span class="classname">EvCheck</span>
+    watchers highest(
+    <strong><code>Ev::MAXPRI</code></strong>
+    ) priority, to ensure that they are being run before any other watchers
+    after the poll (this doesn’t matter for
+    <span class="classname">EvPrepare</span>
+    watchers).
+   </p>
+   <p class="para">
+    Also,
+    <span class="classname">EvCheck</span>
+    watchers should not activate/feed events. While
+    <em class="emphasis">libev</em>
+    fully supports this, they might get executed before other
+    <span class="classname">EvCheck</span>
+    watchers did their job.
+   </p>
+  </div>
+
+  <div class="section" id="evcheck.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     <strong class="classname">EvCheck</strong>
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">EvCheck</strong>
+     </span>
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> EvWatcher</strong>
+     </span>
+     {</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$is_active</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$data</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$is_pending</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$priority</var>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+    <span class="methodname">__construct</span>
+    ( <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+   </span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">object</span>
+    <span class="methodname">createStopped</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$data</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$priority</code>
+   </span>
+  ]] )</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">int</span>
+    <span class="methodname">EvWatcher::clear</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span>
+   <span class="modifier">public</span>
+    <span class="methodname">EvWatcher::__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::feed</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$revents</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">EvLoop</span>
+    <span class="methodname">EvWatcher::getLoop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::invoke</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$revents</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">EvWatcher::keepalive</span>
+    ([ <span class="methodparam">
+    <span class="type">bool</span>
+     <code class="parameter">$value</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::setCallback</span>
+    ( <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::start</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::stop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+  </div>
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ <h1 class="title">The EvChild class</h1>
+ 
+ <div class="partintro">
+
+  <div class="section" id="evchild.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    <span class="classname">EvChild</span>
+    watchers trigger when the process receives a
+    <strong><code>SIGCHLD</code></strong>
+    in response to some child status changes (most typically when a child dies
+    or exits). It is permissible to install an
+    <strong><code>EvChild</code></strong>
+    watcher after the child has been forked(which implies it might have
+    already exited), as long as the event loop isn&#039;t entered(or is continued
+    from a watcher), i.e. forking and then immediately registering a watcher
+    for the child is fine, but forking and registering a watcher a few event
+    loop iterations later or in the next callback invocation is not.
+   </p>
+   <p class="para">
+    It is allowed to register
+    <span class="classname">EvChild</span>
+    watchers in the
+    <em class="emphasis">default loop</em>
+    only.
+   </p>
+  </div>
+
+  <div class="section" id="evchild.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     <strong class="classname">EvChild</strong>
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">EvChild</strong>
+     </span>
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> EvWatcher</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$pid</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$rpid</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$rstatus</var>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$is_active</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$data</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$is_pending</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$priority</var>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+    <span class="methodname">__construct</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$pid</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">bool</span>
+     <code class="parameter">$trace</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+    <span class="initializer"> = 0</span>
+   </span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">object</span>
+    <span class="methodname">createStopped</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$pid</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">bool</span>
+     <code class="parameter">$trace</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+   </span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">set</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$pid</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">bool</span>
+     <code class="parameter">$trace</code>
+   </span>
+   )</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">int</span>
+    <span class="methodname">EvWatcher::clear</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span>
+   <span class="modifier">public</span>
+    <span class="methodname">EvWatcher::__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::feed</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$revents</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">EvLoop</span>
+    <span class="methodname">EvWatcher::getLoop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::invoke</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$revents</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">EvWatcher::keepalive</span>
+    ([ <span class="methodparam">
+    <span class="type">bool</span>
+     <code class="parameter">$value</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::setCallback</span>
+    ( <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::start</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::stop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+  </div>
+
+  <div class="section" id="evchild.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="evchild.props.pid">
+      <var class="varname">pid</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       <em class="emphasis">Readonly</em>
+       . The process ID this watcher watches out for, or
+       <strong><code>0</code></strong>
+       , meaning any process ID.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="evchild.props.rpid">
+      <var class="varname">rpid</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       <em class="emphasis">Readonly</em>
+       .The process ID that detected a status change.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="evchild.props.rstatus">
+      <var class="varname">rstatus</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       <em class="emphasis">Readonly</em>
+       . The process exit status caused by
+       <var class="varname">rpid</var>
+       .
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ <h1 class="title">The EvEmbed class</h1>
+ 
+ <div class="partintro">
+
+  <div class="section" id="evembed.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Used to embed one event loop into another.
+   </p>
+  </div>
+
+  <div class="section" id="evembed.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     <strong class="classname">EvEmbed</strong>
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">EvEmbed</strong>
+     </span>
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> EvWatcher</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$embed</var>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+    <span class="methodname">__construct</span>
+    ( <span class="methodparam">
+    <span class="type">object</span>
+     <code class="parameter">$other</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+   </span>
+  ]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">void</span>
+    <span class="methodname">createStopped</span>
+    ( <span class="methodparam">
+    <span class="type">object</span>
+     <code class="parameter">$other</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+   </span>
+  ]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">set</span>
+    ( <span class="methodparam">
+    <span class="type">object</span>
+     <code class="parameter">$other</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">sweep</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">int</span>
+    <span class="methodname">EvWatcher::clear</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span>
+   <span class="modifier">public</span>
+    <span class="methodname">EvWatcher::__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::feed</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$revents</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">EvLoop</span>
+    <span class="methodname">EvWatcher::getLoop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::invoke</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$revents</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">EvWatcher::keepalive</span>
+    ([ <span class="methodparam">
+    <span class="type">bool</span>
+     <code class="parameter">$value</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::setCallback</span>
+    ( <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::start</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::stop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+  </div>
+
+  <div class="section" id="evembed.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="evembed.props.is-active">
+      <var class="varname">is_active</var>
+     </dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+    
+     <dt id="evembed.props.data">
+      <var class="varname">data</var>
+     </dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+    
+     <dt id="evembed.props.is-pending">
+      <var class="varname">is_pending</var>
+     </dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+    
+     <dt id="evembed.props.priority">
+      <var class="varname">priority</var>
+     </dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+    
+     <dt id="evembed.props.embed">
+      <var class="varname">embed</var>
+     </dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ <h1 class="title">The EvFork class</h1>
+ 
+ <div class="partintro">
+
+  <div class="section" id="evfork.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Fork watchers are called when a
+    <em>fork()</em>
+    was detected (usually because whoever signalled
+    <em class="emphasis">libev</em>
+    about it by calling
+     <span class="methodname">EvLoop::fork</span>
+    ). The invocation is done before the event loop blocks next and before
+    <span class="classname">EvCheck</span>
+    watchers are being called, and only in the child after the fork. Note,
+    that if whoever calling
+     <span class="methodname">EvLoop::fork</span>
+    calls it in the wrong process, the fork handlers will be invoked, too.
+   </p>
+  </div>
+
+  <div class="section" id="evfork.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     <strong class="classname">EvFork</strong>
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">EvFork</strong>
+     </span>
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> EvWatcher</strong>
+     </span>
+     {</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$is_active</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$data</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$is_pending</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$priority</var>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+    <span class="methodname">__construct</span>
+    ( <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+    <span class="initializer"> = 0</span>
+   </span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">object</span>
+    <span class="methodname">createStopped</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$data</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$priority</code>
+   </span>
+  ]] )</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">int</span>
+    <span class="methodname">EvWatcher::clear</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span>
+   <span class="modifier">public</span>
+    <span class="methodname">EvWatcher::__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::feed</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$revents</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">EvLoop</span>
+    <span class="methodname">EvWatcher::getLoop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::invoke</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$revents</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">EvWatcher::keepalive</span>
+    ([ <span class="methodparam">
+    <span class="type">bool</span>
+     <code class="parameter">$value</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::setCallback</span>
+    ( <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::start</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::stop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+  </div>
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ <h1 class="title">The EvIdle class</h1>
+ 
+ <div class="partintro">
+
+  <div class="section" id="evidle.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    <span class="classname">EvIdle</span>
+    watchers trigger events when no other events of the same or higher
+    priority are pending (
+    <span class="classname">EvPrepare</span>
+    ,
+    <span class="classname">EvCheck</span>
+    and other
+    <span class="classname">EvIdle</span>
+    watchers do not count as receiving
+    <em class="emphasis">events</em>
+    ).
+   </p>
+   <p class="para">
+    Thus, as long as the process is busy handling sockets or timeouts(or even
+    signals) of the same or higher priority it will not be triggered. But when
+    the process is in idle(or only lower-priority watchers are pending), the
+    <span class="classname">EvIdle</span>
+    watchers are being called once per event loop iteration - until stopped,
+    that is, or the process receives more events and becomes busy again with
+    higher priority stuff.
+   </p>
+   <p class="para">
+    Apart from keeping the process non-blocking(which is a useful on its own
+    sometimes),
+    <span class="classname">EvIdle</span>
+    watchers are a good place to do
+    <em class="emphasis">&quot;pseudo-background processing&quot;</em>
+    , or delay processing stuff to after the event loop has handled all
+    outstanding events.
+   </p>
+   <p class="para">
+    The most noticeable effect is that as long as any
+    <em class="emphasis">idle</em>
+    watchers are active, the process will
+    <em class="emphasis">not</em>
+    block when waiting for new events.
+   </p>
+  </div>
+
+  <div class="section" id="evidle.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     <strong class="classname">EvIdle</strong>
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">EvIdle</strong>
+     </span>
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> EvWatcher</strong>
+     </span>
+     {</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$is_active</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$data</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$is_pending</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$priority</var>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+    <span class="methodname">__construct</span>
+    ( <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+   </span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">object</span>
+    <span class="methodname">createStopped</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+   </span>
+  ]] )</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">int</span>
+    <span class="methodname">EvWatcher::clear</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span>
+   <span class="modifier">public</span>
+    <span class="methodname">EvWatcher::__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::feed</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$revents</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">EvLoop</span>
+    <span class="methodname">EvWatcher::getLoop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::invoke</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$revents</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">EvWatcher::keepalive</span>
+    ([ <span class="methodparam">
+    <span class="type">bool</span>
+     <code class="parameter">$value</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::setCallback</span>
+    ( <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::start</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::stop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ <h1 class="title">The EvIo class</h1>
+ 
+ <div class="partintro">
+
+  <div class="section" id="evio.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    <span class="classname">EvIo</span>
+    watchers check whether a file descriptor(or socket, or a stream castable
+    to numeric file descriptor) is readable or writable in each iteration of
+    the event loop, or, more precisely, when reading would not block the
+    process and writing would at least be able to write some data. This
+    behaviour is called
+    <em class="emphasis">level-triggering</em>
+    because events are kept receiving as long as the condition persists. To
+    stop receiving events just stop the watcher.
+   </p>
+   <p class="para">
+    The number of read and/or write event watchers per
+    <code class="parameter">fd</code>
+    is unlimited. Setting all file descriptors to non-blocking mode is also
+    usually a good idea(but not required).
+   </p>
+   <p class="para">
+    Another thing to watch out for is that it is quite easy to receive false
+    readiness notifications, i.e. the callback might be called with
+    <strong><code>Ev::READ</code></strong>
+    but a subsequent
+    <em class="emphasis">read()</em>
+    will actually block because there is no data. It is very easy to get into
+    this situation. Thus it is best to always use non-blocking I/O: An extra
+    <em class="emphasis">read()</em>
+    returning
+    <strong><code>EAGAIN</code></strong>
+    (or similar) is far preferable to a program hanging until some data
+    arrives.
+   </p>
+   <p class="para">
+    If for some reason it is impossible to run the
+    <code class="parameter">fd</code>
+    in non-blocking mode, then separately re-test whether a file descriptor is
+    really ready. Some people additionally use
+    <strong><code>SIGALRM</code></strong>
+    and an interval timer, just to be sure thry won&#039;t block infinitely.
+   </p>
+   <p class="para">
+    Always consider using non-blocking mode.
+   </p>
+  </div>
+
+  <div class="section" id="evio.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     <strong class="classname">EvIo</strong>
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">EvIo</strong>
+     </span>
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> EvWatcher</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$fd</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$events</var>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$is_active</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$data</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$is_pending</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$priority</var>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+    <span class="methodname">__construct</span>
+    ( <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$fd</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$events</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+   </span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">EvIo</span>
+    <span class="methodname">createStopped</span>
+    ( <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$fd</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$events</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+    <span class="initializer"> = 0</span>
+   </span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">set</span>
+    ( <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$fd</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$events</code>
+   </span>
+   )</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">int</span>
+    <span class="methodname">EvWatcher::clear</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span>
+   <span class="modifier">public</span>
+    <span class="methodname">EvWatcher::__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::feed</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$revents</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">EvLoop</span>
+    <span class="methodname">EvWatcher::getLoop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::invoke</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$revents</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">EvWatcher::keepalive</span>
+    ([ <span class="methodparam">
+    <span class="type">bool</span>
+     <code class="parameter">$value</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::setCallback</span>
+    ( <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::start</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::stop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+  </div>
+
+  <div class="section" id="evio.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="evio.props.fd">
+      <var class="varname">fd</var>
+     </dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+    
+     <dt id="evio.props.events">
+      <var class="varname">events</var>
+     </dt>
+
+     <dd>
+
+      <p class="para"/>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ <h1 class="title">The EvLoop class</h1>
+ 
+ <div class="partintro">
+
+  <div class="section" id="evloop.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    Represents an event loop that is always distinct from the
+    <em class="emphasis">default
+    loop</em>
+    . Unlike the
+    <em class="emphasis">default loop</em>
+    , it cannot handle
+    <span class="classname">EvChild</span>
+    watchers.
+   </p>
+   <p class="para">
+    Having threads we have to create a loop per thread, and use the
+    <em class="emphasis">default loop</em>
+    in the parent thread.
+   </p>
+   <p class="para">
+    The
+    <em class="emphasis">default event loop</em>
+    is initialized automatically by
+    <em class="emphasis">Ev</em>
+    . It is accessible via methods of the
+    <span class="classname">Ev</span>
+    class, or via
+     <span class="methodname">EvLoop::defaultLoop</span>
+    method.
+   </p>
+  </div>
+
+  <div class="section" id="evloop.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     <strong class="classname">EvLoop</strong>
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">final</span>
+       class <strong class="classname">EvLoop</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$data</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$backend</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$is_default_loop</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$iteration</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$pending</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$io_interval</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$timeout_interval</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$depth</var>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">int</span>
+    <span class="methodname">backend</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="type">EvCheck</span>
+    <span class="methodname">check</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$data</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$priority</code>
+   </span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="type">EvChild</span>
+    <span class="methodname">child</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$pid</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$trace</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$data</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$priority</code>
+   </span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+    <span class="methodname">__construct</span>
+    ([ <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$flags</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+    <span class="initializer"> = NULL</span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">double</span>
+     <code class="parameter">$io_interval</code>
+    <span class="initializer"> = 0.0</span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">double</span>
+     <code class="parameter">$timeout_interval</code>
+    <span class="initializer"> = 0.0</span>
+   </span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">EvLoop</span>
+    <span class="methodname">defaultLoop</span>
+    ([ <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$flags</code>
+    <span class="initializer"> = Ev::FLAG_AUTO</span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+    <span class="initializer"> = NULL</span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">double</span>
+     <code class="parameter">$io_interval</code>
+    <span class="initializer"> = 0.</span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">double</span>
+     <code class="parameter">$timeout_interval</code>
+    <span class="initializer"> = 0.</span>
+   </span>
+  ]]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="type">EvEmbed</span>
+    <span class="methodname">embed</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$other</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$data</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$priority</code>
+   </span>
+  ]]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="type">EvFork</span>
+    <span class="methodname">fork</span>
+    ( <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+    <span class="initializer"> = 0</span>
+   </span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="type">EvIdle</span>
+    <span class="methodname">idle</span>
+    ( <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+    <span class="initializer"> = 0</span>
+   </span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">invokePending</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="type">EvIo</span>
+    <span class="methodname">io</span>
+    ( <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$fd</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$events</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+    <span class="initializer"> = 0</span>
+   </span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">loopFork</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">double</span>
+    <span class="methodname">now</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">nowUpdate</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="type">EvPeriodic</span>
+    <span class="methodname">periodic</span>
+    ( <span class="methodparam">
+    <span class="type">double</span>
+     <code class="parameter">$offset</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">double</span>
+     <code class="parameter">$interval</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+    <span class="initializer"> = 0</span>
+   </span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="type">EvPrepare</span>
+    <span class="methodname">prepare</span>
+    ( <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+    <span class="initializer"> = 0</span>
+   </span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">resume</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">run</span>
+    ([ <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$flags</code>
+    <span class="initializer"> = 0</span>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="type">EvSignal</span>
+    <span class="methodname">signal</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$signum</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+    <span class="initializer"> = 0</span>
+   </span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="type">EvStat</span>
+    <span class="methodname">stat</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$path</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">double</span>
+     <code class="parameter">$interval</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+    <span class="initializer"> = 0</span>
+   </span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">stop</span>
+    ([ <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$how</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">suspend</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="type">EvTimer</span>
+    <span class="methodname">timer</span>
+    ( <span class="methodparam">
+    <span class="type">double</span>
+     <code class="parameter">$after</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">double</span>
+     <code class="parameter">$repeat</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+    <span class="initializer"> = 0</span>
+   </span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">verify</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+  </div>
+
+  <div class="section" id="evloop.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="evloop.props.data">
+      <var class="varname">data</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Custom data attached to loop
+      </p>
+     </dd>
+
+    
+    
+     <dt id="evloop.props.backend">
+      <var class="varname">backend</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       <em class="emphasis">Readonly</em>
+       . The
+       <a href="class.ev.html#ev.constants.watcher-backends" class="link">backend flags</a>
+       indicating the event backend in use.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="evloop.props.is-default-loop">
+      <var class="varname">is_default_loop</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       <em class="emphasis">Readonly</em>
+       . <strong><code>TRUE</code></strong> if it is the default event loop.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="evloop.props.iteration">
+      <var class="varname">iteration</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       The current iteration count of the loop. See
+        <span class="methodname">Ev::iteration</span>
+      </p>
+     </dd>
+
+    
+    
+     <dt id="evloop.props.pending">
+      <var class="varname">pending</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       The number of pending watchers.
+       <strong><code>0</code></strong>
+       indicates that there are no watchers pending.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="evloop.props.io-interval">
+      <var class="varname">io_interval</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Higher
+       <var class="varname">io_interval</var>
+       allows
+       <em class="emphasis">libev</em>
+       to spend more time collecting
+       <span class="classname">EvIo</span>
+       events, so more events can be handled per iteration, at the cost of
+       increasing latency. Timeouts (both
+       <span class="classname">EvPeriodic</span>
+       and
+       <span class="classname">EvTimer</span>
+       ) will not be affected. Setting this to a non-zero value will introduce
+       an additional
+       <em>sleep()</em>
+       call into most loop iterations. The sleep time ensures that
+       <em class="emphasis">libev</em>
+       will not poll for
+       <span class="classname">EvIo</span>
+       events more often than once per this interval, on average. Many
+       programs can usually benefit by setting the
+       <var class="varname">io_interval</var>
+       to a value near
+       <strong><code>0.1</code></strong>
+       , which is often enough for interactive servers(not for games). It
+       usually doesn&#039;t make much sense to set it to a lower value than
+       <strong><code>0.01</code></strong>
+       , as this approaches the timing granularity of most systems.
+      </p>
+      <p class="para">
+       See also
+       <a href="http://pod.tst.eu/http://cvs.schmorp.de/libev/ev.pod#FUNCTIONS_CONTROLLING_EVENT_LOOPS" class="link external">&raquo;&nbsp;FUNCTIONS
+      CONTROLLING EVENT LOOPS</a>
+       .
+      </p>
+     </dd>
+
+    
+    
+     <dt id="evloop.props.timeout-interval">
+      <var class="varname">timeout_interval</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Higher
+       <var class="varname">timeout_interval</var>
+       allows
+       <em class="emphasis">libev</em>
+       to spend more time collecting timeouts, at the expense of increased
+       latency/jitter/inexactness(the watcher callback will be called later).
+       <span class="classname">EvIo</span>
+       watchers will not be affected. Setting this to a non-null value will
+       not introduce any overhead in
+       <em class="emphasis">libev</em>
+       . See also
+       <a href="http://pod.tst.eu/http://cvs.schmorp.de/libev/ev.pod#FUNCTIONS_CONTROLLING_EVENT_LOOPS" class="link external">&raquo;&nbsp;FUNCTIONS
+      CONTROLLING EVENT LOOPS</a>
+       .
+      </p>
+     </dd>
+
+    
+    
+     <dt id="evloop.props.depth">
+      <var class="varname">depth</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       The recursion depth. See
+        <span class="methodname">Ev::depth</span>
+       .
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ <h1 class="title">The EvPeriodic class</h1>
+ 
+ <div class="partintro">
+
+  <div class="section" id="evperiodic.intro">
+   <h2 class="title">Introduction</h2>
+  <p class="para">
+    Periodic watchers are also timers of a kind, but they are very versatile.
+   </p>
+   <p class="para">
+    Unlike
+    <span class="classname">EvTimer</span>
+    ,
+    <span class="classname">EvPeriodic</span>
+    watchers are not based on real time(or relative time, the physical time
+    that passes) but on wall clock time(absolute time, calendar or clock). The
+    difference is that wall clock time can run faster or slower than real
+    time, and time jumps are not uncommon(e.g. when adjusting it).
+   </p>
+   <p class="para">
+    <span class="classname">EvPeriodic</span>
+    watcher can be configured to trigger after some specific point in time.
+    For example, if an
+    <span class="classname">EvPeriodic</span>
+    watcher is configured to trigger
+    <em class="emphasis">&quot;in 10 seconds&quot;</em>
+    (e.g.
+     <span class="methodname">EvLoop::now</span>
+    +
+    <strong><code>10.0</code></strong>
+    , i.e. an absolute time, not a delay), and the system clock is reset to
+    <em class="emphasis">January of the previous year</em>
+    , then it will take a year or more to trigger the event (unlike an
+    <span class="classname">EvTimer</span>
+    , which would still trigger roughly
+    <strong><code>10</code></strong>
+    seconds after starting it as it uses a relative timeout).
+   </p>
+   <p class="para">
+    As with timers, the callback is guaranteed to be invoked only when the
+    point in time where it is supposed to trigger has passed. If multiple
+    timers become ready during the same loop iteration then the ones with
+    earlier time-out values are invoked before ones with later time-out values
+    (but this is no longer true when a callback calls
+     <span class="methodname">EvLoop::run</span>
+    recursively).
+   </p>
+  </div>
+
+  <div class="section" id="evperiodic.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     <strong class="classname">EvPeriodic</strong>
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">EvPeriodic</strong>
+     </span>
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> EvWatcher</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$offset</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$interval</var>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$is_active</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$data</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$is_pending</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$priority</var>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">again</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">double</span>
+    <span class="methodname">at</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+    <span class="methodname">__construct</span>
+    ( <span class="methodparam">
+    <span class="type">double</span>
+     <code class="parameter">$offset</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$interval</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$reschedule_cb</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+    <span class="initializer"> = 0</span>
+   </span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">EvPeriodic</span>
+    <span class="methodname">createStopped</span>
+    ( <span class="methodparam">
+    <span class="type">double</span>
+     <code class="parameter">$offset</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">double</span>
+     <code class="parameter">$interval</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$reschedule_cb</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+    <span class="initializer"> = 0</span>
+   </span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">set</span>
+    ( <span class="methodparam">
+    <span class="type">double</span>
+     <code class="parameter">$offset</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">double</span>
+     <code class="parameter">$interval</code>
+   </span>
+   )</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">int</span>
+    <span class="methodname">EvWatcher::clear</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span>
+   <span class="modifier">public</span>
+    <span class="methodname">EvWatcher::__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::feed</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$revents</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">EvLoop</span>
+    <span class="methodname">EvWatcher::getLoop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::invoke</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$revents</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">EvWatcher::keepalive</span>
+    ([ <span class="methodparam">
+    <span class="type">bool</span>
+     <code class="parameter">$value</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::setCallback</span>
+    ( <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::start</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::stop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+  </div>
+
+  <div class="section" id="evperiodic.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="evperiodic.props.offset">
+      <var class="varname">offset</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       When repeating, this contains the offset value, otherwise this is the
+       absolute point in time(the offset value passed to
+        <span class="methodname">EvPeriodic::set</span>
+       , although
+       <em class="emphasis">libev</em>
+       might modify this value for better numerical stability).
+      </p>
+     </dd>
+
+    
+    
+     <dt id="evperiodic.props.interval">
+      <var class="varname">interval</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       The current interval value. Can be modified any time, but changes only
+       take effect when the periodic timer fires or
+        <span class="methodname">EvPeriodic::again</span>
+       is being called.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ <h1 class="title">The EvPrepare class</h1>
+ 
+ <div class="partintro">
+
+  <div class="section" id="evprepare.intro">
+   <h2 class="title">Introduction</h2><p class="para">
+    <span class="classname">EvPrepare</span>
+    and
+    <span class="classname">EvCheck</span>
+    watchers are usually used in pairs.
+    <span class="classname">EvPrepare</span>
+    watchers get invoked before the process blocks,
+    <span class="classname">EvCheck</span>
+    afterwards.
+   </p><p class="para">
+    It is not allowed to call
+     <span class="methodname">EvLoop::run</span>
+    or similar methods or functions that enter the current event loop from
+    either
+    <span class="classname">EvPrepare</span>
+    or
+    <span class="classname">EvCheck</span>
+    watchers. Other loops than the current one are fine, however. The
+    rationale behind this is that one don&#039;t need to check for recursion
+    in those watchers, i.e. the sequence will always be:
+    <span class="classname">EvPrepare</span>
+    -&gt; blocking -&gt;
+    <span class="classname">EvCheck</span>
+    , so having a watcher of each kind they will always be called in pairs
+    bracketing the blocking call.
+   </p><p class="para">
+    The main purpose is to integrate other event mechanisms into
+    <em class="emphasis">libev</em>
+    and their use is somewhat advanced. They could be used, for example, to
+    track variable changes, implement custom watchers, integrate net-snmp or a
+    coroutine library and lots more. They are also occasionally useful to
+    cache some data and want to flush it before blocking.
+   </p><p class="para">
+    It is recommended to give
+    <span class="classname">EvCheck</span>
+    watchers highest(
+    <strong><code>Ev::MAXPRI</code></strong>
+    ) priority, to ensure that they are being run before any other watchers
+    after the poll (this doesn’t matter for
+    <span class="classname">EvPrepare</span>
+    watchers).
+   </p><p class="para">
+    Also,
+    <span class="classname">EvCheck</span>
+    watchers should not activate/feed events. While
+    <em class="emphasis">libev</em>
+    fully supports this, they might get executed before other
+    <span class="classname">EvCheck</span>
+    watchers did their job.
+   </p>
+  </div>
+
+  <div class="section" id="evprepare.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     <strong class="classname">EvPrepare</strong>
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">EvPrepare</strong>
+     </span>
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> EvWatcher</strong>
+     </span>
+     {</div>
+
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$is_active</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$data</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$is_pending</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$priority</var>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+    <span class="methodname">__construct</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$data</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$priority</code>
+   </span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">EvPrepare</span>
+    <span class="methodname">createStopped</span>
+    ( <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+    <span class="initializer"> = 0</span>
+   </span>
+  ]] )</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">int</span>
+    <span class="methodname">EvWatcher::clear</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span>
+   <span class="modifier">public</span>
+    <span class="methodname">EvWatcher::__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::feed</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$revents</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">EvLoop</span>
+    <span class="methodname">EvWatcher::getLoop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::invoke</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$revents</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">EvWatcher::keepalive</span>
+    ([ <span class="methodparam">
+    <span class="type">bool</span>
+     <code class="parameter">$value</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::setCallback</span>
+    ( <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::start</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::stop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+  </div>
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ <h1 class="title">The EvSignal class</h1>
+ 
+ <div class="partintro">
+
+  <div class="section" id="evsignal.intro">
+   <h2 class="title">Introduction</h2>
+  <p class="para">
+    <span class="classname">EvSignal</span>
+    watchers will trigger an event when the process receives a specific signal
+    one or more times. Even though signals are very asynchronous,
+    <em class="emphasis">libev</em>
+    will try its best to deliver signals synchronously, i.e. as part of the
+    normal event processing, like any other event.
+   </p>
+   <p class="para">
+    There is no limit for the number of watchers for the same signal, but only
+    within the same loop, i.e. one can watch for
+    <strong><code>SIGINT</code></strong>
+    in the default loop and for
+    <strong><code>SIGIO</code></strong>
+    in another loop, but it is not allowed to watch for
+    <strong><code>SIGINT</code></strong>
+    in both the default loop and another loop at the same time. At the moment,
+    <strong><code>SIGCHLD</code></strong>
+    is permanently tied to the default loop.
+   </p>
+   <p class="para">
+    If possible and supported,
+    <em class="emphasis">libev</em>
+    will install its handlers with
+    <em>SA_RESTART</em>
+    (or equivalent) behaviour enabled, so system calls should not be unduly
+    interrupted. In case of a problem with system calls getting interrupted by
+    signals, all the signals can be blocked in an
+    <span class="classname">EvCheck</span>
+    watcher and unblocked in a
+    <span class="classname">EvPrepare</span>
+    watcher.
+   </p>
+  </div>
+
+  <div class="section" id="evsignal.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     <strong class="classname">EvSignal</strong>
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">EvSignal</strong>
+     </span>
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> EvWatcher</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$signum</var>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$is_active</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$data</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$is_pending</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$priority</var>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+    <span class="methodname">__construct</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$signum</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+    <span class="initializer"> = 0</span>
+   </span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">EvSignal</span>
+    <span class="methodname">createStopped</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$signum</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+    <span class="initializer"> = 0</span>
+   </span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">set</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$signum</code>
+   </span>
+   )</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">int</span>
+    <span class="methodname">EvWatcher::clear</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span>
+   <span class="modifier">public</span>
+    <span class="methodname">EvWatcher::__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::feed</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$revents</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">EvLoop</span>
+    <span class="methodname">EvWatcher::getLoop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::invoke</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$revents</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">EvWatcher::keepalive</span>
+    ([ <span class="methodparam">
+    <span class="type">bool</span>
+     <code class="parameter">$value</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::setCallback</span>
+    ( <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::start</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::stop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+  </div>
+
+  <div class="section" id="evsignal.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="evsignal.props.signum">
+      <var class="varname">signum</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Signal number. See the constants exported by
+       <em class="emphasis">pcntl</em>
+       extension. See also
+       <em>signal(7)</em>
+       man page.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ <h1 class="title">The EvStat class</h1>
+ 
+ <div class="partintro">
+
+  <div class="section" id="evstat.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    <span class="classname">EvStat</span>
+    monitors a file system path for attribute changes. It calls
+    <em class="emphasis">stat()</em>
+    on that path in regular intervals(or when the OS signals it changed) and
+    sees if it changed compared to the last time, invoking the callback if it
+    did.
+   </p>
+   <p class="para">
+    The path does not need to exist: changing from &quot;path exists&quot; to &quot;path does
+    not exist&quot; is a status change like any other. The condition &quot;path does not
+    exist&quot; is signified by the
+    <strong><code>&#039;nlink&#039;</code></strong>
+    item being 0(returned by
+     <span class="methodname">EvStat::attr</span>
+    method).
+   </p>
+   <p class="para">
+    The path must not end in a slash or contain special components such as
+    <strong><code>&#039;.&#039;</code></strong>
+    or
+    <strong><code>..</code></strong>
+    . The path should be absolute: if it is relative and the working directory
+    changes, then the behaviour is undefined.
+   </p>
+   <p class="para">
+    Since there is no portable change notification interface available, the
+    portable implementation simply calls
+    <em class="emphasis">stat()</em>
+    regularly on the path to see if it changed somehow. For this case a
+    recommended polling interval can be specified. If one specifies a polling
+    interval of
+    <strong><code>0.0 </code></strong>
+    (highly recommended) then a suitable, unspecified default value will be
+    used(which could be expected to be around 5 seconds, although this might
+    change dynamically).
+    <em class="emphasis">libev</em>
+    will also impose a minimum interval which is currently around
+    <strong><code>0.1</code></strong>
+    , but that’s usually overkill.
+   </p>
+   <p class="para">
+    This watcher type is not meant for massive numbers of
+    <span class="classname">EvStat</span>
+    watchers, as even with OS-supported change notifications, this can be
+    resource-intensive.
+   </p>
+  </div>
+
+  <div class="section" id="evstat.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     <strong class="classname">EvStat</strong>
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">EvStat</strong>
+     </span>
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> EvWatcher</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$path</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$interval</var>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$is_active</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$data</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$is_pending</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$priority</var>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">array</span>
+    <span class="methodname">attr</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+    <span class="methodname">__construct</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$path</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">double</span>
+     <code class="parameter">$interval</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+    <span class="initializer"> = 0</span>
+   </span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">void</span>
+    <span class="methodname">createStopped</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$path</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">double</span>
+     <code class="parameter">$interval</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+    <span class="initializer"> = 0</span>
+   </span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">prev</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">set</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$path</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">double</span>
+     <code class="parameter">$interval</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">stat</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">int</span>
+    <span class="methodname">EvWatcher::clear</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span>
+   <span class="modifier">public</span>
+    <span class="methodname">EvWatcher::__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::feed</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$revents</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">EvLoop</span>
+    <span class="methodname">EvWatcher::getLoop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::invoke</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$revents</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">EvWatcher::keepalive</span>
+    ([ <span class="methodparam">
+    <span class="type">bool</span>
+     <code class="parameter">$value</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::setCallback</span>
+    ( <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::start</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::stop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+  </div>
+
+  <div class="section" id="evstat.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="evstat.props.interval">
+      <var class="varname">interval</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       <em class="emphasis">Readonly</em>
+       . Hint on how quickly a change is expected to be detected and should
+       normally be specified as
+       <strong><code>0.0</code></strong>
+       to let
+       <em class="emphasis">libev</em>
+       choose a suitable value.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="evstat.props.path">
+      <var class="varname">path</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       <em class="emphasis">Readonly</em>
+       . The path to wait for status changes on.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ <h1 class="title">The EvTimer class</h1>
+ 
+ <div class="partintro">
+
+  <div class="section" id="evtimer.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    <span class="classname">EvTimer</span>
+    watchers are simple relative timers that generate an event after a given
+    time, and optionally repeating in regular intervals after that.
+   </p>
+   <p class="para">
+    The timers are based on real time, that is, if one registers an event that
+    times out after an hour and resets the system clock to
+    <em class="emphasis">January last year</em>
+    , it will still time out after(roughly) one hour. &quot;Roughly&quot; because
+    detecting time jumps is hard, and some inaccuracies are unavoidable.
+   </p>
+   <p class="para">
+    The callback is guaranteed to be invoked only after its timeout has passed
+    (not at, so on systems with very low-resolution clocks this might
+    introduce a small delay). If multiple timers become ready during the same
+    loop iteration then the ones with earlier time-out values are invoked
+    before ones of the same priority with later time-out values (but this is
+    no longer true when a callback calls
+     <span class="methodname">EvLoop::run</span>
+    recursively).
+   </p>
+   <p class="para">
+    The timer itself will do a best-effort at avoiding drift, that is, if a
+    timer is configured to trigger every
+    <strong><code>10</code></strong>
+    seconds, then it will normally trigger at exactly
+    <strong><code>10</code></strong>
+    second intervals. If, however, the script cannot keep up with the timer
+    because it takes longer than those
+    <strong><code>10</code></strong>
+    seconds to do) the timer will not fire more than once per event loop
+    iteration.
+   </p>
+  </div>
+
+  <div class="section" id="evtimer.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     <strong class="classname">EvTimer</strong>
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">EvTimer</strong>
+     </span>
+     <span class="ooclass">
+      <span class="modifier">extends</span>
+      <strong class="classname"> EvWatcher</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$repeat</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$remaining</var>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$is_active</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$data</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$is_pending</var>
+    ;</div>
+<div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$priority</var>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">again</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+    <span class="methodname">__construct</span>
+    ( <span class="methodparam">
+    <span class="type">double</span>
+     <code class="parameter">$after</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">double</span>
+     <code class="parameter">$repeat</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+    <span class="initializer"> = 0</span>
+   </span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">final</span>
+   <span class="modifier">public</span>
+   <span class="modifier">static</span>
+   <span class="type">EvTimer</span>
+    <span class="methodname">createStopped</span>
+    ( <span class="methodparam">
+    <span class="type">double</span>
+     <code class="parameter">$after</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">double</span>
+     <code class="parameter">$repeat</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">mixed</span>
+     <code class="parameter">$data</code>
+    <span class="initializer"> = <strong><code>NULL</code></strong></span>
+   </span>
+   [, <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$priority</code>
+    <span class="initializer"> = 0</span>
+   </span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">set</span>
+    ( <span class="methodparam">
+    <span class="type">double</span>
+     <code class="parameter">$after</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">double</span>
+     <code class="parameter">$repeat</code>
+   </span>
+   )</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Inherited methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">int</span>
+    <span class="methodname">EvWatcher::clear</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span>
+   <span class="modifier">public</span>
+    <span class="methodname">EvWatcher::__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::feed</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$revents</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">EvLoop</span>
+    <span class="methodname">EvWatcher::getLoop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::invoke</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$revents</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">EvWatcher::keepalive</span>
+    ([ <span class="methodparam">
+    <span class="type">bool</span>
+     <code class="parameter">$value</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::setCallback</span>
+    ( <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::start</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">EvWatcher::stop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+  </div>
+
+  <div class="section" id="evtimer.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="evtimer.props.repeat">
+      <var class="varname">repeat</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       If repeat is
+       <strong><code>0.0</code></strong>
+       , then it will automatically be stopped once the timeout is reached. If
+       it is positive, then the timer will automatically be configured to
+       trigger again every repeat seconds later, until stopped manually.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="evtimer.props.remaining">
+      <var class="varname">remaining</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       Returns the remaining time until a timer fires. If the timer is active,
+       then this time is relative to the current event loop time, otherwise
+       it&#039;s the timeout value currently configured.
+      </p>
+      <p class="para">
+       That is, after instanciating an
+       <span class="classname">EvTimer</span>
+       with an
+       <code class="parameter">after</code>
+       value of
+       <strong><code>5.0</code></strong>
+       and
+       <code class="parameter">repeat</code>
+       value of
+       <strong><code>7.0</code></strong>
+       ,
+       <var class="varname">remaining</var>
+       returns
+       <strong><code>5.0</code></strong>
+       . When the timer is started and one second passes,
+       <var class="varname">remaining</var>
+       will return
+       <strong><code>4.0</code></strong>
+       . When the timer expires and is restarted, it will return roughly
+       <strong><code>7.0</code></strong>
+       (likely slightly less as callback invocation takes some time too), and
+       so on.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+ <h1 class="title">The EvWatcher class</h1>
+ 
+ <div class="partintro">
+
+  <div class="section" id="evwatcher.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    <span class="classname">EvWatcher</span>
+    is a base class for all watchers(
+    <span class="classname">EvCheck</span>
+    ,
+    <span class="classname">EvChild</span>
+    etc.). Since
+    <span class="classname">EvWatcher</span>
+    &#039;s constructor is
+    <span class="modifier">abstract</span>
+    , one can&#039;t(and don&#039;t need to) create EvWatcher objects
+    directly.
+   </p>
+  </div>
+
+  <div class="section" id="evwatcher.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass">
+     <strong class="classname">EvWatcher</strong>
+    </div>
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+      <span class="modifier">abstract</span>
+       class <strong class="classname">EvWatcher</strong>
+     </span>
+     {</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Properties */</div>
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$is_active</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$data</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$is_pending</var>
+    ;</div>
+
+    <div class="fieldsynopsis">
+     <span class="modifier">public</span>
+     <var class="varname">$priority</var>
+    ;</div>
+
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">int</span>
+    <span class="methodname">clear</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">abstract</span>
+   <span class="modifier">public</span>
+    <span class="methodname">__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">feed</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$revents</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">EvLoop</span>
+    <span class="methodname">getLoop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">invoke</span>
+    ( <span class="methodparam">
+    <span class="type">int</span>
+     <code class="parameter">$revents</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">bool</span>
+    <span class="methodname">keepalive</span>
+    ([ <span class="methodparam">
+    <span class="type">bool</span>
+     <code class="parameter">$value</code>
+   </span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">setCallback</span>
+    ( <span class="methodparam">
+    <span class="type">callable</span>
+     <code class="parameter">$callback</code>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">start</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+   <span class="type">void</span>
+    <span class="methodname">stop</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+   }</div>
+
+  </div>
+
+  <div class="section" id="evwatcher.props">
+   <h2 class="title">Properties</h2>
+   <dl>
+
+    
+     <dt id="evwatcher.props.is-active">
+      <var class="varname">is_active</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       <em class="emphasis">Readonly</em>
+       . <strong><code>TRUE</code></strong> if the watcher is active. <strong><code>FALSE</code></strong> otherwise.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="evwatcher.props.data">
+      <var class="varname">data</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       User custom data associated with the watcher
+      </p>
+     </dd>
+
+    
+    
+     <dt id="evwatcher.props.is-pending">
+      <var class="varname">is_pending</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       <em class="emphasis">Readonly</em>
+       .<strong><code>TRUE</code></strong> if the watcher is pending, i.e. it has outstanding events, but
+       its callback has not yet been invoked. <strong><code>FALSE</code></strong> otherwise. As long, as a
+       watcher is pending(but not active), one must
+       <em class="emphasis">not</em>
+       change its priority.
+      </p>
+     </dd>
+
+    
+    
+     <dt id="evwatcher.props.priority">
+      <var class="varname">priority</var>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       <span class="type">Integer</span>
+       between
+       <strong><code>Ev::MINPRI</code></strong>
+       and
+       <strong><code>Ev::MAXPRI</code></strong>
+       . Pending watchers with higher priority will be invoked before watchers
+       with lower priority, but priority will not keep watchers from being
+       executed(except for
+       <span class="classname">EvIdle</span>
+       watchers).
+       <span class="classname">EvIdle</span>
+       watchers provide functionality to suppress invocation when higher
+       priority events are pending.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

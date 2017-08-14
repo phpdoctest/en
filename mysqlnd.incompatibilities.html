@@ -1,0 +1,99 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Incompatibilities</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="set.mysqlinfo.html">MySQL</a></li>
+  <li class="header up"><a href="book.mysqlnd.html">Mysqlnd</a></li>
+  <li><a href="intro.mysqlnd.html">Introduction</a></li>
+  <li><a href="mysqlnd.overview.html">Overview</a></li>
+  <li><a href="mysqlnd.install.html">Installation</a></li>
+  <li><a href="mysqlnd.config.html">Runtime Configuration</a></li>
+  <li class="active"><a href="mysqlnd.incompatibilities.html">Incompatibilities</a></li>
+  <li><a href="mysqlnd.persist.html">Persistent Connections</a></li>
+  <li><a href="mysqlnd.stats.html">Statistics</a></li>
+  <li><a href="mysqlnd.notes.html">Notes</a></li>
+  <li><a href="mysqlnd.memory.html">Memory management</a></li>
+  <li><a href="mysqlnd.plugin.html">MySQL Native Driver Plugin API</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mysqlnd.config.html">Runtime Configuration</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mysqlnd.persist.html">Persistent Connections</a></div>
+                <div class="up"><a href="book.mysqlnd.html">Mysqlnd</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mysqlnd.incompatibilities" class="chapter">
+ <h1>Incompatibilities</h1>
+ <p class="para">
+  MySQL Native Driver is in most cases compatible with MySQL Client Library
+  (<em>libmysql</em>). This section documents incompatibilities
+  between these libraries.
+ </p>
+ <ul class="itemizedlist">
+  <li class="listitem">
+   <p class="para">
+    Values of <em>bit</em> data type are returned as binary strings
+    (e.g. &quot;\0&quot; or &quot;\x1F&quot;) with <em>libmysql</em> and as decimal
+    strings (e.g. &quot;0&quot; or &quot;31&quot;) with <em>mysqlnd</em>. If you want the
+    code to be compatible with both libraries then always return bit fields as
+    numbers from MySQL with a query like this:
+    <em>SELECT bit + 0 FROM table</em>.
+   </p>
+  </li>
+ </ul>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

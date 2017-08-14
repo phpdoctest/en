@@ -1,0 +1,284 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Sets the callback functions for a user-defined procedural storage handler</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="set.mysqlinfo.html">MySQL</a></li>
+  <li class="header up"><a href="book.mysqlnd-qc.html">mysqlnd_qc</a></li>
+  <li class="header up"><a href="ref.mysqlnd-qc.html">mysqlnd_qc Functions</a></li>
+  <li><a href="function.mysqlnd-qc-clear-cache.html">mysqlnd_qc_clear_cache</a></li>
+  <li><a href="function.mysqlnd-qc-get-available-handlers.html">mysqlnd_qc_get_available_handlers</a></li>
+  <li><a href="function.mysqlnd-qc-get-cache-info.html">mysqlnd_qc_get_cache_info</a></li>
+  <li><a href="function.mysqlnd-qc-get-core-stats.html">mysqlnd_qc_get_core_stats</a></li>
+  <li><a href="function.mysqlnd-qc-get-normalized-query-trace-log.html">mysqlnd_qc_get_normalized_query_trace_log</a></li>
+  <li><a href="function.mysqlnd-qc-get-query-trace-log.html">mysqlnd_qc_get_query_trace_log</a></li>
+  <li><a href="function.mysqlnd-qc-set-cache-condition.html">mysqlnd_qc_set_cache_condition</a></li>
+  <li><a href="function.mysqlnd-qc-set-is-select.html">mysqlnd_qc_set_is_select</a></li>
+  <li><a href="function.mysqlnd-qc-set-storage-handler.html">mysqlnd_qc_set_storage_handler</a></li>
+  <li class="active"><a href="function.mysqlnd-qc-set-user-handlers.html">mysqlnd_qc_set_user_handlers</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.mysqlnd-qc-set-storage-handler.html">mysqlnd_qc_set_storage_handler</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mysqlnd-qc.changes.html">Change History</a></div>
+                <div class="up"><a href="ref.mysqlnd-qc.html">mysqlnd_qc Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.mysqlnd-qc-set-user-handlers" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">mysqlnd_qc_set_user_handlers</h1>
+  <p class="refpurpose">Sets the callback functions for a user-defined procedural storage handler</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.mysqlnd-qc-set-user-handlers-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">bool</span>
+    <span class="methodname">mysqlnd_qc_set_user_handlers</span>
+    ( <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$get_hash</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$find_query_in_cache</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$return_to_cache</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$add_query_to_cache_if_not_exists</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$query_is_select</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$update_query_run_time_stats</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$get_stats</code>
+   </span>
+   , <span class="methodparam">
+    <span class="type">string</span>
+     <code class="parameter">$clear_cache</code>
+   </span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Sets the callback functions for a user-defined procedural storage handler.
+  </p>
+
+
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.mysqlnd-qc-set-user-handlers-parameters">
+  <h3 class="title">Parameters</h3>
+  <dl>
+
+   
+    <dt>
+
+     <code class="parameter">get_hash</code>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Name of the user function implementing the storage handler
+      <em>get_hash</em> functionality.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+
+     <code class="parameter">find_query_in_cache</code>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Name of the user function implementing the storage handler
+      <em>find_in_cache</em> functionality.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+
+     <code class="parameter">return_to_cache</code>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Name of the user function implementing the storage handler
+      <em>return_to_cache</em> functionality.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+
+     <code class="parameter">add_query_to_cache_if_not_exists</code>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Name of the user function implementing the storage handler
+      <em>add_query_to_cache_if_not_exists</em> functionality.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+
+     <code class="parameter">query_is_select</code>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Name of the user function implementing the storage handler
+      <em>query_is_select</em> functionality.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+
+     <code class="parameter">update_query_run_time_stats</code>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Name of the user function implementing the storage handler
+      <em>update_query_run_time_stats</em> functionality.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+
+     <code class="parameter">get_stats</code>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Name of the user function implementing the storage handler
+      <em>get_stats</em> functionality.
+     </p>
+    </dd>
+
+   
+   
+    <dt>
+
+     <code class="parameter">clear_cache</code>
+    </dt>
+
+    <dd>
+
+     <p class="para">
+      Name of the user function implementing the storage handler
+      <em>clear_cache</em> functionality.
+     </p>
+    </dd>
+
+   
+  </dl>
+
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.mysqlnd-qc-set-user-handlers-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns TRUE on success or FALSE on FAILURE.
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.mysqlnd-qc-set-user-handlers-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member">
+     <a href="mysqlnd-qc.set-user-handlers.html" class="link">Procedural user-defined storage handler example</a>
+    </li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

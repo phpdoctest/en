@@ -1,0 +1,401 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Split a string by string</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.text.html">Text Processing</a></li>
+  <li class="header up"><a href="book.strings.html">Strings</a></li>
+  <li class="header up"><a href="ref.strings.html">String Functions</a></li>
+  <li><a href="function.addcslashes.html">addcslashes</a></li>
+  <li><a href="function.addslashes.html">addslashes</a></li>
+  <li><a href="function.bin2hex.html">bin2hex</a></li>
+  <li><a href="function.chop.html">chop</a></li>
+  <li><a href="function.chr.html">chr</a></li>
+  <li><a href="function.chunk-split.html">chunk_split</a></li>
+  <li><a href="function.convert-cyr-string.html">convert_cyr_string</a></li>
+  <li><a href="function.convert-uudecode.html">convert_uudecode</a></li>
+  <li><a href="function.convert-uuencode.html">convert_uuencode</a></li>
+  <li><a href="function.count-chars.html">count_chars</a></li>
+  <li><a href="function.crc32.html">crc32</a></li>
+  <li><a href="function.crypt.html">crypt</a></li>
+  <li><a href="function.echo.html">echo</a></li>
+  <li class="active"><a href="function.explode.html">explode</a></li>
+  <li><a href="function.fprintf.html">fprintf</a></li>
+  <li><a href="function.get-html-translation-table.html">get_html_translation_table</a></li>
+  <li><a href="function.hebrev.html">hebrev</a></li>
+  <li><a href="function.hebrevc.html">hebrevc</a></li>
+  <li><a href="function.hex2bin.html">hex2bin</a></li>
+  <li><a href="function.html-entity-decode.html">html_entity_decode</a></li>
+  <li><a href="function.htmlentities.html">htmlentities</a></li>
+  <li><a href="function.htmlspecialchars-decode.html">htmlspecialchars_decode</a></li>
+  <li><a href="function.htmlspecialchars.html">htmlspecialchars</a></li>
+  <li><a href="function.implode.html">implode</a></li>
+  <li><a href="function.join.html">join</a></li>
+  <li><a href="function.lcfirst.html">lcfirst</a></li>
+  <li><a href="function.levenshtein.html">levenshtein</a></li>
+  <li><a href="function.localeconv.html">localeconv</a></li>
+  <li><a href="function.ltrim.html">ltrim</a></li>
+  <li><a href="function.md5-file.html">md5_file</a></li>
+  <li><a href="function.md5.html">md5</a></li>
+  <li><a href="function.metaphone.html">metaphone</a></li>
+  <li><a href="function.money-format.html">money_format</a></li>
+  <li><a href="function.nl-langinfo.html">nl_langinfo</a></li>
+  <li><a href="function.nl2br.html">nl2br</a></li>
+  <li><a href="function.number-format.html">number_format</a></li>
+  <li><a href="function.ord.html">ord</a></li>
+  <li><a href="function.parse-str.html">parse_str</a></li>
+  <li><a href="function.print.html">print</a></li>
+  <li><a href="function.printf.html">printf</a></li>
+  <li><a href="function.quoted-printable-decode.html">quoted_printable_decode</a></li>
+  <li><a href="function.quoted-printable-encode.html">quoted_printable_encode</a></li>
+  <li><a href="function.quotemeta.html">quotemeta</a></li>
+  <li><a href="function.rtrim.html">rtrim</a></li>
+  <li><a href="function.setlocale.html">setlocale</a></li>
+  <li><a href="function.sha1-file.html">sha1_file</a></li>
+  <li><a href="function.sha1.html">sha1</a></li>
+  <li><a href="function.similar-text.html">similar_text</a></li>
+  <li><a href="function.soundex.html">soundex</a></li>
+  <li><a href="function.sprintf.html">sprintf</a></li>
+  <li><a href="function.sscanf.html">sscanf</a></li>
+  <li><a href="function.str-getcsv.html">str_getcsv</a></li>
+  <li><a href="function.str-ireplace.html">str_ireplace</a></li>
+  <li><a href="function.str-pad.html">str_pad</a></li>
+  <li><a href="function.str-repeat.html">str_repeat</a></li>
+  <li><a href="function.str-replace.html">str_replace</a></li>
+  <li><a href="function.str-rot13.html">str_rot13</a></li>
+  <li><a href="function.str-shuffle.html">str_shuffle</a></li>
+  <li><a href="function.str-split.html">str_split</a></li>
+  <li><a href="function.str-word-count.html">str_word_count</a></li>
+  <li><a href="function.strcasecmp.html">strcasecmp</a></li>
+  <li><a href="function.strchr.html">strchr</a></li>
+  <li><a href="function.strcmp.html">strcmp</a></li>
+  <li><a href="function.strcoll.html">strcoll</a></li>
+  <li><a href="function.strcspn.html">strcspn</a></li>
+  <li><a href="function.strip-tags.html">strip_tags</a></li>
+  <li><a href="function.stripcslashes.html">stripcslashes</a></li>
+  <li><a href="function.stripos.html">stripos</a></li>
+  <li><a href="function.stripslashes.html">stripslashes</a></li>
+  <li><a href="function.stristr.html">stristr</a></li>
+  <li><a href="function.strlen.html">strlen</a></li>
+  <li><a href="function.strnatcasecmp.html">strnatcasecmp</a></li>
+  <li><a href="function.strnatcmp.html">strnatcmp</a></li>
+  <li><a href="function.strncasecmp.html">strncasecmp</a></li>
+  <li><a href="function.strncmp.html">strncmp</a></li>
+  <li><a href="function.strpbrk.html">strpbrk</a></li>
+  <li><a href="function.strpos.html">strpos</a></li>
+  <li><a href="function.strrchr.html">strrchr</a></li>
+  <li><a href="function.strrev.html">strrev</a></li>
+  <li><a href="function.strripos.html">strripos</a></li>
+  <li><a href="function.strrpos.html">strrpos</a></li>
+  <li><a href="function.strspn.html">strspn</a></li>
+  <li><a href="function.strstr.html">strstr</a></li>
+  <li><a href="function.strtok.html">strtok</a></li>
+  <li><a href="function.strtolower.html">strtolower</a></li>
+  <li><a href="function.strtoupper.html">strtoupper</a></li>
+  <li><a href="function.strtr.html">strtr</a></li>
+  <li><a href="function.substr-compare.html">substr_compare</a></li>
+  <li><a href="function.substr-count.html">substr_count</a></li>
+  <li><a href="function.substr-replace.html">substr_replace</a></li>
+  <li><a href="function.substr.html">substr</a></li>
+  <li><a href="function.trim.html">trim</a></li>
+  <li><a href="function.ucfirst.html">ucfirst</a></li>
+  <li><a href="function.ucwords.html">ucwords</a></li>
+  <li><a href="function.vfprintf.html">vfprintf</a></li>
+  <li><a href="function.vprintf.html">vprintf</a></li>
+  <li><a href="function.vsprintf.html">vsprintf</a></li>
+  <li><a href="function.wordwrap.html">wordwrap</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.echo.html">echo</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.fprintf.html">fprintf</a></div>
+                <div class="up"><a href="ref.strings.html">String Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.explode" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">explode</h1>
+  <p class="refpurpose">Split a string by string</p>
+ </div>
+ 
+ <div class="refsect1 description" id="refsect1-function.explode-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname">explode</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$delimiter</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$string</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$limit</code><span class="initializer"> = PHP_INT_MAX</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   Returns an array of strings, each of which is a substring of
+   <code class="parameter">string</code> formed by splitting it on
+   boundaries formed by the string <code class="parameter">delimiter</code>.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.explode-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">delimiter</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The boundary string.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">string</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The input string.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">limit</code></dt>
+
+     <dd>
+
+      <p class="para">
+       If <code class="parameter">limit</code> is set and positive, the returned array will contain
+       a maximum of <code class="parameter">limit</code> elements with the last
+       element containing the rest of <code class="parameter">string</code>.
+      </p>
+      <p class="para">
+       If the <code class="parameter">limit</code> parameter is negative, all components
+       except the last -<code class="parameter">limit</code> are returned.
+      </p>
+      <p class="para">
+       If the <code class="parameter">limit</code> parameter is zero, then this is treated as 1.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+  <blockquote class="note"><p><strong class="note">Note</strong>: 
+   <p class="para">
+    Although <span class="function">implode</span> can, for historical reasons,
+    accept its parameters in either order,
+    <span class="function">explode</span> cannot. You must ensure that the
+    <code class="parameter">delimiter</code> argument comes before the
+    <code class="parameter">string</code> argument.
+   </p>
+  </p></blockquote>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.explode-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns an <span class="type">array</span> of <span class="type">string</span>s
+   created by splitting the <code class="parameter">string</code> parameter on
+   boundaries formed by the <code class="parameter">delimiter</code>.
+  </p>
+  <p class="para">
+   If <code class="parameter">delimiter</code> is an empty <span class="type">string</span> (&quot;&quot;),
+   <span class="function">explode</span> will return <strong><code>FALSE</code></strong>.
+   If <code class="parameter">delimiter</code> contains a value that is not
+   contained in <code class="parameter">string</code> and a negative
+   <code class="parameter">limit</code> is used, then an empty <span class="type">array</span> will be
+   returned, otherwise an <span class="type">array</span> containing
+   <code class="parameter">string</code> will be returned.
+  </p>
+ </div>
+
+
+ <div class="refsect1 changelog" id="refsect1-function.explode-changelog">
+  <h3 class="title">Changelog</h3>
+  <p class="para">
+   <table class="doctable informaltable">
+    
+     <thead>
+      <tr>
+       <th>Version</th>
+       <th>Description</th>
+      </tr>
+
+     </thead>
+
+     <tbody class="tbody">
+      <tr>
+       <td>5.1.0</td>
+       <td>
+        Support for negative <code class="parameter">limit</code>s was added
+       </td>
+      </tr>
+
+     </tbody>
+    
+   </table>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.explode-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-5444">
+    <p><strong>Example #1 <span class="function">explode</span> examples</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Example&nbsp;1<br /></span><span style="color: #0000BB">$pizza&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"piece1&nbsp;piece2&nbsp;piece3&nbsp;piece4&nbsp;piece5&nbsp;piece6"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$pieces&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">explode</span><span style="color: #007700">(</span><span style="color: #DD0000">"&nbsp;"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$pizza</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$pieces</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;piece1<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$pieces</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">];&nbsp;</span><span style="color: #FF8000">//&nbsp;piece2<br /><br />//&nbsp;Example&nbsp;2<br /></span><span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"foo:*:1023:1000::/home/foo:/bin/sh"</span><span style="color: #007700">;<br />list(</span><span style="color: #0000BB">$user</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$pass</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$uid</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$gid</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$gecos</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$home</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$shell</span><span style="color: #007700">)&nbsp;=&nbsp;</span><span style="color: #0000BB">explode</span><span style="color: #007700">(</span><span style="color: #DD0000">":"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$data</span><span style="color: #007700">);<br />echo&nbsp;</span><span style="color: #0000BB">$user</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;foo<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$pass</span><span style="color: #007700">;&nbsp;</span><span style="color: #FF8000">//&nbsp;*<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-5445">
+    <p><strong>Example #2 <span class="function">explode</span> return examples</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;<br />&nbsp;&nbsp;&nbsp;A&nbsp;string&nbsp;that&nbsp;doesn't&nbsp;contain&nbsp;the&nbsp;delimiter&nbsp;will&nbsp;simply<br />&nbsp;&nbsp;&nbsp;return&nbsp;a&nbsp;one-length&nbsp;array&nbsp;of&nbsp;the&nbsp;original&nbsp;string.<br />*/<br /></span><span style="color: #0000BB">$input1&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"hello"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$input2&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">"hello,there"</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$input3&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">','</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">explode</span><span style="color: #007700">(&nbsp;</span><span style="color: #DD0000">','</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$input1&nbsp;</span><span style="color: #007700">)&nbsp;);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">explode</span><span style="color: #007700">(&nbsp;</span><span style="color: #DD0000">','</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$input2&nbsp;</span><span style="color: #007700">)&nbsp;);<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(&nbsp;</span><span style="color: #0000BB">explode</span><span style="color: #007700">(&nbsp;</span><span style="color: #DD0000">','</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$input3&nbsp;</span><span style="color: #007700">)&nbsp;);<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+array(1)
+(
+    [0] =&gt; string(5) &quot;hello&quot;
+)
+array(2)
+(
+    [0] =&gt; string(5) &quot;hello&quot;
+    [1] =&gt; string(5) &quot;there&quot;
+)
+array(2)
+(
+    [0] =&gt; string(0) &quot;&quot;
+    [1] =&gt; string(0) &quot;&quot;
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-5446">
+    <p><strong>Example #3 <code class="parameter">limit</code> parameter examples</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$str&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'one|two|three|four'</span><span style="color: #007700">;<br /><br /></span><span style="color: #FF8000">//&nbsp;positive&nbsp;limit<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">explode</span><span style="color: #007700">(</span><span style="color: #DD0000">'|'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$str</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">));<br /><br /></span><span style="color: #FF8000">//&nbsp;negative&nbsp;limit&nbsp;(since&nbsp;PHP&nbsp;5.1)<br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">explode</span><span style="color: #007700">(</span><span style="color: #DD0000">'|'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$str</span><span style="color: #007700">,&nbsp;-</span><span style="color: #0000BB">1</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [0] =&gt; one
+    [1] =&gt; two|three|four
+)
+Array
+(
+    [0] =&gt; one
+    [1] =&gt; two
+    [2] =&gt; three
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 notes" id="refsect1-function.explode-notes">
+  <h3 class="title">Notes</h3>
+  <blockquote class="note"><p><strong class="note">Note</strong>: <span class="simpara">This function is
+binary-safe.</span></p></blockquote>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.explode-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">preg_split</span></li>
+    <li class="member"><span class="function">str_split</span></li>
+    <li class="member"><span class="function">mb_split</span></li>
+    <li class="member"><span class="function">str_word_count</span></li>
+    <li class="member"><span class="function">strtok</span></li>
+    <li class="member"><span class="function">implode</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,2550 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Gmagick</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.utilspec.image.html">Image Processing and Generation</a></li>
+  <li><a href="book.cairo.html">Cairo</a></li>
+  <li><a href="book.exif.html">Exif</a></li>
+  <li><a href="book.image.html">GD</a></li>
+  <li class="active"><a href="book.gmagick.html">Gmagick</a></li>
+  <li><a href="book.imagick.html">ImageMagick</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.png2wbmp.html">png2wbmp</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="intro.gmagick.html">Introduction</a></div>
+                <div class="up"><a href="refs.utilspec.image.html">Image Processing and Generation</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="book.gmagick" class="book">
+ <h1>Gmagick</h1><strong>Table of Contents</strong><ul class="chunklist chunklist_title">
+<li><a href="intro.gmagick.html">Introduction</a></li>
+<li><a href="gmagick.setup.html">Installing/Configuring</a><ul class="chunklist chunklist_title">
+<li><a href="gmagick.requirements.html">Requirements</a></li>
+<li><a href="gmagick.installation.html">Installation</a></li>
+<li><a href="gmagick.configuration.html">Runtime Configuration</a></li>
+</ul>
+</li>
+<li><a href="gmagick.constants.html">Predefined Constants</a></li>
+<li><a href="gmagick.examples.html">Examples</a></li>
+<li><a href="class.gmagick.html">Gmagick</a> — The Gmagick class<ul class="chunklist chunklist_title">
+<li><a href="gmagick.addimage.html">Gmagick::addimage</a> — Adds new image to Gmagick object image list</li>
+<li><a href="gmagick.addnoiseimage.html">Gmagick::addnoiseimage</a> — Adds random noise to the image</li>
+<li><a href="gmagick.annotateimage.html">Gmagick::annotateimage</a> — Annotates an image with text</li>
+<li><a href="gmagick.blurimage.html">Gmagick::blurimage</a> — Adds blur filter to image</li>
+<li><a href="gmagick.borderimage.html">Gmagick::borderimage</a> — Surrounds the image with a border</li>
+<li><a href="gmagick.charcoalimage.html">Gmagick::charcoalimage</a> — Simulates a charcoal drawing</li>
+<li><a href="gmagick.chopimage.html">Gmagick::chopimage</a> — Removes a region of an image and trims</li>
+<li><a href="gmagick.clear.html">Gmagick::clear</a> — Clears all resources associated to Gmagick object</li>
+<li><a href="gmagick.commentimage.html">Gmagick::commentimage</a> — Adds a comment to your image</li>
+<li><a href="gmagick.compositeimage.html">Gmagick::compositeimage</a> — Composite one image onto another</li>
+<li><a href="gmagick.construct.html">Gmagick::__construct</a> — The Gmagick constructor</li>
+<li><a href="gmagick.cropimage.html">Gmagick::cropimage</a> — Extracts a region of the image</li>
+<li><a href="gmagick.cropthumbnailimage.html">Gmagick::cropthumbnailimage</a> — Creates a crop thumbnail</li>
+<li><a href="gmagick.current.html">Gmagick::current</a> — The current purpose</li>
+<li><a href="gmagick.cyclecolormapimage.html">Gmagick::cyclecolormapimage</a> — Displaces an image's colormap</li>
+<li><a href="gmagick.deconstructimages.html">Gmagick::deconstructimages</a> — Returns certain pixel differences between images</li>
+<li><a href="gmagick.despeckleimage.html">Gmagick::despeckleimage</a> — The despeckleimage purpose</li>
+<li><a href="gmagick.destroy.html">Gmagick::destroy</a> — The destroy purpose</li>
+<li><a href="gmagick.drawimage.html">Gmagick::drawimage</a> — Renders the GmagickDraw object on the current image</li>
+<li><a href="gmagick.edgeimage.html">Gmagick::edgeimage</a> — Enhance edges within the image</li>
+<li><a href="gmagick.embossimage.html">Gmagick::embossimage</a> — Returns a grayscale image with a three-dimensional effect</li>
+<li><a href="gmagick.enhanceimage.html">Gmagick::enhanceimage</a> — Improves the quality of a noisy image</li>
+<li><a href="gmagick.equalizeimage.html">Gmagick::equalizeimage</a> — Equalizes the image histogram</li>
+<li><a href="gmagick.flipimage.html">Gmagick::flipimage</a> — Creates a vertical mirror image</li>
+<li><a href="gmagick.flopimage.html">Gmagick::flopimage</a> — The flopimage purpose</li>
+<li><a href="gmagick.frameimage.html">Gmagick::frameimage</a> — Adds a simulated three-dimensional border</li>
+<li><a href="gmagick.gammaimage.html">Gmagick::gammaimage</a> — Gamma-corrects an image</li>
+<li><a href="gmagick.getcopyright.html">Gmagick::getcopyright</a> — Returns the GraphicsMagick API copyright as a string</li>
+<li><a href="gmagick.getfilename.html">Gmagick::getfilename</a> — The filename associated with an image sequence</li>
+<li><a href="gmagick.getimagebackgroundcolor.html">Gmagick::getimagebackgroundcolor</a> — Returns the image background color</li>
+<li><a href="gmagick.getimageblueprimary.html">Gmagick::getimageblueprimary</a> — Returns the chromaticy blue primary point</li>
+<li><a href="gmagick.getimagebordercolor.html">Gmagick::getimagebordercolor</a> — Returns the image border color</li>
+<li><a href="gmagick.getimagechanneldepth.html">Gmagick::getimagechanneldepth</a> — Gets the depth for a particular image channel</li>
+<li><a href="gmagick.getimagecolors.html">Gmagick::getimagecolors</a> — Returns the color of the specified colormap index</li>
+<li><a href="gmagick.getimagecolorspace.html">Gmagick::getimagecolorspace</a> — Gets the image colorspace</li>
+<li><a href="gmagick.getimagecompose.html">Gmagick::getimagecompose</a> — Returns the composite operator associated with the image</li>
+<li><a href="gmagick.getimagedelay.html">Gmagick::getimagedelay</a> — Gets the image delay</li>
+<li><a href="gmagick.getimagedepth.html">Gmagick::getimagedepth</a> — Gets the depth of the image</li>
+<li><a href="gmagick.getimagedispose.html">Gmagick::getimagedispose</a> — Gets the image disposal method</li>
+<li><a href="gmagick.getimageextrema.html">Gmagick::getimageextrema</a> — Gets the extrema for the image</li>
+<li><a href="gmagick.getimagefilename.html">Gmagick::getimagefilename</a> — Returns the filename of a particular image in a sequence</li>
+<li><a href="gmagick.getimageformat.html">Gmagick::getimageformat</a> — Returns the format of a particular image in a sequence</li>
+<li><a href="gmagick.getimagegamma.html">Gmagick::getimagegamma</a> — Gets the image gamma</li>
+<li><a href="gmagick.getimagegreenprimary.html">Gmagick::getimagegreenprimary</a> — Returns the chromaticy green primary point</li>
+<li><a href="gmagick.getimageheight.html">Gmagick::getimageheight</a> — Returns the image height</li>
+<li><a href="gmagick.getimagehistogram.html">Gmagick::getimagehistogram</a> — Gets the image histogram</li>
+<li><a href="gmagick.getimageindex.html">Gmagick::getimageindex</a> — Gets the index of the current active image</li>
+<li><a href="gmagick.getimageinterlacescheme.html">Gmagick::getimageinterlacescheme</a> — Gets the image interlace scheme</li>
+<li><a href="gmagick.getimageiterations.html">Gmagick::getimageiterations</a> — Gets the image iterations</li>
+<li><a href="gmagick.getimagematte.html">Gmagick::getimagematte</a> — Check if the image has a matte channel</li>
+<li><a href="gmagick.getimagemattecolor.html">Gmagick::getimagemattecolor</a> — Returns the image matte color</li>
+<li><a href="gmagick.getimageprofile.html">Gmagick::getimageprofile</a> — Returns the named image profile.</li>
+<li><a href="gmagick.getimageredprimary.html">Gmagick::getimageredprimary</a> — Returns the chromaticity red primary point</li>
+<li><a href="gmagick.getimagerenderingintent.html">Gmagick::getimagerenderingintent</a> — Gets the image rendering intent</li>
+<li><a href="gmagick.getimageresolution.html">Gmagick::getimageresolution</a> — Gets the image X and Y resolution</li>
+<li><a href="gmagick.getimagescene.html">Gmagick::getimagescene</a> — Gets the image scene</li>
+<li><a href="gmagick.getimagesignature.html">Gmagick::getimagesignature</a> — Generates an SHA-256 message digest</li>
+<li><a href="gmagick.getimagetype.html">Gmagick::getimagetype</a> — Gets the potential image type.</li>
+<li><a href="gmagick.getimageunits.html">Gmagick::getimageunits</a> — Gets the image units of resolution</li>
+<li><a href="gmagick.getimagewhitepoint.html">Gmagick::getimagewhitepoint</a> — Returns the chromaticity white point</li>
+<li><a href="gmagick.getimagewidth.html">Gmagick::getimagewidth</a> — Returns the width of the image</li>
+<li><a href="gmagick.getpackagename.html">Gmagick::getpackagename</a> — Returns the GraphicsMagick package name.</li>
+<li><a href="gmagick.getquantumdepth.html">Gmagick::getquantumdepth</a> — Returns the Gmagick quantum depth as a string.</li>
+<li><a href="gmagick.getreleasedate.html">Gmagick::getreleasedate</a> — Returns the GraphicsMagick release date as a string.</li>
+<li><a href="gmagick.getsamplingfactors.html">Gmagick::getsamplingfactors</a> — Gets the horizontal and vertical sampling factor.</li>
+<li><a href="gmagick.getsize.html">Gmagick::getsize</a> — Returns the size associated with the Gmagick object</li>
+<li><a href="gmagick.getversion.html">Gmagick::getversion</a> — Returns the GraphicsMagick API version</li>
+<li><a href="gmagick.hasnextimage.html">Gmagick::hasnextimage</a> — Checks if the object has more images</li>
+<li><a href="gmagick.haspreviousimage.html">Gmagick::haspreviousimage</a> — Checks if the object has a previous image</li>
+<li><a href="gmagick.implodeimage.html">Gmagick::implodeimage</a> — Creates a new image as a copy</li>
+<li><a href="gmagick.labelimage.html">Gmagick::labelimage</a> — Adds a label to an image.</li>
+<li><a href="gmagick.levelimage.html">Gmagick::levelimage</a> — Adjusts the levels of an image</li>
+<li><a href="gmagick.magnifyimage.html">Gmagick::magnifyimage</a> — Scales an image proportionally 2x</li>
+<li><a href="gmagick.mapimage.html">Gmagick::mapimage</a> — Replaces the colors of an image with the closest color from a reference image.</li>
+<li><a href="gmagick.medianfilterimage.html">Gmagick::medianfilterimage</a> — Applies a digital filter</li>
+<li><a href="gmagick.minifyimage.html">Gmagick::minifyimage</a> — Scales an image proportionally to half its size</li>
+<li><a href="gmagick.modulateimage.html">Gmagick::modulateimage</a> — Control the brightness, saturation, and hue</li>
+<li><a href="gmagick.motionblurimage.html">Gmagick::motionblurimage</a> — Simulates motion blur</li>
+<li><a href="gmagick.newimage.html">Gmagick::newimage</a> — Creates a new image</li>
+<li><a href="gmagick.nextimage.html">Gmagick::nextimage</a> — Moves to the next image</li>
+<li><a href="gmagick.normalizeimage.html">Gmagick::normalizeimage</a> — Enhances the contrast of a color image</li>
+<li><a href="gmagick.oilpaintimage.html">Gmagick::oilpaintimage</a> — Simulates an oil painting</li>
+<li><a href="gmagick.previousimage.html">Gmagick::previousimage</a> — Move to the previous image in the object</li>
+<li><a href="gmagick.profileimage.html">Gmagick::profileimage</a> — Adds or removes a profile from an image</li>
+<li><a href="gmagick.quantizeimage.html">Gmagick::quantizeimage</a> — Analyzes the colors within a reference image</li>
+<li><a href="gmagick.quantizeimages.html">Gmagick::quantizeimages</a> — The quantizeimages purpose</li>
+<li><a href="gmagick.queryfontmetrics.html">Gmagick::queryfontmetrics</a> — Returns an array representing the font metrics</li>
+<li><a href="gmagick.queryfonts.html">Gmagick::queryfonts</a> — Returns the configured fonts</li>
+<li><a href="gmagick.queryformats.html">Gmagick::queryformats</a> — Returns formats supported by Gmagick.</li>
+<li><a href="gmagick.radialblurimage.html">Gmagick::radialblurimage</a> — Radial blurs an image</li>
+<li><a href="gmagick.raiseimage.html">Gmagick::raiseimage</a> — Creates a simulated 3d button-like effect</li>
+<li><a href="gmagick.read.html">Gmagick::read</a> — Reads image from filename</li>
+<li><a href="gmagick.readimage.html">Gmagick::readimage</a> — Reads image from filename</li>
+<li><a href="gmagick.readimageblob.html">Gmagick::readimageblob</a> — Reads image from a binary string</li>
+<li><a href="gmagick.readimagefile.html">Gmagick::readimagefile</a> — The readimagefile purpose</li>
+<li><a href="gmagick.reducenoiseimage.html">Gmagick::reducenoiseimage</a> — Smooths the contours of an image</li>
+<li><a href="gmagick.removeimage.html">Gmagick::removeimage</a> — Removes an image from the image list</li>
+<li><a href="gmagick.removeimageprofile.html">Gmagick::removeimageprofile</a> — Removes the named image profile and returns it</li>
+<li><a href="gmagick.resampleimage.html">Gmagick::resampleimage</a> — Resample image to desired resolution</li>
+<li><a href="gmagick.resizeimage.html">Gmagick::resizeimage</a> — Scales an image</li>
+<li><a href="gmagick.rollimage.html">Gmagick::rollimage</a> — Offsets an image</li>
+<li><a href="gmagick.rotateimage.html">Gmagick::rotateimage</a> — Rotates an image</li>
+<li><a href="gmagick.scaleimage.html">Gmagick::scaleimage</a> — Scales the size of an image</li>
+<li><a href="gmagick.separateimagechannel.html">Gmagick::separateimagechannel</a> — Separates a channel from the image</li>
+<li><a href="gmagick.setcompressionquality.html">Gmagick::setCompressionQuality</a> — Sets the object's default compression quality</li>
+<li><a href="gmagick.setfilename.html">Gmagick::setfilename</a> — Sets the filename before you read or write the image</li>
+<li><a href="gmagick.setimagebackgroundcolor.html">Gmagick::setimagebackgroundcolor</a> — Sets the image background color.</li>
+<li><a href="gmagick.setimageblueprimary.html">Gmagick::setimageblueprimary</a> — Sets the image chromaticity blue primary point.</li>
+<li><a href="gmagick.setimagebordercolor.html">Gmagick::setimagebordercolor</a> — Sets the image border color.</li>
+<li><a href="gmagick.setimagechanneldepth.html">Gmagick::setimagechanneldepth</a> — Sets the depth of a particular image channel</li>
+<li><a href="gmagick.setimagecolorspace.html">Gmagick::setimagecolorspace</a> — Sets the image colorspace</li>
+<li><a href="gmagick.setimagecompose.html">Gmagick::setimagecompose</a> — Sets the image composite operator</li>
+<li><a href="gmagick.setimagedelay.html">Gmagick::setimagedelay</a> — Sets the image delay</li>
+<li><a href="gmagick.setimagedepth.html">Gmagick::setimagedepth</a> — Sets the image depth</li>
+<li><a href="gmagick.setimagedispose.html">Gmagick::setimagedispose</a> — Sets the image disposal method</li>
+<li><a href="gmagick.setimagefilename.html">Gmagick::setimagefilename</a> — Sets the filename of a particular image in a sequence</li>
+<li><a href="gmagick.setimageformat.html">Gmagick::setimageformat</a> — Sets the format of a particular image</li>
+<li><a href="gmagick.setimagegamma.html">Gmagick::setimagegamma</a> — Sets the image gamma</li>
+<li><a href="gmagick.setimagegreenprimary.html">Gmagick::setimagegreenprimary</a> — Sets the image chromaticity green primary point.</li>
+<li><a href="gmagick.setimageindex.html">Gmagick::setimageindex</a> — Set the iterator to the position in the image list specified with the index parameter</li>
+<li><a href="gmagick.setimageinterlacescheme.html">Gmagick::setimageinterlacescheme</a> — Sets the interlace scheme of the image.</li>
+<li><a href="gmagick.setimageiterations.html">Gmagick::setimageiterations</a> — Sets the image iterations.</li>
+<li><a href="gmagick.setimageprofile.html">Gmagick::setimageprofile</a> — Adds a named profile to the Gmagick object</li>
+<li><a href="gmagick.setimageredprimary.html">Gmagick::setimageredprimary</a> — Sets the image chromaticity red primary point.</li>
+<li><a href="gmagick.setimagerenderingintent.html">Gmagick::setimagerenderingintent</a> — Sets the image rendering intent</li>
+<li><a href="gmagick.setimageresolution.html">Gmagick::setimageresolution</a> — Sets the image resolution</li>
+<li><a href="gmagick.setimagescene.html">Gmagick::setimagescene</a> — Sets the image scene</li>
+<li><a href="gmagick.setimagetype.html">Gmagick::setimagetype</a> — Sets the image type</li>
+<li><a href="gmagick.setimageunits.html">Gmagick::setimageunits</a> — Sets the image units of resolution.</li>
+<li><a href="gmagick.setimagewhitepoint.html">Gmagick::setimagewhitepoint</a> — Sets the image chromaticity white point.</li>
+<li><a href="gmagick.setsamplingfactors.html">Gmagick::setsamplingfactors</a> — Sets the image sampling factors.</li>
+<li><a href="gmagick.setsize.html">Gmagick::setsize</a> — Sets the size of the Gmagick object</li>
+<li><a href="gmagick.shearimage.html">Gmagick::shearimage</a> — Creating a parallelogram</li>
+<li><a href="gmagick.solarizeimage.html">Gmagick::solarizeimage</a> — Applies a solarizing effect to the image</li>
+<li><a href="gmagick.spreadimage.html">Gmagick::spreadimage</a> — Randomly displaces each pixel in a block</li>
+<li><a href="gmagick.stripimage.html">Gmagick::stripimage</a> — Strips an image of all profiles and comments</li>
+<li><a href="gmagick.swirlimage.html">Gmagick::swirlimage</a> — Swirls the pixels about the center of the image</li>
+<li><a href="gmagick.thumbnailimage.html">Gmagick::thumbnailimage</a> — Changes the size of an image</li>
+<li><a href="gmagick.trimimage.html">Gmagick::trimimage</a> — Remove edges from the image</li>
+<li><a href="gmagick.write.html">Gmagick::write</a> — Alias of Gmagick::writeimage</li>
+<li><a href="gmagick.writeimage.html">Gmagick::writeimage</a> — Writes an image to the specified filename</li>
+</ul>
+</li>
+<li><a href="class.gmagickdraw.html">GmagickDraw</a> — The GmagickDraw class<ul class="chunklist chunklist_title">
+<li><a href="gmagickdraw.annotate.html">GmagickDraw::annotate</a> — Draws text on the image</li>
+<li><a href="gmagickdraw.arc.html">GmagickDraw::arc</a> — Draws an arc</li>
+<li><a href="gmagickdraw.bezier.html">GmagickDraw::bezier</a> — Draws a bezier curve</li>
+<li><a href="gmagickdraw.ellipse.html">GmagickDraw::ellipse</a> — Draws an ellipse on the image</li>
+<li><a href="gmagickdraw.getfillcolor.html">GmagickDraw::getfillcolor</a> — Returns the fill color</li>
+<li><a href="gmagickdraw.getfillopacity.html">GmagickDraw::getfillopacity</a> — Returns the opacity used when drawing</li>
+<li><a href="gmagickdraw.getfont.html">GmagickDraw::getfont</a> — Returns the font</li>
+<li><a href="gmagickdraw.getfontsize.html">GmagickDraw::getfontsize</a> — Returns the font pointsize</li>
+<li><a href="gmagickdraw.getfontstyle.html">GmagickDraw::getfontstyle</a> — Returns the font style</li>
+<li><a href="gmagickdraw.getfontweight.html">GmagickDraw::getfontweight</a> — Returns the font weight</li>
+<li><a href="gmagickdraw.getstrokecolor.html">GmagickDraw::getstrokecolor</a> — Returns the color used for stroking object outlines</li>
+<li><a href="gmagickdraw.getstrokeopacity.html">GmagickDraw::getstrokeopacity</a> — Returns the opacity of stroked object outlines</li>
+<li><a href="gmagickdraw.getstrokewidth.html">GmagickDraw::getstrokewidth</a> — Returns the width of the stroke used to draw object outlines</li>
+<li><a href="gmagickdraw.gettextdecoration.html">GmagickDraw::gettextdecoration</a> — Returns the text decoration</li>
+<li><a href="gmagickdraw.gettextencoding.html">GmagickDraw::gettextencoding</a> — Returns the code set used for text annotations</li>
+<li><a href="gmagickdraw.line.html">GmagickDraw::line</a> — The line purpose</li>
+<li><a href="gmagickdraw.point.html">GmagickDraw::point</a> — Draws a point</li>
+<li><a href="gmagickdraw.polygon.html">GmagickDraw::polygon</a> — Draws a polygon</li>
+<li><a href="gmagickdraw.polyline.html">GmagickDraw::polyline</a> — Draws a polyline</li>
+<li><a href="gmagickdraw.rectangle.html">GmagickDraw::rectangle</a> — Draws a rectangle</li>
+<li><a href="gmagickdraw.rotate.html">GmagickDraw::rotate</a> — Applies the specified rotation to the current coordinate space</li>
+<li><a href="gmagickdraw.roundrectangle.html">GmagickDraw::roundrectangle</a> — Draws a rounded rectangle</li>
+<li><a href="gmagickdraw.scale.html">GmagickDraw::scale</a> — Adjusts the scaling factor</li>
+<li><a href="gmagickdraw.setfillcolor.html">GmagickDraw::setfillcolor</a> — Sets the fill color to be used for drawing filled objects.</li>
+<li><a href="gmagickdraw.setfillopacity.html">GmagickDraw::setfillopacity</a> — The setfillopacity purpose</li>
+<li><a href="gmagickdraw.setfont.html">GmagickDraw::setfont</a> — Sets the fully-specified font to use when annotating with text.</li>
+<li><a href="gmagickdraw.setfontsize.html">GmagickDraw::setfontsize</a> — Sets the font pointsize to use when annotating with text.</li>
+<li><a href="gmagickdraw.setfontstyle.html">GmagickDraw::setfontstyle</a> — Sets the font style to use when annotating with text</li>
+<li><a href="gmagickdraw.setfontweight.html">GmagickDraw::setfontweight</a> — Sets the font weight</li>
+<li><a href="gmagickdraw.setstrokecolor.html">GmagickDraw::setstrokecolor</a> — Sets the color used for stroking object outlines.</li>
+<li><a href="gmagickdraw.setstrokeopacity.html">GmagickDraw::setstrokeopacity</a> — Specifies the opacity of stroked object outlines.</li>
+<li><a href="gmagickdraw.setstrokewidth.html">GmagickDraw::setstrokewidth</a> — Sets the width of the stroke used to draw object outlines.</li>
+<li><a href="gmagickdraw.settextdecoration.html">GmagickDraw::settextdecoration</a> — Specifies a decoration</li>
+<li><a href="gmagickdraw.settextencoding.html">GmagickDraw::settextencoding</a> — Specifies the text code set</li>
+</ul>
+</li>
+<li><a href="class.gmagickpixel.html">GmagickPixel</a> — The GmagickPixel class<ul class="chunklist chunklist_title">
+<li><a href="gmagickpixel.construct.html">GmagickPixel::__construct</a> — The GmagickPixel constructor</li>
+<li><a href="gmagickpixel.getcolor.html">GmagickPixel::getcolor</a> — Returns the color</li>
+<li><a href="gmagickpixel.getcolorcount.html">GmagickPixel::getcolorcount</a> — Returns the color count associated with this color</li>
+<li><a href="gmagickpixel.getcolorvalue.html">GmagickPixel::getcolorvalue</a> — Gets the normalized value of the provided color channel</li>
+<li><a href="gmagickpixel.setcolor.html">GmagickPixel::setcolor</a> — Sets the color</li>
+<li><a href="gmagickpixel.setcolorvalue.html">GmagickPixel::setcolorvalue</a> — Sets the normalized value of one of the channels</li>
+</ul>
+</li>
+</ul>
+
+ 
+
+ 
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The Gmagick class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="gmagick.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    
+   </p>
+  </div>
+
+
+  <div class="section" id="gmagick.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">Gmagick</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">Gmagick</strong>
+     </span>
+     {</div>
+
+      <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">addimage</span>
+    ( <span class="methodparam"><span class="type">Gmagick</span> <code class="parameter">$source</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">addnoiseimage</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$noise_type</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">annotateimage</span>
+    ( <span class="methodparam"><span class="type">GmagickDraw</span> <code class="parameter">$GmagickDraw</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$x</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$y</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$angle</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$text</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">blurimage</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$radius</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$sigma</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$channel</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">borderimage</span>
+    ( <span class="methodparam"><span class="type">GmagickPixel</span> <code class="parameter">$color</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$width</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$height</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">charcoalimage</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$radius</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$sigma</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">chopimage</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$width</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$height</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$x</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$y</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">clear</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">commentimage</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$comment</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">compositeimage</span>
+    ( <span class="methodparam"><span class="type">Gmagick</span> <code class="parameter">$source</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$COMPOSE</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$x</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$y</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">cropimage</span>
+     ( <span class="methodparam">
+      <span class="type">int</span>
+       <code class="parameter">$width</code>
+    </span>
+    , <span class="methodparam">
+      <span class="type">int</span>
+       <code class="parameter">$height</code>
+    </span>
+    , <span class="methodparam"><span class="type">int</span> <code class="parameter">$x</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$y</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">cropthumbnailimage</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$width</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$height</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">current</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">cyclecolormapimage</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$displace</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">deconstructimages</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">despeckleimage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">destroy</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">drawimage</span>
+    ( <span class="methodparam"><span class="type">GmagickDraw</span> <code class="parameter">$GmagickDraw</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">edgeimage</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$radius</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">embossimage</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$radius</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$sigma</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">enhanceimage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">equalizeimage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">flipimage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">flopimage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">frameimage</span>
+    ( <span class="methodparam"><span class="type">GmagickPixel</span> <code class="parameter">$color</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$width</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$height</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$inner_bevel</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$outer_bevel</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">gammaimage</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$gamma</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getcopyright</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getfilename</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickPixel</span> <span class="methodname">getimagebackgroundcolor</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getimageblueprimary</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickPixel</span> <span class="methodname">getimagebordercolor</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getimagechanneldepth</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$channel_type</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getimagecolors</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getimagecolorspace</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getimagecompose</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getimagedelay</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getimagedepth</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getimagedispose</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getimageextrema</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getimagefilename</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getimageformat</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">float</span> <span class="methodname">getimagegamma</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getimagegreenprimary</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getimageheight</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getimagehistogram</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getimageindex</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getimageinterlacescheme</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getimageiterations</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getimagematte</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickPixel</span> <span class="methodname">getimagemattecolor</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getimageprofile</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getimageredprimary</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getimagerenderingintent</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getimageresolution</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getimagescene</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getimagesignature</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getimagetype</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getimageunits</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getimagewhitepoint</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getimagewidth</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getpackagename</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getquantumdepth</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">getreleasedate</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getsamplingfactors</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getsize</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">getversion</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">hasnextimage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">haspreviousimage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">implodeimage</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$radius</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">labelimage</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$label</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">levelimage</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$blackPoint</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$gamma</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$whitePoint</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$channel</code><span class="initializer"> = Gmagick::CHANNEL_DEFAULT</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">magnifyimage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">mapimage</span>
+    ( <span class="methodparam"><span class="type">gmagick</span> <code class="parameter">$gmagick</code></span>
+   , <span class="methodparam"><span class="type">bool</span> <code class="parameter">$dither</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">medianfilterimage</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$radius</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">minifyimage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">modulateimage</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$brightness</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$saturation</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$hue</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">motionblurimage</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$radius</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$sigma</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$angle</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">newimage</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$width</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$height</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$background</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$format</code></span>    
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">nextimage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">normalizeimage</span>
+    ([ <span class="methodparam"><span class="type">int</span> <code class="parameter">$channel</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">oilpaintimage</span>
+     ( <span class="methodparam">
+      <span class="type">float</span>
+       <code class="parameter">$radius</code>
+    </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">bool</span> <span class="methodname">previousimage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">profileimage</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$profile</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">quantizeimage</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$numColors</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$colorspace</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$treeDepth</code></span>
+   , <span class="methodparam"><span class="type">bool</span> <code class="parameter">$dither</code></span>
+   , <span class="methodparam"><span class="type">bool</span> <code class="parameter">$measureError</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">quantizeimages</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$numColors</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$colorspace</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$treeDepth</code></span>
+   , <span class="methodparam"><span class="type">bool</span> <code class="parameter">$dither</code></span>
+   , <span class="methodparam"><span class="type">bool</span> <code class="parameter">$measureError</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">queryfontmetrics</span>
+    ( <span class="methodparam"><span class="type">GmagickDraw</span> <code class="parameter">$draw</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$text</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">queryfonts</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$pattern</code><span class="initializer"> = &quot;*&quot;</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">queryformats</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$pattern</code><span class="initializer"> = &quot;*&quot;</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">radialblurimage</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$angle</code></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$channel</code><span class="initializer"> = Gmagick::CHANNEL_DEFAULT</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">raiseimage</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$width</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$height</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$x</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$y</code></span>
+   , <span class="methodparam"><span class="type">bool</span> <code class="parameter">$raise</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">read</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">readimage</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">readimageblob</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$imageContents</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">readimagefile</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$fp</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">reducenoiseimage</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$radius</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">removeimage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">string</span> <span class="methodname">removeimageprofile</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">resampleimage</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$xResolution</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$yResolution</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$filter</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$blur</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">resizeimage</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$width</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$height</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$filter</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$blur</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$fit</code><span class="initializer"> = false</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">rollimage</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$x</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$y</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">rotateimage</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$color</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$degrees</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">scaleimage</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$width</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$height</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$fit</code><span class="initializer"> = false</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">separateimagechannel</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$channel</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="type">Gmagick</span> <span class="methodname">setCompressionQuality</span>
+    ( <span class="methodparam">
+    <span class="type">int</span> <code class="parameter">$quality</code>
+    <span class="initializer"> = 75</span>
+   </span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">setfilename</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">setimagebackgroundcolor</span>
+    ( <span class="methodparam"><span class="type">GmagickPixel</span> <code class="parameter">$color</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">setimageblueprimary</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$x</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$y</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">setimagebordercolor</span>
+    ( <span class="methodparam"><span class="type">GmagickPixel</span> <code class="parameter">$color</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">setimagechanneldepth</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$channel</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$depth</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">setimagecolorspace</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$colorspace</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">setimagecompose</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$composite</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">setimagedelay</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$delay</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">setimagedepth</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$depth</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">setimagedispose</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$disposeType</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">setimagefilename</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">setimageformat</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$imageFormat</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">setimagegamma</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$gamma</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">setimagegreenprimary</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$x</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$y</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">setimageindex</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$index</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">setimageinterlacescheme</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$interlace</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">setimageiterations</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$iterations</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">setimageprofile</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$name</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$profile</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">setimageredprimary</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$x</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$y</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">setimagerenderingintent</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$rendering_intent</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">setimageresolution</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$xResolution</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$yResolution</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">setimagescene</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$scene</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">setimagetype</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$imgType</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">setimageunits</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$resolution</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">setimagewhitepoint</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$x</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$y</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">setsamplingfactors</span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$factors</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">setsize</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$columns</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$rows</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">shearimage</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$color</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$xShear</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$yShear</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">solarizeimage</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$threshold</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">spreadimage</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$radius</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">stripimage</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">swirlimage</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$degrees</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">thumbnailimage</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$width</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$height</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$fit</code><span class="initializer"> = false</span></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">trimimage</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$fuzz</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">Gmagick</span> <span class="methodname">writeimage</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$all_frames</code><span class="initializer"> = false</span></span>
+  ] )</div>
+
+   }</div>
+
+
+  </div>
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The GmagickDraw class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="gmagickdraw.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    
+   </p>
+  </div>
+
+
+  <div class="section" id="gmagickdraw.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">GmagickDraw</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">GmagickDraw</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickDraw</span> <span class="methodname">annotate</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$x</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$y</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$text</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickDraw</span> <span class="methodname">arc</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$sx</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$sy</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$ex</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$ey</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$sd</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$ed</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickDraw</span> <span class="methodname">bezier</span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$coordinate_array</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickDraw</span> <span class="methodname">ellipse</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$ox</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$oy</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$rx</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$ry</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$start</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$end</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickPixel</span> <span class="methodname">getfillcolor</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">float</span> <span class="methodname">getfillopacity</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">getfont</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">float</span> <span class="methodname">getfontsize</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getfontstyle</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getfontweight</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickPixel</span> <span class="methodname">getstrokecolor</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">float</span> <span class="methodname">getstrokeopacity</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">float</span> <span class="methodname">getstrokewidth</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">gettextdecoration</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">gettextencoding</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickDraw</span> <span class="methodname">line</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$sx</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$sy</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$ex</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$ey</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickDraw</span> <span class="methodname">point</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$x</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$y</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickDraw</span> <span class="methodname">polygon</span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$coordinates</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickDraw</span> <span class="methodname">polyline</span>
+    ( <span class="methodparam"><span class="type">array</span> <code class="parameter">$coordinate_array</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickDraw</span> <span class="methodname">rectangle</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$x1</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$y1</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$x2</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$y2</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickDraw</span> <span class="methodname">rotate</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$degrees</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickDraw</span> <span class="methodname">roundrectangle</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$x1</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$y1</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$x2</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$y2</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$rx</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$ry</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickDraw</span> <span class="methodname">scale</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$x</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$y</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickDraw</span> <span class="methodname">setfillcolor</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$color</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickDraw</span> <span class="methodname">setfillopacity</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$fill_opacity</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickDraw</span> <span class="methodname">setfont</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$font</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickDraw</span> <span class="methodname">setfontsize</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$pointsize</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickDraw</span> <span class="methodname">setfontstyle</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$style</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickDraw</span> <span class="methodname">setfontweight</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$weight</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickDraw</span> <span class="methodname">setstrokecolor</span>
+    ( <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$color</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickDraw</span> <span class="methodname">setstrokeopacity</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$stroke_opacity</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickDraw</span> <span class="methodname">setstrokewidth</span>
+    ( <span class="methodparam"><span class="type">float</span> <code class="parameter">$width</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickDraw</span> <span class="methodname">settextdecoration</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$decoration</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickDraw</span> <span class="methodname">settextencoding</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$encoding</code></span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+
+
+
+
+ <h1 class="title">The GmagickPixel class</h1>
+ 
+
+ <div class="partintro">
+
+
+  <div class="section" id="gmagickpixel.intro">
+   <h2 class="title">Introduction</h2>
+   <p class="para">
+    
+   </p>
+  </div>
+
+
+  <div class="section" id="gmagickpixel.synopsis">
+   <h2 class="title">Class synopsis</h2>
+
+
+   <div class="classsynopsis">
+    <div class="ooclass"><strong class="classname">GmagickPixel</strong></div>
+
+
+    <div class="classsynopsisinfo">
+     <span class="ooclass">
+       class <strong class="classname">GmagickPixel</strong>
+     </span>
+     {</div>
+
+    
+    <div class="classsynopsisinfo classsynopsisinfo_comment">/* Methods */</div>
+    <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">__construct</span>
+    ([ <span class="methodparam"><span class="type">string</span> <code class="parameter">$color</code></span>
+  ] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">mixed</span> <span class="methodname">getcolor</span>
+    ([ <span class="methodparam"><span class="type">bool</span> <code class="parameter">$as_array</code><span class="initializer"> = false</span></span>
+   [, <span class="methodparam"><span class="type">bool</span> <code class="parameter">$normalize_array</code><span class="initializer"> = false</span></span>
+  ]] )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">getcolorcount</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">float</span> <span class="methodname">getcolorvalue</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$color</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickPixel</span> <span class="methodname">setcolor</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$color</code></span>
+   )</div>
+<div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">GmagickPixel</span> <span class="methodname">setcolorvalue</span>
+    ( <span class="methodparam"><span class="type">int</span> <code class="parameter">$color</code></span>
+   , <span class="methodparam"><span class="type">float</span> <code class="parameter">$value</code></span>
+   )</div>
+
+   }</div>
+
+
+  </div>
+
+ </div>
+
+ 
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+ 
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

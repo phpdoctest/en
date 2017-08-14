@@ -1,0 +1,174 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Deprecated features in PHP 7.0.x</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="appendices.html">Appendices</a></li>
+  <li class="header up"><a href="migration70.html">Migrating from PHP 5.6.x to PHP 7.0.x</a></li>
+  <li><a href="migration70.incompatible.html">Backward incompatible changes</a></li>
+  <li><a href="migration70.new-features.html">New features</a></li>
+  <li class="active"><a href="migration70.deprecated.html">Deprecated features in PHP 7.0.x</a></li>
+  <li><a href="migration70.changed-functions.html">Changed functions</a></li>
+  <li><a href="migration70.new-functions.html">New functions</a></li>
+  <li><a href="migration70.classes.html">New Classes and Interfaces</a></li>
+  <li><a href="migration70.constants.html">New Global Constants</a></li>
+  <li><a href="migration70.sapi-changes.html">Changes in SAPI Modules</a></li>
+  <li><a href="migration70.removed-exts-sapis.html">Removed Extensions and SAPIs</a></li>
+  <li><a href="migration70.other-changes.html">Other Changes</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="migration70.new-features.html">New features</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="migration70.changed-functions.html">Changed functions</a></div>
+                <div class="up"><a href="migration70.html">Migrating from PHP 5.6.x to PHP 7.0.x</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="migration70.deprecated" class="sect1">
+ <h2 class="title">Deprecated features in PHP 7.0.x</h2>
+
+
+ 
+
+ <div class="sect2" id="migration70.deprecated.php4-constructors">
+  <h3 class="title">PHP 4 style constructors</h3>
+
+  <p class="para">
+   PHP 4 style constructors (methods that have the same name as the class they
+   are defined in) are deprecated, and will be removed in the future. PHP 7
+   will emit <strong><code>E_DEPRECATED</code></strong> if a PHP 4 constructor is the
+   only constructor defined within a class. Classes that implement a
+   <span class="function">__construct</span> method are unaffected.
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">foo</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'I&nbsp;am&nbsp;the&nbsp;constructor'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">The above example will output:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Deprecated: Methods with the same name as their class will not be constructors in a future version of PHP; foo has a deprecated constructor in example.php on line 3
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration70.deprecated.static-calls">
+  <h3 class="title">Static calls to non-static methods</h3>
+
+  <p class="para">
+   <a href="language.oop5.static.html" class="link">Static</a> calls to methods that
+   are not declared <strong class="command">static</strong> are deprecated, and may be
+   removed in the future.
+  </p>
+
+  <div class="informalexample">
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">foo&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;function&nbsp;</span><span style="color: #0000BB">bar</span><span style="color: #007700">()&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">'I&nbsp;am&nbsp;not&nbsp;static!'</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}<br /><br /></span><span style="color: #0000BB">foo</span><span style="color: #007700">::</span><span style="color: #0000BB">bar</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <p class="para">The above example will output:</p>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+Deprecated: Non-static method foo::bar() should not be called statically in - on line 8
+I am not static!
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+ <div class="sect2" id="migration70.deprecated.pwshash-salt-option">
+  <h3 class="title"><span class="function">password_hash</span> salt option</h3>
+
+  <p class="para">
+   The salt option for the <span class="function">password_hash</span> function has been
+   deprecated to prevent developers from generating their own (usually insecure)
+   salts. The function itself generates a cryptographically secure salt when no
+   salt is provided by the developer - therefore custom salt generation should not
+   be needed.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration70.deprecated.capture-session-meta">
+  <h3 class="title"><em>capture_session_meta</em> SSL context option</h3>
+
+  <p class="para">
+   The <em>capture_session_meta</em> SSL context option has been
+   deprecated. SSL metadata is now available through the
+   <span class="function">stream_get_meta_data</span> function.
+  </p>
+ </div>
+
+ <div class="sect2" id="migration70.deprecated.ldap">
+  <h3 class="title"><a href="book.ldap.html" class="link">LDAP</a> deprecations</h3>
+   <p class="simpara">
+    The following function has been deprecated:
+   </p>
+
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <span class="simpara">
+      <span class="function">ldap_sort</span>
+     </span>
+    </li>
+   </ul>
+ </div>
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

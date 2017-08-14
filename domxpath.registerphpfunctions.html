@@ -1,0 +1,215 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Register PHP functions as XPath functions</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.xml.html">XML Manipulation</a></li>
+  <li class="header up"><a href="book.dom.html">DOM</a></li>
+  <li class="header up"><a href="class.domxpath.html">DOMXPath</a></li>
+  <li><a href="domxpath.construct.html">DOMXPath::__construct</a></li>
+  <li><a href="domxpath.evaluate.html">DOMXPath::evaluate</a></li>
+  <li><a href="domxpath.query.html">DOMXPath::query</a></li>
+  <li><a href="domxpath.registernamespace.html">DOMXPath::registerNamespace</a></li>
+  <li class="active"><a href="domxpath.registerphpfunctions.html">DOMXPath::registerPhpFunctions</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="domxpath.registernamespace.html">DOMXPath::registerNamespace</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="ref.dom.html">DOM Functions</a></div>
+                <div class="up"><a href="class.domxpath.html">DOMXPath</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="domxpath.registerphpfunctions" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DOMXPath::registerPhpFunctions</h1>
+  <p class="refpurpose">Register PHP functions as XPath functions</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-domxpath.registerphpfunctions-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">DOMXPath::registerPhpFunctions</span>
+    ([ <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$restrict</code></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   This method enables the ability to use PHP functions within XPath expressions.
+  </p>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-domxpath.registerphpfunctions-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">restrict</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Use this parameter to only allow certain functions to be called from XPath.
+      </p>
+      <p class="para">
+       This parameter can be either a <span class="type">string</span> (a function name) or 
+       an <span class="type">array</span> of function names.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-domxpath.registerphpfunctions-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   No value is returned.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-domxpath.registerphpfunctions-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   The following examples use <var class="filename">book.xml</var> which contains the following:
+  </p>
+  <p class="para">
+   <div class="example" id="example-6289">
+    <p><strong>Example #1 book.xml</strong></p>
+    <div class="example-contents">
+<div class="xmlcode"><pre class="xmlcode">&lt;?xml version=&quot;1.0&quot; encoding=&quot;UTF-8&quot;?&gt;
+&lt;books&gt;
+ &lt;book&gt;
+  &lt;title&gt;PHP Basics&lt;/title&gt;
+  &lt;author&gt;Jim Smith&lt;/author&gt;
+  &lt;author&gt;Jane Smith&lt;/author&gt;
+ &lt;/book&gt;
+ &lt;book&gt;
+  &lt;title&gt;PHP Secrets&lt;/title&gt;
+  &lt;author&gt;Jenny Smythe&lt;/author&gt;
+ &lt;/book&gt;
+ &lt;book&gt;
+  &lt;title&gt;XML basics&lt;/title&gt;
+  &lt;author&gt;Joe Black&lt;/author&gt;
+ &lt;/book&gt;
+&lt;/books&gt;</pre>
+</div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-6290">
+    <p><strong>Example #2  <span class="methodname">DOMXPath::registerPHPFunctions</span> with <em>php:functionString</em></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$doc&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DOMDocument</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">load</span><span style="color: #007700">(</span><span style="color: #DD0000">'book.xml'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$xpath&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DOMXPath</span><span style="color: #007700">(</span><span style="color: #0000BB">$doc</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Register&nbsp;the&nbsp;php:&nbsp;namespace&nbsp;(required)<br /></span><span style="color: #0000BB">$xpath</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">registerNamespace</span><span style="color: #007700">(</span><span style="color: #DD0000">"php"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"http://php.net/xpath"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Register&nbsp;PHP&nbsp;functions&nbsp;(no&nbsp;restrictions)<br /></span><span style="color: #0000BB">$xpath</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">registerPHPFunctions</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;Call&nbsp;substr&nbsp;function&nbsp;on&nbsp;the&nbsp;book&nbsp;title<br /></span><span style="color: #0000BB">$nodes&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$xpath</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">'//book[php:functionString("substr",&nbsp;title,&nbsp;0,&nbsp;3)&nbsp;=&nbsp;"PHP"]'</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Found&nbsp;</span><span style="color: #007700">{</span><span style="color: #0000BB">$nodes</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">length</span><span style="color: #007700">}</span><span style="color: #DD0000">&nbsp;books&nbsp;starting&nbsp;with&nbsp;'PHP':\n"</span><span style="color: #007700">;<br />foreach&nbsp;(</span><span style="color: #0000BB">$nodes&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$node</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$title&nbsp;&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$node</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getElementsByTagName</span><span style="color: #007700">(</span><span style="color: #DD0000">"title"</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">item</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">nodeValue</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">$author&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$node</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getElementsByTagName</span><span style="color: #007700">(</span><span style="color: #DD0000">"author"</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">item</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">nodeValue</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"</span><span style="color: #0000BB">$title</span><span style="color: #DD0000">&nbsp;by&nbsp;</span><span style="color: #0000BB">$author</span><span style="color: #DD0000">\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Found 2 books starting with &#039;PHP&#039;:
+PHP Basics by Jim Smith
+PHP Secrets by Jenny Smythe
+</pre></div>
+    </div>
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-6291">
+    <p><strong>Example #3  <span class="methodname">DOMXPath::registerPHPFunctions</span> with <em>php:function</em></strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$doc&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DOMDocument</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$doc</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">load</span><span style="color: #007700">(</span><span style="color: #DD0000">'book.xml'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$xpath&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DOMXPath</span><span style="color: #007700">(</span><span style="color: #0000BB">$doc</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Register&nbsp;the&nbsp;php:&nbsp;namespace&nbsp;(required)<br /></span><span style="color: #0000BB">$xpath</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">registerNamespace</span><span style="color: #007700">(</span><span style="color: #DD0000">"php"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"http://php.net/xpath"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Register&nbsp;PHP&nbsp;functions&nbsp;(has_multiple&nbsp;only)<br /></span><span style="color: #0000BB">$xpath</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">registerPHPFunctions</span><span style="color: #007700">(</span><span style="color: #DD0000">"has_multiple"</span><span style="color: #007700">);<br />&nbsp;<br />function&nbsp;</span><span style="color: #0000BB">has_multiple</span><span style="color: #007700">(</span><span style="color: #0000BB">$nodes</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;Return&nbsp;true&nbsp;if&nbsp;more&nbsp;than&nbsp;one&nbsp;author<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #007700">return&nbsp;</span><span style="color: #0000BB">count</span><span style="color: #007700">(</span><span style="color: #0000BB">$nodes</span><span style="color: #007700">)&nbsp;&gt;&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">;<br />}<br /></span><span style="color: #FF8000">//&nbsp;Filter&nbsp;books&nbsp;with&nbsp;multiple&nbsp;authors<br /></span><span style="color: #0000BB">$books&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$xpath</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">query</span><span style="color: #007700">(</span><span style="color: #DD0000">'//book[php:function("has_multiple",&nbsp;author)]'</span><span style="color: #007700">);<br /><br />echo&nbsp;</span><span style="color: #DD0000">"Books&nbsp;with&nbsp;multiple&nbsp;authors:\n"</span><span style="color: #007700">;<br />foreach&nbsp;(</span><span style="color: #0000BB">$books&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$book</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$book</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getElementsByTagName</span><span style="color: #007700">(</span><span style="color: #DD0000">"title"</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">item</span><span style="color: #007700">(</span><span style="color: #0000BB">0</span><span style="color: #007700">)-&gt;</span><span style="color: #0000BB">nodeValue&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Books with multiple authors:
+PHP Basics
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 seealso" id="refsect1-domxpath.registerphpfunctions-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"> <span class="methodname">DOMXPath::registerNamespace</span></li>
+    <li class="member"> <span class="methodname">DOMXPath::query</span></li>
+    <li class="member"> <span class="methodname">DOMXPath::evaluate</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

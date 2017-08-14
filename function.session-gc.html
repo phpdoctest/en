@@ -1,0 +1,181 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Perform session data garbage collection</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.session.html">Session Extensions</a></li>
+  <li class="header up"><a href="book.session.html">Sessions</a></li>
+  <li class="header up"><a href="ref.session.html">Session Functions</a></li>
+  <li><a href="function.session-abort.html">session_abort</a></li>
+  <li><a href="function.session-cache-expire.html">session_cache_expire</a></li>
+  <li><a href="function.session-cache-limiter.html">session_cache_limiter</a></li>
+  <li><a href="function.session-commit.html">session_commit</a></li>
+  <li><a href="function.session-create-id.html">session_create_id</a></li>
+  <li><a href="function.session-decode.html">session_decode</a></li>
+  <li><a href="function.session-destroy.html">session_destroy</a></li>
+  <li><a href="function.session-encode.html">session_encode</a></li>
+  <li class="active"><a href="function.session-gc.html">session_gc</a></li>
+  <li><a href="function.session-get-cookie-params.html">session_get_cookie_params</a></li>
+  <li><a href="function.session-id.html">session_id</a></li>
+  <li><a href="function.session-is-registered.html">session_is_registered</a></li>
+  <li><a href="function.session-module-name.html">session_module_name</a></li>
+  <li><a href="function.session-name.html">session_name</a></li>
+  <li><a href="function.session-regenerate-id.html">session_regenerate_id</a></li>
+  <li><a href="function.session-register-shutdown.html">session_register_shutdown</a></li>
+  <li><a href="function.session-register.html">session_register</a></li>
+  <li><a href="function.session-reset.html">session_reset</a></li>
+  <li><a href="function.session-save-path.html">session_save_path</a></li>
+  <li><a href="function.session-set-cookie-params.html">session_set_cookie_params</a></li>
+  <li><a href="function.session-set-save-handler.html">session_set_save_handler</a></li>
+  <li><a href="function.session-start.html">session_start</a></li>
+  <li><a href="function.session-status.html">session_status</a></li>
+  <li><a href="function.session-unregister.html">session_unregister</a></li>
+  <li><a href="function.session-unset.html">session_unset</a></li>
+  <li><a href="function.session-write-close.html">session_write_close</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.session-encode.html">session_encode</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.session-get-cookie-params.html">session_get_cookie_params</a></div>
+                <div class="up"><a href="ref.session.html">Session Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.session-gc" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">session_gc</h1>
+  <p class="refpurpose">Perform session data garbage collection</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.session-gc-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname">session_gc</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   <span class="function">session_gc</span> is used to perform session data
+   GC(garbage collection). PHP does probability based session GC by
+   default.
+  </p>
+  <p class="para">
+   Probability based GC works somewhat but it has few problems. 1) Low
+   traffic site&#039;s session data may not be deleted within preferred
+   duration. 2) High traffic site&#039;s may have too frequent GC. 3) GC is
+   performed on the user&#039;s request and the user will experience GC
+   delay.
+  </p>
+  <p class="para">
+   Therefore, it is recommended to execute GC periodically for
+   production systems. e.g. Use &quot;cron&quot; for UNIX like systems.
+   Make sure to disable probability based GC by setting 
+   <a href="session.configuration.html#ini.session.gc-probability" class="link">session.gc_probability</a> 
+   to 0.
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.session-gc-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   <span class="function">session_gc</span> returns number of deleted session
+   data for success, <strong><code>FALSE</code></strong> for failure.
+  </p>
+  <p class="para">
+   Old save handlers do not return number of deleted session data, but 
+   only success/failure flag. If this is the case, number of deleted
+   session data became 1 regardless of actually deleted data.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.session-gc-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-5377">
+    <p><strong>Example #1 <span class="function">session_gc</span> example for task managers like cron</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Note:&nbsp;This&nbsp;script&nbsp;should&nbsp;be&nbsp;executed&nbsp;by&nbsp;the&nbsp;same&nbsp;user&nbsp;of&nbsp;web&nbsp;server&nbsp;process.<br /><br />//&nbsp;Need&nbsp;active&nbsp;session&nbsp;to&nbsp;initialize&nbsp;session&nbsp;data&nbsp;storage&nbsp;access.<br /></span><span style="color: #0000BB">session_start</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;Executes&nbsp;GC&nbsp;immediately<br /></span><span style="color: #0000BB">session_gc</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;Clean&nbsp;up&nbsp;session&nbsp;ID&nbsp;created&nbsp;by&nbsp;session_gc()<br /></span><span style="color: #0000BB">session_destroy</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+   <div class="example" id="example-5378">
+    <p><strong>Example #2 <span class="function">session_gc</span> example for user accessible script</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Note:&nbsp;session_gc()&nbsp;is&nbsp;recommended&nbsp;to&nbsp;be&nbsp;used&nbsp;by&nbsp;task&nbsp;manager&nbsp;script,&nbsp;but<br />//&nbsp;it&nbsp;may&nbsp;be&nbsp;used&nbsp;as&nbsp;follows.<br /><br />//&nbsp;Used&nbsp;for&nbsp;last&nbsp;GC&nbsp;time&nbsp;check<br /></span><span style="color: #0000BB">$gc_time&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'/tmp/php_session_last_gc'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$gc_period&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">1800</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">session_start</span><span style="color: #007700">();<br /></span><span style="color: #FF8000">//&nbsp;Execute&nbsp;GC&nbsp;only&nbsp;when&nbsp;GC&nbsp;period&nbsp;elapsed.&nbsp;<br />//&nbsp;i.e.&nbsp;Calling&nbsp;session_gc()&nbsp;every&nbsp;request&nbsp;is&nbsp;waste&nbsp;of&nbsp;resources.&nbsp;<br /></span><span style="color: #007700">if&nbsp;(</span><span style="color: #0000BB">file_exists</span><span style="color: #007700">(</span><span style="color: #0000BB">$gc_time</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;if&nbsp;(</span><span style="color: #0000BB">filemtime</span><span style="color: #007700">(</span><span style="color: #0000BB">$gc_time</span><span style="color: #007700">)&nbsp;&lt;&nbsp;</span><span style="color: #0000BB">time</span><span style="color: #007700">()&nbsp;-&nbsp;</span><span style="color: #0000BB">$gc_period</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">session_gc</span><span style="color: #007700">();<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">touch</span><span style="color: #007700">(</span><span style="color: #0000BB">$gc_time</span><span style="color: #007700">);<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">touch</span><span style="color: #007700">(</span><span style="color: #0000BB">$gc_time</span><span style="color: #007700">);<br />}<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.session-gc-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">session_start</span></li>
+    <li class="member"><span class="function">session_destroy</span></li>
+    <li class="member"><a href="session.configuration.html#ini.session.gc-probability" class="link">session.gc_probability</a></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

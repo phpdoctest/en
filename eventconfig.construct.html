@@ -1,0 +1,131 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Constructs EventConfig object</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.other.html">Other Services</a></li>
+  <li class="header up"><a href="book.event.html">Event</a></li>
+  <li class="header up"><a href="class.eventconfig.html">EventConfig</a></li>
+  <li><a href="eventconfig.avoidmethod.html">EventConfig::avoidMethod</a></li>
+  <li class="active"><a href="eventconfig.construct.html">EventConfig::__construct</a></li>
+  <li><a href="eventconfig.requirefeatures.html">EventConfig::requireFeatures</a></li>
+  <li><a href="eventconfig.setmaxdispatchinterval.html">EventConfig::setMaxDispatchInterval</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="eventconfig.avoidmethod.html">EventConfig::avoidMethod</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="eventconfig.requirefeatures.html">EventConfig::requireFeatures</a></div>
+                <div class="up"><a href="class.eventconfig.html">EventConfig</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="eventconfig.construct" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">EventConfig::__construct</h1>
+  <p class="refpurpose">Constructs EventConfig object</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-eventconfig.construct-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>
+    <span class="methodname">EventConfig::__construct</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Constructs EventConfig object which could be passed to
+    <span class="methodname">EventBase::__construct</span>
+   constructor.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-eventconfig.construct-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">This function has no parameters.</p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-eventconfig.construct-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns
+   <span class="classname">EventConfig</span>
+   object.
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-eventconfig.construct-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="event.example.smtp">
+   <p><strong>Example #1 
+    <span class="function">EventConfig::__construct</span> example</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Avoiding&nbsp;"select"&nbsp;method<br /></span><span style="color: #0000BB">$cfg&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">EventConfig</span><span style="color: #007700">();<br />if&nbsp;(</span><span style="color: #0000BB">$cfg</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">avoidMethod</span><span style="color: #007700">(</span><span style="color: #DD0000">"select"</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"`select'&nbsp;method&nbsp;avoided\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Create&nbsp;event_base&nbsp;associated&nbsp;with&nbsp;the&nbsp;config<br /></span><span style="color: #0000BB">$base&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">EventBase</span><span style="color: #007700">(</span><span style="color: #0000BB">$cfg</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">/*&nbsp;Now&nbsp;$base&nbsp;is&nbsp;configured&nbsp;to&nbsp;avoid&nbsp;select&nbsp;backend(method)&nbsp;*/<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+  </div>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-eventconfig.construct-seealso">
+  <h3 class="title">See Also</h3>
+  <ul class="simplelist">
+   <li class="member">
+     <span class="methodname">EventBase::__construct</span>
+   </li>
+  </ul>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,305 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Create a new image from a given part of GD2 file or URL</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.utilspec.image.html">Image Processing and Generation</a></li>
+  <li class="header up"><a href="book.image.html">GD</a></li>
+  <li class="header up"><a href="ref.image.html">GD and Image Functions</a></li>
+  <li><a href="function.gd-info.html">gd_info</a></li>
+  <li><a href="function.getimagesize.html">getimagesize</a></li>
+  <li><a href="function.getimagesizefromstring.html">getimagesizefromstring</a></li>
+  <li><a href="function.image-type-to-extension.html">image_type_to_extension</a></li>
+  <li><a href="function.image-type-to-mime-type.html">image_type_to_mime_type</a></li>
+  <li><a href="function.image2wbmp.html">image2wbmp</a></li>
+  <li><a href="function.imageaffine.html">imageaffine</a></li>
+  <li><a href="function.imageaffinematrixconcat.html">imageaffinematrixconcat</a></li>
+  <li><a href="function.imageaffinematrixget.html">imageaffinematrixget</a></li>
+  <li><a href="function.imagealphablending.html">imagealphablending</a></li>
+  <li><a href="function.imageantialias.html">imageantialias</a></li>
+  <li><a href="function.imagearc.html">imagearc</a></li>
+  <li><a href="function.imagebmp.html">imagebmp</a></li>
+  <li><a href="function.imagechar.html">imagechar</a></li>
+  <li><a href="function.imagecharup.html">imagecharup</a></li>
+  <li><a href="function.imagecolorallocate.html">imagecolorallocate</a></li>
+  <li><a href="function.imagecolorallocatealpha.html">imagecolorallocatealpha</a></li>
+  <li><a href="function.imagecolorat.html">imagecolorat</a></li>
+  <li><a href="function.imagecolorclosest.html">imagecolorclosest</a></li>
+  <li><a href="function.imagecolorclosestalpha.html">imagecolorclosestalpha</a></li>
+  <li><a href="function.imagecolorclosesthwb.html">imagecolorclosesthwb</a></li>
+  <li><a href="function.imagecolordeallocate.html">imagecolordeallocate</a></li>
+  <li><a href="function.imagecolorexact.html">imagecolorexact</a></li>
+  <li><a href="function.imagecolorexactalpha.html">imagecolorexactalpha</a></li>
+  <li><a href="function.imagecolormatch.html">imagecolormatch</a></li>
+  <li><a href="function.imagecolorresolve.html">imagecolorresolve</a></li>
+  <li><a href="function.imagecolorresolvealpha.html">imagecolorresolvealpha</a></li>
+  <li><a href="function.imagecolorset.html">imagecolorset</a></li>
+  <li><a href="function.imagecolorsforindex.html">imagecolorsforindex</a></li>
+  <li><a href="function.imagecolorstotal.html">imagecolorstotal</a></li>
+  <li><a href="function.imagecolortransparent.html">imagecolortransparent</a></li>
+  <li><a href="function.imageconvolution.html">imageconvolution</a></li>
+  <li><a href="function.imagecopy.html">imagecopy</a></li>
+  <li><a href="function.imagecopymerge.html">imagecopymerge</a></li>
+  <li><a href="function.imagecopymergegray.html">imagecopymergegray</a></li>
+  <li><a href="function.imagecopyresampled.html">imagecopyresampled</a></li>
+  <li><a href="function.imagecopyresized.html">imagecopyresized</a></li>
+  <li><a href="function.imagecreate.html">imagecreate</a></li>
+  <li><a href="function.imagecreatefrombmp.html">imagecreatefrombmp</a></li>
+  <li><a href="function.imagecreatefromgd2.html">imagecreatefromgd2</a></li>
+  <li class="active"><a href="function.imagecreatefromgd2part.html">imagecreatefromgd2part</a></li>
+  <li><a href="function.imagecreatefromgd.html">imagecreatefromgd</a></li>
+  <li><a href="function.imagecreatefromgif.html">imagecreatefromgif</a></li>
+  <li><a href="function.imagecreatefromjpeg.html">imagecreatefromjpeg</a></li>
+  <li><a href="function.imagecreatefrompng.html">imagecreatefrompng</a></li>
+  <li><a href="function.imagecreatefromstring.html">imagecreatefromstring</a></li>
+  <li><a href="function.imagecreatefromwbmp.html">imagecreatefromwbmp</a></li>
+  <li><a href="function.imagecreatefromwebp.html">imagecreatefromwebp</a></li>
+  <li><a href="function.imagecreatefromxbm.html">imagecreatefromxbm</a></li>
+  <li><a href="function.imagecreatefromxpm.html">imagecreatefromxpm</a></li>
+  <li><a href="function.imagecreatetruecolor.html">imagecreatetruecolor</a></li>
+  <li><a href="function.imagecrop.html">imagecrop</a></li>
+  <li><a href="function.imagecropauto.html">imagecropauto</a></li>
+  <li><a href="function.imagedashedline.html">imagedashedline</a></li>
+  <li><a href="function.imagedestroy.html">imagedestroy</a></li>
+  <li><a href="function.imageellipse.html">imageellipse</a></li>
+  <li><a href="function.imagefill.html">imagefill</a></li>
+  <li><a href="function.imagefilledarc.html">imagefilledarc</a></li>
+  <li><a href="function.imagefilledellipse.html">imagefilledellipse</a></li>
+  <li><a href="function.imagefilledpolygon.html">imagefilledpolygon</a></li>
+  <li><a href="function.imagefilledrectangle.html">imagefilledrectangle</a></li>
+  <li><a href="function.imagefilltoborder.html">imagefilltoborder</a></li>
+  <li><a href="function.imagefilter.html">imagefilter</a></li>
+  <li><a href="function.imageflip.html">imageflip</a></li>
+  <li><a href="function.imagefontheight.html">imagefontheight</a></li>
+  <li><a href="function.imagefontwidth.html">imagefontwidth</a></li>
+  <li><a href="function.imageftbbox.html">imageftbbox</a></li>
+  <li><a href="function.imagefttext.html">imagefttext</a></li>
+  <li><a href="function.imagegammacorrect.html">imagegammacorrect</a></li>
+  <li><a href="function.imagegd2.html">imagegd2</a></li>
+  <li><a href="function.imagegd.html">imagegd</a></li>
+  <li><a href="function.imagegetclip.html">imagegetclip</a></li>
+  <li><a href="function.imagegif.html">imagegif</a></li>
+  <li><a href="function.imagegrabscreen.html">imagegrabscreen</a></li>
+  <li><a href="function.imagegrabwindow.html">imagegrabwindow</a></li>
+  <li><a href="function.imageinterlace.html">imageinterlace</a></li>
+  <li><a href="function.imageistruecolor.html">imageistruecolor</a></li>
+  <li><a href="function.imagejpeg.html">imagejpeg</a></li>
+  <li><a href="function.imagelayereffect.html">imagelayereffect</a></li>
+  <li><a href="function.imageline.html">imageline</a></li>
+  <li><a href="function.imageloadfont.html">imageloadfont</a></li>
+  <li><a href="function.imageopenpolygon.html">imageopenpolygon</a></li>
+  <li><a href="function.imagepalettecopy.html">imagepalettecopy</a></li>
+  <li><a href="function.imagepalettetotruecolor.html">imagepalettetotruecolor</a></li>
+  <li><a href="function.imagepng.html">imagepng</a></li>
+  <li><a href="function.imagepolygon.html">imagepolygon</a></li>
+  <li><a href="function.imagepsbbox.html">imagepsbbox</a></li>
+  <li><a href="function.imagepsencodefont.html">imagepsencodefont</a></li>
+  <li><a href="function.imagepsextendfont.html">imagepsextendfont</a></li>
+  <li><a href="function.imagepsfreefont.html">imagepsfreefont</a></li>
+  <li><a href="function.imagepsloadfont.html">imagepsloadfont</a></li>
+  <li><a href="function.imagepsslantfont.html">imagepsslantfont</a></li>
+  <li><a href="function.imagepstext.html">imagepstext</a></li>
+  <li><a href="function.imagerectangle.html">imagerectangle</a></li>
+  <li><a href="function.imageresolution.html">imageresolution</a></li>
+  <li><a href="function.imagerotate.html">imagerotate</a></li>
+  <li><a href="function.imagesavealpha.html">imagesavealpha</a></li>
+  <li><a href="function.imagescale.html">imagescale</a></li>
+  <li><a href="function.imagesetbrush.html">imagesetbrush</a></li>
+  <li><a href="function.imagesetclip.html">imagesetclip</a></li>
+  <li><a href="function.imagesetinterpolation.html">imagesetinterpolation</a></li>
+  <li><a href="function.imagesetpixel.html">imagesetpixel</a></li>
+  <li><a href="function.imagesetstyle.html">imagesetstyle</a></li>
+  <li><a href="function.imagesetthickness.html">imagesetthickness</a></li>
+  <li><a href="function.imagesettile.html">imagesettile</a></li>
+  <li><a href="function.imagestring.html">imagestring</a></li>
+  <li><a href="function.imagestringup.html">imagestringup</a></li>
+  <li><a href="function.imagesx.html">imagesx</a></li>
+  <li><a href="function.imagesy.html">imagesy</a></li>
+  <li><a href="function.imagetruecolortopalette.html">imagetruecolortopalette</a></li>
+  <li><a href="function.imagettfbbox.html">imagettfbbox</a></li>
+  <li><a href="function.imagettftext.html">imagettftext</a></li>
+  <li><a href="function.imagetypes.html">imagetypes</a></li>
+  <li><a href="function.imagewbmp.html">imagewbmp</a></li>
+  <li><a href="function.imagewebp.html">imagewebp</a></li>
+  <li><a href="function.imagexbm.html">imagexbm</a></li>
+  <li><a href="function.iptcembed.html">iptcembed</a></li>
+  <li><a href="function.iptcparse.html">iptcparse</a></li>
+  <li><a href="function.jpeg2wbmp.html">jpeg2wbmp</a></li>
+  <li><a href="function.png2wbmp.html">png2wbmp</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.imagecreatefromgd2.html">imagecreatefromgd2</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.imagecreatefromgd.html">imagecreatefromgd</a></div>
+                <div class="up"><a href="ref.image.html">GD and Image Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.imagecreatefromgd2part" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">imagecreatefromgd2part</h1>
+  <p class="refpurpose">Create a new image from a given part of GD2 file or URL</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.imagecreatefromgd2part-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">resource</span> <span class="methodname">imagecreatefromgd2part</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$filename</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$srcX</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$srcY</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$width</code></span>
+   , <span class="methodparam"><span class="type">int</span> <code class="parameter">$height</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Create a new image from a given part of GD2 file or URL.
+  </p>
+  <div class="tip"><strong class="tip">Tip</strong><p class="simpara">A URL can be used as a
+filename with this function if the <a href="filesystem.configuration.html#ini.allow-url-fopen" class="link">fopen wrappers</a> have been enabled.
+See <span class="function">fopen</span> for more details on how to specify the
+filename. See the <a href="wrappers.html" class="xref">Supported Protocols and Wrappers</a> for links to information
+about what abilities the various wrappers have, notes on their usage,
+and information on any predefined variables they may
+provide.</p></div>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.imagecreatefromgd2part-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">filename</code></dt>
+
+     <dd>
+
+      <p class="para">
+       Path to the GD2 image.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">srcX</code></dt>
+
+     <dd>
+
+      <p class="para">
+       x-coordinate of source point.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">srcY</code></dt>
+
+     <dd>
+
+      <p class="para">
+       y-coordinate of source point.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">width</code></dt>
+
+     <dd>
+
+      <p class="para">Source width.</p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">height</code></dt>
+
+     <dd>
+
+      <p class="para">Source height.</p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.imagecreatefromgd2part-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">Returns an image resource identifier on success, <strong><code>FALSE</code></strong> on errors.</p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.imagecreatefromgd2part-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-3532">
+    <p><strong>Example #1 <span class="function">imagecreatefromgd2part</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;For&nbsp;this&nbsp;example&nbsp;we&nbsp;need&nbsp;the&nbsp;image&nbsp;size&nbsp;before<br /></span><span style="color: #0000BB">$image&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">getimagesize</span><span style="color: #007700">(</span><span style="color: #DD0000">'./test.gd2'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Create&nbsp;the&nbsp;image&nbsp;instance&nbsp;now&nbsp;we&nbsp;got&nbsp;the&nbsp;image&nbsp;<br />//&nbsp;sizes<br /></span><span style="color: #0000BB">$im&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imagecreatefromgd2part</span><span style="color: #007700">(</span><span style="color: #DD0000">'./test.gd2'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">4</span><span style="color: #007700">,&nbsp;(</span><span style="color: #0000BB">$image</span><span style="color: #007700">[</span><span style="color: #0000BB">0</span><span style="color: #007700">]&nbsp;/&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">)&nbsp;-&nbsp;</span><span style="color: #0000BB">6</span><span style="color: #007700">,&nbsp;(</span><span style="color: #0000BB">$image</span><span style="color: #007700">[</span><span style="color: #0000BB">1</span><span style="color: #007700">]&nbsp;/&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">)&nbsp;-&nbsp;</span><span style="color: #0000BB">6</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Do&nbsp;an&nbsp;image&nbsp;operation,&nbsp;in&nbsp;this&nbsp;case&nbsp;we&nbsp;emboss&nbsp;the&nbsp;<br />//&nbsp;image&nbsp;if&nbsp;PHP&nbsp;5+<br /></span><span style="color: #007700">if(</span><span style="color: #0000BB">function_exists</span><span style="color: #007700">(</span><span style="color: #DD0000">'imagefilter'</span><span style="color: #007700">))<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;</span><span style="color: #0000BB">imagefilter</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">IMG_FILTER_EMBOSS</span><span style="color: #007700">);<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Save&nbsp;optimized&nbsp;image<br /></span><span style="color: #0000BB">imagegd2</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'./test_emboss.gd2'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">imagedestroy</span><span style="color: #007700">(</span><span style="color: #0000BB">$im</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

@@ -1,0 +1,214 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Get and set apache request notes</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.utilspec.server.html">Server Specific Extensions</a></li>
+  <li class="header up"><a href="book.apache.html">Apache</a></li>
+  <li class="header up"><a href="ref.apache.html">Apache Functions</a></li>
+  <li><a href="function.apache-child-terminate.html">apache_child_terminate</a></li>
+  <li><a href="function.apache-get-modules.html">apache_get_modules</a></li>
+  <li><a href="function.apache-get-version.html">apache_get_version</a></li>
+  <li><a href="function.apache-getenv.html">apache_getenv</a></li>
+  <li><a href="function.apache-lookup-uri.html">apache_lookup_uri</a></li>
+  <li class="active"><a href="function.apache-note.html">apache_note</a></li>
+  <li><a href="function.apache-request-headers.html">apache_request_headers</a></li>
+  <li><a href="function.apache-reset-timeout.html">apache_reset_timeout</a></li>
+  <li><a href="function.apache-response-headers.html">apache_response_headers</a></li>
+  <li><a href="function.apache-setenv.html">apache_setenv</a></li>
+  <li><a href="function.getallheaders.html">getallheaders</a></li>
+  <li><a href="function.virtual.html">virtual</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.apache-lookup-uri.html">apache_lookup_uri</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.apache-request-headers.html">apache_request_headers</a></div>
+                <div class="up"><a href="ref.apache.html">Apache Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.apache-note" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">apache_note</h1>
+  <p class="refpurpose">Get and set apache request notes</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-function.apache-note-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">string</span> <span class="methodname">apache_note</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$note_name</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$note_value</code><span class="initializer"> = &quot;&quot;</span></span>
+  ] )</div>
+
+  <p class="para rdfs-comment">
+   This function is a wrapper for Apache&#039;s <em>table_get</em> and
+   <em>table_set</em>. It edits the table of notes that exists
+   during a request. The table&#039;s purpose is to allow Apache modules to
+   communicate.
+  </p>
+  <p class="para">
+   The main use for <span class="function">apache_note</span> is to pass information
+   from one module to another within the same request.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-function.apache-note-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">note_name</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The name of the note.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">note_value</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The value of the note.
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-function.apache-note-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   If called with one argument, it returns the current value of note
+   <em>note_name</em>. If called with two arguments, it
+   sets the value of note <em>note_name</em> to
+   <em>note_value</em> and returns the previous value of
+   note <em>note_name</em>.
+   If the note cannot be retrieved, <strong><code>FALSE</code></strong> is returned.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-function.apache-note-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-5362">
+    <p><strong>Example #1 Passing information between PHP and Perl</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />apache_note</span><span style="color: #007700">(</span><span style="color: #DD0000">'name'</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">'Fredrik&nbsp;Ekengren'</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Call&nbsp;perl&nbsp;script<br /></span><span style="color: #0000BB">virtual</span><span style="color: #007700">(</span><span style="color: #DD0000">"/perl/some_script.pl"</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$result&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">apache_note</span><span style="color: #007700">(</span><span style="color: #DD0000">"resultdata"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents">
+<div class="perlcode"><pre class="perlcode"># Get Apache request object
+my $r = Apache-&gt;request()-&gt;main();
+
+# Get passed data
+my $name = $r-&gt;notes(&#039;name&#039;);
+
+# some processing
+
+# Pass result back to PHP
+$r-&gt;notes(&#039;resultdata&#039;, $result);</pre>
+</div>
+    </div>
+
+   </div>
+  </p>
+  <p class="para">
+   <div class="example" id="example-5363">
+    <p><strong>Example #2 Logging values in access.log</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />apache_note</span><span style="color: #007700">(</span><span style="color: #DD0000">'sessionID'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">session_id</span><span style="color: #007700">());<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents">
+<div class="apachecode"><pre class="apachecode"># &quot;%{sessionID}n&quot; can be used in the LogFormat directive</pre>
+</div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-function.apache-note-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">virtual</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

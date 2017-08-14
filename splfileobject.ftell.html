@@ -1,0 +1,163 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Return current file position</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.other.html">Other Basic Extensions</a></li>
+  <li class="header up"><a href="book.spl.html">SPL</a></li>
+  <li class="header up"><a href="spl.files.html">File Handling</a></li>
+  <li class="header up"><a href="class.splfileobject.html">SplFileObject</a></li>
+  <li><a href="splfileobject.construct.html">SplFileObject::__construct</a></li>
+  <li><a href="splfileobject.current.html">SplFileObject::current</a></li>
+  <li><a href="splfileobject.eof.html">SplFileObject::eof</a></li>
+  <li><a href="splfileobject.fflush.html">SplFileObject::fflush</a></li>
+  <li><a href="splfileobject.fgetc.html">SplFileObject::fgetc</a></li>
+  <li><a href="splfileobject.fgetcsv.html">SplFileObject::fgetcsv</a></li>
+  <li><a href="splfileobject.fgets.html">SplFileObject::fgets</a></li>
+  <li><a href="splfileobject.fgetss.html">SplFileObject::fgetss</a></li>
+  <li><a href="splfileobject.flock.html">SplFileObject::flock</a></li>
+  <li><a href="splfileobject.fpassthru.html">SplFileObject::fpassthru</a></li>
+  <li><a href="splfileobject.fputcsv.html">SplFileObject::fputcsv</a></li>
+  <li><a href="splfileobject.fread.html">SplFileObject::fread</a></li>
+  <li><a href="splfileobject.fscanf.html">SplFileObject::fscanf</a></li>
+  <li><a href="splfileobject.fseek.html">SplFileObject::fseek</a></li>
+  <li><a href="splfileobject.fstat.html">SplFileObject::fstat</a></li>
+  <li class="active"><a href="splfileobject.ftell.html">SplFileObject::ftell</a></li>
+  <li><a href="splfileobject.ftruncate.html">SplFileObject::ftruncate</a></li>
+  <li><a href="splfileobject.fwrite.html">SplFileObject::fwrite</a></li>
+  <li><a href="splfileobject.getchildren.html">SplFileObject::getChildren</a></li>
+  <li><a href="splfileobject.getcsvcontrol.html">SplFileObject::getCsvControl</a></li>
+  <li><a href="splfileobject.getcurrentline.html">SplFileObject::getCurrentLine</a></li>
+  <li><a href="splfileobject.getflags.html">SplFileObject::getFlags</a></li>
+  <li><a href="splfileobject.getmaxlinelen.html">SplFileObject::getMaxLineLen</a></li>
+  <li><a href="splfileobject.haschildren.html">SplFileObject::hasChildren</a></li>
+  <li><a href="splfileobject.key.html">SplFileObject::key</a></li>
+  <li><a href="splfileobject.next.html">SplFileObject::next</a></li>
+  <li><a href="splfileobject.rewind.html">SplFileObject::rewind</a></li>
+  <li><a href="splfileobject.seek.html">SplFileObject::seek</a></li>
+  <li><a href="splfileobject.setcsvcontrol.html">SplFileObject::setCsvControl</a></li>
+  <li><a href="splfileobject.setflags.html">SplFileObject::setFlags</a></li>
+  <li><a href="splfileobject.setmaxlinelen.html">SplFileObject::setMaxLineLen</a></li>
+  <li><a href="splfileobject.tostring.html">SplFileObject::__toString</a></li>
+  <li><a href="splfileobject.valid.html">SplFileObject::valid</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="splfileobject.fstat.html">SplFileObject::fstat</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="splfileobject.ftruncate.html">SplFileObject::ftruncate</a></div>
+                <div class="up"><a href="class.splfileobject.html">SplFileObject</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="splfileobject.ftell" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">SplFileObject::ftell</h1>
+  <p class="refpurpose">Return current file position</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-splfileobject.ftell-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">SplFileObject::ftell</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Returns the position of the file pointer which represents the current offset in the file stream.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-splfileobject.ftell-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">This function has no parameters.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-splfileobject.ftell-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+    Returns the position of the file pointer as an integer, or <strong><code>FALSE</code></strong> on error.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-splfileobject.ftell-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-4551">
+    <p><strong>Example #1  <span class="methodname">SplFileObject::ftell</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$file&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">SplFileObject</span><span style="color: #007700">(</span><span style="color: #DD0000">"/etc/passwd"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Read&nbsp;first&nbsp;line<br /></span><span style="color: #0000BB">$data&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">fgets</span><span style="color: #007700">();<br /><br /></span><span style="color: #FF8000">//&nbsp;Where&nbsp;are&nbsp;we?<br /></span><span style="color: #007700">echo&nbsp;</span><span style="color: #0000BB">$file</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">ftell</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-splfileobject.ftell-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">ftell</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

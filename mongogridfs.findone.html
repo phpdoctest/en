@@ -1,0 +1,189 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Returns a single file matching the criteria</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.vendors.html">Vendor Specific Database Extensions</a></li>
+  <li class="header up"><a href="book.mongo.html">Mongo</a></li>
+  <li class="header up"><a href="mongo.gridfs.html">GridFS Classes</a></li>
+  <li class="header up"><a href="class.mongogridfs.html">MongoGridFS</a></li>
+  <li><a href="mongogridfs.construct.html">MongoGridFS::__construct</a></li>
+  <li><a href="mongogridfs.delete.html">MongoGridFS::delete</a></li>
+  <li><a href="mongogridfs.drop.html">MongoGridFS::drop</a></li>
+  <li><a href="mongogridfs.find.html">MongoGridFS::find</a></li>
+  <li class="active"><a href="mongogridfs.findone.html">MongoGridFS::findOne</a></li>
+  <li><a href="mongogridfs.get.html">MongoGridFS::get</a></li>
+  <li><a href="mongogridfs.put.html">MongoGridFS::put</a></li>
+  <li><a href="mongogridfs.remove.html">MongoGridFS::remove</a></li>
+  <li><a href="mongogridfs.storebytes.html">MongoGridFS::storeBytes</a></li>
+  <li><a href="mongogridfs.storefile.html">MongoGridFS::storeFile</a></li>
+  <li><a href="mongogridfs.storeupload.html">MongoGridFS::storeUpload</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="mongogridfs.find.html">MongoGridFS::find</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="mongogridfs.get.html">MongoGridFS::get</a></div>
+                <div class="up"><a href="class.mongogridfs.html">MongoGridFS</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="mongogridfs.findone" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">MongoGridFS::findOne</h1>
+  <p class="refpurpose">Returns a single file matching the criteria</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-mongogridfs.findone-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">MongoGridFSFile</span> <span class="methodname">MongoGridFS::findOne</span>
+    ([ <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$query</code><span class="initializer"> = array()</span></span>
+   [, <span class="methodparam"><span class="type">mixed</span> <code class="parameter">$fields</code><span class="initializer"> = array()</span></span>
+  ]] )</div>
+
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-mongogridfs.findone-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+
+      <code class="parameter">query</code>
+     </dt>
+
+     <dd>
+
+      <p class="para">
+       The filename or criteria for which to search.
+      </p>
+     </dd>
+
+       
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-mongogridfs.findone-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns a <span class="classname">MongoGridFSFile</span> or <strong><code>NULL</code></strong>.
+  </p>
+ </div>
+
+ 
+ <div class="refsect1 examples" id="refsect1-mongogridfs.findone-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-1624">
+   <p><strong>Example #1  <span class="methodname">MongoGridFS::findOne</span> example</strong></p>
+   <div class="example-contents"><p>
+    Example demonstrating how to find a single file from the MongoGridFS.
+   </p></div>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br />$downloads&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$mongo</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">my_db</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getGridFS</span><span style="color: #007700">(</span><span style="color: #DD0000">'downloads'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$downloads</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">storeFile</span><span style="color: #007700">(</span><span style="color: #DD0000">'filename.tgz'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">$download&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$downloads</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">findOne</span><span style="color: #007700">(</span><span style="color: #DD0000">'filename.tgz'</span><span style="color: #007700">);&nbsp;</span><span style="color: #FF8000">//&nbsp;instance&nbsp;of&nbsp;MongoGridFSFile<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$download</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>
+    See <span class="classname">MongoGridFSFile</span> for more information about how to work with files.
+   </p></div>
+   <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+MongoGridFSFile Object
+(
+    [file] =&gt; Array
+        (
+            [_id] =&gt; MongoId Object
+                (
+                )
+
+            [filename] =&gt; filename.tgz
+            [uploadDate] =&gt; MongoDate Object
+                (
+                    [sec] =&gt; 1274288014
+                    [usec] =&gt; 467000
+                )
+
+            [chunkSize] =&gt; 262144
+            [md5] =&gt; d41d8cd98f00b204e9800998ecf8427e
+        )
+
+    [gridfs:protected] =&gt; MongoGridFS Object
+        (
+            [chunks] =&gt; MongoCollection Object
+                (
+                )
+
+            [filesName:protected] =&gt; downloads.files
+            [chunksName:protected] =&gt; downloads.chunks
+        )
+
+)
+</pre></div>
+   </div>
+  </div>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

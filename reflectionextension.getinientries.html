@@ -1,0 +1,167 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Gets extension ini entries</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.basic.vartype.html">Variable and Type Related Extensions</a></li>
+  <li class="header up"><a href="book.reflection.html">Reflection</a></li>
+  <li class="header up"><a href="class.reflectionextension.html">ReflectionExtension</a></li>
+  <li><a href="reflectionextension.clone.html">ReflectionExtension::__clone</a></li>
+  <li><a href="reflectionextension.construct.html">ReflectionExtension::__construct</a></li>
+  <li><a href="reflectionextension.export.html">ReflectionExtension::export</a></li>
+  <li><a href="reflectionextension.getclasses.html">ReflectionExtension::getClasses</a></li>
+  <li><a href="reflectionextension.getclassnames.html">ReflectionExtension::getClassNames</a></li>
+  <li><a href="reflectionextension.getconstants.html">ReflectionExtension::getConstants</a></li>
+  <li><a href="reflectionextension.getdependencies.html">ReflectionExtension::getDependencies</a></li>
+  <li><a href="reflectionextension.getfunctions.html">ReflectionExtension::getFunctions</a></li>
+  <li class="active"><a href="reflectionextension.getinientries.html">ReflectionExtension::getINIEntries</a></li>
+  <li><a href="reflectionextension.getname.html">ReflectionExtension::getName</a></li>
+  <li><a href="reflectionextension.getversion.html">ReflectionExtension::getVersion</a></li>
+  <li><a href="reflectionextension.info.html">ReflectionExtension::info</a></li>
+  <li><a href="reflectionextension.ispersistent.html">ReflectionExtension::isPersistent</a></li>
+  <li><a href="reflectionextension.istemporary.html">ReflectionExtension::isTemporary</a></li>
+  <li><a href="reflectionextension.tostring.html">ReflectionExtension::__toString</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="reflectionextension.getfunctions.html">ReflectionExtension::getFunctions</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="reflectionextension.getname.html">ReflectionExtension::getName</a></div>
+                <div class="up"><a href="class.reflectionextension.html">ReflectionExtension</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="reflectionextension.getinientries" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">ReflectionExtension::getINIEntries</h1>
+  <p class="refpurpose">Gets extension ini entries</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-reflectionextension.getinientries-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">array</span> <span class="methodname">ReflectionExtension::getINIEntries</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Get the ini entries for an extension.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-reflectionextension.getinientries-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">This function has no parameters.</p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-reflectionextension.getinientries-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   An associative <span class="type">array</span> with the ini entries as keys,
+   with their defined values as values.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-reflectionextension.getinientries-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-6076">
+    <p><strong>Example #1  <span class="methodname">ReflectionExtension::getINIEntries</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$ext&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">ReflectionExtension</span><span style="color: #007700">(</span><span style="color: #DD0000">'mysql'</span><span style="color: #007700">);<br /><br /></span><span style="color: #0000BB">print_r</span><span style="color: #007700">(</span><span style="color: #0000BB">$ext</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getINIEntries</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+    <div class="example-contents"><p>The above example will output
+something similar to:</p></div>
+    <div class="example-contents screen">
+<div class="cdata"><pre>
+Array
+(
+    [mysql.allow_persistent] =&gt; 1
+    [mysql.max_persistent] =&gt; -1
+    [mysql.max_links] =&gt; -1
+    [mysql.default_host] =&gt; 
+    [mysql.default_user] =&gt; 
+    [mysql.default_password] =&gt; 
+    [mysql.default_port] =&gt; 
+    [mysql.default_socket] =&gt; 
+    [mysql.connect_timeout] =&gt; 60
+    [mysql.trace_mode] =&gt; 
+    [mysql.allow_local_infile] =&gt; 1
+    [mysql.cache_size] =&gt; 2000
+)
+</pre></div>
+    </div>
+   </div>
+  </p>
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-reflectionextension.getinientries-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">ini_get_all</span></li>
+    <li class="member"> <span class="methodname">ReflectionExtension::getConstants</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

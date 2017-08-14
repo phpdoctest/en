@@ -1,0 +1,235 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Returning values</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="langref.html">Language Reference</a></li>
+  <li class="header up"><a href="language.functions.html">Functions</a></li>
+  <li><a href="functions.user-defined.html">User-defined functions</a></li>
+  <li><a href="functions.arguments.html">Function arguments</a></li>
+  <li class="active"><a href="functions.returning-values.html">Returning values</a></li>
+  <li><a href="functions.variable-functions.html">Variable functions</a></li>
+  <li><a href="functions.internal.html">Internal (built-in) functions</a></li>
+  <li><a href="functions.anonymous.html">Anonymous functions</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="functions.arguments.html">Function arguments</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="functions.variable-functions.html">Variable functions</a></div>
+                <div class="up"><a href="language.functions.html">Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="functions.returning-values" class="sect1">
+   <h2 class="title">Returning values</h2>
+ 
+   <p class="para">
+    Values are returned by using the optional return statement. Any
+    type may be returned, including arrays and objects. This causes the
+    function to end its execution immediately and pass control back to
+    the line from which it was called. See <span class="function">return</span>
+    for more information.
+   </p>
+
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <p class="para">
+     If the <span class="function">return</span> is omitted the value <strong><code>NULL</code></strong> will be
+     returned.
+    </p>
+   </p></blockquote>
+
+   <div class="sect2">
+    <h3 class="title">Use of return</h3>
+   <p class="para">
+    <div class="example" id="example-153">
+     <p><strong>Example #1 Use of <span class="function">return</span></strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">square</span><span style="color: #007700">(</span><span style="color: #0000BB">$num</span><span style="color: #007700">)<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$num&nbsp;</span><span style="color: #007700">*&nbsp;</span><span style="color: #0000BB">$num</span><span style="color: #007700">;<br />}<br />echo&nbsp;</span><span style="color: #0000BB">square</span><span style="color: #007700">(</span><span style="color: #0000BB">4</span><span style="color: #007700">);&nbsp;&nbsp;&nbsp;</span><span style="color: #FF8000">//&nbsp;outputs&nbsp;'16'.<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+      
+   <p class="para">
+    A function can not return multiple values, but similar results can be
+    obtained by returning an array.
+   </p>
+   <p class="para">
+    <div class="example" id="example-154">
+     <p><strong>Example #2 Returning an array to get multiple values</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">small_numbers</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;array&nbsp;(</span><span style="color: #0000BB">0</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">);<br />}<br />list&nbsp;(</span><span style="color: #0000BB">$zero</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$one</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$two</span><span style="color: #007700">)&nbsp;=&nbsp;</span><span style="color: #0000BB">small_numbers</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="para">
+    To return a reference from a function, use the reference operator &amp; in
+    both the function declaration and when assigning the returned value to a
+    variable:
+   </p>
+   <p class="para">
+    <div class="example" id="example-155">
+     <p><strong>Example #3 Returning a reference from a function</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;&amp;</span><span style="color: #0000BB">returns_reference</span><span style="color: #007700">()<br />{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$someref</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">$newref&nbsp;</span><span style="color: #007700">=&amp;&nbsp;</span><span style="color: #0000BB">returns_reference</span><span style="color: #007700">();<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+     </div>
+
+    </div>
+   </p>
+   <p class="simpara">
+    For more information on references, please check out <a href="language.references.html" class="link">References Explained</a>.
+   </p>
+  </div>   
+
+  <div class="sect2" id="functions.returning-values.type-declaration">
+   <h3 class="title">Return type declarations</h3>
+
+   <p class="para">
+    PHP 7 adds support for return type declarations. Similarly to
+    <a href="functions.arguments.html#functions.arguments.type-declaration" class="link">argument type declarations</a>,
+    return type declarations specify the type of the value that will be
+    returned from a function. The same
+    <a href="functions.arguments.html#functions.arguments.type-declaration.types" class="link">types</a>
+    are available for return type declarations as are available for argument
+    type declarations.
+   </p>
+
+   <p class="para">
+    <a href="functions.arguments.html#functions.arguments.type-declaration.strict" class="link">Strict typing</a>
+    also has an effect on return type declarations. In the default weak mode,
+    returned values will be coerced to the correct type if they are not
+    already of that type. In strong mode, the returned value must be of the
+    correct type, otherwise a <span class="classname">TypeError</span> will be thrown.
+   </p>
+
+   <blockquote class="note"><p><strong class="note">Note</strong>: 
+    <p class="para">
+     When overriding a parent method, the child&#039;s method must match any return
+     type declaration on the parent. If the parent doesn&#039;t define a return
+     type, then the child method may do so.
+    </p>
+   </p></blockquote>
+
+   <div class="sect3" id="functions.returning-values.type-declaration.examples">
+    <h4 class="title">Examples</h4>
+
+    <div class="example" id="example-156">
+     <p><strong>Example #4 Basic return type declaration</strong></p>
+     <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">function&nbsp;</span><span style="color: #0000BB">sum</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">):&nbsp;</span><span style="color: #0000BB">float&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #FF8000">//&nbsp;Note&nbsp;that&nbsp;a&nbsp;float&nbsp;will&nbsp;be&nbsp;returned.<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">sum</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>The above example will output:</p></div>
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+float(3)
+</pre></div>
+      </div>
+     </div>
+
+     <div class="example" id="example-157">
+      <p><strong>Example #5 Strict mode in action</strong></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">declare(</span><span style="color: #0000BB">strict_types</span><span style="color: #007700">=</span><span style="color: #0000BB">1</span><span style="color: #007700">);<br /><br />function&nbsp;</span><span style="color: #0000BB">sum</span><span style="color: #007700">(</span><span style="color: #0000BB">$a</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">):&nbsp;</span><span style="color: #0000BB">int&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;</span><span style="color: #0000BB">$a&nbsp;</span><span style="color: #007700">+&nbsp;</span><span style="color: #0000BB">$b</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">sum</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">sum</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">2.5</span><span style="color: #007700">));<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>The above example will output:</p></div>
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+int(3)
+
+Fatal error: Uncaught TypeError: Return value of sum() must be of the type integer, float returned in - on line 5 in -:5
+Stack trace:
+#0 -(9): sum(1, 2.5)
+#1 {main}
+  thrown in - on line 5
+</pre></div>
+      </div>
+     </div>
+
+     <div class="example" id="example-158">
+      <p><strong>Example #6 Returning an object</strong></p>
+      <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #007700">class&nbsp;</span><span style="color: #0000BB">C&nbsp;</span><span style="color: #007700">{}<br /><br />function&nbsp;</span><span style="color: #0000BB">getC</span><span style="color: #007700">():&nbsp;</span><span style="color: #0000BB">C&nbsp;</span><span style="color: #007700">{<br />&nbsp;&nbsp;&nbsp;&nbsp;return&nbsp;new&nbsp;</span><span style="color: #0000BB">C</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">getC</span><span style="color: #007700">());<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+      </div>
+
+      <div class="example-contents"><p>The above example will output:</p></div>
+      <div class="example-contents screen">
+<div class="cdata"><pre>
+object(C)#1 (0) {
+}
+</pre></div>
+      </div>
+     </div>
+    </div>
+   </div>
+  </div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

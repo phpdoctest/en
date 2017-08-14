@@ -1,0 +1,160 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Returns the timezone offset from GMT</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.calendar.html">Date and Time Related Extensions</a></li>
+  <li class="header up"><a href="book.datetime.html">Date/Time</a></li>
+  <li class="header up"><a href="class.datetimezone.html">DateTimeZone</a></li>
+  <li><a href="datetimezone.construct.html">DateTimeZone::__construct</a></li>
+  <li><a href="datetimezone.getlocation.html">DateTimeZone::getLocation</a></li>
+  <li><a href="datetimezone.getname.html">DateTimeZone::getName</a></li>
+  <li class="active"><a href="datetimezone.getoffset.html">DateTimeZone::getOffset</a></li>
+  <li><a href="datetimezone.gettransitions.html">DateTimeZone::getTransitions</a></li>
+  <li><a href="datetimezone.listabbreviations.html">DateTimeZone::listAbbreviations</a></li>
+  <li><a href="datetimezone.listidentifiers.html">DateTimeZone::listIdentifiers</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="datetimezone.getname.html">DateTimeZone::getName</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="datetimezone.gettransitions.html">DateTimeZone::getTransitions</a></div>
+                <div class="up"><a href="class.datetimezone.html">DateTimeZone</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="datetimezone.getoffset" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">DateTimeZone::getOffset</h1>
+  <h1 class="refname">timezone_offset_get</h1>
+  <p class="refpurpose">Returns the timezone offset from GMT</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-datetimezone.getoffset-description">
+  <h3 class="title">Description</h3>
+  <p class="para">Object oriented style</p>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">int</span> <span class="methodname">DateTimeZone::getOffset</span>
+    ( <span class="methodparam"><span class="type">DateTime</span> <code class="parameter">$datetime</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">Procedural style</p>
+  <div class="methodsynopsis dc-description">
+   <span class="type">int</span> <span class="methodname">timezone_offset_get</span>
+    ( <span class="methodparam"><span class="type">DateTimeZone</span> <code class="parameter">$object</code></span>
+   , <span class="methodparam"><span class="type">DateTime</span> <code class="parameter">$datetime</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   This function returns the offset to GMT for the date/time specified in the
+   <code class="parameter">datetime</code> parameter. The GMT offset is calculated
+   with the timezone information contained in the DateTimeZone object being used.
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-datetimezone.getoffset-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+<code class="parameter">
+object</code></dt>
+<dd>
+<p class="para">Procedural style only: A <span class="classname">DateTimeZone</span> object
+returned by <span class="function">timezone_open</span></p></dd>
+
+    
+     <dt>
+<code class="parameter">datetime</code></dt>
+
+     <dd>
+
+      <p class="para">
+       DateTime that contains the date/time to compute the offset from. 
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-datetimezone.getoffset-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns time zone offset in seconds on success or <strong><code>FALSE</code></strong> on failure.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-datetimezone.getoffset-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-2531">
+    <p><strong>Example #1 <span class="function">DateTimeZone::getOffset</span> examples</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">//&nbsp;Create&nbsp;two&nbsp;timezone&nbsp;objects,&nbsp;one&nbsp;for&nbsp;Taipei&nbsp;(Taiwan)&nbsp;and&nbsp;one&nbsp;for<br />//&nbsp;Tokyo&nbsp;(Japan)<br /></span><span style="color: #0000BB">$dateTimeZoneTaipei&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTimeZone</span><span style="color: #007700">(</span><span style="color: #DD0000">"Asia/Taipei"</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$dateTimeZoneJapan&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTimeZone</span><span style="color: #007700">(</span><span style="color: #DD0000">"Asia/Tokyo"</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Create&nbsp;two&nbsp;DateTime&nbsp;objects&nbsp;that&nbsp;will&nbsp;contain&nbsp;the&nbsp;same&nbsp;Unix&nbsp;timestamp,&nbsp;but<br />//&nbsp;have&nbsp;different&nbsp;timezones&nbsp;attached&nbsp;to&nbsp;them.<br /></span><span style="color: #0000BB">$dateTimeTaipei&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTime</span><span style="color: #007700">(</span><span style="color: #DD0000">"now"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$dateTimeZoneTaipei</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$dateTimeJapan&nbsp;</span><span style="color: #007700">=&nbsp;new&nbsp;</span><span style="color: #0000BB">DateTime</span><span style="color: #007700">(</span><span style="color: #DD0000">"now"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$dateTimeZoneJapan</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Calculate&nbsp;the&nbsp;GMT&nbsp;offset&nbsp;for&nbsp;the&nbsp;date/time&nbsp;contained&nbsp;in&nbsp;the&nbsp;$dateTimeTaipei<br />//&nbsp;object,&nbsp;but&nbsp;using&nbsp;the&nbsp;timezone&nbsp;rules&nbsp;as&nbsp;defined&nbsp;for&nbsp;Tokyo<br />//&nbsp;($dateTimeZoneJapan).<br /></span><span style="color: #0000BB">$timeOffset&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$dateTimeZoneJapan</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">getOffset</span><span style="color: #007700">(</span><span style="color: #0000BB">$dateTimeTaipei</span><span style="color: #007700">);<br /><br /></span><span style="color: #FF8000">//&nbsp;Should&nbsp;show&nbsp;int(32400)&nbsp;(for&nbsp;dates&nbsp;after&nbsp;Sat&nbsp;Sep&nbsp;8&nbsp;01:00:00&nbsp;1951&nbsp;JST).<br /></span><span style="color: #0000BB">var_dump</span><span style="color: #007700">(</span><span style="color: #0000BB">$timeOffset</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

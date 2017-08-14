@@ -1,0 +1,179 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Create a new OAuth object</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.webservice.html">Web Services</a></li>
+  <li class="header up"><a href="book.oauth.html">OAuth</a></li>
+  <li class="header up"><a href="class.oauth.html">OAuth</a></li>
+  <li class="active"><a href="oauth.construct.html">OAuth::__construct</a></li>
+  <li><a href="oauth.destruct.html">OAuth::__destruct</a></li>
+  <li><a href="oauth.disabledebug.html">OAuth::disableDebug</a></li>
+  <li><a href="oauth.disableredirects.html">OAuth::disableRedirects</a></li>
+  <li><a href="oauth.disablesslchecks.html">OAuth::disableSSLChecks</a></li>
+  <li><a href="oauth.enabledebug.html">OAuth::enableDebug</a></li>
+  <li><a href="oauth.enableredirects.html">OAuth::enableRedirects</a></li>
+  <li><a href="oauth.enablesslchecks.html">OAuth::enableSSLChecks</a></li>
+  <li><a href="oauth.fetch.html">OAuth::fetch</a></li>
+  <li><a href="oauth.generatesignature.html">OAuth::generateSignature</a></li>
+  <li><a href="oauth.getaccesstoken.html">OAuth::getAccessToken</a></li>
+  <li><a href="oauth.getcapath.html">OAuth::getCAPath</a></li>
+  <li><a href="oauth.getlastresponse.html">OAuth::getLastResponse</a></li>
+  <li><a href="oauth.getlastresponseheaders.html">OAuth::getLastResponseHeaders</a></li>
+  <li><a href="oauth.getlastresponseinfo.html">OAuth::getLastResponseInfo</a></li>
+  <li><a href="oauth.getrequestheader.html">OAuth::getRequestHeader</a></li>
+  <li><a href="oauth.getrequesttoken.html">OAuth::getRequestToken</a></li>
+  <li><a href="oauth.setauthtype.html">OAuth::setAuthType</a></li>
+  <li><a href="oauth.setcapath.html">OAuth::setCAPath</a></li>
+  <li><a href="oauth.setnonce.html">OAuth::setNonce</a></li>
+  <li><a href="oauth.setrequestengine.html">OAuth::setRequestEngine</a></li>
+  <li><a href="oauth.setrsacertificate.html">OAuth::setRSACertificate</a></li>
+  <li><a href="oauth.setsslchecks.html">OAuth::setSSLChecks</a></li>
+  <li><a href="oauth.settimestamp.html">OAuth::setTimestamp</a></li>
+  <li><a href="oauth.settoken.html">OAuth::setToken</a></li>
+  <li><a href="oauth.setversion.html">OAuth::setVersion</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="class.oauth.html">OAuth</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="oauth.destruct.html">OAuth::__destruct</a></div>
+                <div class="up"><a href="class.oauth.html">OAuth</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="oauth.construct" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">OAuth::__construct</h1>
+  <p class="refpurpose">Create a new OAuth object</p>
+ </div>
+
+ <div class="refsect1 description" id="refsect1-oauth.construct-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span>  <span class="methodname">OAuth::__construct</span>
+    ( <span class="methodparam"><span class="type">string</span> <code class="parameter">$consumer_key</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$consumer_secret</code></span>
+   [, <span class="methodparam"><span class="type">string</span> <code class="parameter">$signature_method</code><span class="initializer"> = <strong><code>OAUTH_SIG_METHOD_HMACSHA1</code></strong></span></span>
+   [, <span class="methodparam"><span class="type">int</span> <code class="parameter">$auth_type</code><span class="initializer"> = 0</span></span>
+  ]] )</div>
+
+  <p class="para rdfs-comment">
+   Creates a new OAuth object
+  </p>
+ </div>
+
+
+ <div class="refsect1 parameters" id="refsect1-oauth.construct-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    
+     <dt>
+<code class="parameter">consumer_key</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The consumer key provided by the service provider.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">consumer_secret</code></dt>
+
+     <dd>
+
+      <p class="para">
+       The consumer secret provided by the service provider.
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">signature_method</code></dt>
+
+     <dd>
+
+      <p class="para">
+       This optional parameter defines which signature method to use, by default it is <strong><code>OAUTH_SIG_METHOD_HMACSHA1</code></strong> (HMAC-SHA1).
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">auth_type</code></dt>
+
+     <dd>
+
+      <p class="para">
+       This optional parameter defines how to pass the OAuth parameters
+       to a consumer, by default it is
+       <strong><code>OAUTH_AUTH_TYPE_AUTHORIZATION</code></strong> (in the 
+       <em>Authorization</em> header).
+      </p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

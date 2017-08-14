@@ -1,0 +1,213 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Dump an SQL prepared command</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.database.html">Database Extensions</a></li>
+  <li class="header up"><a href="refs.database.abstract.html">Abstraction Layers</a></li>
+  <li class="header up"><a href="book.pdo.html">PDO</a></li>
+  <li class="header up"><a href="class.pdostatement.html">PDOStatement</a></li>
+  <li><a href="pdostatement.bindcolumn.html">PDOStatement::bindColumn</a></li>
+  <li><a href="pdostatement.bindparam.html">PDOStatement::bindParam</a></li>
+  <li><a href="pdostatement.bindvalue.html">PDOStatement::bindValue</a></li>
+  <li><a href="pdostatement.closecursor.html">PDOStatement::closeCursor</a></li>
+  <li><a href="pdostatement.columncount.html">PDOStatement::columnCount</a></li>
+  <li class="active"><a href="pdostatement.debugdumpparams.html">PDOStatement::debugDumpParams</a></li>
+  <li><a href="pdostatement.errorcode.html">PDOStatement::errorCode</a></li>
+  <li><a href="pdostatement.errorinfo.html">PDOStatement::errorInfo</a></li>
+  <li><a href="pdostatement.execute.html">PDOStatement::execute</a></li>
+  <li><a href="pdostatement.fetch.html">PDOStatement::fetch</a></li>
+  <li><a href="pdostatement.fetchall.html">PDOStatement::fetchAll</a></li>
+  <li><a href="pdostatement.fetchcolumn.html">PDOStatement::fetchColumn</a></li>
+  <li><a href="pdostatement.fetchobject.html">PDOStatement::fetchObject</a></li>
+  <li><a href="pdostatement.getattribute.html">PDOStatement::getAttribute</a></li>
+  <li><a href="pdostatement.getcolumnmeta.html">PDOStatement::getColumnMeta</a></li>
+  <li><a href="pdostatement.nextrowset.html">PDOStatement::nextRowset</a></li>
+  <li><a href="pdostatement.rowcount.html">PDOStatement::rowCount</a></li>
+  <li><a href="pdostatement.setattribute.html">PDOStatement::setAttribute</a></li>
+  <li><a href="pdostatement.setfetchmode.html">PDOStatement::setFetchMode</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="pdostatement.columncount.html">PDOStatement::columnCount</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="pdostatement.errorcode.html">PDOStatement::errorCode</a></div>
+                <div class="up"><a href="class.pdostatement.html">PDOStatement</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="pdostatement.debugdumpparams" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">PDOStatement::debugDumpParams</h1>
+  <p class="refpurpose">
+   Dump an SQL prepared command
+  </p>
+ </div>
+ <div class="refsect1 description" id="refsect1-pdostatement.debugdumpparams-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="modifier">public</span> <span class="type">void</span> <span class="methodname">PDOStatement::debugDumpParams</span>
+    ( <span class="methodparam">void</span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Dumps the information contained by a prepared statement directly on the
+   output. It will provide the <em>SQL</em> query in use, the 
+   number of parameters used (<em>Params</em>), the list
+   of parameters with their key name or position, their name, their position
+   in the query (if this is supported by the PDO driver, otherwise, it will
+   be -1), type (<em>param_type</em>) as an integer, and a boolean
+   value <em>is_param</em>.
+  </p>
+  <p class="para">
+   This is a debug function, which dumps the data directly to the normal
+   output. 
+   <div class="tip"><strong class="tip">Tip</strong><p class="simpara">As with anything that outputs
+its result directly to the browser, the <a href="book.outcontrol.html" class="link">output-control functions</a> can be used to capture
+the output of this function, and save it in a
+<span class="type">string</span> (for example).</p></div>
+  </p>
+  <p class="para">
+   This will only dump the parameters in the statement at the moment
+   of the dump. Extra parameters are not stored in the statement,
+   and not displayed.
+  </p>
+ </div>
+
+
+ <div class="refsect1 returnvalues" id="refsect1-pdostatement.debugdumpparams-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   No value is returned.
+  </p>
+ </div>
+
+
+ <div class="refsect1 examples" id="refsect1-pdostatement.debugdumpparams-examples">
+  <h3 class="title">Examples</h3>
+  <div class="example" id="example-1028">
+   <p><strong>Example #1 <span class="function">PDOStatement::debugDumpParams</span> example with named parameters</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /></span><span style="color: #FF8000">/*&nbsp;Execute&nbsp;a&nbsp;prepared&nbsp;statement&nbsp;by&nbsp;binding&nbsp;PHP&nbsp;variables&nbsp;*/<br /></span><span style="color: #0000BB">$calories&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">150</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$colour&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'red'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$sth&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #DD0000">'SELECT&nbsp;name,&nbsp;colour,&nbsp;calories<br />&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;fruit<br />&nbsp;&nbsp;&nbsp;&nbsp;WHERE&nbsp;calories&nbsp;&lt;&nbsp;:calories&nbsp;AND&nbsp;colour&nbsp;=&nbsp;:colour'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bindParam</span><span style="color: #007700">(</span><span style="color: #DD0000">':calories'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$calories</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">PARAM_INT</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bindValue</span><span style="color: #007700">(</span><span style="color: #DD0000">':colour'</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$colour</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">PARAM_STR</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">12</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">debugDumpParams</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+SQL: [96] SELECT name, colour, calories
+    FROM fruit
+    WHERE calories &lt; :calories AND colour = :colour
+Params:  2
+Key: Name: [9] :calories
+paramno=-1
+name=[9] &quot;:calories&quot;
+is_param=1
+param_type=1
+Key: Name: [7] :colour
+paramno=-1
+name=[7] &quot;:colour&quot;
+is_param=1
+param_type=2
+</pre></div>
+   </div>
+  </div>
+
+  <div class="example" id="example-1029">
+   <p><strong>Example #2 <span class="function">PDOStatement::debugDumpParams</span> example with unnamed parameters</strong></p>
+   <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br /><br /></span><span style="color: #FF8000">/*&nbsp;Execute&nbsp;a&nbsp;prepared&nbsp;statement&nbsp;by&nbsp;binding&nbsp;PHP&nbsp;variables&nbsp;*/<br /></span><span style="color: #0000BB">$calories&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">150</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$colour&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'red'</span><span style="color: #007700">;<br /></span><span style="color: #0000BB">$name&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #DD0000">'apple'</span><span style="color: #007700">;<br /><br /></span><span style="color: #0000BB">$sth&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">$dbh</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">prepare</span><span style="color: #007700">(</span><span style="color: #DD0000">'SELECT&nbsp;name,&nbsp;colour,&nbsp;calories<br />&nbsp;&nbsp;&nbsp;&nbsp;FROM&nbsp;fruit<br />&nbsp;&nbsp;&nbsp;&nbsp;WHERE&nbsp;calories&nbsp;&lt;&nbsp;?&nbsp;AND&nbsp;colour&nbsp;=&nbsp;?'</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bindParam</span><span style="color: #007700">(</span><span style="color: #0000BB">1</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$calories</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">PARAM_INT</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">bindValue</span><span style="color: #007700">(</span><span style="color: #0000BB">2</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">$colour</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">PDO</span><span style="color: #007700">::</span><span style="color: #0000BB">PARAM_STR</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">execute</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">$sth</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">debugDumpParams</span><span style="color: #007700">();<br /><br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+   </div>
+
+   <div class="example-contents"><p>The above example will output:</p></div>
+   <div class="example-contents screen">
+<div class="cdata"><pre>
+SQL: [82] SELECT name, colour, calories
+    FROM fruit
+    WHERE calories &lt; ? AND colour = ?
+Params:  2
+Key: Position #0:
+paramno=0
+name=[0] &quot;&quot;
+is_param=1
+param_type=1
+Key: Position #1:
+paramno=1
+name=[0] &quot;&quot;
+is_param=1
+param_type=2
+</pre></div>
+   </div>
+  </div>
+
+ </div>
+
+
+ <div class="refsect1 seealso" id="refsect1-pdostatement.debugdumpparams-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">PDO::prepare</span></li>
+    <li class="member"><span class="function">PDOStatement::bindParam</span></li>
+    <li class="member"><span class="function">PDOStatement::bindValue</span></li>
+   </ul>
+  </p>
+ </div>
+
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>

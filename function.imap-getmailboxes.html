@@ -1,0 +1,279 @@
+<!DOCTYPE html PUBLIC "-//W3C//DTD XHTML 1.0 Strict//EN"
+                      "http://www.w3.org/TR/xhtml1/DTD/xhtml1-strict.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml" xml:lang="en" lang="en">
+<head>
+    <meta http-equiv="content-type" content="text/html; charset=UTF-8"/>
+    <title>PHP Manual: Read the list of mailboxes, returning detailed information on each one</title>
+
+</head>
+<body>
+<table width="100%">
+    <tr valign="top">
+        <td style="font-size: smaller;" width="15%">
+<style type="text/css">
+#leftbar {
+	float: left;
+	width: 186px;
+	padding: 5px;
+	font-size: smaller;
+}
+ul.toc {
+	margin: 0px 5px 5px 5px;
+	padding: 0px;
+}
+ul.toc li {
+	font-size: 85%;
+	margin: 1px 0 1px 1px;
+	padding: 1px 0 1px 11px;
+	list-style-type: none;
+	background-repeat: no-repeat;
+	background-position: center left;
+}
+ul.toc li.header {
+	font-size: 115%;
+	padding: 5px 0px 5px 11px;
+	border-bottom: 1px solid #cccccc;
+	margin-bottom: 5px;
+}
+ul.toc li.active {
+	font-weight: bold;
+}
+ul.toc li a {
+	text-decoration: none;
+}
+ul.toc li a:hover {
+	text-decoration: underline;
+}
+</style>
+ <ul class="toc">
+  <li class="header home"><a href="index.html">PHP Manual</a></li>
+  <li class="header up"><a href="funcref.html">Function Reference</a></li>
+  <li class="header up"><a href="refs.remote.mail.html">Mail Related Extensions</a></li>
+  <li class="header up"><a href="book.imap.html">IMAP</a></li>
+  <li class="header up"><a href="ref.imap.html">IMAP Functions</a></li>
+  <li><a href="function.imap-8bit.html">imap_8bit</a></li>
+  <li><a href="function.imap-alerts.html">imap_alerts</a></li>
+  <li><a href="function.imap-append.html">imap_append</a></li>
+  <li><a href="function.imap-base64.html">imap_base64</a></li>
+  <li><a href="function.imap-binary.html">imap_binary</a></li>
+  <li><a href="function.imap-body.html">imap_body</a></li>
+  <li><a href="function.imap-bodystruct.html">imap_bodystruct</a></li>
+  <li><a href="function.imap-check.html">imap_check</a></li>
+  <li><a href="function.imap-clearflag-full.html">imap_clearflag_full</a></li>
+  <li><a href="function.imap-close.html">imap_close</a></li>
+  <li><a href="function.imap-create.html">imap_create</a></li>
+  <li><a href="function.imap-createmailbox.html">imap_createmailbox</a></li>
+  <li><a href="function.imap-delete.html">imap_delete</a></li>
+  <li><a href="function.imap-deletemailbox.html">imap_deletemailbox</a></li>
+  <li><a href="function.imap-errors.html">imap_errors</a></li>
+  <li><a href="function.imap-expunge.html">imap_expunge</a></li>
+  <li><a href="function.imap-fetch-overview.html">imap_fetch_overview</a></li>
+  <li><a href="function.imap-fetchbody.html">imap_fetchbody</a></li>
+  <li><a href="function.imap-fetchheader.html">imap_fetchheader</a></li>
+  <li><a href="function.imap-fetchmime.html">imap_fetchmime</a></li>
+  <li><a href="function.imap-fetchstructure.html">imap_fetchstructure</a></li>
+  <li><a href="function.imap-fetchtext.html">imap_fetchtext</a></li>
+  <li><a href="function.imap-gc.html">imap_gc</a></li>
+  <li><a href="function.imap-get-quota.html">imap_get_quota</a></li>
+  <li><a href="function.imap-get-quotaroot.html">imap_get_quotaroot</a></li>
+  <li><a href="function.imap-getacl.html">imap_getacl</a></li>
+  <li class="active"><a href="function.imap-getmailboxes.html">imap_getmailboxes</a></li>
+  <li><a href="function.imap-getsubscribed.html">imap_getsubscribed</a></li>
+  <li><a href="function.imap-header.html">imap_header</a></li>
+  <li><a href="function.imap-headerinfo.html">imap_headerinfo</a></li>
+  <li><a href="function.imap-headers.html">imap_headers</a></li>
+  <li><a href="function.imap-last-error.html">imap_last_error</a></li>
+  <li><a href="function.imap-list.html">imap_list</a></li>
+  <li><a href="function.imap-listmailbox.html">imap_listmailbox</a></li>
+  <li><a href="function.imap-listscan.html">imap_listscan</a></li>
+  <li><a href="function.imap-listsubscribed.html">imap_listsubscribed</a></li>
+  <li><a href="function.imap-lsub.html">imap_lsub</a></li>
+  <li><a href="function.imap-mail-compose.html">imap_mail_compose</a></li>
+  <li><a href="function.imap-mail-copy.html">imap_mail_copy</a></li>
+  <li><a href="function.imap-mail-move.html">imap_mail_move</a></li>
+  <li><a href="function.imap-mail.html">imap_mail</a></li>
+  <li><a href="function.imap-mailboxmsginfo.html">imap_mailboxmsginfo</a></li>
+  <li><a href="function.imap-mime-header-decode.html">imap_mime_header_decode</a></li>
+  <li><a href="function.imap-msgno.html">imap_msgno</a></li>
+  <li><a href="function.imap-num-msg.html">imap_num_msg</a></li>
+  <li><a href="function.imap-num-recent.html">imap_num_recent</a></li>
+  <li><a href="function.imap-open.html">imap_open</a></li>
+  <li><a href="function.imap-ping.html">imap_ping</a></li>
+  <li><a href="function.imap-qprint.html">imap_qprint</a></li>
+  <li><a href="function.imap-rename.html">imap_rename</a></li>
+  <li><a href="function.imap-renamemailbox.html">imap_renamemailbox</a></li>
+  <li><a href="function.imap-reopen.html">imap_reopen</a></li>
+  <li><a href="function.imap-rfc822-parse-adrlist.html">imap_rfc822_parse_adrlist</a></li>
+  <li><a href="function.imap-rfc822-parse-headers.html">imap_rfc822_parse_headers</a></li>
+  <li><a href="function.imap-rfc822-write-address.html">imap_rfc822_write_address</a></li>
+  <li><a href="function.imap-savebody.html">imap_savebody</a></li>
+  <li><a href="function.imap-scan.html">imap_scan</a></li>
+  <li><a href="function.imap-scanmailbox.html">imap_scanmailbox</a></li>
+  <li><a href="function.imap-search.html">imap_search</a></li>
+  <li><a href="function.imap-set-quota.html">imap_set_quota</a></li>
+  <li><a href="function.imap-setacl.html">imap_setacl</a></li>
+  <li><a href="function.imap-setflag-full.html">imap_setflag_full</a></li>
+  <li><a href="function.imap-sort.html">imap_sort</a></li>
+  <li><a href="function.imap-status.html">imap_status</a></li>
+  <li><a href="function.imap-subscribe.html">imap_subscribe</a></li>
+  <li><a href="function.imap-thread.html">imap_thread</a></li>
+  <li><a href="function.imap-timeout.html">imap_timeout</a></li>
+  <li><a href="function.imap-uid.html">imap_uid</a></li>
+  <li><a href="function.imap-undelete.html">imap_undelete</a></li>
+  <li><a href="function.imap-unsubscribe.html">imap_unsubscribe</a></li>
+  <li><a href="function.imap-utf7-decode.html">imap_utf7_decode</a></li>
+  <li><a href="function.imap-utf7-encode.html">imap_utf7_encode</a></li>
+  <li><a href="function.imap-utf8.html">imap_utf8</a></li>
+ </ul>
+
+        </td>
+        <td width="85%">
+            <div style="text-align: center;">
+                <div class="prev" style="text-align: left; float: left;"><a href="function.imap-getacl.html">imap_getacl</a></div>
+                <div class="next" style="text-align: right; float: right;"><a href="function.imap-getsubscribed.html">imap_getsubscribed</a></div>
+                <div class="up"><a href="ref.imap.html">IMAP Functions</a></div>
+                <div class="home"><a href="index.html">PHP Manual</a></div>
+            </div><hr/>
+<div id="function.imap-getmailboxes" class="refentry">
+ <div class="refnamediv">
+  <h1 class="refname">imap_getmailboxes</h1>
+  <p class="refpurpose">Read the list of mailboxes, returning detailed information on each one</p>
+ </div>
+ <div class="refsect1 description" id="refsect1-function.imap-getmailboxes-description">
+  <h3 class="title">Description</h3>
+  <div class="methodsynopsis dc-description">
+   <span class="type">array</span> <span class="methodname">imap_getmailboxes</span>
+    ( <span class="methodparam"><span class="type">resource</span> <code class="parameter">$imap_stream</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$ref</code></span>
+   , <span class="methodparam"><span class="type">string</span> <code class="parameter">$pattern</code></span>
+   )</div>
+
+  <p class="para rdfs-comment">
+   Gets information on the mailboxes.
+  </p>
+ </div>
+
+ <div class="refsect1 parameters" id="refsect1-function.imap-getmailboxes-parameters">
+  <h3 class="title">Parameters</h3>
+  <p class="para">
+   <dl>
+
+    <dt>
+<code class="parameter">
+imap_stream</code></dt>
+<dd>
+<p class="para">An IMAP stream returned by
+<span class="function">imap_open</span>.</p></dd>
+
+    
+     <dt>
+<code class="parameter">ref</code></dt>
+
+     <dd>
+
+      <p class="para">
+       <code class="parameter">ref</code> should normally be just the server
+       specification as described in <span class="function">imap_open</span>
+      </p>
+     </dd>
+
+    
+    
+     <dt>
+<code class="parameter">pattern</code></dt>
+
+     <dd>
+
+      <p class="para">Specifies where in the mailbox hierarchy
+to start searching.</p><p class="para">There are two special characters you can
+pass as part of the <code class="parameter">pattern</code>:
+&#039;<em>*</em>&#039; and &#039;<em>%</em>&#039;.
+&#039;<em>*</em>&#039; means to return all mailboxes. If you pass
+<code class="parameter">pattern</code> as &#039;<em>*</em>&#039;, you will
+get a list of the entire mailbox hierarchy.
+&#039;<em>%</em>&#039;
+means to return the current level only.
+&#039;<em>%</em>&#039; as the <code class="parameter">pattern</code>
+parameter will return only the top level
+mailboxes; &#039;<em>~/mail/%</em>&#039; on <em>UW_IMAPD</em> will return every mailbox in the <var class="filename">~/mail</var> directory, but none in subfolders of that directory.</p>
+     </dd>
+
+    
+   </dl>
+
+  </p>
+ </div>
+
+ <div class="refsect1 returnvalues" id="refsect1-function.imap-getmailboxes-returnvalues">
+  <h3 class="title">Return Values</h3>
+  <p class="para">
+   Returns an array of objects containing mailbox information. Each
+   object has the attributes <code class="parameter">name</code>, specifying
+   the full name of the mailbox; <code class="parameter">delimiter</code>,
+   which is the hierarchy delimiter for the part of the hierarchy
+   this mailbox is in; and
+   <code class="parameter">attributes</code>. <code class="parameter">Attributes</code>
+   is a bitmask that can be tested against:
+   <ul class="itemizedlist">
+    <li class="listitem">
+     <p class="para">
+      <strong><code>LATT_NOINFERIORS</code></strong> - This mailbox not contains, and may not contain any
+      &quot;children&quot; (there are no mailboxes below this one). Calling 
+      <span class="function">imap_createmailbox</span> will not work on this mailbox.
+     </p>
+    </li>
+   <li class="listitem">
+     <p class="para">
+      <strong><code>LATT_NOSELECT</code></strong> - This is only a container,
+      not a mailbox - you cannot open it.
+     </p>
+    </li>
+    <li class="listitem">
+     <p class="para">
+      <strong><code>LATT_MARKED</code></strong> - This mailbox is marked. This means that it may 
+      contain new messages since the last time it was checked. Not provided by all IMAP
+      servers.
+     </p>
+    </li>
+    <li class="listitem">
+     <p class="para">
+      <strong><code>LATT_UNMARKED</code></strong> - This mailbox is not marked, does not contain new
+      messages.  If either <strong><code>MARKED</code></strong> or <strong><code>UNMARKED</code></strong> is
+      provided, you can assume the IMAP server  supports this feature for this mailbox.
+     </p>
+    </li>
+   </ul>
+  </p>
+ </div>
+
+ <div class="refsect1 examples" id="refsect1-function.imap-getmailboxes-examples">
+  <h3 class="title">Examples</h3>
+  <p class="para">
+   <div class="example" id="example-3908">
+    <p><strong>Example #1 <span class="function">imap_getmailboxes</span> example</strong></p>
+    <div class="example-contents">
+<div class="phpcode"><code><span style="color: #000000">
+<span style="color: #0000BB">&lt;?php<br />$mbox&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imap_open</span><span style="color: #007700">(</span><span style="color: #DD0000">"{imap.example.org}"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"username"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"password"</span><span style="color: #007700">,&nbsp;</span><span style="color: #0000BB">OP_HALFOPEN</span><span style="color: #007700">)<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;or&nbsp;die(</span><span style="color: #DD0000">"can't&nbsp;connect:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">imap_last_error</span><span style="color: #007700">());<br /><br /></span><span style="color: #0000BB">$list&nbsp;</span><span style="color: #007700">=&nbsp;</span><span style="color: #0000BB">imap_getmailboxes</span><span style="color: #007700">(</span><span style="color: #0000BB">$mbox</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"{imap.example.org}"</span><span style="color: #007700">,&nbsp;</span><span style="color: #DD0000">"*"</span><span style="color: #007700">);<br />if&nbsp;(</span><span style="color: #0000BB">is_array</span><span style="color: #007700">(</span><span style="color: #0000BB">$list</span><span style="color: #007700">))&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;foreach&nbsp;(</span><span style="color: #0000BB">$list&nbsp;</span><span style="color: #007700">as&nbsp;</span><span style="color: #0000BB">$key&nbsp;</span><span style="color: #007700">=&gt;&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">)&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"(</span><span style="color: #0000BB">$key</span><span style="color: #DD0000">)&nbsp;"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">imap_utf7_decode</span><span style="color: #007700">(</span><span style="color: #0000BB">$val</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">name</span><span style="color: #007700">)&nbsp;.&nbsp;</span><span style="color: #DD0000">","</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"'"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">delimiter&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"',"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #0000BB">$val</span><span style="color: #007700">-&gt;</span><span style="color: #0000BB">attributes&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #DD0000">"&lt;br&nbsp;/&gt;\n"</span><span style="color: #007700">;<br />&nbsp;&nbsp;&nbsp;&nbsp;}<br />}&nbsp;else&nbsp;{<br />&nbsp;&nbsp;&nbsp;&nbsp;echo&nbsp;</span><span style="color: #DD0000">"imap_getmailboxes&nbsp;failed:&nbsp;"&nbsp;</span><span style="color: #007700">.&nbsp;</span><span style="color: #0000BB">imap_last_error</span><span style="color: #007700">()&nbsp;.&nbsp;</span><span style="color: #DD0000">"\n"</span><span style="color: #007700">;<br />}<br /><br /></span><span style="color: #0000BB">imap_close</span><span style="color: #007700">(</span><span style="color: #0000BB">$mbox</span><span style="color: #007700">);<br /></span><span style="color: #0000BB">?&gt;</span>
+</span>
+</code></div>
+    </div>
+
+   </div>
+  </p>
+ </div>
+
+ <div class="refsect1 seealso" id="refsect1-function.imap-getmailboxes-seealso">
+  <h3 class="title">See Also</h3>
+  <p class="para">
+   <ul class="simplelist">
+    <li class="member"><span class="function">imap_getsubscribed</span></li>
+   </ul>
+  </p>
+ </div>
+
+</div>
+        </td>
+    </tr>
+</table>
+</body>
+</html>
